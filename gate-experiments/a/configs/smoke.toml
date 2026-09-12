@@ -1,0 +1,43 @@
+# Tiny synthetic end-to-end check. CPU only, no network, no model.
+name = "smoke"
+
+[data]
+dataset = "synthetic"
+n_targets = 96
+filler_pool_size = 200
+sampling = "natural"
+seed = 1
+min_chars = 20
+max_chars = 400
+out_dir = "artifacts/smoke/data"
+
+[plan]
+k = 16
+assignments = 3
+seed = 3
+conditions = ["solo", "joint", "filler"]
+filler_fraction = 1.0
+out_dir = "artifacts/smoke/plan"
+
+[model]
+model_id = "mock/none"
+max_model_len = 8192
+temperature = 0.0
+enable_thinking = false
+
+[run]
+backend = "mock"
+out_path = "artifacts/smoke/raw/predictions.jsonl"
+chunk_size = 32
+chars_per_token = 3.4
+mock_seed = 11
+mock_base_error = 0.12
+mock_batch_effect = 0.6
+mock_parse_failure_rate = 0.02
+mock_missing_id_rate = 0.01
+
+[analyze]
+bootstrap = 400
+permutations = 200
+seed = 5
+out_dir = "artifacts/smoke/analysis"

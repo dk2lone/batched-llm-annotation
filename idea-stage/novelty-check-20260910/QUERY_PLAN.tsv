@@ -1,0 +1,64 @@
+id	claim	round	query
+K	mechanism	1	generic LLM tabular prediction dimensionality distance concentration retrieval mechanism
+K	mechanism	2	in-context tabular classification nearest neighbor collapse high dimensional language model
+K	mechanism	3	curse dimensionality row retrieval mechanism transformer tabular prediction
+K	causal_rows	1	LLM tabular in-context prediction nearest row ablation causal influence attention
+K	causal_rows	2	leave nearest examples out prompt tabular classification language model
+K	causal_rows	3	in-context example influence distance rank tabular LLM attention
+K	separation	1	high dimensional low distance concentration controlled data tabular LLM accuracy
+K	separation	2	separate dimension from distance concentration nearest neighbor prediction experiment
+K	separation	3	fixed Bayes difficulty varying concentration high dimensional classification retrieval
+A	dependence	1	batch prompting induces correlated annotation errors across documents LLM
+A	dependence	2	intra-batch correlation language model labels shared prompt items
+A	dependence	3	cross-item error covariance batched LLM annotation context interference
+A	inference	1	batched LLM labels dependence invalid confidence intervals downstream inference
+A	inference	2	clustered AI annotations prediction powered inference correlated errors
+A	inference	3	shared prompt labels Type I error design effect effective sample size
+A	identification	1	batch prompting long context filler control item interference annotation
+A	identification	2	random batch assignment document fixed effects LLM annotation correlation
+A	identification	3	cluster robust variance batch prompted labels statistical correction
+T	mechanism	1	input complexity tabular anomaly likelihood pathology normalizing flows
+T	mechanism	2	within row redundancy high likelihood anomalies tabular generative model
+T	mechanism	3	compressibility explains out of distribution likelihood tabular data
+T	group_test	1	native tabular versus image text embeddings likelihood anomaly pathology redundancy
+T	group_test	2	ADBench embedding datasets counterintuitive likelihood feature correlation complexity
+T	group_test	3	embedding redundancy versus tabular correlation normalizing flow anomaly detection
+T	measurement	1	measure complexity short tabular records independent feature correlation
+T	measurement	2	codelength tabular row complexity likelihood ratio outlier detection
+T	measurement	3	compression based complexity correction likelihood OOD tabular
+A2	factorial	1	factorial randomized pretraining exposure content co-occurrence recommendation LLM
+A2	factorial	2	causal decomposition semantic collaborative knowledge pretraining recommender
+A2	factorial	3	crossed content interaction exposure generative recommendation language model
+A2	mechanisms	1	pretraining item meaning versus item co-occurrence recommendation gains
+A2	mechanisms	2	semantic relations collaborative relations memorization LLM recommender exposure
+A2	mechanisms	3	content documents co-occurrence documents controlled contamination recommender
+A2	interference	1	item randomized training exposure shared model interference causal estimand
+A2	interference	2	causal inference treatment assigned examples one language model pretraining
+A2	interference	3	randomized corpus exposure spillover interference model training experiment
+A3	type1	1	training exposure hidden validation outcomes LLM agent Type I error
+A3	type1	2	contaminated validation data agent selected hypothesis tests false positives
+A3	type1	3	pretraining memorized holdout outcomes automated scientific discovery error control
+A3	memorization	1	memorization validation noise LLM adaptive test selection
+A3	memorization	2	weight level exposure holdout labels hypothesis generation language model
+A3	memorization	3	training data contamination statistical test choice false rejection agent
+A3	design	1	causal experiment model training exposure multiple seeds unit analysis
+A3	design	2	instance randomized contamination exposure shared language model evaluation
+A3	design	3	training run variation causal effect data exposure foundation model experiment
+A1	ranking	1	same dataset repository versions preprocessing reverse model rankings OpenML
+A1	ranking	2	dataset variants transformation choices algorithm ranking reversal benchmark
+A1	ranking	3	repository preprocessing lineage changes model winner tabular benchmark
+A1	provenance	1	checksum provenance replay reconstruct dataset repository transformation graph
+A1	provenance	2	dataset lineage exact reconstruction OpenML versions preprocessing provenance
+A1	provenance	3	data version control transformation attribution benchmark reproducibility
+A1	attribution	1	causal attribution individual preprocessing transformations model ranking
+A1	attribution	2	ablation preprocessing pipeline steps algorithm comparison reversal
+A1	attribution	3	transformation graph intervention model performance benchmark disagreement
+I1	future_text	1	post cutoff non target reviews temporal leakage review aware recommender
+I1	future_text	2	future user reviews future item reviews recommendation historical evaluation leakage
+I1	future_text	3	timestamp safe text profiles review based recommendation unavailable information
+I1	decomposition	1	decompose target review later user later product review leakage recommender
+I1	decomposition	2	freeze interactions vary review text availability recommendation experiment
+I1	decomposition	3	causal future text exposure review recommender user item profiles
+I1	practice	1	published review recommender aggregates all reviews before train test split
+I1	practice	2	DeepCoNN temporal review profiles future reviews evaluation protocol
+I1	practice	3	review aware recommender implementation data leakage timestamp cutoff

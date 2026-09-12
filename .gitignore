@@ -1,0 +1,42 @@
+# macOS and editors
+.DS_Store
+.idea/
+.vscode/
+
+# Python environments, caches, and build products
+**/.venv/
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.ruff_cache/
+**/.mypy_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Local credentials and agent state
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.aris/
+graphify-out/
+
+# Immutable payloads are attached to milestone GitHub releases.
+study-120h/freeze/
+study-120h/step1-out/host/
+study-120h/step1-out/preflight/
+study-120h/step1-out/preflight-invalid-*/
+study-120h/step1-out/results/
+study-120h/step1-out/runs.jsonl
+gate-experiments/a/artifacts/**/data/
+gate-experiments/a/artifacts/**/plan/
+gate-experiments/a/artifacts/**/raw/
+gate-experiments/a/artifacts/**/predictions.jsonl
+gate-experiments/k/artifacts/**/plan/
+gate-experiments/k/artifacts/**/run/
+gate-experiments/k/artifacts/**/synthetic/
+

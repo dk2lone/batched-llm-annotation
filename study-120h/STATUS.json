@@ -1,0 +1,69 @@
+{
+  "freeze_dir": "/Users/dz/bigdata/study-120h/freeze/20260912T041633Z",
+  "items": [
+    {
+      "detail": "content hash 218c5bcaa30f4f93c8d516f85f29ad8b7fb3be90f40238c2f3faf837ce611e15, stamp 20260912T041633Z",
+      "item": "timestamped protocol",
+      "ok": true
+    },
+    {
+      "detail": "0 occurrences of SET_BY_SIMULATION in protocol.lock.json",
+      "item": "no unresolved design field",
+      "ok": true
+    },
+    {
+      "detail": "engine pin vllm==0.28.0",
+      "item": "serving engine and version predeclared",
+      "ok": true
+    },
+    {
+      "detail": "threshold error rate 0.005, min solo errors 11",
+      "item": "null and power simulation",
+      "ok": true
+    },
+    {
+      "detail": "ag_news=2048, civil_comments=2048, multi_nli=2048",
+      "item": "sample frames materialised",
+      "ok": true
+    },
+    {
+      "detail": "model blockers [], engine wheel found True",
+      "item": "model and engine pins evidenced",
+      "ok": true
+    },
+    {
+      "detail": "mistral_civil=8576/8576; mistral_secondtask=9632/9632; qwen_civil=14720/14720; qwen_secondtask=8576/8576",
+      "item": "assignments and job skeletons",
+      "ok": true
+    },
+    {
+      "detail": "historical artifact unchanged True, mismatched metrics 0",
+      "item": "old Gate A analysis reproduced",
+      "ok": true
+    },
+    {
+      "detail": "checks {'deadline_text_mentions_aoe': True, 'deadline_text_mentions_september_20': True, 'high_school_route_requires_high_school_first_author': True, 'page_limit_matches_protocol': True}, human confirmation still required",
+      "item": "live venue record",
+      "ok": true
+    },
+    {
+      "detail": "mypy=0, pytest=0, ruff=0",
+      "item": "tests, lint, and type check",
+      "ok": true
+    },
+    {
+      "detail": "70 files checked, problems []",
+      "item": "freeze sealed and integrity verified",
+      "ok": true
+    },
+    {
+      "detail": "none",
+      "item": "no recorded blocker",
+      "ok": true
+    }
+  ],
+  "n_failed": 0,
+  "n_items": 12,
+  "no_new_experimental_model_labels": "No new experimental model labels exist. Step 0 ran on CPU only. No model was loaded, no GPU was used, and no joint, exact-context, solo, filler, fake-batch, or repeated-sampling output has been produced.",
+  "verdict": "COMPLETE"
+}

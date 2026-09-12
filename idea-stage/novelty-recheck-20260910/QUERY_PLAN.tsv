@@ -1,0 +1,19 @@
+idea	round	slug	query
+A1	1	a1-r1	dataset provenance replay public repositories same dataset versions preprocessing model ranking reversal
+A1	2	a1-r2	benchmark dataset versioning preprocessing sensitivity model rankings OpenML repository reproducibility
+A1	3	a1-r3	data lineage transformation graph benchmark disagreement machine learning dataset variants
+A1	4	a1-r4-replacement	OpenML dataset preprocessing benchmark rank reversal repository version
+A2	1	a2-r1	language model recommender controlled pretraining exposure item content co-occurrence factorial
+A2	2	a2-r2	generative recommendation memorized item transitions semantic knowledge pretraining contamination
+A2	3	a2-r3	causal decomposition pretraining data content co-occurrence knowledge randomized exposure
+A2	4	a2-r4-replacement	LLM recommender memorized item transitions pretraining
+A2	5	a2-r5-replacement	recommender pretraining exposure semantic content collaborative interaction memorization
+A3	1	a3-r1	LLM agent validation data exposure Type I error adaptive hypothesis testing contamination
+A3	2	a3-r2	adaptive data analysis holdout memorization test selection false positive rate
+A3	3	a3-r3	data snooping validation set leakage scientific discovery agent hypothesis generation
+I1	1	i1-r1	review-aware recommender future review text temporal leakage historical cutoff
+I1	2	i1-r2	target review leakage review based recommendation TransNets evaluation protocol
+I1	3	i1-r3	time-aware text features post-outcome leakage recommender user item profiles
+A4	1	a4-r1	agentic hypothesis testing contamination immune validation set known maximum statistic correction
+A4	2	a4-r2	adaptive multiple testing reusable holdout closed testing data-dependent test selection
+A4	3	a4-r3	post-selection inference adversarial test selection family-wise error max statistic

@@ -1,0 +1,501 @@
+{
+  "accuracy": {
+    "filler": {
+      "accuracy_document_mean": 0.91525,
+      "by_assignment": {
+        "1": {
+          "accuracy": 0.9168753129694542,
+          "error_rate": 0.08312468703054582,
+          "n": 1997
+        },
+        "2": {
+          "accuracy": 0.9164164164164164,
+          "error_rate": 0.08358358358358359,
+          "n": 1998
+        },
+        "3": {
+          "accuracy": 0.9124124124124124,
+          "error_rate": 0.08758758758758758,
+          "n": 1998
+        }
+      },
+      "error_rate_ci": [
+        0.07341458333333332,
+        0.09533333333333334
+      ],
+      "error_rate_document_mean": 0.08474999999999999,
+      "n_documents": 2000,
+      "n_rows": 5993,
+      "note": "The bootstrap resamples documents, not rows, so repeats do not inflate n."
+    },
+    "joint": {
+      "accuracy_document_mean": 0.8870833333333333,
+      "by_assignment": {
+        "1": {
+          "accuracy": 0.8839419709854928,
+          "error_rate": 0.11605802901450725,
+          "n": 1999
+        },
+        "2": {
+          "accuracy": 0.8814407203601801,
+          "error_rate": 0.11855927963981991,
+          "n": 1999
+        },
+        "3": {
+          "accuracy": 0.896,
+          "error_rate": 0.104,
+          "n": 2000
+        }
+      },
+      "error_rate_ci": [
+        0.10233333333333333,
+        0.12400208333333332
+      ],
+      "error_rate_document_mean": 0.11291666666666665,
+      "n_documents": 2000,
+      "n_rows": 5998,
+      "note": "The bootstrap resamples documents, not rows, so repeats do not inflate n."
+    },
+    "solo": {
+      "accuracy_document_mean": 0.8324924318869829,
+      "by_assignment": {
+        "0": {
+          "accuracy": 0.8324924318869829,
+          "error_rate": 0.16750756811301715,
+          "n": 1982
+        }
+      },
+      "error_rate_ci": [
+        0.15085771947527749,
+        0.1846619576185671
+      ],
+      "error_rate_document_mean": 0.16750756811301715,
+      "n_documents": 1982,
+      "n_rows": 1982,
+      "note": "The bootstrap resamples documents, not rows, so repeats do not inflate n."
+    }
+  },
+  "config_fingerprint": "3f8f95dd5d297e92",
+  "config_name": "full",
+  "created_at": "2026-09-12T00:25:20.138177+00:00",
+  "icc": {
+    "filler": {
+      "aggregate_point": 0.004794928423946435,
+      "grouping": "corresponding joint batch id; the 16 targets were labelled in 16 separate prompts, so any positive value is not a batching effect",
+      "per_assignment": {
+        "1": {
+          "ci_high": 0.01743821438408131,
+          "ci_low": -0.015472640869051387,
+          "design_effect": 1.0136837581978886,
+          "effective_n": 1970.0424159406834,
+          "mean_batch_size": 15.976,
+          "n_batches": 125,
+          "n_bootstrap_valid": 2000,
+          "n_correct": 1831,
+          "n_errors": 166,
+          "n_permutations": 1000,
+          "n_rows": 1997,
+          "permutation_null_mean": 2.4883120908300555e-05,
+          "permutation_p": 0.44255744255744256,
+          "point": 0.0009122505465259063
+        },
+        "2": {
+          "ci_high": 0.02301531131275536,
+          "ci_low": -0.00829502422012311,
+          "design_effect": 1.1062908676955778,
+          "effective_n": 1806.0349753784617,
+          "mean_batch_size": 15.984,
+          "n_batches": 125,
+          "n_bootstrap_valid": 2000,
+          "n_correct": 1831,
+          "n_errors": 167,
+          "n_permutations": 1000,
+          "n_rows": 1998,
+          "permutation_null_mean": -6.313479127723352e-05,
+          "permutation_p": 0.1888111888111888,
+          "point": 0.007086057846371862
+        },
+        "3": {
+          "ci_high": 0.0217950278090912,
+          "ci_low": -0.008534416755223236,
+          "design_effect": 1.095797153184123,
+          "effective_n": 1823.3301612385944,
+          "mean_batch_size": 15.984,
+          "n_batches": 125,
+          "n_bootstrap_valid": 2000,
+          "n_correct": 1823,
+          "n_errors": 175,
+          "n_permutations": 1000,
+          "n_rows": 1998,
+          "permutation_null_mean": 2.1761692876997903e-05,
+          "permutation_p": 0.2097902097902098,
+          "point": 0.0063864768789415344
+        }
+      }
+    },
+    "joint": {
+      "aggregate": {
+        "between_assignment_sd": 0.016289337817755673,
+        "ci_high": 0.09802355727678681,
+        "ci_low": 0.04986311420814669,
+        "design_effect": 2.131149713968188,
+        "effective_n_per_assignment": 937.9913512870356,
+        "n_bootstrap_valid": 2000,
+        "note": "Every target document appears once per assignment, so the three per-assignment ICCs are computed on disjoint rows but on the same documents. Pooling all assignments into one ANOVA would count each document three times and understate the standard error. The aggregate point estimate is therefore the unweighted mean of the per-assignment ICCs. Its bootstrap resamples batches inside each assignment independently, which ignores the dependence between assignments induced by the shared document set, so the aggregate interval is optimistic. The reported decision interval is the conservative envelope: the lowest lower bound and the highest upper bound across the aggregate interval and the three per-assignment intervals.",
+        "point": 0.07540998093121253,
+        "strategy": "unweighted mean of per-assignment ICCs"
+      },
+      "decision_interval": {
+        "ci_high": 0.13139412284539528,
+        "ci_low": 0.01821194605295274,
+        "rule": "conservative envelope over the aggregate and per-assignment intervals"
+      },
+      "per_assignment": {
+        "1": {
+          "ci_high": 0.11534782102086227,
+          "ci_low": 0.04341448546033181,
+          "design_effect": 2.2051565529114097,
+          "effective_n": 906.5116022537145,
+          "mean_batch_size": 15.992,
+          "n_batches": 125,
+          "n_bootstrap_valid": 2000,
+          "n_correct": 1767,
+          "n_errors": 232,
+          "n_permutations": 1000,
+          "n_rows": 1999,
+          "permutation_null_mean": 0.000399480766826104,
+          "permutation_p": 0.000999000999000999,
+          "point": 0.08034377019409397
+        },
+        "2": {
+          "ci_high": 0.13139412284539528,
+          "ci_low": 0.045648232309653876,
+          "design_effect": 2.3299307496965356,
+          "effective_n": 857.9654138906754,
+          "mean_batch_size": 15.992,
+          "n_batches": 125,
+          "n_bootstrap_valid": 2000,
+          "n_correct": 1762,
+          "n_errors": 237,
+          "n_permutations": 1000,
+          "n_rows": 1999,
+          "permutation_null_mean": 0.00029263674949719926,
+          "permutation_p": 0.000999000999000999,
+          "point": 0.08866204997976904
+        },
+        "3": {
+          "ci_high": 0.10339923329113655,
+          "ci_low": 0.01821194605295274,
+          "design_effect": 1.8583618392966188,
+          "effective_n": 1076.2166751965756,
+          "mean_batch_size": 16.0,
+          "n_batches": 125,
+          "n_bootstrap_valid": 2000,
+          "n_correct": 1792,
+          "n_errors": 208,
+          "n_permutations": 1000,
+          "n_rows": 2000,
+          "permutation_null_mean": 0.00015599662579205483,
+          "permutation_p": 0.000999000999000999,
+          "point": 0.05722412261977458
+        }
+      }
+    },
+    "sensitivity_failures_as_errors": {
+      "joint_icc_by_assignment": {
+        "1": 0.07900133051577053,
+        "2": 0.0879124608228247,
+        "3": 0.05722412261977458
+      },
+      "note": "Parse failures are dropped elsewhere. This treats each one as an error instead."
+    },
+    "solo": {
+      "aggregate_point": -0.0017823525370669838,
+      "grouping": "corresponding joint batch id; the 16 targets were labelled in 16 separate prompts, so any positive value is not a batching effect",
+      "per_assignment": {
+        "1": {
+          "ci_high": 0.013147353409804333,
+          "ci_low": -0.015892008783470787,
+          "design_effect": 1.0,
+          "effective_n": 1981.0,
+          "mean_batch_size": 15.848,
+          "n_batches": 125,
+          "n_bootstrap_valid": 2000,
+          "n_correct": 1650,
+          "n_errors": 331,
+          "n_permutations": 1000,
+          "n_rows": 1981,
+          "permutation_null_mean": -0.00029697199249442284,
+          "permutation_p": 0.5264735264735265,
+          "point": -0.0010705135760848941
+        },
+        "2": {
+          "ci_high": 0.018138540019558804,
+          "ci_low": -0.015265831008037217,
+          "design_effect": 1.014983017873769,
+          "effective_n": 1951.7567930839725,
+          "mean_batch_size": 15.848,
+          "n_batches": 125,
+          "n_bootstrap_valid": 2000,
+          "n_correct": 1649,
+          "n_errors": 332,
+          "n_permutations": 1000,
+          "n_rows": 1981,
+          "permutation_null_mean": -0.0004878789302977138,
+          "permutation_p": 0.41358641358641357,
+          "point": 0.0009988678582512796
+        },
+        "3": {
+          "ci_high": 0.007128373049452165,
+          "ci_low": -0.017808264725547394,
+          "design_effect": 1.0,
+          "effective_n": 1982.0,
+          "mean_batch_size": 15.856,
+          "n_batches": 125,
+          "n_bootstrap_valid": 2000,
+          "n_correct": 1650,
+          "n_errors": 332,
+          "n_permutations": 1000,
+          "n_rows": 1982,
+          "permutation_null_mean": 5.096188283565152e-05,
+          "permutation_p": 0.7352647352647352,
+          "point": -0.0052754118933673365
+        }
+      }
+    }
+  },
+  "paired_deltas": {
+    "filler_minus_solo": {
+      "accuracy_delta": 0.08232425159771276,
+      "ci": [
+        -0.09763286242852337,
+        -0.06659729229734276
+      ],
+      "excludes_zero": true,
+      "mean_error_delta": -0.08232425159771276,
+      "n_documents": 1982,
+      "unit": "positive means more errors in the first condition"
+    },
+    "joint_minus_filler": {
+      "accuracy_delta": -0.028166666666666663,
+      "ci": [
+        0.020166666666666663,
+        0.036166666666666666
+      ],
+      "excludes_zero": true,
+      "mean_error_delta": 0.028166666666666663,
+      "n_documents": 2000,
+      "unit": "positive means more errors in the first condition"
+    },
+    "joint_minus_solo": {
+      "accuracy_delta": 0.05423814328960647,
+      "ci": [
+        -0.06963084426505214,
+        -0.039101917255297686
+      ],
+      "excludes_zero": true,
+      "mean_error_delta": -0.05423814328960647,
+      "n_documents": 1982,
+      "unit": "positive means more errors in the first condition"
+    }
+  },
+  "parse": {
+    "filler": {
+      "n_parsed": 5993,
+      "n_rows": 6000,
+      "n_rows_with_unknown_ids": 7,
+      "parse_failure_rate": 0.0011666666666666492,
+      "parse_failure_rate_by_assignment": {
+        "1": 0.0014999999999999458,
+        "2": 0.0010000000000000009,
+        "3": 0.0010000000000000009
+      },
+      "status_counts": {
+        "missing_labels": 7,
+        "ok": 5993
+      }
+    },
+    "joint": {
+      "n_parsed": 5998,
+      "n_rows": 6000,
+      "n_rows_with_unknown_ids": 32,
+      "parse_failure_rate": 0.0003333333333332966,
+      "parse_failure_rate_by_assignment": {
+        "1": 0.0004999999999999449,
+        "2": 0.0004999999999999449,
+        "3": 0.0
+      },
+      "status_counts": {
+        "missing_id": 2,
+        "ok": 5998
+      }
+    },
+    "solo": {
+      "n_parsed": 1982,
+      "n_rows": 2000,
+      "n_rows_with_unknown_ids": 18,
+      "parse_failure_rate": 0.009000000000000008,
+      "parse_failure_rate_by_assignment": {
+        "0": 0.009000000000000008
+      },
+      "status_counts": {
+        "missing_labels": 18,
+        "ok": 1982
+      }
+    }
+  },
+  "position": {
+    "filler": {
+      "between_slot_ss": 1.9472150986378283,
+      "error_rate_by_slot": {
+        "0": 0.11466666666666667,
+        "1": 0.12032085561497326,
+        "2": 0.07466666666666667,
+        "3": 0.09066666666666667,
+        "4": 0.06666666666666667,
+        "5": 0.07733333333333334,
+        "6": 0.064,
+        "7": 0.10133333333333333,
+        "8": 0.0748663101604278,
+        "9": 0.096,
+        "10": 0.104,
+        "11": 0.07754010695187166,
+        "12": 0.088,
+        "13": 0.08021390374331551,
+        "14": 0.07258064516129033,
+        "15": 0.05333333333333334
+      },
+      "n_by_slot": {
+        "0": 375,
+        "1": 374,
+        "2": 375,
+        "3": 375,
+        "4": 375,
+        "5": 375,
+        "6": 375,
+        "7": 375,
+        "8": 374,
+        "9": 375,
+        "10": 375,
+        "11": 374,
+        "12": 375,
+        "13": 374,
+        "14": 372,
+        "15": 375
+      },
+      "n_permutations": 1000,
+      "p_any_slot_difference": 0.06293706293706294,
+      "p_monotone_trend": 0.02097902097902098,
+      "slot_error_correlation": -0.029779633303547014
+    },
+    "joint": {
+      "between_slot_ss": 3.5061624772131417,
+      "error_rate_by_slot": {
+        "0": 0.14171122994652408,
+        "1": 0.088,
+        "2": 0.050666666666666665,
+        "3": 0.12533333333333332,
+        "4": 0.08266666666666667,
+        "5": 0.096,
+        "6": 0.12266666666666666,
+        "7": 0.12266666666666666,
+        "8": 0.11733333333333333,
+        "9": 0.11466666666666667,
+        "10": 0.128,
+        "11": 0.09333333333333334,
+        "12": 0.13333333333333333,
+        "13": 0.14933333333333335,
+        "14": 0.12,
+        "15": 0.12032085561497326
+      },
+      "n_by_slot": {
+        "0": 374,
+        "1": 375,
+        "2": 375,
+        "3": 375,
+        "4": 375,
+        "5": 375,
+        "6": 375,
+        "7": 375,
+        "8": 375,
+        "9": 375,
+        "10": 375,
+        "11": 375,
+        "12": 375,
+        "13": 375,
+        "14": 375,
+        "15": 374
+      },
+      "n_permutations": 1000,
+      "p_any_slot_difference": 0.002997002997002997,
+      "p_monotone_trend": 0.017982017982017984,
+      "slot_error_correlation": 0.03126843824966121
+    }
+  },
+  "source": {
+    "backends": [
+      "vllm"
+    ],
+    "is_mock": false,
+    "model_ids": [
+      "Qwen/Qwen3-8B"
+    ],
+    "n_documents": 2000,
+    "n_jobs": 8375,
+    "n_rows": 14000,
+    "raw_path": "/Users/dz/bigdata/gate-experiments/a/artifacts/full/raw/predictions.jsonl",
+    "run_ids": [
+      "20260911T234840Z",
+      "20260911T235156Z",
+      "20260911T235946Z",
+      "20260912T000507Z"
+    ],
+    "total_generation_seconds": 3141.0905482456496
+  },
+  "verdict": {
+    "aggregate_icc": 0.07540998093121253,
+    "decision_ci": [
+      0.01821194605295274,
+      0.13139412284539528
+    ],
+    "enough_errors": true,
+    "filler_control_available": true,
+    "filler_explains_accuracy_loss": false,
+    "filler_minus_solo_error_delta": -0.08232425159771276,
+    "filler_placebo_icc": 0.004794928423946435,
+    "joint_errors_by_assignment": [
+      232,
+      237,
+      208
+    ],
+    "joint_minus_solo_error_delta": -0.05423814328960647,
+    "joint_parse_failure_rate": 0.0003333333333332966,
+    "label": "PROCEED",
+    "labels": {
+      "AMBIGUOUS": "no decision",
+      "BOUNDED_NEGATIVE_CANDIDATE": "interval inside the pre-registered null band",
+      "FILLER_CONFOUNDED": "context length explains the effect",
+      "NEEDS_FILLER_CONTROL": "the primary signal requires the context-length control",
+      "PROCEED": "point estimate clears the threshold and the interval excludes zero",
+      "PROCEED_POINT_ONLY": "point estimate clears the threshold, interval evidence does not",
+      "UNDETERMINED": "the estimand could not be computed"
+    },
+    "material_filler_accuracy_gap": true,
+    "max_permutation_p": 0.000999000999000999,
+    "parse_quality_passed": true,
+    "reasons": [
+      "point estimate 0.0754 >= 0.02",
+      "conservative CI lower bound 0.0182 excludes zero",
+      "largest fake-batch p-value 0.0010 < 0.05"
+    ],
+    "thresholds": {
+      "alpha": 0.05,
+      "bounded_null_high": 0.01,
+      "filler_explain_fraction": 0.8,
+      "material_accuracy_gap": 0.02,
+      "max_parse_failure_rate": 0.02,
+      "min_errors_per_assignment": 20,
+      "proceed_rho": 0.02
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "accuracy": {
+    "solo": {
+      "accuracy_document_mean": 0.8324924318869829,
+      "by_assignment": {
+        "0": {
+          "accuracy": 0.8324924318869829,
+          "error_rate": 0.16750756811301715,
+          "n": 1982
+        }
+      },
+      "error_rate_ci": [
+        0.15085771947527749,
+        0.18365287588294651
+      ],
+      "error_rate_document_mean": 0.16750756811301715,
+      "n_documents": 1982,
+      "n_rows": 1982,
+      "note": "The bootstrap resamples documents, not rows, so repeats do not inflate n."
+    }
+  },
+  "config_fingerprint": "0030582ab7b320b7",
+  "config_name": "full",
+  "created_at": "2026-09-11T23:57:37.700635+00:00",
+  "icc": {
+    "error": "no parsed joint rows"
+  },
+  "paired_deltas": {},
+  "parse": {
+    "joint": {
+      "n_parsed": 0,
+      "n_rows": 6000,
+      "n_rows_with_unknown_ids": 0,
+      "parse_failure_rate": 1.0,
+      "parse_failure_rate_by_assignment": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0
+      },
+      "status_counts": {
+        "json_error": 6000
+      }
+    },
+    "solo": {
+      "n_parsed": 1982,
+      "n_rows": 2000,
+      "n_rows_with_unknown_ids": 18,
+      "parse_failure_rate": 0.009000000000000008,
+      "parse_failure_rate_by_assignment": {
+        "0": 0.009000000000000008
+      },
+      "status_counts": {
+        "missing_labels": 18,
+        "ok": 1982
+      }
+    }
+  },
+  "position": {},
+  "source": {
+    "backends": [
+      "vllm"
+    ],
+    "is_mock": false,
+    "model_ids": [
+      "Qwen/Qwen3-8B"
+    ],
+    "n_documents": 2000,
+    "n_jobs": 2375,
+    "n_rows": 8000,
+    "raw_path": "/Users/dz/bigdata/gate-experiments/a/artifacts/full/raw/predictions.jsonl",
+    "run_ids": [
+      "20260911T234840Z",
+      "20260911T235156Z"
+    ],
+    "total_generation_seconds": 2175.7380187466383
+  },
+  "verdict": {
+    "aggregate_icc": null,
+    "decision_ci": [
+      null,
+      null
+    ],
+    "enough_errors": false,
+    "filler_control_available": false,
+    "filler_explains_accuracy_loss": false,
+    "filler_minus_solo_error_delta": null,
+    "filler_placebo_icc": null,
+    "joint_errors_by_assignment": [],
+    "joint_minus_solo_error_delta": null,
+    "joint_parse_failure_rate": 1.0,
+    "label": "UNDETERMINED",
+    "labels": {
+      "AMBIGUOUS": "no decision",
+      "BOUNDED_NEGATIVE_CANDIDATE": "interval inside the pre-registered null band",
+      "FILLER_CONFOUNDED": "context length explains the effect",
+      "NEEDS_FILLER_CONTROL": "the primary signal requires the context-length control",
+      "PROCEED": "point estimate clears the threshold and the interval excludes zero",
+      "PROCEED_POINT_ONLY": "point estimate clears the threshold, interval evidence does not",
+      "UNDETERMINED": "the estimand could not be computed"
+    },
+    "material_filler_accuracy_gap": false,
+    "max_permutation_p": null,
+    "parse_quality_passed": false,
+    "reasons": [
+      "the aggregate ICC is undefined, usually because a condition has no variance"
+    ],
+    "thresholds": {
+      "alpha": 0.05,
+      "bounded_null_high": 0.01,
+      "filler_explain_fraction": 0.8,
+      "material_accuracy_gap": 0.02,
+      "max_parse_failure_rate": 0.02,
+      "min_errors_per_assignment": 20,
+      "proceed_rho": 0.02
+    }
+  }
+}

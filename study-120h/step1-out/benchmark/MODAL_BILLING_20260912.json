@@ -1,0 +1,14 @@
+{
+  "account_scope": "Modal profile used for Step 1",
+  "a100_40gb_cost_usd": 0.45192173,
+  "cpu_cost_usd": 0.1457801,
+  "interval": "2026-09-12",
+  "memory_cost_usd": 0.08360362,
+  "retrieved_at_utc": "2026-09-12T20:55:00Z",
+  "source_command": "modal billing report --for today --show-resources --json",
+  "step1_gpu_app_ids": [
+    "ap-nmxYqhfc9UOwbW1P2zFnJ5",
+    "ap-kFFW2hssKjz1JdT0CVujwK"
+  ],
+  "total_cost_usd": 0.68130545
+}

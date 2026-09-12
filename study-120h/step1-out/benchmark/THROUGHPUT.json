@@ -1,0 +1,384 @@
+{
+  "forecasts": [
+    {
+      "cell_id": "qwen_civil",
+      "extrapolation": {
+        "forecast_prompt_tokens_per_call_max": 1878.40625,
+        "measured_prompt_tokens_per_call_max": 247.78125,
+        "warning": "Step 1 measures solo calls only. A 16-label joint call carries far more prefill tokens than any measured call, so the fitted prefill coefficient is extrapolated well beyond its observed range. Treat every joint projection as an order of magnitude, not a runtime prediction."
+      },
+      "frame_task_id": "civil_comments",
+      "is_a_performance_fact_not_a_finding": true,
+      "model_id": "Qwen/Qwen3-8B",
+      "ok": true,
+      "projections": {
+        "frozen_cap": {
+          "seconds_by_condition": {
+            "exact_context": 637.3448590677327,
+            "filler": 640.7931457393806,
+            "joint": 54.795403456082724,
+            "solo": 43.66259703506296
+          },
+          "session_overhead_seconds": 0.0,
+          "total_a100_hours": 0.38238777924951645,
+          "total_seconds": 1376.5960052982591
+        },
+        "measured_flat": {
+          "seconds_by_condition": {
+            "exact_context": 608.2303378123576,
+            "filler": 611.6786244840055,
+            "joint": 44.076569335468115,
+            "solo": 33.9577566166046
+          },
+          "session_overhead_seconds": 0.0,
+          "total_a100_hours": 0.3605398022912321,
+          "total_seconds": 1297.9432882484357
+        },
+        "measured_proportional": {
+          "seconds_by_condition": {
+            "exact_context": 608.2303378123576,
+            "filler": 611.6786244840055,
+            "joint": 54.15824713559936,
+            "solo": 33.9577566166046
+          },
+          "session_overhead_seconds": 0.0,
+          "total_a100_hours": 0.36334026834682415,
+          "total_seconds": 1308.024966048567
+        }
+      },
+      "remaining_calls": {
+        "exact_context": 6144,
+        "filler": 6144,
+        "joint": 384,
+        "solo": 2048
+      }
+    },
+    {
+      "cell_id": "qwen_secondtask",
+      "extrapolation": {
+        "forecast_prompt_tokens_per_call_max": 1580.0859375,
+        "measured_prompt_tokens_per_call_max": 247.78125,
+        "warning": "Step 1 measures solo calls only. A 16-label joint call carries far more prefill tokens than any measured call, so the fitted prefill coefficient is extrapolated well beyond its observed range. Treat every joint projection as an order of magnitude, not a runtime prediction."
+      },
+      "frame_task_id": "ag_news",
+      "is_a_performance_fact_not_a_finding": true,
+      "model_id": "Qwen/Qwen3-8B",
+      "ok": true,
+      "projections": {
+        "frozen_cap": {
+          "seconds_by_condition": {
+            "exact_context": 527.1397447957559,
+            "joint": 47.956322452765015,
+            "solo": 40.82833810658751
+          },
+          "session_overhead_seconds": 0.0,
+          "total_a100_hours": 0.1710901125986412,
+          "total_seconds": 615.9244053551083
+        },
+        "measured_flat": {
+          "seconds_by_condition": {
+            "exact_context": 498.02522354038075,
+            "joint": 37.237488332150406,
+            "solo": 31.12349768812915
+          },
+          "session_overhead_seconds": 0.0,
+          "total_a100_hours": 0.15732950265573897,
+          "total_seconds": 566.3862095606603
+        },
+        "measured_proportional": {
+          "seconds_by_condition": {
+            "exact_context": 498.02522354038075,
+            "joint": 47.31916613228165,
+            "solo": 31.12349768812915
+          },
+          "session_overhead_seconds": 0.0,
+          "total_a100_hours": 0.16012996871133098,
+          "total_seconds": 576.4678873607916
+        }
+      },
+      "remaining_calls": {
+        "exact_context": 6144,
+        "joint": 384,
+        "solo": 2048
+      }
+    },
+    {
+      "cell_id": "mistral_civil",
+      "extrapolation": {
+        "forecast_prompt_tokens_per_call_max": 2040.8984375,
+        "measured_prompt_tokens_per_call_max": 265.21875,
+        "warning": "Step 1 measures solo calls only. A 16-label joint call carries far more prefill tokens than any measured call, so the fitted prefill coefficient is extrapolated well beyond its observed range. Treat every joint projection as an order of magnitude, not a runtime prediction."
+      },
+      "frame_task_id": "civil_comments",
+      "is_a_performance_fact_not_a_finding": true,
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "ok": true,
+      "projections": {
+        "frozen_cap": {
+          "seconds_by_condition": {
+            "exact_context": 428.3497223606081,
+            "joint": 40.76488513171097,
+            "solo": 46.85617326663943
+          },
+          "session_overhead_seconds": 0.0,
+          "total_a100_hours": 0.14332521687748848,
+          "total_seconds": 515.9707807589585
+        },
+        "measured_flat": {
+          "seconds_by_condition": {
+            "exact_context": 392.8912279834481,
+            "joint": 27.723085357653936,
+            "solo": 35.03667514091944
+          },
+          "session_overhead_seconds": 0.0,
+          "total_a100_hours": 0.12656971902278374,
+          "total_seconds": 455.6509884820215
+        },
+        "measured_proportional": {
+          "seconds_by_condition": {
+            "exact_context": 392.8912279834481,
+            "joint": 39.94845115610151,
+            "solo": 35.03667514091944
+          },
+          "session_overhead_seconds": 0.0,
+          "total_a100_hours": 0.12996565396679696,
+          "total_seconds": 467.87635428046906
+        }
+      },
+      "remaining_calls": {
+        "exact_context": 6144,
+        "joint": 384,
+        "solo": 2048
+      }
+    },
+    {
+      "cell_id": "mistral_secondtask",
+      "extrapolation": {
+        "forecast_prompt_tokens_per_call_max": 1758.46875,
+        "measured_prompt_tokens_per_call_max": 265.21875,
+        "warning": "Step 1 measures solo calls only. A 16-label joint call carries far more prefill tokens than any measured call, so the fitted prefill coefficient is extrapolated well beyond its observed range. Treat every joint projection as an order of magnitude, not a runtime prediction."
+      },
+      "frame_task_id": "ag_news",
+      "is_a_performance_fact_not_a_finding": true,
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "ok": true,
+      "projections": {
+        "frozen_cap": {
+          "seconds_by_condition": {
+            "exact_context": 374.6703815060363,
+            "filler": 30.924749497905054,
+            "joint": 37.40274867666261,
+            "serial_exact": 31.25830867962609,
+            "serial_joint": 3.119407325072874,
+            "solo": 45.2608220988004
+          },
+          "session_overhead_seconds": 0.0,
+          "total_a100_hours": 0.14517678271780646,
+          "total_seconds": 522.6364177841033
+        },
+        "measured_flat": {
+          "seconds_by_condition": {
+            "exact_context": 339.2118871288763,
+            "filler": 27.969874966475057,
+            "joint": 24.360948902605585,
+            "serial_exact": 28.303434148196093,
+            "serial_joint": 2.0325906772347886,
+            "solo": 33.441323973080415
+          },
+          "session_overhead_seconds": 0.0,
+          "total_a100_hours": 0.12647779438790785,
+          "total_seconds": 455.3200597964683
+        },
+        "measured_proportional": {
+          "seconds_by_condition": {
+            "exact_context": 339.2118871288763,
+            "filler": 27.969874966475057,
+            "joint": 36.586314701053155,
+            "serial_exact": 28.303434148196093,
+            "serial_joint": 3.0513711604387526,
+            "solo": 33.441323973080415
+          },
+          "session_overhead_seconds": 0.0,
+          "total_a100_hours": 0.13015672391058883,
+          "total_seconds": 468.5642060781198
+        }
+      },
+      "remaining_calls": {
+        "exact_context": 6144,
+        "filler": 512,
+        "joint": 384,
+        "serial_exact": 512,
+        "serial_joint": 32,
+        "solo": 2048
+      }
+    },
+    {
+      "cell_id": "qwen_secondtask",
+      "extrapolation": {
+        "forecast_prompt_tokens_per_call_max": 1476.9921875,
+        "measured_prompt_tokens_per_call_max": 247.78125,
+        "warning": "Step 1 measures solo calls only. A 16-label joint call carries far more prefill tokens than any measured call, so the fitted prefill coefficient is extrapolated well beyond its observed range. Treat every joint projection as an order of magnitude, not a runtime prediction."
+      },
+      "frame_task_id": "multi_nli",
+      "is_a_performance_fact_not_a_finding": true,
+      "model_id": "Qwen/Qwen3-8B",
+      "ok": true,
+      "projections": {
+        "frozen_cap": {
+          "seconds_by_condition": {
+            "exact_context": 484.5527864925771,
+            "joint": 45.592867878461476,
+            "solo": 40.268757937724544
+          },
+          "session_overhead_seconds": 0.0,
+          "total_a100_hours": 0.15844844786354534,
+          "total_seconds": 570.4144123087632
+        },
+        "measured_flat": {
+          "seconds_by_condition": {
+            "exact_context": 455.4382652372021,
+            "joint": 34.87403375784687,
+            "solo": 30.563917519266184
+          },
+          "session_overhead_seconds": 0.0,
+          "total_a100_hours": 0.1446878379206431,
+          "total_seconds": 520.8762165143152
+        },
+        "measured_proportional": {
+          "seconds_by_condition": {
+            "exact_context": 455.4382652372021,
+            "joint": 44.95571155797811,
+            "solo": 30.563917519266184
+          },
+          "session_overhead_seconds": 0.0,
+          "total_a100_hours": 0.1474883039762351,
+          "total_seconds": 530.9578943144464
+        }
+      },
+      "remaining_calls": {
+        "exact_context": 6144,
+        "joint": 384,
+        "solo": 2048
+      }
+    }
+  ],
+  "freeze_stamp": "20260912T041633Z",
+  "meter": {
+    "a100_hours_by_worker": {
+      "Qwen_Qwen3-8B": 0.11091614995360335,
+      "allenai_OLMo-2-1124-7B-Instruct": 0.025,
+      "mistralai_Mistral-7B-Instruct-v0.3": 0.054547987430552086
+    },
+    "a100_hours_total": 0.19046413738415544,
+    "a100_seconds_total": 685.6708945829596,
+    "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+    "longest_single_worker_hours": 0.11091614995360335,
+    "n_runs": 4
+  },
+  "per_model": {
+    "Qwen/Qwen3-8B": {
+      "calls_per_second_generation_only": 64.23742968757264,
+      "calls_per_second_including_overhead": 15.386998803876368,
+      "cost_model": {
+        "mean_absolute_error_seconds": 0.008070858709412525,
+        "n_chunks": 96,
+        "observed_calls_per_second": 64.23742968757264,
+        "observed_calls_total": 6144,
+        "observed_decode_tokens_per_second": 1455.4629088456402,
+        "observed_prefill_tokens_per_second": 13910.048720997329,
+        "observed_prompt_tokens_per_call": {
+          "max": 247.78125,
+          "mean": 216.54117838541666,
+          "min": 201.3125
+        },
+        "observed_seconds_total": 95.64517182399993,
+        "ok": true,
+        "relative_residual": 0.011560068840489882,
+        "residual_norm_seconds": 0.11298709149966644,
+        "seconds_per_call_fixed": 0.0008891695611063827,
+        "seconds_per_decode_token": 7.724979637286165e-05,
+        "seconds_per_prefill_token": 5.970128762007517e-05
+      },
+      "generation_seconds": 95.64517182399993,
+      "mean_output_tokens_per_label": 22.657552083333332,
+      "n_calls": 6144,
+      "n_chunks": 96,
+      "n_runs": 2,
+      "non_generation_seconds": 303.65296800897215,
+      "wall_seconds": 399.2981398329721
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3": {
+      "calls_per_second_generation_only": 59.81483181453824,
+      "calls_per_second_including_overhead": 20.858290678942875,
+      "cost_model": {
+        "mean_absolute_error_seconds": 0.012518959083427528,
+        "n_chunks": 64,
+        "observed_calls_per_second": 59.81483181453824,
+        "observed_calls_total": 4096,
+        "observed_decode_tokens_per_second": 1350.9740529361723,
+        "observed_prefill_tokens_per_second": 14066.751547404187,
+        "observed_prompt_tokens_per_call": {
+          "max": 265.21875,
+          "mean": 235.171630859375,
+          "min": 217.640625
+        },
+        "observed_seconds_total": 68.47799911399986,
+        "ok": true,
+        "relative_residual": 0.015974342060696783,
+        "residual_norm_seconds": 0.13679949983893394,
+        "seconds_per_call_fixed": 0.007370633446079161,
+        "seconds_per_decode_token": 9.397260308580322e-05,
+        "seconds_per_prefill_token": 3.0722960460627875e-05
+      },
+      "generation_seconds": 68.47799911399986,
+      "mean_output_tokens_per_label": 22.5859375,
+      "n_calls": 4096,
+      "n_chunks": 64,
+      "n_runs": 1,
+      "non_generation_seconds": 127.89475563598765,
+      "wall_seconds": 196.3727547499875
+    }
+  },
+  "remaining_ledger": {
+    "ceilings_hours": {
+      "step_0_freeze": 0,
+      "step_1_screen_and_benchmark": 8,
+      "step_2_anchor_replication": 14,
+      "step_3_three_fresh_cells": 32,
+      "step_4_repeated_sampling": 46,
+      "step_5_optional_sensitivity": 5,
+      "step_6_reserve": 15,
+      "total": 120
+    },
+    "frozen_planned_calls": {
+      "anchor_filler": 6144,
+      "double_new_filler_subset": 512,
+      "double_new_serial_subset": 544,
+      "four_cells_base_total": 34304,
+      "per_cell_base_total": 8576,
+      "per_cell_exact_context": 6144,
+      "per_cell_joint": 384,
+      "per_cell_solo": 2048,
+      "step_4_maximum_two_cells": 80000,
+      "step_4_minimum_two_cells": 41600,
+      "steps_2_and_3_total": 41504
+    },
+    "never_trim": [
+      "the exact-context control",
+      "a primary cell, based on an observed effect",
+      "the second model or task, after joint outputs are seen",
+      "the reserve, before the two core result streams complete"
+    ],
+    "solo_calls_already_produced_in_step_1": 8192,
+    "step_4_maximum_two_cells": 80000,
+    "step_4_minimum_two_cells": 41600,
+    "steps_2_and_3_remaining_after_step_1": 33312,
+    "steps_2_and_3_total": 41504,
+    "trim_order": [
+      "delete step 5",
+      "reduce the evaluation-replicate maximum toward its frozen 400 minimum using timing data only",
+      "stop before confirmatory calls and publish a revised, newly frozen smaller design"
+    ]
+  },
+  "written_at_utc": "2026-09-12T20:55:26.232430+00:00"
+}

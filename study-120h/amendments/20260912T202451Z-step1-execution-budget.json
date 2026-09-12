@@ -1,0 +1,65 @@
+{
+  "amendment_id": "step1-execution-budget",
+  "amends_freeze_stamp": "20260912T041633Z",
+  "amends_protocol_content_hash": "218c5bcaa30f4f93c8d516f85f29ad8b7fb3be90f40238c2f3faf837ce611e15",
+  "authorised_before_any_model_output": true,
+  "clauses": [
+    {
+      "clause": "120 metered A100 hours is a planning target, not the hard limit of the study.",
+      "id": "A1",
+      "topic": "planning target"
+    },
+    {
+      "clause": "150 metered A100 hours is the overall ceiling. Work stops at that total.",
+      "id": "A2",
+      "topic": "overall ceiling"
+    },
+    {
+      "clause": "the 8-hour Step 1 allocation is a checkpoint, not a hard cap. Reaching it requires a report and a decision, not an automatic stop.",
+      "id": "A3",
+      "topic": "Step 1 allocation"
+    },
+    {
+      "clause": "Step 1 may run independent workers concurrently, one model on one A100 per worker. Tensor parallelism stays forbidden and tensor_parallel_size stays 1.",
+      "id": "A4",
+      "topic": "concurrent workers"
+    },
+    {
+      "clause": "concurrency shortens the calendar and never the budget. Metered A100 hours are summed over workers, so two concurrent single-A100 workers cost the same total as one worker running twice as long.",
+      "id": "A5",
+      "topic": "budget accounting"
+    }
+  ],
+  "content_hash": "1d81dce775639c91f62103305e2125cbeac41f8790108df8f3bd1672d856c89b",
+  "freeze_change_rule": "the sealed freeze is never edited. A change to a design field would require a new freeze directory, not this amendment.",
+  "freeze_is_unchanged": true,
+  "frozen_ceilings_for_reference": {
+    "step_0_freeze": 0,
+    "step_1_screen_and_benchmark": 8,
+    "step_2_anchor_replication": 14,
+    "step_3_three_fresh_cells": 32,
+    "step_4_repeated_sampling": 46,
+    "step_5_optional_sensitivity": 5,
+    "step_6_reserve": 15,
+    "total": 120
+  },
+  "gpus_per_worker": 1,
+  "max_concurrent_workers": 2,
+  "models_per_worker": 1,
+  "no_scientific_field_is_changed": true,
+  "overall_ceiling_a100_hours": 150,
+  "planning_target_a100_hours": 120,
+  "scope": "execution budget and worker layout only",
+  "stamp_utc": "20260912T202451Z",
+  "step_1_checkpoint_a100_hours": 8,
+  "step_1_checkpoint_is_a_hard_cap": false,
+  "tensor_parallel_size": 1,
+  "unchanged_by_this_amendment": [
+    "every sample frame, item id, and dataset revision",
+    "every prompt template, response grammar, and parser rule",
+    "every model and tokenizer revision, and the vllm==0.28.0 engine pin",
+    "every serving field: max_model_len 8192, bfloat16, tensor_parallel_size 1, gpu_memory_utilization 0.9, max_num_seqs 64, greedy decoding",
+    "every screen criterion, threshold, floor, estimand, test, and claim gate",
+    "the discovery and confirmation separation, and the replacement and fallback policies"
+  ]
+}

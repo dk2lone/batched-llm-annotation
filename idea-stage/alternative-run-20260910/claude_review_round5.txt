@@ -1,0 +1,255 @@
+## Recap
+
+You asked for a final, independent audit of three research candidates for the IEEE BigData 2026 High School Symposium. The candidates are C1 (controlled validation-data exposure and Type-I inflation), C2 (anytime-valid rank certification), and C3 (randomized pretraining exposure split into content and co-occurrence). I searched and read the primary sources myself, checked the mathematics, killed one candidate, and audited a replacement.
+
+## Verdict table
+
+| Code | Candidate | Novelty | Depth | Feasible | Venue | Verdict |
+|------|-----------|---------|-------|----------|-------|---------|
+| C1 | Controlled exposure breaks agentic Type-I control | 7 | 7 | 5 | 8 | **Hard pass, with corrections** |
+| C2 | Anytime-valid paired rank certificate | 4 | 6 | 6 | 7 | **Killed** |
+| C2* | Fresh-data or declared-family falsification (replacement) | 6 | 7 | 8 | 8 | **Hard pass** |
+| C3 | Factorial content and co-occurrence exposure | 7 | 7 | 5 | 8 | **Hard pass, with corrections** |
+
+---
+
+# C1 — controlled exposure and Type-I inflation in agentic science
+
+## 1. Estimand and strongest defensible claim
+
+Define one dataset instance as the unit of randomization. Let `A ∈ {full, discovery-only, none}` be the exposure arm. Let `Y = 1` if the agentic pipeline rejects the global null at nominal level `α`.
+
+The estimand is the arm contrast under a known global null:
+
+```
+Δ = P(Y = 1 | A = full) − P(Y = 1 | A = none)
+```
+
+The strongest defensible claim is narrow. Under this generator, this text distribution, this base model, and this exposure dose, controlled exposure to validation rows and outcomes raises the realized rejection probability above `α` by `Δ`. Do not claim a rate for any hosted commercial model.
+
+## 2. Closest primary papers
+
+1. Huang, Jin, Li, Li, Candès, Leskovec, *Automated Hypothesis Validation with Agentic Sequential Falsifications* (POPPER), ICML 2025. https://arxiv.org/abs/2502.09858
+2. Jiang et al., *Investigating Data Contamination for Pre-training Language Models*, 2024. https://arxiv.org/abs/2401.06059
+3. Bordt, Srinivas, Boreiko, von Luxburg, *How Much Can We Forget about Data Contamination?*, ICML 2025. https://arxiv.org/abs/2410.03249
+4. Bordt, Nori, Rodrigues, Nushi, Caruana, *Elephants Never Forget: Memorization and Learning of Tabular Data in LLMs*, COLM 2024. https://arxiv.org/abs/2404.06209
+5. Agarwal, Majumder et al., *AutoDiscovery: Open-ended Scientific Discovery via Bayesian Surprise*, NeurIPS 2025. https://arxiv.org/abs/2507.00310
+
+Same-estimand comparison. No paper matches. Papers 2 and 3 randomize contamination and measure accuracy gain, not the Type-I error of a downstream sequential test. Paper 4 detects memorization of tabular data. Paper 5 builds a discovery agent with no error-rate analysis. Paper 1 states the guarantee that C1 attacks.
+
+## 3. Mathematical and identification audit
+
+I read the POPPER theory section. The relevant text is exact:
+
+> "Under Assumptions 1, 2 and 3, E is a valid e-value, i.e., 𝔼[E]≤1 under H₀. In addition, define the validation status as ŷ=𝟙{E≥1/α}. Then, ℙ(ŷ=1)≤α under H₀."
+
+Assumption 2 reads:
+
+> "The training process of the agents is independent of 𝒟. Let 𝒟ᵢ₋₁:={Dₛ}ₛ≤ᵢ₋₁ be the datasets used by the agents before iteration i. The e-values obey 𝔼[eᵢ|𝒟ᵢ₋₁]≤1 under h⁰ᵢ."
+
+The implementation text reads:
+
+> "the selection of h_i^0, and f_i(·) only relies on D_{i-1} and metadata without involving the samples in the unused, yet-to-be-chosen datasets"
+
+Four audit findings follow.
+
+**F1. The dependence is real, and it is on selection, not on the test.** POPPER enforces the second clause of Assumption 2 with an interface control. The design agent sees only schema and metadata. Pretraining exposure bypasses that control, because the samples already sit in the model parameters. The first clause of Assumption 2 then becomes false by construction.
+
+**F2. Correct the claim language.** Do not write that the POPPER theorem is wrong. Write this instead: "Assumption 2 contains a train-independence clause that no interface control can enforce and that no user can verify for a hosted model. We generate the violation on purpose and measure the consequence." This is honest and it is the paper.
+
+**F3. The validation test stays valid. The selected test does not.** A test fixed in advance on the validation split keeps its level, even against a model that memorized the outcomes. The inflation enters through selection. Therefore the reachable hypothesis family must be large. If the agent can only propose one test, `Δ = 0` by construction and the experiment is empty. Design requirement: give the agent many columns, many subgroups, and many outcome definitions, so the exposed model can select the extreme noise realization it memorized.
+
+**F4. Re-keying is weaker than the design implies.** Random re-keying of column names, category labels, and row identifiers is a bijection. It does not change the realized noise in the validation split. It removes identifier-mediated recall only. Two results support this limit. Yang et al. show that rephrased contamination still inflates scores (https://arxiv.org/abs/2311.04850). Work on tabular in-context regression reports contamination that persists at the numeric-value level after feature-name anonymization (https://arxiv.org/abs/2409.04318).
+
+Corrected mitigation claim: re-keying identifies the identifier-mediated share of the exposure effect. It is a decomposition tool, not a repair. State the scope condition in the paper.
+
+**F5. Credit the null construction.** POPPER already evaluates Type-I error with column-permuted null datasets. C1 reuses that construction. The new part is the randomized exposure contrast. Say so.
+
+## 4. Smallest decisive experiment, compute, and falsification
+
+1. Generate 300 independent tabular datasets under a global null. Give each a discovery split and a validation split.
+2. Randomize datasets to `full`, `discovery-only`, and `none`.
+3. Run LoRA continued pretraining of one small open base model per arm. Use 4 to 12 repetitions of the exposed text. Bordt et al. report 4 repetitions at 124M parameters give about 5 accuracy points, and 12 repetitions at 2x Chinchilla give about 18 points. Repetition count is the dose knob.
+4. Run a reduced POPPER loop with a wide reachable family. Record rejection at `α = 0.05`.
+5. Add one planted-alternative arm for power. Add a fixed non-LLM generator as a negative control. Add an in-context leaked agent as a positive control.
+
+Compute. Three LoRA runs on a 1B-class base model cost about 6 to 15 GPU-hours. Agent runs on a small local model cost about 10 GPU-hours. Total near 25 GPU-hours.
+
+Falsification. If the `full` arm rejects at the nominal rate while the in-context positive control inflates strongly, then weight-level exposure does not transfer to selection, and the causal claim dies.
+
+## 5. Fatal assumption and risk
+
+**R1.** The exposed model must recall validation noise well enough to steer selection. Small models forget fast. Bordt et al. show that even 144 repetitions vanish beyond five times Chinchilla scale. If the dose is too low, `Δ ≈ 0` and the result is a null with no bound. Mitigation: run a memorization probe before the agent stage, and report the dose-response curve, not one point.
+
+## 6. Scores
+
+Novelty 7. Depth 7. Feasibility 5. Venue fit 8. **Hard pass.**
+
+---
+
+# C2 — anytime-valid paired rank certificate: KILLED
+
+## Evidence for the kill
+
+**F6. Top-k certification with a cheap and an expensive oracle is solved.** Oettershagen, *Top-k on a Budget: Adaptive Ranking with Weak and Strong Oracles*, 2026. https://arxiv.org/abs/2601.20989. The paper certifies the exact top-k set, proves `(δ,k)`-PAC guarantees, samples adaptively in the strong-oracle phase, uses time-uniform confidence sequences in its adaptive weak phase, and proves a matching lower bound. C2 target `1{R_ua ≤ k}` is a strictly easier special case of top-k set membership.
+
+**F7. The proxy-plus-oracle guarantee is solved in data management.** Kang, Gan, Bailis, Hashimoto, Zaharia, *Approximate Selection with Guarantees using Proxies*, PVLDB 2020. https://arxiv.org/abs/2004.00827. This meets precision or recall targets with probability `1−δ` using a cheap proxy and a limited oracle budget. Validity comes from known sampling probabilities, so the proxy affects efficiency only. C2 planned to claim that property as its distinction. It is not a distinction.
+
+**F8. The sequential machinery is off the shelf.** Waudby-Smith and Ramdas, *Confidence sequences for sampling without replacement*, NeurIPS 2020. https://arxiv.org/abs/2006.04347. Shekhar et al. extend it to weighted sampling without replacement for risk-limiting financial audits. https://proceedings.mlr.press/v216/shekhar23a/shekhar23a-supp.pdf
+
+**F9. The proposed lower bound is trivial.** Exact deterministic top-k certification needs linear queries by a one-line adversary argument. That is not a theorem for a paper.
+
+**F10. The mapping is mechanical.** For one target item per user, `Recall@k` is the mean of `1{R_ua ≤ k}`. Unresolved users give a partial-identification interval. This is arithmetic, not a contribution.
+
+The user's own kill rule applies. C2 is standard confidence sequences composed with a known certification framework and applied to a recommendation metric. Novelty 4. **Killed.**
+
+One structural observation is worth keeping for a future paper, but it does not save C2. `Recall@k` is one-sided verifiable. Observation of `k` items that beat the target refutes a hit with certainty and no statistics. Confirmation of a hit needs near-exhaustive verification. Oettershagen's hardness parameter already covers this regime.
+
+---
+
+# C2* — replacement: fresh data or declared family in agentic falsification
+
+## 1. Estimand and strongest defensible claim
+
+This is a procedure with a proven property, not a measurement. Let `A` be any agent, including one that memorized the validation split. Let `F` be the reachable family of falsification tests.
+
+Claim 1, achievability. If the validation data are drawn after the agent commits its test function, then the p-value is exactly valid for every `A`.
+
+Claim 2, achievability without fresh data. If `A` must return a test inside a pre-declared family `F` with a computable joint null law, then the max-statistic threshold controls Type-I at `α` for every `A`.
+
+Claim 3, impossibility. Any procedure that is valid against every memorizing agent must use a threshold at least as large as the `1−α` quantile of `max_{f ∈ F}` under the null. No smaller correction is valid. The price of contamination immunity is exactly the multiplicity of the reachable family.
+
+## 2. Closest primary papers
+
+1. POPPER. https://arxiv.org/abs/2502.09858
+2. Dwork, Feldman, Hardt, Pitassi, Reingold, Roth, *Generalization in Adaptive Data Analysis and Holdout Reuse*, NeurIPS 2015. https://arxiv.org/abs/1506.02629
+3. Candès, Fan, Janson, Lv, *Panning for Gold: Model-X Knockoffs*, 2016. https://arxiv.org/abs/1610.02351
+4. *Valid Feature-Level Inference for Tabular Foundation Models via the Conditional Randomization Test*, 2026. https://arxiv.org/abs/2603.06609
+5. *Decoy-Calibrated Failure Audits for Language Models*, 2026. https://arxiv.org/abs/2606.09046
+
+Same-estimand comparison. None matches. Paper 2 protects a holdout against an adaptive analyst who queries it, not against an analyst who memorized it during pretraining. Paper 4 applies the conditional randomization test to feature-level inference in tabular foundation models, not to an agentic loop, and it proves nothing about memorizing agents. Paper 5 calibrates failure-slice discovery with decoys and a holdout check, which is a different target.
+
+## 3. Mathematical audit, with one correction I made during the audit
+
+**F11. A conditional randomization test does not give free immunity.** I tested this construction and it fails. The test statistic `T` is chosen by the agent. If the agent memorized the realized column `X_j`, then `T` depends on `X_j`. Exchangeability of `(X_j, X_j^(1), …, X_j^(M))` conditional on `T` then breaks. Do not claim that resampling alone repairs contamination. This correction is the reason Claim 1 requires data drawn *after* the commitment, not resampled from data the agent already saw.
+
+**F12. Claim 3 is provable and short.** Take the adversarial agent that returns `argmax_{f ∈ F} T_f`. Its statistic is the max. Any threshold below the max's null quantile rejects with probability above `α` under the null. Therefore validity against all agents forces the max threshold. Tightness follows because the max threshold is valid for every `A`.
+
+**F13. This also explains why re-keying fails in the worst case.** A bijection on identifiers does not change the reachable set `F` or the realized noise. It therefore cannot lower the required threshold.
+
+## 4. Smallest decisive experiment, compute, and falsification
+
+1. Generate 500 null tabular datasets.
+2. Run three agents: a normal agent, an oracle-leak agent that receives the validation split in context, and a fixed non-LLM generator.
+3. Run three procedures: the naive split test, the max-corrected declared-family test, and the fresh-data test.
+4. Report realized Type-I error in the nine cells. Report power on a planted-alternative arm.
+
+Compute. CPU plus a small local model. Under 2 GPU-hours. This fits inside the deadline with room to spare.
+
+Falsification. If the naive procedure holds its level against the oracle-leak agent, the premise fails and the paper has no motivation.
+
+## 5. Fatal assumption and risk
+
+**R2.** The declared family `F` must be finite and its joint null law must be computable. Free-form agentic hypotheses have no such family. The paper must therefore say plainly that contamination immunity costs the open-endedness that makes agentic discovery attractive. That is the honest result, and reviewers will accept it only if you state it as the result rather than hide it.
+
+## 6. Scores
+
+Novelty 6. Depth 7. Feasibility 8. Venue fit 8. **Hard pass.**
+
+---
+
+# C3 — factorial content and co-occurrence exposure
+
+## 1. Estimand and strongest defensible claim
+
+Randomize each synthetic item `i` to `content ∈ {0,1}` and `cooc ∈ {0,1}` by independent Bernoulli draws. The estimand is an item-level intention-to-treat effect under the realized design, in the sense of Aronow and Samii:
+
+```
+τ_content = E[ Y_i(1, c) − Y_i(0, c) ]   averaged over the assignment law of all other items
+τ_cooc    = E[ Y_i(c, 1) − Y_i(c, 0) ]
+τ_int     = the content-by-cooc interaction
+```
+
+`Y_i` is the target log-rank or hit@10 for item `i`. The strongest defensible claim is a decomposition of ranking gain into a content share and a co-occurrence share, valid for this generator, this base model, and this exposure dose. Do not call it a general property of LLM recommenders.
+
+## 2. Closest primary papers
+
+1. Zhang, Peng, Wang, Liu, Wang, *Benchmark Leakage Trap: Can We Trust LLM-based Recommendation?*, 2026. https://arxiv.org/abs/2602.13626
+2. Kim, Lee, Ju, Loveland, Kumar, Shin, Shah, Collins, *On the Memorization Behavior of LLMs in Generative Recommendation*, 2026. https://arxiv.org/abs/2606.17276
+3. Bordt, Pawelczyk, *Train Once, Answer All: Many Pretraining Experiments for the Cost of One*, ICLR 2026. https://arxiv.org/abs/2509.23383
+4. Allen-Zhu, Li, *Physics of Language Models: Part 3.1, Knowledge Storage and Extraction*, ICML 2024. https://arxiv.org/abs/2309.14316
+5. Kang, Choi, *Impact of Co-occurrence on Factual Knowledge of Large Language Models*, EMNLP Findings 2023. https://arxiv.org/abs/2310.08256
+
+Same-estimand comparison. None matches, and I checked paper 1 in detail because it is the nearest miss. Paper 1 injects blended real corpora by LoRA fine-tuning of Vicuna-7B, uses real item titles, assigns arms deterministically at the dataset level, and does not separate content from co-occurrence. C3 randomizes at the item level, uses synthetic identifiers, runs a factorial design, and uses design-based inference. Paper 2 separates collaborative from semantic relations, but as a training strategy with no injected corpus. Paper 3 supplies the single-run method and the CPDT interaction test. It covers contamination, poisoning, memorization, knowledge acquisition, mathematical reasoning, and watermarking. It does not cover recommendation. Paper 5 measures co-occurrence effects observationally from corpus counts, without randomization.
+
+## 3. Identification audit
+
+**F14. Item-level randomization does identify the stated effects, but only as design-based effects under interference.** All items share one parameter vector, so SUTVA fails. Do not claim a direct effect. Use the Aronow and Samii exposure-mapping framing and define the estimand as the average over the assignment law of the other items. https://projecteuclid.org/journals/annals-of-applied-statistics/volume-11/issue-4/Estimating-average-causal-effects-under-general-interference-with-application-to/10.1214/16-AOAS1005.full
+
+**F15. Use CPDT, and keep one twin-model contrast as a check.** Bordt and Pawelczyk propose continual pretraining dependence testing and report negligible interactions in their setup. Their setup is not yours. Run one twin-model pair for the strongest contrast and confirm the single-run estimate falls inside its interval.
+
+**F16. Content and co-occurrence are separable only if you make them separable.** Generate the latent preference graph so that content attributes predict preference partly, not fully. If the graph is a deterministic function of content, the two corpora carry identical information and the factorial cell `(1,0)` and `(0,1)` are not distinguishable. State the mutual-information gap as a design parameter.
+
+**F17. The closed-book probe is not optional, and Allen-Zhu and Li explain why.** They show that knowledge injected without augmentation can be memorized yet remain unextractable, giving zero downstream accuracy regardless of later fine-tuning. Without paraphrase augmentation, your content arm can read as a null for a known and uninteresting reason. Fix the augmentation level, then pre-register the probe.
+
+## 4. Smallest decisive experiment, compute, and falsification
+
+1. Build 400 synthetic items with random identifier tokens absent from the base model tokenizer vocabulary in unmerged form.
+2. Randomize the four factorial cells with 100 items each. Add two dose levels.
+3. Run LoRA continued pretraining once on a 1B-class base model, with paraphrase augmentation of the content documents.
+4. Run the closed-book probe. Stop and repair if any document family fails the probe.
+5. Fine-tune on user-item sequences that exclude the held-out targets, balanced across the four cells.
+6. Estimate `τ_content`, `τ_cooc`, and `τ_int` by randomization inference.
+
+Compute. One LoRA continued pretraining run plus one fine-tuning run is about 10 to 20 GPU-hours. Add one twin-model check at about 8 GPU-hours.
+
+Falsification. The probe succeeds for both document families and both ranking effects stay at zero. That refutes the premise that pretraining exposure drives LLM recommender gains in this regime.
+
+## 5. Fatal assumption and risk
+
+**R3.** Fine-tuning may teach co-occurrence directly and swamp the pretraining arm. If the fine-tuning sequences already contain the item-item transitions, `τ_cooc` collapses toward zero and the design measures nothing. Mitigation: hold the target items' transitions out of the fine-tuning data, and report the fine-tuning dose as a second factor.
+
+## 6. Scores
+
+Novelty 7. Depth 7. Feasibility 5. Venue fit 8. **Hard pass.**
+
+---
+
+# Two portfolio risks you did not ask about
+
+**R4. The deadline.** Your notes give a 2026-09-20 deadline. Today is 2026-09-10. C1 and C3 both need continued pretraining plus fine-tuning plus an agent or ranker evaluation. Ten days is very tight for either. C2* needs under 2 GPU-hours and can finish in three days.
+
+**R5. C1 and C2* share a theme.** Both attack POPPER Assumption 2. They are separate papers, because C1 measures damage causally and C2* proves a procedure property. Do not attempt both. Pick one.
+
+# Next action
+
+One decision is waiting, and it is the only one. Choose C2* if you want a finished 5-page paper by 2026-09-20 with a proof and a cheap experiment. Choose C1 or C3 if you can start a GPU run today and accept the risk that the exposure dose lands too low to show an effect. My recommendation is C2*, with C1 held for a longer venue.
+
+Sources:
+- [POPPER: Automated Hypothesis Validation with Agentic Sequential Falsifications](https://arxiv.org/abs/2502.09858)
+- [Towards Reliable Item Sampling for Recommendation Evaluation](https://arxiv.org/abs/2211.15743)
+- [Top-k on a Budget: Adaptive Ranking with Weak and Strong Oracles](https://arxiv.org/abs/2601.20989)
+- [Approximate Selection with Guarantees using Proxies (SUPG)](https://arxiv.org/abs/2004.00827)
+- [Confidence sequences for sampling without replacement](https://arxiv.org/abs/2006.04347)
+- [Risk-limiting Financial Audits via Weighted Sampling without Replacement](https://proceedings.mlr.press/v216/shekhar23a/shekhar23a-supp.pdf)
+- [Evaluation Metrics for Item Recommendation under Sampling](https://arxiv.org/abs/1912.02263)
+- [Train Once, Answer All: Many Pretraining Experiments for the Cost of One](https://arxiv.org/abs/2509.23383)
+- [How Much Can We Forget about Data Contamination?](https://arxiv.org/abs/2410.03249)
+- [Investigating Data Contamination for Pre-training Language Models](https://arxiv.org/abs/2401.06059)
+- [Elephants Never Forget: Memorization and Learning of Tabular Data in LLMs](https://arxiv.org/abs/2404.06209)
+- [Proving Test Set Contamination in Black Box Language Models](https://arxiv.org/abs/2310.17623)
+- [Rethinking Benchmark and Contamination with Rephrased Samples](https://arxiv.org/abs/2311.04850)
+- [Learning vs Retrieval: In-Context Examples in Regression with LLMs](https://arxiv.org/pdf/2409.04318)
+- [Benchmark Leakage Trap: Can We Trust LLM-based Recommendation?](https://arxiv.org/abs/2602.13626)
+- [Do LLMs Memorize Recommendation Datasets?](https://arxiv.org/pdf/2505.10212)
+- [On the Memorization Behavior of LLMs in Generative Recommendation](https://arxiv.org/abs/2606.17276)
+- [Impact of Co-occurrence on Factual Knowledge of LLMs](https://arxiv.org/abs/2310.08256)
+- [Physics of Language Models: Part 3.1](https://arxiv.org/abs/2309.14316)
+- [Estimating average causal effects under general interference (Aronow and Samii)](https://projecteuclid.org/journals/annals-of-applied-statistics/volume-11/issue-4/Estimating-average-causal-effects-under-general-interference-with-application-to/10.1214/16-AOAS1005.full)
+- [Panning for Gold: Model-X Knockoffs](https://arxiv.org/abs/1610.02351)
+- [Valid Feature-Level Inference for Tabular Foundation Models via the CRT](https://arxiv.org/abs/2603.06609)
+- [Decoy-Calibrated Failure Audits for Language Models](https://arxiv.org/abs/2606.09046)
+- [Generalization in Adaptive Data Analysis and Holdout Reuse](https://arxiv.org/abs/1506.02629)
+- [AutoDiscovery: Open-ended Scientific Discovery via Bayesian Surprise](https://arxiv.org/abs/2507.00310)
+- [Fisher-R1: Training LLM Agents for Reliable Hypothesis Testing](https://arxiv.org/abs/2608.07437)
+- [Large Language Model Hacking](https://arxiv.org/pdf/2509.08825)

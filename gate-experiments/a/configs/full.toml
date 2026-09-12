@@ -1,0 +1,74 @@
+# The fixed first gate. Nothing here has been run.
+name = "full"
+
+[data]
+dataset = "google/civil_comments"
+revision = "f2970eb3a55777454c94069077cc8d9b5866312d"
+split = "validation"
+text_field = "text"
+label_field = "toxicity"
+toxicity_threshold = 0.5
+n_targets = 2000
+filler_pool_size = 4000
+# natural | balanced.
+# The gate default is natural. The estimand is the design effect that a deployed
+# annotation pipeline actually suffers, and such pipelines label the population as it
+# arrives. Balanced sampling would change the error rate, the error-indicator variance
+# and therefore the ICC itself, producing a number that matches no real pipeline.
+# Set sampling = "balanced" only as a secondary condition, when the natural-prevalence
+# error rate is too low to estimate the ICC with useful precision. Report it separately.
+sampling = "natural"
+seed = 20260911
+min_chars = 40
+max_chars = 1000
+# The official validation split has 97,320 rows. It is large enough for this gate
+# without streaming the 1.8M-row training split.
+scan_limit = 97320
+out_dir = "artifacts/full/data"
+
+[plan]
+k = 16
+assignments = 3
+seed = 7
+conditions = ["solo", "joint", "filler"]
+filler_fraction = 1.0
+length_match_tolerance = 0.05
+filler_candidate_draw = 64
+out_dir = "artifacts/full/plan"
+
+[model]
+model_id = "Qwen/Qwen3-8B"
+revision = "b968826d9c46dd6066d109eabc6255188de91218"
+tensor_parallel_size = 1
+dtype = "bfloat16"
+max_model_len = 8192
+gpu_memory_utilization = 0.90
+max_num_seqs = 64
+seed = 0
+temperature = 0.0
+top_p = 1.0
+top_k = -1
+max_tokens_base = 64
+max_tokens_per_label = 20
+enable_thinking = false
+
+[run]
+backend = "vllm"
+out_path = "artifacts/full/raw/predictions.jsonl"
+chunk_size = 64
+token_counter = "estimate"
+chars_per_token = 3.4
+token_safety_margin = 64
+
+[analyze]
+bootstrap = 2000
+permutations = 1000
+seed = 5
+alpha = 0.05
+proceed_rho = 0.02
+bounded_null_high = 0.01
+material_accuracy_gap = 0.02
+filler_explain_fraction = 0.8
+min_errors_per_assignment = 20
+max_parse_failure_rate = 0.02
+out_dir = "artifacts/full/analysis"

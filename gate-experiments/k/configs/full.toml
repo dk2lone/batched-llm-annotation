@@ -1,0 +1,60 @@
+# The gate itself. Stage 1 runs on CPU. Stage 4 needs one GPU.
+name = "full"
+out_dir = "artifacts/full"
+
+[synthetic]
+dims = [2, 8, 32, 64]
+seeds = [0, 1, 2]
+n_demo = 60            # matches the 60 in-context training rows of arXiv:2608.02412
+n_query = 16
+cluster_offset = 2.0
+cluster_sigma = 0.45
+margin = 0.75
+nuisance_scale = 1.0
+dense_column_scale = "raw"
+number_format = "{:+08.3f}"
+# Set to a local tokenizer directory to record token lengths during CPU preparation.
+# tokenizer_path = "/path/to/Qwen3-8B"
+
+[plan]
+ablation_dims = [32, 64]
+n_ablated_rows = 3
+random_removal_excludes_nearest = true
+order_seed = 12345
+ordering_dims = [64]
+include_attention_job = false
+attention_dims = [64]
+
+[run]
+backend = "mock"                 # override with --backend transformers on the GPU host
+model_id = "Qwen/Qwen3-8B"
+dtype = "bfloat16"
+device_map = "auto"
+attn_implementation = "sdpa"     # use "eager" only for attention-capture jobs
+hidden_layers = [24]             # pre-specified: about two thirds of Qwen3-8B's 36 blocks
+repr_distance = "cosine"
+max_prompt_tokens = 32768
+label_tokens = ["A", "B"]
+enable_thinking = false
+store_full_prompts = false
+
+[gate]
+min_classical_accuracy = 0.85
+min_anchor_accuracy = 0.65
+max_anchor_parse_failure_rate = 0.02
+min_nuisance_raw_contrast_ratio = 1.5
+min_repr_contrast_ratio = 1.2
+min_sparse_minus_dense_accuracy = 0.05
+min_sparse_minus_dense_ablation_delta = 0.05
+high_dims = [32, 64]
+sensitivity_scale = 0.2
+
+[openml]
+# Five datasets for the source-paper-compatible reproduction slice.
+# 61 iris, 187 wine, 1510 wdbc, 40975 car, 1462 banknote-authentication.
+dataset_ids = [61, 187, 1510, 40975, 1462]
+dims = [2, 4, 8, 16, 32, 64]
+projection_seeds = [0, 1, 2, 3, 4]
+n_demo = 60
+n_query = 24
+standardize_before_projection = false

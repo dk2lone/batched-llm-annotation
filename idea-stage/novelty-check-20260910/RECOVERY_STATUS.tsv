@@ -1,0 +1,13 @@
+id	claim	round	source	attempt	exit_code	result_lines
+K	causal_rows	3	s2	1	0	0
+A	dependence	1	s2	1	0	0
+A	dependence	2	s2	1	1	0
+A3	type1	2	s2	1	1	0
+A3	memorization	3	s2	1	0	0
+A3	design	1	s2	1	0	5
+A1	ranking	1	s2	1	0	0
+A1	provenance	1	s2	1	0	0
+A1	attribution	2	s2	1	0	14
+I1	future_text	3	s2	1	0	1
+A	dependence	2	s2	2	1	0
+A3	type1	2	s2	2	1	0

@@ -1,0 +1,17 @@
+{
+  "chunks": [],
+  "derived_max_model_len": 4096,
+  "error": "User-specified max_model_len (8192) is greater than the model's derived max_model_len (4096)",
+  "error_type": "ValidationError",
+  "failure_path": "/Users/dz/bigdata/study-120h/step1-out/blockers/load-failure--allenai_OLMo-2-1124-7B-Instruct.json",
+  "frozen_max_model_len": 8192,
+  "gpu_seconds_billed": 90.0,
+  "load_failed": true,
+  "modal_app_url": "https://modal.com/apps/danielz51666/main/ap-nmxYqhfc9UOwbW1P2zFnJ5",
+  "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+  "n_calls": 0,
+  "observed_at_utc": "2026-09-12T20:40:01Z",
+  "recorded_at_utc": "2026-09-12T20:43:40Z",
+  "timing_note": "Conservative 90-second estimate covering the first failed GPU load and Modal's automatic lifecycle retry through operator stop.",
+  "zero_model_outputs_generated": true
+}

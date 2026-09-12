@@ -1,0 +1,1229 @@
+{
+  "effective_screens": [
+    {
+      "cell_id": "qwen_civil",
+      "checks": {
+        "accuracy_ceiling": {
+          "ceiling": 0.995,
+          "pass": true,
+          "value": 0.837890625
+        },
+        "capability_floor": {
+          "denominators_agree": true,
+          "pass": true,
+          "threshold": 0.7,
+          "value": 0.837890625,
+          "value_over_parsable": 0.8465712876171683
+        },
+        "context_fit": {
+          "n_over_budget": 0,
+          "pass": true,
+          "threshold": 0
+        },
+        "error_information_threshold": {
+          "min_solo_errors": 11,
+          "n_errors": 311,
+          "pass": true
+        },
+        "parsable_first_response_rate": {
+          "pass": true,
+          "threshold": 0.98,
+          "value": 0.98974609375
+        }
+      },
+      "frame_task_id": "civil_comments",
+      "gate": {
+        "a100_meter": {
+          "a100_hours_by_worker": {
+            "Qwen_Qwen3-8B": 0.11091614995360335,
+            "allenai_OLMo-2-1124-7B-Instruct": 0.025,
+            "mistralai_Mistral-7B-Instruct-v0.3": 0.054547987430552086
+          },
+          "a100_hours_total": 0.19046413738415544,
+          "a100_seconds_total": 685.6708945829596,
+          "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+          "longest_single_worker_hours": 0.11091614995360335,
+          "n_runs": 4
+        },
+        "cell_id": "qwen_civil",
+        "checked_at_utc": "2026-09-12T20:54:36.123907+00:00",
+        "completeness": {
+          "missing_call_ids_sample": [],
+          "n_calls": 2048,
+          "n_expected_calls": 2048,
+          "n_first_response_calls": 2048,
+          "n_missing_calls": 0,
+          "n_rejected_conflicts": 0,
+          "n_retry_rows": 0,
+          "n_rows": 2048,
+          "ok": true,
+          "path": "/Users/dz/bigdata/study-120h/step1-out/results/qwen_civil__civil_comments__Qwen_Qwen3-8B/solo.jsonl",
+          "problems": [],
+          "unexpected_call_ids_sample": []
+        },
+        "frame_task_id": "civil_comments",
+        "host_facts_present": true,
+        "ok": true,
+        "preflight_ok": true,
+        "problems": []
+      },
+      "inputs_forbidden_and_absent": [
+        "joint outputs",
+        "exact-context outputs",
+        "fake-batch statistics",
+        "filler outputs",
+        "any covariance, ICC, variance, or coverage value"
+      ],
+      "inputs_used": [
+        "solo first responses",
+        "pinned tokenizer counts",
+        "parse status"
+      ],
+      "model_id": "Qwen/Qwen3-8B",
+      "outcome": "PASS",
+      "reason": "every frozen screen criterion is met",
+      "screened_at_utc": "2026-09-12T20:54:36.138347+00:00",
+      "solo_summary": {
+        "accuracy_over_all_calls": 0.837890625,
+        "accuracy_over_parsable": 0.8465712876171683,
+        "error_rate_over_all_calls": 0.15185546875,
+        "first_response_status_counts": {
+          "malformed": 21,
+          "valid_first_response": 2027
+        },
+        "n_correct": 1716,
+        "n_errors": 311,
+        "n_parsable": 2027,
+        "n_solo_calls": 2048,
+        "parsable_first_response_rate": 0.98974609375,
+        "parse_status_counts": {
+          "missing_labels": 21,
+          "ok": 2027
+        }
+      }
+    },
+    {
+      "cell_id": "qwen_secondtask",
+      "checks": {
+        "accuracy_ceiling": {
+          "ceiling": 0.995,
+          "pass": true,
+          "value": 0.626953125
+        },
+        "capability_floor": {
+          "denominators_agree": true,
+          "pass": false,
+          "threshold": 0.7,
+          "value": 0.626953125,
+          "value_over_parsable": 0.6272594040058622
+        },
+        "context_fit": {
+          "n_over_budget": 0,
+          "pass": true,
+          "threshold": 0
+        },
+        "error_information_threshold": {
+          "min_solo_errors": 11,
+          "n_errors": 763,
+          "pass": true
+        },
+        "parsable_first_response_rate": {
+          "pass": true,
+          "threshold": 0.98,
+          "value": 0.99951171875
+        }
+      },
+      "frame_task_id": "ag_news",
+      "gate": {
+        "a100_meter": {
+          "a100_hours_by_worker": {
+            "Qwen_Qwen3-8B": 0.11091614995360335,
+            "allenai_OLMo-2-1124-7B-Instruct": 0.025,
+            "mistralai_Mistral-7B-Instruct-v0.3": 0.054547987430552086
+          },
+          "a100_hours_total": 0.19046413738415544,
+          "a100_seconds_total": 685.6708945829596,
+          "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+          "longest_single_worker_hours": 0.11091614995360335,
+          "n_runs": 4
+        },
+        "cell_id": "qwen_secondtask",
+        "checked_at_utc": "2026-09-12T20:54:36.249747+00:00",
+        "completeness": {
+          "missing_call_ids_sample": [],
+          "n_calls": 2048,
+          "n_expected_calls": 2048,
+          "n_first_response_calls": 2048,
+          "n_missing_calls": 0,
+          "n_rejected_conflicts": 0,
+          "n_retry_rows": 0,
+          "n_rows": 2048,
+          "ok": true,
+          "path": "/Users/dz/bigdata/study-120h/step1-out/results/qwen_secondtask__ag_news__Qwen_Qwen3-8B/solo.jsonl",
+          "problems": [],
+          "unexpected_call_ids_sample": []
+        },
+        "frame_task_id": "ag_news",
+        "host_facts_present": true,
+        "ok": true,
+        "preflight_ok": true,
+        "problems": []
+      },
+      "inputs_forbidden_and_absent": [
+        "joint outputs",
+        "exact-context outputs",
+        "fake-batch statistics",
+        "filler outputs",
+        "any covariance, ICC, variance, or coverage value"
+      ],
+      "inputs_used": [
+        "solo first responses",
+        "pinned tokenizer counts",
+        "parse status"
+      ],
+      "model_id": "Qwen/Qwen3-8B",
+      "outcome": "FAIL_CAPABILITY",
+      "reason": "solo accuracy is below the task capability floor",
+      "screened_at_utc": "2026-09-12T20:54:36.264070+00:00",
+      "solo_summary": {
+        "accuracy_over_all_calls": 0.626953125,
+        "accuracy_over_parsable": 0.6272594040058622,
+        "error_rate_over_all_calls": 0.37255859375,
+        "first_response_status_counts": {
+          "malformed": 1,
+          "valid_first_response": 2047
+        },
+        "n_correct": 1284,
+        "n_errors": 763,
+        "n_parsable": 2047,
+        "n_solo_calls": 2048,
+        "parsable_first_response_rate": 0.99951171875,
+        "parse_status_counts": {
+          "missing_labels": 1,
+          "ok": 2047
+        }
+      }
+    },
+    {
+      "cell_id": "mistral_civil",
+      "checks": {},
+      "frame_task_id": "civil_comments",
+      "gate": {
+        "a100_meter": {
+          "a100_hours_by_worker": {
+            "Qwen_Qwen3-8B": 0.11091614995360335,
+            "allenai_OLMo-2-1124-7B-Instruct": 0.025,
+            "mistralai_Mistral-7B-Instruct-v0.3": 0.054547987430552086
+          },
+          "a100_hours_total": 0.19046413738415544,
+          "a100_seconds_total": 685.6708945829596,
+          "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+          "longest_single_worker_hours": 0.11091614995360335,
+          "n_runs": 4
+        },
+        "cell_id": "mistral_civil",
+        "checked_at_utc": "2026-09-12T20:55:08.326887+00:00",
+        "completeness": {
+          "n_calls": 0,
+          "n_expected_calls": 2048,
+          "n_missing_calls": 2048,
+          "n_rows": 0,
+          "ok": false,
+          "path": "/Users/dz/bigdata/study-120h/step1-out/results/mistral_civil__civil_comments__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl",
+          "problems": [
+            "/Users/dz/bigdata/study-120h/step1-out/results/mistral_civil__civil_comments__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl does not exist; no call has been executed"
+          ]
+        },
+        "frame_task_id": "civil_comments",
+        "host_facts_present": false,
+        "ok": false,
+        "preflight_ok": true,
+        "problems": [
+          "ledger: /Users/dz/bigdata/study-120h/step1-out/results/mistral_civil__civil_comments__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl does not exist; no call has been executed",
+          "host facts: ['cuda_version', 'driver_version', 'gpu_name', 'gpu_uuid', 'torch_version', 'installed_engine_version_string'] were not recorded"
+        ]
+      },
+      "inputs_forbidden_and_absent": [
+        "joint outputs",
+        "exact-context outputs",
+        "fake-batch statistics",
+        "filler outputs",
+        "any covariance, ICC, variance, or coverage value"
+      ],
+      "inputs_used": [
+        "solo first responses",
+        "pinned tokenizer counts",
+        "parse status"
+      ],
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "outcome": "FAIL_CAPABILITY",
+      "reason": "the pinned revision could not be loaded on the A100",
+      "screened_at_utc": "2026-09-12T20:55:08.327496+00:00",
+      "solo_summary": {
+        "load_failed": true,
+        "n_solo_calls": 0
+      }
+    },
+    {
+      "cell_id": "mistral_secondtask",
+      "checks": {},
+      "frame_task_id": "ag_news",
+      "gate": {
+        "a100_meter": {
+          "a100_hours_by_worker": {
+            "Qwen_Qwen3-8B": 0.11091614995360335,
+            "allenai_OLMo-2-1124-7B-Instruct": 0.025,
+            "mistralai_Mistral-7B-Instruct-v0.3": 0.054547987430552086
+          },
+          "a100_hours_total": 0.19046413738415544,
+          "a100_seconds_total": 685.6708945829596,
+          "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+          "longest_single_worker_hours": 0.11091614995360335,
+          "n_runs": 4
+        },
+        "cell_id": "mistral_secondtask",
+        "checked_at_utc": "2026-09-12T20:55:08.624717+00:00",
+        "completeness": {
+          "n_calls": 0,
+          "n_expected_calls": 2048,
+          "n_missing_calls": 2048,
+          "n_rows": 0,
+          "ok": false,
+          "path": "/Users/dz/bigdata/study-120h/step1-out/results/mistral_secondtask__ag_news__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl",
+          "problems": [
+            "/Users/dz/bigdata/study-120h/step1-out/results/mistral_secondtask__ag_news__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl does not exist; no call has been executed"
+          ]
+        },
+        "frame_task_id": "ag_news",
+        "host_facts_present": false,
+        "ok": false,
+        "preflight_ok": true,
+        "problems": [
+          "ledger: /Users/dz/bigdata/study-120h/step1-out/results/mistral_secondtask__ag_news__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl does not exist; no call has been executed",
+          "host facts: ['cuda_version', 'driver_version', 'gpu_name', 'gpu_uuid', 'torch_version', 'installed_engine_version_string'] were not recorded"
+        ]
+      },
+      "inputs_forbidden_and_absent": [
+        "joint outputs",
+        "exact-context outputs",
+        "fake-batch statistics",
+        "filler outputs",
+        "any covariance, ICC, variance, or coverage value"
+      ],
+      "inputs_used": [
+        "solo first responses",
+        "pinned tokenizer counts",
+        "parse status"
+      ],
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "outcome": "FAIL_CAPABILITY",
+      "reason": "the pinned revision could not be loaded on the A100",
+      "screened_at_utc": "2026-09-12T20:55:08.625273+00:00",
+      "solo_summary": {
+        "load_failed": true,
+        "n_solo_calls": 0
+      }
+    },
+    {
+      "cell_id": "qwen_secondtask",
+      "checks": {
+        "accuracy_ceiling": {
+          "ceiling": 0.995,
+          "pass": true,
+          "value": 0.740234375
+        },
+        "capability_floor": {
+          "denominators_agree": true,
+          "pass": true,
+          "threshold": 0.55,
+          "value": 0.740234375,
+          "value_over_parsable": 0.7409579667644184
+        },
+        "context_fit": {
+          "n_over_budget": 0,
+          "pass": true,
+          "threshold": 0
+        },
+        "error_information_threshold": {
+          "min_solo_errors": 11,
+          "n_errors": 530,
+          "pass": true
+        },
+        "parsable_first_response_rate": {
+          "pass": true,
+          "threshold": 0.98,
+          "value": 0.9990234375
+        }
+      },
+      "frame_task_id": "multi_nli",
+      "gate": {
+        "a100_meter": {
+          "a100_hours_by_worker": {
+            "Qwen_Qwen3-8B": 0.11091614995360335,
+            "allenai_OLMo-2-1124-7B-Instruct": 0.025,
+            "mistralai_Mistral-7B-Instruct-v0.3": 0.054547987430552086
+          },
+          "a100_hours_total": 0.19046413738415544,
+          "a100_seconds_total": 685.6708945829596,
+          "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+          "longest_single_worker_hours": 0.11091614995360335,
+          "n_runs": 4
+        },
+        "cell_id": "qwen_secondtask",
+        "checked_at_utc": "2026-09-12T20:55:25.564754+00:00",
+        "completeness": {
+          "missing_call_ids_sample": [],
+          "n_calls": 2048,
+          "n_expected_calls": 2048,
+          "n_first_response_calls": 2048,
+          "n_missing_calls": 0,
+          "n_rejected_conflicts": 0,
+          "n_retry_rows": 0,
+          "n_rows": 2048,
+          "ok": true,
+          "path": "/Users/dz/bigdata/study-120h/step1-out/results/qwen_secondtask__multi_nli__Qwen_Qwen3-8B/solo.jsonl",
+          "problems": [],
+          "unexpected_call_ids_sample": []
+        },
+        "frame_task_id": "multi_nli",
+        "host_facts_present": true,
+        "ok": true,
+        "preflight_ok": true,
+        "problems": []
+      },
+      "inputs_forbidden_and_absent": [
+        "joint outputs",
+        "exact-context outputs",
+        "fake-batch statistics",
+        "filler outputs",
+        "any covariance, ICC, variance, or coverage value"
+      ],
+      "inputs_used": [
+        "solo first responses",
+        "pinned tokenizer counts",
+        "parse status"
+      ],
+      "model_id": "Qwen/Qwen3-8B",
+      "outcome": "PASS",
+      "reason": "every frozen screen criterion is met",
+      "screened_at_utc": "2026-09-12T20:55:25.579494+00:00",
+      "solo_summary": {
+        "accuracy_over_all_calls": 0.740234375,
+        "accuracy_over_parsable": 0.7409579667644184,
+        "error_rate_over_all_calls": 0.2587890625,
+        "first_response_status_counts": {
+          "malformed": 2,
+          "valid_first_response": 2046
+        },
+        "n_correct": 1516,
+        "n_errors": 530,
+        "n_parsable": 2046,
+        "n_solo_calls": 2048,
+        "parsable_first_response_rate": 0.9990234375,
+        "parse_status_counts": {
+          "missing_labels": 2,
+          "ok": 2046
+        }
+      }
+    },
+    {
+      "cell_id": "mistral_secondtask",
+      "checks": {},
+      "frame_task_id": "multi_nli",
+      "gate": {
+        "a100_meter": {
+          "a100_hours_by_worker": {
+            "Qwen_Qwen3-8B": 0.11091614995360335,
+            "allenai_OLMo-2-1124-7B-Instruct": 0.025,
+            "mistralai_Mistral-7B-Instruct-v0.3": 0.054547987430552086
+          },
+          "a100_hours_total": 0.19046413738415544,
+          "a100_seconds_total": 685.6708945829596,
+          "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+          "longest_single_worker_hours": 0.11091614995360335,
+          "n_runs": 4
+        },
+        "cell_id": "mistral_secondtask",
+        "checked_at_utc": "2026-09-12T20:55:25.831188+00:00",
+        "completeness": {
+          "n_calls": 0,
+          "n_expected_calls": 2048,
+          "n_missing_calls": 2048,
+          "n_rows": 0,
+          "ok": false,
+          "path": "/Users/dz/bigdata/study-120h/step1-out/results/mistral_secondtask__multi_nli__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl",
+          "problems": [
+            "/Users/dz/bigdata/study-120h/step1-out/results/mistral_secondtask__multi_nli__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl does not exist; no call has been executed"
+          ]
+        },
+        "frame_task_id": "multi_nli",
+        "host_facts_present": false,
+        "ok": false,
+        "preflight_ok": true,
+        "problems": [
+          "ledger: /Users/dz/bigdata/study-120h/step1-out/results/mistral_secondtask__multi_nli__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl does not exist; no call has been executed",
+          "host facts: ['cuda_version', 'driver_version', 'gpu_name', 'gpu_uuid', 'torch_version', 'installed_engine_version_string'] were not recorded"
+        ]
+      },
+      "inputs_forbidden_and_absent": [
+        "joint outputs",
+        "exact-context outputs",
+        "fake-batch statistics",
+        "filler outputs",
+        "any covariance, ICC, variance, or coverage value"
+      ],
+      "inputs_used": [
+        "solo first responses",
+        "pinned tokenizer counts",
+        "parse status"
+      ],
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "outcome": "FAIL_CAPABILITY",
+      "reason": "the pinned revision could not be loaded on the A100",
+      "screened_at_utc": "2026-09-12T20:55:25.831758+00:00",
+      "solo_summary": {
+        "load_failed": true,
+        "n_solo_calls": 0
+      }
+    }
+  ],
+  "effective_second_model": null,
+  "freeze_stamp": "20260912T041633Z",
+  "replacement_decision": {
+    "claim_narrowed": true,
+    "forbidden_triggers": [
+      "any joint, exact-context, fake-batch, or filler outcome",
+      "any observed covariance, ICC, variance ratio, or coverage value",
+      "convenience, cost, or speed after outputs are opened"
+    ],
+    "information_poor_cells_left_in_panel": [],
+    "information_poor_is_not_a_trigger": "a solo error count below the frozen information threshold leaves the model in the panel as INFORMATION_POOR. It may activate the separately frozen task fallback, but it never activates model replacement.",
+    "next_action": null,
+    "ordered_replacement_list": [
+      "allenai/OLMo-2-1124-7B-Instruct",
+      "microsoft/Phi-3.5-mini-instruct"
+    ],
+    "primary_second_model": "mistralai/Mistral-7B-Instruct-v0.3",
+    "reason": "keep the failed cell in the published panel labelled uninformative, narrow the claim to the tested model, and do not write 'across models'.",
+    "replace": false,
+    "replacement_limit": 1,
+    "replacement_model_id": "allenai/OLMo-2-1124-7B-Instruct",
+    "replacement_passed_load_gate": false,
+    "replacements_used": 1,
+    "triggered_by": [
+      {
+        "cell_id": "mistral_civil",
+        "frame_task_id": "civil_comments",
+        "outcome": "FAIL_CAPABILITY"
+      },
+      {
+        "cell_id": "mistral_secondtask",
+        "frame_task_id": "ag_news",
+        "outcome": "FAIL_CAPABILITY"
+      }
+    ]
+  },
+  "screens": [
+    {
+      "cell_id": "qwen_civil",
+      "checks": {
+        "accuracy_ceiling": {
+          "ceiling": 0.995,
+          "pass": true,
+          "value": 0.837890625
+        },
+        "capability_floor": {
+          "denominators_agree": true,
+          "pass": true,
+          "threshold": 0.7,
+          "value": 0.837890625,
+          "value_over_parsable": 0.8465712876171683
+        },
+        "context_fit": {
+          "n_over_budget": 0,
+          "pass": true,
+          "threshold": 0
+        },
+        "error_information_threshold": {
+          "min_solo_errors": 11,
+          "n_errors": 311,
+          "pass": true
+        },
+        "parsable_first_response_rate": {
+          "pass": true,
+          "threshold": 0.98,
+          "value": 0.98974609375
+        }
+      },
+      "frame_task_id": "civil_comments",
+      "gate": {
+        "a100_meter": {
+          "a100_hours_by_worker": {
+            "Qwen_Qwen3-8B": 0.11091614995360335,
+            "allenai_OLMo-2-1124-7B-Instruct": 0.025,
+            "mistralai_Mistral-7B-Instruct-v0.3": 0.054547987430552086
+          },
+          "a100_hours_total": 0.19046413738415544,
+          "a100_seconds_total": 685.6708945829596,
+          "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+          "longest_single_worker_hours": 0.11091614995360335,
+          "n_runs": 4
+        },
+        "cell_id": "qwen_civil",
+        "checked_at_utc": "2026-09-12T20:54:36.123907+00:00",
+        "completeness": {
+          "missing_call_ids_sample": [],
+          "n_calls": 2048,
+          "n_expected_calls": 2048,
+          "n_first_response_calls": 2048,
+          "n_missing_calls": 0,
+          "n_rejected_conflicts": 0,
+          "n_retry_rows": 0,
+          "n_rows": 2048,
+          "ok": true,
+          "path": "/Users/dz/bigdata/study-120h/step1-out/results/qwen_civil__civil_comments__Qwen_Qwen3-8B/solo.jsonl",
+          "problems": [],
+          "unexpected_call_ids_sample": []
+        },
+        "frame_task_id": "civil_comments",
+        "host_facts_present": true,
+        "ok": true,
+        "preflight_ok": true,
+        "problems": []
+      },
+      "inputs_forbidden_and_absent": [
+        "joint outputs",
+        "exact-context outputs",
+        "fake-batch statistics",
+        "filler outputs",
+        "any covariance, ICC, variance, or coverage value"
+      ],
+      "inputs_used": [
+        "solo first responses",
+        "pinned tokenizer counts",
+        "parse status"
+      ],
+      "model_id": "Qwen/Qwen3-8B",
+      "outcome": "PASS",
+      "reason": "every frozen screen criterion is met",
+      "screened_at_utc": "2026-09-12T20:54:36.138347+00:00",
+      "solo_summary": {
+        "accuracy_over_all_calls": 0.837890625,
+        "accuracy_over_parsable": 0.8465712876171683,
+        "error_rate_over_all_calls": 0.15185546875,
+        "first_response_status_counts": {
+          "malformed": 21,
+          "valid_first_response": 2027
+        },
+        "n_correct": 1716,
+        "n_errors": 311,
+        "n_parsable": 2027,
+        "n_solo_calls": 2048,
+        "parsable_first_response_rate": 0.98974609375,
+        "parse_status_counts": {
+          "missing_labels": 21,
+          "ok": 2027
+        }
+      }
+    },
+    {
+      "cell_id": "qwen_secondtask",
+      "checks": {
+        "accuracy_ceiling": {
+          "ceiling": 0.995,
+          "pass": true,
+          "value": 0.626953125
+        },
+        "capability_floor": {
+          "denominators_agree": true,
+          "pass": false,
+          "threshold": 0.7,
+          "value": 0.626953125,
+          "value_over_parsable": 0.6272594040058622
+        },
+        "context_fit": {
+          "n_over_budget": 0,
+          "pass": true,
+          "threshold": 0
+        },
+        "error_information_threshold": {
+          "min_solo_errors": 11,
+          "n_errors": 763,
+          "pass": true
+        },
+        "parsable_first_response_rate": {
+          "pass": true,
+          "threshold": 0.98,
+          "value": 0.99951171875
+        }
+      },
+      "frame_task_id": "ag_news",
+      "gate": {
+        "a100_meter": {
+          "a100_hours_by_worker": {
+            "Qwen_Qwen3-8B": 0.11091614995360335,
+            "allenai_OLMo-2-1124-7B-Instruct": 0.025,
+            "mistralai_Mistral-7B-Instruct-v0.3": 0.054547987430552086
+          },
+          "a100_hours_total": 0.19046413738415544,
+          "a100_seconds_total": 685.6708945829596,
+          "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+          "longest_single_worker_hours": 0.11091614995360335,
+          "n_runs": 4
+        },
+        "cell_id": "qwen_secondtask",
+        "checked_at_utc": "2026-09-12T20:54:36.249747+00:00",
+        "completeness": {
+          "missing_call_ids_sample": [],
+          "n_calls": 2048,
+          "n_expected_calls": 2048,
+          "n_first_response_calls": 2048,
+          "n_missing_calls": 0,
+          "n_rejected_conflicts": 0,
+          "n_retry_rows": 0,
+          "n_rows": 2048,
+          "ok": true,
+          "path": "/Users/dz/bigdata/study-120h/step1-out/results/qwen_secondtask__ag_news__Qwen_Qwen3-8B/solo.jsonl",
+          "problems": [],
+          "unexpected_call_ids_sample": []
+        },
+        "frame_task_id": "ag_news",
+        "host_facts_present": true,
+        "ok": true,
+        "preflight_ok": true,
+        "problems": []
+      },
+      "inputs_forbidden_and_absent": [
+        "joint outputs",
+        "exact-context outputs",
+        "fake-batch statistics",
+        "filler outputs",
+        "any covariance, ICC, variance, or coverage value"
+      ],
+      "inputs_used": [
+        "solo first responses",
+        "pinned tokenizer counts",
+        "parse status"
+      ],
+      "model_id": "Qwen/Qwen3-8B",
+      "outcome": "FAIL_CAPABILITY",
+      "reason": "solo accuracy is below the task capability floor",
+      "screened_at_utc": "2026-09-12T20:54:36.264070+00:00",
+      "solo_summary": {
+        "accuracy_over_all_calls": 0.626953125,
+        "accuracy_over_parsable": 0.6272594040058622,
+        "error_rate_over_all_calls": 0.37255859375,
+        "first_response_status_counts": {
+          "malformed": 1,
+          "valid_first_response": 2047
+        },
+        "n_correct": 1284,
+        "n_errors": 763,
+        "n_parsable": 2047,
+        "n_solo_calls": 2048,
+        "parsable_first_response_rate": 0.99951171875,
+        "parse_status_counts": {
+          "missing_labels": 1,
+          "ok": 2047
+        }
+      }
+    },
+    {
+      "cell_id": "mistral_civil",
+      "checks": {
+        "accuracy_ceiling": {
+          "ceiling": 0.995,
+          "pass": true,
+          "value": 0.69091796875
+        },
+        "capability_floor": {
+          "denominators_agree": true,
+          "pass": false,
+          "threshold": 0.7,
+          "value": 0.69091796875,
+          "value_over_parsable": 0.6943081452404318
+        },
+        "context_fit": {
+          "n_over_budget": 0,
+          "pass": true,
+          "threshold": 0
+        },
+        "error_information_threshold": {
+          "min_solo_errors": 11,
+          "n_errors": 623,
+          "pass": true
+        },
+        "parsable_first_response_rate": {
+          "pass": true,
+          "threshold": 0.98,
+          "value": 0.9951171875
+        }
+      },
+      "frame_task_id": "civil_comments",
+      "gate": {
+        "a100_meter": {
+          "a100_hours_by_worker": {
+            "Qwen_Qwen3-8B": 0.11091614995360335,
+            "allenai_OLMo-2-1124-7B-Instruct": 0.025,
+            "mistralai_Mistral-7B-Instruct-v0.3": 0.054547987430552086
+          },
+          "a100_hours_total": 0.19046413738415544,
+          "a100_seconds_total": 685.6708945829596,
+          "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+          "longest_single_worker_hours": 0.11091614995360335,
+          "n_runs": 4
+        },
+        "cell_id": "mistral_civil",
+        "checked_at_utc": "2026-09-12T20:54:36.353103+00:00",
+        "completeness": {
+          "missing_call_ids_sample": [],
+          "n_calls": 2048,
+          "n_expected_calls": 2048,
+          "n_first_response_calls": 2048,
+          "n_missing_calls": 0,
+          "n_rejected_conflicts": 0,
+          "n_retry_rows": 0,
+          "n_rows": 2048,
+          "ok": true,
+          "path": "/Users/dz/bigdata/study-120h/step1-out/results/mistral_civil__civil_comments__mistralai_Mistral-7B-Instruct-v0.3/solo.jsonl",
+          "problems": [],
+          "unexpected_call_ids_sample": []
+        },
+        "frame_task_id": "civil_comments",
+        "host_facts_present": true,
+        "ok": true,
+        "preflight_ok": true,
+        "problems": []
+      },
+      "inputs_forbidden_and_absent": [
+        "joint outputs",
+        "exact-context outputs",
+        "fake-batch statistics",
+        "filler outputs",
+        "any covariance, ICC, variance, or coverage value"
+      ],
+      "inputs_used": [
+        "solo first responses",
+        "pinned tokenizer counts",
+        "parse status"
+      ],
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "outcome": "FAIL_CAPABILITY",
+      "reason": "solo accuracy is below the task capability floor",
+      "screened_at_utc": "2026-09-12T20:54:36.380319+00:00",
+      "solo_summary": {
+        "accuracy_over_all_calls": 0.69091796875,
+        "accuracy_over_parsable": 0.6943081452404318,
+        "error_rate_over_all_calls": 0.30419921875,
+        "first_response_status_counts": {
+          "malformed": 10,
+          "valid_first_response": 2038
+        },
+        "n_correct": 1415,
+        "n_errors": 623,
+        "n_parsable": 2038,
+        "n_solo_calls": 2048,
+        "parsable_first_response_rate": 0.9951171875,
+        "parse_status_counts": {
+          "missing_labels": 10,
+          "ok": 2038
+        }
+      }
+    },
+    {
+      "cell_id": "mistral_secondtask",
+      "checks": {
+        "accuracy_ceiling": {
+          "ceiling": 0.995,
+          "pass": true,
+          "value": 0.62109375
+        },
+        "capability_floor": {
+          "denominators_agree": true,
+          "pass": false,
+          "threshold": 0.7,
+          "value": 0.62109375,
+          "value_over_parsable": 0.6244477172312224
+        },
+        "context_fit": {
+          "n_over_budget": 0,
+          "pass": true,
+          "threshold": 0
+        },
+        "error_information_threshold": {
+          "min_solo_errors": 11,
+          "n_errors": 765,
+          "pass": true
+        },
+        "parsable_first_response_rate": {
+          "pass": true,
+          "threshold": 0.98,
+          "value": 0.99462890625
+        }
+      },
+      "frame_task_id": "ag_news",
+      "gate": {
+        "a100_meter": {
+          "a100_hours_by_worker": {
+            "Qwen_Qwen3-8B": 0.11091614995360335,
+            "allenai_OLMo-2-1124-7B-Instruct": 0.025,
+            "mistralai_Mistral-7B-Instruct-v0.3": 0.054547987430552086
+          },
+          "a100_hours_total": 0.19046413738415544,
+          "a100_seconds_total": 685.6708945829596,
+          "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+          "longest_single_worker_hours": 0.11091614995360335,
+          "n_runs": 4
+        },
+        "cell_id": "mistral_secondtask",
+        "checked_at_utc": "2026-09-12T20:54:36.480234+00:00",
+        "completeness": {
+          "missing_call_ids_sample": [],
+          "n_calls": 2048,
+          "n_expected_calls": 2048,
+          "n_first_response_calls": 2048,
+          "n_missing_calls": 0,
+          "n_rejected_conflicts": 0,
+          "n_retry_rows": 0,
+          "n_rows": 2048,
+          "ok": true,
+          "path": "/Users/dz/bigdata/study-120h/step1-out/results/mistral_secondtask__ag_news__mistralai_Mistral-7B-Instruct-v0.3/solo.jsonl",
+          "problems": [],
+          "unexpected_call_ids_sample": []
+        },
+        "frame_task_id": "ag_news",
+        "host_facts_present": true,
+        "ok": true,
+        "preflight_ok": true,
+        "problems": []
+      },
+      "inputs_forbidden_and_absent": [
+        "joint outputs",
+        "exact-context outputs",
+        "fake-batch statistics",
+        "filler outputs",
+        "any covariance, ICC, variance, or coverage value"
+      ],
+      "inputs_used": [
+        "solo first responses",
+        "pinned tokenizer counts",
+        "parse status"
+      ],
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "outcome": "FAIL_CAPABILITY",
+      "reason": "solo accuracy is below the task capability floor",
+      "screened_at_utc": "2026-09-12T20:54:36.511476+00:00",
+      "solo_summary": {
+        "accuracy_over_all_calls": 0.62109375,
+        "accuracy_over_parsable": 0.6244477172312224,
+        "error_rate_over_all_calls": 0.37353515625,
+        "first_response_status_counts": {
+          "malformed": 11,
+          "valid_first_response": 2037
+        },
+        "n_correct": 1272,
+        "n_errors": 765,
+        "n_parsable": 2037,
+        "n_solo_calls": 2048,
+        "parsable_first_response_rate": 0.99462890625,
+        "parse_status_counts": {
+          "missing_labels": 11,
+          "ok": 2037
+        }
+      }
+    },
+    {
+      "cell_id": "mistral_civil",
+      "checks": {},
+      "frame_task_id": "civil_comments",
+      "gate": {
+        "a100_meter": {
+          "a100_hours_by_worker": {
+            "Qwen_Qwen3-8B": 0.11091614995360335,
+            "allenai_OLMo-2-1124-7B-Instruct": 0.025,
+            "mistralai_Mistral-7B-Instruct-v0.3": 0.054547987430552086
+          },
+          "a100_hours_total": 0.19046413738415544,
+          "a100_seconds_total": 685.6708945829596,
+          "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+          "longest_single_worker_hours": 0.11091614995360335,
+          "n_runs": 4
+        },
+        "cell_id": "mistral_civil",
+        "checked_at_utc": "2026-09-12T20:55:08.326887+00:00",
+        "completeness": {
+          "n_calls": 0,
+          "n_expected_calls": 2048,
+          "n_missing_calls": 2048,
+          "n_rows": 0,
+          "ok": false,
+          "path": "/Users/dz/bigdata/study-120h/step1-out/results/mistral_civil__civil_comments__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl",
+          "problems": [
+            "/Users/dz/bigdata/study-120h/step1-out/results/mistral_civil__civil_comments__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl does not exist; no call has been executed"
+          ]
+        },
+        "frame_task_id": "civil_comments",
+        "host_facts_present": false,
+        "ok": false,
+        "preflight_ok": true,
+        "problems": [
+          "ledger: /Users/dz/bigdata/study-120h/step1-out/results/mistral_civil__civil_comments__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl does not exist; no call has been executed",
+          "host facts: ['cuda_version', 'driver_version', 'gpu_name', 'gpu_uuid', 'torch_version', 'installed_engine_version_string'] were not recorded"
+        ]
+      },
+      "inputs_forbidden_and_absent": [
+        "joint outputs",
+        "exact-context outputs",
+        "fake-batch statistics",
+        "filler outputs",
+        "any covariance, ICC, variance, or coverage value"
+      ],
+      "inputs_used": [
+        "solo first responses",
+        "pinned tokenizer counts",
+        "parse status"
+      ],
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "outcome": "FAIL_CAPABILITY",
+      "reason": "the pinned revision could not be loaded on the A100",
+      "screened_at_utc": "2026-09-12T20:55:08.327496+00:00",
+      "solo_summary": {
+        "load_failed": true,
+        "n_solo_calls": 0
+      }
+    },
+    {
+      "cell_id": "mistral_secondtask",
+      "checks": {},
+      "frame_task_id": "ag_news",
+      "gate": {
+        "a100_meter": {
+          "a100_hours_by_worker": {
+            "Qwen_Qwen3-8B": 0.11091614995360335,
+            "allenai_OLMo-2-1124-7B-Instruct": 0.025,
+            "mistralai_Mistral-7B-Instruct-v0.3": 0.054547987430552086
+          },
+          "a100_hours_total": 0.19046413738415544,
+          "a100_seconds_total": 685.6708945829596,
+          "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+          "longest_single_worker_hours": 0.11091614995360335,
+          "n_runs": 4
+        },
+        "cell_id": "mistral_secondtask",
+        "checked_at_utc": "2026-09-12T20:55:08.624717+00:00",
+        "completeness": {
+          "n_calls": 0,
+          "n_expected_calls": 2048,
+          "n_missing_calls": 2048,
+          "n_rows": 0,
+          "ok": false,
+          "path": "/Users/dz/bigdata/study-120h/step1-out/results/mistral_secondtask__ag_news__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl",
+          "problems": [
+            "/Users/dz/bigdata/study-120h/step1-out/results/mistral_secondtask__ag_news__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl does not exist; no call has been executed"
+          ]
+        },
+        "frame_task_id": "ag_news",
+        "host_facts_present": false,
+        "ok": false,
+        "preflight_ok": true,
+        "problems": [
+          "ledger: /Users/dz/bigdata/study-120h/step1-out/results/mistral_secondtask__ag_news__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl does not exist; no call has been executed",
+          "host facts: ['cuda_version', 'driver_version', 'gpu_name', 'gpu_uuid', 'torch_version', 'installed_engine_version_string'] were not recorded"
+        ]
+      },
+      "inputs_forbidden_and_absent": [
+        "joint outputs",
+        "exact-context outputs",
+        "fake-batch statistics",
+        "filler outputs",
+        "any covariance, ICC, variance, or coverage value"
+      ],
+      "inputs_used": [
+        "solo first responses",
+        "pinned tokenizer counts",
+        "parse status"
+      ],
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "outcome": "FAIL_CAPABILITY",
+      "reason": "the pinned revision could not be loaded on the A100",
+      "screened_at_utc": "2026-09-12T20:55:08.625273+00:00",
+      "solo_summary": {
+        "load_failed": true,
+        "n_solo_calls": 0
+      }
+    },
+    {
+      "cell_id": "qwen_secondtask",
+      "checks": {
+        "accuracy_ceiling": {
+          "ceiling": 0.995,
+          "pass": true,
+          "value": 0.740234375
+        },
+        "capability_floor": {
+          "denominators_agree": true,
+          "pass": true,
+          "threshold": 0.55,
+          "value": 0.740234375,
+          "value_over_parsable": 0.7409579667644184
+        },
+        "context_fit": {
+          "n_over_budget": 0,
+          "pass": true,
+          "threshold": 0
+        },
+        "error_information_threshold": {
+          "min_solo_errors": 11,
+          "n_errors": 530,
+          "pass": true
+        },
+        "parsable_first_response_rate": {
+          "pass": true,
+          "threshold": 0.98,
+          "value": 0.9990234375
+        }
+      },
+      "frame_task_id": "multi_nli",
+      "gate": {
+        "a100_meter": {
+          "a100_hours_by_worker": {
+            "Qwen_Qwen3-8B": 0.11091614995360335,
+            "allenai_OLMo-2-1124-7B-Instruct": 0.025,
+            "mistralai_Mistral-7B-Instruct-v0.3": 0.054547987430552086
+          },
+          "a100_hours_total": 0.19046413738415544,
+          "a100_seconds_total": 685.6708945829596,
+          "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+          "longest_single_worker_hours": 0.11091614995360335,
+          "n_runs": 4
+        },
+        "cell_id": "qwen_secondtask",
+        "checked_at_utc": "2026-09-12T20:55:25.564754+00:00",
+        "completeness": {
+          "missing_call_ids_sample": [],
+          "n_calls": 2048,
+          "n_expected_calls": 2048,
+          "n_first_response_calls": 2048,
+          "n_missing_calls": 0,
+          "n_rejected_conflicts": 0,
+          "n_retry_rows": 0,
+          "n_rows": 2048,
+          "ok": true,
+          "path": "/Users/dz/bigdata/study-120h/step1-out/results/qwen_secondtask__multi_nli__Qwen_Qwen3-8B/solo.jsonl",
+          "problems": [],
+          "unexpected_call_ids_sample": []
+        },
+        "frame_task_id": "multi_nli",
+        "host_facts_present": true,
+        "ok": true,
+        "preflight_ok": true,
+        "problems": []
+      },
+      "inputs_forbidden_and_absent": [
+        "joint outputs",
+        "exact-context outputs",
+        "fake-batch statistics",
+        "filler outputs",
+        "any covariance, ICC, variance, or coverage value"
+      ],
+      "inputs_used": [
+        "solo first responses",
+        "pinned tokenizer counts",
+        "parse status"
+      ],
+      "model_id": "Qwen/Qwen3-8B",
+      "outcome": "PASS",
+      "reason": "every frozen screen criterion is met",
+      "screened_at_utc": "2026-09-12T20:55:25.579494+00:00",
+      "solo_summary": {
+        "accuracy_over_all_calls": 0.740234375,
+        "accuracy_over_parsable": 0.7409579667644184,
+        "error_rate_over_all_calls": 0.2587890625,
+        "first_response_status_counts": {
+          "malformed": 2,
+          "valid_first_response": 2046
+        },
+        "n_correct": 1516,
+        "n_errors": 530,
+        "n_parsable": 2046,
+        "n_solo_calls": 2048,
+        "parsable_first_response_rate": 0.9990234375,
+        "parse_status_counts": {
+          "missing_labels": 2,
+          "ok": 2046
+        }
+      }
+    },
+    {
+      "cell_id": "mistral_secondtask",
+      "checks": {},
+      "frame_task_id": "multi_nli",
+      "gate": {
+        "a100_meter": {
+          "a100_hours_by_worker": {
+            "Qwen_Qwen3-8B": 0.11091614995360335,
+            "allenai_OLMo-2-1124-7B-Instruct": 0.025,
+            "mistralai_Mistral-7B-Instruct-v0.3": 0.054547987430552086
+          },
+          "a100_hours_total": 0.19046413738415544,
+          "a100_seconds_total": 685.6708945829596,
+          "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+          "longest_single_worker_hours": 0.11091614995360335,
+          "n_runs": 4
+        },
+        "cell_id": "mistral_secondtask",
+        "checked_at_utc": "2026-09-12T20:55:25.831188+00:00",
+        "completeness": {
+          "n_calls": 0,
+          "n_expected_calls": 2048,
+          "n_missing_calls": 2048,
+          "n_rows": 0,
+          "ok": false,
+          "path": "/Users/dz/bigdata/study-120h/step1-out/results/mistral_secondtask__multi_nli__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl",
+          "problems": [
+            "/Users/dz/bigdata/study-120h/step1-out/results/mistral_secondtask__multi_nli__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl does not exist; no call has been executed"
+          ]
+        },
+        "frame_task_id": "multi_nli",
+        "host_facts_present": false,
+        "ok": false,
+        "preflight_ok": true,
+        "problems": [
+          "ledger: /Users/dz/bigdata/study-120h/step1-out/results/mistral_secondtask__multi_nli__allenai_OLMo-2-1124-7B-Instruct/solo.jsonl does not exist; no call has been executed",
+          "host facts: ['cuda_version', 'driver_version', 'gpu_name', 'gpu_uuid', 'torch_version', 'installed_engine_version_string'] were not recorded"
+        ]
+      },
+      "inputs_forbidden_and_absent": [
+        "joint outputs",
+        "exact-context outputs",
+        "fake-batch statistics",
+        "filler outputs",
+        "any covariance, ICC, variance, or coverage value"
+      ],
+      "inputs_used": [
+        "solo first responses",
+        "pinned tokenizer counts",
+        "parse status"
+      ],
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "outcome": "FAIL_CAPABILITY",
+      "reason": "the pinned revision could not be loaded on the A100",
+      "screened_at_utc": "2026-09-12T20:55:25.831758+00:00",
+      "solo_summary": {
+        "load_failed": true,
+        "n_solo_calls": 0
+      }
+    }
+  ],
+  "task_decision": {
+    "chosen_second_task": "ag_news",
+    "claim_narrowed": true,
+    "reason": "neither frozen task passes for both models, so AG News is kept, its failing cell is published as uninformative, and the claim narrows to the tested task",
+    "rule": "choose AG News if it passes the screen for both models. Otherwise screen MultiNLI. Choose MultiNLI only if it passes for both models. If neither task passes for both models, keep AG News, publish the failing cell as uninformative, and narrow the claim to the tested task.",
+    "screened_tasks": [
+      "ag_news",
+      "multi_nli"
+    ]
+  },
+  "written_at_utc": "2026-09-12T20:55:25.831774+00:00"
+}

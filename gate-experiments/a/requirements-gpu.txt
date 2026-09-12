@@ -1,0 +1,3 @@
+# Install on the Linux CUDA host only. Not resolved by uv.lock, which covers CPU work.
+# vLLM pins its own torch build; install it first and let it choose torch.
+vllm==0.29.0

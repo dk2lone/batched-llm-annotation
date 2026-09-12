@@ -1,0 +1,54 @@
+[project]
+name = "step0"
+version = "1.0.0"
+description = "Step 0 protocol freeze for the IEEE BigData 2026 120-hour batched-annotation study"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "modal==1.5.5",
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "tomli-w>=1.0",
+]
+
+[project.optional-dependencies]
+data = ["datasets>=2.19", "huggingface_hub>=0.23"]
+dev = ["pytest>=8.0", "ruff>=0.6", "mypy>=1.11"]
+
+[project.scripts]
+step0 = "step0.cli:main"
+step1 = "step1.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/step0", "src/step1"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src", "tests"]
+
+[[tool.mypy.overrides]]
+module = [
+  "datasets.*",
+  "huggingface_hub.*",
+  "scipy.*",
+  "tomli_w.*",
+  "torch.*",
+  "transformers.*",
+  "vllm.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
