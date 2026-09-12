@@ -26,3 +26,5 @@ Create a separate final release only after the confirmatory study and paper are 
 - a machine-readable manifest and SHA-256 checksum file.
 
 Do not include credentials, local environments, caches, agent traces, or model weights.
+
+Before making a results release public, verify the redistribution terms for every dataset and model output. If source text cannot be redistributed, publish stable row identifiers, content hashes, sampling metadata, and reconstruction code instead.
