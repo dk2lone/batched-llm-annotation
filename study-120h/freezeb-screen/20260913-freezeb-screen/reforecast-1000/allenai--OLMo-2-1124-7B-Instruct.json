@@ -1,0 +1,20 @@
+{
+  "all_in_a100_seconds": 244.10617471688352,
+  "component_timing": {
+    "attempt_id": "screen::allenai--OLMo-2-1124-7B-Instruct::civil_comments::0000::cc2542051aaea7c9::attempt::1",
+    "method": "one_token_wall_differencing_single_call",
+    "prompt_plus_first_token_seconds": 0.01937967199998525,
+    "remaining_generation_seconds": 0.2400621560000218,
+    "scope": "single_call_probe_only"
+  },
+  "failure_rate": 0.0,
+  "generation_failures": 0,
+  "loading_a100_seconds": 193.1420314354362,
+  "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+  "output_tokens": 18057,
+  "projected_model_screen_base_a100_hours": 0.22760817335496136,
+  "projected_model_screen_guarded_a100_hours": 0.3641730773679382,
+  "prompt_tokens": 209387,
+  "real_calls": 1000,
+  "technical_only": true
+}

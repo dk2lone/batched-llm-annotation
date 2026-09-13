@@ -1,0 +1,41 @@
+{
+  "accuracy": 0.859313725490196,
+  "admitted": true,
+  "cell_key": "ibm-granite/granite-3.3-2b-instruct::imdb",
+  "error_rate": 0.14068627450980398,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "model_id": "ibm-granite/granite-3.3-2b-instruct",
+  "parse_rate": 0.99609375,
+  "reasons": [],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "imdb",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.8433675966715615,
+      0.8736579148397108
+    ],
+    "accuracy_wilson_parsed": [
+      0.8435493435634832,
+      0.8737274264487508
+    ],
+    "error_rate": [
+      0.12634208516028922,
+      0.15663240332843853
+    ],
+    "parse_rate": [
+      0.9931640625,
+      0.99853515625
+    ],
+    "parse_rate_wilson": [
+      0.9923106046598633,
+      0.9980193213023023
+    ]
+  }
+}

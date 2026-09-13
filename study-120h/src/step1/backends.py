@@ -8,6 +8,7 @@ not a model and no output of it is evidence about any real model.
 from __future__ import annotations
 
 import json
+import os
 import time
 from dataclasses import dataclass
 from typing import Any, Protocol
@@ -33,6 +34,9 @@ class GenResult:
     prompt_tokens: int
     output_tokens: int
     finish_reason: str
+    queue_seconds: float | None = None
+    prefill_seconds: float | None = None
+    decode_seconds: float | None = None
 
 
 class TokenCounter(Protocol):
@@ -71,6 +75,29 @@ class Backend(Protocol):
     def count_tokens(self, messages: list[Message]) -> int: ...
 
     def describe(self) -> dict[str, Any]: ...
+
+
+def request_timing(metrics: Any) -> tuple[float | None, float | None, float | None]:
+    """Read both legacy and v1 vLLM per-request timestamp field names."""
+    if metrics is None:
+        return None, None, None
+    scheduled = getattr(metrics, "first_scheduled_time", None)
+    scheduled = getattr(metrics, "scheduled_ts", None) if scheduled is None else scheduled
+    first = getattr(metrics, "first_token_time", None)
+    first = getattr(metrics, "first_token_ts", None) if first is None else first
+    finished = getattr(metrics, "finished_time", None)
+    finished = getattr(metrics, "last_token_ts", None) if finished is None else finished
+    queue = getattr(metrics, "time_in_queue", None)
+    if queue is None:
+        queued = getattr(metrics, "queued_ts", None)
+        queue = scheduled - queued if scheduled is not None and queued is not None else None
+    prefill = first - scheduled if first is not None and scheduled is not None else None
+    decode = finished - first if finished is not None and first is not None else None
+    return (
+        float(queue) if queue is not None else None,
+        float(prefill) if prefill is not None else None,
+        float(decode) if decode is not None else None,
+    )
 
 
 # ------------------------------------------------------------------------------------
@@ -259,7 +286,13 @@ class VLLMBackend:
         *,
         enable_thinking: bool = False,
         max_num_seqs: int | None = None,
+        require_batch_invariance: bool = False,
     ) -> None:
+        batch_invariant = os.environ.get("VLLM_BATCH_INVARIANT") == "1"
+        if require_batch_invariance and not batch_invariant:
+            raise RuntimeError(
+                "VLLM_BATCH_INVARIANT=1 must be set before constructing this vLLM backend"
+            )
         from vllm import LLM, SamplingParams  # noqa: PLC0415 - CUDA-host-only dependency
 
         self.model_id = model_id
@@ -268,6 +301,8 @@ class VLLMBackend:
         self.serving = serving
         self.decoding = decoding
         self.enable_thinking = enable_thinking
+        self.batch_invariant = batch_invariant
+        self.batch_invariance_required = require_batch_invariance
         self.max_num_seqs = int(max_num_seqs or serving["max_num_seqs"])
         self._sampling_cls = SamplingParams
         self.llm = LLM(
@@ -313,16 +348,22 @@ class VLLMBackend:
             outputs = self.llm.chat(conversations, params, use_tqdm=False, **kwargs)
         except TypeError:
             outputs = self.llm.chat(conversations, params, use_tqdm=False)
-        return [
-            GenResult(
-                call_id=request.call_id,
-                text=output.outputs[0].text,
-                prompt_tokens=len(output.prompt_token_ids),
-                output_tokens=len(output.outputs[0].token_ids),
-                finish_reason=str(output.outputs[0].finish_reason),
+        results: list[GenResult] = []
+        for request, output in zip(requests, outputs, strict=True):
+            queue, prefill, decode = request_timing(getattr(output, "metrics", None))
+            results.append(
+                GenResult(
+                    call_id=request.call_id,
+                    text=output.outputs[0].text,
+                    prompt_tokens=len(output.prompt_token_ids),
+                    output_tokens=len(output.outputs[0].token_ids),
+                    finish_reason=str(output.outputs[0].finish_reason),
+                    queue_seconds=queue,
+                    prefill_seconds=prefill,
+                    decode_seconds=decode,
+                )
             )
-            for request, output in zip(requests, outputs, strict=True)
-        ]
+        return results
 
     def describe(self) -> dict[str, Any]:
         return {
@@ -336,6 +377,8 @@ class VLLMBackend:
             "max_num_seqs": self.max_num_seqs,
             "tensor_parallel_size": int(self.serving["tensor_parallel_size"]),
             "enable_thinking": self.enable_thinking,
+            "batch_invariant": self.batch_invariant,
+            "batch_invariance_required": self.batch_invariance_required,
             "seed": int(self.decoding["seed"]),
         }
 

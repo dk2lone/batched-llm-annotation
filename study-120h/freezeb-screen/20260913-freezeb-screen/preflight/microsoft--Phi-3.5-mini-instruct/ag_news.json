@@ -1,0 +1,15 @@
+{
+  "calls": 2048,
+  "max_model_len": 32768,
+  "max_required_tokens": 484,
+  "min_headroom_tokens": 32284,
+  "model_id": "microsoft/Phi-3.5-mini-instruct",
+  "n_over_budget": 0,
+  "task_id": "ag_news",
+  "tokenizer": {
+    "counter": "pinned_tokenizer",
+    "enable_thinking": false,
+    "model_id": "microsoft/Phi-3.5-mini-instruct",
+    "tokenizer_revision": "2fe192450127e6a83f7441aef6e3ca586c338b77"
+  }
+}

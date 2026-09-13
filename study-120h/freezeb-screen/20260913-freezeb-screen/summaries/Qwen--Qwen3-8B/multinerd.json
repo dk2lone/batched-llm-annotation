@@ -1,0 +1,56 @@
+{
+  "accuracy": 0.0025458248472505093,
+  "admitted": false,
+  "cell_key": "Qwen/Qwen3-8B::multinerd",
+  "error_rate": 0.9974541751527495,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "majority_exact_baseline": 0.013671875,
+  "model_id": "Qwen/Qwen3-8B",
+  "parse_rate": 0.958984375,
+  "reasons": [
+    "parse_rate_below_0.98",
+    "error_information_outside_0.05_to_0.80",
+    "exact_span_accuracy_below_baseline_plus_0.05",
+    "span_micro_f1_below_0.30"
+  ],
+  "span_micro_f1": 0.009861325115562404,
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "multinerd",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.0005101975772460948,
+      0.004605995500191029
+    ],
+    "accuracy_wilson_parsed": [
+      0.0010878993224175642,
+      0.005945928915447268
+    ],
+    "error_rate": [
+      0.995394004499809,
+      0.999489802422754
+    ],
+    "majority_exact_baseline": [
+      0.01268310546875,
+      0.01953125
+    ],
+    "parse_rate": [
+      0.9501953125,
+      0.9677734375
+    ],
+    "parse_rate_wilson": [
+      0.9495007772713239,
+      0.9667493510794986
+    ],
+    "span_micro_f1": [
+      0.0054805802861420914,
+      0.01482615285516182
+    ]
+  }
+}

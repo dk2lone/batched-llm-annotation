@@ -1,0 +1,88 @@
+{
+  "captured_at_utc": "2026-09-13T00:31:00Z",
+  "run_id": "20260912T233301Z-5738ea84",
+  "modal_app_id": "ap-r3dVnR4pzw7gSUwEtclnKo",
+  "modal_workspace": "daniel21cn2016",
+  "modal_profile": "acct3",
+  "requested_gpu": "A100",
+  "a100_40gb_hourly_usd": 2.1,
+  "billing": {
+    "a100_40gb_usd": 1.94133317,
+    "cpu_usd": 0.05036153,
+    "memory_usd": 0.01874586,
+    "total_usd": 2.01044056,
+    "report_scope": "this benchmark app on 2026-09-12",
+    "note": "Modal billing reports may settle after the captured snapshot"
+  },
+  "user_stated_pre_run_account_budget_usd": 14.0,
+  "user_stated_aggregate_a100_capacity_hours": {
+    "minimum": 120.0,
+    "maximum": 150.0,
+    "distributed_across_multiple_accounts": true,
+    "captured_from_user": "2026-09-12"
+  },
+  "gpu_memory_from_vllm_startup_logs": [
+    {
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "container_id": "ta-01M2BZG8WQF6EZRAVZEBNBK4WR",
+      "device_total_gib": 39.49,
+      "consumed_gib": 5.05,
+      "peak_activation_gib": 0.47,
+      "cudagraph_gib": 0.17,
+      "kv_cache_gib": 30.02
+    },
+    {
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "container_id": "ta-01M2BZH5JTJ5WMDSX1XFB08BAR",
+      "device_total_gib": 39.49,
+      "consumed_gib": 8.5,
+      "peak_activation_gib": 0.79,
+      "cudagraph_gib": 0.16,
+      "kv_cache_gib": 26.25
+    },
+    {
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "container_id": "ta-01M2BZH8TQ2Y96QWA6BTCFEEYR",
+      "device_total_gib": 79.25,
+      "consumed_gib": 7.28,
+      "peak_activation_gib": 0.52,
+      "cudagraph_gib": 0.15,
+      "kv_cache_gib": 63.53,
+      "note": "Modal auto-upgraded the requested A100 worker to an 80GB device"
+    },
+    {
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "container_id": "ta-01M2BZHAHNJ1T9B60NX9FNC9CR",
+      "device_total_gib": 39.49,
+      "consumed_gib": 15.4,
+      "peak_activation_gib": 0.77,
+      "cudagraph_gib": 0.16,
+      "kv_cache_gib": 19.37
+    },
+    {
+      "model_id": "Qwen/Qwen3-8B",
+      "container_id": "ta-01M2BZHS14T920402FSGREAPKR",
+      "device_total_gib": 39.49,
+      "consumed_gib": 16.56,
+      "peak_activation_gib": 1.28,
+      "cudagraph_gib": 0.15,
+      "kv_cache_gib": 17.7
+    },
+    {
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "container_id": "ta-01M2BZJDH70D5JDG6RGCB8YKRR",
+      "device_total_gib": 39.49,
+      "consumed_gib": 13.74,
+      "peak_activation_gib": 0.87,
+      "cudagraph_gib": 0.15,
+      "kv_cache_gib": 20.93
+    }
+  ],
+  "timing_instrumentation": {
+    "wall_time": "measured per request",
+    "prompt_tokens": "measured per request",
+    "output_tokens": "measured per request",
+    "prefill_decode_split": "not captured by the synchronous benchmark runner",
+    "forecast_policy": "use the slower of the two measured wall-time repetitions, calibrated to billed A100 time; apply frozen 1.6x and 3x multipliers"
+  }
+}

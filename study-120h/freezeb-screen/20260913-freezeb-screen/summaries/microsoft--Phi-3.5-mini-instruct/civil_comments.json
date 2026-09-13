@@ -1,0 +1,54 @@
+{
+  "accuracy": 0.932872655478776,
+  "admitted": false,
+  "balanced_accuracy": 0.5175920315103772,
+  "cell_key": "microsoft/Phi-3.5-mini-instruct::civil_comments",
+  "error_rate": 0.06712734452122404,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "model_id": "microsoft/Phi-3.5-mini-instruct",
+  "parse_rate": 0.9892578125,
+  "reasons": [
+    "balanced_accuracy_below_0.60",
+    "toxic_recall_below_0.25"
+  ],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "civil_comments",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "toxic_recall": 0.03571428571428571,
+  "uncertainty_95": {
+    "accuracy": [
+      0.922087844254511,
+      0.943297372204775
+    ],
+    "accuracy_wilson_parsed": [
+      0.9211364264759604,
+      0.9429704683645098
+    ],
+    "balanced_accuracy": [
+      0.5034002924841434,
+      0.5349198047035726
+    ],
+    "error_rate": [
+      0.056702627795224954,
+      0.07791215574548903
+    ],
+    "parse_rate": [
+      0.98486328125,
+      0.9931640625
+    ],
+    "parse_rate_wilson": [
+      0.9837883060165369,
+      0.992895341438276
+    ],
+    "toxic_recall": [
+      0.007245073506412261,
+      0.07042479234380643
+    ]
+  }
+}

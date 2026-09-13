@@ -1,0 +1,42 @@
+{
+  "attempt_id": "screen::microsoft--Phi-3.5-mini-instruct::civil_comments::0000::cc2542051aaea7c9::attempt::1",
+  "fallback_one_token_call": {
+    "backend": {
+      "backend": "vllm",
+      "dtype": "bfloat16",
+      "enable_thinking": false,
+      "gpu_memory_utilization": 0.9,
+      "max_model_len": 32768,
+      "max_num_seqs": 32,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "model_revision": "2fe192450127e6a83f7441aef6e3ca586c338b77",
+      "seed": 20260912,
+      "tensor_parallel_size": 1,
+      "tokenizer_revision": "2fe192450127e6a83f7441aef6e3ca586c338b77"
+    },
+    "finish_reason": "length",
+    "first_response": " {\"",
+    "host": {
+      "cuda_version": "13.0",
+      "driver_version": "580.95.05",
+      "gpu_name": "NVIDIA A100-SXM4-40GB",
+      "gpu_uuid": "GPU-bd8fc734-1413-a5f2-361f-9c408e24ad7e",
+      "installed_engine_version_string": "0.28.0",
+      "torch_version": "2.13.0+cu130"
+    },
+    "kind": "timing_probe",
+    "output_tokens": 1,
+    "prompt_tokens": 245,
+    "session_elapsed_seconds": 112.139573774,
+    "wall_seconds": 0.03093021899999826,
+    "worker_session_id": "3a6ee85d6f20471bb19903c1c2e0ca60"
+  },
+  "method": "one_token_wall_differencing_single_call",
+  "model_id": "microsoft/Phi-3.5-mini-instruct",
+  "prompt_plus_first_token_seconds": 0.03093021899999826,
+  "raw_vllm_decode_seconds": null,
+  "raw_vllm_prefill_seconds": null,
+  "remaining_generation_seconds": 0.22088374199999805,
+  "scope": "single_call_probe_only",
+  "usable": true
+}

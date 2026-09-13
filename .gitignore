@@ -27,6 +27,7 @@ graphify-out/
 
 # Immutable payloads are attached to milestone GitHub releases.
 study-120h/freeze/
+study-120h/freeze-b-work/
 study-120h/step1-out/host/
 study-120h/step1-out/preflight/
 study-120h/step1-out/preflight-invalid-*/
@@ -40,3 +41,25 @@ gate-experiments/k/artifacts/**/plan/
 gate-experiments/k/artifacts/**/run/
 gate-experiments/k/artifacts/**/synthetic/
 
+# Extension (X1) private frame text; identifiers only are sealed and released.
+study-120h/ext-work/
+
+# Large run payloads are published as checksummed GitHub Release assets. Keep
+# compact plans, summaries, validation records, and analysis reports in Git.
+study-120h/freezeb-screen/**/.active-run.lock
+study-120h/freezeb-screen/**/cells/
+study-120h/freezeb-screen/**/meter.jsonl
+study-120h/step2-out/**/.active-run.lock
+study-120h/step2-out/**/calls.jsonl
+study-120h/step2-out/**/timing.jsonl
+study-120h/step2-out/**/meter.jsonl
+study-120h/step2-out/**/checkpoints/
+study-120h/e2-out/**/.active-run.lock
+study-120h/e2-out/**/events.jsonl
+study-120h/e2-out/**/timing.jsonl
+study-120h/e2-out/**/meter.jsonl
+study-120h/extension-batch-invariance/**/events.json
+study-120h/extension-batch-invariance/**/plan.json
+study-120h/extension-batch-invariance/**/workers.json
+study-120h/extension-staging/**/staging_helper.py
+study-120h/freezeb-runtime/

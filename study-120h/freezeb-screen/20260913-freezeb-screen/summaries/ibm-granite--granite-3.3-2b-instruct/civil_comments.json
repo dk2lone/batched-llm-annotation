@@ -1,0 +1,54 @@
+{
+  "accuracy": 0.928923988153998,
+  "admitted": false,
+  "balanced_accuracy": 0.5188893278401716,
+  "cell_key": "ibm-granite/granite-3.3-2b-instruct::civil_comments",
+  "error_rate": 0.07107601184600199,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "model_id": "ibm-granite/granite-3.3-2b-instruct",
+  "parse_rate": 0.9892578125,
+  "reasons": [
+    "balanced_accuracy_below_0.60",
+    "toxic_recall_below_0.25"
+  ],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "civil_comments",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "toxic_recall": 0.0425531914893617,
+  "uncertainty_95": {
+    "accuracy": [
+      0.9166646100691016,
+      0.9401634204626389
+    ],
+    "accuracy_wilson_parsed": [
+      0.9169047013980469,
+      0.9393198044358968
+    ],
+    "balanced_accuracy": [
+      0.5029485246421006,
+      0.5351985135888236
+    ],
+    "error_rate": [
+      0.05983657953736113,
+      0.08333538993089835
+    ],
+    "parse_rate": [
+      0.984375,
+      0.99365234375
+    ],
+    "parse_rate_wilson": [
+      0.9837883060165369,
+      0.992895341438276
+    ],
+    "toxic_recall": [
+      0.012652331158109915,
+      0.07518796992481203
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "accuracy": 0.6995603321934538,
+  "admitted": false,
+  "cell_key": "Qwen/Qwen3-8B::ag_news",
+  "error_rate": 0.3004396678065462,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "model_id": "Qwen/Qwen3-8B",
+  "parse_rate": 0.99951171875,
+  "reasons": [
+    "accuracy_below_frozen_floor"
+  ],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "ag_news",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.6787070135984062,
+      0.7199413489736071
+    ],
+    "accuracy_wilson_parsed": [
+      0.6793415685018052,
+      0.7190314975809351
+    ],
+    "error_rate": [
+      0.28005865102639294,
+      0.3212929864015938
+    ],
+    "parse_rate": [
+      0.99853515625,
+      1.0
+    ],
+    "parse_rate_wilson": [
+      0.9972392640467791,
+      0.9999138011690629
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "all_in_a100_seconds": 241.0820030645276,
+  "component_timing": {
+    "attempt_id": "screen::Qwen--Qwen3-8B::civil_comments::0000::cc2542051aaea7c9::attempt::1",
+    "method": "one_token_wall_differencing_single_call",
+    "prompt_plus_first_token_seconds": 0.02064015000001973,
+    "remaining_generation_seconds": 0.3127738099999817,
+    "scope": "single_call_probe_only"
+  },
+  "failure_rate": 0.0,
+  "generation_failures": 0,
+  "loading_a100_seconds": 184.08251926741323,
+  "model_id": "Qwen/Qwen3-8B",
+  "output_tokens": 22317,
+  "projected_model_screen_base_a100_hours": 0.24569227115732076,
+  "projected_model_screen_guarded_a100_hours": 0.3931076338517132,
+  "prompt_tokens": 219537,
+  "real_calls": 1000,
+  "technical_only": true
+}

@@ -1,0 +1,55 @@
+{
+  "accuracy": 0.10909090909090909,
+  "admitted": false,
+  "cell_key": "Qwen/Qwen3-8B::go_emotions",
+  "error_rate": 0.8909090909090909,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "label_micro_f1": 0.18330019880715706,
+  "majority_exact_baseline": 0.2958984375,
+  "model_id": "Qwen/Qwen3-8B",
+  "parse_rate": 0.99365234375,
+  "reasons": [
+    "error_information_outside_0.05_to_0.80",
+    "exact_set_accuracy_below_baseline_plus_0.05",
+    "label_micro_f1_below_0.35"
+  ],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "go_emotions",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.09602732841064954,
+      0.12304677337765571
+    ],
+    "accuracy_wilson_parsed": [
+      0.09627524014894405,
+      0.1233796314366742
+    ],
+    "error_rate": [
+      0.8769532266223443,
+      0.9039726715893506
+    ],
+    "label_micro_f1": [
+      0.1679350722664324,
+      0.1986168053672768
+    ],
+    "majority_exact_baseline": [
+      0.27537841796875,
+      0.31640625
+    ],
+    "parse_rate": [
+      0.990234375,
+      0.99658203125
+    ],
+    "parse_rate_wilson": [
+      0.9891696411423112,
+      0.9962866139243713
+    ]
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "execution": {
+    "blocks_are_never_split_across_workers": true,
+    "chunk_size": 32,
+    "deviation_from_sealed_serving_hardware": true,
+    "first_reforecast_barrier_calls": 1000,
+    "max_concurrent_workers": 2,
+    "note": "execution settings are excluded from plan_sha256 because they change no call, no prompt, and no order. Concurrency above one worker is recorded in the step2-bridge-concurrency amendment before any output exists.",
+    "results_namespace": "ece39ce0d454df14",
+    "sealed_serving_hardware": "one NVIDIA A100, one at a time"
+  },
+  "execution_blocks": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "fake_batch": {
+    "creates_calls": false,
+    "note": "no new calls. Independently produced exact-context labels are regrouped with the frozen assignment generator, then the identical statistic is recomputed."
+  },
+  "forecast": {
+    "adjusted_base_a100_hours": 1.5550152979597907,
+    "adjusted_guarded_a100_hours": 2.4880244767356654,
+    "block_id": "e1::qwen3-8b::civil_comments",
+    "extra_serving_session_loads": 7,
+    "fresh_calls": 12672,
+    "note": "the freeze requires a fresh serving session for every execution block, so the sealed one-load forecast is raised by one model load per extra block",
+    "sealed_base_a100_hours": 1.124950975115302,
+    "single_load_a100_hours": 0.06143776040635553,
+    "synthetic_only": true
+  },
+  "freeze": {
+    "cell_id": "qwen_civil",
+    "decoding": {
+      "max_tokens_base": 64,
+      "max_tokens_formula": "max_tokens_base + max_tokens_per_label * n_requested_labels",
+      "max_tokens_per_label": 20,
+      "rule": "greedy",
+      "seed": 0,
+      "temperature": 0.0,
+      "top_k": -1,
+      "top_p": 1.0
+    },
+    "freeze_dir": "/Users/dz/bigdata/study-120h/freeze/20260912T041633Z",
+    "freeze_stamp": "20260912T041633Z",
+    "model_id": "Qwen/Qwen3-8B",
+    "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "protocol_content_hash": "218c5bcaa30f4f93c8d516f85f29ad8b7fb3be90f40238c2f3faf837ce611e15",
+    "seal_verified": true,
+    "serving": {
+      "dtype": "bfloat16",
+      "engine": "vllm",
+      "engine_pin_evidence": "pins/engine_pin.json in this freeze directory",
+      "engine_pin_retrieved_utc": "2026-09-11",
+      "engine_pin_rule": "Step 1 installs exactly this version and records the installed version string. A different engine or version voids this freeze and requires a new freeze.",
+      "engine_pin_source": "https://pypi.org/pypi/vllm/0.28.0/json",
+      "engine_version_pin": "vllm==0.28.0",
+      "engine_wheel_pin": "vllm-0.28.0-cp38-abi3-manylinux_2_28_x86_64.whl",
+      "gpu_memory_utilization": 0.9,
+      "hardware": "one NVIDIA A100, one at a time",
+      "max_model_len": 8192,
+      "max_num_seqs": 64,
+      "note": "the serving engine and its version are pinned here, before any output exists. Only the host facts listed in recorded_from_the_step_1_host are written at Step 1, because they are properties of the machine and not design choices. No other protocol field may be completed after this freeze.",
+      "recorded_from_the_step_1_host": [
+        "cuda_version",
+        "driver_version",
+        "gpu_name",
+        "gpu_uuid",
+        "torch_version",
+        "installed_engine_version_string"
+      ],
+      "tensor_parallel_size": 1
+    },
+    "task_id": "civil_comments"
+  },
+  "fresh_call_ids_sha256": "d3c5e1c1426bf3303033cdb0390cfed1ab7e95cf0e0720ab837684116c878675",
+  "fresh_calls_by_condition": {
+    "exact_context": 6144,
+    "filler": 6144,
+    "joint": 384
+  },
+  "fresh_calls_total": 12672,
+  "fresh_serving_session_per_block": true,
+  "plan_sha256": "ece39ce0d454df1434b7c0f8b199443c062180bb0547a964d3cd1e6b59e237a4",
+  "preflight": {
+    "checked_at_utc": "2026-09-12T20:54:35.579390+00:00",
+    "counter": "pinned_tokenizer",
+    "max_prompt_tokens_by_condition": {
+      "exact_context": 1821.0,
+      "filler": 1848.0,
+      "joint": 2084.0
+    },
+    "n_calls_checked": 14720,
+    "n_over_budget": 0,
+    "source": "step1_exact_tokenizer_preflight"
+  },
+  "retry_policy": {
+    "max_retries": 1,
+    "triggers": [
+      "missing",
+      "truncated"
+    ]
+  },
+  "schema_version": "step2-bridge-plan-v1",
+  "sealed_condition_counts": {
+    "exact_context": 6144,
+    "filler": 6144,
+    "joint": 384,
+    "solo": 2048
+  },
+  "separate_from_freeze_b": true,
+  "serving_controls": {
+    "applies_to_this_cell": false,
+    "cells_named_by_the_freeze": [
+      "mistral_secondtask"
+    ],
+    "control": "serial_serving",
+    "engine_setting": "max_num_seqs = 1",
+    "note": "the freeze gives the serial-serving control to mistral_secondtask only, so it creates no call in this bridge and max_num_seqs stays at the frozen value",
+    "planned_calls_for_this_cell": {}
+  },
+  "solo_reuse": {
+    "call_ids_sha256": "14d9ba26587148c9391092c7892a212fc4fe346aa4dc622072b518c74e2575e6",
+    "ledger_sha256": "2cf12e516594d8dfefb4a8cf4cfe10c545964f5a0f3032a909e0250032d65943",
+    "n_calls": 2048,
+    "n_rows": 2048,
+    "note": "Step 1 produced these first responses; the bridge reads them and adds none",
+    "path": "/Users/dz/bigdata/study-120h/step1-out/results/qwen_civil__civil_comments__Qwen_Qwen3-8B/solo.jsonl",
+    "rerun": false,
+    "reused": true
+  },
+  "stage": "historical_replication_bridge",
+  "stop_a100_hours": 150.0,
+  "within_block_order": "ascending execution_order_key"
+}

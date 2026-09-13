@@ -1,0 +1,22 @@
+{
+  "benchmark_run_id": "20260912T233301Z-5738ea84",
+  "contains_scientific_model_outputs": false,
+  "contains_synthetic_model_outputs": false,
+  "created_at_utc": "2026-09-13T00:40:54.534754+00:00",
+  "files_sha256": {
+    "LEDGER.json": "8646e76d7c81a00d0868b1cf49849d3a87499b3e4105b54011bea7b9622e1fff",
+    "RUNTIME_LEDGER.md": "321bc87778aab777ff70705f8d93f7131abbbd61065af520b5119c635a601b74",
+    "benchmark/checkpoint-manifests.json": "b57ec1adc6804663aaece518dda91e44d6a0c5f2da6cbb9b3a242761cf715903",
+    "benchmark/plan.json": "80d29abc71068e5cfc2188fed54383fcffa32bbb412010b74ea52d652761fce1",
+    "benchmark/report.json": "7c3410c9274e5b840fe0c22aa501b48523e7af1dd7e13564cf567eb551919247",
+    "benchmark/runtime-observations.json": "fa6b40583bb864f58ad43a98836230971687e46cc95cf5f98cac2fc3c3c0b1e1",
+    "benchmark/workers.json": "1157901c5694f00f96b36060fe1f31a750c6764a1cd73a17ac486e4caa8182d3",
+    "source_snapshot/seal_freezeb_runtime.py": "0a9f89b5aa5cd096672a406da071a373aee624d45f9b7f8ce36120835a527671",
+    "source_snapshot/src/freezeb/runtime_benchmark.py": "eaebf821e65f9873a5a53da2bb8d301b317a5495b60bb1d96d60b05b28a4c025",
+    "source_snapshot/src/freezeb/runtime_ledger.py": "f079df9c6d623a47187efc3035296bc6da682a4b3242812a2c74440f7d33ddbd",
+    "source_snapshot/tests/test_freezeb_runtime_benchmark.py": "c586674c5f2fe00cab1d2209ec8f4ec9bdb31e37b6dba52f86497b568c20016a",
+    "source_snapshot/tests/test_freezeb_runtime_ledger.py": "9d4f683acd3e54888eaa3f2fa34b94de42197a4b5fc8ab43c64d7936434d9705"
+  },
+  "seal_kind": "Freeze B benchmark-derived runtime ledger",
+  "status": "sealed_with_declared_instrumentation_gap"
+}

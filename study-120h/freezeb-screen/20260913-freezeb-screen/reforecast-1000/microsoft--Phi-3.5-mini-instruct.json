@@ -1,0 +1,20 @@
+{
+  "all_in_a100_seconds": 175.23272194387405,
+  "component_timing": {
+    "attempt_id": "screen::microsoft--Phi-3.5-mini-instruct::civil_comments::0000::cc2542051aaea7c9::attempt::1",
+    "method": "one_token_wall_differencing_single_call",
+    "prompt_plus_first_token_seconds": 0.03093021899999826,
+    "remaining_generation_seconds": 0.22088374199999805,
+    "scope": "single_call_probe_only"
+  },
+  "failure_rate": 0.0,
+  "generation_failures": 0,
+  "loading_a100_seconds": 123.27151869794659,
+  "model_id": "microsoft/Phi-3.5-mini-instruct",
+  "output_tokens": 23813,
+  "projected_model_screen_base_a100_hours": 0.2116029956066398,
+  "projected_model_screen_guarded_a100_hours": 0.3385647929706237,
+  "prompt_tokens": 238488,
+  "real_calls": 1000,
+  "technical_only": true
+}

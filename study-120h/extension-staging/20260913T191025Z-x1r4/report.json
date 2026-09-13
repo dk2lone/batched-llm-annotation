@@ -1,0 +1,43 @@
+{
+  "gpu_used": false,
+  "modal_app_id": "ap-UVp2mksiole365o4QkFPuF",
+  "modal_profile": "daniel21cn2016",
+  "models": [
+    {
+      "bytes": 16069780550,
+      "excluded_alternative_files": [
+        "original/consolidated.00.pth",
+        "original/params.json",
+        "original/tokenizer.model"
+      ],
+      "file_count": 14,
+      "lfs_hashes_verified": 4,
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+    },
+    {
+      "bytes": 14499392853,
+      "excluded_alternative_files": [
+        "consolidated.safetensors"
+      ],
+      "file_count": 14,
+      "lfs_hashes_verified": 4,
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "revision": "c170c708c41dac9275d15a8fff4eca08d52bab71"
+    },
+    {
+      "bytes": 7694054130,
+      "excluded_alternative_files": [],
+      "file_count": 21,
+      "lfs_hashes_verified": 3,
+      "model_id": "microsoft/Phi-4-mini-instruct",
+      "revision": "cfbefacb99257ffa30c83adab238a50856ac3083"
+    }
+  ],
+  "note": "A transient Modal secret supplied a fine-grained public-gated-repository read token; no credential value is retained in this artifact.",
+  "recorded_at_utc": "2026-09-13T19:10:25.880108+00:00",
+  "schema_version": "x1r4-checkpoint-staging-v1",
+  "seal_manifest_sha256": "3838c6e201388480eb08aa48e04a1ef3a5af6a86fac5d920e9837459382677d2",
+  "source_sha256": "4cdf6612b84e33358acdea1edabd30a572caa0b8f929926f60221ddd2f8b7d98",
+  "volume": "ieee-bigdata-freezeb-models"
+}

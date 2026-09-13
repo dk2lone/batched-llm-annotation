@@ -1,0 +1,1592 @@
+{
+  "aggregate_proxy_a100_hours": 0.8304530872914054,
+  "case_summaries": [
+    {
+      "attempts": 2,
+      "case_id": "ag_news::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 152,
+      "median_latency_seconds": 0.12581185699998798,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 3456,
+      "median_latency_seconds": 0.1365661935000162,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 3607,
+      "median_latency_seconds": 1.442707833,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 6800,
+      "median_latency_seconds": 0.1500678155000088,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 7111,
+      "median_latency_seconds": 2.966143239499999,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 157,
+      "median_latency_seconds": 0.13041074450001133,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 3461,
+      "median_latency_seconds": 0.1391054930000024,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 3612,
+      "median_latency_seconds": 1.4423544614999884,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 6805,
+      "median_latency_seconds": 0.15082721849999814,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 7116,
+      "median_latency_seconds": 2.9671028104999806,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::short::joint",
+      "failures": 0,
+      "max_output_tokens": 16,
+      "max_prompt_tokens": 282,
+      "median_latency_seconds": 0.1427143265000126,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 16,
+      "max_prompt_tokens": 3586,
+      "median_latency_seconds": 0.15623317700001849,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 165,
+      "max_prompt_tokens": 3737,
+      "median_latency_seconds": 1.451343713500009,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 16,
+      "max_prompt_tokens": 6930,
+      "median_latency_seconds": 0.17188174999999717,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 357,
+      "max_prompt_tokens": 7241,
+      "median_latency_seconds": 3.2649429989999987,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 143,
+      "median_latency_seconds": 0.12644033700000534,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 9719,
+      "median_latency_seconds": 0.16578191000000686,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 9870,
+      "median_latency_seconds": 1.5681185809999931,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 19335,
+      "median_latency_seconds": 0.20642348399999833,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 19646,
+      "median_latency_seconds": 3.400914810499998,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 153,
+      "median_latency_seconds": 0.126184542499999,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 3457,
+      "median_latency_seconds": 0.13674699150000436,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 3608,
+      "median_latency_seconds": 1.4407920794999995,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 6801,
+      "median_latency_seconds": 0.1492735794999902,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 7112,
+      "median_latency_seconds": 2.9654262294999967,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::short::joint",
+      "failures": 0,
+      "max_output_tokens": 51,
+      "max_prompt_tokens": 331,
+      "median_latency_seconds": 0.4317004675000078,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 305,
+      "max_prompt_tokens": 3889,
+      "median_latency_seconds": 2.6736517310000067,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 4805,
+      "max_prompt_tokens": 8390,
+      "median_latency_seconds": 45.25634700150002,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 305,
+      "max_prompt_tokens": 7233,
+      "median_latency_seconds": 2.7901961374999757,
+      "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 156,
+      "median_latency_seconds": 0.20378489299999103,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 3460,
+      "median_latency_seconds": 0.2098157964999956,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 3611,
+      "median_latency_seconds": 2.2472779579999838,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 6804,
+      "median_latency_seconds": 0.2213932279999966,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 7115,
+      "median_latency_seconds": 4.548588666499995,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 161,
+      "median_latency_seconds": 0.20133102100000144,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 3465,
+      "median_latency_seconds": 0.20950004199998773,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 3616,
+      "median_latency_seconds": 2.247906763000003,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 6809,
+      "median_latency_seconds": 0.23207853249999744,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 7120,
+      "median_latency_seconds": 4.554118895500011,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::short::joint",
+      "failures": 0,
+      "max_output_tokens": 16,
+      "max_prompt_tokens": 286,
+      "median_latency_seconds": 0.22548000399996226,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 16,
+      "max_prompt_tokens": 3590,
+      "median_latency_seconds": 0.23679202150000833,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 165,
+      "max_prompt_tokens": 3741,
+      "median_latency_seconds": 2.2620903294999835,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 16,
+      "max_prompt_tokens": 6934,
+      "median_latency_seconds": 0.2545610585000304,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 325,
+      "max_prompt_tokens": 7245,
+      "median_latency_seconds": 4.565421856499995,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 147,
+      "median_latency_seconds": 0.19938208750001252,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 9723,
+      "median_latency_seconds": 0.2351655274999871,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 9874,
+      "median_latency_seconds": 2.372687763999977,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 19339,
+      "median_latency_seconds": 0.27996921350001003,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 19650,
+      "median_latency_seconds": 5.001200226499975,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 157,
+      "median_latency_seconds": 0.19962886899999432,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 3461,
+      "median_latency_seconds": 0.20991456149999976,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 3612,
+      "median_latency_seconds": 2.2474083524999884,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 6805,
+      "median_latency_seconds": 0.22567854899999418,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 7116,
+      "median_latency_seconds": 4.5523780019999975,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::short::joint",
+      "failures": 0,
+      "max_output_tokens": 51,
+      "max_prompt_tokens": 335,
+      "median_latency_seconds": 0.6864163845000348,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 794,
+      "max_prompt_tokens": 3893,
+      "median_latency_seconds": 10.837583558999938,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 11744,
+      "max_prompt_tokens": 8394,
+      "median_latency_seconds": 172.158768869,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 794,
+      "max_prompt_tokens": 7237,
+      "median_latency_seconds": 11.12909440499999,
+      "model_id": "Qwen/Qwen3-8B",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::short::joint",
+      "failures": 0,
+      "max_output_tokens": 13,
+      "max_prompt_tokens": 150,
+      "median_latency_seconds": 0.1703694960000064,
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 13,
+      "max_prompt_tokens": 3057,
+      "median_latency_seconds": 0.19958183350000525,
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 148,
+      "max_prompt_tokens": 3193,
+      "median_latency_seconds": 2.120695513000001,
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::short::joint",
+      "failures": 0,
+      "max_output_tokens": 13,
+      "max_prompt_tokens": 155,
+      "median_latency_seconds": 0.1681611564999912,
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 13,
+      "max_prompt_tokens": 3062,
+      "median_latency_seconds": 0.19921822199999895,
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 148,
+      "max_prompt_tokens": 3198,
+      "median_latency_seconds": 2.121339797499985,
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 262,
+      "median_latency_seconds": 0.18236806400000205,
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 3169,
+      "median_latency_seconds": 0.21493662099999256,
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::short::joint",
+      "failures": 0,
+      "max_output_tokens": 13,
+      "max_prompt_tokens": 141,
+      "median_latency_seconds": 0.16804665600000135,
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::short::joint",
+      "failures": 0,
+      "max_output_tokens": 13,
+      "max_prompt_tokens": 151,
+      "median_latency_seconds": 0.16913021399999195,
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 13,
+      "max_prompt_tokens": 3058,
+      "median_latency_seconds": 0.19922848550000083,
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 148,
+      "max_prompt_tokens": 3194,
+      "median_latency_seconds": 2.1204605589999943,
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::short::joint",
+      "failures": 0,
+      "max_output_tokens": 50,
+      "max_prompt_tokens": 307,
+      "median_latency_seconds": 0.6099110254999971,
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 164,
+      "median_latency_seconds": 0.10055638699999747,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 3497,
+      "median_latency_seconds": 0.10841687199999228,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 3648,
+      "median_latency_seconds": 1.1004320440000015,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 6873,
+      "median_latency_seconds": 0.12368072899998594,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 7184,
+      "median_latency_seconds": 2.241746941499983,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 177,
+      "median_latency_seconds": 0.10355916700000023,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 3510,
+      "median_latency_seconds": 0.10969116950001023,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 3661,
+      "median_latency_seconds": 1.0999595604999968,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 6886,
+      "median_latency_seconds": 0.12211454799998478,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 7197,
+      "median_latency_seconds": 2.2467006575,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 324,
+      "median_latency_seconds": 0.10189503599998773,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 3657,
+      "median_latency_seconds": 0.11023078750001503,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 3808,
+      "median_latency_seconds": 1.1020895300000007,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 7033,
+      "median_latency_seconds": 0.12301259750000781,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 7344,
+      "median_latency_seconds": 2.246249962499988,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 155,
+      "median_latency_seconds": 0.1014657324999888,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 9760,
+      "median_latency_seconds": 0.13236548550000293,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 9911,
+      "median_latency_seconds": 1.1799431984999984,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 19408,
+      "median_latency_seconds": 0.17256713800000512,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 19719,
+      "median_latency_seconds": 2.5268245485000023,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 169,
+      "median_latency_seconds": 0.09982239150001249,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 3502,
+      "median_latency_seconds": 0.1096309584999915,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 3653,
+      "median_latency_seconds": 1.0993802290000048,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 6878,
+      "median_latency_seconds": 0.12425771699999189,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 7189,
+      "median_latency_seconds": 2.2474614945000013,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::short::joint",
+      "failures": 0,
+      "max_output_tokens": 50,
+      "max_prompt_tokens": 347,
+      "median_latency_seconds": 0.330130532499993,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 304,
+      "max_prompt_tokens": 3934,
+      "median_latency_seconds": 2.033058615000016,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 4804,
+      "max_prompt_tokens": 8435,
+      "median_latency_seconds": 33.838407239000006,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 304,
+      "max_prompt_tokens": 7310,
+      "median_latency_seconds": 2.1090545914999836,
+      "model_id": "ibm-granite/granite-3.3-2b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 164,
+      "median_latency_seconds": 0.2146878310000062,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 3497,
+      "median_latency_seconds": 0.2268395130000016,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 3648,
+      "median_latency_seconds": 2.4285528449999987,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 6873,
+      "median_latency_seconds": 0.23997559250000222,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 7184,
+      "median_latency_seconds": 4.9090364054999895,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 177,
+      "median_latency_seconds": 0.21586162049999302,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 3510,
+      "median_latency_seconds": 0.2254685375000065,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 3661,
+      "median_latency_seconds": 2.4247503335000005,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 6886,
+      "median_latency_seconds": 0.23596205150001026,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 7197,
+      "median_latency_seconds": 4.912095777499999,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 324,
+      "median_latency_seconds": 0.21658992499999385,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 3657,
+      "median_latency_seconds": 0.22780175249999957,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 3808,
+      "median_latency_seconds": 2.432106637000004,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 7033,
+      "median_latency_seconds": 0.2428441019999923,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 7344,
+      "median_latency_seconds": 4.935855416499976,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 155,
+      "median_latency_seconds": 0.21482123999999203,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 9760,
+      "median_latency_seconds": 0.2536191350000081,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 9911,
+      "median_latency_seconds": 2.564834694500007,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 19408,
+      "median_latency_seconds": 0.3064178770000012,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 19719,
+      "median_latency_seconds": 5.401772838499994,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::short::joint",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 169,
+      "median_latency_seconds": 0.2159143470000089,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 3502,
+      "median_latency_seconds": 0.22653365049998797,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 164,
+      "max_prompt_tokens": 3653,
+      "median_latency_seconds": 2.425502336500003,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 14,
+      "max_prompt_tokens": 6878,
+      "median_latency_seconds": 0.23684998250000433,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 324,
+      "max_prompt_tokens": 7189,
+      "median_latency_seconds": 4.9130960305,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::short::joint",
+      "failures": 0,
+      "max_output_tokens": 50,
+      "max_prompt_tokens": 347,
+      "median_latency_seconds": 0.7272110989999874,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 192,
+      "max_prompt_tokens": 3934,
+      "median_latency_seconds": 2.840982342000018,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 6148,
+      "max_prompt_tokens": 8435,
+      "median_latency_seconds": 95.62347719750002,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 192,
+      "max_prompt_tokens": 7310,
+      "median_latency_seconds": 2.9241331650000006,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::short::joint",
+      "failures": 0,
+      "max_output_tokens": 16,
+      "max_prompt_tokens": 161,
+      "median_latency_seconds": 0.11841743749999978,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 15,
+      "max_prompt_tokens": 3909,
+      "median_latency_seconds": 0.15152353950000474,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 180,
+      "max_prompt_tokens": 4073,
+      "median_latency_seconds": 1.6366960295000013,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 15,
+      "max_prompt_tokens": 7701,
+      "median_latency_seconds": 0.19990793600000245,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "ag_news::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 356,
+      "max_prompt_tokens": 8041,
+      "median_latency_seconds": 4.247747146499989,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::short::joint",
+      "failures": 0,
+      "max_output_tokens": 16,
+      "max_prompt_tokens": 174,
+      "median_latency_seconds": 0.1232641734999973,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 15,
+      "max_prompt_tokens": 3922,
+      "median_latency_seconds": 0.15421581499999348,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 181,
+      "max_prompt_tokens": 4086,
+      "median_latency_seconds": 1.6465863395000042,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 15,
+      "max_prompt_tokens": 7714,
+      "median_latency_seconds": 0.20259177599999845,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "civil_comments::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 356,
+      "max_prompt_tokens": 8054,
+      "median_latency_seconds": 4.250925611500001,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::short::joint",
+      "failures": 0,
+      "max_output_tokens": 17,
+      "max_prompt_tokens": 316,
+      "median_latency_seconds": 0.1268488440000084,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 17,
+      "max_prompt_tokens": 4064,
+      "median_latency_seconds": 0.17218856499999902,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 181,
+      "max_prompt_tokens": 4228,
+      "median_latency_seconds": 1.667903689499994,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 16,
+      "max_prompt_tokens": 7856,
+      "median_latency_seconds": 0.21495654549998733,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "go_emotions::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 356,
+      "max_prompt_tokens": 8196,
+      "median_latency_seconds": 4.293166021499985,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::short::joint",
+      "failures": 0,
+      "max_output_tokens": 16,
+      "max_prompt_tokens": 151,
+      "median_latency_seconds": 0.11882943399999135,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 15,
+      "max_prompt_tokens": 10939,
+      "median_latency_seconds": 0.2362044054999899,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 180,
+      "max_prompt_tokens": 11103,
+      "median_latency_seconds": 2.549073783499992,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 15,
+      "max_prompt_tokens": 21771,
+      "median_latency_seconds": 0.37411787849998746,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "imdb::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 356,
+      "max_prompt_tokens": 22111,
+      "median_latency_seconds": 7.874096813999998,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::short::joint",
+      "failures": 0,
+      "max_output_tokens": 16,
+      "max_prompt_tokens": 163,
+      "median_latency_seconds": 0.11651979900000242,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 16,
+      "max_prompt_tokens": 3911,
+      "median_latency_seconds": 0.16105687499998567,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 241,
+      "max_prompt_tokens": 4075,
+      "median_latency_seconds": 2.1874068584999975,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 16,
+      "max_prompt_tokens": 7703,
+      "median_latency_seconds": 0.21066336149999643,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multi_nli::size32::joint",
+      "failures": 0,
+      "max_output_tokens": 408,
+      "max_prompt_tokens": 8043,
+      "median_latency_seconds": 4.875466297000003,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::short::joint",
+      "failures": 0,
+      "max_output_tokens": 53,
+      "max_prompt_tokens": 353,
+      "median_latency_seconds": 0.35273280200000556,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::size16::exact_context",
+      "failures": 0,
+      "max_output_tokens": 349,
+      "max_prompt_tokens": 4355,
+      "median_latency_seconds": 3.2416440690000172,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::size16::joint",
+      "failures": 0,
+      "max_output_tokens": 5456,
+      "max_prompt_tokens": 8869,
+      "median_latency_seconds": 77.90587688850002,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    },
+    {
+      "attempts": 2,
+      "case_id": "multinerd::size32::exact_context",
+      "failures": 0,
+      "max_output_tokens": 365,
+      "max_prompt_tokens": 8147,
+      "median_latency_seconds": 4.383597713999961,
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "successes": 2
+    }
+  ],
+  "concurrent_gpu_workers": 6,
+  "cost_ceiling": "Modal workspace hard spending limit",
+  "models_attempted": 6,
+  "plan_sha256": "b25109c0877d1b482dd5124984fd464e4c210c7f910a7fe4df6ff65a6731e26d",
+  "run_id": "20260912T233301Z-5738ea84",
+  "schema_version": "freezeb-runtime-benchmark-v1",
+  "synthetic_only": true
+}

@@ -1,0 +1,42 @@
+{
+  "attempt_id": "screen::Qwen--Qwen3-8B::civil_comments::0000::cc2542051aaea7c9::attempt::1",
+  "fallback_one_token_call": {
+    "backend": {
+      "backend": "vllm",
+      "dtype": "bfloat16",
+      "enable_thinking": false,
+      "gpu_memory_utilization": 0.9,
+      "max_model_len": 32768,
+      "max_num_seqs": 32,
+      "model_id": "Qwen/Qwen3-8B",
+      "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "seed": 20260912,
+      "tensor_parallel_size": 1,
+      "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218"
+    },
+    "finish_reason": "length",
+    "first_response": "{\"",
+    "host": {
+      "cuda_version": "13.0",
+      "driver_version": "580.95.05",
+      "gpu_name": "NVIDIA A100-SXM4-40GB",
+      "gpu_uuid": "GPU-415f08a5-6291-2693-423a-890a65b3181a",
+      "installed_engine_version_string": "0.28.0",
+      "torch_version": "2.13.0+cu130"
+    },
+    "kind": "timing_probe",
+    "output_tokens": 1,
+    "prompt_tokens": 227,
+    "session_elapsed_seconds": 166.799568805,
+    "wall_seconds": 0.02064015000001973,
+    "worker_session_id": "753c0e470f2745db9c8e7edfcee56cca"
+  },
+  "method": "one_token_wall_differencing_single_call",
+  "model_id": "Qwen/Qwen3-8B",
+  "prompt_plus_first_token_seconds": 0.02064015000001973,
+  "raw_vllm_decode_seconds": null,
+  "raw_vllm_prefill_seconds": null,
+  "remaining_generation_seconds": 0.3127738099999817,
+  "scope": "single_call_probe_only",
+  "usable": true
+}

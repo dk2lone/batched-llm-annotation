@@ -5,12 +5,13 @@ from __future__ import annotations
 import importlib.util
 import sys
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Any
 
 import pytest
 
 from step1.amendment import build as build_amendment
-from step1.backends import CharEstimateCounter, FakeBackend, token_ids_length
+from step1.backends import CharEstimateCounter, FakeBackend, request_timing, token_ids_length
 from step1.frozen import load
 from step1.ledger import ROW_FIELDS, LedgerError, append, append_run, validate
 from step1.paths import Paths
@@ -30,6 +31,15 @@ def test_token_count_handles_batch_encoding_shape() -> None:
     assert token_ids_length([1, 2, 3]) == 3
     assert token_ids_length({"input_ids": [1, 2, 3]}) == 3
     assert token_ids_length({"input_ids": [[1, 2, 3]]}) == 3
+
+
+def test_request_timing_supports_vllm_v1_and_legacy_fields() -> None:
+    v1 = SimpleNamespace(queued_ts=1.0, scheduled_ts=1.2,
+                         first_token_ts=1.7, last_token_ts=2.5)
+    legacy = SimpleNamespace(time_in_queue=0.2, first_scheduled_time=1.2,
+                             first_token_time=1.7, finished_time=2.5)
+    assert request_timing(v1) == pytest.approx((0.2, 0.5, 0.8))
+    assert request_timing(legacy) == pytest.approx((0.2, 0.5, 0.8))
 
 
 @pytest.fixture(scope="module")

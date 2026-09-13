@@ -1,0 +1,33 @@
+{
+  "calls": 73728,
+  "chunk_size": 32,
+  "frame_sha256": {
+    "ag_news": "b7af8028dabf27f310b9ed0f07974d7aa144a787141f020f121b4cd90d899d72",
+    "civil_comments": "8e290e5c1d519ad88bc2c99e8e46aa838eca17474e77d7b988e2593f28d62577",
+    "go_emotions": "378959673af3ad423e3936d039e1896f4ccb761d29636f824d6958ae4c3838bb",
+    "imdb": "dc07e5527857d6978d07e9d079a0d7e1f1c30752fc4a811b0b35f93949131028",
+    "multi_nli": "3f4259ee4378ff5d416abec868f617a7f2422ca577bf2dceaf4aff56bc1c8b7b",
+    "multinerd": "5477051ad39e132e3794bc9ea3c05b8d3cad961cfa16e5091f7cb4fe23d77f3d"
+  },
+  "full_base_forecast_a100_hours": 5.3189041094298135,
+  "models": [
+    "Qwen/Qwen3-8B",
+    "allenai/OLMo-2-1124-7B-Instruct",
+    "ibm-granite/granite-3.3-8b-instruct",
+    "microsoft/Phi-3.5-mini-instruct",
+    "Qwen/Qwen3-4B-Instruct-2507",
+    "ibm-granite/granite-3.3-2b-instruct"
+  ],
+  "plan_sha256": "0e4fd8b4022d3a23239a6e1d0637030e10b6e673bc82aed2c9d45c574851f9fd",
+  "runtime_lock": "runtime-lock/20260913T004054Z-BRT1/LEDGER.json",
+  "schema_version": "freezeb-solo-screen-plan-v1",
+  "solo_only": true,
+  "tasks": [
+    "civil_comments",
+    "ag_news",
+    "multi_nli",
+    "imdb",
+    "go_emotions",
+    "multinerd"
+  ]
+}

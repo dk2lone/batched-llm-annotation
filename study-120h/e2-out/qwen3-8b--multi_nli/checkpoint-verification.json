@@ -1,0 +1,9 @@
+{
+  "model_id": "Qwen/Qwen3-8B",
+  "n_files": 15,
+  "n_files_hash_verified": 15,
+  "n_files_size_verified_only": 0,
+  "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "source": "runtime-lock/20260913T004054Z-BRT1 checkpoint manifest",
+  "volume": "ieee-bigdata-freezeb-models"
+}

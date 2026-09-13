@@ -1,0 +1,43 @@
+{
+  "accuracy": 0.8008752735229759,
+  "admitted": false,
+  "cell_key": "microsoft/Phi-3.5-mini-instruct::imdb",
+  "error_rate": 0.19912472647702406,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "model_id": "microsoft/Phi-3.5-mini-instruct",
+  "parse_rate": 0.66943359375,
+  "reasons": [
+    "parse_rate_below_0.98"
+  ],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "imdb",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.77975560769965,
+      0.82145854809026
+    ],
+    "accuracy_wilson_parsed": [
+      0.7789089019532848,
+      0.8211602876299747
+    ],
+    "error_rate": [
+      0.17854145190973997,
+      0.22024439230034998
+    ],
+    "parse_rate": [
+      0.64794921875,
+      0.68896484375
+    ],
+    "parse_rate_wilson": [
+      0.6487594617763811,
+      0.6894732983701458
+    ]
+  }
+}

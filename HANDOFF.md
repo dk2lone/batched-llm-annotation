@@ -1,8 +1,404 @@
 # IEEE BigData 2026 research-idea handoff
 
-Updated: 2026-09-12.
+Updated: 2026-09-13.
 
-## Current handoff: Step 1 complete; model and task claims narrowed
+## Current handoff: X1R4 synthetic gate passed; no extension scientific output
+
+The cross-family X1R4 synthetic batch-invariance preflight is complete. Run
+`20260913T191010Z-4807e7d1` checked all five pinned model families across 360 events and 20
+anchor comparisons in two fresh sessions per model. The report status is `passed`, its sealed plan
+SHA256 is `167ce1fb6fd7e279559991b522df961529c87a8fdee29502ce20f9e7bd067188`, and it used
+0.811174 metered A100-hours. This was synthetic validation only and produced no extension study
+labels.
+
+The Llama, Mistral, and Phi checkpoints were staged at their pinned revisions without GPU use.
+The staging record retains hashes and byte counts, not model weights or credentials. The technical
+runtime amendment changes Modal's container scale-down window from one second to the supported
+two-second minimum and does not change any scientific schedule.
+
+The extension still needs its signed runtime/access lock before its solo screen can begin. Freeze B
+is unchanged: the Granite-8B/Civil Comments E2 cell remains implemented but unlaunched, and the
+analysis code's hardcoded first-cell defect must be fixed before that second cell can be analyzed.
+
+## Previous handoff: cross-family extension X1R4 CPU protocol sealed
+
+Daniel authorized A1, the complete CPU freeze for the cross-family extension. That work is done.
+The extension is a **new, separate** study from Freeze B. Freeze B admitted only Qwen and Granite
+cells and its admission lock records `recurrence_claim_not_supported`. Qwen and Granite joint
+results are already open, so the extension is disclosed as new work on new untouched frames. It
+does not rewrite or extend the Freeze B claim family.
+
+The active seal is [`study-120h/freeze/20260913T183353Z-X1R4/`](study-120h/freeze/20260913T183353Z-X1R4/),
+with manifest SHA256 `3838c6e201388480eb08aa48e04a1ef3a5af6a86fac5d920e9837459382677d2` and
+identity SHA256 `42d88c5212e46640caf49032264b420a71bdfc2064792eee6681e905c4201492`. It hashes 55
+files and contains no dataset text, no model output, and no credential. The readable protocol is
+[`study-120h/EXTENSION_PROTOCOL.md`](study-120h/EXTENSION_PROTOCOL.md).
+
+Four earlier CPU seals remain preserved but are superseded. X1 fixed only cell-block order, used a
+Freeze B power seed despite recording an extension namespace, and hardcoded Llama as non-runnable.
+X1R1 fixed those defects but its aggregate B4 evaluation digests did not bind sampled document
+order. X1R2 bound the exact M1 prompt order, every B3 prompt/composition/order, and every B4 sampled
+document order. X1R3 added a vLLM batch-invariance gate but did not validate the reported worker
+revision, anchor ID, or request layout against its frozen plan. X1R4 inherits every X1R2 scientific
+schedule hash unchanged and adds the complete fail-closed batch-invariance gate before any
+extension output exists.
+
+X1R4 requires `VLLM_BATCH_INVARIANT=1` before vLLM imports and fails closed when it is absent. Its
+sealed plan SHA256 is `167ce1fb6fd7e279559991b522df961529c87a8fdee29502ce20f9e7bd067188`.
+For each attempted checkpoint, it compares identical synthetic prompts at request batch sizes 1,
+2, 8, 16, and 32 in both orders across two fresh sessions. The signed runtime/access lock must
+bind a passing report. Validation checks the checkpoint and tokenizer revisions, anchor identity,
+request batch size and order, vLLM version, A100 type, and serving settings. This removes GPU
+request-batch numerics as an uncontrolled difference between joint and separate-call conditions;
+the hardware preflight itself has not run.
+
+**Zero extension model outputs exist.** No GPU, Modal app, model load, or synthetic inference has
+run for this extension. Its meter reads 0.000000 A100-hours.
+
+The frozen candidate panel is five families at immutable revisions: `Qwen/Qwen3-8B`,
+`ibm-granite/granite-3.3-8b-instruct`, `meta-llama/Llama-3.1-8B-Instruct`,
+`mistralai/Mistral-7B-Instruct-v0.3`, and `microsoft/Phi-4-mini-instruct`. All five revisions
+resolve on the Hub and match their pins. Phi-4-mini replaces Phi-3.5-mini, which failed every
+Freeze B solo screen; the swap happened before any extension output existed.
+
+The four frozen tasks are Civil Comments, MultiNLI, IMDb, and AG News. Each supplies 2,048 screen,
+8,192 confirmation, and 4,096 filler rows at selection seed 20260913. Measured overlap with the
+Gate A pilot, the sealed Step 0 frames, and the Freeze B part-1 frames is **zero** for every task
+and every role, and the four tasks share no document ID. Extension IMDb reads the **train** split:
+the test split holds 23,310 eligible rows and Freeze B used 14,336, so the remaining 8,974 cannot
+supply the 14,336 needed. Private text lives in the gitignored
+`study-120h/ext-work/20260913-cpu-draft/`; only identifiers and hashes are sealed.
+
+The budget is separate and does not touch the Freeze B allowance: meter origin 0, hard stop 80
+metered A100-hours, 10 protected reserve hours, and a 1.6x start guard. The statistics are frozen
+at batch size 16, three assignments, 4,999 replay draws, alpha 0.05, a 0.002 practical floor, and a
+**family-equal** primary contrast over a Holm family of 1 to 20 cells. The cell-equal mean is a
+sensitivity, never the gate. The assignment namespace `bigdata2026-ext-v1` and the repeated-sampling
+namespace `bigdata2026-ext-e5-v1` do not collide with Freeze B, so an anchor cell never reuses a
+Freeze B permutation.
+
+The planning and analysis code is [`study-120h/src/freezeb/extension.py`](study-120h/src/freezeb/extension.py),
+built with [`study-120h/build_extension_frames.py`](study-120h/build_extension_frames.py) and sealed
+by [`study-120h/seal_extension.py`](study-120h/seal_extension.py), with 55 focused tests in
+[`study-120h/tests/test_extension.py`](study-120h/tests/test_extension.py). Freeze B modules gained
+only optional parameters whose defaults reproduce every sealed value; a dedicated test asserts
+that. X1R4 inherits 40,960 individual M1 calls, 60 possible B3 cell-size plans covering 1,200,640
+calls, and 20 B4 schedules covering 1,760,000 calls. End-to-end CPU code composes the frozen Wald,
+32-call t, whole-call bootstrap, Clopper-Pearson, reference-uncertainty, and variance-ratio analyses.
+The final X1R4 integration passes Ruff, strict mypy, and all 64 focused extension and
+batch-invariance CPU tests. All 55 sealed file hashes verify. No full-suite rerun followed the
+final test-fixture-only correction; the preceding full run passed 338 tests.
+
+**Three open blockers mean the extension cannot start scientific work yet:**
+
+1. **Llama is manually gated.** Its config and chat template return HTTP 401 without an accepted
+   licence and a token, so its context fit is unverified. All five candidates remain in the frozen
+   M1 order; a later signed runtime/access lock must classify each one as attempted or technically
+   unavailable. Without granted access the panel narrows to four families.
+2. **No synthetic runtime or batch-invariance lock exists (X003b).** No candidate has a measured
+   context fit, engine check, A100 timing, or passing cross-layout output check under this
+   extension. The solo screen cannot be forecast or launched until those synthetic checks run.
+   They need GPU authorization.
+3. **The 80-hour ceiling cannot hold the widest panel.** The pooled CPU power table selects 8,192
+   items at the 0.50 error grid. All 20 cells at 8,192 items project about 86 guarded hours. The
+   block meter narrows the panel before the stop is crossed, so the expected outcome is a smaller
+   E2 panel, not an overspend.
+
+**Exact restart order:**
+
+1. Read this section and [`study-120h/EXTENSION_PROTOCOL.md`](study-120h/EXTENSION_PROTOCOL.md).
+2. Read `MANIFEST.json`, `BATCH_INVARIANCE_PLAN.json`, `CANDIDATES.json`, `M1_CALL_ORDER.json`,
+   `B3_PLANS.json`, and `B4_SCHEDULES.json` in the X1R4 seal.
+3. Resolve Llama access before the signed runtime/access lock; otherwise record it technically
+   unavailable and narrow the panel to four candidate families.
+4. Only then ask Daniel to authorize the combined synthetic runtime and batch-invariance lock. Do
+   not launch any GPU before that.
+
+Freeze B itself is unchanged. Its second sealed cell,
+`ibm-granite/granite-3.3-8b-instruct::civil_comments`, is still implemented, reviewed, and
+unlaunched at 4.824000 cumulative A100-hours against its own 150-hour stop. One Freeze B defect
+remains open and is **out of A1 scope**: `study-120h/src/freezeb/e2_analysis.py` hardcodes
+`e2.FIRST_CELL` for its assignment matrices and Holm family, so it can analyze only the
+Qwen/MultiNLI cell and not the sealed Granite cell.
+
+The workspace is `dk2lone/bigdata`, branch `main`, with no PR and a large uncommitted worktree.
+Nothing from this session is committed. Preserve every timestamped or sealed artifact.
+
+## Previous handoff: first fresh E2 cell analyzed; stop before another launch
+
+The completed historical Qwen3-8B/Civil Comments bridge passes its original frozen Step 0
+scientific gate. Mean joint covariance is `0.005031`, mean exact-context covariance is
+`-0.000421`, and the errors-as-correct joint-minus-exact contrast is `0.005451` with a
+design-respecting shift interval of `[0.004562, 0.006298]` and one-sided `p = 1/2001 = 0.000500`.
+The errors-as-errors (`0.005442`), unresolved-dropped (`0.005451`), and whole-call-discarded
+(`0.005455`) bounds all remain above the frozen `0.002` practical floor. Fake-batch covariance is
+`-0.000421`, inside the frozen absolute `0.001` band, and filler covariance is `-0.000211`.
+
+The analysis verified the sealed assignment matrices before calculation and used 2,000 frozen
+replay draws and 2,000 fake-batch regroupings. See
+[`study-120h/step2-out/bridge/analysis/report.md`](study-120h/step2-out/bridge/analysis/report.md)
+and its machine-readable `analysis.json`. This is a bounded replication on one historical
+model-task cell. It is not a fresh Freeze B panel result, recurrence evidence across models or
+tasks, or a confidence-interval coverage result.
+
+The bridge analysis CPU implementation is
+[`study-120h/src/step2/analysis.py`](study-120h/src/step2/analysis.py), with the entry point
+[`study-120h/analyze_step2_bridge.py`](study-120h/analyze_step2_bridge.py) and tests in
+[`study-120h/tests/test_step2_analysis.py`](study-120h/tests/test_step2_analysis.py). Ruff passes,
+the new files pass strict mypy, all 256 CPU tests pass, and `git diff --check` passes. A full-tree
+mypy invocation still reports eight unrelated Freeze B errors in `src/freezeb/frames.py`,
+`src/freezeb/power.py`, `src/freezeb/claims.py`, and `tests/test_freezeb.py`; do not describe the
+entire current tree as type-clean.
+
+The first fresh Freeze B cell, `Qwen/Qwen3-8B::multi_nli`, is complete on Modal profile
+`daniel21cn2016`. Run `20260913T045515Z-7311206a` produced all 17,152 sealed first attempts: 768
+joint, 12,288 exact-context, and 4,096 solo. All 17,152 generation statuses are `ok`; eight parse
+states are malformed because the model altered target IDs, comprising three exact-context and five
+solo calls. Call IDs and attempt IDs are unique; every one of the eight execution blocks contains
+2,144 calls; and there were zero retries, pending calls, or execution failures. The exact pinned
+checkpoint revision was verified against all 15 manifest hashes. The four-worker synthetic
+equivalence smoke passed before scientific output.
+
+The run used 0.811461 incremental A100-hours and ended at 4.824000 cumulative study A100-hours.
+This was 37.9% below the 1.306764-hour base forecast and 61.2% below the 2.090822-hour guarded
+forecast. The first-1,000-attempt reforecast passed before four-worker release. The final measured
+per-attempt allocations were 0.468348 seconds joint, 0.104142 seconds exact-context, and 0.150530
+seconds solo. These are mixed-chunk A100-time allocations, not standalone latency measurements.
+The completed Modal app `ap-yGkfF4h11zjAyjelMCfGPy` stopped with zero tasks at 01:09:53 EDT.
+
+The frozen 4,999-draw CPU analysis is complete. Mean joint covariance is `0.008068`, mean
+exact-context covariance is `0.000108`, and their errors-as-correct contrast is `0.007959`, with a
+design-respecting shift interval of `[0.006273, 0.009670]`, raw one-sided `p = 0.000200`, and
+interim 16-slot Holm-adjusted `p = 0.003200`. The errors-as-errors (`0.007929`),
+unresolved-dropped (`0.007948`), and whole-call-discarded (`0.007911`) sensitivities all exceed the
+frozen `0.002` practical floor. Mean joint accuracy is `0.739421`, exact-context accuracy is
+`0.638997`, and resolved solo accuracy is `0.742850`.
+
+This is a positive and practically meaningful result for one fresh cell. It is not L1, which is
+reserved for the historical replication bridge. It cannot support L2 recurrence because only one
+cell is complete and the admission lock contains ten primary cells from two model families while
+marking recurrence unsupported. It does not measure confidence-interval coverage; that requires
+the independent E5 repeated-sampling stream.
+
+The result ledgers and technical reports are under
+[`study-120h/e2-out/qwen3-8b--multi_nli/`](study-120h/e2-out/qwen3-8b--multi_nli/). The summary is
+`SUMMARY.json`, the 1,000-attempt decision is `reforecast-1000.json`, and the final timing record is
+`reforecast-final.json`. The scientific outputs are `analysis/analysis.json` and
+`analysis/report.md`.
+
+The resumable first-cell runner is implemented in
+[`study-120h/modal_freezeb_e2.py`](study-120h/modal_freezeb_e2.py), with its frozen planner and
+ledger checks in [`study-120h/src/freezeb/e2.py`](study-120h/src/freezeb/e2.py). It preserves the
+17,152 planned call IDs, assigns whole execution blocks to workers, retains immutable first
+responses and linked retries, sums every worker's metered A100 time, and blocks parallel release
+until a synthetic equivalence smoke and the first-1,000-attempt technical reforecast pass. The
+pre-output concurrency record and its completed smoke record are under
+[`study-120h/amendments/`](study-120h/amendments/).
+
+The executed first-cell plan SHA256 is
+`d642f6c3fd5deaaefce76aadcaeeef9d577a20df513c999d715fae8e21672409`, with 768 joint, 12,288
+exact-context, and 4,096 solo calls across four fixed block owners. Ruff, strict mypy on the four
+runner files, all 17 focused E2 tests, and all 275 project CPU tests pass. No paid work is running,
+and no second E2 cell is authorized.
+
+The second sealed cell, `ibm-granite/granite-3.3-8b-instruct::civil_comments`, now has a CPU-only
+post-first-cell reforecast. Transferring the completed four-worker E2 layout with direct
+Granite/Qwen Civil Comments runtime and loading ratios gives **0.808 base, 1.293 guarded, and 2.425
+incident A100-hours**. The guarded start projection, including the current 4.824000-hour meter and
+the required 10-hour reserve, is 16.117109 hours against the 150-hour stop. The derivation and its
+cross-model limitation are in
+[`study-120h/POST_E2_CELL1_REFORECAST.md`](study-120h/POST_E2_CELL1_REFORECAST.md). No paid run for
+this cell has started, and no paid launch is authorized.
+
+The shared E2 runner now implements this Granite/Civil Comments cell under the explicit selector
+`--cell granite-civil`. Its deterministic plan contains the sealed 17,152 calls and has SHA256
+`81159b7ea6ebb3fcf9ecd5e0a5a1ea26730519c8200cda8ce54f7926c7178f31`. The runner pins Granite
+revision `51dd4bc2ade4059a6bd87649d68aa11e4fb2529b`, verifies all 15 checkpoint files, uses a distinct
+result namespace and concurrency amendment, and retains the first-1,000-attempt release gate.
+Saved release barriers must match the exact cell and plan and explicitly authorize continuation.
+Recovered remote chunks retain original-session A100 metering. The Qwen/MultiNLI plan hash remains
+unchanged. Returned payloads are metered before validation, while mismatches are quarantined and
+excluded from scientific ledgers. Ruff, strict mypy, 17 focused E2 tests, and all 275 project CPU
+tests pass. The independent blocking review in
+[`refine-logs/EXPERIMENT_CODE_REVIEW.md`](refine-logs/EXPERIMENT_CODE_REVIEW.md) reports no
+remaining launch blockers.
+
+**Exact restart order:**
+
+1. Read this section, the frozen queue in
+   [`study-120h/freeze/20260913T022442Z-B2/ADMISSION_LOCK.json`](study-120h/freeze/20260913T022442Z-B2/ADMISSION_LOCK.json),
+   and the first-cell `SUMMARY.json` and raw ledgers.
+2. Read the first-cell `analysis/report.md`; preserve its single-cell scope and the distinction
+   between covariance uncertainty and unmeasured interval coverage.
+3. Before a paid launch, verify Modal profile `daniel21cn2016`, workspace availability, and current
+   credit. Then stop for Daniel's explicit authorization of the guarded 1.293 A100-hour block.
+
+The workspace is `dk2lone/bigdata`, branch `main`, with no PR and a large uncommitted worktree
+containing the Freeze B implementation, sealed artifacts, bridge outputs, and this analysis.
+Preserve every timestamped or sealed artifact and do not clean or reset unrelated changes.
+
+## Previous handoff: historical Qwen/Civil replication bridge complete
+
+Daniel authorized the historical Qwen3-8B/Civil Comments replication bridge and two concurrent
+A100-40GB workers. Modal run `20260913T032819Z-f63f33a2` completed all 12,672 new first calls:
+384 joint, 6,144 exact-context, and 6,144 filler. The existing 2,048 solo first responses were
+reused. All 18,432 target rows are present. There were 17 malformed first responses, zero missing
+or truncated calls, zero retries, and zero ledger conflicts. This is historical replication data,
+not fresh Freeze B confirmation and not yet a dependence-analysis result.
+
+The run took 41 minutes 45 seconds end to end and used 1.2338 incremental A100-hours. The study
+meter is now 4.0125 cumulative A100-hours. The first 1,000-call reforecast was recorded before
+the two-worker phase. The two-A100 deviation was written before model output. See
+[`study-120h/step2-out/bridge/SPEED_REPORT.md`](study-120h/step2-out/bridge/SPEED_REPORT.md)
+for condition counts, timing limits, the amendment, and raw evidence. The Modal app completed and
+stopped normally. The frozen scientific analysis has not been run; do not cite a replication ICC
+or confidence-interval coverage finding from these outputs yet.
+
+**Next action:** analyze the completed historical bridge under its frozen statistics before
+making a scientific claim, then use the real runtime when planning the first fresh Freeze B cell.
+
+## Previous handoff: Freeze B solo admission complete and sealed
+
+The IEEE BigData 2026 workspace is on branch `main` with no PR. Daniel authorized the full
+36-cell Freeze B solo screen on the `daniel21cn2016` Modal profile. Run
+`20260913-freezeb-screen` completed all 73,728 calls across six models and six tasks with six
+parallel A100-40GB workers. Every event is terminal, final, `status: ok`, and solo-only; there
+were zero retries and zero over-budget prompts. The app stopped normally.
+
+The solo screen used 1.6643 incremental A100-hours. The 2.7788-hour local meter is cumulative:
+it also includes 0.1900 Step 1 hours and the 0.9244-hour synthetic runtime benchmark. Daniel
+reported an approximately $6 account charge for the screen; that is an observed all-in amount,
+not a new invoice snapshot. The earlier roughly $12 screen forecast was 3.20× too high in base
+A100-hours. Do not apply that solo correction to the structurally different joint prompts. The
+auditable correction and next-stage budget are in
+[`study-120h/POST_SCREEN_COMPUTE_RECALIBRATION.md`](study-120h/POST_SCREEN_COMPUTE_RECALIBRATION.md).
+Raw ledgers, summaries, timing probes, and the first-1,000-call reforecasts are under
+[`study-120h/freezeb-screen/20260913-freezeb-screen/`](study-120h/freezeb-screen/20260913-freezeb-screen/).
+
+Part 2 is sealed at
+[`study-120h/freeze/20260913T022442Z-B2/`](study-120h/freeze/20260913T022442Z-B2/).
+The seal recomputed all 36 cells from the append-only ledgers and verified the complete call-ID
+sets, saved summaries, plan hash, power-table hash, screen-file hashes, and source snapshot.
+Claude Opus 5 independently reran the ledger, admission, panel, and hash checks in reused session
+`003442dd-2fa0-4db7-bf00-5613c8a15d36` and returned PASS. Ruff and all 216 CPU tests pass.
+
+Ten of 36 model-task cells passed the frozen admission rules. The ordered primary panel is:
+
+1. `Qwen/Qwen3-8B::multi_nli`
+2. `ibm-granite/granite-3.3-8b-instruct::civil_comments`
+3. `Qwen/Qwen3-4B-Instruct-2507::ag_news`
+4. `ibm-granite/granite-3.3-2b-instruct::imdb`
+5. `Qwen/Qwen3-8B::civil_comments`
+6. `ibm-granite/granite-3.3-8b-instruct::imdb`
+7. `Qwen/Qwen3-8B::imdb`
+8. `Qwen/Qwen3-4B-Instruct-2507::civil_comments`
+9. `Qwen/Qwen3-4B-Instruct-2507::multi_nli`
+10. `Qwen/Qwen3-4B-Instruct-2507::imdb`
+
+The held-out panel is empty. Only Qwen and Granite appear in the primary panel; OLMo and Phi are
+admitted nowhere. GoEmotions and MultiNERD fail for every model. The frozen lock therefore records
+`recurrence_claim_not_supported`. The study may not claim recurrence across at least three model
+families, a held-out mechanism result, or a full 16-cell E2 panel. Do not backfill, relax a frozen
+threshold, or rerun a failed cell to recover those claims. Qwen3-8B on AG News missed the 0.70
+accuracy floor narrowly at 0.69956; preserve that result and its interval rather than rounding it
+into admission.
+
+The Part 2 gate permits joint output to begin. **Next action:** wait for Daniel's separate explicit
+paid-run authorization. The first frozen unit is the historical Qwen/Civil Comments replication
+bridge. Its provisional budget is 1.125 base, 1.800 guarded, and 3.375 incident A100-hours, or
+roughly $4.06, $6.49, and $12.17 using the observed screen ratio. The bridge's real joint timing
+must reprice the later queue. After that, E2 runs one cell at a time in the sealed order, beginning
+with `Qwen/Qwen3-8B::multi_nli`. Do not start any joint call merely because Part 2 passed.
+
+## Previous handoff: Freeze B runtime benchmark and ledger complete
+
+The authorized synthetic long-context benchmark is complete. Six concurrent A100 workers
+covered all 180 planned model/case checks: 158 were feasible, 22 were context exclusions,
+and all 316 measured requests in the feasible cases succeeded. Modal billed 0.924 A100-hours
+and $2.010 total for benchmark app `ap-r3dVnR4pzw7gSUwEtclnKo`; the app is stopped.
+Synthetic responses are runtime evidence only and never enter scientific analyses.
+
+The runtime ledger is sealed at
+[`study-120h/runtime-lock/20260913T004054Z-BRT1/`](study-120h/runtime-lock/20260913T004054Z-BRT1/).
+Its manifest SHA256 is
+`6aca413a59738e60305a755dfa43c07864a2d197ae6b283a3577296500106e0f`;
+all 12 files verified. The original 51-file Freeze B part-1 seal also reverified with no
+hash failures. Lint, strict typing, and all 208 CPU tests pass.
+
+The full 36-cell solo screen forecasts to 5.32 base A100-hours, 8.51 hours under the frozen
+1.6x start rule, and 15.96 hours under the 3x incident case. The historical Qwen3-8B/Civil
+Comments replication bridge forecasts to 1.12, 1.80, and 3.37 hours respectively. Later
+panel ranges remain conditional until solo admission fixes the selected cells and item counts.
+The maximum repeated-sampling program does not fit in 150 hours; the frozen execution ladder
+must stop at the last complete unit that fits.
+
+Daniel clarified that aggregate capacity across multiple accounts is 120–150 actual A100-hours.
+That covers the 120-hour study target and reaches the 150-hour hard stop. The earlier $14 figure
+describes only the benchmark account and is not the total experiment budget. Parallel workers
+reduce elapsed time but their A100-hours add together.
+
+The ledger status is `sealed_with_declared_instrumentation_gap`: request wall time, prompt
+tokens, output tokens, loading, and billed time were captured, but prefill and decode were not
+timed separately. The mandatory first-1,000-real-calls checkpoint must add that split and
+reforecast the next complete block. This gap does not invalidate the wall-time forecast.
+
+**Next action:** run the solo-only 36-cell screen, checkpointing each completed cell and summing
+usage across accounts. Do not start joint, exact-context, replication-bridge, mechanism, or
+repeated-sampling calls before the solo admission results and Freeze B part-2 lock are sealed.
+No scientific Freeze B output has run yet.
+
+## Previous handoff: study scope rebased after Step 1
+
+Freeze B scientific protocol part 1 is now sealed at
+[`study-120h/freeze/20260912T222618Z-B1/`](study-120h/freeze/20260912T222618Z-B1/).
+Its [`MANIFEST.json`](study-120h/freeze/20260912T222618Z-B1/MANIFEST.json) hashes the
+protocol, executable rules, tests, six disjoint task-frame identifier lists, pinned metadata
+audits, and CPU power planning table. The copied frame lists contain IDs and source indices,
+not dataset text. The manifest SHA256 is
+`94d33406dcede77eb5829c31975ea700cad7650faf162d9f5f1bf26b568f71f0`; all 51
+snapshot file hashes verified. The original Step 0 seal remains untouched. The new scope uses strict
+solo admission, balanced model-task selection, batch sizes 2/4/8/16/32, fixed mechanism
+arms, repeated-sampling prefixes, and a 150-hour meter. The CPU suite passed in full,
+including the tested adapter between Freeze B assignments and the original statistic.
+No synthetic paid benchmark, new solo screen, or joint output has run under Freeze B.
+
+**Superseded status:** the synthetic benchmark runner was implemented, tested, run, and sealed
+as described in the current handoff above. The next experiment remains the solo-only screens
+and part-2 admission lock. Only after that lock may the original Qwen/Civil Step 2 bridge and
+Freeze B joint work begin.
+
+The active study is now [plan-120h-a100-rebased.md](plan-120h-a100-rebased.md). It treats 120
+metered A100-hours as a target and 150 cumulative hours as the stop. It prepares a 16-cell
+multi-family, multi-task panel and an ordered expansion through repeated-sampling precision,
+batch size, mechanisms, mitigation, and held-out cells. The full six-cell, 5,000-replicate
+uncertainty stream requires 1,008,000 new joint calls; Step 1 measured only solo throughput, so
+that stream is a conditional full-program target, not a promised 40-hour deliverable. Measured
+long-context runtime determines how far the frozen ladder goes; observed effects never do. The
+plan now has deterministic fresh-replicate cycles after its breadth and mechanism blocks, so a
+faster-than-expected run continues through useful work until at least 120 hours when feasible.
+The 150-hour planning stop and technical/capability gates still apply; exact utilization cannot
+be guaranteed before long-context timing is measured.
+
+The completed Step 0 freeze and Step 1 screen remain unchanged as audit history. Their scientific
+outputs have not been reclassified. No Step 2 or Freeze B joint, exact-context, filler,
+fake-batch, covariance, mechanism, mitigation, or repeated-sampling output exists.
+
+This workspace is now the private Git repository `dk2lone/bigdata`, branch `main`, with no PR.
+The current protocol and plan edits are uncommitted. Large immutable
+protocol and result bundles follow [RESULTS_RELEASES.md](RESULTS_RELEASES.md).
+
+**Current protocol:** [study-120h/FREEZE_B_PROTOCOL.md](study-120h/FREEZE_B_PROTOCOL.md)
+contains the part-1 scientific rules. [study-120h/FREEZE_B_PREP.md](study-120h/FREEZE_B_PREP.md)
+is superseded preparation history. The original Step 0 seal was reverified on September 12
+(70 files, no mutations).
+
+**Paid-work boundary:** Part 1 has fixed the scientific rules, but the runtime ledger and
+solo-only admission lock are still required. The old frozen Qwen/Civil Step 2 remains a bridge
+experiment and can run only after part 2 is sealed. Daniel asked to be consulted for Modal
+access before Step 2; no new paid A100 execution has been authorized. A synthetic long-context
+benchmark must fill in cost projections before the screens and part-2 lock.
+
+## Previous handoff: Step 1 complete; model and task claims narrowed
 
 The current direction remains **A: dependence among errors when one LLM prompt labels multiple
 text records**. Gate A passed as a one-cell feasibility pilot, Gate K is stopped, CPU-only Step 0

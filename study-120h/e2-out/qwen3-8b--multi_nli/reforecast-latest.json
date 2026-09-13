@@ -1,0 +1,23 @@
+{
+  "cumulative_a100_hours": 4.235548151124645,
+  "decision_reason": "complete_block_fits",
+  "may_continue": true,
+  "must_stop_now": false,
+  "n_concurrent_workers_when_measured": 1,
+  "projected_remaining_base_a100_hours": 0.5803848825439651,
+  "projected_remaining_guarded_a100_hours": 0.9286158120703443,
+  "projected_total_a100_hours": 15.164163963194989,
+  "real_attempts_used": 1000,
+  "remaining_attempts_by_condition": {
+    "exact_context": 11836,
+    "joint": 672,
+    "solo": 3644
+  },
+  "remaining_load_a100_seconds": 0.0,
+  "seconds_per_attempt_by_condition": {
+    "exact_context": 0.12312509148018243,
+    "joint": 0.27493854533338036,
+    "solo": 0.12275474531690549
+  },
+  "technical_only": true
+}

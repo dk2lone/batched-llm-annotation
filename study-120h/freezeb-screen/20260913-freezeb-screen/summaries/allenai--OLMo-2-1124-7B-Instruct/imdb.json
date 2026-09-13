@@ -1,0 +1,43 @@
+{
+  "accuracy": 0.5048828125,
+  "admitted": false,
+  "cell_key": "allenai/OLMo-2-1124-7B-Instruct::imdb",
+  "error_rate": 0.4951171875,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+  "parse_rate": 1.0,
+  "reasons": [
+    "accuracy_below_frozen_floor"
+  ],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "imdb",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.48436279296875,
+      0.5263671875
+    ],
+    "accuracy_wilson_parsed": [
+      0.4832402338571049,
+      0.5265071079338612
+    ],
+    "error_rate": [
+      0.4736328125,
+      0.51563720703125
+    ],
+    "parse_rate": [
+      1.0,
+      1.0
+    ],
+    "parse_rate_wilson": [
+      0.9981277993949387,
+      1.0
+    ]
+  }
+}

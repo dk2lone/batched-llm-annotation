@@ -1,0 +1,15 @@
+{
+  "calls": 2048,
+  "max_model_len": 4096,
+  "max_required_tokens": 602,
+  "min_headroom_tokens": 3494,
+  "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+  "n_over_budget": 0,
+  "task_id": "go_emotions",
+  "tokenizer": {
+    "counter": "pinned_tokenizer",
+    "enable_thinking": false,
+    "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+    "tokenizer_revision": "470b1fba1ae01581f270116362ee4aa1b97f4c84"
+  }
+}

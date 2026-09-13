@@ -1,0 +1,32 @@
+{
+  "admission_lock_sha256": "cd60cad6d0af27efc61ab0bc7605e352250cdad88702824bb4b2b841e882a3c8",
+  "base_forecast_a100_hours": 1.306764,
+  "block_owners": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 0,
+    "5": 1,
+    "6": 2,
+    "7": 3
+  },
+  "call_ids_sha256": "4ad00c0fb64ea143f373ba444c2219e111fd27f4c3fac0d530636d22453e06d5",
+  "calls_by_condition": {
+    "exact_context": 12288,
+    "joint": 768,
+    "solo": 4096
+  },
+  "cell_key": "Qwen/Qwen3-8B::multi_nli",
+  "chunk_size": 32,
+  "execution_blocks": 8,
+  "first_reforecast_attempts": 1000,
+  "guarded_forecast_a100_hours": 2.0908224,
+  "plan_sha256": "d642f6c3fd5deaaefce76aadcaeeef9d577a20df513c999d715fae8e21672409",
+  "prior_cumulative_a100_hours": 4.012538759696318,
+  "prompt_hashes_sha256": "2d987f3da37e482b61c98e8b3e67628636bdcb08d17993501b9133d99b86729e",
+  "results_namespace": "d642f6c3fd5deaae",
+  "schema_version": "freezeb-e2-run-plan-v1",
+  "total_calls": 17152,
+  "worker_count": 4
+}

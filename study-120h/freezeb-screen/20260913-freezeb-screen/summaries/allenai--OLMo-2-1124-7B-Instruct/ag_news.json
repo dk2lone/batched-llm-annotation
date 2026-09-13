@@ -1,0 +1,43 @@
+{
+  "accuracy": 0.45717082721488006,
+  "admitted": false,
+  "cell_key": "allenai/OLMo-2-1124-7B-Instruct::ag_news",
+  "error_rate": 0.54282917278512,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+  "parse_rate": 0.99755859375,
+  "reasons": [
+    "accuracy_below_frozen_floor"
+  ],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "ag_news",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.4363369245837414,
+      0.47896918765161556
+    ],
+    "accuracy_wilson_parsed": [
+      0.4356697964064131,
+      0.47883261937872157
+    ],
+    "error_rate": [
+      0.5210308123483846,
+      0.5636630754162586
+    ],
+    "parse_rate": [
+      0.9951171875,
+      0.99951171875
+    ],
+    "parse_rate_wilson": [
+      0.9942973882458321,
+      0.9989567402536232
+    ]
+  }
+}

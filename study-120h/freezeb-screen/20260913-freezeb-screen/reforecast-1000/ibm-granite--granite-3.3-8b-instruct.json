@@ -1,0 +1,20 @@
+{
+  "all_in_a100_seconds": 219.03040592488142,
+  "component_timing": {
+    "attempt_id": "screen::ibm-granite--granite-3.3-8b-instruct::civil_comments::0000::cc2542051aaea7c9::attempt::1",
+    "method": "one_token_wall_differencing_single_call",
+    "prompt_plus_first_token_seconds": 0.022032631000001857,
+    "remaining_generation_seconds": 0.33445344400001886,
+    "scope": "single_call_probe_only"
+  },
+  "failure_rate": 0.0,
+  "generation_failures": 0,
+  "loading_a100_seconds": 161.24715409045737,
+  "model_id": "ibm-granite/granite-3.3-8b-instruct",
+  "output_tokens": 22183,
+  "projected_model_screen_base_a100_hours": 0.24202437573107224,
+  "projected_model_screen_guarded_a100_hours": 0.3872390011697156,
+  "prompt_tokens": 246680,
+  "real_calls": 1000,
+  "technical_only": true
+}

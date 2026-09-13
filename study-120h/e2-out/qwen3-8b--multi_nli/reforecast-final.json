@@ -1,0 +1,19 @@
+{
+  "cumulative_a100_hours": 4.824000183954456,
+  "decision_reason": "complete_block_fits",
+  "may_continue": true,
+  "must_stop_now": false,
+  "n_concurrent_workers_when_measured": 4,
+  "projected_remaining_base_a100_hours": 0.0,
+  "projected_remaining_guarded_a100_hours": 0.0,
+  "projected_total_a100_hours": 14.824000183954457,
+  "real_attempts_used": 17152,
+  "remaining_attempts_by_condition": {},
+  "remaining_load_a100_seconds": 0.0,
+  "seconds_per_attempt_by_condition": {
+    "exact_context": 0.10414185916864216,
+    "joint": 0.46834825921183426,
+    "solo": 0.1505303897052272
+  },
+  "technical_only": true
+}

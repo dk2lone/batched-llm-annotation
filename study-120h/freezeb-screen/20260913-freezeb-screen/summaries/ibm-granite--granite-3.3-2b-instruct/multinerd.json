@@ -1,0 +1,56 @@
+{
+  "accuracy": 0.0,
+  "admitted": false,
+  "cell_key": "ibm-granite/granite-3.3-2b-instruct::multinerd",
+  "error_rate": 1.0,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "majority_exact_baseline": 0.013671875,
+  "model_id": "ibm-granite/granite-3.3-2b-instruct",
+  "parse_rate": 0.89111328125,
+  "reasons": [
+    "parse_rate_below_0.98",
+    "error_information_outside_0.05_to_0.80",
+    "exact_span_accuracy_below_baseline_plus_0.05",
+    "span_micro_f1_below_0.30"
+  ],
+  "span_micro_f1": 0.0006727211570803902,
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "multinerd",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.0,
+      0.0
+    ],
+    "accuracy_wilson_parsed": [
+      2.168404344971009e-19,
+      0.0021004876076963185
+    ],
+    "error_rate": [
+      1.0,
+      1.0
+    ],
+    "majority_exact_baseline": [
+      0.0126953125,
+      0.01953125
+    ],
+    "parse_rate": [
+      0.87742919921875,
+      0.90478515625
+    ],
+    "parse_rate_wilson": [
+      0.8768830183176831,
+      0.9038790591387093
+    ],
+    "span_micro_f1": [
+      0.0,
+      0.002064072391624864
+    ]
+  }
+}

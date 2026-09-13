@@ -1,0 +1,15 @@
+{
+  "amendment_content_hash": "40cace61adeaf22027e7fe398306c0f6541fc8cab7b79cf261b5bfa951d769f2",
+  "amendment_id": "freezeb-e2-qwen-multinli-concurrency",
+  "completed_at_utc": "2026-09-13T04:57:51.735985+00:00",
+  "response_sha256": "0db0bd264a7d74e15803dec607ca5c1d51dfc8dfe34262ec3ef99e34639edc0d",
+  "status": "passed",
+  "synthetic_only": true,
+  "worker_sessions": [
+    "bc8b6f71f8af4bf898271743abcc7f50",
+    "a488d6f2e8ba43528051da236b2e7054",
+    "faaf19b246d34e11ad80344dcc8a88f2",
+    "fb684e379003454a8176ed8233bedc04"
+  ],
+  "workers_checked": 4
+}

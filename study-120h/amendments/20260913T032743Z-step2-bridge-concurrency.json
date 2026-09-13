@@ -1,0 +1,69 @@
+{
+  "amendment_id": "step2-bridge-concurrency",
+  "amends_freeze_stamp": "20260912T041633Z",
+  "amends_protocol_content_hash": "218c5bcaa30f4f93c8d516f85f29ad8b7fb3be90f40238c2f3faf837ce611e15",
+  "authorised_before_any_bridge_output": true,
+  "blocks_are_never_split_across_workers": true,
+  "clauses": [
+    {
+      "clause": "the sealed protocol records the serving hardware as 'one NVIDIA A100, one at a time'. This bridge runs at most two A100 workers at the same time. That is an operational deviation from that sentence and is recorded here before any bridge output exists.",
+      "id": "B1",
+      "topic": "recorded deviation"
+    },
+    {
+      "clause": "each worker owns exactly one A100 and one model process. Tensor parallelism stays forbidden and tensor_parallel_size stays 1. No call is ever split across GPUs.",
+      "id": "B2",
+      "topic": "one A100 per model process"
+    },
+    {
+      "clause": "a frozen execution block is never split across workers. One worker owns one block for the whole life of that block, so the fresh serving session per block and the ascending execution_order_key inside the block are both preserved.",
+      "id": "B3",
+      "topic": "block ownership"
+    },
+    {
+      "clause": "concurrency shortens the calendar and never the budget. Metered A100 hours are summed over workers, so two concurrent single-A100 workers cost two A100 hours per wall-clock hour. The 150-hour stop is applied to that sum and is checked conservatively, counting the work both workers may still bill.",
+      "id": "B4",
+      "topic": "budget accounting"
+    },
+    {
+      "clause": "throughput measured under two concurrent workers is not the single-worker rate of the sealed forecast. Every reforecast written by this bridge records the worker count that produced it, and per-condition rates are reported as measured, never rescaled to a one-worker equivalent.",
+      "id": "B5",
+      "topic": "timing evidence"
+    },
+    {
+      "clause": "no scientific field changes. The worker count is not a treatment, is not recorded as a condition, and never enters an estimand, a test, or a claim gate. The frozen serial-serving control keeps its own definition and is not affected.",
+      "id": "B6",
+      "topic": "scientific separation"
+    }
+  ],
+  "content_hash": "24be20aabdcf934d683f0398f3aa377895910ba5cc7f5001690b671303c5ef33",
+  "deviation": {
+    "affects_a_scientific_field": false,
+    "field": "panel.serving.hardware",
+    "is_a_deviation": true,
+    "operational_practice": "at most 2 A100 workers run at the same time, one model process on one A100 each",
+    "sealed_text": "one NVIDIA A100, one at a time"
+  },
+  "freeze_change_rule": "the sealed freeze is never edited. A change to a design field would require a new freeze directory, not this amendment.",
+  "freeze_is_unchanged": true,
+  "fresh_serving_session_per_block": true,
+  "gpus_per_worker": 1,
+  "max_concurrent_workers": 2,
+  "max_num_seqs": 64,
+  "models_per_worker": 1,
+  "no_scientific_field_is_changed": true,
+  "overall_ceiling_a100_hours": 150,
+  "scope": "worker concurrency for the historical replication bridge only",
+  "stamp_utc": "20260913T032743Z",
+  "tensor_parallel_size": 1,
+  "unchanged_by_this_amendment": [
+    "the sealed Step 0 freeze, which stays byte-identical and read-only",
+    "every sample frame, item id, filler pool, and dataset revision",
+    "every prompt template, response grammar, and parser rule",
+    "every call id, assignment, execution block, and within-block execution order",
+    "the model and tokenizer revision, and the vllm==0.28.0 engine pin",
+    "every serving field: max_model_len 8192, bfloat16, tensor_parallel_size 1, gpu_memory_utilization 0.9, max_num_seqs 64, greedy decoding at seed 0",
+    "the first-response policy, the one-retry rule, and the retry triggers",
+    "every estimand, test, threshold, and claim gate"
+  ]
+}

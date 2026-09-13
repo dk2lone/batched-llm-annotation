@@ -1,0 +1,28 @@
+{
+  "admission_lock_sha256": "cd60cad6d0af27efc61ab0bc7605e352250cdad88702824bb4b2b841e882a3c8",
+  "all_worker_a100_seconds_are_summed": true,
+  "amendment_id": "freezeb-e2-qwen-multinli-concurrency",
+  "block_owner_rule": "execution_block modulo worker_count",
+  "blocks_are_never_split_between_workers": true,
+  "content_hash": "40cace61adeaf22027e7fe398306c0f6541fc8cab7b79cf261b5bfa951d769f2",
+  "equivalence_smoke": {
+    "required_checks": [
+      "same image and vLLM version",
+      "same checkpoint and tokenizer revisions",
+      "same deterministic serving and decoding settings",
+      "same response to one synthetic request"
+    ],
+    "status": "pending",
+    "synthetic_only": true
+  },
+  "equivalence_smoke_required_before_scientific_output": true,
+  "gpus_per_worker": 1,
+  "max_concurrent_workers": 4,
+  "plan_sha256": "d642f6c3fd5deaaefce76aadcaeeef9d577a20df513c999d715fae8e21672409",
+  "recorded_before_any_e2_model_output": true,
+  "scientific_design_changes": [],
+  "scope": "first sealed E2 cell Qwen/Qwen3-8B::multi_nli only",
+  "stamp_utc": "20260913T045515Z",
+  "tensor_parallel_size": 1,
+  "within_block_order_is_preserved": true
+}

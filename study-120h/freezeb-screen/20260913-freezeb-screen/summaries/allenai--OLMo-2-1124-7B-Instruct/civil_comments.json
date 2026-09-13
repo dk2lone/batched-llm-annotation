@@ -1,0 +1,54 @@
+{
+  "accuracy": 0.9330727894479727,
+  "admitted": false,
+  "balanced_accuracy": 0.585285660068897,
+  "cell_key": "allenai/OLMo-2-1124-7B-Instruct::civil_comments",
+  "error_rate": 0.06692721055202733,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+  "parse_rate": 0.99951171875,
+  "reasons": [
+    "balanced_accuracy_below_0.60",
+    "toxic_recall_below_0.25"
+  ],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "civil_comments",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "toxic_recall": 0.18055555555555555,
+  "uncertainty_95": {
+    "accuracy": [
+      0.921875,
+      0.9438591834563538
+    ],
+    "accuracy_wilson_parsed": [
+      0.9214158514836482,
+      0.9431073384364236
+    ],
+    "balanced_accuracy": [
+      0.5567833913487649,
+      0.6187487048737921
+    ],
+    "error_rate": [
+      0.056140816543646194,
+      0.078125
+    ],
+    "parse_rate": [
+      0.998046875,
+      1.0
+    ],
+    "parse_rate_wilson": [
+      0.9972392640467791,
+      0.9999138011690629
+    ],
+    "toxic_recall": [
+      0.12257735352205398,
+      0.24506925659919782
+    ]
+  }
+}

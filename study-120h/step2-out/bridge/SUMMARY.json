@@ -1,0 +1,137 @@
+{
+  "blocks_selected": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "checkpoint_verification": {
+    "model_id": "Qwen/Qwen3-8B",
+    "n_files": 15,
+    "n_files_hash_verified": 15,
+    "n_files_size_verified_only": 0,
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "source": "runtime-lock/20260913T004054Z-BRT1 checkpoint manifest",
+    "volume": "ieee-bigdata-freezeb-models"
+  },
+  "completeness": {
+    "complete": true,
+    "incomplete_call_ids_sample": [],
+    "missing_call_ids_sample": [],
+    "n_expected_calls": 12672,
+    "n_expected_label_rows": 18432,
+    "n_first_response_calls": 12672,
+    "n_incomplete_calls": 0,
+    "n_missing_calls": 0,
+    "n_rejected_conflicts": 0,
+    "n_retry_rows": 0,
+    "problems": []
+  },
+  "concurrency_amendment": {
+    "amendment_id": "step2-bridge-concurrency",
+    "content_hash": "24be20aabdcf934d683f0398f3aa377895910ba5cc7f5001690b671303c5ef33",
+    "path": "/Users/dz/bigdata/study-120h/amendments/20260913T032743Z-step2-bridge-concurrency.md"
+  },
+  "cumulative_a100_hours": 4.012538759696318,
+  "failure": null,
+  "max_concurrent_workers": 2,
+  "meter": {
+    "a100_hours_by_worker": {
+      "bridge-block-0": 0.1866709275216766,
+      "bridge-block-1": 0.1520203824709246,
+      "bridge-block-2": 0.14743142033845544,
+      "bridge-block-3": 0.15531396834674643,
+      "bridge-block-4": 0.13939011465002996,
+      "bridge-block-5": 0.1518792757204247,
+      "bridge-block-6": 0.1411769400867315,
+      "bridge-block-7": 0.15987569151685357
+    },
+    "a100_hours_total": 1.2337587206518426,
+    "a100_seconds_total": 4441.5313943466335,
+    "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+    "longest_single_worker_hours": 0.1866709275216766,
+    "n_runs": 401
+  },
+  "modal_profile": "daniel21cn2016",
+  "plan_sha256": "ece39ce0d454df1434b7c0f8b199443c062180bb0547a964d3cd1e6b59e237a4",
+  "results_namespace": "ece39ce0d454df14",
+  "run_id": "20260913T032819Z-f63f33a2",
+  "solo_reuse": {
+    "call_ids_sha256": "14d9ba26587148c9391092c7892a212fc4fe346aa4dc622072b518c74e2575e6",
+    "ledger_sha256": "2cf12e516594d8dfefb4a8cf4cfe10c545964f5a0f3032a909e0250032d65943",
+    "n_calls": 2048,
+    "n_rows": 2048,
+    "note": "Step 1 produced these first responses; the bridge reads them and adds none",
+    "path": "/Users/dz/bigdata/study-120h/step1-out/results/qwen_civil__civil_comments__Qwen_Qwen3-8B/solo.jsonl",
+    "rerun": false,
+    "reused": true
+  },
+  "stopped_early": null,
+  "timing_by_condition": {
+    "by_condition": {
+      "exact_context": {
+        "attribution_methods": [
+          "equal_share_within_chunk"
+        ],
+        "decode_seconds_mean": null,
+        "metered_a100_seconds_per_call": 0.34060485760534776,
+        "metered_a100_seconds_sum": 2092.6762451272566,
+        "n_calls": 6144,
+        "n_ok": 6144,
+        "n_with_component_timing": 0,
+        "output_tokens_mean": 22.244791666666668,
+        "output_tokens_sum": 136672.0,
+        "prefill_seconds_mean": null,
+        "prompt_tokens_mean": 1613.974609375,
+        "prompt_tokens_sum": 9916260.0,
+        "queue_seconds_mean": null,
+        "request_seconds_mean": null
+      },
+      "filler": {
+        "attribution_methods": [
+          "equal_share_within_chunk"
+        ],
+        "decode_seconds_mean": null,
+        "metered_a100_seconds_per_call": 0.35712637173822276,
+        "metered_a100_seconds_sum": 2194.1844279596407,
+        "n_calls": 6144,
+        "n_ok": 6144,
+        "n_with_component_timing": 0,
+        "output_tokens_mean": 22.243815104166668,
+        "output_tokens_sum": 136666.0,
+        "prefill_seconds_mean": null,
+        "prompt_tokens_mean": 1623.37548828125,
+        "prompt_tokens_sum": 9974019.0,
+        "queue_seconds_mean": null,
+        "request_seconds_mean": null
+      },
+      "joint": {
+        "attribution_methods": [
+          "equal_share_within_chunk"
+        ],
+        "decode_seconds_mean": null,
+        "metered_a100_seconds_per_call": 0.40278833661378566,
+        "metered_a100_seconds_sum": 154.6707212596937,
+        "n_calls": 384,
+        "n_ok": 384,
+        "n_with_component_timing": 0,
+        "output_tokens_mean": 295.921875,
+        "output_tokens_sum": 113634.0,
+        "prefill_seconds_mean": null,
+        "prompt_tokens_mean": 1878.40625,
+        "prompt_tokens_sum": 721308.0,
+        "queue_seconds_mean": null,
+        "request_seconds_mean": null
+      }
+    },
+    "metered_a100_hours_total": 1.233758720651831,
+    "metered_a100_seconds_total": 4441.531394346592,
+    "n_calls": 12672,
+    "written_at_utc": "2026-09-13T04:10:03.960079+00:00"
+  },
+  "written_at_utc": "2026-09-13T04:10:03.960108+00:00"
+}

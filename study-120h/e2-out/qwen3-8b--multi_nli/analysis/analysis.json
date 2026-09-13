@@ -1,0 +1,223 @@
+{
+  "accuracy": {
+    "exact_context": {
+      "mean": 0.6389973958333334,
+      "per_assignment": [
+        0.64208984375,
+        0.637939453125,
+        0.636962890625
+      ]
+    },
+    "joint": {
+      "mean": 0.7394205729166666,
+      "per_assignment": [
+        0.73583984375,
+        0.734130859375,
+        0.748291015625
+      ]
+    },
+    "joint_minus_exact_mean": 0.10042317708333326,
+    "solo": {
+      "accuracy_resolved": 0.7428501588853581,
+      "error_rate_resolved": 0.2571498411146419,
+      "n_items": 4096,
+      "n_unresolved": 5
+    }
+  },
+  "analysis": "freezeb_e2_first_cell",
+  "cell_assessment": {
+    "all_four_effect_bounds_at_least_0.002": true,
+    "alpha": 0.05,
+    "descriptively_positive_and_practical": true,
+    "holm_adjusted_p_with_16_slots": 0.0032,
+    "holm_positive": true,
+    "practical_floor": 0.002,
+    "raw_p_value": 0.0002
+  },
+  "cell_key": "Qwen/Qwen3-8B::multi_nli",
+  "covariance": {
+    "exact_context": {
+      "mean_accuracy": 0.6389973958333334,
+      "mean_covariance": 0.00010837713877360029,
+      "mean_error_rate": 0.3610026041666667,
+      "mean_icc": 0.0004593911207513837,
+      "per_assignment": [
+        {
+          "accuracy": 0.64208984375,
+          "covariance": -0.0014720757802327473,
+          "error_rate": 0.35791015625,
+          "icc": -0.00640560780306292
+        },
+        {
+          "accuracy": 0.637939453125,
+          "covariance": 0.002343149979909261,
+          "error_rate": 0.362060546875,
+          "icc": 0.010144705006874269
+        },
+        {
+          "accuracy": 0.636962890625,
+          "covariance": -0.0005459427833557129,
+          "error_rate": 0.363037109375,
+          "icc": -0.002360923841557198
+        }
+      ],
+      "unresolved_rule": "errors as correct"
+    },
+    "joint": {
+      "mean_accuracy": 0.7394205729166666,
+      "mean_covariance": 0.008067647616068523,
+      "mean_error_rate": 0.2605794270833333,
+      "mean_icc": 0.041653616059372366,
+      "per_assignment": [
+        {
+          "accuracy": 0.73583984375,
+          "covariance": 0.010557953516642253,
+          "error_rate": 0.26416015625,
+          "icc": 0.05431616923447408
+        },
+        {
+          "accuracy": 0.734130859375,
+          "covariance": 0.009684693813323975,
+          "error_rate": 0.265869140625,
+          "icc": 0.04961859731639337
+        },
+        {
+          "accuracy": 0.748291015625,
+          "covariance": 0.003960295518239339,
+          "error_rate": 0.251708984375,
+          "icc": 0.02102608162724966
+        }
+      ],
+      "unresolved_rule": "errors as correct"
+    }
+  },
+  "coverage_status": {
+    "measured": false,
+    "reason": "E2 has no independent repeated-sampling evaluation stream; E5 is required"
+  },
+  "data_quality": {
+    "n_calls_discarded_under_whole_call_rule": 3,
+    "parse_counts_by_condition": {
+      "exact_context::malformed": 3,
+      "exact_context::ok": 12285,
+      "joint::ok": 768,
+      "solo::malformed": 5,
+      "solo::ok": 4091
+    },
+    "status_counts": {
+      "ok": 17152
+    },
+    "unresolved_target_rows": {
+      "exact_context": 3,
+      "joint": 0
+    }
+  },
+  "fake_batch_falsification": {
+    "joint_covariance": 0.008067647616068523,
+    "joint_minus_observed_exact": 0.007959270477294923,
+    "n_regroupings": 4999,
+    "observed_exact_control_covariance": 0.00010837713877360029,
+    "p_value_joint_vs_regrouped_exact_one_sided": 0.0002,
+    "regrouped_exact_covariance_mean": 0.0002453576598778211,
+    "regrouped_exact_covariance_sd": 0.0007581791259934295
+  },
+  "n_draws": 4999,
+  "panel_status": {
+    "admitted_primary_cells": 10,
+    "claim_available": false,
+    "completed_primary_cells": 1,
+    "distinct_locked_model_families": 2,
+    "locked_recurrence_scope": "recurrence_claim_not_supported",
+    "protocol_target_cells": 16,
+    "reason": "incomplete_primary_panel_and_locked_family_coverage_insufficient"
+  },
+  "primary_randomization": {
+    "errors_as_correct": {
+      "alpha": 0.05,
+      "effect_interval": {
+        "high": 0.009669749291807826,
+        "low": 0.006273481930696715,
+        "point": 0.007959270477294923
+      },
+      "effect_interval_method": "design-respecting shift interval: observed minus the mean-centred replay quantiles",
+      "min_reachable_p": 0.0002,
+      "n_draws": 4999,
+      "null_mean": -1.9920847081064434e-05,
+      "null_sd": 0.0008798106514696722,
+      "observed": 0.007959270477294923,
+      "p_value_one_sided_upper": 0.0002,
+      "replay_mechanism": "the frozen assignment generator, replayed by draw index; strata, call sizes, call index order, each item's observed execution block, and the three repeated appearances of every item are all preserved"
+    },
+    "errors_as_errors": {
+      "alpha": 0.05,
+      "effect_interval": {
+        "high": 0.009658260189502041,
+        "low": 0.006240291439502041,
+        "point": 0.007929318481021456
+      },
+      "effect_interval_method": "design-respecting shift interval: observed minus the mean-centred replay quantiles",
+      "min_reachable_p": 0.0002,
+      "n_draws": 4999,
+      "null_mean": -3.140994938684664e-05,
+      "null_sd": 0.0008798408756116034,
+      "observed": 0.007929318481021456,
+      "p_value_one_sided_upper": 0.0002,
+      "replay_mechanism": "the frozen assignment generator, replayed by draw index; strata, call sizes, call index order, each item's observed execution block, and the three repeated appearances of every item are all preserved"
+    }
+  },
+  "primary_sensitivity": {
+    "cell_mean": {
+      "delta_unresolved_as_correct": 0.007959270477294923,
+      "delta_unresolved_as_error": 0.007929318481021456,
+      "delta_unresolved_dropped": 0.00794803744919917,
+      "delta_whole_call_discarded": 0.007911461045550431,
+      "failure_covariance_exact": -9.934107462565105e-08,
+      "failure_covariance_joint": 0.0
+    },
+    "n_calls_discarded_total": 3,
+    "per_assignment": [
+      {
+        "delta_unresolved_as_correct": 0.012030029296875001,
+        "delta_unresolved_as_error": 0.011911880970001221,
+        "delta_unresolved_dropped": 0.011988417253742521,
+        "delta_whole_call_discarded": 0.012024041234140708,
+        "failure_covariance_exact": -5.960464477539063e-08,
+        "failure_covariance_joint": 0.0,
+        "n_calls_discarded": 1.0
+      },
+      {
+        "delta_unresolved_as_correct": 0.007341543833414715,
+        "delta_unresolved_as_error": 0.0073698361714680995,
+        "delta_unresolved_dropped": 0.007349456792259944,
+        "delta_whole_call_discarded": 0.007204103600915531,
+        "failure_covariance_exact": -2.384185791015625e-07,
+        "failure_covariance_joint": 0.0,
+        "n_calls_discarded": 2.0
+      },
+      {
+        "delta_unresolved_as_correct": 0.004506238301595052,
+        "delta_unresolved_as_error": 0.004506238301595052,
+        "delta_unresolved_dropped": 0.004506238301595052,
+        "delta_whole_call_discarded": 0.004506238301595052,
+        "failure_covariance_exact": 0.0,
+        "failure_covariance_joint": 0.0,
+        "n_calls_discarded": 0.0
+      }
+    ]
+  },
+  "scope": "one fresh E2 cell; not the historical L1 replication, not a panel recurrence result, and not a measured confidence-interval coverage experiment",
+  "source": {
+    "admission_lock_sha256": "cd60cad6d0af27efc61ab0bc7605e352250cdad88702824bb4b2b841e882a3c8",
+    "assignment_and_call_metadata_verified": true,
+    "events_path": "/Users/dz/bigdata/study-120h/e2-out/qwen3-8b--multi_nli/events.jsonl",
+    "events_sha256": "0315680b38cfb6cd10b8709657cf77efbd16003132c2e92466ad831e713fa1f6",
+    "executed_plan_sha256": "d642f6c3fd5deaaefce76aadcaeeef9d577a20df513c999d715fae8e21672409",
+    "n_first_calls": 17152,
+    "n_retry_calls": 0,
+    "plan_path": "/Users/dz/bigdata/study-120h/e2-out/qwen3-8b--multi_nli/plan.json",
+    "plan_sha256_file": "289131fc6f1c9956d0c1034fa0cdec5496bfe00928b2aa10e096dd9d79b850de",
+    "summary_path": "/Users/dz/bigdata/study-120h/e2-out/qwen3-8b--multi_nli/SUMMARY.json",
+    "summary_sha256": "db77eb24eaec8eb3696fa30e2f17e9a027537df812b072ad3e4d2a9ac0c3cb99",
+    "technical_summary_verified": true
+  }
+}

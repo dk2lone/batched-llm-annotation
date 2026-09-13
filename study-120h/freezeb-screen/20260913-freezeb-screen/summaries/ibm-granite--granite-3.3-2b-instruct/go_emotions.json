@@ -1,0 +1,55 @@
+{
+  "accuracy": 0.06426099851705389,
+  "admitted": false,
+  "cell_key": "ibm-granite/granite-3.3-2b-instruct::go_emotions",
+  "error_rate": 0.9357390014829461,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "label_micro_f1": 0.09413894546277439,
+  "majority_exact_baseline": 0.2958984375,
+  "model_id": "ibm-granite/granite-3.3-2b-instruct",
+  "parse_rate": 0.98779296875,
+  "reasons": [
+    "error_information_outside_0.05_to_0.80",
+    "exact_set_accuracy_below_baseline_plus_0.05",
+    "label_micro_f1_below_0.35"
+  ],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "go_emotions",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.0532243713671603,
+      0.07445812008249943
+    ],
+    "accuracy_wilson_parsed": [
+      0.054379429072620944,
+      0.07579427428857277
+    ],
+    "error_rate": [
+      0.9255418799175006,
+      0.9467756286328396
+    ],
+    "label_micro_f1": [
+      0.08172015237470522,
+      0.10571359501114992
+    ],
+    "majority_exact_baseline": [
+      0.27734375,
+      0.31591796875
+    ],
+    "parse_rate": [
+      0.982421875,
+      0.99267578125
+    ],
+    "parse_rate_wilson": [
+      0.9820414324250119,
+      0.9917180124925112
+    ]
+  }
+}

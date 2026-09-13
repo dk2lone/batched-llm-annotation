@@ -1,0 +1,100 @@
+{
+  "checkpoint": {
+    "by_condition": {
+      "exact_context": {
+        "attribution_methods": [
+          "equal_share_within_chunk"
+        ],
+        "decode_seconds_mean": null,
+        "metered_a100_seconds_per_call": 0.5534354977930193,
+        "metered_a100_seconds_sum": 269.5230874252004,
+        "n_calls": 487,
+        "n_ok": 487,
+        "n_with_component_timing": 0,
+        "output_tokens_mean": 22.316221765913756,
+        "output_tokens_sum": 10868.0,
+        "prefill_seconds_mean": null,
+        "prompt_tokens_mean": 1611.4517453798767,
+        "prompt_tokens_sum": 784777.0,
+        "queue_seconds_mean": null,
+        "request_seconds_mean": null
+      },
+      "filler": {
+        "attribution_methods": [
+          "equal_share_within_chunk"
+        ],
+        "decode_seconds_mean": null,
+        "metered_a100_seconds_per_call": 0.4821847282920952,
+        "metered_a100_seconds_sum": 230.0021153953294,
+        "n_calls": 477,
+        "n_ok": 477,
+        "n_with_component_timing": 0,
+        "output_tokens_mean": 22.335429769392032,
+        "output_tokens_sum": 10654.0,
+        "prefill_seconds_mean": null,
+        "prompt_tokens_mean": 1628.853249475891,
+        "prompt_tokens_sum": 776963.0,
+        "queue_seconds_mean": null,
+        "request_seconds_mean": null
+      },
+      "joint": {
+        "attribution_methods": [
+          "equal_share_within_chunk"
+        ],
+        "decode_seconds_mean": null,
+        "metered_a100_seconds_per_call": 0.5206562829989743,
+        "metered_a100_seconds_sum": 18.743626187963073,
+        "n_calls": 36,
+        "n_ok": 36,
+        "n_with_component_timing": 0,
+        "output_tokens_mean": 297.05555555555554,
+        "output_tokens_sum": 10694.0,
+        "prefill_seconds_mean": null,
+        "prompt_tokens_mean": 1875.3055555555557,
+        "prompt_tokens_sum": 67511.0,
+        "queue_seconds_mean": null,
+        "request_seconds_mean": null
+      }
+    },
+    "metered_a100_hours_total": 0.14396356361347024,
+    "metered_a100_seconds_total": 518.2688290084928,
+    "n_calls": 1000,
+    "written_at_utc": "2026-09-13T03:36:18.754500+00:00"
+  },
+  "cumulative_a100_hours": 2.922743602657947,
+  "decision_reason": "complete_block_fits",
+  "least_squares": {
+    "all_positive": false,
+    "method": "chunk_least_squares",
+    "n_chunks": 32,
+    "rank": 3,
+    "seconds_per_call": {
+      "exact_context": 2.1966322435841907,
+      "filler": -1.1316970169107712,
+      "joint": -0.46969785865042124
+    }
+  },
+  "may_continue": true,
+  "method": "per_condition_attributed_mean",
+  "must_stop_now": false,
+  "n_concurrent_workers_when_measured": 1,
+  "projected_remaining_base_a100_hours": 2.109095948602838,
+  "projected_remaining_guarded_a100_hours": 3.374553517764541,
+  "projected_total_a100_hours": 16.29729712042249,
+  "rates_are_rescaled_to_one_worker": false,
+  "real_calls_used": 1000,
+  "remaining_calls_by_condition": {
+    "exact_context": 5657,
+    "filler": 5667,
+    "joint": 348
+  },
+  "remaining_load_a100_seconds": 1548.2315622401593,
+  "seconds_per_call_by_condition": {
+    "exact_context": 0.5534354977930193,
+    "filler": 0.4821847282920952,
+    "joint": 0.5206562829989743
+  },
+  "stop_a100_hours": 150.0,
+  "technical_only": true,
+  "written_at_utc": "2026-09-13T03:36:18.754769+00:00"
+}

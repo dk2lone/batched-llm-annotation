@@ -1,0 +1,41 @@
+{
+  "accuracy": 0.9104403760514597,
+  "admitted": true,
+  "cell_key": "Qwen/Qwen3-4B-Instruct-2507::imdb",
+  "error_rate": 0.08955962394854033,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+  "parse_rate": 0.98681640625,
+  "reasons": [],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "imdb",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.8969428007889546,
+      0.9225441256442994
+    ],
+    "accuracy_wilson_parsed": [
+      0.8971998123521405,
+      0.9221235933263627
+    ],
+    "error_rate": [
+      0.07745587435570057,
+      0.10305719921104539
+    ],
+    "parse_rate": [
+      0.98095703125,
+      0.9912109375
+    ],
+    "parse_rate_wilson": [
+      0.9808862620396899,
+      0.9909237145196399
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "accuracy": 0.7313141182217879,
+  "admitted": true,
+  "cell_key": "Qwen/Qwen3-8B::multi_nli",
+  "error_rate": 0.26868588177821207,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "model_id": "Qwen/Qwen3-8B",
+  "parse_rate": 0.99951171875,
+  "reasons": [],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "multi_nli",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.7107962872496336,
+      0.7490295231167522
+    ],
+    "accuracy_wilson_parsed": [
+      0.7116911851080722,
+      0.7500704961408325
+    ],
+    "error_rate": [
+      0.2509704768832478,
+      0.2892037127503664
+    ],
+    "parse_rate": [
+      0.99853515625,
+      1.0
+    ],
+    "parse_rate_wilson": [
+      0.9972392640467791,
+      0.9999138011690629
+    ]
+  }
+}

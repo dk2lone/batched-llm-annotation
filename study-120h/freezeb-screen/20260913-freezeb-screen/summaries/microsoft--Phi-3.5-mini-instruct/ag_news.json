@@ -1,0 +1,43 @@
+{
+  "accuracy": 0.3776257938446507,
+  "admitted": false,
+  "cell_key": "microsoft/Phi-3.5-mini-instruct::ag_news",
+  "error_rate": 0.6223742061553492,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "model_id": "microsoft/Phi-3.5-mini-instruct",
+  "parse_rate": 0.99951171875,
+  "reasons": [
+    "accuracy_below_frozen_floor"
+  ],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "ag_news",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.35581622678396874,
+      0.40000733137829914
+    ],
+    "accuracy_wilson_parsed": [
+      0.3568721595680207,
+      0.3988378696762231
+    ],
+    "error_rate": [
+      0.5999926686217009,
+      0.6441837732160313
+    ],
+    "parse_rate": [
+      0.99853515625,
+      1.0
+    ],
+    "parse_rate_wilson": [
+      0.9972392640467791,
+      0.9999138011690629
+    ]
+  }
+}

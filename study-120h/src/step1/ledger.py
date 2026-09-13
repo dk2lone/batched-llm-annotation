@@ -1,10 +1,13 @@
 """Append-only call ledger, duplicate and conflict rejection, and the A100-hour meter.
 
 One row per requested label, exactly as the frozen call-lineage schema requires. A row is
-appended once and never edited. A repeated call with the same output is a duplicate and is
-skipped. A repeated call with a different output is a conflict: it is rejected, recorded, and
-never stored beside the original. A retry is a new row linked by `parent_call_id`; it never
-replaces a first response.
+therefore identified by its call and its target, not by its call alone: a joint call that
+requests 16 labels stores 16 rows that share one `call_id` and one `output_sha256`.
+
+A row is appended once and never edited. A repeated `(call_id, doc_id)` with the same output
+is a duplicate and is skipped. A call offered with a different output than the stored one is
+a conflict: the whole call is rejected, recorded, and never mixed into the ledger beside the
+original. A retry is a new row linked by `parent_call_id`; it never replaces a first response.
 """
 
 from __future__ import annotations
@@ -198,50 +201,96 @@ def check_row(row: dict[str, Any]) -> None:
         raise LedgerError("a first response must have a null parent_call_id")
 
 
-def index_of(path: Path) -> dict[str, str]:
-    """call_id to output_sha256 for every row already stored. Empty when the file is absent."""
+def rows_by_call(path: Path) -> dict[str, dict[str, str]]:
+    """call_id to {doc_id: output_sha256} for every stored row. Empty when the file is absent.
+
+    This is the true row identity of the frozen schema. A solo call holds one entry; a joint
+    call that requests 16 labels holds 16, one per target.
+    """
+    index: dict[str, dict[str, str]] = {}
     if not path.exists():
-        return {}
-    return {str(row["call_id"]): str(row["output_sha256"]) for row in read_jsonl(path)}
+        return index
+    for row in read_jsonl(path):
+        index.setdefault(str(row["call_id"]), {})[str(row["doc_id"])] = str(row["output_sha256"])
+    return index
+
+
+def index_of(path: Path) -> dict[str, str]:
+    """call_id to output_sha256 for every call already stored, whatever its target count."""
+    return {
+        call_id: _one_digest(call_id, targets)
+        for call_id, targets in rows_by_call(path).items()
+    }
+
+
+def _one_digest(call_id: str, targets: dict[str, str]) -> str:
+    """Every row of one call carries the hash of that call's single unedited output."""
+    digests = set(targets.values())
+    if len(digests) != 1:
+        raise LedgerError(f"{call_id} is stored with more than one output hash")
+    return digests.pop()
 
 
 def completed_call_ids(path: Path) -> set[str]:
-    return set(index_of(path))
+    """Calls that hold at least one stored row. Completeness per target is checked separately."""
+    return set(rows_by_call(path))
+
+
+def _group_offered(rows: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    offered: dict[str, list[dict[str, Any]]] = {}
+    for row in rows:
+        offered.setdefault(str(row["call_id"]), []).append(row)
+    for call_id, call_rows in offered.items():
+        if len({str(row["output_sha256"]) for row in call_rows}) != 1:
+            raise LedgerError(f"{call_id} was offered with more than one output in one append")
+        doc_ids = [str(row["doc_id"]) for row in call_rows]
+        if len(set(doc_ids)) != len(doc_ids):
+            raise LedgerError(f"{call_id} was offered the same target twice in one append")
+    return offered
 
 
 def append(path: Path, rows: list[dict[str, Any]]) -> dict[str, Any]:
     """Append new rows. Skip duplicates. Reject conflicts. Never edit a stored row.
 
-    A conflict is a call that is already stored with a different output. The conflicting rows
-    are written to `<path>.conflicts.jsonl` and are never mixed into the ledger.
+    The unit of decision is the call, and the unit of storage is the requested label. A call
+    whose output differs from the stored one is rejected whole, so a ledger never holds a
+    mixture of two outputs for one call. A call that is stored with the same output but with
+    missing target rows is completed, because every requested label needs its own row.
     """
     for row in rows:
         check_row(row)
-    stored = index_of(path)
+    stored = rows_by_call(path)
     fresh: list[dict[str, Any]] = []
-    duplicates: list[str] = []
+    duplicate_rows = 0
+    repaired: list[str] = []
     conflicts: list[dict[str, Any]] = []
-    batch: dict[str, str] = {}
 
-    for row in rows:
-        call_id = str(row["call_id"])
-        digest = str(row["output_sha256"])
-        known = stored.get(call_id, batch.get(call_id))
+    for call_id, call_rows in _group_offered(rows).items():
+        digest = str(call_rows[0]["output_sha256"])
+        known = stored.get(call_id)
         if known is None:
-            batch[call_id] = digest
-            fresh.append(row)
-        elif known == digest:
-            duplicates.append(call_id)
-        else:
+            stored[call_id] = {str(row["doc_id"]): digest for row in call_rows}
+            fresh.extend(call_rows)
+            continue
+        if _one_digest(call_id, known) != digest:
             conflicts.append(
                 {
                     "call_id": call_id,
-                    "stored_output_sha256": known,
+                    "stored_output_sha256": _one_digest(call_id, known),
                     "offered_output_sha256": digest,
+                    "n_rows_rejected": len(call_rows),
                     "rejected_at_utc": dt.datetime.now(dt.UTC).isoformat(),
                     "reason": "the same call_id already has a different stored output",
                 }
             )
+            continue
+        missing = [row for row in call_rows if str(row["doc_id"]) not in known]
+        duplicate_rows += len(call_rows) - len(missing)
+        if missing:
+            repaired.append(call_id)
+            for row in missing:
+                known[str(row["doc_id"])] = digest
+            fresh.extend(missing)
 
     if conflicts:
         _append_lines(path.with_suffix(path.suffix + ".conflicts.jsonl"), conflicts)
@@ -250,7 +299,8 @@ def append(path: Path, rows: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "path": str(path),
         "appended": len(fresh),
-        "duplicates_skipped": len(duplicates),
+        "duplicates_skipped": duplicate_rows,
+        "calls_completed": sorted(repaired),
         "conflicts_rejected": len(conflicts),
         "conflicts": conflicts,
     }

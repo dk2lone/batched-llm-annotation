@@ -1,0 +1,42 @@
+{
+  "attempt_id": "screen::allenai--OLMo-2-1124-7B-Instruct::civil_comments::0000::cc2542051aaea7c9::attempt::1",
+  "fallback_one_token_call": {
+    "backend": {
+      "backend": "vllm",
+      "dtype": "bfloat16",
+      "enable_thinking": false,
+      "gpu_memory_utilization": 0.9,
+      "max_model_len": 4096,
+      "max_num_seqs": 32,
+      "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+      "model_revision": "470b1fba1ae01581f270116362ee4aa1b97f4c84",
+      "seed": 20260912,
+      "tensor_parallel_size": 1,
+      "tokenizer_revision": "470b1fba1ae01581f270116362ee4aa1b97f4c84"
+    },
+    "finish_reason": "length",
+    "first_response": "{\"",
+    "host": {
+      "cuda_version": "13.0",
+      "driver_version": "580.95.05",
+      "gpu_name": "NVIDIA A100-SXM4-40GB",
+      "gpu_uuid": "GPU-3f6da211-4b76-b125-9df3-2021ebb05cb4",
+      "installed_engine_version_string": "0.28.0",
+      "torch_version": "2.13.0+cu130"
+    },
+    "kind": "timing_probe",
+    "output_tokens": 1,
+    "prompt_tokens": 218,
+    "session_elapsed_seconds": 174.56362504700002,
+    "wall_seconds": 0.01937967199998525,
+    "worker_session_id": "21b7d1101477461cbf5e4527e57d60f6"
+  },
+  "method": "one_token_wall_differencing_single_call",
+  "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+  "prompt_plus_first_token_seconds": 0.01937967199998525,
+  "raw_vllm_decode_seconds": null,
+  "raw_vllm_prefill_seconds": null,
+  "remaining_generation_seconds": 0.2400621560000218,
+  "scope": "single_call_probe_only",
+  "usable": true
+}

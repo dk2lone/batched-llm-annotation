@@ -1,0 +1,56 @@
+{
+  "accuracy": 0.07715813598166539,
+  "admitted": false,
+  "cell_key": "microsoft/Phi-3.5-mini-instruct::go_emotions",
+  "error_rate": 0.9228418640183346,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "label_micro_f1": 0.11233558478492713,
+  "majority_exact_baseline": 0.2958984375,
+  "model_id": "microsoft/Phi-3.5-mini-instruct",
+  "parse_rate": 0.63916015625,
+  "reasons": [
+    "parse_rate_below_0.98",
+    "error_information_outside_0.05_to_0.80",
+    "exact_set_accuracy_below_baseline_plus_0.05",
+    "label_micro_f1_below_0.35"
+  ],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "go_emotions",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.0633792321739678,
+      0.09104977471733401
+    ],
+    "accuracy_wilson_parsed": [
+      0.06390814432602797,
+      0.09288265279398257
+    ],
+    "error_rate": [
+      0.908950225282666,
+      0.9366207678260322
+    ],
+    "label_micro_f1": [
+      0.09676072828114773,
+      0.129078756176242
+    ],
+    "majority_exact_baseline": [
+      0.27685546875,
+      0.3154296875
+    ],
+    "parse_rate": [
+      0.61961669921875,
+      0.6591796875
+    ],
+    "parse_rate_wilson": [
+      0.6181183347715298,
+      0.6596809062710067
+    ]
+  }
+}

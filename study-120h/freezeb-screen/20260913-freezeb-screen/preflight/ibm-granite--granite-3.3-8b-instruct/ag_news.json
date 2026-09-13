@@ -1,0 +1,15 @@
+{
+  "calls": 2048,
+  "max_model_len": 32768,
+  "max_required_tokens": 488,
+  "min_headroom_tokens": 32280,
+  "model_id": "ibm-granite/granite-3.3-8b-instruct",
+  "n_over_budget": 0,
+  "task_id": "ag_news",
+  "tokenizer": {
+    "counter": "pinned_tokenizer",
+    "enable_thinking": false,
+    "model_id": "ibm-granite/granite-3.3-8b-instruct",
+    "tokenizer_revision": "51dd4bc2ade4059a6bd87649d68aa11e4fb2529b"
+  }
+}

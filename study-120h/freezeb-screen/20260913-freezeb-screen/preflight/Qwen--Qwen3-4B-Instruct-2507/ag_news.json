@@ -1,0 +1,15 @@
+{
+  "calls": 2048,
+  "max_model_len": 32768,
+  "max_required_tokens": 420,
+  "min_headroom_tokens": 32348,
+  "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+  "n_over_budget": 0,
+  "task_id": "ag_news",
+  "tokenizer": {
+    "counter": "pinned_tokenizer",
+    "enable_thinking": false,
+    "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+    "tokenizer_revision": "cdbee75f17c01a7cc42f958dc650907174af0554"
+  }
+}

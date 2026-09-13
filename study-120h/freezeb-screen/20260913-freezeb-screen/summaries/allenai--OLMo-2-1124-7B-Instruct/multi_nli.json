@@ -1,0 +1,43 @@
+{
+  "accuracy": 0.3212890625,
+  "admitted": false,
+  "cell_key": "allenai/OLMo-2-1124-7B-Instruct::multi_nli",
+  "error_rate": 0.6787109375,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "model_id": "allenai/OLMo-2-1124-7B-Instruct",
+  "parse_rate": 1.0,
+  "reasons": [
+    "accuracy_below_frozen_floor"
+  ],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "multi_nli",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.30078125,
+      0.34033203125
+    ],
+    "accuracy_wilson_parsed": [
+      0.3014155155653912,
+      0.3418317748852459
+    ],
+    "error_rate": [
+      0.65966796875,
+      0.69921875
+    ],
+    "parse_rate": [
+      1.0,
+      1.0
+    ],
+    "parse_rate_wilson": [
+      0.9981277993949387,
+      1.0
+    ]
+  }
+}

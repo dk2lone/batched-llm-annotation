@@ -1,0 +1,15 @@
+{
+  "changes": [
+    "scaledown_window=1 to 2; container lifecycle only",
+    "LOCAL_ROOT points to the unchanged study-120h tree because the runtime copy is outside the seal"
+  ],
+  "created_at_utc": "2026-09-13T19:05:55.908758+00:00",
+  "gpu_or_model_output_before_amendment": false,
+  "reason": "Modal 1.5.5 rejects scaledown_window=1 before app registration; minimum is 2.",
+  "runtime_copy_path": "/Users/dz/bigdata/study-120h/amendments/20260913T190555Z-x1r4-modal-scaledown.py",
+  "runtime_copy_sha256": "411ccef6cc7edde342c1df69dd7c6bce4687811287ff822ce9c96dd6b111fd44",
+  "schema_version": "x1r4-technical-runtime-amendment-v1",
+  "scientific_schedule_changed": false,
+  "seal_manifest_sha256": "3838c6e201388480eb08aa48e04a1ef3a5af6a86fac5d920e9837459382677d2",
+  "sealed_source_sha256": "9771950ae164839222470e64d77c8d837fcbb4e14ab38e23c971fffae900e454"
+}

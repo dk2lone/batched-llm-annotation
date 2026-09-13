@@ -1,0 +1,44 @@
+{
+  "accuracy": 0.3415,
+  "admitted": false,
+  "cell_key": "microsoft/Phi-3.5-mini-instruct::multi_nli",
+  "error_rate": 0.6585,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "model_id": "microsoft/Phi-3.5-mini-instruct",
+  "parse_rate": 0.9765625,
+  "reasons": [
+    "parse_rate_below_0.98",
+    "accuracy_below_frozen_floor"
+  ],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "multi_nli",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.3218803391654646,
+      0.3613613613613614
+    ],
+    "accuracy_wilson_parsed": [
+      0.321038650206326,
+      0.3625690537818312
+    ],
+    "error_rate": [
+      0.6386386386386387,
+      0.6781196608345353
+    ],
+    "parse_rate": [
+      0.9697265625,
+      0.98291015625
+    ],
+    "parse_rate_wilson": [
+      0.9690636668954875,
+      0.9822768919028133
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "accuracy": 0.40764331210191085,
+  "admitted": false,
+  "cell_key": "ibm-granite/granite-3.3-2b-instruct::ag_news",
+  "error_rate": 0.5923566878980892,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "model_id": "ibm-granite/granite-3.3-2b-instruct",
+  "parse_rate": 0.99658203125,
+  "reasons": [
+    "accuracy_below_frozen_floor"
+  ],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "ag_news",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "uncertainty_95": {
+    "accuracy": [
+      0.38754761458723613,
+      0.4290034280117532
+    ],
+    "accuracy_wilson_parsed": [
+      0.38651755556417366,
+      0.4291160729629866
+    ],
+    "error_rate": [
+      0.5709965719882468,
+      0.6124523854127638
+    ],
+    "parse_rate": [
+      0.99365234375,
+      0.9990234375
+    ],
+    "parse_rate_wilson": [
+      0.992961308806918,
+      0.9983433513343443
+    ]
+  }
+}

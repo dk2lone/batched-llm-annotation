@@ -1,0 +1,19 @@
+{
+  "anchors_verified": 20,
+  "cases_per_session": 36,
+  "events_verified": 360,
+  "metered_a100_hours": 0.8111738628933542,
+  "models_checked": [
+    "Qwen/Qwen3-8B",
+    "ibm-granite/granite-3.3-8b-instruct",
+    "meta-llama/Llama-3.1-8B-Instruct",
+    "microsoft/Phi-4-mini-instruct",
+    "mistralai/Mistral-7B-Instruct-v0.3"
+  ],
+  "plan_sha256": "167ce1fb6fd7e279559991b522df961529c87a8fdee29502ce20f9e7bd067188",
+  "run_id": "20260913T191010Z-4807e7d1",
+  "schema_version": "ext-batch-invariance-v1",
+  "sessions_per_model": 2,
+  "status": "passed",
+  "synthetic_only": true
+}

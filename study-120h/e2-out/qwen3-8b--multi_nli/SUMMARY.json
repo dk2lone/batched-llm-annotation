@@ -1,0 +1,48 @@
+{
+  "checkpoint_verification": {
+    "model_id": "Qwen/Qwen3-8B",
+    "n_files": 15,
+    "n_files_hash_verified": 15,
+    "n_files_size_verified_only": 0,
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "source": "runtime-lock/20260913T004054Z-BRT1 checkpoint manifest",
+    "volume": "ieee-bigdata-freezeb-models"
+  },
+  "completeness": {
+    "complete": true,
+    "missing_call_ids_sample": [],
+    "n_expected_first_attempts": 17152,
+    "n_first_attempts": 17152,
+    "n_pending_first_attempts": 0,
+    "n_pending_retries": 0,
+    "n_retry_attempts": 0,
+    "status_counts": {
+      "ok": 17152
+    }
+  },
+  "concurrency_amendment": {
+    "content_hash": "40cace61adeaf22027e7fe398306c0f6541fc8cab7b79cf261b5bfa951d769f2",
+    "path": "/Users/dz/bigdata/study-120h/amendments/20260913T045515Z-freezeb-e2-qwen-multinli-concurrency.json"
+  },
+  "cumulative_a100_hours": 4.824000183954456,
+  "failure": null,
+  "meter": {
+    "a100_hours_by_worker": {
+      "e2-worker-0": 0.17914379369727546,
+      "e2-worker-1": 0.22913933954824778,
+      "e2-worker-2": 0.20143560069996996,
+      "e2-worker-3": 0.20174269031263656
+    },
+    "a100_hours_total": 0.8114614242581298,
+    "a100_seconds_total": 2921.2611273292673,
+    "accounting_rule": "metered A100 hours are summed over workers. Two concurrent single-A100 workers cost the same total hours as one worker running twice as long.",
+    "longest_single_worker_hours": 0.22913933954824778,
+    "n_runs": 541
+  },
+  "modal_profile": "daniel21cn2016",
+  "plan_sha256": "d642f6c3fd5deaaefce76aadcaeeef9d577a20df513c999d715fae8e21672409",
+  "results_namespace": "d642f6c3fd5deaae",
+  "run_id": "20260913T045515Z-7311206a",
+  "stopped_early": null,
+  "written_at_utc": "2026-09-13T05:09:46.749170+00:00"
+}

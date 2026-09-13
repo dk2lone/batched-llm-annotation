@@ -1,0 +1,183 @@
+{
+  "analysis": "historical_qwen3_8b_civil_comments_bridge",
+  "covariance": {
+    "exact_context": {
+      "mean_covariance": -0.0004205067952473959,
+      "mean_icc": -0.005524599646902699,
+      "per_assignment": [
+        {
+          "accuracy": 0.9228515625,
+          "covariance": -0.00048313140869140627,
+          "error_rate": 0.0771484375,
+          "icc": -0.006785881722590583
+        },
+        {
+          "accuracy": 0.9111328125,
+          "covariance": 0.000631268819173177,
+          "error_rate": 0.0888671875,
+          "icc": 0.007796347989274034
+        },
+        {
+          "accuracy": 0.912109375,
+          "covariance": -0.0014096577962239584,
+          "error_rate": 0.087890625,
+          "icc": -0.017584265207391547
+        }
+      ],
+      "unresolved_rule": "errors as correct"
+    },
+    "filler": {
+      "mean_covariance": -0.0002111064063178169,
+      "mean_icc": -0.002761412439038227,
+      "per_assignment": [
+        {
+          "accuracy": 0.92431640625,
+          "covariance": -0.00032436052958170574,
+          "error_rate": 0.07568359375,
+          "icc": -0.004636663656141188
+        },
+        {
+          "accuracy": 0.91748046875,
+          "covariance": 0.0007426102956136067,
+          "error_rate": 0.08251953125,
+          "icc": 0.009808608171075931
+        },
+        {
+          "accuracy": 0.91455078125,
+          "covariance": -0.0010515689849853516,
+          "error_rate": 0.08544921875,
+          "icc": -0.013456181832049425
+        }
+      ],
+      "unresolved_rule": "errors as correct"
+    },
+    "joint": {
+      "mean_covariance": 0.005030875735812717,
+      "mean_icc": 0.05304033081740623,
+      "per_assignment": [
+        {
+          "accuracy": 0.89501953125,
+          "covariance": 0.00427858034769694,
+          "error_rate": 0.10498046875,
+          "icc": 0.045536397738278
+        },
+        {
+          "accuracy": 0.89599609375,
+          "covariance": 0.005524333318074544,
+          "error_rate": 0.10400390625,
+          "icc": 0.05928217199046535
+        },
+        {
+          "accuracy": 0.890625,
+          "covariance": 0.005289713541666667,
+          "error_rate": 0.109375,
+          "icc": 0.05430242272347536
+        }
+      ],
+      "unresolved_rule": "errors as correct"
+    }
+  },
+  "fake_batch_falsification": {
+    "bounded_null_band_absolute": 0.001,
+    "delta_perm": 0.005451382531060113,
+    "joint_covariance": 0.005030875735812717,
+    "n_regroupings": 2000,
+    "observed_fake_batch_covariance": -0.0004205067952473959,
+    "p_value_one_sided_upper": 0.0004997501249375312,
+    "regrouped_covariance_mean": -7.532450358072917e-05,
+    "regrouped_covariance_sd": 0.00034666347212568575
+  },
+  "parse": {
+    "unresolved_solo_rows": 21,
+    "unresolved_target_rows_by_condition": {
+      "exact_context": 7,
+      "filler": 10
+    }
+  },
+  "primary_randomization": {
+    "errors_as_correct": {
+      "alpha": 0.05,
+      "effect_interval": {
+        "high": 0.006298040517171224,
+        "low": 0.004561929406060113,
+        "point": 0.005451382531060113
+      },
+      "effect_interval_method": "design-respecting shift interval: observed minus the mean-centred replay quantiles",
+      "min_reachable_p": 0.0004997501249375312,
+      "n_draws": 2000,
+      "null_mean": 0.0005471724616156684,
+      "null_sd": 0.0004461079787971482,
+      "observed": 0.005451382531060113,
+      "p_value_one_sided_upper": 0.0004997501249375312,
+      "replay_mechanism": "the frozen assignment generator, replayed by draw index; strata, call sizes, call index order, each item's observed execution block, and the three repeated appearances of every item are all preserved"
+    },
+    "errors_as_errors": {
+      "alpha": 0.05,
+      "effect_interval": {
+        "high": 0.006313835864596898,
+        "low": 0.004534321975708008,
+        "point": 0.005441798104180231
+      },
+      "effect_interval_method": "design-respecting shift interval: observed minus the mean-centred replay quantiles",
+      "min_reachable_p": 0.0004997501249375312,
+      "n_draws": 2000,
+      "null_mean": 0.0005412664201524523,
+      "null_sd": 0.000451050629291863,
+      "observed": 0.005441798104180231,
+      "p_value_one_sided_upper": 0.0004997501249375312,
+      "replay_mechanism": "the frozen assignment generator, replayed by draw index; strata, call sizes, call index order, each item's observed execution block, and the three repeated appearances of every item are all preserved"
+    }
+  },
+  "primary_sensitivity": {
+    "cell_mean": {
+      "delta_unresolved_as_correct": 0.005451382531060113,
+      "delta_unresolved_as_error": 0.005441798104180231,
+      "delta_unresolved_dropped": 0.0054512640043598475,
+      "delta_whole_call_discarded": 0.00545472193725484
+    },
+    "n_calls_discarded_total": 7,
+    "per_assignment": [
+      {
+        "delta_unresolved_as_correct": 0.004761711756388347,
+        "delta_unresolved_as_error": 0.004623540242513021,
+        "delta_unresolved_dropped": 0.004752916731127849,
+        "delta_whole_call_discarded": 0.0048119505585299815,
+        "n_calls_discarded": 5.0
+      },
+      {
+        "delta_unresolved_as_correct": 0.004893064498901367,
+        "delta_unresolved_as_error": 0.0050024827321370445,
+        "delta_unresolved_dropped": 0.0049015039440610695,
+        "delta_whole_call_discarded": 0.004852843915343915,
+        "n_calls_discarded": 2.0
+      },
+      {
+        "delta_unresolved_as_correct": 0.006699371337890625,
+        "delta_unresolved_as_error": 0.006699371337890625,
+        "delta_unresolved_dropped": 0.006699371337890625,
+        "delta_whole_call_discarded": 0.006699371337890625,
+        "n_calls_discarded": 0.0
+      }
+    ]
+  },
+  "scope": "separate historical replication bridge; not a Freeze B panel result and not evidence of recurrence across models or tasks",
+  "source": {
+    "assignment_seal_verified": true,
+    "calls_path": "/Users/dz/bigdata/study-120h/step2-out/bridge/calls.jsonl",
+    "calls_sha256": "79c4780d7c3269c7027f023de1e36a1f224dc5b41666f5567507ae43d86e44b3",
+    "items_path": "/Users/dz/bigdata/study-120h/freeze/20260912T041633Z/data/civil_comments/items.jsonl",
+    "items_sha256": "16ac27278c9aea4d85eeff5c28890d12c0a69cc487ac80bb3a647e8f67e98970",
+    "solo_path": "/Users/dz/bigdata/study-120h/step1-out/results/qwen_civil__civil_comments__Qwen_Qwen3-8B/solo.jsonl",
+    "solo_rows_reused": 2048,
+    "solo_sha256": "2cf12e516594d8dfefb4a8cf4cfe10c545964f5a0f3032a909e0250032d65943",
+    "target_rows": 18432,
+    "unique_first_calls": 12672
+  },
+  "verdict": {
+    "alpha": 0.05,
+    "label": "REPLICATION_SUPPORTED",
+    "practical_floor": 0.002,
+    "rule": "errors-as-correct, errors-as-errors, unresolved-dropped, and whole-call-discarded contrasts must remain at least 0.002; both frozen replay tests and the fake-batch test must have p < 0.05; fake-batch covariance must have absolute value below 0.001",
+    "supported": true
+  }
+}

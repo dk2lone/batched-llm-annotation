@@ -1,0 +1,51 @@
+{
+  "accuracy": 0.7747658945293248,
+  "admitted": true,
+  "balanced_accuracy": 0.7616867074199303,
+  "cell_key": "Qwen/Qwen3-8B::civil_comments",
+  "error_rate": 0.22523410547067524,
+  "expected_calls": 2048,
+  "final_status_counts": {
+    "ok": 2048
+  },
+  "model_id": "Qwen/Qwen3-8B",
+  "parse_rate": 0.99072265625,
+  "reasons": [],
+  "status_counts": {
+    "ok": 2048
+  },
+  "task_id": "civil_comments",
+  "technical_complete": true,
+  "terminal_calls": 2048,
+  "toxic_recall": 0.7464788732394366,
+  "uncertainty_95": {
+    "accuracy": [
+      0.755286432896873,
+      0.7934990271857669
+    ],
+    "accuracy_wilson_parsed": [
+      0.7560799666468484,
+      0.7924133726452581
+    ],
+    "balanced_accuracy": [
+      0.7225638744269133,
+      0.7958361615456184
+    ],
+    "error_rate": [
+      0.20650097281423313,
+      0.24471356710312692
+    ],
+    "parse_rate": [
+      0.98681640625,
+      0.99462890625
+    ],
+    "parse_rate_wilson": [
+      0.9855551631687908,
+      0.994052686823312
+    ],
+    "toxic_recall": [
+      0.6711859257622625,
+      0.8153900709219858
+    ]
+  }
+}
