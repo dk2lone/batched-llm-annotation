@@ -62,4 +62,7 @@ study-120h/extension-batch-invariance/**/events.json
 study-120h/extension-batch-invariance/**/plan.json
 study-120h/extension-batch-invariance/**/workers.json
 study-120h/extension-staging/**/staging_helper.py
+study-120h/extension-runtime/**/events.json
+study-120h/extension-runtime/**/workers.json
+study-120h/extension-runtime/**/report.json
 study-120h/freezeb-runtime/
