@@ -3,10 +3,11 @@
 **Problem:** Determine whether shared-call LLM text annotation creates excess across-item error
 dependence and whether treating those labels as independent produces misleading uncertainty.
 
-**Method thesis:** Screen five model families, compare joint size-16 labeling with an exact-context
-one-target-per-call control in admitted cells, then measure confidence-interval behavior with
-independent repeated calls in one prespecified cell per admitted family. A later fully crossed
-four-family/four-task panel tests generalization if its own capability and budget gates pass.
+**Method thesis:** Compare joint size-16 labeling with exact-context one-target-per-call and solo
+controls on the same texts. Preserve the seven-cell X1R4 admitted analysis, and prospectively seal
+a separate complete four-family × four-existing-dataset contrast with no accuracy admission gate.
+Measure confidence-interval behavior with independent repeated calls in one prespecified cell per
+family. A later independent-dataset panel tests replication.
 
 **Date:** 2026-09-14 UTC
 
@@ -18,10 +19,10 @@ seals are preserved but superseded. The synthetic runtime and batch-invariance p
 all five models and used 1.498607 metered A100-hours. A6 completed all 40,960 sealed solo calls
 in run `20260914T003735Z-5a8c63f2`; seven cells in four families passed the frozen admission
 floors. See `study-120h/extension-m1/20260914T003735Z-5a8c63f2/REPORT.md` for every cell.
-No extension joint output exists. A7, the admission lock, is sealed. A8 is next. A12 orders the
-equal-family 1,000-replicate evaluation, batch-size tests, and a conditional 4 × 4 crossed
-replication on four new shared datasets. The crossed panel needs new task-screen and budget seals
-before paid work. This extension is separate
+No extension joint output exists. A7, the admission lock, is sealed. A separate full-grid protocol
+and budget must be frozen before A8 joint output. A8 is the next paid stage after that CPU gate.
+A10 completes the existing-dataset 4 × 4; A12 orders equal-family 1,000-replicate evaluation,
+batch-size tests, and an optional independent-dataset 4 × 4. This extension is separate
 from Freeze B because Qwen and Granite joint results have already been opened. Nothing below
 authorizes a further paid run.
 See `study-120h/EXTENSION_PROTOCOL.md` for the full frozen protocol.
@@ -32,6 +33,7 @@ See `study-120h/EXTENSION_PROTOCOL.md` for the full frozen protocol.
 |---|---|---|---|
 | C1: cross-family recurrence | The current evidence covers only Qwen and Granite. | A positive **family-equal** joint-minus-exact covariance test; at least three families each have a Holm-positive prespecified cell with effect at least 0.002; every leave-one-family-out family-equal mean remains positive. The cell-equal mean is a sensitivity, never the gate. | B1-B3 |
 | C2: practical uncertainty damage | Dependence alone does not show that ordinary confidence intervals fail. | At least two prespecified family cells have item-level coverage at most 0.90, worst-case upper coverage below 0.95 after reference uncertainty, and multiplicity-adjusted p at most 0.05. | B4 |
+| Full-grid relative effect | Solo accuracy is a property of the annotator, not an admission condition for comparing its call formats. | Estimate the joint-minus-exact contrast in all sixteen existing-dataset cells; report model and task margins, low-accuracy strata, malformed-output bounds, and the full-grid test sealed before joint output. This does not replace the X1R4 C1 gate. | Separate A10 seal |
 | Anti-claim: extra context explains the result | Joint and solo prompts differ in both context and requested outputs. | Joint exceeds an exact-context control that presents identical neighbors in identical order but requests one target. | B3 |
 
 Claims apply only to the frozen checkpoints, tasks, prompts, and serving policy. This extension does
@@ -98,6 +100,9 @@ five families, including newly run Qwen and Granite anchors.
   an admitted cell. A five-family claim requires all five to admit at least one cell.
 - **Failure interpretation:** A family with no admitted cells remains a reported screen failure.
   It does not proceed to E2 and is not replaced after joint outputs.
+- **Scope:** These frozen floors govern the original seven-cell X1R4 claim and the choice of B4
+  repeated-sampling cells. They do not prevent a separate, prespecified relative comparison for
+  the other nine combinations of the same four models and four datasets. Report all solo failures.
 - **Priority:** MUST-RUN.
 
 ### B3: Full batched-versus-individual experiment
@@ -228,7 +233,9 @@ extension joint output was generated.
 
 Run one admitted model-task cell from each family before opening the family-core result. Each cell
 uses three joint assignments, exact-context target-only calls with identical neighbors and order,
-solo calls, and fake-batch controls. Reforecast each model after its first 1,000 attempts.
+solo calls, and fake-batch controls. Reforecast each model after its first 1,000 attempts. Before
+the first joint call, freeze the separate sixteen-cell existing-dataset schedule, outcome rules,
+analysis, and budget so the extra cells cannot be chosen in response to A8 results.
 
 ### A9 — Analyze the family core — pending A8
 
@@ -236,10 +243,16 @@ Calculate joint-minus-exact covariance, run 4,999 design-respecting draws, apply
 calculate the family-equal global result, check leave-one-family-out results, and apply every frozen
 malformed-output treatment. C1 requires qualifying results in at least three families.
 
-### A10 — Complete remaining main cells — conditional (sealed B3 order)
+### A10 — Complete the existing-dataset 4 × 4 — conditional
 
-Run the remaining admitted cells in frozen order while each complete block fits the 1.6x start
-guard and 10-hour reserve under the 80-hour stop. Failed and null cells remain reported.
+Run the remaining three X1R4 admitted cells in their sealed order, then the nine additional
+combinations of Qwen, Granite, Llama, and Mistral with Civil Comments, MultiNLI, IMDb, and AG News
+under the separate pre-output full-grid seal. Use the same texts within each cell for joint,
+exact-context, and solo comparisons. Solo accuracy is recorded as a moderator, not an eligibility
+gate; prespecify malformed-output treatments and report weak cells without dropping them. Analyze
+the complete sixteen-cell grid with equal model and task weight, cell effects, margins, and
+interaction. Keep its inference separate from the frozen seven-cell C1 analysis. Reforecast costs
+and run only complete blocks that fit the applicable stop and reserve; report any incomplete grid.
 
 ### A11 — Run the practical uncertainty experiment — conditional (sealed B4 order)
 
@@ -266,22 +279,22 @@ this order. Do not select extra runs because an interim result looks favorable.
    across sizes; only the grouping and resulting call count change. Freeze the comparison and
    forecast before paid calls. The sealed size-16 condition may be analyzed once completed, but
    fresh calls are required for the other sizes.
-3. Add independent data across all four families: screen up to two new candidates each for
-   toxicity, sentiment, natural-language inference, and topic classification, then run the first
-   all-four-pass dataset in each stratum. This yields four shared datasets × four pinned families
-   only if all sixteen cells pass the uniform solo gates. Freeze the candidate order, prompts,
-   labels, fresh disjoint frames, selected cells, schedules, statistics, and separate GPU budget
-   before joint output. Use the same B3 power-rule item-count ladder and batch-16 joint,
-   exact-context, solo, and fake-batch design as the current main experiment. At 4,096 items per
-   cell, sixteen cells require 274,432 calls; the power rule may select 2,048 or 8,192 instead.
-   Analyze cell, family, task, and interaction effects separately from the seven X1R4 cells.
-   If a stratum has no all-four-pass dataset, report the failed full-grid target and the completed
-   partial panel. The earlier crossed-panel amendment is retained as planning history:
+3. Add one independent dataset for each of toxicity, sentiment, natural-language inference, and
+   topic classification across all four families. Choose and freeze the four dataset sources for
+   label quality, access, and task fit before model results, then run all sixteen combinations
+   regardless of solo accuracy. Freeze fresh disjoint frames, prompts, response rules, schedules,
+   statistics, and a separate GPU budget before joint output. Use batch-16 joint, exact-context,
+   solo, and fake-batch conditions. At 4,096 items per cell, sixteen cells require 274,432 calls;
+   a different item count requires a pre-output power and budget decision. Analyze this new-data
+   grid separately as replication of the existing-dataset 4 × 4. Report accuracy and malformed
+   responses for every cell. The earlier all-four-pass crossed-panel amendment is superseded as
+   an active eligibility rule and retained as planning history:
    `study-120h/amendments/20260914T014726Z-crossed-4x4-plan.md`.
 4. Add an exact-ground-truth synthetic task with a frozen generator, reference labels, and
-   four-family screen before any scientific output. Seal its cell sizes and analysis separately.
+   technical/output-format screen before scientific output. Seal its cell sizes and analysis
+   separately; report accuracy without using it as a gate.
 5. Add another checkpoint size per family only after fixing the checkpoints, common tasks,
-   capability gates, and budget before their output is seen.
+   output rules, and budget before their output is seen. Report solo accuracy as a moderator.
 6. Consider extending every admitted family's evaluation prefix to 2,500 last, in equal
    round-robin order. This adds 1,500 replicates and 48,000 fresh calls per family beyond 1,000.
 
@@ -303,15 +316,17 @@ reserve hours, and a 1.6x start guard. It does not share or consume the Freeze B
 extension calls never count toward the original sealed queue.
 
 The 80-hour ceiling supports the existing X1R4 ladder subject to measured reforecasts. It does
-**not yet establish room for the A12 expansion**. The crossed replication needs a measured
-forecast and separate budget seal before paid work. The block meter stops admission before any
-ceiling is crossed; failed and unrun blocks stay reported. The ordered A12 steps govern priority.
+**not yet establish room for the nine additional A10 cells or A12 expansion**. The full existing
+grid and independent-dataset replication need measured forecasts and separate pre-output budget
+seals before paid work. The block meter stops admission before any ceiling is crossed; failed and
+unrun blocks stay reported. The ordered A12 steps govern later priority.
 
 ## Paper storyline
 
-- **Main paper:** common-policy solo screen, family-balanced E2 result, equal-family 400/1,000-
-  replicate E5 result where completed, batch-size results where completed, and a separately sealed
-  4 × 4 generalization result only if all four new shared datasets and sixteen crossed cells finish.
+- **Main paper:** original seven-cell X1R4 test and the separately sealed sixteen-cell crossed
+  comparison on the four existing datasets, with solo accuracy and parse rate shown for every cell;
+  equal-family 400/1,000-replicate E5 coverage where completed. An independent-dataset 4 × 4 and
+  batch-size results appear when their fixed budget-conditional steps finish.
 - **Appendix:** every screen failure, every cell estimate, malformed-output bounds, larger E5
   prefixes, batch-size curves, prompt variants, position/composition tests, and cost ledgers.
 - **Cut:** model-specific prompt tuning, result-dependent checkpoint replacement, commercial APIs,

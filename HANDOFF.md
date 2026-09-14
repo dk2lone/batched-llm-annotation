@@ -10,10 +10,20 @@ all 20 solo screen passes and failures. The seven admitted cells use frozen
 power-rule sizes of 2,048 or 4,096 items. The lock binds the four-family core,
 four repeated-sampling cells, selected B3/B4 call hashes, four logical
 A100-40GB family-owned worker slots, and the separate 80-hour budget. It used
-no GPU and produced no model output. A8 is the next paid stage and has not
-started; its first four B3 cells are Qwen/MultiNLI, Granite/IMDb,
-Llama/Civil Comments, and Mistral/MultiNLI in that sealed order. Each model
+no GPU and produced no model output. A8 has not started; its first four B3
+cells are Qwen/MultiNLI, Granite/IMDb, Llama/Civil Comments, and
+Mistral/MultiNLI in that sealed order. Each model
 requires a first-1,000-attempt reforecast before its block continues.
+
+Before A8 joint output, freeze a separate full-grid schedule, outcome rules,
+analysis, and budget for all sixteen combinations of these four models with the
+four existing datasets. The original X1R4 seven-cell admission and C1 analysis
+stay sealed; A10 adds the nine cells those accuracy/parse floors excluded.
+Solo accuracy is a reported moderator for the new relative comparison, not an
+eligibility gate. This corrects the earlier rationale: a low solo accuracy does
+not by itself prevent measuring joint-minus-exact covariance. The new full
+grid is planned, not yet scientifically or financially sealed. See
+`study-120h/amendments/20260914T021849Z-full-existing-grid.md`.
 
 Before any extension joint output, Daniel prioritized the already sealed B4
 1,000-evaluation prefix for all four families equally after the 400-replicate
@@ -27,14 +37,13 @@ Daniel set the remaining-compute order in A12: equal-family 1,000 evaluation
 replicates, batch sizes 2/4/8/16/32, new independent data across all four
 families, an exact-ground-truth synthetic task, another checkpoint size per
 family, then 2,500 evaluation replicates last. The new-data step aims for four
-shared datasets × four families. The current A6 screen admitted only seven
-of sixteen old-dataset cells and no common task, so up to eight ordered new
-candidates must be frozen and solo-screened uniformly before a sixteen-cell
-scientific seal. The new budget and schedules are not sealed. The earlier
-crossed-panel amendment remains historical; the corrected A11–A13 order is in
+shared datasets × four families as independent replication, without a solo
+accuracy gate. The new budget and schedules are not sealed. The earlier
+all-four-pass crossed-panel amendment remains historical; the corrected
+A8–A13 order is in
 `refine-logs/EXPERIMENT_PLAN.md`. Each A11/A12 evaluation replicate always has
 512 fresh item appearances and 32 size-16 joint calls; the separate B3 main
-cells use their sealed 2,048/4,096-item power choices. A8 remains next.
+cells use their sealed 2,048/4,096-item power choices. A8 follows the new CPU gate.
 
 ## Previous handoff: A6 complete; A7 admission lock was next
 
