@@ -13,6 +13,8 @@ metered workspace cost after completion, offset by credits at that time. The
 public result and per-cell failures are in
 `study-120h/extension-m1/20260914T003735Z-5a8c63f2/REPORT.md`; private first
 responses and ledgers remain under `study-120h/ext-work/extension-m1/`.
+The code, report, runtime/access lock, and raw A6 payload are archived in the
+private GitHub prerelease `v0.3.0-extension-m1` with verified SHA-256 asset digests.
 
 Seven cells in four families passed the frozen solo gates: Qwen/Civil Comments,
 IMDb, MultiNLI; Granite/IMDb; Llama/Civil Comments, IMDb; and Mistral/MultiNLI.
