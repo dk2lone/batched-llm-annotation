@@ -28,6 +28,13 @@ The `v0.2.0-interim` prerelease records the later Freeze B and extension checkpo
 This is an interim prerelease. It does not establish recurrence, confidence-interval coverage, or
 a final paper result.
 
+The `v0.3.0-extension-m1` private prerelease records the completed X1R4 A6 solo screen. It
+contains the signed runtime/access lock and its evidence, all 40,960 first-response records,
+the 20 cell summaries, the first-1,000-attempt release decision, checkpoint inventories,
+meter receipts, admission inputs, and checksums. Seven cells in four families passed the
+frozen solo gates. It contains no extension joint-condition output and establishes no
+dependence or coverage claim.
+
 ## Release boundary
 
 `study-120h/freeze/` is gitignored, so seals are distributed only through release archives. The

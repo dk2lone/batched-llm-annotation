@@ -1,8 +1,36 @@
 # IEEE BigData 2026 research-idea handoff
 
-Updated: 2026-09-13.
+Updated: 2026-09-14 UTC.
 
-## Current handoff: X1R4 synthetic gate passed; no extension scientific output
+## Current handoff: A6 complete; A7 admission lock is next
+
+The X1R4 A6 blinded solo screen completed on the `melissa21cn2016` Modal
+workspace as run `20260914T003735Z-5a8c63f2`. Five A100-40GB workers returned
+all 40,960 unique solo calls across 20 cells with `ok` status, no retries, and
+no quarantined payloads. The first-1,000-attempt reforecast released the full
+screen. The runner metered 1.383838 all-worker A100-hours; Modal showed $3.06
+metered workspace cost after completion, offset by credits at that time. The
+public result and per-cell failures are in
+`study-120h/extension-m1/20260914T003735Z-5a8c63f2/REPORT.md`; private first
+responses and ledgers remain under `study-120h/ext-work/extension-m1/`.
+
+Seven cells in four families passed the frozen solo gates: Qwen/Civil Comments,
+IMDb, MultiNLI; Granite/IMDb; Llama/Civil Comments, IMDb; and Mistral/MultiNLI.
+Phi admitted no cell because its output seldom matched the common grammar. A6
+does not test joint-call dependence or interval coverage. No extension joint
+output exists. A7 must seal the admitted panel and item counts before any B3
+or B4 call. Do not rerun A6 or begin A7 merely because this handoff was opened.
+The separate Freeze B Granite-8B/Civil Comments E2 cell is still unlaunched.
+
+## Previous handoff: A0-A5 complete; A6 solo screen was next
+
+The active human-facing execution plan now uses A0-A13 in
+`refine-logs/EXPERIMENT_PLAN.md`. Existing sealed records keep their immutable M1, B3, and B4
+identifiers. A0-A3 preserve prior evidence and freeze the five-checkpoint, four-task protocol. A4,
+the unified runner, passes 78 focused tests, all 417 project CPU tests, Ruff, strict mypy, ledger
+checks, and real plan-only validation. Its three implementation files remain untracked. A5 is the
+completed synthetic preflight described below. A6 is the 40,960-call blinded solo screen; it has
+not started and requires separate paid-work authorization.
 
 The cross-family X1R4 synthetic batch-invariance preflight is complete. Run
 `20260913T191010Z-4807e7d1` checked all five pinned model families across 360 events and 20
@@ -11,12 +39,30 @@ SHA256 is `167ce1fb6fd7e279559991b522df961529c87a8fdee29502ce20f9e7bd067188`, an
 0.811174 metered A100-hours. This was synthetic validation only and produced no extension study
 labels.
 
+The separate synthetic runtime/context pass `20260913T200450Z-a1f3bd0f` also passed all five
+candidates: 100 context-fit checks, 100 warmups, and 200 measured calls returned successfully.
+The largest prompt plus response cap required 20,514 of the shared 32,768 tokens. Its report is
+`study-120h/extension-runtime/20260913T200450Z-a1f3bd0f/report.json` (SHA256
+`19302439372935b9735d0c88ed7f7056a4ee72a50959b81eb23f6c528074b1cc`); the batch
+report is `study-120h/extension-batch-invariance/20260913T191010Z-4807e7d1/report.json`
+(SHA256 `64d60961d9be472f094d082c00ab40b075e617c64401c235b4416f6ed1c8eec0`).
+The runtime pass used 0.687433 metered-proxy A100-hours, bringing the two A5 technical passes to
+1.498607 hours. The runtime report's `peak_gpu_memory_bytes = 0` is not a valid model-memory measurement:
+vLLM allocates model memory in a child process. Do not use that field for a capacity claim.
+
 The Llama, Mistral, and Phi checkpoints were staged at their pinned revisions without GPU use.
 The staging record retains hashes and byte counts, not model weights or credentials. The technical
 runtime amendment changes Modal's container scale-down window from one second to the supported
 two-second minimum and does not change any scientific schedule.
 
-The extension still needs its signed runtime/access lock before its solo screen can begin. Freeze B
+The signed runtime/access lock is
+`study-120h/runtime-lock/20260913T205646Z-X1R4/` (manifest file SHA256
+`f96a96f6691c575f1004de91dde540e722d1dd42fb4db97d8a5f46886001066a`). It marks all
+five candidates attempted and none technically unavailable. The signer field attributes this
+operational attestation to Codex on Daniel's instruction; it is not a cryptographic or personal
+signature. All 18 copied evidence and lock files hash-verify. Both paid preflight apps are
+stopped, and all 55 X1R4 sealed files still match their hashes. The next scientific stage is A6,
+the 40,960-call blinded solo screen recorded as M1 in the seal; it has not started. Freeze B
 is unchanged: the Granite-8B/Civil Comments E2 cell remains implemented but unlaunched, and the
 analysis code's hardcoded first-cell defect must be fixed before that second cell can be analyzed.
 

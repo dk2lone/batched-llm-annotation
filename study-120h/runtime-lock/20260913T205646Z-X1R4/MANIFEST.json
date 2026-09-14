@@ -1,0 +1,30 @@
+{
+  "contains_credentials": false,
+  "contains_scientific_model_outputs": false,
+  "created_at_utc": "2026-09-13T20:56:46.980772+00:00",
+  "files_sha256": {
+    "ACCESS_LOCK.json": "48c478a7944db4206d3660d6beb646f0e47e81c3622f08ed1e09f4e5cf50c589",
+    "RUNTIME_LOCK.json": "e540f16b15e4286d3efa6120d0aba661e45d7c60bfdde404b8c8eaa1ef88434f",
+    "evidence/amendment.json": "b9d0b43ff4ed0bd3d152b065e4e8428dd06b6a88d03f51ee0130e1dd3089b8e1",
+    "evidence/amendment.py": "411ccef6cc7edde342c1df69dd7c6bce4687811287ff822ce9c96dd6b111fd44",
+    "evidence/batch/events.json": "ccaa5a042c2195b96d71cde206bbb9425e70df11efd9caf5b83e54f39ca6ce57",
+    "evidence/batch/plan.json": "291f061321d48699a89198c4e6a7af88cd0842318b959bf77dea183e7ee53243",
+    "evidence/batch/report.json": "64d60961d9be472f094d082c00ab40b075e617c64401c235b4416f6ed1c8eec0",
+    "evidence/batch/workers.json": "de132e25508e3967a80f072ab24e61e3508d4b128ff08d09967abb97cf099f16",
+    "evidence/runtime/Qwen--Qwen3-8B.json": "dfb4776ed934023e0584da0dd2d315e1578d987fb8655fa313615c8649cabc37",
+    "evidence/runtime/ibm-granite--granite-3.3-8b-instruct.json": "7b00f6491626815dd289bd7a4ef4db53050d42e055b137eeea875d0ba7f22c16",
+    "evidence/runtime/meta-llama--Llama-3.1-8B-Instruct.json": "5df4fbb3ef5be7f4f07c7179929e468bcc2646d3b611fad839ba1205b364152a",
+    "evidence/runtime/microsoft--Phi-4-mini-instruct.json": "a7f3e2e9dfb3a4914293e125b737e78267eaaef84aa96cb701ea9812d92fbacd",
+    "evidence/runtime/mistralai--Mistral-7B-Instruct-v0.3.json": "09338207e2214f4db01b0219d42021792525561ccbb42fd59712ac0b52e0ceca",
+    "evidence/runtime/plan.json": "02185d53af0d881725ebf47075b813f36e0e6e6973e9afafd4d8870ab5d61729",
+    "evidence/runtime/report.json": "19302439372935b9735d0c88ed7f7056a4ee72a50959b81eb23f6c528074b1cc",
+    "evidence/runtime/runtime_helper.py": "f8acca9cb794f566f83f133683fd44e8b37ad3d98475c338fcb022c604aea223",
+    "evidence/staging/report.json": "d464c4ddec156b5490f2498f0d66c6884e251544d2d4ad8a68a4e737f5db5288",
+    "source_snapshot/create_lock.py": "36ac9d429e20102fbc128a3fe5e8bbb8ceed406138bacc1d97ec3d3fefd48f72"
+  },
+  "n_attempted": 5,
+  "n_candidates": 5,
+  "schema_version": "ext-x1r4-runtime-access-manifest-v1",
+  "status": "sealed",
+  "x1r4_manifest_identifier": "3838c6e201388480eb08aa48e04a1ef3a5af6a86fac5d920e9837459382677d2"
+}

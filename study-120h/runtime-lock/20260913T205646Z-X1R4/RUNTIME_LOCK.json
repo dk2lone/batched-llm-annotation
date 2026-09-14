@@ -1,0 +1,82 @@
+{
+  "batch_events_verified": 360,
+  "batch_metered_a100_hours": 0.8111738628933542,
+  "batch_report_sha256": "64d60961d9be472f094d082c00ab40b075e617c64401c235b4416f6ed1c8eec0",
+  "candidates": [
+    {
+      "access_status": "verified",
+      "batch_invariance_status": "passed",
+      "context_window_tokens": 32768,
+      "max_required_tokens": 20354,
+      "model_id": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "runtime_worker_sha256": "dfb4776ed934023e0584da0dd2d315e1578d987fb8655fa313615c8649cabc37",
+      "status": "attempted",
+      "synthetic_runtime_status": "passed"
+    },
+    {
+      "access_status": "verified",
+      "batch_invariance_status": "passed",
+      "context_window_tokens": 32768,
+      "max_required_tokens": 20423,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "revision": "51dd4bc2ade4059a6bd87649d68aa11e4fb2529b",
+      "runtime_worker_sha256": "7b00f6491626815dd289bd7a4ef4db53050d42e055b137eeea875d0ba7f22c16",
+      "status": "attempted",
+      "synthetic_runtime_status": "passed"
+    },
+    {
+      "access_status": "verified",
+      "batch_invariance_status": "passed",
+      "context_window_tokens": 32768,
+      "max_required_tokens": 17971,
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+      "runtime_worker_sha256": "5df4fbb3ef5be7f4f07c7179929e468bcc2646d3b611fad839ba1205b364152a",
+      "status": "attempted",
+      "synthetic_runtime_status": "passed"
+    },
+    {
+      "access_status": "verified",
+      "batch_invariance_status": "passed",
+      "context_window_tokens": 32768,
+      "max_required_tokens": 20514,
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "revision": "c170c708c41dac9275d15a8fff4eca08d52bab71",
+      "runtime_worker_sha256": "09338207e2214f4db01b0219d42021792525561ccbb42fd59712ac0b52e0ceca",
+      "status": "attempted",
+      "synthetic_runtime_status": "passed"
+    },
+    {
+      "access_status": "verified",
+      "batch_invariance_status": "passed",
+      "context_window_tokens": 32768,
+      "max_required_tokens": 17941,
+      "model_id": "microsoft/Phi-4-mini-instruct",
+      "revision": "cfbefacb99257ffa30c83adab238a50856ac3083",
+      "runtime_worker_sha256": "a7f3e2e9dfb3a4914293e125b737e78267eaaef84aa96cb701ea9812d92fbacd",
+      "status": "attempted",
+      "synthetic_runtime_status": "passed"
+    }
+  ],
+  "combined_a100_hours_proxy": 1.4986069059375182,
+  "context_window_tokens": 32768,
+  "created_at_utc": "2026-09-13T20:56:46.980422+00:00",
+  "limitations": [
+    "Synthetic prompts and two fresh batch sessions do not prove universal bit-exact GPU behavior.",
+    "The runtime peak_gpu_memory_bytes field is invalid because vLLM allocates in a child process.",
+    "Runtime metering is a worker/invocation proxy, not a Modal billing invoice."
+  ],
+  "maximum_required_tokens": 20514,
+  "runtime_fit_checks": 100,
+  "runtime_measured_calls": 200,
+  "runtime_metered_proxy_a100_hours": 0.687433043044164,
+  "runtime_report_sha256": "19302439372935b9735d0c88ed7f7056a4ee72a50959b81eb23f6c528074b1cc",
+  "runtime_warmup_calls": 100,
+  "schema_version": "ext-x1r4-synthetic-runtime-lock-v1",
+  "scientific_model_outputs": false,
+  "sealed_batch_plan_sha256": "167ce1fb6fd7e279559991b522df961529c87a8fdee29502ce20f9e7bd067188",
+  "staging_report_sha256": "d464c4ddec156b5490f2498f0d66c6884e251544d2d4ad8a68a4e737f5db5288",
+  "status": "passed",
+  "x1r4_manifest_identifier": "3838c6e201388480eb08aa48e04a1ef3a5af6a86fac5d920e9837459382677d2"
+}

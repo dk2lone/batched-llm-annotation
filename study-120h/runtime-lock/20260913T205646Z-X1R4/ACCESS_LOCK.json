@@ -1,0 +1,55 @@
+{
+  "attempted_models": [
+    "Qwen/Qwen3-8B",
+    "ibm-granite/granite-3.3-8b-instruct",
+    "meta-llama/Llama-3.1-8B-Instruct",
+    "mistralai/Mistral-7B-Instruct-v0.3",
+    "microsoft/Phi-4-mini-instruct"
+  ],
+  "batch_invariance_report_sha256": "64d60961d9be472f094d082c00ab40b075e617c64401c235b4416f6ed1c8eec0",
+  "candidates": [
+    {
+      "access_status": "verified",
+      "access_verified_now": true,
+      "candidate_status": "attempted",
+      "detail": "Pinned checkpoint loaded offline and passed both synthetic M0 checks.",
+      "model_id": "Qwen/Qwen3-8B"
+    },
+    {
+      "access_status": "verified",
+      "access_verified_now": true,
+      "candidate_status": "attempted",
+      "detail": "Pinned checkpoint loaded offline and passed both synthetic M0 checks.",
+      "model_id": "ibm-granite/granite-3.3-8b-instruct"
+    },
+    {
+      "access_status": "verified",
+      "access_verified_now": true,
+      "candidate_status": "attempted",
+      "detail": "Pinned checkpoint loaded offline and passed both synthetic M0 checks.",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct"
+    },
+    {
+      "access_status": "verified",
+      "access_verified_now": true,
+      "candidate_status": "attempted",
+      "detail": "Pinned checkpoint loaded offline and passed both synthetic M0 checks.",
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3"
+    },
+    {
+      "access_status": "verified",
+      "access_verified_now": true,
+      "candidate_status": "attempted",
+      "detail": "Pinned checkpoint loaded offline and passed both synthetic M0 checks.",
+      "model_id": "microsoft/Phi-4-mini-instruct"
+    }
+  ],
+  "created_at_utc": "2026-09-13T20:56:46.980651+00:00",
+  "n_attempted": 5,
+  "rule": "a candidate is never silently omitted; every one of the five carries a terminal attempted or technically_unavailable status",
+  "runtime_lock_sha256": "e540f16b15e4286d3efa6120d0aba661e45d7c60bfdde404b8c8eaa1ef88434f",
+  "schema_version": "ext-x1r4-runtime-access-lock-v1",
+  "signature_kind": "attributed agent attestation; no cryptographic or personal signature",
+  "signed_by": "Codex, on Daniel's 2026-09-13 instruction",
+  "unavailable_models": []
+}

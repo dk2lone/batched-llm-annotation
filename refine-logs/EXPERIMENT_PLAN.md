@@ -1,4 +1,4 @@
-# Cross-family experiment extension
+# Cross-family experiment extension: A0-A13 plan
 
 **Problem:** Determine whether shared-call LLM text annotation creates excess across-item error
 dependence and whether treating those labels as independent produces misleading uncertainty.
@@ -7,16 +7,20 @@ dependence and whether treating those labels as independent produces misleading 
 across five model families, then measure confidence-interval behavior with independent repeated
 calls in one prespecified cell per admitted family.
 
-**Date:** 2026-09-13
+**Date:** 2026-09-14 UTC
 
-**Status:** The active CPU protocol is sealed at `study-120h/freeze/20260913T181826Z-X1R2/` with
-manifest SHA256 `0d1e70e26d1a54c98ff708c82452678a262c7586aa62ef3fa3c25fe190daa9cc`.
-It freezes candidates, frames, prompts, seeds, budget, statistics, and exact M1/B3/B4 schedules.
-X1 and X1R1 are preserved but superseded. Zero model outputs exist for
-this extension. No GPU, Modal, model load, or synthetic inference has run for it. This extension is
-separate from the sealed Freeze B confirmation because Qwen and Granite results have already been
-opened. Nothing below authorizes a paid run. See `study-120h/EXTENSION_PROTOCOL.md` for the full
-frozen protocol.
+**Status:** A0-A6 are complete. The active CPU protocol is sealed at
+`study-120h/freeze/20260913T183353Z-X1R4/` with manifest SHA256
+`3838c6e201388480eb08aa48e04a1ef3a5af6a86fac5d920e9837459382677d2`. It freezes
+candidates, frames, prompts, seeds, budget, statistics, and exact M1/B3/B4 schedules. Earlier X1
+seals are preserved but superseded. The synthetic runtime and batch-invariance preflight passed
+all five models and used 1.498607 metered A100-hours. A6 completed all 40,960 sealed solo calls
+in run `20260914T003735Z-5a8c63f2`; seven cells in four families passed the frozen admission
+floors. See `study-120h/extension-m1/20260914T003735Z-5a8c63f2/REPORT.md` for every cell.
+No extension joint output exists. A7, the admission lock, is next. This extension is separate
+from Freeze B because Qwen and Granite joint results have already been opened. Nothing below
+authorizes a further paid run.
+See `study-120h/EXTENSION_PROTOCOL.md` for the full frozen protocol.
 
 ## Claim map
 
@@ -31,23 +35,21 @@ not identify a population-wide property of all LLMs.
 
 ## Candidate panel
 
-One instruction checkpoint per family, pinned to an immutable revision and sealed in X1R2:
+One instruction checkpoint per family, pinned to an immutable revision and sealed in X1R4:
 
 | Order | Family | Repository | Revision | Access |
 |---:|---|---|---|---|
 | 1 | qwen | `Qwen/Qwen3-8B` | `b968826d9c46dd6066d109eabc6255188de91218` | public |
 | 2 | granite | `ibm-granite/granite-3.3-8b-instruct` | `51dd4bc2ade4059a6bd87649d68aa11e4fb2529b` | public |
-| 3 | llama | `meta-llama/Llama-3.1-8B-Instruct` | `0e9e39f249a16976918f6564b8830bc894c89659` | **manually gated** |
+| 3 | llama | `meta-llama/Llama-3.1-8B-Instruct` | `0e9e39f249a16976918f6564b8830bc894c89659` | verified |
 | 4 | mistral | `mistralai/Mistral-7B-Instruct-v0.3` | `c170c708c41dac9275d15a8fff4eca08d52bab71` | public |
 | 5 | phi | `microsoft/Phi-4-mini-instruct` | `cfbefacb99257ffa30c83adab238a50856ac3083` | public |
 
-All five revisions resolve on the Hub and match their pins. Llama file contents return HTTP 401
-without an accepted licence and a token, so its configuration, chat template, and context limit are
-unverified. All five candidates remain in the frozen M1 schedule. A signed runtime/access lock must
-classify each as attempted or technically unavailable before the screen. Phi-4-mini-instruct
-replaces Phi-3.5-mini-instruct, which failed every Freeze B solo screen;
-the swap happened before any extension output existed. After the first extension joint output, a
-missing checkpoint narrows the panel and never authorizes a substitute.
+All five revisions resolve on the Hub, match their pins, and passed the signed runtime/access gate.
+All five candidates are marked attempted in the frozen M1 schedule; none is technically
+unavailable. Phi-4-mini-instruct replaces Phi-3.5-mini-instruct, which failed every Freeze B solo
+screen. The swap happened before any extension output existed. After the first extension joint
+output, a missing checkpoint narrows the panel and never authorizes a substitute.
 
 Use four classification tasks: Civil Comments, MultiNLI, AG News, and IMDb. New screen,
 confirmation, and filler rows are materialized and measured disjoint from the Gate A pilot, the
@@ -65,12 +67,12 @@ five families, including newly run Qwen and Granite anchors.
 - **Claim tested:** The later comparisons differ by model family rather than hidden serving or data
   changes.
 - **Runs:** CPU frame construction and assignment tests; synthetic prompts for every checkpoint at
-  solo, size 16, exact-context, and size 32; four-worker equivalence smoke.
+  solo, size 16, exact-context, and size 32; cross-layout and cross-session deterministic checks.
 - **Recorded controls:** immutable checkpoint and tokenizer hashes, vLLM/container revision, BF16,
   greedy decoding, prompt hashes, frame hashes, call IDs, assignment matrices, token limits, and
   all-worker A100 metering.
 - **Success criterion:** Every primary model loads, fits the largest prompt, produces deterministic
-  smoke outputs across workers, and has a measured guarded cost.
+  outputs across the frozen request layouts and sessions, and has a measured guarded cost.
 - **Failure interpretation:** A technical failure narrows the extension before scientific output;
   it is not a negative dependence result.
 - **Priority:** MUST-RUN.
@@ -98,9 +100,9 @@ five families, including newly run Qwen and Granite anchors.
 
 - **Claim tested:** Shared generation creates excess error covariance beyond context alone.
 - **Runs per admitted cell:** Three independent length-balanced assignments; size-16 joint calls;
-  exact-context one-target calls using identical documents and order; one solo call per selected
-  item; fake batches built from independent exact-control labels.
-- **Sample size:** Choose 2,048, 4,096, or 8,192 items from the sealed X1R2 power table and the solo
+  exact-context one-target calls using identical documents and order; solo calls; fake batches
+  built from independent-call labels.
+- **Sample size:** Choose 2,048, 4,096, or 8,192 items from the sealed X1R4 power table and the solo
   disagreement rate, before joint outputs. At 4,096 items one cell holds 17,152 calls; at 8,192 it
   holds 34,304. Under the pooled 0.0025 planning-alpha table, the 0.50 error grid selects 8,192.
 - **Primary metric:** Equal-assignment, pair-weighted
@@ -147,19 +149,106 @@ five families, including newly run Qwen and Granite anchors.
   a failed C1 or C2 gate.
 - **Priority:** NICE-TO-HAVE after B4 reaches 400 evaluations.
 
-## Run order and decision gates
+## A0-A13 execution order
 
-| Milestone | Work | Decision gate | Provisional guarded cost | Main risk |
-|---|---|---|---:|---|
-| M0 | Freeze extension, untouched frames, uniform prompts, revisions, tests, and synthetic benchmark. | No scientific output until every hash and runtime check passes. | Set by benchmark; target <=1 A100-hour. | Llama access or model-specific chat behavior. |
-| M1 | Run all 40,960 solo screens. | Continue only with prespecified admitted cells; require at least three families for a cross-family study. | About 1.5 A100-hours from prior screen throughput, replaced by M0 forecast. | Phi repeats its formatting failure. |
-| M2 | Run one complete E2 cell per admitted family. | Evaluate C1 only after every family-core cell is complete. | Roughly 1.3 A100-hours per 4,096-item cell, replaced model by model after 1,000 calls. | Cross-model timing transfer is inaccurate. |
-| M3 | Complete remaining admitted E2 cells. | Start each cell only if its 1.6x forecast plus a 10-hour reserve fits the study stop. | Up to roughly 26 A100-hours for 20 cells at the current guard. | Too many low-value within-family cells. |
-| M4 | Run 250 reference plus 400 evaluation replicates in one cell per family. | Assess C2 only after all prespecified family cells finish and reference precision passes. | Approximately 4-6 guarded A100-hours per family at current joint-call timing; benchmark again first. | Repeated sampling dominates cost. |
-| M5 | Add larger E5 prefixes, then B5 sensitivity work. | Fixed round-robin technical expansion only; never choose from effect estimates. | Spend only within a separately approved extension ceiling. | Depth crowds out family breadth. |
+The A labels are the human-facing plan. Existing sealed files retain their M1, B3, and B4 names so
+their hashes and audit trail remain valid.
+
+### A0 — Preserve existing evidence — complete
+
+Keep the historical Gate A pilot, bridge, and Freeze B results unchanged and separate from this
+extension's primary tests. The extension uses fresh frames, call IDs, and randomization streams.
+
+### A1 — Lock five checkpoints — complete
+
+Qwen3-8B, Granite-3.3-8B-Instruct, Llama-3.1-8B-Instruct,
+Mistral-7B-Instruct-v0.3, and Phi-4-mini-instruct are pinned at the revisions above. The signed
+X1R4 runtime/access lock records all five as attempted and none as technically unavailable.
+
+### A2 — Build fresh data frames — complete
+
+Civil Comments, MultiNLI, IMDb, and AG News each have 2,048 screen, 8,192 confirmation, and 4,096
+filler rows. Their identifiers are disjoint from prior studies and from one another. Private text
+remains outside the seal; identifiers, hashes, labels, exclusions, and reconstruction rules are
+recorded.
+
+### A3 — Freeze prompts, calls, and statistics — complete
+
+X1R4 freezes the common prompt and parser policy, greedy decoding, response caps, three
+length-balanced assignments, call IDs and order, malformed-response rules, family-equal covariance
+analysis, 4,999 replay draws, Holm correction, admission criteria, item-count rules, and the rule
+that selects one repeated-sampling cell per admitted family from solo evidence.
+
+### A4 — Implement and CPU-test the unified runner — complete
+
+The runner supports all five checkpoints and four tasks. It preserves exact order and immutable
+first responses, links retries, resumes without duplicate calls or metering, quarantines invalid
+payloads, verifies checkpoints, stops at the global first-1,000-attempt reforecast, sums time across
+workers, and produces the frozen analysis inputs. The focused A4 suite has 78 passing tests; all
+417 project CPU tests, Ruff, strict mypy, and ledger checks pass. The real plan-only entry point
+verified 20 cells and 40,960 calls without paid execution.
+
+### A5 — Run the synthetic runtime benchmark — complete
+
+All five models passed checkpoint loading, 32,768-token context fit, vLLM 0.28.0 serving checks,
+and deterministic batch-invariance comparisons across request sizes 1, 2, 8, 16, and 32 in both
+orders and two fresh sessions. The two technical passes used 1.498607 metered A100-hours. This
+evidence contains no scientific labels.
+
+### A6 — Run the solo capability screen — complete (sealed M1 schedule)
+
+Ran 2,048 individual calls in each of 20 model-task cells, 40,960 calls total. The global
+first-1,000-attempt gate released the remaining work after zero failures and a 2.128643-hour
+guarded full-screen reforecast. All calls returned `ok`; 1.383838 A100-hours were metered across
+five workers. Seven cells in four families passed the frozen parse, disagreement, accuracy,
+balanced-accuracy, and recall gates. Phi admitted none. The complete cell table is in the A6 report.
+
+### A7 — Seal the admitted panel — next, not started
+
+Report every pass and failure, select 2,048, 4,096, or 8,192 items with the frozen power rule,
+select the first admitted task per family for repeated sampling, and seal cell order, worker
+ownership, calls, and budget in a new timestamped admission lock. No extension joint output may be
+generated before this lock exists.
+
+### A8 — Run one main cell per admitted family — pending A7 (sealed B3 order)
+
+Run one admitted model-task cell from each family before opening the family-core result. Each cell
+uses three joint assignments, exact-context target-only calls with identical neighbors and order,
+solo calls, and fake-batch controls. Reforecast each model after its first 1,000 attempts.
+
+### A9 — Analyze the family core — pending A8
+
+Calculate joint-minus-exact covariance, run 4,999 design-respecting draws, apply Holm correction,
+calculate the family-equal global result, check leave-one-family-out results, and apply every frozen
+malformed-output treatment. C1 requires qualifying results in at least three families.
+
+### A10 — Complete remaining main cells — conditional (sealed B3 order)
+
+Run the remaining admitted cells in frozen order while each complete block fits the 1.6x start
+guard and 10-hour reserve under the 80-hour stop. Failed and null cells remain reported.
+
+### A11 — Run the practical uncertainty experiment — conditional (sealed B4 order)
+
+Use the first admitted task per family selected at A7. Run 250 independent reference replicates
+and 400 independent evaluation replicates per selected cell, with 512 sampled items and 32 fresh
+joint calls per replicate. Compare item-level Wald intervals, 32-call t intervals, and whole-call
+bootstrap sensitivity. Report coverage, width, variance inflation, and reference uncertainty.
+
+### A12 — Spend remaining compute in fixed order — optional
+
+After every selected family reaches 400 evaluations, extend all families equally to 1,000 and then
+2,500 evaluations only if fixed round-robin prefixes fit. Run B5 batch-size, prompt, position, and
+composition sensitivities afterward. Timing may stop the ladder; interim effects may not reorder
+it.
+
+### A13 — Final analysis and paper — pending completed experiments
+
+Freeze completed ledgers, rerun multiplicity-adjusted analyses, audit raw-output provenance and
+claim scope, produce the family-by-task table and uncertainty figures, report failed screens and
+incomplete cells, and keep historical, extension-confirmatory, and optional evidence separate.
 
 The 4.824 cumulative A100-hours and the 150-hour stop belong to Freeze B. This extension holds a
-**separate** ceiling, sealed in X1R2: meter origin 0, hard stop 80 metered A100-hours, 10 protected
+**separate** ceiling, sealed in X1R4: meter origin 0, hard stop 80 metered A100-hours, 10 protected
 reserve hours, and a 1.6x start guard. It does not share or consume the Freeze B allowance, and
 extension calls never count toward the original sealed queue.
 
@@ -197,6 +286,7 @@ a narrowed E2 panel, not an overspend. Family breadth precedes within-family dep
 - [ ] Every admitted cell receives joint, exact-context, solo, and fake-batch evaluation.
 - [ ] One repeated-sampling cell is selected per family before batching outcomes.
 - [ ] All first responses, failures, retries, worker time, and spend are retained.
-- [ ] Llama weight access is granted, or Llama is reported technically unavailable.
+- [x] All five checkpoints passed the signed runtime/access gate.
+- [x] The unified A4 runner passes focused and repository-wide CPU validation.
 - [ ] Family breadth is completed before optional depth.
 - [ ] Claims are limited to the checkpoints and tasks actually completed.

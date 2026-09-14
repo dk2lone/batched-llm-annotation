@@ -7,8 +7,10 @@ Qwen3-8B/MultiNLI cell all support excess same-call error covariance. The 36-cel
 screen is complete, but only one of ten admitted fresh cells has been run, so recurrence and
 confidence-interval coverage claims remain unavailable.
 
-The separate five-family X1R4 extension has a sealed CPU protocol and a passing synthetic
-batch-invariance preflight. It has produced no scientific model outputs.
+The separate five-family X1R4 extension has a sealed protocol and a passing synthetic
+batch-invariance preflight. Its 40,960-call solo screen is complete: seven cells in four
+families passed the frozen capability gates. No extension joint results exist; the
+admission lock is next.
 
 Start with [`HANDOFF.md`](HANDOFF.md), then read the active
 [`plan-120h-a100-rebased.md`](plan-120h-a100-rebased.md), the sealed part-1

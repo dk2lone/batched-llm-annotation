@@ -66,4 +66,6 @@ study-120h/extension-staging/**/staging_helper.py
 study-120h/extension-runtime/**/events.json
 study-120h/extension-runtime/**/workers.json
 study-120h/extension-runtime/**/report.json
+study-120h/extension-runtime/**/*--*.json
+study-120h/runtime-lock/*-X1R4/evidence/
 study-120h/freezeb-runtime/
