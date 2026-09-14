@@ -24,6 +24,7 @@ dist/
 *.key
 .aris/
 graphify-out/
+.claude/
 
 # Immutable payloads are attached to milestone GitHub releases.
 study-120h/freeze/

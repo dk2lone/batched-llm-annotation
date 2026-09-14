@@ -1,20 +1,20 @@
 # IEEE BigData 2026 research project
 
-Updated: 2026-09-11
+Updated: 2026-09-13
 
 ## Start here
 
-This is a research workspace for an IEEE BigData 2026 paper on dependence in batched LLM text annotation. There is no Git repository, branch, or PR here. Two feasibility gates have run, but the 120-hour A100 study is a plan only: no experiment from that plan has started.
+This is a research workspace for an IEEE BigData 2026 paper on dependence in batched LLM text annotation. It is a Git repository on branch `main`, pushed to the private GitHub repo `dk2lone/batched-llm-annotation`. Two feasibility gates have run. The budgeted study is in execution: Step 1 screening, the historical Qwen3-8B/Civil Comments bridge, the first fresh Qwen3-8B/MultiNLI cell, and the 36-cell Freeze B solo screen are complete. Nine of the ten admitted fresh cells are still unrun. The separate five-family X1R4 extension has a sealed runtime/access lock and has produced no scientific model output.
 
 Read in this order:
 
 1. `AGENTS.md` for the current state and work boundaries.
 2. `HANDOFF.md` for the current session handoff, pilot evidence, and restart instructions. Its later C1-era sections are history.
-3. `plan-120h-a100.md` for the ordered, budgeted paper study and stopping rules.
+3. `plan-120h-a100-rebased.md` for the active ordered, budgeted study, ceilings, and stopping rules. `plan-120h-a100.md` is the superseded original and stays as audit context.
 4. `ideas.md` for the current idea ranking and the status of Gates A and K.
 5. `plan.md` only when expanding the budgeted study into the original, unconstrained program.
 
-For the active study design, `plan-120h-a100.md` takes priority. For idea ranking, `ideas.md` takes priority. The old recommender comparison in `idea-stage/IDEA_REPORT.md` and the C1 material in the lower part of `HANDOFF.md` are superseded.
+For the active study design, `plan-120h-a100-rebased.md` takes priority. For idea ranking, `ideas.md` takes priority. The old recommender comparison in `idea-stage/IDEA_REPORT.md` and the C1 material in the lower part of `HANDOFF.md` are superseded.
 
 ## Current decision and evidence
 
@@ -22,7 +22,7 @@ For the active study design, `plan-120h-a100.md` takes priority. For idea rankin
 
 **Stop K: distance concentration and LLM tabular failure.** The tested Mistral Small 3.1 24B Base model passed the capability anchor but failed the frozen representation-contrast and accuracy-mechanism conditions. The result is `mechanism_unsupported`, not proof that every related research direction is impossible. Do not spend more GPU time on K without new evidence or a changed hypothesis. Read `gate-experiments/k/artifacts/mistral-24b-base/analysis/COMPLETION_AUDIT.md` for the 30 missing jobs and why they cannot reverse the stop decision.
 
-The 120-hour plan tests whether the shared annotation call creates excess across-item error covariance beyond an exact-context target-only control and whether that dependence changes uncertainty for mean reference-relative accuracy. It uses a fresh 2 × 2 model-task panel and two selected repeated-sampling cells. The original `plan.md` remains the continuation program, not the current execution checklist. Neither plan's new experiments have been run.
+The 120-hour plan tests whether the shared annotation call creates excess across-item error covariance beyond an exact-context target-only control and whether that dependence changes uncertainty for mean reference-relative accuracy. It uses a fresh 2 × 2 model-task panel and two selected repeated-sampling cells. The original `plan.md` remains the continuation program, not the current execution checklist. Read `HANDOFF.md` for the exact stage reached and for what has not been run.
 
 ## Work boundary
 
@@ -43,7 +43,11 @@ The study is aimed at an IEEE BigData 2026 undergraduate-appropriate venue. Earl
 | File | Role |
 |---|---|
 | `HANDOFF.md` | Current restart handoff at top; older C1 research history below |
-| `plan-120h-a100.md` | Current 120-hour single-A100 execution plan, order, ceilings, claim gates |
+| `plan-120h-a100-rebased.md` | Active 120-hour single-A100 execution plan, order, ceilings, claim gates |
+| `plan-120h-a100.md` | Superseded original 120-hour plan, kept as audit context |
+| `README.md` | Repository entry point and one-paragraph study state |
+| `RESULTS_RELEASES.md` | Publication boundary and GitHub Release archive contents |
+| `study-120h/` | Execution tree: protocols, Modal drivers, seals, locks, per-stage status |
 | `plan.md` | Preserved full research program for later expansion |
 | `ideas.md` | Current idea ledger; A recommended, K stopped |
 | `gate-experiments/a/artifacts/full/analysis/report.md` | Completed Gate A pilot and frozen verdict |
@@ -55,4 +59,4 @@ Older recommender files, raw literature logs, and `.aris/traces/` are audit hist
 
 ## Recommended next action
 
-On a new session, read `HANDOFF.md` and `plan-120h-a100.md`, then ask what Daniel wants done next. If he authorizes implementation, start with Step 0 of the budgeted plan: freeze protocol, sample frames, analysis tests, and the venue/authorship route before new joint outputs. Do not rerun Gate A or start a GPU merely because this directory was opened.
+On a new session, read `HANDOFF.md` and `plan-120h-a100-rebased.md`, then ask what Daniel wants done next. Do not rerun a completed stage and do not start a GPU merely because this directory was opened.
