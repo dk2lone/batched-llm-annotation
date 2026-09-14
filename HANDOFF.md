@@ -23,15 +23,18 @@ A100-hours. The 400-replicate C2 gate, 80-hour stop, 10-hour reserve, and
 CPU-only record is
 `study-120h/amendments/20260914T013606Z-x1r4-e5-1000-priority.md`.
 
-Daniel also requested a **four-family × four-common-task** generalization
-panel after the equal 1,000-evaluation stage. The current A6 screen admitted
-only seven of sixteen cells for the four families and no common task, so this
-is a separate conditional crossed replication. A CPU registry of at most
-eight ordered candidate datasets, then a uniform four-family solo screen,
-must precede its sixteen-cell scientific seal. Its new GPU budget and call
-schedule are not sealed. See
-`study-120h/amendments/20260914T014726Z-crossed-4x4-plan.md` and A13–A15
-in `refine-logs/EXPERIMENT_PLAN.md`. A8 remains the next paid stage.
+Daniel set the remaining-compute order in A12: equal-family 1,000 evaluation
+replicates, batch sizes 2/4/8/16/32, new independent data across all four
+families, an exact-ground-truth synthetic task, another checkpoint size per
+family, then 2,500 evaluation replicates last. The new-data step aims for four
+shared datasets × four families. The current A6 screen admitted only seven
+of sixteen old-dataset cells and no common task, so up to eight ordered new
+candidates must be frozen and solo-screened uniformly before a sixteen-cell
+scientific seal. The new budget and schedules are not sealed. The earlier
+crossed-panel amendment remains historical; the corrected A11–A13 order is in
+`refine-logs/EXPERIMENT_PLAN.md`. Each A11/A12 evaluation replicate always has
+512 fresh item appearances and 32 size-16 joint calls; the separate B3 main
+cells use their sealed 2,048/4,096-item power choices. A8 remains next.
 
 ## Previous handoff: A6 complete; A7 admission lock was next
 
@@ -57,7 +60,7 @@ The separate Freeze B Granite-8B/Civil Comments E2 cell is still unlaunched.
 
 ## Previous handoff: A0-A5 complete; A6 solo screen was next
 
-The active human-facing execution plan now uses A0-A16 in
+The active human-facing execution plan now uses A0-A13 in
 `refine-logs/EXPERIMENT_PLAN.md`. Existing sealed records keep their immutable M1, B3, and B4
 identifiers. A0-A3 preserve prior evidence and freeze the five-checkpoint, four-task protocol. A4,
 the unified runner, passes 78 focused tests, all 417 project CPU tests, Ruff, strict mypy, ledger

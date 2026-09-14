@@ -1,4 +1,4 @@
-# Cross-family experiment extension: A0-A16 plan
+# Cross-family experiment extension: A0-A13 plan
 
 **Problem:** Determine whether shared-call LLM text annotation creates excess across-item error
 dependence and whether treating those labels as independent produces misleading uncertainty.
@@ -18,9 +18,10 @@ seals are preserved but superseded. The synthetic runtime and batch-invariance p
 all five models and used 1.498607 metered A100-hours. A6 completed all 40,960 sealed solo calls
 in run `20260914T003735Z-5a8c63f2`; seven cells in four families passed the frozen admission
 floors. See `study-120h/extension-m1/20260914T003735Z-5a8c63f2/REPORT.md` for every cell.
-No extension joint output exists. A7, the admission lock, is sealed. A8 is next. The plan also
-targets equal 1,000-replicate evaluation and a later, separate 4 × 4 crossed replication. The
-crossed panel needs new task-screen and budget seals before paid work. This extension is separate
+No extension joint output exists. A7, the admission lock, is sealed. A8 is next. A12 orders the
+equal-family 1,000-replicate evaluation, batch-size tests, and a conditional 4 × 4 crossed
+replication on four new shared datasets. The crossed panel needs new task-screen and budget seals
+before paid work. This extension is separate
 from Freeze B because Qwen and Granite joint results have already been opened. Nothing below
 authorizes a further paid run.
 See `study-120h/EXTENSION_PROTOCOL.md` for the full frozen protocol.
@@ -130,9 +131,9 @@ five families, including newly run Qwen and Granite anchors.
   whole-call bootstrap and finite-population correction as sensitivities.
 - **Metrics:** Empirical coverage with Clopper-Pearson interval, mean width, empirical variance to
   mean nominal iid variance ratio, and reference-target Monte Carlo uncertainty.
-- **Expansion:** Extend evaluation prefixes to 1,000, then 2,500 only using the frozen round-robin
-  family order and technical affordability. Do not expand a cell because its interim coverage is
-  favorable.
+- **Expansion:** Extend evaluation prefixes to 1,000 at A12 step 1, then consider 2,500 only at
+  A12 step 6, using the frozen round-robin family order and technical affordability. Do not expand
+  a cell because its interim coverage is favorable.
 - **Failure interpretation:** If reference uncertainty is too large, report variance and width but
   make no measured-coverage claim. If dependence recurs without undercoverage, claim dependence
   without demonstrated inferential damage.
@@ -151,9 +152,10 @@ five families, including newly run Qwen and Granite anchors.
   position/composition contrasts, accuracy, parse rate, throughput, token use, and metered cost.
 - **Failure interpretation:** These are bounded mechanism and robustness results. They cannot rescue
   a failed C1 or C2 gate.
-- **Priority:** NICE-TO-HAVE after the equal 1,000 prefix and crossed-panel feasibility decision.
+- **Priority:** Batch-size tests are A12 step 2; other B5 mechanisms have no priority over the
+  ordered A12 work.
 
-## A0-A16 execution order
+## A0-A13 execution order
 
 The A labels are the human-facing plan. Existing sealed files retain their M1, B3, and B4 names so
 their hashes and audit trail remain valid.
@@ -242,58 +244,58 @@ guard and 10-hour reserve under the 80-hour stop. Failed and null cells remain r
 ### A11 — Run the practical uncertainty experiment — conditional (sealed B4 order)
 
 Use the first admitted task per family selected at A7. Run 250 independent reference replicates
-and 400 independent evaluation replicates per selected cell, with 512 sampled items and 32 fresh
-joint calls per replicate. Compare item-level Wald intervals, 32-call t intervals, and whole-call
-bootstrap sensitivity. Report coverage, width, variance inflation, and reference uncertainty.
+and 400 independent evaluation replicates per selected cell. Each replicate independently samples
+512 item appearances and creates 32 fresh size-16 joint calls. Do not reuse B3 main-experiment
+outputs. Compare ordinary item-level 95% Wald intervals, call-aware 95% t intervals based on the
+32 call means, and whole-call bootstrap sensitivity. Report empirical coverage, interval width,
+variance inflation, and reference uncertainty. Four families require 83,200 fresh joint calls;
+the provisional cost is 10–15 metered or 16–24 guarded A100-hours, subject to measured B4 speed.
 
-### A12 — Extend all four families equally to 1,000 evaluations — budget-conditional priority
+### A12 — Spend remaining compute in fixed order — budget-conditional
 
-After every selected family reaches the frozen 400-evaluation checkpoint, extend all four equally
-to 1,000 using the already sealed nested B4 prefix and fixed round-robin order. This adds 600
-replicates and 19,200 fresh joint calls per family, 76,800 calls overall. The incremental estimate
-is 10–15 base or 16–24 guarded A100-hours; the provisional A8–A12 total through this checkpoint is
-40–61 guarded hours, before prior use and the protected reserve. Reforecast from actual B4 runtime
-and start only complete blocks that satisfy the unchanged 80-hour stop, 10-hour reserve, and 1.6x
-guard. The 400-replicate C2 gate stays primary. If the equal 1,000 prefix cannot complete, report
-the shortfall and do not claim four-family 1,000-replicate evidence. The 2,500 prefix and B5
-sensitivities remain later conditional work. See the pre-output priority amendment at
-`study-120h/amendments/20260914T013606Z-x1r4-e5-1000-priority.md`.
+Only after every admitted family reaches 400 evaluation replicates, spend affordable compute in
+this order. Do not select extra runs because an interim result looks favorable.
 
-### A13 — Freeze the four-task candidate registry — CPU planning gate
+1. Extend all four families equally to 1,000 evaluation replicates using the sealed nested B4
+   prefix and round-robin order. This adds 600 replicates and 19,200 fresh calls per family,
+   76,800 calls overall. The incremental estimate is 10–15 metered or 16–24 guarded A100-hours.
+   The 400-replicate C2 gate stays primary. Report any incomplete prefix as such. See
+   `study-120h/amendments/20260914T013606Z-x1r4-e5-1000-priority.md`.
+2. Test batch sizes 2, 4, 8, 16, and 32 in one prespecified cell per family, with exact-context
+   controls and three assignments. Hold each family's item frame and assignment policy fixed
+   across sizes; only the grouping and resulting call count change. Freeze the comparison and
+   forecast before paid calls. The sealed size-16 condition may be analyzed once completed, but
+   fresh calls are required for the other sizes.
+3. Add independent data across all four families: screen up to two new candidates each for
+   toxicity, sentiment, natural-language inference, and topic classification, then run the first
+   all-four-pass dataset in each stratum. This yields four shared datasets × four pinned families
+   only if all sixteen cells pass the uniform solo gates. Freeze the candidate order, prompts,
+   labels, fresh disjoint frames, selected cells, schedules, statistics, and separate GPU budget
+   before joint output. Use the same B3 power-rule item-count ladder and batch-16 joint,
+   exact-context, solo, and fake-batch design as the current main experiment. At 4,096 items per
+   cell, sixteen cells require 274,432 calls; the power rule may select 2,048 or 8,192 instead.
+   Analyze cell, family, task, and interaction effects separately from the seven X1R4 cells.
+   If a stratum has no all-four-pass dataset, report the failed full-grid target and the completed
+   partial panel. The earlier crossed-panel amendment is retained as planning history:
+   `study-120h/amendments/20260914T014726Z-crossed-4x4-plan.md`.
+4. Add an exact-ground-truth synthetic task with a frozen generator, reference labels, and
+   four-family screen before any scientific output. Seal its cell sizes and analysis separately.
+5. Add another checkpoint size per family only after fixing the checkpoints, common tasks,
+   capability gates, and budget before their output is seen.
+6. Consider extending every admitted family's evaluation prefix to 2,500 last, in equal
+   round-robin order. This adds 1,500 replicates and 48,000 fresh calls per family beyond 1,000.
 
-Plan a separate 4 × 4 replication using toxicity, sentiment, natural-language inference, and
-topic classification in each of Qwen, Granite, Llama, and Mistral. Freeze at most two ordered new
-candidate datasets per stratum, including revisions, labels,
-common grammar, prompts, disjoint frames, and capability floors. The current A6 screen admitted
-only seven of sixteen cells and no common task; failed cells remain failed. Select the first
-all-four-pass candidate per stratum from solo evidence only. The CPU registry can be prepared in
-parallel, but must be sealed before its paid screen. See
-`study-120h/amendments/20260914T014726Z-crossed-4x4-plan.md`.
+At each step, reforecast from measured all-worker A100 time and start only complete blocks that
+fit the applicable stop, reserve, and 1.6x guard. The current X1R4 ceiling covers only its sealed
+work; new dataset, synthetic, and checkpoint experiments need separate pre-output budget seals.
+The 512-item count remains fixed for every B4 evaluation replicate, regardless of B3 cell size.
 
-### A14 — Screen and seal the fully crossed panel — pending A13
+### A13 — Final analysis and paper — pending completed experiments
 
-Solo-screen every registered candidate in all four fixed families under identical admission
-rules. If any task stratum lacks an all-four-pass candidate, report that the full 4 × 4 target is
-infeasible and do not describe a partial grid as fully crossed. Before joint output, seal all
-sixteen selected cells, power-selected item counts, exact call schedules, analysis, worker
-ownership, and a separately verified GPU budget. The existing X1R4 80-hour stop is unchanged.
-Paid screening requires separate authorization.
-
-### A15 — Run the 4 × 4 crossed replication — pending A14 and budget fit
-
-Run batch-16 joint, identical-neighbor exact-context, and solo conditions with three independent
-assignments per cell, followed by fake-batch controls. At 2,048–8,192 items per cell, the grid
-contains 137,216–548,864 B3 calls; all 4,096-item cells would total 274,432. Analyze the
-equal-family/equal-task sixteen-cell contrast, every cell, family and task margins, interaction,
-leave-one-out results, and frozen malformed-output treatments. Keep inference separate from the
-seven X1R4 admitted cells. The A11–A12 coverage experiment stays on four prespecified cells.
-Use first-1,000-attempt reforecasts and the newly sealed stop and reserve before continuing.
-
-### A16 — Final analysis and paper — pending completed experiments
-
-Freeze completed ledgers, rerun multiplicity-adjusted analyses, audit raw-output provenance and
-claim scope, produce the family-by-task table and uncertainty figures, report failed screens and
-incomplete cells, and keep historical, extension-confirmatory, and optional evidence separate.
+Freeze all completed ledgers, rerun multiplicity-adjusted analyses, audit every reported number
+against raw outputs, audit experiment integrity and claim scope, generate the family-by-task table
+and covariance and confidence-interval figures, report failed screens and incomplete cells, and
+write the paper. Keep historical, X1R4-confirmatory, and optional expansion evidence distinct.
 
 The 4.824 cumulative A100-hours and the 150-hour stop belong to Freeze B. This extension holds a
 **separate** ceiling, sealed in X1R4: meter origin 0, hard stop 80 metered A100-hours, 10 protected
@@ -301,20 +303,19 @@ reserve hours, and a 1.6x start guard. It does not share or consume the Freeze B
 extension calls never count toward the original sealed queue.
 
 The 80-hour ceiling supports the existing X1R4 ladder subject to measured reforecasts. It does
-**not yet establish room for a new sixteen-cell crossed panel** after the equal 1,000-evaluation
-target. The crossed replication needs a measured forecast and separate budget seal before paid
-work. The block meter stops admission before any ceiling is crossed; failed and unrun blocks stay
-reported. Fully shared tasks precede deeper 2,500-replicate precision.
+**not yet establish room for the A12 expansion**. The crossed replication needs a measured
+forecast and separate budget seal before paid work. The block meter stops admission before any
+ceiling is crossed; failed and unrun blocks stay reported. The ordered A12 steps govern priority.
 
 ## Paper storyline
 
 - **Main paper:** common-policy solo screen, family-balanced E2 result, equal-family 400/1,000-
-  replicate E5 result where completed, and a separately sealed 4 × 4 generalization result only if
-  all four common tasks and sixteen crossed cells finish.
+  replicate E5 result where completed, batch-size results where completed, and a separately sealed
+  4 × 4 generalization result only if all four new shared datasets and sixteen crossed cells finish.
 - **Appendix:** every screen failure, every cell estimate, malformed-output bounds, larger E5
   prefixes, batch-size curves, prompt variants, position/composition tests, and cost ledgers.
 - **Cut:** model-specific prompt tuning, result-dependent checkpoint replacement, commercial APIs,
-  additional parameter sizes, and 2,500-replicate precision until the shared-task panel is resolved.
+  additional parameter sizes until the earlier A12 steps are resolved.
 
 ## Risks and controls
 
