@@ -1,0 +1,1222 @@
+{
+  "attempted_candidates": [
+    "Qwen/Qwen3-8B::ag_news",
+    "Qwen/Qwen3-8B::civil_comments",
+    "Qwen/Qwen3-8B::imdb",
+    "Qwen/Qwen3-8B::multi_nli",
+    "ibm-granite/granite-3.3-8b-instruct::ag_news",
+    "ibm-granite/granite-3.3-8b-instruct::civil_comments",
+    "ibm-granite/granite-3.3-8b-instruct::imdb",
+    "ibm-granite/granite-3.3-8b-instruct::multi_nli",
+    "meta-llama/Llama-3.1-8B-Instruct::ag_news",
+    "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+    "meta-llama/Llama-3.1-8B-Instruct::imdb",
+    "meta-llama/Llama-3.1-8B-Instruct::multi_nli",
+    "microsoft/Phi-4-mini-instruct::ag_news",
+    "microsoft/Phi-4-mini-instruct::civil_comments",
+    "microsoft/Phi-4-mini-instruct::imdb",
+    "microsoft/Phi-4-mini-instruct::multi_nli",
+    "mistralai/Mistral-7B-Instruct-v0.3::ag_news",
+    "mistralai/Mistral-7B-Instruct-v0.3::civil_comments",
+    "mistralai/Mistral-7B-Instruct-v0.3::imdb",
+    "mistralai/Mistral-7B-Instruct-v0.3::multi_nli"
+  ],
+  "budget_lock": {
+    "a5_batch_invariance_metered_a100_hours": 0.8111738628933542,
+    "a5_synthetic_runtime_metered_proxy_a100_hours": 0.687433043044164,
+    "a6_receipt_metered_a100_hours": 1.383837950246114,
+    "complete_block_guard_multiplier": 1.6,
+    "conservative_prior_use_including_proxy_a100_hours": 2.882444856183632,
+    "guarded_headroom_after_reserve_a100_hours": 67.11755514381636,
+    "hard_stop_a100_hours": 80.0,
+    "meter_origin_a100_hours": 0.0,
+    "note": "A5 runtime is a metered proxy, not an authoritative Modal billing value",
+    "protected_reserve_a100_hours": 10.0,
+    "start_rule": "prior_use + 1.6 * complete_block_base_forecast + 10 <= 80; reforecast after each model's first 1000 attempts"
+  },
+  "candidate_status": {
+    "Qwen/Qwen3-8B": {
+      "access_status": "verified",
+      "candidate_status": "attempted",
+      "cells": [
+        "Qwen/Qwen3-8B::ag_news",
+        "Qwen/Qwen3-8B::civil_comments",
+        "Qwen/Qwen3-8B::imdb",
+        "Qwen/Qwen3-8B::multi_nli"
+      ],
+      "family": "qwen"
+    },
+    "ibm-granite/granite-3.3-8b-instruct": {
+      "access_status": "verified",
+      "candidate_status": "attempted",
+      "cells": [
+        "ibm-granite/granite-3.3-8b-instruct::ag_news",
+        "ibm-granite/granite-3.3-8b-instruct::civil_comments",
+        "ibm-granite/granite-3.3-8b-instruct::imdb",
+        "ibm-granite/granite-3.3-8b-instruct::multi_nli"
+      ],
+      "family": "granite"
+    },
+    "meta-llama/Llama-3.1-8B-Instruct": {
+      "access_status": "verified",
+      "candidate_status": "attempted",
+      "cells": [
+        "meta-llama/Llama-3.1-8B-Instruct::ag_news",
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+        "meta-llama/Llama-3.1-8B-Instruct::imdb",
+        "meta-llama/Llama-3.1-8B-Instruct::multi_nli"
+      ],
+      "family": "llama"
+    },
+    "microsoft/Phi-4-mini-instruct": {
+      "access_status": "verified",
+      "candidate_status": "attempted",
+      "cells": [
+        "microsoft/Phi-4-mini-instruct::ag_news",
+        "microsoft/Phi-4-mini-instruct::civil_comments",
+        "microsoft/Phi-4-mini-instruct::imdb",
+        "microsoft/Phi-4-mini-instruct::multi_nli"
+      ],
+      "family": "phi"
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3": {
+      "access_status": "verified",
+      "candidate_status": "attempted",
+      "cells": [
+        "mistralai/Mistral-7B-Instruct-v0.3::ag_news",
+        "mistralai/Mistral-7B-Instruct-v0.3::civil_comments",
+        "mistralai/Mistral-7B-Instruct-v0.3::imdb",
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli"
+      ],
+      "family": "mistral"
+    }
+  },
+  "claim_scope": {
+    "distinct_primary_model_families": 4,
+    "distinct_primary_tasks": 3,
+    "primary_model_families": [
+      "granite",
+      "llama",
+      "mistral",
+      "qwen"
+    ],
+    "primary_tasks": [
+      "civil_comments",
+      "imdb",
+      "multi_nli"
+    ],
+    "recurrence_scope": "narrowed_4_family_3_task"
+  },
+  "complete_block_queue": [
+    {
+      "cells": [
+        "Qwen/Qwen3-8B::multi_nli",
+        "ibm-granite/granite-3.3-8b-instruct::imdb",
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli"
+      ],
+      "condition": "every sealed family core cell must complete before any C1 reading",
+      "stage": "M2_b3_family_core"
+    },
+    {
+      "cells": [
+        "Qwen/Qwen3-8B::civil_comments",
+        "meta-llama/Llama-3.1-8B-Instruct::imdb",
+        "Qwen/Qwen3-8B::imdb"
+      ],
+      "condition": "start each cell only if its 1.6x guard plus the 10-hour reserve fits 80",
+      "stage": "M3_b3_remaining"
+    },
+    {
+      "cells": [
+        "ibm-granite/granite-3.3-8b-instruct::imdb",
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+        "Qwen/Qwen3-8B::civil_comments"
+      ],
+      "condition": "reference stream runs before any evaluation replicate",
+      "replicates": 250,
+      "stage": "M4_b4_reference"
+    },
+    {
+      "cells": [
+        "ibm-granite/granite-3.3-8b-instruct::imdb",
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+        "Qwen/Qwen3-8B::civil_comments"
+      ],
+      "condition": "reference precision must pass before C2 is read",
+      "replicates": 400,
+      "stage": "M4_b4_evaluation"
+    },
+    {
+      "cells": [
+        "ibm-granite/granite-3.3-8b-instruct::imdb",
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+        "Qwen/Qwen3-8B::civil_comments"
+      ],
+      "condition": "fixed round-robin technical expansion only; never chosen from effects",
+      "prefixes": [
+        1000,
+        2500
+      ],
+      "stage": "M5_b4_prefixes"
+    }
+  ],
+  "created_at_utc": "2026-09-14T01:24:53.545834+00:00",
+  "extension_joint_outputs_seen": false,
+  "item_counts": {
+    "Qwen/Qwen3-8B::civil_comments": {
+      "grid_rate": 0.35,
+      "information_poor": false,
+      "n_items": 4096,
+      "power_target_met": true,
+      "power_wilson_lower_95": 0.8170505488893139,
+      "proxy_power": 0.8268333333333334,
+      "solo_error_rate": 0.24297683587974372
+    },
+    "Qwen/Qwen3-8B::imdb": {
+      "grid_rate": 0.1,
+      "information_poor": false,
+      "n_items": 2048,
+      "power_target_met": true,
+      "power_wilson_lower_95": 0.9936580209738474,
+      "proxy_power": 0.9956666666666667,
+      "solo_error_rate": 0.05322265625
+    },
+    "Qwen/Qwen3-8B::multi_nli": {
+      "grid_rate": 0.35,
+      "information_poor": false,
+      "n_items": 4096,
+      "power_target_met": true,
+      "power_wilson_lower_95": 0.8170505488893139,
+      "proxy_power": 0.8268333333333334,
+      "solo_error_rate": 0.28041035661944314
+    },
+    "ibm-granite/granite-3.3-8b-instruct::imdb": {
+      "grid_rate": 0.1,
+      "information_poor": false,
+      "n_items": 2048,
+      "power_target_met": true,
+      "power_wilson_lower_95": 0.9936580209738474,
+      "proxy_power": 0.9956666666666667,
+      "solo_error_rate": 0.08717186726102033
+    },
+    "meta-llama/Llama-3.1-8B-Instruct::civil_comments": {
+      "grid_rate": 0.2,
+      "information_poor": false,
+      "n_items": 4096,
+      "power_target_met": true,
+      "power_wilson_lower_95": 0.9775879978601095,
+      "proxy_power": 0.9813333333333333,
+      "solo_error_rate": 0.15974596971177335
+    },
+    "meta-llama/Llama-3.1-8B-Instruct::imdb": {
+      "grid_rate": 0.1,
+      "information_poor": false,
+      "n_items": 2048,
+      "power_target_met": true,
+      "power_wilson_lower_95": 0.9936580209738474,
+      "proxy_power": 0.9956666666666667,
+      "solo_error_rate": 0.09339853300733492
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": {
+      "grid_rate": 0.35,
+      "information_poor": false,
+      "n_items": 4096,
+      "power_target_met": true,
+      "power_wilson_lower_95": 0.8170505488893139,
+      "proxy_power": 0.8268333333333334,
+      "solo_error_rate": 0.32170923379174854
+    }
+  },
+  "ordered_cells": {
+    "e5_cells": [
+      "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "Qwen/Qwen3-8B::civil_comments"
+    ],
+    "families": [
+      "granite",
+      "llama",
+      "mistral",
+      "qwen"
+    ],
+    "family_core": [
+      "Qwen/Qwen3-8B::multi_nli",
+      "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli"
+    ],
+    "primary": [
+      "Qwen/Qwen3-8B::multi_nli",
+      "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "Qwen/Qwen3-8B::civil_comments",
+      "meta-llama/Llama-3.1-8B-Instruct::imdb",
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "Qwen/Qwen3-8B::imdb"
+    ],
+    "tasks": [
+      "civil_comments",
+      "imdb",
+      "multi_nli"
+    ]
+  },
+  "prior_opened_joint_families": [
+    "granite",
+    "qwen"
+  ],
+  "runtime_access_lock_sha256": "3d8193234225210ba9a3cc77f37e61eed9a8d480c1acecc55bb9f05cfe0557c6",
+  "schema_version": "ext-x1r4-a7-admission-lock-v1",
+  "selected_schedules": {
+    "b3": {
+      "Qwen/Qwen3-8B::civil_comments": {
+        "call_id_order_sha256": "5e75ef4343dce37b70732c8958f10041498e371321b63196119157ba3e65422f",
+        "counts": {
+          "exact_context": 12288,
+          "joint": 768,
+          "solo": 4096,
+          "total": 17152
+        },
+        "n_items": 4096,
+        "record_stream_sha256": "b52ac436bc1c65e1c2525d0f38faaaa9868d677dff53ca344ceb31d272a87eac",
+        "selected_plan_sha256": "bd4f8dffc61b7d7d7c8f318ca98521c87f9afea47b31dbe6934e9639c39da986"
+      },
+      "Qwen/Qwen3-8B::imdb": {
+        "call_id_order_sha256": "4015f27d05ea63a1c09f5e1a95d4b595502e05427d78f30b60816e6f328ddd88",
+        "counts": {
+          "exact_context": 6144,
+          "joint": 384,
+          "solo": 2048,
+          "total": 8576
+        },
+        "n_items": 2048,
+        "record_stream_sha256": "c925069ead637c404e5fd64b1224e888d839a211a3867ce802f429764960a178",
+        "selected_plan_sha256": "2caaf5b2f92c40eef065adf0b3adfbd1072bd6e7304a81a8c3c36471c3de16d7"
+      },
+      "Qwen/Qwen3-8B::multi_nli": {
+        "call_id_order_sha256": "ac25f0823dac09acf81579df72bc74cdfdcff972f4616c2222dd2ef05d0d6435",
+        "counts": {
+          "exact_context": 12288,
+          "joint": 768,
+          "solo": 4096,
+          "total": 17152
+        },
+        "n_items": 4096,
+        "record_stream_sha256": "f9500c6c87979dcdc250fad7da0d1db1fa8607adc6913894317527ce9e0652ed",
+        "selected_plan_sha256": "7118ea4d57d6128e76735be115bf12251ebbafde717fc9fb3fbec97d8d7f3bb5"
+      },
+      "ibm-granite/granite-3.3-8b-instruct::imdb": {
+        "call_id_order_sha256": "47107313d98aeb5da13b75c7f86bca38ffe932ab8c6fa47cea80632187fd268a",
+        "counts": {
+          "exact_context": 6144,
+          "joint": 384,
+          "solo": 2048,
+          "total": 8576
+        },
+        "n_items": 2048,
+        "record_stream_sha256": "25934ed9c51e9a99bf9f0ee6d81e81eac4fcdb0b6dff5b9cd5020de28ad649a9",
+        "selected_plan_sha256": "b5137058630e52ad78ad0cec652140932708a28c46179097206d093932ab61d2"
+      },
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments": {
+        "call_id_order_sha256": "7962719a81303078cdaff71d85cb640cf5bd0b5aa406e46b9c96e72deeb22e30",
+        "counts": {
+          "exact_context": 12288,
+          "joint": 768,
+          "solo": 4096,
+          "total": 17152
+        },
+        "n_items": 4096,
+        "record_stream_sha256": "dc01222bd4604d85797e543e434cf11c7a010ab9683f96d7c90d2c2404f2b87e",
+        "selected_plan_sha256": "5caa176553d6e662a2b297a104746f224db253a819b84d9b3c0511345b49f6de"
+      },
+      "meta-llama/Llama-3.1-8B-Instruct::imdb": {
+        "call_id_order_sha256": "93123fbb91ace5b8f4f44c4e872d65cec1ed9951b159e32c420ba99147094f3f",
+        "counts": {
+          "exact_context": 6144,
+          "joint": 384,
+          "solo": 2048,
+          "total": 8576
+        },
+        "n_items": 2048,
+        "record_stream_sha256": "868bd791668bb100432a0f3b5b42ff529a9e7449a0571d6cebe97fea02b5ab3c",
+        "selected_plan_sha256": "db3b62c25dfc0f7ebe0e56b4271923ebf57ed5b91dd17c17c00f4b2ebeacc8a7"
+      },
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": {
+        "call_id_order_sha256": "74a302bd6823f4f641f492699e2077522bc1e4a87b29e11c953c39c1d344c3de",
+        "counts": {
+          "exact_context": 12288,
+          "joint": 768,
+          "solo": 4096,
+          "total": 17152
+        },
+        "n_items": 4096,
+        "record_stream_sha256": "f1787555088c268196e36d18ee91bb225950e277887723865a4397752048e64e",
+        "selected_plan_sha256": "bae384ee2b6c4bcee8d86d9b257a443ca31c0462119e6d28f9ac1910b4570210"
+      }
+    },
+    "b3_total_calls": 94336,
+    "b4": {
+      "Qwen/Qwen3-8B::civil_comments": {
+        "evaluation_call_id_order_sha256": "c76846a821e65c31465fbb400867f77fc59dc6bb6fc93661eb55ec397e39cd1d",
+        "evaluation_calls": 80000,
+        "evaluation_doc_order_sha256_order_sha256": "bde548731ac7d4735156af6d5c1c2b1c9a291ba330166d817f4da6742e297377",
+        "evaluation_prefixes": {
+          "1000": {
+            "call_id_order_sha256": "eb6faba1076d672649386e1be542728bb6d06750b358e1d287ee20482f8f9c99",
+            "doc_order_sha256_order_sha256": "9e8f157d87af0a010b54ed80d3fa92674c3bcb7a916eda0c735c44bc64524210",
+            "first_call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r999:b31",
+            "n_calls": 32000,
+            "replicates": 1000
+          },
+          "2500": {
+            "call_id_order_sha256": "c76846a821e65c31465fbb400867f77fc59dc6bb6fc93661eb55ec397e39cd1d",
+            "doc_order_sha256_order_sha256": "bde548731ac7d4735156af6d5c1c2b1c9a291ba330166d817f4da6742e297377",
+            "first_call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r2499:b31",
+            "n_calls": 80000,
+            "replicates": 2500
+          },
+          "400": {
+            "call_id_order_sha256": "b95e97f122f0ceeb92f32eb53bafe6954ca49d347b38d4571ab0aaf2d1def955",
+            "doc_order_sha256_order_sha256": "267a98f92489d92d9c71bc24fd7d43b28c628d36bacaaf03eac76d2b40c386be",
+            "first_call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r399:b31",
+            "n_calls": 12800,
+            "replicates": 400
+          }
+        },
+        "reference_call_id_order_sha256": "51427c9edaf24b1f0552cdeee3efc0888a034134aa8293d2487b1842abe970e9",
+        "reference_calls": 8000,
+        "reference_record_stream_sha256": "db9737e01a72155e2635ae7e820d06e5e863deb80d16870f98013c8b0140e13b",
+        "selected_schedule_sha256": "6bad70cac38fb231124d10f90d65ec24378200b5aa2193ba9a68977b771c462f"
+      },
+      "ibm-granite/granite-3.3-8b-instruct::imdb": {
+        "evaluation_call_id_order_sha256": "1cc51c46a2b85488a853ece5c2f2e392498e367e843ace9eb8c29af83c5ab4da",
+        "evaluation_calls": 80000,
+        "evaluation_doc_order_sha256_order_sha256": "04766902150e1ae2512ce6dff8ead7e18b862fa451687ed795a43f9ae90ebf97",
+        "evaluation_prefixes": {
+          "1000": {
+            "call_id_order_sha256": "e7675b8c8d93b9b5e6ec3b45dde636ce8b6d52a3d8bd37f7e5c691fbba19f315",
+            "doc_order_sha256_order_sha256": "e1e043899e09a1b77a454ec06974f281ed8aa393f662fd070ba1a148a155365a",
+            "first_call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r999:b31",
+            "n_calls": 32000,
+            "replicates": 1000
+          },
+          "2500": {
+            "call_id_order_sha256": "1cc51c46a2b85488a853ece5c2f2e392498e367e843ace9eb8c29af83c5ab4da",
+            "doc_order_sha256_order_sha256": "04766902150e1ae2512ce6dff8ead7e18b862fa451687ed795a43f9ae90ebf97",
+            "first_call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r2499:b31",
+            "n_calls": 80000,
+            "replicates": 2500
+          },
+          "400": {
+            "call_id_order_sha256": "6ea2a5ffe2baf28c186c012c274b044ab5417ea67594624231d23133e1a54e93",
+            "doc_order_sha256_order_sha256": "c8cfc8d86b204585b6f219c952688bb1cf2815a3599fbc5d2e969832a04ed155",
+            "first_call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r399:b31",
+            "n_calls": 12800,
+            "replicates": 400
+          }
+        },
+        "reference_call_id_order_sha256": "85a95ca8d49a2e14aaf40af646673c95be91b7508ab279ce457e330ff7425d97",
+        "reference_calls": 8000,
+        "reference_record_stream_sha256": "1b6ae2af239335ec7367119fef9936891b990ba6cfb99292eb3d9f68705563cf",
+        "selected_schedule_sha256": "6177a69162af3907ca2fb74bad96ffd51f69b151f6e271795f4659fc86e3a2f2"
+      },
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments": {
+        "evaluation_call_id_order_sha256": "856dffbe036a2019d2b0e8bdd6d5c10d19e9d08a818c5060fa6c328362ac95a8",
+        "evaluation_calls": 80000,
+        "evaluation_doc_order_sha256_order_sha256": "aadc26730abee2c89101322325334bc7fa4fd58bb16c3b489b20b3c617bf682b",
+        "evaluation_prefixes": {
+          "1000": {
+            "call_id_order_sha256": "b0c057dd8b027a9df264f56158047aaa0f2d79ced227ecda97c6516ccdd52495",
+            "doc_order_sha256_order_sha256": "4fb0a9fc47aa0223ab5e03e315303fa168c96b86d2dcb34b0d47aab80a7532e4",
+            "first_call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r999:b31",
+            "n_calls": 32000,
+            "replicates": 1000
+          },
+          "2500": {
+            "call_id_order_sha256": "856dffbe036a2019d2b0e8bdd6d5c10d19e9d08a818c5060fa6c328362ac95a8",
+            "doc_order_sha256_order_sha256": "aadc26730abee2c89101322325334bc7fa4fd58bb16c3b489b20b3c617bf682b",
+            "first_call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r2499:b31",
+            "n_calls": 80000,
+            "replicates": 2500
+          },
+          "400": {
+            "call_id_order_sha256": "eef1f63a78f8b2193f9ea882f1b6ea68837599a6e75ba2d953bb68c1d2dab811",
+            "doc_order_sha256_order_sha256": "269d0b04e1db7eebf1baafc7a822707d32cc6954c09ab0e68a9d92194aabd990",
+            "first_call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r399:b31",
+            "n_calls": 12800,
+            "replicates": 400
+          }
+        },
+        "reference_call_id_order_sha256": "72ba10e594a6da7d570d6888969fe31f6be297f68ad2b6981b6d9cdf0f3d6ab3",
+        "reference_calls": 8000,
+        "reference_record_stream_sha256": "6289932d1f1bb679b9d12f550e22610f0550fd9138ffa5b4cbb11d409790112a",
+        "selected_schedule_sha256": "04ebff9eb8e3ee8a68e03194bf123e3aa19af3849c95fd038a1175e172c11bfe"
+      },
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": {
+        "evaluation_call_id_order_sha256": "6210b5e676bba29b086455a2efa1bbda9a3812c5281d1623e8ad0fc82b4e21a3",
+        "evaluation_calls": 80000,
+        "evaluation_doc_order_sha256_order_sha256": "c01ffe3f375f0210958a8d15a839a80a894c0bae3f20c4f9752f0f8791b64ebc",
+        "evaluation_prefixes": {
+          "1000": {
+            "call_id_order_sha256": "50b1bec5aba42a69f3d2a7cd278bbdde9729857eafedf541988b36a25da8ef09",
+            "doc_order_sha256_order_sha256": "ad4478b2bf4b601067a9464c9752446c87e16545e1f7c7a682b922a397d14aac",
+            "first_call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r999:b31",
+            "n_calls": 32000,
+            "replicates": 1000
+          },
+          "2500": {
+            "call_id_order_sha256": "6210b5e676bba29b086455a2efa1bbda9a3812c5281d1623e8ad0fc82b4e21a3",
+            "doc_order_sha256_order_sha256": "c01ffe3f375f0210958a8d15a839a80a894c0bae3f20c4f9752f0f8791b64ebc",
+            "first_call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r2499:b31",
+            "n_calls": 80000,
+            "replicates": 2500
+          },
+          "400": {
+            "call_id_order_sha256": "42a630303e38642edf25708b674cc6b19cc2a30c43a5ed8b95cb04924d55ab66",
+            "doc_order_sha256_order_sha256": "024fa80381b3c8126d020589fca420bc2304672095e28027d5ac3dd84acefc32",
+            "first_call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r399:b31",
+            "n_calls": 12800,
+            "replicates": 400
+          }
+        },
+        "reference_call_id_order_sha256": "d9ea8219bddaaadd563f06940330d6bcb9073e004f78034f3b3fc14f965d38ef",
+        "reference_calls": 8000,
+        "reference_record_stream_sha256": "f160b4a078c3f2a4f79c4d660917a1b89bbe0e4d6343cf8412f11720c845b97f",
+        "selected_schedule_sha256": "56737b46b2b9c5a0057f2be05a81d9ddbf924f6ada65cf1f2c6bea33f0c0c9cd"
+      }
+    },
+    "b4_total_calls": 352000
+  },
+  "selection_evidence": "solo_capability_and_technical_timing_only",
+  "solo_metrics": {
+    "Qwen/Qwen3-8B::ag_news": {
+      "accuracy": 0.6903131115459883,
+      "admitted": false,
+      "candidate_status": "attempted",
+      "cell_key": "Qwen/Qwen3-8B::ag_news",
+      "error_rate": 0.3096868884540117,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "qwen",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "Qwen/Qwen3-8B",
+      "parse_rate": 0.998046875,
+      "parsed_calls": 2044,
+      "reasons": [
+        "accuracy_below_frozen_floor"
+      ],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "ag_news",
+      "technical_complete": true,
+      "terminal_calls": 2048
+    },
+    "Qwen/Qwen3-8B::civil_comments": {
+      "accuracy": 0.7570231641202563,
+      "admitted": true,
+      "balanced_accuracy": 0.7760658471195971,
+      "candidate_status": "attempted",
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "error_rate": 0.24297683587974372,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "qwen",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "Qwen/Qwen3-8B",
+      "parse_rate": 0.99072265625,
+      "parsed_calls": 2029,
+      "reasons": [],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "civil_comments",
+      "technical_complete": true,
+      "terminal_calls": 2048,
+      "toxic_recall": 0.7987804878048781
+    },
+    "Qwen/Qwen3-8B::imdb": {
+      "accuracy": 0.94677734375,
+      "admitted": true,
+      "candidate_status": "attempted",
+      "cell_key": "Qwen/Qwen3-8B::imdb",
+      "error_rate": 0.05322265625,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "qwen",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "Qwen/Qwen3-8B",
+      "parse_rate": 1.0,
+      "parsed_calls": 2048,
+      "reasons": [],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "imdb",
+      "technical_complete": true,
+      "terminal_calls": 2048
+    },
+    "Qwen/Qwen3-8B::multi_nli": {
+      "accuracy": 0.7195896433805569,
+      "admitted": true,
+      "candidate_status": "attempted",
+      "cell_key": "Qwen/Qwen3-8B::multi_nli",
+      "error_rate": 0.28041035661944314,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "qwen",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "Qwen/Qwen3-8B",
+      "parse_rate": 0.99951171875,
+      "parsed_calls": 2047,
+      "reasons": [],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "multi_nli",
+      "technical_complete": true,
+      "terminal_calls": 2048
+    },
+    "ibm-granite/granite-3.3-8b-instruct::ag_news": {
+      "accuracy": 0.5225490196078432,
+      "admitted": false,
+      "candidate_status": "attempted",
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::ag_news",
+      "error_rate": 0.47745098039215683,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "granite",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "parse_rate": 0.99609375,
+      "parsed_calls": 2040,
+      "reasons": [
+        "accuracy_below_frozen_floor"
+      ],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "ag_news",
+      "technical_complete": true,
+      "terminal_calls": 2048
+    },
+    "ibm-granite/granite-3.3-8b-instruct::civil_comments": {
+      "accuracy": 0.8284142071035517,
+      "admitted": false,
+      "balanced_accuracy": 0.7788296670432644,
+      "candidate_status": "attempted",
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::civil_comments",
+      "error_rate": 0.17158579289644826,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "granite",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "parse_rate": 0.97607421875,
+      "parsed_calls": 1999,
+      "reasons": [
+        "parse_rate_below_0.98"
+      ],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "civil_comments",
+      "technical_complete": true,
+      "terminal_calls": 2048,
+      "toxic_recall": 0.7195121951219512
+    },
+    "ibm-granite/granite-3.3-8b-instruct::imdb": {
+      "accuracy": 0.9128281327389797,
+      "admitted": true,
+      "candidate_status": "attempted",
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "error_rate": 0.08717186726102033,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "granite",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "parse_rate": 0.98583984375,
+      "parsed_calls": 2019,
+      "reasons": [],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "imdb",
+      "technical_complete": true,
+      "terminal_calls": 2048
+    },
+    "ibm-granite/granite-3.3-8b-instruct::multi_nli": {
+      "accuracy": 0.36528117359413204,
+      "admitted": false,
+      "candidate_status": "attempted",
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::multi_nli",
+      "error_rate": 0.634718826405868,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "granite",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "parse_rate": 0.99853515625,
+      "parsed_calls": 2045,
+      "reasons": [
+        "accuracy_below_frozen_floor"
+      ],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "multi_nli",
+      "technical_complete": true,
+      "terminal_calls": 2048
+    },
+    "meta-llama/Llama-3.1-8B-Instruct::ag_news": {
+      "accuracy": 0.615158924205379,
+      "admitted": false,
+      "candidate_status": "attempted",
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::ag_news",
+      "error_rate": 0.384841075794621,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "llama",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "parse_rate": 0.99853515625,
+      "parsed_calls": 2045,
+      "reasons": [
+        "accuracy_below_frozen_floor"
+      ],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "ag_news",
+      "technical_complete": true,
+      "terminal_calls": 2048
+    },
+    "meta-llama/Llama-3.1-8B-Instruct::civil_comments": {
+      "accuracy": 0.8402540302882266,
+      "admitted": true,
+      "balanced_accuracy": 0.7785127751836693,
+      "candidate_status": "attempted",
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "error_rate": 0.15974596971177335,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "llama",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "parse_rate": 0.99951171875,
+      "parsed_calls": 2047,
+      "reasons": [],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "civil_comments",
+      "technical_complete": true,
+      "terminal_calls": 2048,
+      "toxic_recall": 0.7048192771084337
+    },
+    "meta-llama/Llama-3.1-8B-Instruct::imdb": {
+      "accuracy": 0.9066014669926651,
+      "admitted": true,
+      "candidate_status": "attempted",
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::imdb",
+      "error_rate": 0.09339853300733492,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "llama",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "parse_rate": 0.99853515625,
+      "parsed_calls": 2045,
+      "reasons": [],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "imdb",
+      "technical_complete": true,
+      "terminal_calls": 2048
+    },
+    "meta-llama/Llama-3.1-8B-Instruct::multi_nli": {
+      "accuracy": 0.4383561643835616,
+      "admitted": false,
+      "candidate_status": "attempted",
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::multi_nli",
+      "error_rate": 0.5616438356164384,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "llama",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "parse_rate": 0.998046875,
+      "parsed_calls": 2044,
+      "reasons": [
+        "accuracy_below_frozen_floor"
+      ],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "multi_nli",
+      "technical_complete": true,
+      "terminal_calls": 2048
+    },
+    "microsoft/Phi-4-mini-instruct::ag_news": {
+      "accuracy": 0.18,
+      "admitted": false,
+      "candidate_status": "attempted",
+      "cell_key": "microsoft/Phi-4-mini-instruct::ag_news",
+      "error_rate": 0.8200000000000001,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "phi",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "microsoft/Phi-4-mini-instruct",
+      "parse_rate": 0.09765625,
+      "parsed_calls": 200,
+      "reasons": [
+        "parse_rate_below_0.98",
+        "error_information_outside_0.05_to_0.80",
+        "accuracy_below_frozen_floor"
+      ],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "ag_news",
+      "technical_complete": true,
+      "terminal_calls": 2048
+    },
+    "microsoft/Phi-4-mini-instruct::civil_comments": {
+      "accuracy": 0.8918918918918919,
+      "admitted": false,
+      "balanced_accuracy": 0.6372549019607843,
+      "candidate_status": "attempted",
+      "cell_key": "microsoft/Phi-4-mini-instruct::civil_comments",
+      "error_rate": 0.10810810810810811,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "phi",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "microsoft/Phi-4-mini-instruct",
+      "parse_rate": 0.01806640625,
+      "parsed_calls": 37,
+      "reasons": [
+        "parse_rate_below_0.98"
+      ],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "civil_comments",
+      "technical_complete": true,
+      "terminal_calls": 2048,
+      "toxic_recall": 0.3333333333333333
+    },
+    "microsoft/Phi-4-mini-instruct::imdb": {
+      "accuracy": 0.972972972972973,
+      "admitted": false,
+      "candidate_status": "attempted",
+      "cell_key": "microsoft/Phi-4-mini-instruct::imdb",
+      "error_rate": 0.027027027027026973,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "phi",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "microsoft/Phi-4-mini-instruct",
+      "parse_rate": 0.01806640625,
+      "parsed_calls": 37,
+      "reasons": [
+        "parse_rate_below_0.98",
+        "error_information_outside_0.05_to_0.80"
+      ],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "imdb",
+      "technical_complete": true,
+      "terminal_calls": 2048
+    },
+    "microsoft/Phi-4-mini-instruct::multi_nli": {
+      "admitted": false,
+      "candidate_status": "attempted",
+      "cell_key": "microsoft/Phi-4-mini-instruct::multi_nli",
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "phi",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "microsoft/Phi-4-mini-instruct",
+      "parse_rate": 0.0,
+      "parsed_calls": 0,
+      "reasons": [
+        "no_parsed_solo_labels"
+      ],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "multi_nli",
+      "technical_complete": true,
+      "terminal_calls": 2048
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3::ag_news": {
+      "accuracy": 0.5794896957801766,
+      "admitted": false,
+      "candidate_status": "attempted",
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::ag_news",
+      "error_rate": 0.4205103042198234,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "mistral",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "parse_rate": 0.9951171875,
+      "parsed_calls": 2038,
+      "reasons": [
+        "accuracy_below_frozen_floor"
+      ],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "ag_news",
+      "technical_complete": true,
+      "terminal_calls": 2048
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3::civil_comments": {
+      "accuracy": 0.7796610169491526,
+      "admitted": false,
+      "balanced_accuracy": 0.7534646902868161,
+      "candidate_status": "attempted",
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::civil_comments",
+      "error_rate": 0.22033898305084743,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "mistral",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "parse_rate": 0.9794921875,
+      "parsed_calls": 2006,
+      "reasons": [
+        "parse_rate_below_0.98"
+      ],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "civil_comments",
+      "technical_complete": true,
+      "terminal_calls": 2048,
+      "toxic_recall": 0.7222222222222222
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3::imdb": {
+      "accuracy": 0.6705882352941176,
+      "admitted": false,
+      "candidate_status": "attempted",
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::imdb",
+      "error_rate": 0.3294117647058824,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "mistral",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "parse_rate": 0.99609375,
+      "parsed_calls": 2040,
+      "reasons": [
+        "accuracy_below_frozen_floor"
+      ],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "imdb",
+      "technical_complete": true,
+      "terminal_calls": 2048
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": {
+      "accuracy": 0.6782907662082515,
+      "admitted": true,
+      "candidate_status": "attempted",
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "error_rate": 0.32170923379174854,
+      "executed": true,
+      "expected_calls": 2048,
+      "family": "mistral",
+      "final_status_counts": {
+        "ok": 2048
+      },
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "parse_rate": 0.994140625,
+      "parsed_calls": 2036,
+      "reasons": [],
+      "schema_version": "ext-x1r4-m1-screen-v1",
+      "selection_evidence": "solo_capability_and_technical_timing_only",
+      "status_counts": {
+        "ok": 2048
+      },
+      "task_id": "multi_nli",
+      "technical_complete": true,
+      "terminal_calls": 2048
+    }
+  },
+  "source_hashes": {
+    "a5_batch_report_file_sha256": "64d60961d9be472f094d082c00ab40b075e617c64401c235b4416f6ed1c8eec0",
+    "a5_runtime_report_file_sha256": "19302439372935b9735d0c88ed7f7056a4ee72a50959b81eb23f6c528074b1cc",
+    "b3_plans_file_sha256": "7f13cefb2b3dbbf7b95cbf8465b57bc1e9ee4da4ef18893bc6da1d2d38ffb870",
+    "b4_schedules_file_sha256": "53a6a0373100a1baef05e8a3bfcd2f9b56be05d5068f62c7fc611df3ab8f6546",
+    "m1_admission_inputs_file_sha256": "84a942b7093ceda240731ec92b00811a8fc363461c59fd67eb96c2232cb43e7a",
+    "m1_plan_file_sha256": "a882a98e68acb5294a2c83bbf7fd0cf92e357683dcc8954666798ff941e2be85",
+    "m1_receipts_file_sha256": "ee97b7a12942e2040ae8f10a42785c0671c38080138ab2db580c9c7301305936",
+    "m1_summary_file_sha256": "01e530951262f26cfa19956e1cd39f555665ea8aa147b18075438a2bf58c041a",
+    "power_file_sha256": "e1af81f3593d9e65949dade57286aec3ed9767413213fbb080f5689947f3b89e",
+    "runtime_access_lock_manifest_sha256": "709c5a6bbb80498e848efe3c0a7e8cc66e865f56d8f95e8a3a0062f5fe67e112",
+    "scientific_seal_manifest_sha256": "3838c6e201388480eb08aa48e04a1ef3a5af6a86fac5d920e9837459382677d2"
+  },
+  "technical_status": {
+    "Qwen/Qwen3-8B::ag_news": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "Qwen/Qwen3-8B::civil_comments": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "Qwen/Qwen3-8B::imdb": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "Qwen/Qwen3-8B::multi_nli": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "ibm-granite/granite-3.3-8b-instruct::ag_news": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "ibm-granite/granite-3.3-8b-instruct::civil_comments": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "ibm-granite/granite-3.3-8b-instruct::imdb": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "ibm-granite/granite-3.3-8b-instruct::multi_nli": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "meta-llama/Llama-3.1-8B-Instruct::ag_news": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "meta-llama/Llama-3.1-8B-Instruct::civil_comments": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "meta-llama/Llama-3.1-8B-Instruct::imdb": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "meta-llama/Llama-3.1-8B-Instruct::multi_nli": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "microsoft/Phi-4-mini-instruct::ag_news": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "microsoft/Phi-4-mini-instruct::civil_comments": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "microsoft/Phi-4-mini-instruct::imdb": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "microsoft/Phi-4-mini-instruct::multi_nli": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3::ag_news": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3::civil_comments": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3::imdb": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": {
+      "candidate_status": "attempted",
+      "complete": true,
+      "status_counts": {
+        "ok": 2048
+      }
+    }
+  },
+  "unavailable_models": [],
+  "worker_ownership": {
+    "binding_rule": "one model family per logical slot; A8 must verify actual worker GPU and checkpoint",
+    "cell_to_logical_slot": {
+      "Qwen/Qwen3-8B::civil_comments": "a100_slot_4",
+      "Qwen/Qwen3-8B::imdb": "a100_slot_4",
+      "Qwen/Qwen3-8B::multi_nli": "a100_slot_4",
+      "ibm-granite/granite-3.3-8b-instruct::imdb": "a100_slot_1",
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments": "a100_slot_2",
+      "meta-llama/Llama-3.1-8B-Instruct::imdb": "a100_slot_2",
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": "a100_slot_3"
+    },
+    "family_to_logical_slot": {
+      "granite": "a100_slot_1",
+      "llama": "a100_slot_2",
+      "mistral": "a100_slot_3",
+      "qwen": "a100_slot_4"
+    },
+    "hardware": "A100-40GB",
+    "max_parallel_workers": 4
+  }
+}

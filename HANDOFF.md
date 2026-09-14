@@ -2,7 +2,20 @@
 
 Updated: 2026-09-14 UTC.
 
-## Current handoff: A6 complete; A7 admission lock is next
+## Current handoff: A7 sealed; A8 family-core B3 work is next
+
+The CPU-only X1R4 A7 admission lock is sealed at
+`study-120h/admission-lock/20260914T012453Z-X1R4-A7/`. Its readable report lists
+all 20 solo screen passes and failures. The seven admitted cells use frozen
+power-rule sizes of 2,048 or 4,096 items. The lock binds the four-family core,
+four repeated-sampling cells, selected B3/B4 call hashes, four logical
+A100-40GB family-owned worker slots, and the separate 80-hour budget. It used
+no GPU and produced no model output. A8 is the next paid stage and has not
+started; its first four B3 cells are Qwen/MultiNLI, Granite/IMDb,
+Llama/Civil Comments, and Mistral/MultiNLI in that sealed order. Each model
+requires a first-1,000-attempt reforecast before its block continues.
+
+## Previous handoff: A6 complete; A7 admission lock was next
 
 The X1R4 A6 blinded solo screen completed on the `melissa21cn2016` Modal
 workspace as run `20260914T003735Z-5a8c63f2`. Five A100-40GB workers returned

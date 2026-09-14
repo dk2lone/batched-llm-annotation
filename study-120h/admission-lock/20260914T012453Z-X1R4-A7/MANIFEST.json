@@ -1,0 +1,10 @@
+{
+  "files_sha256": {
+    "ADMISSION_LOCK.json": "e30ab72063093ede08ed115b912f5558b23162016bb497d6bb48d6913cd8bff3",
+    "REPORT.md": "4cc133aa27d2c03e72f21dea0c70b8e58547761fc30014aa9f698dce2dd9024a"
+  },
+  "manifest_sha256": "f9474e85dcc06af0e8e64e5cfc8a966770aa8ca2086109cc8e938c154f994596",
+  "schema_version": "ext-x1r4-a7-manifest-v1",
+  "scientific_model_outputs": false,
+  "status": "sealed"
+}

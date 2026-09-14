@@ -9,8 +9,9 @@ confidence-interval coverage claims remain unavailable.
 
 The separate five-family X1R4 extension has a sealed protocol and a passing synthetic
 batch-invariance preflight. Its 40,960-call solo screen is complete: seven cells in four
-families passed the frozen capability gates. No extension joint results exist; the
-admission lock is next.
+families passed the frozen capability gates. The CPU-only A7 admission lock is
+sealed in [`study-120h/admission-lock/20260914T012453Z-X1R4-A7/REPORT.md`](study-120h/admission-lock/20260914T012453Z-X1R4-A7/REPORT.md).
+No extension joint results exist; A8 family-core B3 work is next.
 
 Start with [`HANDOFF.md`](HANDOFF.md), then read the active
 [`plan-120h-a100-rebased.md`](plan-120h-a100-rebased.md), the sealed part-1

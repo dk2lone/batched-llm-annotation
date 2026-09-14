@@ -17,7 +17,7 @@ seals are preserved but superseded. The synthetic runtime and batch-invariance p
 all five models and used 1.498607 metered A100-hours. A6 completed all 40,960 sealed solo calls
 in run `20260914T003735Z-5a8c63f2`; seven cells in four families passed the frozen admission
 floors. See `study-120h/extension-m1/20260914T003735Z-5a8c63f2/REPORT.md` for every cell.
-No extension joint output exists. A7, the admission lock, is next. This extension is separate
+No extension joint output exists. A7, the admission lock, is sealed. A8 is next. This extension is separate
 from Freeze B because Qwen and Granite joint results have already been opened. Nothing below
 authorizes a further paid run.
 See `study-120h/EXTENSION_PROTOCOL.md` for the full frozen protocol.
@@ -203,14 +203,22 @@ guarded full-screen reforecast. All calls returned `ok`; 1.383838 A100-hours wer
 five workers. Seven cells in four families passed the frozen parse, disagreement, accuracy,
 balanced-accuracy, and recall gates. Phi admitted none. The complete cell table is in the A6 report.
 
-### A7 — Seal the admitted panel — next, not started
+### A7 — Seal the admitted panel — complete
 
 Report every pass and failure, select 2,048, 4,096, or 8,192 items with the frozen power rule,
 select the first admitted task per family for repeated sampling, and seal cell order, worker
 ownership, calls, and budget in a new timestamped admission lock. No extension joint output may be
 generated before this lock exists.
 
-### A8 — Run one main cell per admitted family — pending A7 (sealed B3 order)
+The CPU-only X1R4 A7 lock was sealed at
+`study-120h/admission-lock/20260914T012453Z-X1R4-A7/`. Its report lists all
+20 pass/fail decisions. Seven cells in four families use the frozen 2,048/4,096
+item power choices. The lock binds the family-core order, repeated-sampling
+cells, selected B3/B4 schedule hashes and call counts, four logical family-owned
+A100-40GB slots, and the 80-hour/10-hour-reserve/1.6x budget rule. No GPU or
+extension joint output was generated.
+
+### A8 — Run one main cell per admitted family — next paid stage (sealed B3 order)
 
 Run one admitted model-task cell from each family before opening the family-core result. Each cell
 uses three joint assignments, exact-context target-only calls with identical neighbors and order,
