@@ -15,6 +15,14 @@ started; its first four B3 cells are Qwen/MultiNLI, Granite/IMDb,
 Llama/Civil Comments, and Mistral/MultiNLI in that sealed order. Each model
 requires a first-1,000-attempt reforecast before its block continues.
 
+Before any extension joint output, Daniel prioritized the already sealed B4
+1,000-evaluation prefix for all four families equally after the 400-replicate
+checkpoint. This adds 76,800 fresh joint calls, provisionally 16–24 guarded
+A100-hours. The 400-replicate C2 gate, 80-hour stop, 10-hour reserve, and
+1.6x per-block guard stay fixed; actual B4 runtime must be reforecast. The
+CPU-only record is
+`study-120h/amendments/20260914T013606Z-x1r4-e5-1000-priority.md`.
+
 ## Previous handoff: A6 complete; A7 admission lock was next
 
 The X1R4 A6 blinded solo screen completed on the `melissa21cn2016` Modal

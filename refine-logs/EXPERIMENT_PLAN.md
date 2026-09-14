@@ -242,12 +242,18 @@ and 400 independent evaluation replicates per selected cell, with 512 sampled it
 joint calls per replicate. Compare item-level Wald intervals, 32-call t intervals, and whole-call
 bootstrap sensitivity. Report coverage, width, variance inflation, and reference uncertainty.
 
-### A12 — Spend remaining compute in fixed order — optional
+### A12 — Extend all four families equally to 1,000 evaluations — budget-conditional priority
 
-After every selected family reaches 400 evaluations, extend all families equally to 1,000 and then
-2,500 evaluations only if fixed round-robin prefixes fit. Run B5 batch-size, prompt, position, and
-composition sensitivities afterward. Timing may stop the ladder; interim effects may not reorder
-it.
+After every selected family reaches the frozen 400-evaluation checkpoint, extend all four equally
+to 1,000 using the already sealed nested B4 prefix and fixed round-robin order. This adds 600
+replicates and 19,200 fresh joint calls per family, 76,800 calls overall. The incremental estimate
+is 10–15 base or 16–24 guarded A100-hours; the provisional A8–A12 total through this checkpoint is
+40–61 guarded hours, before prior use and the protected reserve. Reforecast from actual B4 runtime
+and start only complete blocks that satisfy the unchanged 80-hour stop, 10-hour reserve, and 1.6x
+guard. The 400-replicate C2 gate stays primary. If the equal 1,000 prefix cannot complete, report
+the shortfall and do not claim four-family 1,000-replicate evidence. The 2,500 prefix and B5
+sensitivities remain later conditional work. See the pre-output priority amendment at
+`study-120h/amendments/20260914T013606Z-x1r4-e5-1000-priority.md`.
 
 ### A13 — Final analysis and paper — pending completed experiments
 
