@@ -1,9 +1,0 @@
-{
-  "phase": "refine",
-  "round": 1,
-  "status": "in_progress",
-  "agent_id": "/root/novelty_review",
-  "last_score": 6.4,
-  "last_verdict": "REVISE",
-  "updated_at": "2026-09-08T23:16:38-04:00"
-}

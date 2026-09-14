@@ -69,3 +69,7 @@ study-120h/extension-runtime/**/report.json
 study-120h/extension-runtime/**/*--*.json
 study-120h/runtime-lock/*-X1R4/evidence/
 study-120h/freezeb-runtime/
+
+# Idea-selection phase output. Kept locally, not published.
+idea-stage/
+refine-logs/REFINE_STATE*.json
