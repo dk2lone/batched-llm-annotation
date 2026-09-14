@@ -23,6 +23,16 @@ A100-hours. The 400-replicate C2 gate, 80-hour stop, 10-hour reserve, and
 CPU-only record is
 `study-120h/amendments/20260914T013606Z-x1r4-e5-1000-priority.md`.
 
+Daniel also requested a **four-family × four-common-task** generalization
+panel after the equal 1,000-evaluation stage. The current A6 screen admitted
+only seven of sixteen cells for the four families and no common task, so this
+is a separate conditional crossed replication. A CPU registry of at most
+eight ordered candidate datasets, then a uniform four-family solo screen,
+must precede its sixteen-cell scientific seal. Its new GPU budget and call
+schedule are not sealed. See
+`study-120h/amendments/20260914T014726Z-crossed-4x4-plan.md` and A13–A15
+in `refine-logs/EXPERIMENT_PLAN.md`. A8 remains the next paid stage.
+
 ## Previous handoff: A6 complete; A7 admission lock was next
 
 The X1R4 A6 blinded solo screen completed on the `melissa21cn2016` Modal
@@ -47,7 +57,7 @@ The separate Freeze B Granite-8B/Civil Comments E2 cell is still unlaunched.
 
 ## Previous handoff: A0-A5 complete; A6 solo screen was next
 
-The active human-facing execution plan now uses A0-A13 in
+The active human-facing execution plan now uses A0-A16 in
 `refine-logs/EXPERIMENT_PLAN.md`. Existing sealed records keep their immutable M1, B3, and B4
 identifiers. A0-A3 preserve prior evidence and freeze the five-checkpoint, four-task protocol. A4,
 the unified runner, passes 78 focused tests, all 417 project CPU tests, Ruff, strict mypy, ledger
