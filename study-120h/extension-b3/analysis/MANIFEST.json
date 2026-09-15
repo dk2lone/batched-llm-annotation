@@ -1,0 +1,10 @@
+{
+  "analysis_sha256": "b540b8f41edc93013ca2d6027384b22f48cfe489dc3ec93d3f288ae3a89206da",
+  "created_at_utc": "2026-09-15T04:40:50.576433+00:00",
+  "gpu_work_launched": false,
+  "n_draws": 4999,
+  "report_sha256": "fd0566eda72781c00aa87a7559a112ad362a99f904765e5d475ee826d128cb64",
+  "schema_version": "ext-x1r4-a9-analysis-manifest-v1",
+  "scientific_model_output_generated": false,
+  "workers": 8
+}

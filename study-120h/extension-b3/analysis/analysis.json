@@ -1,0 +1,3489 @@
+{
+  "analysis": "X1R4 A9 complete 4 x 4 B3 grid",
+  "cells": [
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.6387498473934807,
+          "error_rate_resolved": 0.3612501526065193,
+          "parse_rate": 0.9998779296875,
+          "resolved": 24573,
+          "target_appearances": 24576,
+          "unresolved": 3
+        },
+        "joint": {
+          "accuracy_resolved": 0.7854872881355932,
+          "error_rate_resolved": 0.2145127118644068,
+          "parse_rate": 0.9986979166666666,
+          "resolved": 24544,
+          "target_appearances": 24576,
+          "unresolved": 32
+        },
+        "solo": {
+          "accuracy_resolved": 0.6992545521202493,
+          "error_rate_resolved": 0.3007454478797507,
+          "parse_rate": 0.9989013671875,
+          "resolved": 8183,
+          "target_appearances": 8192,
+          "unresolved": 9
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": true,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "Qwen/Qwen3-8B::ag_news",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": -0.0002494437827004327,
+        "exact_context_per_assignment": [
+          9.260276953379313e-05,
+          -0.0006141503651936849,
+          -0.00022678375244140626
+        ],
+        "joint_mean": 0.00306110680103302,
+        "joint_minus_exact": 0.003310550583733453,
+        "joint_per_assignment": [
+          0.0026087164878845215,
+          0.0031832069158554076,
+          0.0033913969993591307
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.9998779296875,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 3,
+              "ok": 24573
+            },
+            "resolved_calls": 24573,
+            "status_counts": {
+              "ok": 24576
+            },
+            "unresolved_calls": 3
+          },
+          "joint": {
+            "call_parse_rate": 0.9986979166666666,
+            "calls": 1536,
+            "parse_status_counts": {
+              "malformed": 2,
+              "ok": 1534
+            },
+            "resolved_calls": 1534,
+            "status_counts": {
+              "ok": 1536
+            },
+            "unresolved_calls": 2
+          },
+          "solo": {
+            "call_parse_rate": 0.9989013671875,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 9,
+              "ok": 8183
+            },
+            "resolved_calls": 8183,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 9
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.6387498473934807,
+          "error_rate_resolved": 0.3612501526065193,
+          "parse_rate": 0.9998779296875,
+          "resolved": 24573,
+          "target_appearances": 24576,
+          "unresolved": 3
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.7854872881355932,
+          "error_rate_resolved": 0.2145127118644068,
+          "parse_rate": 0.9986979166666666,
+          "resolved": 24544,
+          "target_appearances": 24576,
+          "unresolved": 32
+        },
+        "n_calls_discarded_under_whole_call_rule": 5,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.6992545521202493,
+          "error_rate_resolved": 0.3007454478797507,
+          "parse_rate": 0.9989013671875,
+          "resolved": 8183,
+          "target_appearances": 8192,
+          "unresolved": 9
+        },
+        "terminal_malformed_outputs": 0
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": -0.0002494437827004327,
+        "exact_context_per_assignment": [
+          9.260276953379313e-05,
+          -0.0006141503651936849,
+          -0.00022678375244140626
+        ],
+        "solo_mean": -0.00028608805603451203,
+        "solo_per_assignment": [
+          -0.0005031019449234009,
+          -0.0007635186115900676,
+          0.00040835638840993244
+        ]
+      },
+      "family": "qwen",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.003310550583733453,
+          "delta_unresolved_as_error": 0.0040702293316523235,
+          "delta_unresolved_dropped": 0.0032611729832093595,
+          "delta_whole_call_discarded": 0.0032186224954843397,
+          "failure_covariance_exact": -2.483526865641276e-08,
+          "failure_covariance_joint": 0.0012995402018229167
+        },
+        "n_calls_discarded_total": 5,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.0025161137183507282,
+            "delta_unresolved_as_error": 0.0036142349243164064,
+            "delta_unresolved_dropped": 0.002428947981395889,
+            "delta_whole_call_discarded": 0.002292567762399072,
+            "failure_covariance_exact": -1.4901161193847656e-08,
+            "failure_covariance_joint": 0.001949310302734375,
+            "n_calls_discarded": 2.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.0037973572810490923,
+            "delta_unresolved_as_error": 0.0038462609052658083,
+            "delta_unresolved_dropped": 0.0038155895181716717,
+            "delta_whole_call_discarded": 0.0038539113562091566,
+            "failure_covariance_exact": -5.960464477539063e-08,
+            "failure_covariance_joint": 0.0,
+            "n_calls_discarded": 2.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.003618180751800537,
+            "delta_unresolved_as_error": 0.004750192165374756,
+            "delta_unresolved_dropped": 0.0035389814500605184,
+            "delta_whole_call_discarded": 0.003509388367844789,
+            "failure_covariance_exact": 0.0,
+            "failure_covariance_joint": 0.001949310302734375,
+            "n_calls_discarded": 1.0
+          }
+        ]
+      },
+      "model_id": "Qwen/Qwen3-8B",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.004419621139163984,
+          "low": 0.002205808205136205,
+          "point": 0.003310550583733453
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": 2.5089889163983246e-05,
+        "null_sd": 0.00056766582991423,
+        "observed": 0.003310550583733453,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "67764aa032ff455ec2792ac4dedba3f254c73b787975bdfba7b898cf68293d75",
+        "events_path": "study-120h/extension-b3/Qwen--Qwen3-8B/cells/ag_news/events.jsonl",
+        "events_sha256": "08de634c3eac9ae119398a7d2e261f2bdbb9c96ce6e04c4dcf06e21ba3f0e2e7",
+        "first_attempts": 34304,
+        "frame_sha256": "723392acbddf8a249d89d8bdfc9cb676614053a77ccc9826f91d075a027ca494",
+        "plan_sha256_file": "453339669a70d9da6d0599b6ef2e1dba5dac72002603758a9d08239e8fe68afe",
+        "retry_attempts": 0,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34304,
+        "summary_sha256": "3aaafdf048c4f028986c232189ffa4e07a903b0c07115d91df7a1c6d8b71f328"
+      },
+      "task_id": "ag_news"
+    },
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.8736059479553904,
+          "error_rate_resolved": 0.12639405204460966,
+          "parse_rate": 0.985107421875,
+          "resolved": 24210,
+          "target_appearances": 24576,
+          "unresolved": 366
+        },
+        "joint": {
+          "accuracy_resolved": 0.900715931533904,
+          "error_rate_resolved": 0.09928406846609611,
+          "parse_rate": 0.9889322916666666,
+          "resolved": 24304,
+          "target_appearances": 24576,
+          "unresolved": 272
+        },
+        "solo": {
+          "accuracy_resolved": 0.8266500622665006,
+          "error_rate_resolved": 0.17334993773349938,
+          "parse_rate": 0.980224609375,
+          "resolved": 8030,
+          "target_appearances": 8192,
+          "unresolved": 162
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": false,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::civil_comments",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": -0.00017841590775383845,
+        "exact_context_per_assignment": [
+          -0.00042115747928619387,
+          0.0001900523900985718,
+          -0.00030414263407389325
+        ],
+        "joint_mean": 0.0014412207735909355,
+        "joint_minus_exact": 0.001619636681344774,
+        "joint_per_assignment": [
+          0.0009258915980656942,
+          0.0025455514589945477,
+          0.0008522192637125651
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.985107421875,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 305,
+              "ok": 24210,
+              "truncated": 61
+            },
+            "resolved_calls": 24210,
+            "status_counts": {
+              "ok": 24515,
+              "truncated": 61
+            },
+            "unresolved_calls": 366
+          },
+          "joint": {
+            "call_parse_rate": 0.9889322916666666,
+            "calls": 1536,
+            "parse_status_counts": {
+              "malformed": 17,
+              "ok": 1519
+            },
+            "resolved_calls": 1519,
+            "status_counts": {
+              "ok": 1536
+            },
+            "unresolved_calls": 17
+          },
+          "solo": {
+            "call_parse_rate": 0.980224609375,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 162,
+              "ok": 8030
+            },
+            "resolved_calls": 8030,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 162
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.8736059479553904,
+          "error_rate_resolved": 0.12639405204460966,
+          "parse_rate": 0.985107421875,
+          "resolved": 24210,
+          "target_appearances": 24576,
+          "unresolved": 366
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.900715931533904,
+          "error_rate_resolved": 0.09928406846609611,
+          "parse_rate": 0.9889322916666666,
+          "resolved": 24304,
+          "target_appearances": 24576,
+          "unresolved": 272
+        },
+        "n_calls_discarded_under_whole_call_rule": 328,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.8266500622665006,
+          "error_rate_resolved": 0.17334993773349938,
+          "parse_rate": 0.980224609375,
+          "resolved": 8030,
+          "target_appearances": 8192,
+          "unresolved": 162
+        },
+        "terminal_malformed_outputs": 61
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": -0.00017841590775383845,
+        "exact_context_per_assignment": [
+          -0.00042115747928619387,
+          0.0001900523900985718,
+          -0.00030414263407389325
+        ],
+        "solo_mean": -0.00010825263129340277,
+        "solo_per_assignment": [
+          -0.0005856831868489583,
+          0.00043970743815104166,
+          -0.00017878214518229167
+        ]
+      },
+      "family": "granite",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.001619636681344774,
+          "delta_unresolved_as_error": 0.01054019762410058,
+          "delta_unresolved_dropped": 0.0015606845153943998,
+          "delta_whole_call_discarded": 0.0017578778487967984,
+          "failure_covariance_exact": 7.963644133673774e-05,
+          "failure_covariance_joint": 0.010944366455078125
+        },
+        "n_calls_discarded_total": 328,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.001347049077351888,
+            "delta_unresolved_as_error": 0.008801833788553873,
+            "delta_unresolved_dropped": 0.0012584155960492398,
+            "delta_whole_call_discarded": 0.0011705105351706455,
+            "failure_covariance_exact": 0.00018822749455769857,
+            "failure_covariance_joint": 0.009670257568359375,
+            "n_calls_discarded": 117.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.0023554990688959758,
+            "delta_unresolved_as_error": 0.011961559454600016,
+            "delta_unresolved_dropped": 0.0023085758031870175,
+            "delta_whole_call_discarded": 0.003119006243224022,
+            "failure_covariance_exact": 2.5972723960876465e-05,
+            "failure_covariance_joint": 0.0115814208984375,
+            "n_calls_discarded": 111.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.0011563618977864583,
+            "delta_unresolved_as_error": 0.010857199629147848,
+            "delta_unresolved_dropped": 0.0011150621469469422,
+            "delta_whole_call_discarded": 0.000984116767995728,
+            "failure_covariance_exact": 2.4709105491638184e-05,
+            "failure_covariance_joint": 0.0115814208984375,
+            "n_calls_discarded": 100.0
+          }
+        ]
+      },
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.002136865778205813,
+          "low": 0.0011114751532058128,
+          "point": 0.001619636681344774
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": 4.2681750428035135e-05,
+        "null_sd": 0.0002641291396876704,
+        "observed": 0.001619636681344774,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "53e0b494987a38edc26bb243d9bb3ec05f7a5d4f7653b730e56d60f7faeb590e",
+        "events_path": "study-120h/extension-b3/ibm-granite--granite-3.3-8b-instruct/cells/civil_comments/events.jsonl",
+        "events_sha256": "559d0f07b8d064cef3624e3e10c628ed4c6b1eb9f213c7bebe610939ec0ca7be",
+        "first_attempts": 34304,
+        "frame_sha256": "7280ecef90628a7e543a7df9dd518cd6b81eda254738e9e9ac247a89955d320b",
+        "plan_sha256_file": "3d7e0eb273d6c6800ea74afd68269ab7aca225c91ea4f38493b3d7308dc69af1",
+        "retry_attempts": 61,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34365,
+        "summary_sha256": "f4f0be524b55b1100f86617fafb5f7e4baa766c9674e54abdd2714db0ccc597c"
+      },
+      "task_id": "civil_comments"
+    },
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.4127895143892213,
+          "error_rate_resolved": 0.5872104856107787,
+          "parse_rate": 0.9996337890625,
+          "resolved": 24567,
+          "target_appearances": 24576,
+          "unresolved": 9
+        },
+        "joint": {
+          "accuracy_resolved": 0.4852725195822454,
+          "error_rate_resolved": 0.5147274804177546,
+          "parse_rate": 0.9973958333333334,
+          "resolved": 24512,
+          "target_appearances": 24576,
+          "unresolved": 64
+        },
+        "solo": {
+          "accuracy_resolved": 0.4102030829459261,
+          "error_rate_resolved": 0.5897969170540739,
+          "parse_rate": 0.997802734375,
+          "resolved": 8174,
+          "target_appearances": 8192,
+          "unresolved": 18
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": true,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::multi_nli",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": 0.0019940541850195993,
+        "exact_context_per_assignment": [
+          0.001394033432006836,
+          0.0014423380295435588,
+          0.0031457910935084026
+        ],
+        "joint_mean": 0.008466993769009909,
+        "joint_minus_exact": 0.006472939583990309,
+        "joint_per_assignment": [
+          0.007963070273399353,
+          0.00667187770207723,
+          0.010766033331553142
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.9996337890625,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 8,
+              "ok": 24567,
+              "truncated": 1
+            },
+            "resolved_calls": 24567,
+            "status_counts": {
+              "ok": 24575,
+              "truncated": 1
+            },
+            "unresolved_calls": 9
+          },
+          "joint": {
+            "call_parse_rate": 0.9973958333333334,
+            "calls": 1536,
+            "parse_status_counts": {
+              "malformed": 4,
+              "ok": 1532
+            },
+            "resolved_calls": 1532,
+            "status_counts": {
+              "ok": 1536
+            },
+            "unresolved_calls": 4
+          },
+          "solo": {
+            "call_parse_rate": 0.997802734375,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 18,
+              "ok": 8174
+            },
+            "resolved_calls": 8174,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 18
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.4127895143892213,
+          "error_rate_resolved": 0.5872104856107787,
+          "parse_rate": 0.9996337890625,
+          "resolved": 24567,
+          "target_appearances": 24576,
+          "unresolved": 9
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.4852725195822454,
+          "error_rate_resolved": 0.5147274804177546,
+          "parse_rate": 0.9973958333333334,
+          "resolved": 24512,
+          "target_appearances": 24576,
+          "unresolved": 64
+        },
+        "n_calls_discarded_under_whole_call_rule": 13,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.4102030829459261,
+          "error_rate_resolved": 0.5897969170540739,
+          "parse_rate": 0.997802734375,
+          "resolved": 8174,
+          "target_appearances": 8192,
+          "unresolved": 18
+        },
+        "terminal_malformed_outputs": 1
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": 0.0019940541850195993,
+        "exact_context_per_assignment": [
+          0.001394033432006836,
+          0.0014423380295435588,
+          0.0031457910935084026
+        ],
+        "solo_mean": 4.2468640539381234e-05,
+        "solo_per_assignment": [
+          -0.000207097331682841,
+          -0.001281316081682841,
+          0.0016158193349838257
+        ]
+      },
+      "family": "llama",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.006472939583990309,
+          "delta_unresolved_as_error": 0.006418675846523708,
+          "delta_unresolved_dropped": 0.0058167370015261245,
+          "delta_whole_call_discarded": 0.0058939034870792925,
+          "failure_covariance_exact": -1.44044558207194e-07,
+          "failure_covariance_joint": 0.0025965372721354165
+        },
+        "n_calls_discarded_total": 13,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.006569036841392517,
+            "delta_unresolved_as_error": 0.006490783890088399,
+            "delta_unresolved_dropped": 0.005588671219287796,
+            "delta_whole_call_discarded": 0.005787808450616901,
+            "failure_covariance_exact": -5.960464477539063e-08,
+            "failure_covariance_joint": 0.0038909912109375,
+            "n_calls_discarded": 4.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.005229539672533671,
+            "delta_unresolved_as_error": 0.005219867825508118,
+            "delta_unresolved_dropped": 0.004749806675617458,
+            "delta_whole_call_discarded": 0.004763096603176827,
+            "failure_covariance_exact": -2.384185791015625e-07,
+            "failure_covariance_joint": 0.001949310302734375,
+            "n_calls_discarded": 5.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.0076202422380447395,
+            "delta_unresolved_as_error": 0.007545375823974611,
+            "delta_unresolved_dropped": 0.007111733109673116,
+            "delta_whole_call_discarded": 0.00713080540744415,
+            "failure_covariance_exact": -1.341104507446289e-07,
+            "failure_covariance_joint": 0.001949310302734375,
+            "n_calls_discarded": 4.0
+          }
+        ]
+      },
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.007558073060338356,
+          "low": 0.005376812209643911,
+          "point": 0.006472939583990309
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": 7.651924089391192e-05,
+        "null_sd": 0.0005544424661517907,
+        "observed": 0.006472939583990309,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "41306e5534dddf28907836233fa0159cd8ef01f1de0abbfb4a0096071c7679c8",
+        "events_path": "study-120h/extension-b3/meta-llama--Llama-3.1-8B-Instruct/cells/multi_nli/events.jsonl",
+        "events_sha256": "04f34f57bf11f64376b8bdd546fcf7c2b0e88890dbfb3e41078ecfd80ed29f68",
+        "first_attempts": 34304,
+        "frame_sha256": "54b7a871c799214b76518773a73cbaea6428ef1bc71a6d074ae022f94db5be66",
+        "plan_sha256_file": "7d3d4385b4fc67d45625598995629ea32e59f49a459acd876389e262a421e3fa",
+        "retry_attempts": 1,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34305,
+        "summary_sha256": "79ac984fe8d965c99d1b0c5c92f4ad7701d3e1efd3f1619f1ade6ec782066a32"
+      },
+      "task_id": "multi_nli"
+    },
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.6162472982341667,
+          "error_rate_resolved": 0.38375270176583337,
+          "parse_rate": 0.9977620442708334,
+          "resolved": 24521,
+          "target_appearances": 24576,
+          "unresolved": 55
+        },
+        "joint": {
+          "accuracy_resolved": 0.5946058784235138,
+          "error_rate_resolved": 0.4053941215764863,
+          "parse_rate": 0.974609375,
+          "resolved": 23952,
+          "target_appearances": 24576,
+          "unresolved": 624
+        },
+        "solo": {
+          "accuracy_resolved": 0.671259842519685,
+          "error_rate_resolved": 0.328740157480315,
+          "parse_rate": 0.9921875,
+          "resolved": 8128,
+          "target_appearances": 8192,
+          "unresolved": 64
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": true,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::imdb",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": 0.0008678204483456081,
+        "exact_context_per_assignment": [
+          0.0009359846512476603,
+          0.0005388190348943074,
+          0.0011286576588948568
+        ],
+        "joint_mean": 0.01831137670411004,
+        "joint_minus_exact": 0.017443556255764433,
+        "joint_per_assignment": [
+          0.01835204064846039,
+          0.0173919677734375,
+          0.01919012169043223
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.9977620442708334,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 55,
+              "ok": 24521
+            },
+            "resolved_calls": 24521,
+            "status_counts": {
+              "ok": 24576
+            },
+            "unresolved_calls": 55
+          },
+          "joint": {
+            "call_parse_rate": 0.974609375,
+            "calls": 1536,
+            "parse_status_counts": {
+              "malformed": 39,
+              "ok": 1497
+            },
+            "resolved_calls": 1497,
+            "status_counts": {
+              "ok": 1536
+            },
+            "unresolved_calls": 39
+          },
+          "solo": {
+            "call_parse_rate": 0.9921875,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 64,
+              "ok": 8128
+            },
+            "resolved_calls": 8128,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 64
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.6162472982341667,
+          "error_rate_resolved": 0.38375270176583337,
+          "parse_rate": 0.9977620442708334,
+          "resolved": 24521,
+          "target_appearances": 24576,
+          "unresolved": 55
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.5946058784235138,
+          "error_rate_resolved": 0.4053941215764863,
+          "parse_rate": 0.974609375,
+          "resolved": 23952,
+          "target_appearances": 24576,
+          "unresolved": 624
+        },
+        "n_calls_discarded_under_whole_call_rule": 94,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.671259842519685,
+          "error_rate_resolved": 0.328740157480315,
+          "parse_rate": 0.9921875,
+          "resolved": 8128,
+          "target_appearances": 8192,
+          "unresolved": 64
+        },
+        "terminal_malformed_outputs": 0
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": 0.0008678204483456081,
+        "exact_context_per_assignment": [
+          0.0009359846512476603,
+          0.0005388190348943074,
+          0.0011286576588948568
+        ],
+        "solo_mean": -0.0008596632215711804,
+        "solo_per_assignment": [
+          -0.001407623291015625,
+          -0.001895904541015625,
+          0.0007245381673177083
+        ]
+      },
+      "family": "mistral",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.017443556255764433,
+          "delta_unresolved_as_error": 0.0222433649831348,
+          "delta_unresolved_dropped": 0.013788176105752092,
+          "delta_whole_call_discarded": 0.013670204803983023,
+          "failure_covariance_exact": -5.3693850835164385e-06,
+          "failure_covariance_joint": 0.024735768636067707
+        },
+        "n_calls_discarded_total": 94,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.01741605599721273,
+            "delta_unresolved_as_error": 0.021714394291241966,
+            "delta_unresolved_dropped": 0.014410171789126304,
+            "delta_whole_call_discarded": 0.014032659983112667,
+            "failure_covariance_exact": -5.379319190979004e-06,
+            "failure_covariance_joint": 0.021022796630859375,
+            "n_calls_discarded": 30.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.01685314873854319,
+            "delta_unresolved_as_error": 0.021829095482826234,
+            "delta_unresolved_dropped": 0.013244051332901364,
+            "delta_whole_call_discarded": 0.013543915414746439,
+            "failure_covariance_exact": -2.1457672119140625e-06,
+            "failure_covariance_joint": 0.024745941162109375,
+            "n_calls_discarded": 25.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.018061464031537373,
+            "delta_unresolved_as_error": 0.0231866051753362,
+            "delta_unresolved_dropped": 0.01371030519522861,
+            "delta_whole_call_discarded": 0.01343403901408996,
+            "failure_covariance_exact": -8.58306884765625e-06,
+            "failure_covariance_joint": 0.028438568115234375,
+            "n_calls_discarded": 39.0
+          }
+        ]
+      },
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.01857121668368335,
+          "low": 0.016335973628127793,
+          "point": 0.017443556255764433
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": 7.620800312779299e-05,
+        "null_sd": 0.0005658403450195307,
+        "observed": 0.017443556255764433,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "64f0ee3759f3d23a104d88c944e6f3664d47626c7348001c57eb4093b4c59802",
+        "events_path": "study-120h/extension-b3/mistralai--Mistral-7B-Instruct-v0.3/cells/imdb/events.jsonl",
+        "events_sha256": "976325c1d4408a68d24b4d78c706b4208d1bf356e581b0c598c1ce2378ea4073",
+        "first_attempts": 34304,
+        "frame_sha256": "ac4afd88bed50bf6cc1966c9e76c5a1a73c16fff470436a3d284502d9c534620",
+        "plan_sha256_file": "85fd48897957846bfc64bf5672deff3b5e5d14694ee99b7e900175ac51eef701",
+        "retry_attempts": 0,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34304,
+        "summary_sha256": "b84a4edebdb6ba307139c05a464efe8164214dad5f232f4f07d6d7bea5b77883"
+      },
+      "task_id": "imdb"
+    },
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.9015953117369364,
+          "error_rate_resolved": 0.09840468826306364,
+          "parse_rate": 0.9998372395833334,
+          "resolved": 24572,
+          "target_appearances": 24576,
+          "unresolved": 4
+        },
+        "joint": {
+          "accuracy_resolved": 0.8963494132985659,
+          "error_rate_resolved": 0.10365058670143416,
+          "parse_rate": 0.9986979166666666,
+          "resolved": 24544,
+          "target_appearances": 24576,
+          "unresolved": 32
+        },
+        "solo": {
+          "accuracy_resolved": 0.9440713151788985,
+          "error_rate_resolved": 0.05592868482110148,
+          "parse_rate": 0.9996337890625,
+          "resolved": 8189,
+          "target_appearances": 8192,
+          "unresolved": 3
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": true,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "Qwen/Qwen3-8B::imdb",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": -0.0005142655637529161,
+        "exact_context_per_assignment": [
+          -0.0005017588535944621,
+          -0.0007913589477539062,
+          -0.00024967888991038006
+        ],
+        "joint_mean": 0.010794879992802937,
+        "joint_minus_exact": 0.011309145556555855,
+        "joint_per_assignment": [
+          0.011898394425710042,
+          0.008956242601076763,
+          0.01153000295162201
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.9998372395833334,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 4,
+              "ok": 24572
+            },
+            "resolved_calls": 24572,
+            "status_counts": {
+              "ok": 24576
+            },
+            "unresolved_calls": 4
+          },
+          "joint": {
+            "call_parse_rate": 0.9986979166666666,
+            "calls": 1536,
+            "parse_status_counts": {
+              "malformed": 2,
+              "ok": 1534
+            },
+            "resolved_calls": 1534,
+            "status_counts": {
+              "ok": 1536
+            },
+            "unresolved_calls": 2
+          },
+          "solo": {
+            "call_parse_rate": 0.9996337890625,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 3,
+              "ok": 8189
+            },
+            "resolved_calls": 8189,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 3
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.9015953117369364,
+          "error_rate_resolved": 0.09840468826306364,
+          "parse_rate": 0.9998372395833334,
+          "resolved": 24572,
+          "target_appearances": 24576,
+          "unresolved": 4
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.8963494132985659,
+          "error_rate_resolved": 0.10365058670143416,
+          "parse_rate": 0.9986979166666666,
+          "resolved": 24544,
+          "target_appearances": 24576,
+          "unresolved": 32
+        },
+        "n_calls_discarded_under_whole_call_rule": 6,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.9440713151788985,
+          "error_rate_resolved": 0.05592868482110148,
+          "parse_rate": 0.9996337890625,
+          "resolved": 8189,
+          "target_appearances": 8192,
+          "unresolved": 3
+        },
+        "terminal_malformed_outputs": 0
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": -0.0005142655637529161,
+        "exact_context_per_assignment": [
+          -0.0005017588535944621,
+          -0.0007913589477539062,
+          -0.00024967888991038006
+        ],
+        "solo_mean": -0.00010380877388848199,
+        "solo_per_assignment": [
+          -0.00019603967666625977,
+          -0.00024486780166625975,
+          0.00012948115666707358
+        ]
+      },
+      "family": "qwen",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.011309145556555855,
+          "delta_unresolved_as_error": 0.012342423862881131,
+          "delta_unresolved_dropped": 0.011308959288947871,
+          "delta_whole_call_discarded": 0.0111288629559938,
+          "failure_covariance_exact": -3.9736429850260414e-08,
+          "failure_covariance_joint": 0.0012995402018229167
+        },
+        "n_calls_discarded_total": 6,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.012400153279304504,
+            "delta_unresolved_as_error": 0.012400153279304504,
+            "delta_unresolved_dropped": 0.012400153279304504,
+            "delta_whole_call_discarded": 0.012400153279304504,
+            "failure_covariance_exact": 0.0,
+            "failure_covariance_joint": 0.0,
+            "n_calls_discarded": 0.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.009747601548830668,
+            "delta_unresolved_as_error": 0.011302849650382996,
+            "delta_unresolved_dropped": 0.009745532482276418,
+            "delta_whole_call_discarded": 0.009556580318188774,
+            "failure_covariance_exact": -5.960464477539063e-08,
+            "failure_covariance_joint": 0.001949310302734375,
+            "n_calls_discarded": 3.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.011779681841532389,
+            "delta_unresolved_as_error": 0.013324268658955892,
+            "delta_unresolved_dropped": 0.01178119210526269,
+            "delta_whole_call_discarded": 0.011429855270488119,
+            "failure_covariance_exact": -5.960464477539063e-08,
+            "failure_covariance_joint": 0.001949310302734375,
+            "n_calls_discarded": 3.0
+          }
+        ]
+      },
+      "model_id": "Qwen/Qwen3-8B",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.011832946063184958,
+          "low": 0.010775003354851626,
+          "point": 0.011309145556555855
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": 0.0001304721048516242,
+        "null_sd": 0.0002750834707221127,
+        "observed": 0.011309145556555855,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "67764aa032ff455ec2792ac4dedba3f254c73b787975bdfba7b898cf68293d75",
+        "events_path": "study-120h/extension-b3/Qwen--Qwen3-8B/cells/imdb/events.jsonl",
+        "events_sha256": "87256dfec7595ae16b4917fd7bbce7f6c57be24578b4212bf207b24e54c0e7e6",
+        "first_attempts": 34304,
+        "frame_sha256": "ac4afd88bed50bf6cc1966c9e76c5a1a73c16fff470436a3d284502d9c534620",
+        "plan_sha256_file": "453339669a70d9da6d0599b6ef2e1dba5dac72002603758a9d08239e8fe68afe",
+        "retry_attempts": 0,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34304,
+        "summary_sha256": "3aaafdf048c4f028986c232189ffa4e07a903b0c07115d91df7a1c6d8b71f328"
+      },
+      "task_id": "imdb"
+    },
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.383007444980774,
+          "error_rate_resolved": 0.616992555019226,
+          "parse_rate": 0.9947102864583334,
+          "resolved": 24446,
+          "target_appearances": 24576,
+          "unresolved": 130
+        },
+        "joint": {
+          "accuracy_resolved": 0.33466950261780104,
+          "error_rate_resolved": 0.665330497382199,
+          "parse_rate": 0.9947916666666666,
+          "resolved": 24448,
+          "target_appearances": 24576,
+          "unresolved": 128
+        },
+        "solo": {
+          "accuracy_resolved": 0.3362701908957415,
+          "error_rate_resolved": 0.6637298091042585,
+          "parse_rate": 0.99755859375,
+          "resolved": 8172,
+          "target_appearances": 8192,
+          "unresolved": 20
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": true,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::multi_nli",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": -0.0005706704325146145,
+        "exact_context_per_assignment": [
+          -0.00043345987796783447,
+          -0.0007878581682840984,
+          -0.0004906932512919108
+        ],
+        "joint_mean": 0.0035609463850657143,
+        "joint_minus_exact": 0.004131616817580329,
+        "joint_per_assignment": [
+          0.006382450461387634,
+          0.0017641862233479819,
+          0.0025362024704615274
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.9947102864583334,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 123,
+              "ok": 24446,
+              "truncated": 7
+            },
+            "resolved_calls": 24446,
+            "status_counts": {
+              "ok": 24569,
+              "truncated": 7
+            },
+            "unresolved_calls": 130
+          },
+          "joint": {
+            "call_parse_rate": 0.9947916666666666,
+            "calls": 1536,
+            "parse_status_counts": {
+              "malformed": 8,
+              "ok": 1528
+            },
+            "resolved_calls": 1528,
+            "status_counts": {
+              "ok": 1536
+            },
+            "unresolved_calls": 8
+          },
+          "solo": {
+            "call_parse_rate": 0.99755859375,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 20,
+              "ok": 8172
+            },
+            "resolved_calls": 8172,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 20
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.383007444980774,
+          "error_rate_resolved": 0.616992555019226,
+          "parse_rate": 0.9947102864583334,
+          "resolved": 24446,
+          "target_appearances": 24576,
+          "unresolved": 130
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.33466950261780104,
+          "error_rate_resolved": 0.665330497382199,
+          "parse_rate": 0.9947916666666666,
+          "resolved": 24448,
+          "target_appearances": 24576,
+          "unresolved": 128
+        },
+        "n_calls_discarded_under_whole_call_rule": 132,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.3362701908957415,
+          "error_rate_resolved": 0.6637298091042585,
+          "parse_rate": 0.99755859375,
+          "resolved": 8172,
+          "target_appearances": 8192,
+          "unresolved": 20
+        },
+        "terminal_malformed_outputs": 7
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": -0.0005706704325146145,
+        "exact_context_per_assignment": [
+          -0.00043345987796783447,
+          -0.0007878581682840984,
+          -0.0004906932512919108
+        ],
+        "solo_mean": -0.000671810574001736,
+        "solo_per_assignment": [
+          -0.000644683837890625,
+          -0.0014096577962239584,
+          3.8909912109375e-05
+        ]
+      },
+      "family": "granite",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.004131616817580329,
+          "delta_unresolved_as_error": 0.002309710780779521,
+          "delta_unresolved_dropped": 0.0017855614015571386,
+          "delta_whole_call_discarded": 0.001963204711543806,
+          "failure_covariance_exact": -6.30286004808214e-06,
+          "failure_covariance_joint": 0.005170186360677083
+        },
+        "n_calls_discarded_total": 132,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.006815910339355469,
+            "delta_unresolved_as_error": 0.003477427363395691,
+            "delta_unresolved_dropped": 0.002470489939050888,
+            "delta_whole_call_discarded": 0.00247855492326561,
+            "failure_covariance_exact": -1.127620538075765e-05,
+            "failure_covariance_joint": 0.009670257568359375,
+            "n_calls_discarded": 46.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.0025520443916320803,
+            "delta_unresolved_as_error": 0.0011042982339859008,
+            "delta_unresolved_dropped": 0.0007377217724400973,
+            "delta_whole_call_discarded": 0.0010775572606443523,
+            "failure_covariance_exact": 2.3772319157918294e-06,
+            "failure_covariance_joint": 0.0038909912109375,
+            "n_calls_discarded": 45.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.003026895721753438,
+            "delta_unresolved_as_error": 0.0023474067449569705,
+            "delta_unresolved_dropped": 0.0021484724931804308,
+            "delta_whole_call_discarded": 0.0023335019507214564,
+            "failure_covariance_exact": -1.00096066792806e-05,
+            "failure_covariance_joint": 0.001949310302734375,
+            "n_calls_discarded": 41.0
+          }
+        ]
+      },
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.004967942936970874,
+          "low": 0.0032643839091930963,
+          "point": 0.004131616817580329
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": 5.2578353637540486e-05,
+        "null_sd": 0.0004349486449397407,
+        "observed": 0.004131616817580329,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "9f095253871002ff9d62f0b56a661c301cece18b0d9ffef26665e39464378303",
+        "events_path": "study-120h/extension-b3/ibm-granite--granite-3.3-8b-instruct/cells/multi_nli/events.jsonl",
+        "events_sha256": "67499707d7efba60ffea6272e0df8393d44c03b6f178255f4b61d95588e3ba19",
+        "first_attempts": 34304,
+        "frame_sha256": "54b7a871c799214b76518773a73cbaea6428ef1bc71a6d074ae022f94db5be66",
+        "plan_sha256_file": "3d7e0eb273d6c6800ea74afd68269ab7aca225c91ea4f38493b3d7308dc69af1",
+        "retry_attempts": 7,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34311,
+        "summary_sha256": "f4f0be524b55b1100f86617fafb5f7e4baa766c9674e54abdd2714db0ccc597c"
+      },
+      "task_id": "multi_nli"
+    },
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.7842985633470352,
+          "error_rate_resolved": 0.21570143665296487,
+          "parse_rate": 0.9997965494791666,
+          "resolved": 24571,
+          "target_appearances": 24576,
+          "unresolved": 5
+        },
+        "joint": {
+          "accuracy_resolved": 0.71337890625,
+          "error_rate_resolved": 0.28662109375,
+          "parse_rate": 1.0,
+          "resolved": 24576,
+          "target_appearances": 24576,
+          "unresolved": 0
+        },
+        "solo": {
+          "accuracy_resolved": 0.8366524129505193,
+          "error_rate_resolved": 0.16334758704948077,
+          "parse_rate": 0.9991455078125,
+          "resolved": 8185,
+          "target_appearances": 8192,
+          "unresolved": 7
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": false,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": -0.0018909818596310086,
+        "exact_context_per_assignment": [
+          -0.0020949830611546832,
+          -0.0011042118072509765,
+          -0.002473750710487366
+        ],
+        "joint_mean": -0.00032648245493570966,
+        "joint_minus_exact": 0.0015644994046952988,
+        "joint_per_assignment": [
+          0.0001734137535095215,
+          0.00057373046875,
+          -0.0017265915870666505
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.9997965494791666,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 5,
+              "ok": 24571
+            },
+            "resolved_calls": 24571,
+            "status_counts": {
+              "ok": 24576
+            },
+            "unresolved_calls": 5
+          },
+          "joint": {
+            "call_parse_rate": 1.0,
+            "calls": 1536,
+            "parse_status_counts": {
+              "ok": 1536
+            },
+            "resolved_calls": 1536,
+            "status_counts": {
+              "ok": 1536
+            },
+            "unresolved_calls": 0
+          },
+          "solo": {
+            "call_parse_rate": 0.9991455078125,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 7,
+              "ok": 8185
+            },
+            "resolved_calls": 8185,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 7
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.7842985633470352,
+          "error_rate_resolved": 0.21570143665296487,
+          "parse_rate": 0.9997965494791666,
+          "resolved": 24571,
+          "target_appearances": 24576,
+          "unresolved": 5
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.71337890625,
+          "error_rate_resolved": 0.28662109375,
+          "parse_rate": 1.0,
+          "resolved": 24576,
+          "target_appearances": 24576,
+          "unresolved": 0
+        },
+        "n_calls_discarded_under_whole_call_rule": 5,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.8366524129505193,
+          "error_rate_resolved": 0.16334758704948077,
+          "parse_rate": 0.9991455078125,
+          "resolved": 8185,
+          "target_appearances": 8192,
+          "unresolved": 7
+        },
+        "terminal_malformed_outputs": 0
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": -0.0018909818596310086,
+        "exact_context_per_assignment": [
+          -0.0020949830611546832,
+          -0.0011042118072509765,
+          -0.002473750710487366
+        ],
+        "solo_mean": -0.00047582950856950545,
+        "solo_per_assignment": [
+          0.00047903160254160563,
+          -0.0011648486057917278,
+          -0.0007416715224583943
+        ]
+      },
+      "family": "llama",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.0015644994046952988,
+          "delta_unresolved_as_error": 0.0015548543797598944,
+          "delta_unresolved_dropped": 0.0015632682021731001,
+          "delta_whole_call_discarded": 0.0015811452039905492,
+          "failure_covariance_exact": -5.463759104410807e-08,
+          "failure_covariance_joint": 0.0
+        },
+        "n_calls_discarded_total": 5,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.002268396814664205,
+            "delta_unresolved_as_error": 0.0022557298342386883,
+            "delta_unresolved_dropped": 0.0022661850249790744,
+            "delta_whole_call_discarded": 0.0022732706213466794,
+            "failure_covariance_exact": -1.4901161193847656e-08,
+            "failure_covariance_joint": 0.0,
+            "n_calls_discarded": 1.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.0016779422760009764,
+            "delta_unresolved_as_error": 0.001681700348854065,
+            "delta_unresolved_dropped": 0.0016790189360896659,
+            "delta_whole_call_discarded": 0.0016898216407974353,
+            "failure_covariance_exact": -1.4901161193847656e-08,
+            "failure_covariance_joint": 0.0,
+            "n_calls_discarded": 1.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.0007471591234207153,
+            "delta_unresolved_as_error": 0.0007271329561869301,
+            "delta_unresolved_dropped": 0.0007446006454505608,
+            "delta_whole_call_discarded": 0.0007803433498275328,
+            "failure_covariance_exact": -1.341104507446289e-07,
+            "failure_covariance_joint": 0.0,
+            "n_calls_discarded": 3.0
+          }
+        ]
+      },
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.002452190994662598,
+          "low": 0.0006669804911903756,
+          "point": 0.0015644994046952988
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": -3.288930047629093e-05,
+        "null_sd": 0.000452009132167741,
+        "observed": 0.0015644994046952988,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "323954a6d154314529b1805dd02da25bd01f5e9012310a2deea0804d4d6ae712",
+        "events_path": "study-120h/extension-b3/meta-llama--Llama-3.1-8B-Instruct/cells/civil_comments/events.jsonl",
+        "events_sha256": "5f873e61d109a31e78e51d29413b4d7661d68407b9483d48201338b7ec803021",
+        "first_attempts": 34304,
+        "frame_sha256": "7280ecef90628a7e543a7df9dd518cd6b81eda254738e9e9ac247a89955d320b",
+        "plan_sha256_file": "7d3d4385b4fc67d45625598995629ea32e59f49a459acd876389e262a421e3fa",
+        "retry_attempts": 0,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34304,
+        "summary_sha256": "79ac984fe8d965c99d1b0c5c92f4ad7701d3e1efd3f1619f1ade6ec782066a32"
+      },
+      "task_id": "civil_comments"
+    },
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.4459986053570696,
+          "error_rate_resolved": 0.5540013946429304,
+          "parse_rate": 0.9919840494791666,
+          "resolved": 24379,
+          "target_appearances": 24576,
+          "unresolved": 197
+        },
+        "joint": {
+          "accuracy_resolved": 0.3420630904183536,
+          "error_rate_resolved": 0.6579369095816464,
+          "parse_rate": 0.96484375,
+          "resolved": 23712,
+          "target_appearances": 24576,
+          "unresolved": 864
+        },
+        "solo": {
+          "accuracy_resolved": 0.5626457234016444,
+          "error_rate_resolved": 0.43735427659835563,
+          "parse_rate": 0.9947509765625,
+          "resolved": 8149,
+          "target_appearances": 8192,
+          "unresolved": 43
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": true,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::ag_news",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": 0.0013840933640797935,
+        "exact_context_per_assignment": [
+          0.001140757401784261,
+          0.0012015511592229208,
+          0.001809971531232198
+        ],
+        "joint_mean": 0.02394010523955027,
+        "joint_minus_exact": 0.022556011875470478,
+        "joint_per_assignment": [
+          0.0246847003698349,
+          0.022759632269541422,
+          0.024375983079274497
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.9919840494791666,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 197,
+              "ok": 24379
+            },
+            "resolved_calls": 24379,
+            "status_counts": {
+              "ok": 24576
+            },
+            "unresolved_calls": 197
+          },
+          "joint": {
+            "call_parse_rate": 0.96484375,
+            "calls": 1536,
+            "parse_status_counts": {
+              "malformed": 51,
+              "ok": 1482,
+              "truncated": 3
+            },
+            "resolved_calls": 1482,
+            "status_counts": {
+              "ok": 1533,
+              "truncated": 3
+            },
+            "unresolved_calls": 54
+          },
+          "solo": {
+            "call_parse_rate": 0.9947509765625,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 43,
+              "ok": 8149
+            },
+            "resolved_calls": 8149,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 43
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.4459986053570696,
+          "error_rate_resolved": 0.5540013946429304,
+          "parse_rate": 0.9919840494791666,
+          "resolved": 24379,
+          "target_appearances": 24576,
+          "unresolved": 197
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.3420630904183536,
+          "error_rate_resolved": 0.6579369095816464,
+          "parse_rate": 0.96484375,
+          "resolved": 23712,
+          "target_appearances": 24576,
+          "unresolved": 864
+        },
+        "n_calls_discarded_under_whole_call_rule": 234,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.5626457234016444,
+          "error_rate_resolved": 0.43735427659835563,
+          "parse_rate": 0.9947509765625,
+          "resolved": 8149,
+          "target_appearances": 8192,
+          "unresolved": 43
+        },
+        "terminal_malformed_outputs": 3
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": 0.0013840933640797935,
+        "exact_context_per_assignment": [
+          0.001140757401784261,
+          0.0012015511592229208,
+          0.001809971531232198
+        ],
+        "solo_mean": -4.529423183865015e-05,
+        "solo_per_assignment": [
+          -0.000897073745727539,
+          0.0009258429209391277,
+          -0.00016465187072753907
+        ]
+      },
+      "family": "mistral",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.022556011875470478,
+          "delta_unresolved_as_error": 0.01166466474533081,
+          "delta_unresolved_dropped": 0.008080593705558543,
+          "delta_whole_call_discarded": 0.007809658517448758,
+          "failure_covariance_exact": -2.1591120296054416e-05,
+          "failure_covariance_joint": 0.033910115559895836
+        },
+        "n_calls_discarded_total": 234,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.023543942968050638,
+            "delta_unresolved_as_error": 0.013434204459190368,
+            "delta_unresolved_dropped": 0.00959548901255467,
+            "delta_whole_call_discarded": 0.008182708079452488,
+            "failure_covariance_exact": -1.2993812561035157e-06,
+            "failure_covariance_joint": 0.0339202880859375,
+            "n_calls_discarded": 71.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.0215580811103185,
+            "delta_unresolved_as_error": 0.011209837595621745,
+            "delta_unresolved_dropped": 0.008281993497791571,
+            "delta_whole_call_discarded": 0.008918746258315863,
+            "failure_covariance_exact": -1.87148650487264e-05,
+            "failure_covariance_joint": 0.0302734375,
+            "n_calls_discarded": 84.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.0225660115480423,
+            "delta_unresolved_as_error": 0.010349952181180318,
+            "delta_unresolved_dropped": 0.006364298606329387,
+            "delta_whole_call_discarded": 0.006327521214577923,
+            "failure_covariance_exact": -4.475911458333333e-05,
+            "failure_covariance_joint": 0.03753662109375,
+            "n_calls_discarded": 79.0
+          }
+        ]
+      },
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.023937266859106094,
+          "low": 0.021170339775772762,
+          "point": 0.022556011875470478
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": 0.00019052206743942868,
+        "null_sd": 0.000705646798612051,
+        "observed": 0.022556011875470478,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "86906bcd7f7f519aaa7f7cea6467358b53d41808f7d961358d4c085bae0b3ecb",
+        "events_path": "study-120h/extension-b3/mistralai--Mistral-7B-Instruct-v0.3/cells/ag_news/events.jsonl",
+        "events_sha256": "e24eebb1759d716ddb5d9f06768e9ce63630194746d599b477f5b459632543a6",
+        "first_attempts": 34304,
+        "frame_sha256": "723392acbddf8a249d89d8bdfc9cb676614053a77ccc9826f91d075a027ca494",
+        "plan_sha256_file": "85fd48897957846bfc64bf5672deff3b5e5d14694ee99b7e900175ac51eef701",
+        "retry_attempts": 3,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34307,
+        "summary_sha256": "b84a4edebdb6ba307139c05a464efe8164214dad5f232f4f07d6d7bea5b77883"
+      },
+      "task_id": "ag_news"
+    },
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.6330674696834052,
+          "error_rate_resolved": 0.3669325303165948,
+          "parse_rate": 0.9999186197916666,
+          "resolved": 24574,
+          "target_appearances": 24576,
+          "unresolved": 2
+        },
+        "joint": {
+          "accuracy_resolved": 0.731869295958279,
+          "error_rate_resolved": 0.268130704041721,
+          "parse_rate": 0.9986979166666666,
+          "resolved": 24544,
+          "target_appearances": 24576,
+          "unresolved": 32
+        },
+        "solo": {
+          "accuracy_resolved": 0.7318504033243706,
+          "error_rate_resolved": 0.26814959667562943,
+          "parse_rate": 0.998779296875,
+          "resolved": 8182,
+          "target_appearances": 8192,
+          "unresolved": 10
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": true,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "Qwen/Qwen3-8B::multi_nli",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": -0.000568249159389072,
+        "exact_context_per_assignment": [
+          -0.00013375282287597656,
+          0.0003403345743815104,
+          -0.0019113292296727498
+        ],
+        "joint_mean": 0.006567620237668356,
+        "joint_minus_exact": 0.007135869397057427,
+        "joint_per_assignment": [
+          0.006983439127604167,
+          0.005880015095074972,
+          0.0068394064903259276
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.9999186197916666,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 2,
+              "ok": 24574
+            },
+            "resolved_calls": 24574,
+            "status_counts": {
+              "ok": 24576
+            },
+            "unresolved_calls": 2
+          },
+          "joint": {
+            "call_parse_rate": 0.9986979166666666,
+            "calls": 1536,
+            "parse_status_counts": {
+              "malformed": 2,
+              "ok": 1534
+            },
+            "resolved_calls": 1534,
+            "status_counts": {
+              "ok": 1536
+            },
+            "unresolved_calls": 2
+          },
+          "solo": {
+            "call_parse_rate": 0.998779296875,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 10,
+              "ok": 8182
+            },
+            "resolved_calls": 8182,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 10
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.6330674696834052,
+          "error_rate_resolved": 0.3669325303165948,
+          "parse_rate": 0.9999186197916666,
+          "resolved": 24574,
+          "target_appearances": 24576,
+          "unresolved": 2
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.731869295958279,
+          "error_rate_resolved": 0.268130704041721,
+          "parse_rate": 0.9986979166666666,
+          "resolved": 24544,
+          "target_appearances": 24576,
+          "unresolved": 32
+        },
+        "n_calls_discarded_under_whole_call_rule": 4,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.7318504033243706,
+          "error_rate_resolved": 0.26814959667562943,
+          "parse_rate": 0.998779296875,
+          "resolved": 8182,
+          "target_appearances": 8192,
+          "unresolved": 10
+        },
+        "terminal_malformed_outputs": 0
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": -0.000568249159389072,
+        "exact_context_per_assignment": [
+          -0.00013375282287597656,
+          0.0003403345743815104,
+          -0.0019113292296727498
+        ],
+        "solo_mean": -0.0004614048533969455,
+        "solo_per_assignment": [
+          9.740591049194336e-05,
+          -0.0012372295061747233,
+          -0.00024439096450805663
+        ]
+      },
+      "family": "qwen",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.007135869397057427,
+          "delta_unresolved_as_error": 0.007766456074184841,
+          "delta_unresolved_dropped": 0.007059689648616217,
+          "delta_whole_call_discarded": 0.007063216352774424,
+          "failure_covariance_exact": -9.934107462565104e-09,
+          "failure_covariance_joint": 0.0012995402018229167
+        },
+        "n_calls_discarded_total": 4,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.0071171919504801435,
+            "delta_unresolved_as_error": 0.0071171919504801435,
+            "delta_unresolved_dropped": 0.0071171919504801435,
+            "delta_whole_call_discarded": 0.0071171919504801435,
+            "failure_covariance_exact": 0.0,
+            "failure_covariance_joint": 0.0,
+            "n_calls_discarded": 0.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.005539680520693461,
+            "delta_unresolved_as_error": 0.006485247611999512,
+            "delta_unresolved_dropped": 0.005424099808768829,
+            "delta_whole_call_discarded": 0.005420316104382926,
+            "failure_covariance_exact": -1.4901161193847656e-08,
+            "failure_covariance_joint": 0.001949310302734375,
+            "n_calls_discarded": 2.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.008750735719998678,
+            "delta_unresolved_as_error": 0.00969692866007487,
+            "delta_unresolved_dropped": 0.00863777718659968,
+            "delta_whole_call_discarded": 0.008652141003460203,
+            "failure_covariance_exact": -1.4901161193847656e-08,
+            "failure_covariance_joint": 0.001949310302734375,
+            "n_calls_discarded": 2.0
+          }
+        ]
+      },
+      "model_id": "Qwen/Qwen3-8B",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.008315229618059961,
+          "low": 0.005933230920143293,
+          "point": 0.007135869397057427
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": 3.5976736155166914e-06,
+        "null_sd": 0.0006119382715249934,
+        "observed": 0.007135869397057427,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "67764aa032ff455ec2792ac4dedba3f254c73b787975bdfba7b898cf68293d75",
+        "events_path": "study-120h/extension-b3/Qwen--Qwen3-8B/cells/multi_nli/events.jsonl",
+        "events_sha256": "320bb5e649233fc26189cdb33915d894cc96321f53cf780fac71aac6bba23a5a",
+        "first_attempts": 34304,
+        "frame_sha256": "54b7a871c799214b76518773a73cbaea6428ef1bc71a6d074ae022f94db5be66",
+        "plan_sha256_file": "453339669a70d9da6d0599b6ef2e1dba5dac72002603758a9d08239e8fe68afe",
+        "retry_attempts": 0,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34304,
+        "summary_sha256": "3aaafdf048c4f028986c232189ffa4e07a903b0c07115d91df7a1c6d8b71f328"
+      },
+      "task_id": "multi_nli"
+    },
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.8479601908208587,
+          "error_rate_resolved": 0.1520398091791413,
+          "parse_rate": 0.9894205729166666,
+          "resolved": 24316,
+          "target_appearances": 24576,
+          "unresolved": 260
+        },
+        "joint": {
+          "accuracy_resolved": 0.8115753194351043,
+          "error_rate_resolved": 0.18842468056489575,
+          "parse_rate": 0.9680989583333334,
+          "resolved": 23792,
+          "target_appearances": 24576,
+          "unresolved": 784
+        },
+        "solo": {
+          "accuracy_resolved": 0.9098330241187385,
+          "error_rate_resolved": 0.0901669758812616,
+          "parse_rate": 0.9869384765625,
+          "resolved": 8085,
+          "target_appearances": 8192,
+          "unresolved": 107
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": true,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": 0.0007121884160571629,
+        "exact_context_per_assignment": [
+          0.0006311267614364624,
+          0.0004777431488037109,
+          0.001027695337931315
+        ],
+        "joint_mean": 0.01949082778559791,
+        "joint_minus_exact": 0.018778639369540745,
+        "joint_per_assignment": [
+          0.021620829900105793,
+          0.017801166574160258,
+          0.01905048688252767
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.9894205729166666,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 235,
+              "ok": 24316,
+              "truncated": 25
+            },
+            "resolved_calls": 24316,
+            "status_counts": {
+              "ok": 24551,
+              "truncated": 25
+            },
+            "unresolved_calls": 260
+          },
+          "joint": {
+            "call_parse_rate": 0.9680989583333334,
+            "calls": 1536,
+            "parse_status_counts": {
+              "malformed": 49,
+              "ok": 1487
+            },
+            "resolved_calls": 1487,
+            "status_counts": {
+              "ok": 1536
+            },
+            "unresolved_calls": 49
+          },
+          "solo": {
+            "call_parse_rate": 0.9869384765625,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 107,
+              "ok": 8085
+            },
+            "resolved_calls": 8085,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 107
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.8479601908208587,
+          "error_rate_resolved": 0.1520398091791413,
+          "parse_rate": 0.9894205729166666,
+          "resolved": 24316,
+          "target_appearances": 24576,
+          "unresolved": 260
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.8115753194351043,
+          "error_rate_resolved": 0.18842468056489575,
+          "parse_rate": 0.9680989583333334,
+          "resolved": 23792,
+          "target_appearances": 24576,
+          "unresolved": 784
+        },
+        "n_calls_discarded_under_whole_call_rule": 281,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.9098330241187385,
+          "error_rate_resolved": 0.0901669758812616,
+          "parse_rate": 0.9869384765625,
+          "resolved": 8085,
+          "target_appearances": 8192,
+          "unresolved": 107
+        },
+        "terminal_malformed_outputs": 25
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": 0.0007121884160571629,
+        "exact_context_per_assignment": [
+          0.0006311267614364624,
+          0.0004777431488037109,
+          0.001027695337931315
+        ],
+        "solo_mean": -8.48866171307034e-05,
+        "solo_per_assignment": [
+          0.0003003130356470744,
+          -0.00036700467268625895,
+          -0.00018796821435292563
+        ]
+      },
+      "family": "granite",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.018778639369540745,
+          "delta_unresolved_as_error": 0.03797147936291165,
+          "delta_unresolved_dropped": 0.018270012467402088,
+          "delta_whole_call_discarded": 0.018356610809915026,
+          "failure_covariance_exact": -9.402301576402452e-06,
+          "failure_covariance_joint": 0.030740102132161457
+        },
+        "n_calls_discarded_total": 281,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.02098970313866933,
+            "delta_unresolved_as_error": 0.031774854660034185,
+            "delta_unresolved_dropped": 0.0207364971844567,
+            "delta_whole_call_discarded": 0.020908650519031145,
+            "failure_covariance_exact": 1.1454025904337564e-06,
+            "failure_covariance_joint": 0.017269134521484375,
+            "n_calls_discarded": 87.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.017323423425356546,
+            "delta_unresolved_as_error": 0.03620117505391439,
+            "delta_unresolved_dropped": 0.016789490793028602,
+            "delta_whole_call_discarded": 0.016546577133946985,
+            "failure_covariance_exact": 4.658102989196778e-06,
+            "failure_covariance_joint": 0.0302734375,
+            "n_calls_discarded": 89.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.018022791544596357,
+            "delta_unresolved_as_error": 0.045938408374786376,
+            "delta_unresolved_dropped": 0.017284049424720966,
+            "delta_whole_call_discarded": 0.01761460477676695,
+            "failure_covariance_exact": -3.401041030883789e-05,
+            "failure_covariance_joint": 0.044677734375,
+            "n_calls_discarded": 105.0
+          }
+        ]
+      },
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.019561754922772918,
+          "low": 0.017993287040828473,
+          "point": 0.018778639369540745
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": 0.00038830657207847416,
+        "null_sd": 0.00040419372867022383,
+        "observed": 0.018778639369540745,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "1c672fc0bfb836fe27f856dcb9a2ad0145fa9d5aba8a514b8739c85a568ca27c",
+        "events_path": "study-120h/extension-b3/ibm-granite--granite-3.3-8b-instruct/cells/imdb/events.jsonl",
+        "events_sha256": "44f7cd72158f99d1e1ff8389b8865aceb736034b84c829b1f318993d94df254c",
+        "first_attempts": 34304,
+        "frame_sha256": "ac4afd88bed50bf6cc1966c9e76c5a1a73c16fff470436a3d284502d9c534620",
+        "plan_sha256_file": "3d7e0eb273d6c6800ea74afd68269ab7aca225c91ea4f38493b3d7308dc69af1",
+        "retry_attempts": 25,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34329,
+        "summary_sha256": "f4f0be524b55b1100f86617fafb5f7e4baa766c9674e54abdd2714db0ccc597c"
+      },
+      "task_id": "imdb"
+    },
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.5783367932592502,
+          "error_rate_resolved": 0.4216632067407498,
+          "parse_rate": 0.9996337890625,
+          "resolved": 24567,
+          "target_appearances": 24576,
+          "unresolved": 9
+        },
+        "joint": {
+          "accuracy_resolved": 0.6699918566775245,
+          "error_rate_resolved": 0.3300081433224756,
+          "parse_rate": 0.9993489583333334,
+          "resolved": 24560,
+          "target_appearances": 24576,
+          "unresolved": 16
+        },
+        "solo": {
+          "accuracy_resolved": 0.6099498838772766,
+          "error_rate_resolved": 0.3900501161227234,
+          "parse_rate": 0.9986572265625,
+          "resolved": 8181,
+          "target_appearances": 8192,
+          "unresolved": 11
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": true,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::ag_news",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": 0.003984788060188294,
+        "exact_context_per_assignment": [
+          0.004083205262819926,
+          0.004938383897145589,
+          0.0029327750205993654
+        ],
+        "joint_mean": 0.010280508796374004,
+        "joint_minus_exact": 0.00629572073618571,
+        "joint_per_assignment": [
+          0.012455240885416666,
+          0.009071413675944011,
+          0.009314871827761332
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.9996337890625,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 9,
+              "ok": 24567
+            },
+            "resolved_calls": 24567,
+            "status_counts": {
+              "ok": 24576
+            },
+            "unresolved_calls": 9
+          },
+          "joint": {
+            "call_parse_rate": 0.9993489583333334,
+            "calls": 1536,
+            "parse_status_counts": {
+              "malformed": 1,
+              "ok": 1535
+            },
+            "resolved_calls": 1535,
+            "status_counts": {
+              "ok": 1536
+            },
+            "unresolved_calls": 1
+          },
+          "solo": {
+            "call_parse_rate": 0.9986572265625,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 11,
+              "ok": 8181
+            },
+            "resolved_calls": 8181,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 11
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.5783367932592502,
+          "error_rate_resolved": 0.4216632067407498,
+          "parse_rate": 0.9996337890625,
+          "resolved": 24567,
+          "target_appearances": 24576,
+          "unresolved": 9
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.6699918566775245,
+          "error_rate_resolved": 0.3300081433224756,
+          "parse_rate": 0.9993489583333334,
+          "resolved": 24560,
+          "target_appearances": 24576,
+          "unresolved": 16
+        },
+        "n_calls_discarded_under_whole_call_rule": 10,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.6099498838772766,
+          "error_rate_resolved": 0.3900501161227234,
+          "parse_rate": 0.9986572265625,
+          "resolved": 8181,
+          "target_appearances": 8192,
+          "unresolved": 11
+        },
+        "terminal_malformed_outputs": 0
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": 0.003984788060188294,
+        "exact_context_per_assignment": [
+          0.004083205262819926,
+          0.004938383897145589,
+          0.0029327750205993654
+        ],
+        "solo_mean": -0.00018456677595774329,
+        "solo_per_assignment": [
+          -0.0012425094842910766,
+          0.00041764676570892333,
+          0.00027116239070892336
+        ]
+      },
+      "family": "llama",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.00629572073618571,
+          "delta_unresolved_as_error": 0.006552751527892219,
+          "delta_unresolved_dropped": 0.006242343349394418,
+          "delta_whole_call_discarded": 0.006240964828765909,
+          "failure_covariance_exact": -1.44044558207194e-07,
+          "failure_covariance_joint": 0.0006497701009114584
+        },
+        "n_calls_discarded_total": 10,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.008372035622596741,
+            "delta_unresolved_as_error": 0.008362872401873271,
+            "delta_unresolved_dropped": 0.008364097732440474,
+            "delta_whole_call_discarded": 0.008353305769111528,
+            "failure_covariance_exact": -2.384185791015625e-07,
+            "failure_covariance_joint": 0.0,
+            "n_calls_discarded": 4.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.004133029778798422,
+            "delta_unresolved_as_error": 0.004191764195760092,
+            "delta_unresolved_dropped": 0.004155299042329814,
+            "delta_whole_call_discarded": 0.004167387543252601,
+            "failure_covariance_exact": -5.960464477539063e-08,
+            "failure_covariance_joint": 0.0,
+            "n_calls_discarded": 2.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.006382096807161967,
+            "delta_unresolved_as_error": 0.007103617986043294,
+            "delta_unresolved_dropped": 0.006207633273412968,
+            "delta_whole_call_discarded": 0.0062022011739335985,
+            "failure_covariance_exact": -1.341104507446289e-07,
+            "failure_covariance_joint": 0.001949310302734375,
+            "n_calls_discarded": 4.0
+          }
+        ]
+      },
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.007512745825231297,
+          "low": 0.0050604888807868524,
+          "point": 0.00629572073618571
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": 1.4915964120185417e-05,
+        "null_sd": 0.0006209952276907282,
+        "observed": 0.00629572073618571,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "c531cf0d0f1134c47baa15ddf3daebb8e1f30d7daddc876293382d0db6b472b4",
+        "events_path": "study-120h/extension-b3/meta-llama--Llama-3.1-8B-Instruct/cells/ag_news/events.jsonl",
+        "events_sha256": "243e3644435aa97efb20033e8108ed7ba6b2a4371baa9607993b8f2624d7e9c9",
+        "first_attempts": 34304,
+        "frame_sha256": "723392acbddf8a249d89d8bdfc9cb676614053a77ccc9826f91d075a027ca494",
+        "plan_sha256_file": "7d3d4385b4fc67d45625598995629ea32e59f49a459acd876389e262a421e3fa",
+        "retry_attempts": 0,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34304,
+        "summary_sha256": "79ac984fe8d965c99d1b0c5c92f4ad7701d3e1efd3f1619f1ade6ec782066a32"
+      },
+      "task_id": "ag_news"
+    },
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.8724644822205798,
+          "error_rate_resolved": 0.1275355177794202,
+          "parse_rate": 0.990966796875,
+          "resolved": 24354,
+          "target_appearances": 24576,
+          "unresolved": 222
+        },
+        "joint": {
+          "accuracy_resolved": 0.8780147588192945,
+          "error_rate_resolved": 0.12198524118070554,
+          "parse_rate": 0.904296875,
+          "resolved": 22224,
+          "target_appearances": 24576,
+          "unresolved": 2352
+        },
+        "solo": {
+          "accuracy_resolved": 0.7985799701046338,
+          "error_rate_resolved": 0.20142002989536623,
+          "parse_rate": 0.97998046875,
+          "resolved": 8028,
+          "target_appearances": 8192,
+          "unresolved": 164
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": true,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::civil_comments",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": 5.778802765740289e-05,
+        "exact_context_per_assignment": [
+          -0.00019626617431640626,
+          0.0003350585699081421,
+          3.457168738047282e-05
+        ],
+        "joint_mean": 0.004288675056563483,
+        "joint_minus_exact": 0.004230887028906081,
+        "joint_per_assignment": [
+          0.003145794073740641,
+          0.005439377824465434,
+          0.004280853271484375
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.990966796875,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 222,
+              "ok": 24354
+            },
+            "resolved_calls": 24354,
+            "status_counts": {
+              "ok": 24576
+            },
+            "unresolved_calls": 222
+          },
+          "joint": {
+            "call_parse_rate": 0.904296875,
+            "calls": 1536,
+            "parse_status_counts": {
+              "malformed": 147,
+              "ok": 1389
+            },
+            "resolved_calls": 1389,
+            "status_counts": {
+              "ok": 1536
+            },
+            "unresolved_calls": 147
+          },
+          "solo": {
+            "call_parse_rate": 0.97998046875,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 164,
+              "ok": 8028
+            },
+            "resolved_calls": 8028,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 164
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.8724644822205798,
+          "error_rate_resolved": 0.1275355177794202,
+          "parse_rate": 0.990966796875,
+          "resolved": 24354,
+          "target_appearances": 24576,
+          "unresolved": 222
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.8780147588192945,
+          "error_rate_resolved": 0.12198524118070554,
+          "parse_rate": 0.904296875,
+          "resolved": 22224,
+          "target_appearances": 24576,
+          "unresolved": 2352
+        },
+        "n_calls_discarded_under_whole_call_rule": 335,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.7985799701046338,
+          "error_rate_resolved": 0.20142002989536623,
+          "parse_rate": 0.97998046875,
+          "resolved": 8028,
+          "target_appearances": 8192,
+          "unresolved": 164
+        },
+        "terminal_malformed_outputs": 0
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": 5.778802765740289e-05,
+        "exact_context_per_assignment": [
+          -0.00019626617431640626,
+          0.0003350585699081421,
+          3.457168738047282e-05
+        ],
+        "solo_mean": 0.0008167435725529989,
+        "solo_per_assignment": [
+          0.0002796341975529989,
+          0.001532889405886332,
+          0.0006377071142196656
+        ]
+      },
+      "family": "mistral",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.004230887028906081,
+          "delta_unresolved_as_error": 0.06955844461917877,
+          "delta_unresolved_dropped": 0.0032629347275641724,
+          "delta_whole_call_discarded": 0.0031336425371770935,
+          "failure_covariance_exact": 2.0916594399346245e-05,
+          "failure_covariance_joint": 0.08646519978841145
+        },
+        "n_calls_discarded_total": 335,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.0033420602480570476,
+            "delta_unresolved_as_error": 0.06331275304158529,
+            "delta_unresolved_dropped": 0.0024455699522046375,
+            "delta_whole_call_discarded": 0.0022705824523326073,
+            "failure_covariance_exact": 6.529887517293294e-05,
+            "failure_covariance_joint": 0.07855224609375,
+            "n_calls_discarded": 98.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.0051043192545572914,
+            "delta_unresolved_as_error": 0.07621701260407766,
+            "delta_unresolved_dropped": 0.003961965472884186,
+            "delta_whole_call_discarded": 0.003571428571428569,
+            "failure_covariance_exact": -1.1026859283447266e-07,
+            "failure_covariance_joint": 0.09588241577148438,
+            "n_calls_discarded": 127.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.004246281584103903,
+            "delta_unresolved_as_error": 0.06914556821187337,
+            "delta_unresolved_dropped": 0.0033812687576036927,
+            "delta_whole_call_discarded": 0.0035589165877701044,
+            "failure_covariance_exact": -2.438823382059733e-06,
+            "failure_covariance_joint": 0.0849609375,
+            "n_calls_discarded": 110.0
+          }
+        ]
+      },
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.004819829687229412,
+          "low": 0.0036316786455627454,
+          "point": 0.004230887028906081
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": 5.094947889607846e-05,
+        "null_sd": 0.0003040211185657619,
+        "observed": 0.004230887028906081,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "519e13dd82911428250298a68a67906b6e89f113a19806269e0a4337351e7fb2",
+        "events_path": "study-120h/extension-b3/mistralai--Mistral-7B-Instruct-v0.3/cells/civil_comments/events.jsonl",
+        "events_sha256": "71559de78e062dcb3721702fcf91a9bed4efdb06546e7503d8b6614366e5c453",
+        "first_attempts": 34304,
+        "frame_sha256": "7280ecef90628a7e543a7df9dd518cd6b81eda254738e9e9ac247a89955d320b",
+        "plan_sha256_file": "85fd48897957846bfc64bf5672deff3b5e5d14694ee99b7e900175ac51eef701",
+        "retry_attempts": 0,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34304,
+        "summary_sha256": "b84a4edebdb6ba307139c05a464efe8164214dad5f232f4f07d6d7bea5b77883"
+      },
+      "task_id": "civil_comments"
+    },
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.8952148238647933,
+          "error_rate_resolved": 0.10478517613520667,
+          "parse_rate": 0.9991455078125,
+          "resolved": 24555,
+          "target_appearances": 24576,
+          "unresolved": 21
+        },
+        "joint": {
+          "accuracy_resolved": 0.8760613977792293,
+          "error_rate_resolved": 0.12393860222077074,
+          "parse_rate": 0.9967447916666666,
+          "resolved": 24496,
+          "target_appearances": 24576,
+          "unresolved": 80
+        },
+        "solo": {
+          "accuracy_resolved": 0.7564307692307692,
+          "error_rate_resolved": 0.24356923076923076,
+          "parse_rate": 0.9918212890625,
+          "resolved": 8125,
+          "target_appearances": 8192,
+          "unresolved": 67
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": true,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": 2.908474869198269e-05,
+        "exact_context_per_assignment": [
+          -2.782245477040609e-05,
+          -0.00019524892171223957,
+          0.00031032562255859373
+        ],
+        "joint_mean": 0.007147955894470214,
+        "joint_minus_exact": 0.007118871145778232,
+        "joint_per_assignment": [
+          0.008241669336954752,
+          0.006424431006113688,
+          0.006777767340342204
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.9991455078125,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 21,
+              "ok": 24555
+            },
+            "resolved_calls": 24555,
+            "status_counts": {
+              "ok": 24576
+            },
+            "unresolved_calls": 21
+          },
+          "joint": {
+            "call_parse_rate": 0.9967447916666666,
+            "calls": 1536,
+            "parse_status_counts": {
+              "malformed": 5,
+              "ok": 1531
+            },
+            "resolved_calls": 1531,
+            "status_counts": {
+              "ok": 1536
+            },
+            "unresolved_calls": 5
+          },
+          "solo": {
+            "call_parse_rate": 0.9918212890625,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 67,
+              "ok": 8125
+            },
+            "resolved_calls": 8125,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 67
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.8952148238647933,
+          "error_rate_resolved": 0.10478517613520667,
+          "parse_rate": 0.9991455078125,
+          "resolved": 24555,
+          "target_appearances": 24576,
+          "unresolved": 21
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.8760613977792293,
+          "error_rate_resolved": 0.12393860222077074,
+          "parse_rate": 0.9967447916666666,
+          "resolved": 24496,
+          "target_appearances": 24576,
+          "unresolved": 80
+        },
+        "n_calls_discarded_under_whole_call_rule": 25,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.7564307692307692,
+          "error_rate_resolved": 0.24356923076923076,
+          "parse_rate": 0.9918212890625,
+          "resolved": 8125,
+          "target_appearances": 8192,
+          "unresolved": 67
+        },
+        "terminal_malformed_outputs": 0
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": 2.908474869198269e-05,
+        "exact_context_per_assignment": [
+          -2.782245477040609e-05,
+          -0.00019524892171223957,
+          0.00031032562255859373
+        ],
+        "solo_mean": -0.0005144665638605754,
+        "solo_per_assignment": [
+          -0.0005958467721939087,
+          0.0003318876028060913,
+          -0.0012794405221939087
+        ]
+      },
+      "family": "qwen",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.007118871145778232,
+          "delta_unresolved_as_error": 0.009588977363374497,
+          "delta_unresolved_dropped": 0.007093721580316817,
+          "delta_whole_call_discarded": 0.007060820291385818,
+          "failure_covariance_exact": -7.400910059611002e-07,
+          "failure_covariance_joint": 0.003238677978515625
+        },
+        "n_calls_discarded_total": 25,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.008269491791725158,
+            "delta_unresolved_as_error": 0.008242089549700418,
+            "delta_unresolved_dropped": 0.008266650129537331,
+            "delta_whole_call_discarded": 0.00836815611378868,
+            "failure_covariance_exact": -5.364418029785156e-07,
+            "failure_covariance_joint": 0.0,
+            "n_calls_discarded": 6.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.006619679927825928,
+            "delta_unresolved_as_error": 0.011074864864349367,
+            "delta_unresolved_dropped": 0.006574766211063753,
+            "delta_whole_call_discarded": 0.006352663933609826,
+            "failure_covariance_exact": -9.5367431640625e-07,
+            "failure_covariance_joint": 0.005825042724609375,
+            "n_calls_discarded": 11.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.00646744171778361,
+            "delta_unresolved_as_error": 0.009449977676073711,
+            "delta_unresolved_dropped": 0.006439748400349369,
+            "delta_whole_call_discarded": 0.006461640826758948,
+            "failure_covariance_exact": -7.301568984985352e-07,
+            "failure_covariance_joint": 0.0038909912109375,
+            "n_calls_discarded": 8.0
+          }
+        ]
+      },
+      "model_id": "Qwen/Qwen3-8B",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.007682695933305182,
+          "low": 0.006559649058305182,
+          "point": 0.007118871145778232
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": 0.00015773933608295978,
+        "null_sd": 0.000285298711274387,
+        "observed": 0.007118871145778232,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "67764aa032ff455ec2792ac4dedba3f254c73b787975bdfba7b898cf68293d75",
+        "events_path": "study-120h/extension-b3/Qwen--Qwen3-8B/cells/civil_comments/events.jsonl",
+        "events_sha256": "3c40e281b8455b96ec211a165b48c18bd0fe639d8e463dc2f4c35aae11ad5b17",
+        "first_attempts": 34304,
+        "frame_sha256": "7280ecef90628a7e543a7df9dd518cd6b81eda254738e9e9ac247a89955d320b",
+        "plan_sha256_file": "453339669a70d9da6d0599b6ef2e1dba5dac72002603758a9d08239e8fe68afe",
+        "retry_attempts": 0,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34304,
+        "summary_sha256": "3aaafdf048c4f028986c232189ffa4e07a903b0c07115d91df7a1c6d8b71f328"
+      },
+      "task_id": "civil_comments"
+    },
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.501762439544225,
+          "error_rate_resolved": 0.49823756045577505,
+          "parse_rate": 0.9927571614583334,
+          "resolved": 24398,
+          "target_appearances": 24576,
+          "unresolved": 178
+        },
+        "joint": {
+          "accuracy_resolved": 0.3664150630391506,
+          "error_rate_resolved": 0.6335849369608494,
+          "parse_rate": 0.9811197916666666,
+          "resolved": 24112,
+          "target_appearances": 24576,
+          "unresolved": 464
+        },
+        "solo": {
+          "accuracy_resolved": 0.5230033124769966,
+          "error_rate_resolved": 0.47699668752300334,
+          "parse_rate": 0.9949951171875,
+          "resolved": 8151,
+          "target_appearances": 8192,
+          "unresolved": 41
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": true,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::ag_news",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": 0.0023027731312645805,
+        "exact_context_per_assignment": [
+          0.0018146445353825888,
+          0.002252360184987386,
+          0.002841314673423767
+        ],
+        "joint_mean": 0.030652828680144417,
+        "joint_minus_exact": 0.02835005554887984,
+        "joint_per_assignment": [
+          0.029563380281130473,
+          0.032226158181826274,
+          0.030168947577476502
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.9927571614583334,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 172,
+              "ok": 24398,
+              "truncated": 6
+            },
+            "resolved_calls": 24398,
+            "status_counts": {
+              "ok": 24570,
+              "truncated": 6
+            },
+            "unresolved_calls": 178
+          },
+          "joint": {
+            "call_parse_rate": 0.9811197916666666,
+            "calls": 1536,
+            "parse_status_counts": {
+              "malformed": 29,
+              "ok": 1507
+            },
+            "resolved_calls": 1507,
+            "status_counts": {
+              "ok": 1536
+            },
+            "unresolved_calls": 29
+          },
+          "solo": {
+            "call_parse_rate": 0.9949951171875,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 41,
+              "ok": 8151
+            },
+            "resolved_calls": 8151,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 41
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.501762439544225,
+          "error_rate_resolved": 0.49823756045577505,
+          "parse_rate": 0.9927571614583334,
+          "resolved": 24398,
+          "target_appearances": 24576,
+          "unresolved": 178
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.3664150630391506,
+          "error_rate_resolved": 0.6335849369608494,
+          "parse_rate": 0.9811197916666666,
+          "resolved": 24112,
+          "target_appearances": 24576,
+          "unresolved": 464
+        },
+        "n_calls_discarded_under_whole_call_rule": 192,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.5230033124769966,
+          "error_rate_resolved": 0.47699668752300334,
+          "parse_rate": 0.9949951171875,
+          "resolved": 8151,
+          "target_appearances": 8192,
+          "unresolved": 41
+        },
+        "terminal_malformed_outputs": 6
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": 0.0023027731312645805,
+        "exact_context_per_assignment": [
+          0.0018146445353825888,
+          0.002252360184987386,
+          0.002841314673423767
+        ],
+        "solo_mean": 3.348456488715279e-05,
+        "solo_per_assignment": [
+          -0.00023778279622395834,
+          -0.000254058837890625,
+          0.0005922953287760417
+        ]
+      },
+      "family": "granite",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.02835005554887984,
+          "delta_unresolved_as_error": 0.023587673571374684,
+          "delta_unresolved_dropped": 0.021428936616593064,
+          "delta_whole_call_discarded": 0.02108058852981488,
+          "failure_covariance_exact": 1.2473265329996746e-05,
+          "failure_covariance_joint": 0.018517812093098957
+        },
+        "n_calls_discarded_total": 192,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.027748735745747884,
+            "delta_unresolved_as_error": 0.024021450678507486,
+            "delta_unresolved_dropped": 0.022117650303729627,
+            "delta_whole_call_discarded": 0.02167754137762352,
+            "failure_covariance_exact": 3.125270207722982e-05,
+            "failure_covariance_joint": 0.015380859375,
+            "n_calls_discarded": 61.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.02997379799683889,
+            "delta_unresolved_as_error": 0.024824687838554384,
+            "delta_unresolved_dropped": 0.022287974341745804,
+            "delta_whole_call_discarded": 0.021555582236512456,
+            "failure_covariance_exact": 2.0345052083333332e-05,
+            "failure_covariance_joint": 0.021022796630859375,
+            "n_calls_discarded": 69.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.027327632904052736,
+            "delta_unresolved_as_error": 0.021916882197062174,
+            "delta_unresolved_dropped": 0.01988118520430376,
+            "delta_whole_call_discarded": 0.020008641975308657,
+            "failure_covariance_exact": -1.4177958170572917e-05,
+            "failure_covariance_joint": 0.0191497802734375,
+            "n_calls_discarded": 62.0
+          }
+        ]
+      },
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.029722543533890037,
+          "low": 0.026944494488751147,
+          "point": 0.02835005554887984
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": 0.0002517861554178096,
+        "null_sd": 0.0007090356948149724,
+        "observed": 0.02835005554887984,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "c7f0f3f827097c5b8573b8e66aa3939050233200acf0f88b75e42d974559aa65",
+        "events_path": "study-120h/extension-b3/ibm-granite--granite-3.3-8b-instruct/cells/ag_news/events.jsonl",
+        "events_sha256": "194c18974e1397a967d63c18dfa9e8d118741098bc8c77ab923f01059b736957",
+        "first_attempts": 34304,
+        "frame_sha256": "723392acbddf8a249d89d8bdfc9cb676614053a77ccc9826f91d075a027ca494",
+        "plan_sha256_file": "3d7e0eb273d6c6800ea74afd68269ab7aca225c91ea4f38493b3d7308dc69af1",
+        "retry_attempts": 6,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34310,
+        "summary_sha256": "f4f0be524b55b1100f86617fafb5f7e4baa766c9674e54abdd2714db0ccc597c"
+      },
+      "task_id": "ag_news"
+    },
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.8896810200839207,
+          "error_rate_resolved": 0.11031897991607936,
+          "parse_rate": 0.9988199869791666,
+          "resolved": 24547,
+          "target_appearances": 24576,
+          "unresolved": 29
+        },
+        "joint": {
+          "accuracy_resolved": 0.9128213579433092,
+          "error_rate_resolved": 0.08717864205669083,
+          "parse_rate": 0.9876302083333334,
+          "resolved": 24272,
+          "target_appearances": 24576,
+          "unresolved": 304
+        },
+        "solo": {
+          "accuracy_resolved": 0.9094242757609095,
+          "error_rate_resolved": 0.09057572423909058,
+          "parse_rate": 0.9986572265625,
+          "resolved": 8181,
+          "target_appearances": 8192,
+          "unresolved": 11
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": false,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::imdb",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": -9.191897180345322e-05,
+        "exact_context_per_assignment": [
+          -0.00016075372695922852,
+          0.0001753578583399455,
+          -0.00029036104679107665
+        ],
+        "joint_mean": 0.0009301112757788764,
+        "joint_minus_exact": 0.0010220302475823296,
+        "joint_per_assignment": [
+          0.00115966796875,
+          0.0002641369899113973,
+          0.0013665288686752319
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.9988199869791666,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 5,
+              "ok": 24547,
+              "truncated": 24
+            },
+            "resolved_calls": 24547,
+            "status_counts": {
+              "ok": 24552,
+              "truncated": 24
+            },
+            "unresolved_calls": 29
+          },
+          "joint": {
+            "call_parse_rate": 0.9876302083333334,
+            "calls": 1536,
+            "parse_status_counts": {
+              "malformed": 19,
+              "ok": 1517
+            },
+            "resolved_calls": 1517,
+            "status_counts": {
+              "ok": 1536
+            },
+            "unresolved_calls": 19
+          },
+          "solo": {
+            "call_parse_rate": 0.9986572265625,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 11,
+              "ok": 8181
+            },
+            "resolved_calls": 8181,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 11
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.8896810200839207,
+          "error_rate_resolved": 0.11031897991607936,
+          "parse_rate": 0.9988199869791666,
+          "resolved": 24547,
+          "target_appearances": 24576,
+          "unresolved": 29
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.9128213579433092,
+          "error_rate_resolved": 0.08717864205669083,
+          "parse_rate": 0.9876302083333334,
+          "resolved": 24272,
+          "target_appearances": 24576,
+          "unresolved": 304
+        },
+        "n_calls_discarded_under_whole_call_rule": 44,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.9094242757609095,
+          "error_rate_resolved": 0.09057572423909058,
+          "parse_rate": 0.9986572265625,
+          "resolved": 8181,
+          "target_appearances": 8192,
+          "unresolved": 11
+        },
+        "terminal_malformed_outputs": 24
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": -9.191897180345322e-05,
+        "exact_context_per_assignment": [
+          -0.00016075372695922852,
+          0.0001753578583399455,
+          -0.00029036104679107665
+        ],
+        "solo_mean": -0.0002121094200346205,
+        "solo_per_assignment": [
+          -0.00019040803114573162,
+          -0.00012530386447906494,
+          -0.00032061636447906495
+        ]
+      },
+      "family": "llama",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.0010220302475823296,
+          "delta_unresolved_as_error": 0.011095485753483241,
+          "delta_unresolved_dropped": 0.0009423020965094927,
+          "delta_whole_call_discarded": 0.000936190395259595,
+          "failure_covariance_exact": 1.474122206370036e-05,
+          "failure_covariance_joint": 0.012203216552734375
+        },
+        "n_calls_discarded_total": 44,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.0013204216957092285,
+            "delta_unresolved_as_error": 0.00928407907485962,
+            "delta_unresolved_dropped": 0.0012586145011515488,
+            "delta_whole_call_discarded": 0.0012101545412169662,
+            "failure_covariance_exact": 3.159840901692708e-05,
+            "failure_covariance_joint": 0.009670257568359375,
+            "n_calls_discarded": 11.0
+          },
+          {
+            "delta_unresolved_as_correct": 8.877913157145182e-05,
+            "delta_unresolved_as_error": 0.008101757367451987,
+            "delta_unresolved_dropped": 2.0500767802654013e-05,
+            "delta_whole_call_discarded": 3.463991139285202e-05,
+            "failure_covariance_exact": 1.3355414072672526e-05,
+            "failure_covariance_joint": 0.009670257568359375,
+            "n_calls_discarded": 18.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.0016568899154663086,
+            "delta_unresolved_as_error": 0.01590062081813812,
+            "delta_unresolved_dropped": 0.0015477910205742755,
+            "delta_whole_call_discarded": 0.001563776733168967,
+            "failure_covariance_exact": -7.301568984985352e-07,
+            "failure_covariance_joint": 0.017269134521484375,
+            "n_calls_discarded": 15.0
+          }
+        ]
+      },
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.0015108356909626724,
+          "low": 0.0005068751874904491,
+          "point": 0.0010220302475823296
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": 4.0566593740450154e-05,
+        "null_sd": 0.00025395257466223696,
+        "observed": 0.0010220302475823296,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "3ff7c971a5109a7226966ff4c97b7d57345d0f446c3f0c3e99417cbea9e30042",
+        "events_path": "study-120h/extension-b3/meta-llama--Llama-3.1-8B-Instruct/cells/imdb/events.jsonl",
+        "events_sha256": "37df97fe880205d7bf278c81aefd35c5a50d8c503091abcfc8a2c5f99f8dfb98",
+        "first_attempts": 34304,
+        "frame_sha256": "ac4afd88bed50bf6cc1966c9e76c5a1a73c16fff470436a3d284502d9c534620",
+        "plan_sha256_file": "7d3d4385b4fc67d45625598995629ea32e59f49a459acd876389e262a421e3fa",
+        "retry_attempts": 24,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34328,
+        "summary_sha256": "79ac984fe8d965c99d1b0c5c92f4ad7701d3e1efd3f1619f1ade6ec782066a32"
+      },
+      "task_id": "imdb"
+    },
+    {
+      "accuracy": {
+        "exact_context": {
+          "accuracy_resolved": 0.5841371918542336,
+          "error_rate_resolved": 0.41586280814576637,
+          "parse_rate": 0.987060546875,
+          "resolved": 24258,
+          "target_appearances": 24576,
+          "unresolved": 318
+        },
+        "joint": {
+          "accuracy_resolved": 0.3857037401574803,
+          "error_rate_resolved": 0.6142962598425197,
+          "parse_rate": 0.9921875,
+          "resolved": 24384,
+          "target_appearances": 24576,
+          "unresolved": 192
+        },
+        "solo": {
+          "accuracy_resolved": 0.6796307692307693,
+          "error_rate_resolved": 0.3203692307692308,
+          "parse_rate": 0.9918212890625,
+          "resolved": 8125,
+          "target_appearances": 8192,
+          "unresolved": 67
+        }
+      },
+      "cell_assessment": {
+        "holm_adjusted_p": 0.0032,
+        "holm_positive_at_practical_floor": true,
+        "raw_p_value": 0.0002
+      },
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "covariance_unresolved_as_correct": {
+        "exact_context_mean": -0.00045022235976325143,
+        "exact_context_per_assignment": [
+          -0.0004751165707906087,
+          -0.00021814405918121337,
+          -0.0006574064493179322
+        ],
+        "joint_mean": 0.01197660267353058,
+        "joint_minus_exact": 0.012426825033293828,
+        "joint_per_assignment": [
+          0.01160925328731537,
+          0.01112214724222819,
+          0.013198407491048177
+        ]
+      },
+      "data_quality": {
+        "by_condition": {
+          "exact_context": {
+            "call_parse_rate": 0.987060546875,
+            "calls": 24576,
+            "parse_status_counts": {
+              "malformed": 318,
+              "ok": 24258
+            },
+            "resolved_calls": 24258,
+            "status_counts": {
+              "ok": 24576
+            },
+            "unresolved_calls": 318
+          },
+          "joint": {
+            "call_parse_rate": 0.9921875,
+            "calls": 1536,
+            "parse_status_counts": {
+              "malformed": 12,
+              "ok": 1524
+            },
+            "resolved_calls": 1524,
+            "status_counts": {
+              "ok": 1536
+            },
+            "unresolved_calls": 12
+          },
+          "solo": {
+            "call_parse_rate": 0.9918212890625,
+            "calls": 8192,
+            "parse_status_counts": {
+              "malformed": 67,
+              "ok": 8125
+            },
+            "resolved_calls": 8125,
+            "status_counts": {
+              "ok": 8192
+            },
+            "unresolved_calls": 67
+          }
+        },
+        "exact_target_appearances": {
+          "accuracy_resolved": 0.5841371918542336,
+          "error_rate_resolved": 0.41586280814576637,
+          "parse_rate": 0.987060546875,
+          "resolved": 24258,
+          "target_appearances": 24576,
+          "unresolved": 318
+        },
+        "joint_target_appearances": {
+          "accuracy_resolved": 0.3857037401574803,
+          "error_rate_resolved": 0.6142962598425197,
+          "parse_rate": 0.9921875,
+          "resolved": 24384,
+          "target_appearances": 24576,
+          "unresolved": 192
+        },
+        "n_calls_discarded_under_whole_call_rule": 295,
+        "solo_target_appearances": {
+          "accuracy_resolved": 0.6796307692307693,
+          "error_rate_resolved": 0.3203692307692308,
+          "parse_rate": 0.9918212890625,
+          "resolved": 8125,
+          "target_appearances": 8192,
+          "unresolved": 67
+        },
+        "terminal_malformed_outputs": 0
+      },
+      "fake_batch_controls_unresolved_as_correct": {
+        "exact_context_mean": -0.00045022235976325143,
+        "exact_context_per_assignment": [
+          -0.0004751165707906087,
+          -0.00021814405918121337,
+          -0.0006574064493179322
+        ],
+        "solo_mean": -0.00016149050659603547,
+        "solo_per_assignment": [
+          0.000581782062848409,
+          -0.0010458221038182577,
+          -2.043147881825765e-05
+        ]
+      },
+      "family": "mistral",
+      "malformed_sensitivity": {
+        "cell_mean": {
+          "delta_unresolved_as_correct": 0.012426825033293828,
+          "delta_unresolved_as_error": 0.010655816064940558,
+          "delta_unresolved_dropped": 0.009594851159646629,
+          "delta_whole_call_discarded": 0.009460414430325267,
+          "failure_covariance_exact": 2.6651223500569664e-05,
+          "failure_covariance_joint": 0.00774383544921875
+        },
+        "n_calls_discarded_total": 295,
+        "per_assignment": [
+          {
+            "delta_unresolved_as_correct": 0.012084369858105978,
+            "delta_unresolved_as_error": 0.009296783804893495,
+            "delta_unresolved_dropped": 0.007781081192017861,
+            "delta_whole_call_discarded": 0.007998955974171428,
+            "failure_covariance_exact": 4.104773203531901e-06,
+            "failure_covariance_joint": 0.0115814208984375,
+            "n_calls_discarded": 110.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.011340291301409403,
+            "delta_unresolved_as_error": 0.010152092576026915,
+            "delta_unresolved_dropped": 0.009245065926163252,
+            "delta_whole_call_discarded": 0.008577984837952057,
+            "failure_covariance_exact": -4.723866780598958e-05,
+            "failure_covariance_joint": 0.005825042724609375,
+            "n_calls_discarded": 100.0
+          },
+          {
+            "delta_unresolved_as_correct": 0.01385581394036611,
+            "delta_unresolved_as_error": 0.012518571813901265,
+            "delta_unresolved_dropped": 0.011758406360758773,
+            "delta_whole_call_discarded": 0.011804302478852318,
+            "failure_covariance_exact": 0.00012308756510416666,
+            "failure_covariance_joint": 0.005825042724609375,
+            "n_calls_discarded": 85.0
+          }
+        ]
+      },
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "primary_replay": {
+        "effect_interval": {
+          "high": 0.01372622873999003,
+          "low": 0.011121790805962251,
+          "point": 0.012426825033293828
+        },
+        "effect_interval_method": "design-respecting shift interval from mean-centred replay quantiles",
+        "min_reachable_p": 0.0002,
+        "n_draws": 4999,
+        "null_mean": 2.1530389295585933e-05,
+        "null_sd": 0.0006564858175571238,
+        "observed": 0.012426825033293828,
+        "p_value_one_sided_upper": 0.0002
+      },
+      "source": {
+        "completeness_sha256": "fc5c52829255a0b6b047e01202a47fb2d2cd8ac2e0e348a3ac5efd1f4e95a7bc",
+        "events_path": "study-120h/extension-b3/mistralai--Mistral-7B-Instruct-v0.3/cells/multi_nli/events.jsonl",
+        "events_sha256": "14f58493ff838f6bc4eb470dbd293f2358ec96ea059a5c8e8df22a316ea7869a",
+        "first_attempts": 34304,
+        "frame_sha256": "54b7a871c799214b76518773a73cbaea6428ef1bc71a6d074ae022f94db5be66",
+        "plan_sha256_file": "85fd48897957846bfc64bf5672deff3b5e5d14694ee99b7e900175ac51eef701",
+        "retry_attempts": 0,
+        "sealed_call_metadata_verified": true,
+        "stored_attempts": 34304,
+        "summary_sha256": "b84a4edebdb6ba307139c05a464efe8164214dad5f232f4f07d6d7bea5b77883"
+      },
+      "task_id": "multi_nli"
+    }
+  ],
+  "coverage_status": {
+    "measured": false,
+    "reason": "A9 contains no independent repeated-sampling stream; B4 is required"
+  },
+  "design": {
+    "alpha": 0.05,
+    "assignments": 3,
+    "batch_size": 16,
+    "items_per_cell": 8192,
+    "multiplicity": "Holm across sixteen primary cell tests",
+    "n_cells": 16,
+    "n_draws": 4999,
+    "n_models": 4,
+    "n_tasks": 4,
+    "practical_floor": 0.002,
+    "primary_malformed_treatment": "unresolved_as_correct"
+  },
+  "malformed_output_sensitivity": {
+    "cell_delta": {
+      "unresolved_as_correct": {
+        "Qwen/Qwen3-8B::ag_news": 0.003310550583733453,
+        "Qwen/Qwen3-8B::civil_comments": 0.007118871145778232,
+        "Qwen/Qwen3-8B::imdb": 0.011309145556555855,
+        "Qwen/Qwen3-8B::multi_nli": 0.007135869397057427,
+        "ibm-granite/granite-3.3-8b-instruct::ag_news": 0.02835005554887984,
+        "ibm-granite/granite-3.3-8b-instruct::civil_comments": 0.001619636681344774,
+        "ibm-granite/granite-3.3-8b-instruct::imdb": 0.018778639369540745,
+        "ibm-granite/granite-3.3-8b-instruct::multi_nli": 0.004131616817580329,
+        "meta-llama/Llama-3.1-8B-Instruct::ag_news": 0.00629572073618571,
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.0015644994046952988,
+        "meta-llama/Llama-3.1-8B-Instruct::imdb": 0.0010220302475823296,
+        "meta-llama/Llama-3.1-8B-Instruct::multi_nli": 0.006472939583990309,
+        "mistralai/Mistral-7B-Instruct-v0.3::ag_news": 0.022556011875470478,
+        "mistralai/Mistral-7B-Instruct-v0.3::civil_comments": 0.004230887028906081,
+        "mistralai/Mistral-7B-Instruct-v0.3::imdb": 0.017443556255764433,
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.012426825033293828
+      },
+      "unresolved_as_error": {
+        "Qwen/Qwen3-8B::ag_news": 0.0040702293316523235,
+        "Qwen/Qwen3-8B::civil_comments": 0.009588977363374497,
+        "Qwen/Qwen3-8B::imdb": 0.012342423862881131,
+        "Qwen/Qwen3-8B::multi_nli": 0.007766456074184841,
+        "ibm-granite/granite-3.3-8b-instruct::ag_news": 0.023587673571374684,
+        "ibm-granite/granite-3.3-8b-instruct::civil_comments": 0.01054019762410058,
+        "ibm-granite/granite-3.3-8b-instruct::imdb": 0.03797147936291165,
+        "ibm-granite/granite-3.3-8b-instruct::multi_nli": 0.002309710780779521,
+        "meta-llama/Llama-3.1-8B-Instruct::ag_news": 0.006552751527892219,
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.0015548543797598944,
+        "meta-llama/Llama-3.1-8B-Instruct::imdb": 0.011095485753483241,
+        "meta-llama/Llama-3.1-8B-Instruct::multi_nli": 0.006418675846523708,
+        "mistralai/Mistral-7B-Instruct-v0.3::ag_news": 0.01166466474533081,
+        "mistralai/Mistral-7B-Instruct-v0.3::civil_comments": 0.06955844461917877,
+        "mistralai/Mistral-7B-Instruct-v0.3::imdb": 0.0222433649831348,
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.010655816064940558
+      },
+      "unresolved_dropped": {
+        "Qwen/Qwen3-8B::ag_news": 0.0032611729832093595,
+        "Qwen/Qwen3-8B::civil_comments": 0.007093721580316817,
+        "Qwen/Qwen3-8B::imdb": 0.011308959288947871,
+        "Qwen/Qwen3-8B::multi_nli": 0.007059689648616217,
+        "ibm-granite/granite-3.3-8b-instruct::ag_news": 0.021428936616593064,
+        "ibm-granite/granite-3.3-8b-instruct::civil_comments": 0.0015606845153943998,
+        "ibm-granite/granite-3.3-8b-instruct::imdb": 0.018270012467402088,
+        "ibm-granite/granite-3.3-8b-instruct::multi_nli": 0.0017855614015571386,
+        "meta-llama/Llama-3.1-8B-Instruct::ag_news": 0.006242343349394418,
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.0015632682021731001,
+        "meta-llama/Llama-3.1-8B-Instruct::imdb": 0.0009423020965094927,
+        "meta-llama/Llama-3.1-8B-Instruct::multi_nli": 0.0058167370015261245,
+        "mistralai/Mistral-7B-Instruct-v0.3::ag_news": 0.008080593705558543,
+        "mistralai/Mistral-7B-Instruct-v0.3::civil_comments": 0.0032629347275641724,
+        "mistralai/Mistral-7B-Instruct-v0.3::imdb": 0.013788176105752092,
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.009594851159646629
+      },
+      "whole_call_discarded": {
+        "Qwen/Qwen3-8B::ag_news": 0.0032186224954843397,
+        "Qwen/Qwen3-8B::civil_comments": 0.007060820291385818,
+        "Qwen/Qwen3-8B::imdb": 0.0111288629559938,
+        "Qwen/Qwen3-8B::multi_nli": 0.007063216352774424,
+        "ibm-granite/granite-3.3-8b-instruct::ag_news": 0.02108058852981488,
+        "ibm-granite/granite-3.3-8b-instruct::civil_comments": 0.0017578778487967984,
+        "ibm-granite/granite-3.3-8b-instruct::imdb": 0.018356610809915026,
+        "ibm-granite/granite-3.3-8b-instruct::multi_nli": 0.001963204711543806,
+        "meta-llama/Llama-3.1-8B-Instruct::ag_news": 0.006240964828765909,
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.0015811452039905492,
+        "meta-llama/Llama-3.1-8B-Instruct::imdb": 0.000936190395259595,
+        "meta-llama/Llama-3.1-8B-Instruct::multi_nli": 0.0058939034870792925,
+        "mistralai/Mistral-7B-Instruct-v0.3::ag_news": 0.007809658517448758,
+        "mistralai/Mistral-7B-Instruct-v0.3::civil_comments": 0.0031336425371770935,
+        "mistralai/Mistral-7B-Instruct-v0.3::imdb": 0.013670204803983023,
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.009460414430325267
+      }
+    },
+    "global_equal_cell_delta": {
+      "unresolved_as_correct": 0.009610428454147446,
+      "unresolved_as_error": 0.01549507536821895,
+      "unresolved_dropped": 0.0075662465531350954,
+      "whole_call_discarded": 0.007522245512483649
+    }
+  },
+  "primary": {
+    "cell_delta": {
+      "Qwen/Qwen3-8B::ag_news": 0.003310550583733453,
+      "Qwen/Qwen3-8B::civil_comments": 0.007118871145778232,
+      "Qwen/Qwen3-8B::imdb": 0.011309145556555855,
+      "Qwen/Qwen3-8B::multi_nli": 0.007135869397057427,
+      "ibm-granite/granite-3.3-8b-instruct::ag_news": 0.02835005554887984,
+      "ibm-granite/granite-3.3-8b-instruct::civil_comments": 0.001619636681344774,
+      "ibm-granite/granite-3.3-8b-instruct::imdb": 0.018778639369540745,
+      "ibm-granite/granite-3.3-8b-instruct::multi_nli": 0.004131616817580329,
+      "meta-llama/Llama-3.1-8B-Instruct::ag_news": 0.00629572073618571,
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.0015644994046952988,
+      "meta-llama/Llama-3.1-8B-Instruct::imdb": 0.0010220302475823296,
+      "meta-llama/Llama-3.1-8B-Instruct::multi_nli": 0.006472939583990309,
+      "mistralai/Mistral-7B-Instruct-v0.3::ag_news": 0.022556011875470478,
+      "mistralai/Mistral-7B-Instruct-v0.3::civil_comments": 0.004230887028906081,
+      "mistralai/Mistral-7B-Instruct-v0.3::imdb": 0.017443556255764433,
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.012426825033293828
+    },
+    "cell_holm_adjusted_p": {
+      "Qwen/Qwen3-8B::ag_news": 0.0032,
+      "Qwen/Qwen3-8B::civil_comments": 0.0032,
+      "Qwen/Qwen3-8B::imdb": 0.0032,
+      "Qwen/Qwen3-8B::multi_nli": 0.0032,
+      "ibm-granite/granite-3.3-8b-instruct::ag_news": 0.0032,
+      "ibm-granite/granite-3.3-8b-instruct::civil_comments": 0.0032,
+      "ibm-granite/granite-3.3-8b-instruct::imdb": 0.0032,
+      "ibm-granite/granite-3.3-8b-instruct::multi_nli": 0.0032,
+      "meta-llama/Llama-3.1-8B-Instruct::ag_news": 0.0032,
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.0032,
+      "meta-llama/Llama-3.1-8B-Instruct::imdb": 0.0032,
+      "meta-llama/Llama-3.1-8B-Instruct::multi_nli": 0.0032,
+      "mistralai/Mistral-7B-Instruct-v0.3::ag_news": 0.0032,
+      "mistralai/Mistral-7B-Instruct-v0.3::civil_comments": 0.0032,
+      "mistralai/Mistral-7B-Instruct-v0.3::imdb": 0.0032,
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.0032
+    },
+    "cell_raw_p": {
+      "Qwen/Qwen3-8B::ag_news": 0.0002,
+      "Qwen/Qwen3-8B::civil_comments": 0.0002,
+      "Qwen/Qwen3-8B::imdb": 0.0002,
+      "Qwen/Qwen3-8B::multi_nli": 0.0002,
+      "ibm-granite/granite-3.3-8b-instruct::ag_news": 0.0002,
+      "ibm-granite/granite-3.3-8b-instruct::civil_comments": 0.0002,
+      "ibm-granite/granite-3.3-8b-instruct::imdb": 0.0002,
+      "ibm-granite/granite-3.3-8b-instruct::multi_nli": 0.0002,
+      "meta-llama/Llama-3.1-8B-Instruct::ag_news": 0.0002,
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.0002,
+      "meta-llama/Llama-3.1-8B-Instruct::imdb": 0.0002,
+      "meta-llama/Llama-3.1-8B-Instruct::multi_nli": 0.0002,
+      "mistralai/Mistral-7B-Instruct-v0.3::ag_news": 0.0002,
+      "mistralai/Mistral-7B-Instruct-v0.3::civil_comments": 0.0002,
+      "mistralai/Mistral-7B-Instruct-v0.3::imdb": 0.0002,
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.0002
+    },
+    "global_effect_interval": {
+      "high": 0.009857107425222694,
+      "low": 0.009359636993365054,
+      "point": 0.009610428454147446
+    },
+    "global_equal_cell_delta": 0.009610428454147446,
+    "global_replay_p_one_sided": 0.0002,
+    "holm_positive_cells_at_practical_floor": [
+      "Qwen/Qwen3-8B::ag_news",
+      "meta-llama/Llama-3.1-8B-Instruct::multi_nli",
+      "mistralai/Mistral-7B-Instruct-v0.3::imdb",
+      "Qwen/Qwen3-8B::imdb",
+      "ibm-granite/granite-3.3-8b-instruct::multi_nli",
+      "mistralai/Mistral-7B-Instruct-v0.3::ag_news",
+      "Qwen/Qwen3-8B::multi_nli",
+      "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "meta-llama/Llama-3.1-8B-Instruct::ag_news",
+      "mistralai/Mistral-7B-Instruct-v0.3::civil_comments",
+      "Qwen/Qwen3-8B::civil_comments",
+      "ibm-granite/granite-3.3-8b-instruct::ag_news",
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli"
+    ],
+    "interactions": {
+      "Qwen/Qwen3-8B::ag_news": -0.009425714818967711,
+      "Qwen/Qwen3-8B::civil_comments": 0.00587721686396334,
+      "Qwen/Qwen3-8B::imdb": 0.00156262198256122,
+      "Qwen/Qwen3-8B::multi_nli": 0.001985875972443158,
+      "ibm-granite/granite-3.3-8b-instruct::ag_news": 0.009612412212623494,
+      "ibm-granite/granite-3.3-8b-instruct::civil_comments": -0.005623395534025298,
+      "ibm-granite/granite-3.3-8b-instruct::imdb": 0.0030307378619909286,
+      "ibm-granite/granite-3.3-8b-instruct::multi_nli": -0.007019754540589122,
+      "meta-llama/Llama-3.1-8B-Instruct::ag_news": -0.0030607329888476253,
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.0037026568005482366,
+      "meta-llama/Llama-3.1-8B-Instruct::imdb": -0.005344681648744475,
+      "meta-llama/Llama-3.1-8B-Instruct::multi_nli": 0.004702757837043869,
+      "mistralai/Mistral-7B-Instruct-v0.3::ag_news": 0.0028740355951918494,
+      "mistralai/Mistral-7B-Instruct-v0.3::civil_comments": -0.003956478130486276,
+      "mistralai/Mistral-7B-Instruct-v0.3::imdb": 0.0007513218041923335,
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.00033112073110209625
+    },
+    "leave_one_model_out": {
+      "granite": 0.008407242237417786,
+      "llama": 0.01153430544115879,
+      "mistral": 0.008092464589410358,
+      "qwen": 0.010407701548602847
+    },
+    "leave_one_task_out": {
+      "ag_news": 0.007771209710174136,
+      "civil_comments": 0.011602746750469559,
+      "imdb": 0.008767790319742981,
+      "multi_nli": 0.010299967036203101
+    },
+    "model_margins": {
+      "granite": 0.013219987104336422,
+      "llama": 0.0038387974931134118,
+      "mistral": 0.014164320048358705,
+      "qwen": 0.0072186091707812415
+    },
+    "positive_model_families": [
+      "granite",
+      "llama",
+      "mistral",
+      "qwen"
+    ],
+    "positive_tasks": [
+      "ag_news",
+      "civil_comments",
+      "imdb",
+      "multi_nli"
+    ],
+    "task_margins": {
+      "ag_news": 0.01512808468606737,
+      "civil_comments": 0.0036334735651810963,
+      "imdb": 0.01213834285736084,
+      "multi_nli": 0.007541812707980474
+    }
+  },
+  "recurrence_gate": {
+    "criteria": {
+      "all_four_global_malformed_treatments_at_least_0.002": true,
+      "all_leave_one_model_out_means_positive": true,
+      "all_leave_one_task_out_means_positive": true,
+      "at_least_three_positive_model_families": true,
+      "at_least_three_positive_tasks": true,
+      "complete_16_cell_grid": true,
+      "global_replay_p_at_most_0.05": true,
+      "positive_global_effect": true
+    },
+    "passed": true,
+    "positive_model_family_count": 4,
+    "positive_task_count": 4,
+    "rule": "complete 16-cell grid; positive global effect with replay p <= 0.05; at least three model families and three tasks each contain a Holm-positive cell at or above 0.002; every leave-one-model-out and leave-one-task-out mean is positive; all four malformed-output effect treatments remain at or above 0.002"
+  },
+  "schema_version": "ext-x1r4-a9-full-grid-analysis-v1",
+  "scope": "sixteen frozen model-task cells; reference-relative disagreement only; no measured confidence-interval coverage claim",
+  "source": {
+    "all_cell_ledgers_and_schedules_verified": true,
+    "full_grid_lock_path": "study-120h/full-grid-lock/20260914T032937Z-X1R4-A8/FULL_GRID_LOCK.json",
+    "full_grid_lock_sha256": "626ba2791acc1de4db1fec5a939b83839e9fd069beca2a9ab794f2eaaedae389",
+    "full_grid_manifest_sha256": "8ca1b0b520fbd77c464ab94c58fe637dbc8f686eb16a877ca69aed621baacc74"
+  }
+}

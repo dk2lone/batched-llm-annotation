@@ -1,8 +1,7 @@
 # X1R4 B3 full-grid execution
 
-The complete four-model by four-dataset B3 grid is execution-complete. This report records
-technical completion only. No joint-dependence effect, recurrence claim, or scientific-result
-analysis has been calculated.
+The complete four-model by four-dataset B3 grid is execution-complete. This report records the
+technical handoff to A9; the separate scientific analysis is in `analysis/report.md`.
 
 | Model | Complete cells | First attempts | Retries | Terminal malformed outputs |
 |---|---:|---:|---:|---:|
@@ -20,5 +19,5 @@ The clean Llama rerun supplies the four analysis-eligible Llama cells. Outputs f
 Llama apps remain excluded from scientific analysis and are preserved only as audit evidence under
 the recorded interrupted-run amendment.
 
-The next stage is the prospectively sealed A9 analysis over all sixteen cells. It requires no new
-model calls.
+The prospectively sealed A9 analysis over all sixteen cells is complete. It used no new model
+calls.

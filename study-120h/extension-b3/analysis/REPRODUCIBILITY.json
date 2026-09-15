@@ -1,0 +1,25 @@
+{
+  "schema_version": "ext-x1r4-a9-reproduction-v1",
+  "original_run": {
+    "manifest_file_sha256": "25ca428602e2c3f1fdb8b40d0d0a998ec5072d1ba17de8eba70148f757d2ac07",
+    "analysis_sha256": "b540b8f41edc93013ca2d6027384b22f48cfe489dc3ec93d3f288ae3a89206da",
+    "report_sha256": "fd0566eda72781c00aa87a7559a112ad362a99f904765e5d475ee826d128cb64"
+  },
+  "reproduction_run": {
+    "completed_at_utc": "2026-09-15T04:55:20.928086+00:00",
+    "manifest_file_sha256": "f5fb9758f30347b5a9bb9e0e8c6cbababf9f33d1acbaed75e0783c76e78ab6ef",
+    "analysis_sha256": "b540b8f41edc93013ca2d6027384b22f48cfe489dc3ec93d3f288ae3a89206da",
+    "report_sha256": "fd0566eda72781c00aa87a7559a112ad362a99f904765e5d475ee826d128cb64"
+  },
+  "source": {
+    "analysis_module_sha256": "0f6fb8e806e8676ac915385bf698a532ce5862f8531bb1da4e2f116d3e81740b",
+    "runner_sha256": "b1d8c200f86b644f35f06bd9ed1734a6167d34d845a46b6326a5827a5966b4f5",
+    "tests_sha256": "c8e4a03bebc5384722ad7d6a3ab2677a048ec64744a55cd590ca919faa659834"
+  },
+  "n_draws_per_cell": 4999,
+  "workers": 8,
+  "analysis_byte_identical": true,
+  "report_byte_identical": true,
+  "gpu_work_launched": false,
+  "scientific_model_output_generated": false
+}

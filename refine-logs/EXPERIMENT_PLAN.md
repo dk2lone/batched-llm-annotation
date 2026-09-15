@@ -11,9 +11,9 @@ X1R4 seal as audit history, not as a second active analysis. Measure confidence-
 with independent repeated calls in one prespecified cell per family. A later independent-dataset
 panel tests replication.
 
-**Date:** 2026-09-14 UTC
+**Date:** 2026-09-15 UTC
 
-**Status:** A0-A8 execution are complete. The active CPU protocol is sealed at
+**Status:** A0-A9 are complete. The active CPU protocol is sealed at
 `study-120h/freeze/20260913T183353Z-X1R4/` with manifest SHA256
 `3838c6e201388480eb08aa48e04a1ef3a5af6a86fac5d920e9837459382677d2`. It freezes
 candidates, frames, prompts, seeds, budget, statistics, and exact M1/B3/B4 schedules. Earlier X1
@@ -24,15 +24,20 @@ floors. See `study-120h/extension-m1/20260914T003735Z-5a8c63f2/REPORT.md` for ev
 Extension B3 completed all sixteen model-task cells: 548,864 scheduled first attempts and 127
 required retries have terminal records, with no pending calls or irrecoverable technical failures.
 The 127 outputs that remained truncated after their single retry are retained under the sealed
-malformed-output treatments. No B3 scientific-result analysis has been performed. A7, the
-historical admission lock, remains sealed. The active
+malformed-output treatments. A9 analyzed the complete grid under the prospective A8 lock. The
+equal-cell joint-minus-exact covariance effect is 0.009610 (one-sided replay p = 0.0002; 95% shift
+interval [0.009360, 0.009857]). Thirteen cells meet both the sixteen-test Holm rule and the 0.002
+practical floor, spanning all four model families and all four tasks. Every leave-one-model/task-out
+mean is positive, and all four global malformed-output treatments remain above 0.002. The frozen
+cross-family recurrence gate passes. A7, the historical admission lock, remains sealed. The active
 sixteen-cell schedule and analysis are sealed at
 `study-120h/full-grid-lock/20260914T032937Z-X1R4-A8/`. The active execution release at
 `study-120h/execution-release/20260914T035244Z-X1R4-A8-model-major/` removes the compute-cost gate
 and freezes model-major execution: Qwen, Granite, Llama, then Mistral, with Civil Comments,
 MultiNLI, IMDb, then AG News inside each model. All 548,864 calls are released, with cost recorded
-only for reporting. No A8 task is currently running. A9 analysis is the next stage; it requires no
-new model calls. A12 orders
+only for reporting. No A8 task is currently running. The A9 report is at
+`study-120h/extension-b3/analysis/report.md`. B4 confidence-interval coverage remains unmeasured.
+A12 orders
 equal-family 1,000-replicate evaluation,
 batch-size tests, and an optional independent-dataset 4 × 4. This extension is separate
 from Freeze B because Qwen and Granite joint results have already been opened. Nothing below
@@ -43,7 +48,7 @@ See `study-120h/EXTENSION_PROTOCOL.md` for the full frozen protocol.
 
 | Claim | Why it matters | Minimum convincing evidence | Blocks |
 |---|---|---|---|
-| C1: cross-family recurrence | The current evidence covers only Qwen and Granite. | A prospectively sealed joint-minus-exact covariance test over all sixteen cells with equal model and task weight, plus model margins, task margins, cell effects, and leave-one-model/task-out sensitivity. | B1-B3 |
+| C1: cross-family recurrence | Determine whether excess covariance recurs across the fixed model-task grid. | A prospectively sealed joint-minus-exact covariance test over all sixteen cells with equal model and task weight, plus model margins, task margins, cell effects, and leave-one-model/task-out sensitivity. | B1-B3 |
 | C2: practical uncertainty damage | Dependence alone does not show that ordinary confidence intervals fail. | At least two prespecified family cells have item-level coverage at most 0.90, worst-case upper coverage below 0.95 after reference uncertainty, and multiplicity-adjusted p at most 0.05. | B4 |
 | Accuracy moderation | Solo accuracy is a property of the annotator, not an admission condition for comparing its call formats. | Report accuracy, parse rate, low-accuracy strata, and malformed-output bounds for every cell without dropping cells or defining the primary grid from those outcomes. | B2-B3 |
 | Anti-claim: extra context explains the result | Joint and solo prompts differ in both context and requested outputs. | Joint exceeds an exact-context control that presents identical neighbors in identical order but requests one target. | B3 |
@@ -279,13 +284,21 @@ irrecoverable technical failure left a cell incomplete. The compact completion r
 `study-120h/extension-b3/REPORT.md`; the full event ledgers are preserved separately from Git
 history as a checksummed private release asset. These are execution facts, not B3 findings.
 
-### A9 — Analyze the full 16-cell grid — next stage
+### A9 — Analyze the full 16-cell grid — complete
 
 Analyze all sixteen cells with equal model and task weight, cell effects, model and task margins,
 interaction, leave-one-model/task-out checks, multiplicity adjustment, and every prospectively
 sealed malformed-output treatment. Accuracy and parse rate are moderators only. The earlier
 seven-cell X1R4 seal remains unchanged as audit history and is not a second active analysis or
 claim gate. Report any technically or budget-incomplete grid without redefining its target.
+
+The frozen recurrence gate passes. The equal-cell effect is 0.009610 with a one-sided 4,999-draw
+replay p-value of 0.0002 and a 95% shift interval of [0.009360, 0.009857]. Thirteen of sixteen cells
+are Holm-positive at or above the 0.002 practical floor, covering all four models and tasks. All
+leave-one-model-out and leave-one-task-out means are positive. The four global malformed-output
+treatments range from 0.007522 to 0.015495, all above the practical floor. The analysis and report
+were regenerated independently with byte-identical SHA-256 hashes. This result does not establish
+confidence-interval undercoverage; B4 remains required for that claim.
 
 ### A10 — Merged into A8 — no separate stage
 
@@ -386,10 +399,10 @@ or unrun cells remain reported. A12 remains a separate optional expansion ladder
 - [x] Extension is explicitly separate from Freeze B.
 - [x] All candidate revisions, prompts, frames, call schedules, tests, and claims are sealed.
 - [x] Every family receives identical preflight and solo admission rules.
-- [ ] Every one of the sixteen existing-dataset cells evaluates the same 8,192 items per dataset under joint, exact-context, solo, and fake-batch analysis, subject only to technical and budget stops.
+- [x] Every one of the sixteen existing-dataset cells evaluates the same 8,192 items per dataset under joint, exact-context, solo, and fake-batch analysis, subject only to technical and budget stops.
 - [x] One repeated-sampling cell is selected per family before batching outcomes.
 - [x] All first responses, failures, and retries are retained; worker-time and spend reporting remains pending.
 - [x] All five checkpoints passed the signed runtime/access gate.
 - [x] The unified A4 runner passes focused and repository-wide CPU validation.
 - [x] Family breadth is completed before optional depth.
-- [ ] Claims are limited to the checkpoints and tasks actually completed.
+- [x] Claims are limited to the checkpoints and tasks actually completed.
