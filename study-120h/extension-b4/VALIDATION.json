@@ -1,0 +1,27 @@
+{
+  "active_preparation": "preparation/20260915-validated-cpu/PLAN-400.json",
+  "earlier_preparations": "preserved superseded CPU-only drafts; use active_preparation",
+  "empty_run_analysis": "coverage_unavailable; C2 false; all Holm p values 1",
+  "files_sha256": {
+    "EXTENSION_B4_OPERATIONS.md": "10dfdd0385714a55bd482abea017f906a778ded7f643c81f6934cd61233f47f1",
+    "analyze_extension_b4.py": "3dc24975d005c60ae3a68dfacbdb7532edb11c85718215eeeb2b6dd7867c3a91",
+    "extension_b4_transport.py": "4ef28d3eab6be85a914ba1e5f7e89ec8c2f51962dbe002cf88cf74ec5950c9ad",
+    "modal_extension_b4.py": "fb5e52970ba407cac88c5d2cf905b63d1a64ecb3ef4f39ef2425905e5d4b1701",
+    "prepare_extension_b4_budget.py": "e297e9b5357c4775c26a57a756eab7a8b2b72e35f55aa8112ee3bfa74f4d7a01",
+    "reconcile_extension_b4_meter.py": "cc9d1cc3eebdec375fac600151ecbd59a80738f3fd466a18f6b2b9af187ac7b2",
+    "src/freezeb/extension_b4.py": "e873c96bd1ec8128ec0f0133144a5fff531ad8ad9a64538fae17c8c857c83a69",
+    "tests/test_extension_b4.py": "6a8d11e6b8c13b079e88db270b8063b24620562135ed4949f38e1b0577aef947"
+  },
+  "final_b4_tests_passed": 19,
+  "full_regression_tests_passed": 463,
+  "gpu_work_launched": false,
+  "initial_fresh_first_calls": 83200,
+  "plan_sha256": "892b083f07422f5a14c8a8f5674ae0ad16e1071fc17e2ffefb9ab20c779772b2",
+  "remote_preflight_performed": false,
+  "remote_worker_validation": "not run; requires separate authorization",
+  "schema_version": "ext-x1r4-a11-implementation-validation-v1",
+  "scoped_ruff": "passed",
+  "sealed_protocols_modified": false,
+  "strict_mypy": "passed for src and all new entrypoints/tests",
+  "validation_sha256": "871ab5a8e777d80d9260421366530dd19c5f11728a1311cdd9ad4399dcdcc54e"
+}

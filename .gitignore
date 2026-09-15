@@ -76,6 +76,13 @@ study-120h/extension-b3/**/events.jsonl
 study-120h/extension-b3/**/.active-run.lock
 study-120h/extension-b3/interrupted/
 
+# B4 private response payloads and operator billing records stay local.
+study-120h/extension-b4/**/.active-run.lock
+study-120h/extension-b4/**/events.jsonl
+study-120h/extension-b4/**/receipts/
+study-120h/extension-b4/**/budgets/
+study-120h/extension-b4/**/meter.jsonl
+
 # Idea-selection phase output. Kept locally, not published.
 idea-stage/
 refine-logs/REFINE_STATE*.json
