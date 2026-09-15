@@ -1,0 +1,237 @@
+{
+  "status": "passed",
+  "workers": [
+    {
+      "backend": {
+        "backend": "vllm",
+        "batch_invariance_required": true,
+        "batch_invariant": true,
+        "dtype": "bfloat16",
+        "enable_thinking": false,
+        "gpu_memory_utilization": 0.9,
+        "max_model_len": 32768,
+        "max_num_seqs": 32,
+        "model_id": "Qwen/Qwen3-8B",
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "seed": 20260912,
+        "tensor_parallel_size": 1,
+        "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "finish_reason": "stop",
+      "host": {
+        "cuda_version": "13.0",
+        "driver_version": "580.95.05",
+        "gpu_name": "NVIDIA A100-SXM4-40GB",
+        "gpu_uuid": "GPU-f6002d9d-5629-f2e7-98a1-fa5fd5dbe7ed",
+        "installed_engine_version_string": "0.28.0",
+        "torch_version": "2.13.0+cu130"
+      },
+      "response_sha256": "d6a27f2231d83388cb0fc76af36c91743920ff3b68d30c4bea340ca6b97cb24a",
+      "worker_index": 0,
+      "worker_session_id": "aa80174eed4341d08cb13f3a9b47d920"
+    },
+    {
+      "backend": {
+        "backend": "vllm",
+        "batch_invariance_required": true,
+        "batch_invariant": true,
+        "dtype": "bfloat16",
+        "enable_thinking": false,
+        "gpu_memory_utilization": 0.9,
+        "max_model_len": 32768,
+        "max_num_seqs": 32,
+        "model_id": "Qwen/Qwen3-8B",
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "seed": 20260912,
+        "tensor_parallel_size": 1,
+        "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "finish_reason": "stop",
+      "host": {
+        "cuda_version": "13.0",
+        "driver_version": "580.95.05",
+        "gpu_name": "NVIDIA A100-SXM4-40GB",
+        "gpu_uuid": "GPU-c1d6edff-b212-aba5-3d0f-2bcd887f8202",
+        "installed_engine_version_string": "0.28.0",
+        "torch_version": "2.13.0+cu130"
+      },
+      "response_sha256": "d6a27f2231d83388cb0fc76af36c91743920ff3b68d30c4bea340ca6b97cb24a",
+      "worker_index": 1,
+      "worker_session_id": "c8c90ee09a9a4e6da6d171674836137a"
+    },
+    {
+      "backend": {
+        "backend": "vllm",
+        "batch_invariance_required": true,
+        "batch_invariant": true,
+        "dtype": "bfloat16",
+        "enable_thinking": false,
+        "gpu_memory_utilization": 0.9,
+        "max_model_len": 32768,
+        "max_num_seqs": 32,
+        "model_id": "Qwen/Qwen3-8B",
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "seed": 20260912,
+        "tensor_parallel_size": 1,
+        "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "finish_reason": "stop",
+      "host": {
+        "cuda_version": "13.0",
+        "driver_version": "580.95.05",
+        "gpu_name": "NVIDIA A100-SXM4-40GB",
+        "gpu_uuid": "GPU-48d22eb0-04d7-e01e-e834-a2b60e4f4ab5",
+        "installed_engine_version_string": "0.28.0",
+        "torch_version": "2.13.0+cu130"
+      },
+      "response_sha256": "d6a27f2231d83388cb0fc76af36c91743920ff3b68d30c4bea340ca6b97cb24a",
+      "worker_index": 2,
+      "worker_session_id": "1999325e6b8a405785408d18063a3ac5"
+    },
+    {
+      "backend": {
+        "backend": "vllm",
+        "batch_invariance_required": true,
+        "batch_invariant": true,
+        "dtype": "bfloat16",
+        "enable_thinking": false,
+        "gpu_memory_utilization": 0.9,
+        "max_model_len": 32768,
+        "max_num_seqs": 32,
+        "model_id": "Qwen/Qwen3-8B",
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "seed": 20260912,
+        "tensor_parallel_size": 1,
+        "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "finish_reason": "stop",
+      "host": {
+        "cuda_version": "13.0",
+        "driver_version": "580.95.05",
+        "gpu_name": "NVIDIA A100-SXM4-40GB",
+        "gpu_uuid": "GPU-415f08a5-6291-2693-423a-890a65b3181a",
+        "installed_engine_version_string": "0.28.0",
+        "torch_version": "2.13.0+cu130"
+      },
+      "response_sha256": "d6a27f2231d83388cb0fc76af36c91743920ff3b68d30c4bea340ca6b97cb24a",
+      "worker_index": 3,
+      "worker_session_id": "6e88eefe511948d3b1cb1b2a50c6c5bc"
+    },
+    {
+      "backend": {
+        "backend": "vllm",
+        "batch_invariance_required": true,
+        "batch_invariant": true,
+        "dtype": "bfloat16",
+        "enable_thinking": false,
+        "gpu_memory_utilization": 0.9,
+        "max_model_len": 32768,
+        "max_num_seqs": 32,
+        "model_id": "Qwen/Qwen3-8B",
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "seed": 20260912,
+        "tensor_parallel_size": 1,
+        "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "finish_reason": "stop",
+      "host": {
+        "cuda_version": "13.0",
+        "driver_version": "580.95.05",
+        "gpu_name": "NVIDIA A100-SXM4-40GB",
+        "gpu_uuid": "GPU-bf28a1ff-f6e1-67c6-b755-525d46916a46",
+        "installed_engine_version_string": "0.28.0",
+        "torch_version": "2.13.0+cu130"
+      },
+      "response_sha256": "d6a27f2231d83388cb0fc76af36c91743920ff3b68d30c4bea340ca6b97cb24a",
+      "worker_index": 4,
+      "worker_session_id": "c1e02889c187420c8542dbc59fa74327"
+    },
+    {
+      "backend": {
+        "backend": "vllm",
+        "batch_invariance_required": true,
+        "batch_invariant": true,
+        "dtype": "bfloat16",
+        "enable_thinking": false,
+        "gpu_memory_utilization": 0.9,
+        "max_model_len": 32768,
+        "max_num_seqs": 32,
+        "model_id": "Qwen/Qwen3-8B",
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "seed": 20260912,
+        "tensor_parallel_size": 1,
+        "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "finish_reason": "stop",
+      "host": {
+        "cuda_version": "13.0",
+        "driver_version": "580.95.05",
+        "gpu_name": "NVIDIA A100-SXM4-40GB",
+        "gpu_uuid": "GPU-d897cf90-50ed-25a4-16d5-2a6be5443dcb",
+        "installed_engine_version_string": "0.28.0",
+        "torch_version": "2.13.0+cu130"
+      },
+      "response_sha256": "d6a27f2231d83388cb0fc76af36c91743920ff3b68d30c4bea340ca6b97cb24a",
+      "worker_index": 5,
+      "worker_session_id": "ab0cca283a4f4738b057098f09b7c216"
+    },
+    {
+      "backend": {
+        "backend": "vllm",
+        "batch_invariance_required": true,
+        "batch_invariant": true,
+        "dtype": "bfloat16",
+        "enable_thinking": false,
+        "gpu_memory_utilization": 0.9,
+        "max_model_len": 32768,
+        "max_num_seqs": 32,
+        "model_id": "Qwen/Qwen3-8B",
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "seed": 20260912,
+        "tensor_parallel_size": 1,
+        "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "finish_reason": "stop",
+      "host": {
+        "cuda_version": "13.0",
+        "driver_version": "580.95.05",
+        "gpu_name": "NVIDIA A100-SXM4-40GB",
+        "gpu_uuid": "GPU-38cbccf6-3409-6da8-7b98-16fdffe31786",
+        "installed_engine_version_string": "0.28.0",
+        "torch_version": "2.13.0+cu130"
+      },
+      "response_sha256": "d6a27f2231d83388cb0fc76af36c91743920ff3b68d30c4bea340ca6b97cb24a",
+      "worker_index": 6,
+      "worker_session_id": "61a615a9fe474389ac601aee2da8a616"
+    },
+    {
+      "backend": {
+        "backend": "vllm",
+        "batch_invariance_required": true,
+        "batch_invariant": true,
+        "dtype": "bfloat16",
+        "enable_thinking": false,
+        "gpu_memory_utilization": 0.9,
+        "max_model_len": 32768,
+        "max_num_seqs": 32,
+        "model_id": "Qwen/Qwen3-8B",
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "seed": 20260912,
+        "tensor_parallel_size": 1,
+        "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "finish_reason": "stop",
+      "host": {
+        "cuda_version": "13.0",
+        "driver_version": "580.95.05",
+        "gpu_name": "NVIDIA A100-SXM4-40GB",
+        "gpu_uuid": "GPU-ec57d343-8168-fb32-517b-3958cfe30081",
+        "installed_engine_version_string": "0.28.0",
+        "torch_version": "2.13.0+cu130"
+      },
+      "response_sha256": "d6a27f2231d83388cb0fc76af36c91743920ff3b68d30c4bea340ca6b97cb24a",
+      "worker_index": 7,
+      "worker_session_id": "f03b06d59b344d3aaefd213235827349"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "completed_at_utc": "2026-09-14T05:03:59.126724+00:00",
+  "dataset_order": [
+    "civil_comments",
+    "multi_nli",
+    "imdb",
+    "ag_news"
+  ],
+  "first_attempts": 137216,
+  "model_id": "Qwen/Qwen3-8B",
+  "plan_sha256": "fa36af1fbd59b66660c8fd82205f6dff4bf41856dfdb3649fa874d3e84806a8b",
+  "retry_attempts": 0,
+  "technical_complete": true
+}

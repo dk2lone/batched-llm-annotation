@@ -1,0 +1,17 @@
+{
+  "all_calls_attempted": true,
+  "complete": true,
+  "execution_complete": true,
+  "expected_first_attempts": 34304,
+  "first_attempts": 34304,
+  "parsed_complete": false,
+  "pending_attempts": 0,
+  "retry_attempts": 6,
+  "status_counts": {
+    "ok": 34298,
+    "truncated": 12
+  },
+  "terminal_failures": 0,
+  "terminal_malformed_outputs": 6,
+  "unresolved_outputs": 248
+}

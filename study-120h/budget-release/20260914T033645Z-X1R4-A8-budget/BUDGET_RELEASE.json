@@ -1,0 +1,314 @@
+{
+  "anchor": {
+    "all_worker_a100_hours": 0.8114614242581298,
+    "calls": 17152,
+    "calls_by_condition": {
+      "exact_context": 12288,
+      "joint": 768,
+      "solo": 4096
+    },
+    "cell_key": "Qwen/Qwen3-8B::multi_nli",
+    "execution_blocks": 8,
+    "items": 4096,
+    "retries": 0,
+    "source_hashes": {
+      "final_reforecast_sha256": "e27ae0934e73e05ab1fe1b9c8613149751bcc9f7a2d69bd5f88accdebffb96f1",
+      "plan_sha256": "289131fc6f1c9956d0c1034fa0cdec5496bfe00928b2aa10e096dd9d79b850de",
+      "summary_sha256": "db77eb24eaec8eb3696fa30e2f17e9a027537df812b072ad3e4d2a9ac0c3cb99"
+    },
+    "workers": 4
+  },
+  "budget_gate": {
+    "base_forecast_a100_hours": 27.30158797248692,
+    "guard_multiplier": 1.6,
+    "guarded_forecast_a100_hours": 43.682540755979076,
+    "headroom_after_guard_and_reserve_a100_hours": 23.435014387837292,
+    "passed": true,
+    "prior_a100_hours": 2.882444856183632,
+    "projected_total_including_reserve_a100_hours": 56.56498561216271,
+    "protected_reserve_a100_hours": 10.0,
+    "stop_a100_hours": 80.0
+  },
+  "cell_forecasts": {
+    "Qwen/Qwen3-8B::ag_news": {
+      "base_forecast_a100_hours": 1.6205926110982776,
+      "median_latency_seconds": {
+        "exact_context": 0.570593005500001,
+        "joint": 6.280547673000001,
+        "solo": 0.5125888325000005
+      },
+      "relative_to_qwen_multinli": 0.9985641724003624,
+      "serial_latency_weight": {
+        "exact_context": 14022.893703168025,
+        "joint": 9646.921225728001,
+        "solo": 4199.127715840004
+      },
+      "total_serial_latency_weight": 27868.94264473603
+    },
+    "Qwen/Qwen3-8B::civil_comments": {
+      "base_forecast_a100_hours": 1.6190997815541899,
+      "median_latency_seconds": {
+        "exact_context": 0.5686850844999753,
+        "joint": 6.287747547500004,
+        "solo": 0.5138288504999906
+      },
+      "relative_to_qwen_multinli": 0.9976443322826066,
+      "serial_latency_weight": {
+        "exact_context": 13976.004636671394,
+        "joint": 9657.980232960006,
+        "solo": 4209.285943295923
+      },
+      "total_serial_latency_weight": 27843.270812927323
+    },
+    "Qwen/Qwen3-8B::imdb": {
+      "base_forecast_a100_hours": 1.8819315001384527,
+      "median_latency_seconds": {
+        "exact_context": 0.6783967185000108,
+        "joint": 7.471633605500017,
+        "solo": 0.5144553099999598
+      },
+      "relative_to_qwen_multinli": 1.159593939945444,
+      "serial_latency_weight": {
+        "exact_context": 16672.277753856266,
+        "joint": 11476.429218048026,
+        "solo": 4214.417899519671
+      },
+      "total_serial_latency_weight": 32363.124871423963
+    },
+    "Qwen/Qwen3-8B::multi_nli": {
+      "base_forecast_a100_hours": 1.6229228485162597,
+      "median_latency_seconds": {
+        "exact_context": 0.5719719720000285,
+        "joint": 6.289008170500011,
+        "solo": 0.5117572565000046
+      },
+      "relative_to_qwen_multinli": 1.0,
+      "serial_latency_weight": {
+        "exact_context": 14056.7831838727,
+        "joint": 9659.916549888017,
+        "solo": 4192.315445248038
+      },
+      "total_serial_latency_weight": 27909.015179008755
+    },
+    "ibm-granite/granite-3.3-8b-instruct::ag_news": {
+      "base_forecast_a100_hours": 1.7884435579842723,
+      "median_latency_seconds": {
+        "exact_context": 0.6289361299999996,
+        "joint": 6.930808828000011,
+        "solo": 0.5679905334999944
+      },
+      "relative_to_qwen_multinli": 1.1019892656137895,
+      "serial_latency_weight": {
+        "exact_context": 15456.73433087999,
+        "joint": 10645.722359808016,
+        "solo": 4652.978450431954
+      },
+      "total_serial_latency_weight": 30755.43514111996
+    },
+    "ibm-granite/granite-3.3-8b-instruct::civil_comments": {
+      "base_forecast_a100_hours": 1.7917932798856964,
+      "median_latency_seconds": {
+        "exact_context": 0.6309598819999849,
+        "joint": 6.936069821499984,
+        "solo": 0.5679646240000125
+      },
+      "relative_to_qwen_multinli": 1.1040532712468893,
+      "serial_latency_weight": {
+        "exact_context": 15506.470060031628,
+        "joint": 10653.803245823976,
+        "solo": 4652.766199808102
+      },
+      "total_serial_latency_weight": 30813.039505663706
+    },
+    "ibm-granite/granite-3.3-8b-instruct::imdb": {
+      "base_forecast_a100_hours": 2.073692082122698,
+      "median_latency_seconds": {
+        "exact_context": 0.7479867890000378,
+        "joint": 8.238195818500003,
+        "solo": 0.5645011629999885
+      },
+      "relative_to_qwen_multinli": 1.2777514864730317,
+      "serial_latency_weight": {
+        "exact_context": 18382.52332646493,
+        "joint": 12653.868777216005,
+        "solo": 4624.393527295906
+      },
+      "total_serial_latency_weight": 35660.78563097684
+    },
+    "ibm-granite/granite-3.3-8b-instruct::multi_nli": {
+      "base_forecast_a100_hours": 1.7877473033355593,
+      "median_latency_seconds": {
+        "exact_context": 0.6294684030000042,
+        "joint": 6.934111815000023,
+        "solo": 0.5643128170000011
+      },
+      "relative_to_qwen_multinli": 1.1015602528302493,
+      "serial_latency_weight": {
+        "exact_context": 15469.815472128103,
+        "joint": 10650.795747840035,
+        "solo": 4622.850596864009
+      },
+      "total_serial_latency_weight": 30743.461816832147
+    },
+    "meta-llama/Llama-3.1-8B-Instruct::ag_news": {
+      "base_forecast_a100_hours": 1.4720869872124889,
+      "median_latency_seconds": {
+        "exact_context": 0.5227559689999737,
+        "joint": 5.557966968500011,
+        "solo": 0.4798387540000135
+      },
+      "relative_to_qwen_multinli": 0.9070591301110396,
+      "serial_latency_weight": {
+        "exact_context": 12847.250694143353,
+        "joint": 8537.037263616017,
+        "solo": 3930.839072768111
+      },
+      "total_serial_latency_weight": 25315.12703052748
+    },
+    "meta-llama/Llama-3.1-8B-Instruct::civil_comments": {
+      "base_forecast_a100_hours": 1.4706458865411725,
+      "median_latency_seconds": {
+        "exact_context": 0.521224425999975,
+        "joint": 5.563085637500009,
+        "solo": 0.4804484539999976
+      },
+      "relative_to_qwen_multinli": 0.9061711638884714,
+      "serial_latency_weight": {
+        "exact_context": 12809.611493375385,
+        "joint": 8544.899539200014,
+        "solo": 3935.83373516798
+      },
+      "total_serial_latency_weight": 25290.34476774338
+    },
+    "meta-llama/Llama-3.1-8B-Instruct::imdb": {
+      "base_forecast_a100_hours": 1.6564078441008259,
+      "median_latency_seconds": {
+        "exact_context": 0.6003689045000158,
+        "joint": 6.376648200999995,
+        "solo": 0.4804261214999883
+      },
+      "relative_to_qwen_multinli": 1.020632524593008,
+      "serial_latency_weight": {
+        "exact_context": 14754.666196992388,
+        "joint": 9794.531636735992,
+        "solo": 3935.6507873279043
+      },
+      "total_serial_latency_weight": 28484.848621056284
+    },
+    "meta-llama/Llama-3.1-8B-Instruct::multi_nli": {
+      "base_forecast_a100_hours": 1.4716656636192986,
+      "median_latency_seconds": {
+        "exact_context": 0.5224339419999637,
+        "joint": 5.5618551480000065,
+        "solo": 0.47919135299999027
+      },
+      "relative_to_qwen_multinli": 0.9067995222106544,
+      "serial_latency_weight": {
+        "exact_context": 12839.336558591109,
+        "joint": 8543.00950732801,
+        "solo": 3925.5355637759203
+      },
+      "total_serial_latency_weight": 25307.88162969504
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3::ag_news": {
+      "base_forecast_a100_hours": 1.6982752735906168,
+      "median_latency_seconds": {
+        "exact_context": 0.590805704499985,
+        "joint": 6.703617865000012,
+        "solo": 0.5356975994999971
+      },
+      "relative_to_qwen_multinli": 1.0464300722263213,
+      "serial_latency_weight": {
+        "exact_context": 14519.640993791632,
+        "joint": 10296.75704064002,
+        "solo": 4388.434735103976
+      },
+      "total_serial_latency_weight": 29204.832769535627
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3::civil_comments": {
+      "base_forecast_a100_hours": 1.6983047101454087,
+      "median_latency_seconds": {
+        "exact_context": 0.5906863759999936,
+        "joint": 6.706960655000003,
+        "solo": 0.5354906055000015
+      },
+      "relative_to_qwen_multinli": 1.0464482102141,
+      "serial_latency_weight": {
+        "exact_context": 14516.708376575843,
+        "joint": 10301.891566080005,
+        "solo": 4386.739040256012
+      },
+      "total_serial_latency_weight": 29205.33898291186
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3::imdb": {
+      "base_forecast_a100_hours": 1.9498190247703866,
+      "median_latency_seconds": {
+        "exact_context": 0.6944831454999871,
+        "joint": 7.8635073224999985,
+        "solo": 0.5352301425000121
+      },
+      "relative_to_qwen_multinli": 1.2014243477765985,
+      "serial_latency_weight": {
+        "exact_context": 17067.617783807684,
+        "joint": 12078.347247359998,
+        "solo": 4384.605327360099
+      },
+      "total_serial_latency_weight": 33530.57035852778
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": {
+      "base_forecast_a100_hours": 1.6981596178713148,
+      "median_latency_seconds": {
+        "exact_context": 0.5906185839999978,
+        "joint": 6.7068229044999725,
+        "solo": 0.5354152299999839
+      },
+      "relative_to_qwen_multinli": 1.0463588083831832,
+      "serial_latency_weight": {
+        "exact_context": 14515.042320383945,
+        "joint": 10301.679981311958,
+        "solo": 4386.121564159868
+      },
+      "total_serial_latency_weight": 29202.84386585577
+    }
+  },
+  "forecast_method": {
+    "absolute_anchor": "completed 4,096-item Qwen/MultiNLI B3 all-worker meter, scaled linearly to 8,192 items",
+    "conservatism": "the anchor includes four worker model loads and is doubled in full; the separate 1.6x budget guard remains applied",
+    "limitations": [
+      "relative synthetic latency may not reproduce full-frame production throughput",
+      "linear scaling assumes the same average per-item workload from 4,096 to 8,192",
+      "the mandatory production reforecast replaces this forecast after 1,000 attempts"
+    ],
+    "normalization_cell": "Qwen/Qwen3-8B::multi_nli",
+    "relative_weights": "for each model-task cell, frozen median synthetic latencies for size-16 joint, size-16 exact-context, and short solo calls weighted by the fixed A8 call counts"
+  },
+  "gpu_work_launched": false,
+  "release": {
+    "budget_gate_passed": true,
+    "outcome_blinding": "do not inspect predictions, accuracy, covariance, or p-values when deciding whether later blocks fit",
+    "paid_run_authorized_by_user": false,
+    "reforecast_rule": "after each model reaches 1,000 A8 attempts, recompute its remaining complete blocks from all metered attempts and apply the same 1.6x guard and 10-hour reserve",
+    "released_attempts": 4000,
+    "released_scope": "the first 1,000 scheduled A8 attempts for each of the four models; no remaining attempt may start until that model's technical-only measured reforecast passes"
+  },
+  "schema_version": "ext-x1r4-a8-budget-release-v1",
+  "scientific_outputs_inspected": false,
+  "source_hashes": {
+    "budget_script_sha256": "0259b97236cd6e4f4ba052f4bbff202fade9e2a61ea9c5bf8e66d4d477697e73",
+    "full_grid_lock_sha256": "626ba2791acc1de4db1fec5a939b83839e9fd069beca2a9ab794f2eaaedae389",
+    "full_grid_manifest_sha256": "8ca1b0b520fbd77c464ab94c58fe637dbc8f686eb16a877ca69aed621baacc74",
+    "runtime_Qwen--Qwen3-8B_sha256": "dfb4776ed934023e0584da0dd2d315e1578d987fb8655fa313615c8649cabc37",
+    "runtime_ibm-granite--granite-3.3-8b-instruct_sha256": "7b00f6491626815dd289bd7a4ef4db53050d42e055b137eeea875d0ba7f22c16",
+    "runtime_lock_manifest_sha256": "f96a96f6691c575f1004de91dde540e722d1dd42fb4db97d8a5f46886001066a",
+    "runtime_meta-llama--Llama-3.1-8B-Instruct_sha256": "5df4fbb3ef5be7f4f07c7179929e468bcc2646d3b611fad839ba1205b364152a",
+    "runtime_mistralai--Mistral-7B-Instruct-v0.3_sha256": "09338207e2214f4db01b0219d42021792525561ccbb42fd59712ac0b52e0ceca"
+  },
+  "status": "pass_release_first_1000_attempts_per_model_only",
+  "target": {
+    "items_per_cell": 8192,
+    "n_cells": 16,
+    "scaled_anchor_a100_hours_at_8192": 1.6229228485162597,
+    "total_calls": 548864
+  },
+  "technical_only": true
+}

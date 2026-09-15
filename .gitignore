@@ -70,6 +70,12 @@ study-120h/extension-runtime/**/*--*.json
 study-120h/runtime-lock/*-X1R4/evidence/
 study-120h/freezeb-runtime/
 
+# The complete B3 event ledgers are preserved in a checksummed GitHub Release
+# asset. Keep compact plans, completeness records, and summaries in Git.
+study-120h/extension-b3/**/events.jsonl
+study-120h/extension-b3/**/.active-run.lock
+study-120h/extension-b3/interrupted/
+
 # Idea-selection phase output. Kept locally, not published.
 idea-stage/
 refine-logs/REFINE_STATE*.json

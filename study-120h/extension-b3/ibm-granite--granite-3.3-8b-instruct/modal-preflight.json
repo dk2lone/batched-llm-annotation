@@ -1,0 +1,59 @@
+{
+  "checkpoints": [
+    {
+      "file_count": 15,
+      "model_id": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "total_bytes": 16397461266
+    },
+    {
+      "file_count": 15,
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "revision": "51dd4bc2ade4059a6bd87649d68aa11e4fb2529b",
+      "total_bytes": 16346537590
+    },
+    {
+      "file_count": 14,
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+      "total_bytes": 16069780550
+    },
+    {
+      "file_count": 14,
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "revision": "c170c708c41dac9275d15a8fff4eca08d52bab71",
+      "total_bytes": 14499392853
+    }
+  ],
+  "frames": [
+    {
+      "path": "/Users/dz/bigdata/study-120h/ext-work/20260913-cpu-draft/civil_comments/confirm.jsonl",
+      "rows": 8192,
+      "sha256": "7280ecef90628a7e543a7df9dd518cd6b81eda254738e9e9ac247a89955d320b",
+      "task_id": "civil_comments"
+    },
+    {
+      "path": "/Users/dz/bigdata/study-120h/ext-work/20260913-cpu-draft/multi_nli/confirm.jsonl",
+      "rows": 8192,
+      "sha256": "54b7a871c799214b76518773a73cbaea6428ef1bc71a6d074ae022f94db5be66",
+      "task_id": "multi_nli"
+    },
+    {
+      "path": "/Users/dz/bigdata/study-120h/ext-work/20260913-cpu-draft/imdb/confirm.jsonl",
+      "rows": 8192,
+      "sha256": "ac4afd88bed50bf6cc1966c9e76c5a1a73c16fff470436a3d284502d9c534620",
+      "task_id": "imdb"
+    },
+    {
+      "path": "/Users/dz/bigdata/study-120h/ext-work/20260913-cpu-draft/ag_news/confirm.jsonl",
+      "rows": 8192,
+      "sha256": "723392acbddf8a249d89d8bdfc9cb676614053a77ccc9826f91d075a027ca494",
+      "task_id": "ag_news"
+    }
+  ],
+  "model_volume": "ieee-bigdata-freezeb-models",
+  "results_volume": "ieee-bigdata-extension-b3-results",
+  "selected_model": "ibm-granite/granite-3.3-8b-instruct",
+  "verified_at_utc": "2026-09-14T21:37:43.942076+00:00",
+  "workspace_profile": "hz-danielzhang"
+}

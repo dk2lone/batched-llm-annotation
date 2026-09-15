@@ -1,0 +1,12 @@
+{
+  "budget_gate_passed": true,
+  "files_sha256": {
+    "BUDGET_RELEASE.json": "94fc0e148b7756493f07823d6fb7eeb89e3aa149a6eb0ebfc9e4dc08444a3590",
+    "REPORT.md": "efdb736beefc4bf5a13416981ef2ea7d776ec83e0715e5c48814ea10892568e2"
+  },
+  "gpu_work_launched": false,
+  "manifest_sha256": "f37c9aaf2115ac7276009d649a74a53d1cea6942f952eea872da996d976a7da0",
+  "schema_version": "ext-x1r4-a8-budget-manifest-v1",
+  "scientific_outputs_inspected": false,
+  "status": "sealed"
+}

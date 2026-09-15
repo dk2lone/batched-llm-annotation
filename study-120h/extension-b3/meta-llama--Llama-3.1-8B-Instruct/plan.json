@@ -1,0 +1,55 @@
+{
+  "batch_invariant_env": "1",
+  "calls_per_cell": 34304,
+  "cells": [
+    {
+      "call_id_order_sha256": "f7ccf84f08e1d31c1612521bb2ae62f79cb2c2a3d2b8aa1e823df181dcd67f51",
+      "calls": 34304,
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "item_id_order_sha256": "0384663a83ec28d3ce666e6bee18341b3c70e39643c7645151a909a92cfb6ebf",
+      "output_path": "cells/civil_comments/events.jsonl",
+      "prompt_hash_order_sha256": "c0caee1cab7bdaf6649b04de5f03991929b0dffa13ec9b3bbb11dc0f3185cec6"
+    },
+    {
+      "call_id_order_sha256": "adf86c17303f633fca632f7d3141693e5ac898c77ad6598e2732f47475bbbc5a",
+      "calls": 34304,
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::multi_nli",
+      "item_id_order_sha256": "55650209e7b05f41f0dda17b40de6aeaa16fcd5f2be3e3ef79a06c6c74755806",
+      "output_path": "cells/multi_nli/events.jsonl",
+      "prompt_hash_order_sha256": "08c5646f838e99bc676aec9e94b145e5048c7602c045ccb6a8598d47f326ad07"
+    },
+    {
+      "call_id_order_sha256": "33a3a6b965de67d426151398ddb55fd959b23c33fbd107bca69775be4638d74f",
+      "calls": 34304,
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::imdb",
+      "item_id_order_sha256": "f932668ba6008d198044d3d9947ec973f905ce3b477eb0ce21ca94e664751103",
+      "output_path": "cells/imdb/events.jsonl",
+      "prompt_hash_order_sha256": "fb45f7bb9000bba24903699f495816f901319664aa59e797e5f41829145769c8"
+    },
+    {
+      "call_id_order_sha256": "375f9c31981109c9719496a739b4a14d41a62ebf7be1de18cdd1e1df1488f2b5",
+      "calls": 34304,
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::ag_news",
+      "item_id_order_sha256": "1e611f0a402d74d9f6b7c7246deee4d67c057f7fb99aefc7f8b31162d6e869e8",
+      "output_path": "cells/ag_news/events.jsonl",
+      "prompt_hash_order_sha256": "191c36ff6596f32215cc1271581ca443b6d44110333c892614e465c1ee3c8834"
+    }
+  ],
+  "chunk_size": 32,
+  "dataset_order": [
+    "civil_comments",
+    "multi_nli",
+    "imdb",
+    "ag_news"
+  ],
+  "execution_blocks": 8,
+  "execution_release_sha256": "b01931a18260b536559dcfb969849265a44ad4cf1d6ad69993fa8eeab7a0040b",
+  "full_grid_lock_sha256": "626ba2791acc1de4db1fec5a939b83839e9fd069beca2a9ab794f2eaaedae389",
+  "max_retries": 1,
+  "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+  "model_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+  "plan_sha256": "752b2bc54b8bd7bb1d39194aba6e1e49d29ae726250665b95204d1589a49ae4a",
+  "schema_version": "ext-x1r4-a8-b3-model-run-v1",
+  "total_calls": 137216,
+  "workers": 4
+}

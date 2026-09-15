@@ -1,0 +1,36 @@
+{
+  "attempted_datasets": [
+    "civil_comments",
+    "multi_nli",
+    "imdb",
+    "ag_news"
+  ],
+  "completed_at_utc": "2026-09-15T03:14:40.147568+00:00",
+  "completed_datasets": [
+    "civil_comments",
+    "multi_nli",
+    "imdb",
+    "ag_news"
+  ],
+  "dataset_order": [
+    "civil_comments",
+    "multi_nli",
+    "imdb",
+    "ag_news"
+  ],
+  "first_attempts": 137216,
+  "full_model_complete": true,
+  "incomplete_datasets": [],
+  "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+  "plan_sha256": "6d5dd5cce6cae5310e5885c86f5424f2097da10f2d98cc7784779c709be6667a",
+  "requested_datasets": [
+    "civil_comments",
+    "multi_nli",
+    "imdb",
+    "ag_news"
+  ],
+  "requested_scope_complete": true,
+  "retry_attempts": 3,
+  "terminal_malformed_outputs": 3,
+  "unresolved_outputs": 1382
+}

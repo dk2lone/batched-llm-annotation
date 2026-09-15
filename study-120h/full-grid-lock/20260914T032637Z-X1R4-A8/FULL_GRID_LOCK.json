@@ -1,0 +1,450 @@
+{
+  "analysis_lock": {
+    "causal_scope": "the exact-context contrast identifies the effect of bundled joint-output generation, not output-history alone",
+    "cell_tests": "4,999 one-sided design-respecting replay draws per cell",
+    "global": "arithmetic mean of all sixteen cell effects; in this complete crossed grid this equals both equal-model and equal-task weighting",
+    "incomplete_rule": "an incomplete grid is reported as incomplete and cannot pass the recurrence gate",
+    "interaction": "cell effect - model mean - task mean + global mean",
+    "leave_one_out": "report four leave-one-model-out and four leave-one-task-out means",
+    "malformed_treatments": [
+      "unresolved_as_correct",
+      "unresolved_as_error",
+      "unresolved_dropped",
+      "whole_call_discarded"
+    ],
+    "margins": "four model means and four task means, each averaging four cells",
+    "moderators": [
+      "reference-relative accuracy",
+      "parse rate",
+      "malformed-output rate"
+    ],
+    "multiplicity": "Holm correction across the fixed sixteen primary cell tests",
+    "practical_floor": 0.002,
+    "primary_estimand": "within each cell, mean across three assignments of joint error covariance minus exact-context error covariance",
+    "primary_malformed_treatment": "unresolved_as_correct",
+    "recurrence_gate": "complete 16-cell grid; positive global effect with replay p <= 0.05; at least three model families and three tasks each contain a Holm-positive cell at or above 0.002; every leave-one-model-out and leave-one-task-out mean is positive; all four malformed-output effect treatments remain at or above 0.002"
+  },
+  "budget_lock": {
+    "complete_block_guard_multiplier": 1.6,
+    "conservative_prior_use_including_proxy_a100_hours": 2.882444856183632,
+    "gpu_start_authorized_by_this_lock": false,
+    "hard_stop_a100_hours": 80.0,
+    "meter_origin_a100_hours": 0.0,
+    "outcome_blinding": "cost and technical failure may stop a later complete block; predictions, accuracy, covariance, and p-values may not change order or item count",
+    "protected_reserve_a100_hours": 10.0,
+    "reason": "a measured full-grid block forecast has not been sealed",
+    "release_requirement": "before paid calls, seal a technical-only base forecast that clears the start formula; after each model's first 1,000 A8 attempts, replace it with a measured reforecast before releasing the rest of that model's cells",
+    "start_formula": "prior + 1.6 * complete_block_base_forecast + 10 <= 80"
+  },
+  "call_totals": {
+    "full_grid": {
+      "exact_context": 393216,
+      "joint": 24576,
+      "solo": 131072,
+      "total": 548864
+    },
+    "per_cell": {
+      "exact_context": 24576,
+      "joint": 1536,
+      "solo": 8192,
+      "total": 34304
+    }
+  },
+  "claim_dimensions": {
+    "model_families": [
+      "qwen",
+      "granite",
+      "llama",
+      "mistral"
+    ],
+    "tasks": [
+      "civil_comments",
+      "multi_nli",
+      "imdb",
+      "ag_news"
+    ]
+  },
+  "datasets": {
+    "ag_news": {
+      "dataset": "fancyzhx/ag_news",
+      "dataset_revision": "eb185aade064a813bc0b7f42de02595523103ca4",
+      "identifier_file_sha256": "8f99ae78063f4a34c26fb90b7c5a358127d7e9ee9149ad6e21e48c4dffb297dc",
+      "n_items": 8192,
+      "ordered_doc_ids_sha256": "1e611f0a402d74d9f6b7c7246deee4d67c057f7fb99aefc7f8b31162d6e869e8",
+      "reuse_rule": "this exact ordered item frame is used by all four models and by joint, exact-context, solo, and fake-batch analyses",
+      "split": "train"
+    },
+    "civil_comments": {
+      "dataset": "google/civil_comments",
+      "dataset_revision": "f2970eb3a55777454c94069077cc8d9b5866312d",
+      "identifier_file_sha256": "faa263affda23a11065a849a1245cbb046ebff43efceec2f3161b32d990c59f5",
+      "n_items": 8192,
+      "ordered_doc_ids_sha256": "0384663a83ec28d3ce666e6bee18341b3c70e39643c7645151a909a92cfb6ebf",
+      "reuse_rule": "this exact ordered item frame is used by all four models and by joint, exact-context, solo, and fake-batch analyses",
+      "split": "validation"
+    },
+    "imdb": {
+      "dataset": "stanfordnlp/imdb",
+      "dataset_revision": "e6281661ce1c48d982bc483cf8a173c1bbeb5d31",
+      "identifier_file_sha256": "fc509ed8165745e9a5d3d5c5b7bd85675912386110340bb33d817a8155d0f83d",
+      "n_items": 8192,
+      "ordered_doc_ids_sha256": "f932668ba6008d198044d3d9947ec973f905ce3b477eb0ce21ca94e664751103",
+      "reuse_rule": "this exact ordered item frame is used by all four models and by joint, exact-context, solo, and fake-batch analyses",
+      "split": "train"
+    },
+    "multi_nli": {
+      "dataset": "nyu-mll/multi_nli",
+      "dataset_revision": "da70db2af9d09693783c3320c4249840212ee221",
+      "identifier_file_sha256": "b1bfc3d457dd85a0d2d131707e67b32b9aff5811251beebe6192869738facf77",
+      "n_items": 8192,
+      "ordered_doc_ids_sha256": "55650209e7b05f41f0dda17b40de6aeaa16fcd5f2be3e3ef79a06c6c74755806",
+      "reuse_rule": "this exact ordered item frame is used by all four models and by joint, exact-context, solo, and fake-batch analyses",
+      "split": "train"
+    }
+  },
+  "design": {
+    "accuracy_and_parse_role": "reported moderators only; never eligibility gates",
+    "assignments": 3,
+    "batch_size": 16,
+    "conditions": [
+      "joint",
+      "exact_context",
+      "solo"
+    ],
+    "fake_batch_control": "regroup resolved exact-context and solo outputs using the frozen assignments; this is an analysis control and creates no additional model calls",
+    "items_per_cell": 8192,
+    "n_cells": 16,
+    "n_models": 4,
+    "n_tasks": 4,
+    "phi_status": "excluded for severe output-format failure before any extension joint output"
+  },
+  "execution_rounds": [
+    {
+      "cells": [
+        "Qwen/Qwen3-8B::ag_news",
+        "ibm-granite/granite-3.3-8b-instruct::civil_comments",
+        "meta-llama/Llama-3.1-8B-Instruct::multi_nli",
+        "mistralai/Mistral-7B-Instruct-v0.3::imdb"
+      ],
+      "round": 1
+    },
+    {
+      "cells": [
+        "Qwen/Qwen3-8B::imdb",
+        "ibm-granite/granite-3.3-8b-instruct::multi_nli",
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+        "mistralai/Mistral-7B-Instruct-v0.3::ag_news"
+      ],
+      "round": 2
+    },
+    {
+      "cells": [
+        "Qwen/Qwen3-8B::multi_nli",
+        "ibm-granite/granite-3.3-8b-instruct::imdb",
+        "meta-llama/Llama-3.1-8B-Instruct::ag_news",
+        "mistralai/Mistral-7B-Instruct-v0.3::civil_comments"
+      ],
+      "round": 3
+    },
+    {
+      "cells": [
+        "Qwen/Qwen3-8B::civil_comments",
+        "ibm-granite/granite-3.3-8b-instruct::ag_news",
+        "meta-llama/Llama-3.1-8B-Instruct::imdb",
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli"
+      ],
+      "round": 4
+    }
+  ],
+  "first_runtime_checkpoint": [
+    "Qwen/Qwen3-8B::ag_news",
+    "ibm-granite/granite-3.3-8b-instruct::civil_comments",
+    "meta-llama/Llama-3.1-8B-Instruct::multi_nli",
+    "mistralai/Mistral-7B-Instruct-v0.3::imdb"
+  ],
+  "historical_a7_preserved": true,
+  "models": [
+    {
+      "family": "qwen",
+      "model_id": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+    },
+    {
+      "family": "granite",
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "revision": "51dd4bc2ade4059a6bd87649d68aa11e4fb2529b"
+    },
+    {
+      "family": "llama",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+    },
+    {
+      "family": "mistral",
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "revision": "c170c708c41dac9275d15a8fff4eca08d52bab71"
+    }
+  ],
+  "ordered_cells": [
+    "Qwen/Qwen3-8B::ag_news",
+    "ibm-granite/granite-3.3-8b-instruct::civil_comments",
+    "meta-llama/Llama-3.1-8B-Instruct::multi_nli",
+    "mistralai/Mistral-7B-Instruct-v0.3::imdb",
+    "Qwen/Qwen3-8B::imdb",
+    "ibm-granite/granite-3.3-8b-instruct::multi_nli",
+    "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+    "mistralai/Mistral-7B-Instruct-v0.3::ag_news",
+    "Qwen/Qwen3-8B::multi_nli",
+    "ibm-granite/granite-3.3-8b-instruct::imdb",
+    "meta-llama/Llama-3.1-8B-Instruct::ag_news",
+    "mistralai/Mistral-7B-Instruct-v0.3::civil_comments",
+    "Qwen/Qwen3-8B::civil_comments",
+    "ibm-granite/granite-3.3-8b-instruct::ag_news",
+    "meta-llama/Llama-3.1-8B-Instruct::imdb",
+    "mistralai/Mistral-7B-Instruct-v0.3::multi_nli"
+  ],
+  "power_lock": {
+    "choice_rule": "fixed conservative maximum for every cell; solo accuracy and observed joint results do not alter the item count",
+    "estimated_power": 0.9726666666666667,
+    "items": 8192,
+    "planning_alpha": 0.0025,
+    "planning_error_rate": 0.5,
+    "practical_effect": 0.004,
+    "simulations": 6000,
+    "wilson_lower_bound": 0.9682
+  },
+  "schema_version": "ext-x1r4-a8-full-grid-lock-v1",
+  "scientific_model_outputs_used": false,
+  "selected_schedules": {
+    "cells": {
+      "Qwen/Qwen3-8B::ag_news": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "42df97c158f7dcf567814aef40b9f4c61fae064b8f640e9baa3e226f31f81d08",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "1f3eb8d01ab76162209c013014153d8ea05cac6ae11c0c6155a63f82a50af6f6",
+        "selected_plan_sha256": "e6d685486270cfcfe9314a1b4681b0369eef528e70102a924b859d8e6a813d0c"
+      },
+      "Qwen/Qwen3-8B::civil_comments": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "3c2d8a56ac9d0e51293275834a60728e69d5bf792830990bf49612b713342f31",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "b771d5357d95a2cb3832b96f91d6228e2471454cfa060b6da1bed074dd75f835",
+        "selected_plan_sha256": "f37bdd4069cd40d442eb8842e9e044742841237c36c2e9908bf3c67993cf1c0f"
+      },
+      "Qwen/Qwen3-8B::imdb": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "475c2afd8882b61ee094be6057f8913fc07631bb60bc2a015ef7682c1bad21c6",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "3af7cf79ce33cd28433d04bde7a43b578a7bf74fe604577815684ea6a8b2f21e",
+        "selected_plan_sha256": "8efcfdd1b55b788b55f7af72743488b9798629269f90c9ce193f4e4db8477421"
+      },
+      "Qwen/Qwen3-8B::multi_nli": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "afa90e9148b631e64e60be85101cd5c155a53388176b90e424c50f2d48066c67",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "f57bff473b02d728bd02be44a8dffb9229b4b3235e0d8c20182b7ccd5294fa61",
+        "selected_plan_sha256": "6443905fe5c7e4ba38aeae23bbbefa0dd20b0716caac4727d619f90734a28746"
+      },
+      "ibm-granite/granite-3.3-8b-instruct::ag_news": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "60974822df275986ad1bccbc157b54c0f8c9e861ccbf7fd25af7c4b933af3048",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "3a7f9805d867e099bab5597161013588db12195d1cf88478c66743a0251583b5",
+        "selected_plan_sha256": "9956a35070f8b4a43ffdc0620cb59eeaa4e74d41e798911f7ec6ee790889feea"
+      },
+      "ibm-granite/granite-3.3-8b-instruct::civil_comments": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "ce0a040562e9ac117c816c7bf975bb118a680d9bffdb9b03e90e19cbdfe5e054",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "9d9aa6f191750c14b6928c67c02fea7d8f2c1f9827e03eda6e2bf5363f5167e9",
+        "selected_plan_sha256": "80fb517f476dfb0f95175b3c5f7b7c700dfc8b9ec4f4691297a393f8e9bb9736"
+      },
+      "ibm-granite/granite-3.3-8b-instruct::imdb": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "a285f9c7279eb04a68673bf21d91f8c46e68ebf97d9333bb4dca409a05550cc1",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "391b250b0cb4244340c605fa965e5dfb1311fde40041a260880125fc30e363b3",
+        "selected_plan_sha256": "404eb9924b97ca69c5bd3a76bd4bf11d094a6096bad19b164168dd9a6a064200"
+      },
+      "ibm-granite/granite-3.3-8b-instruct::multi_nli": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "71424b360b90f4e5fa14af7c4343b97d4d961be990534bd6963ef885a4db0841",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "cb3f00dd9d11d2e3a20a8b0b9419f9e7212dc8a12f6d0aeb657518f6c77747d4",
+        "selected_plan_sha256": "7cfb8ddcc6d656f3845d7912bfb4ab2b025d562188745ccf30700ae2a507711c"
+      },
+      "meta-llama/Llama-3.1-8B-Instruct::ag_news": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "375f9c31981109c9719496a739b4a14d41a62ebf7be1de18cdd1e1df1488f2b5",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "0d3a14715a56d9c2fafcab5348b583bb8dd3aeb12bd54c4c1df9b20793dcb390",
+        "selected_plan_sha256": "2bbf95f55e3fac81e1306c229649853457313e2f906428adf9c434a7bd85ac24"
+      },
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "f7ccf84f08e1d31c1612521bb2ae62f79cb2c2a3d2b8aa1e823df181dcd67f51",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "7779613d55df7d5fd4a57c457bddd983d92add2d99496a25bfe1a29bb608d63d",
+        "selected_plan_sha256": "5d385024aa124a770254ee3498e1630992bea7b62857ec19f434e8e2f33e5e0b"
+      },
+      "meta-llama/Llama-3.1-8B-Instruct::imdb": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "33a3a6b965de67d426151398ddb55fd959b23c33fbd107bca69775be4638d74f",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "d351017625a55243e88ca69458927a07ce456038ec23f86033bd2a1292137b4a",
+        "selected_plan_sha256": "5307f7364ef7d097b9991839158143db0b42679630cba6d79dcaff40f0fc48cc"
+      },
+      "meta-llama/Llama-3.1-8B-Instruct::multi_nli": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "adf86c17303f633fca632f7d3141693e5ac898c77ad6598e2732f47475bbbc5a",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "64d3321f673c898d1e0d87f15a9e14c06dc6a8800523347e5af7c9761639c21f",
+        "selected_plan_sha256": "4b068994d685c3c4afb61a7c3aa94088cc4afd9a75869d33be32ea91e96b57c9"
+      },
+      "mistralai/Mistral-7B-Instruct-v0.3::ag_news": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "41aed64275d9cd983e39dae018e140ea269930658dd97a1cfe013b78285e9aea",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "8919898b8bacd1f874c7b7e2c0c97d233fd80d3f21331c907be0bc951b6a5669",
+        "selected_plan_sha256": "c052546f6639c32d237883d9bbab44e6815e9d3055812436d943d24105beaa8e"
+      },
+      "mistralai/Mistral-7B-Instruct-v0.3::civil_comments": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "2d907c734f44c58c005c99b4463f13eab426a30ee1319b5cc228c126bd66a084",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "8dcb50967734efb34c8f28ebd031df5e194537d2cc9200fcb2c112744f926d30",
+        "selected_plan_sha256": "b54fe6eaab2d3df8dde669390c0b1c19ead35daca3b53ad7962268b859d5aa3d"
+      },
+      "mistralai/Mistral-7B-Instruct-v0.3::imdb": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "d5abe8c7aa24b62cf41aca66921be01be31e09a4a2595dbb5cc31ec6c227740b",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "f13ab0d3df395bb52b51f7ddd6d16c91b2de37ac391da407c074071153f841c9",
+        "selected_plan_sha256": "83a92043c4507ca35449756513a142bb576c789c0622ddc3e1814f7f0f0af3f3"
+      },
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": {
+        "assignment_namespace": "bigdata2026-ext-v1",
+        "call_id_order_sha256": "ca2ce91da0d6242d8e8c4c66f89d7e0bddd5556344886ed1523102808a8e271f",
+        "counts": {
+          "exact_context": 24576,
+          "joint": 1536,
+          "solo": 8192,
+          "total": 34304
+        },
+        "n_items": 8192,
+        "record_stream_sha256": "e804b92ba6885a5bf791808174dd2aa2487000caf9a24229b01f01a2aea59a7b",
+        "selected_plan_sha256": "6b4aed7a9fb38b7ecd49d928bbc3400c5786e07bb47c9d47a510ba710542fc60"
+      }
+    },
+    "per_cell_counts": {
+      "exact_context": 24576,
+      "joint": 1536,
+      "solo": 8192,
+      "total": 34304
+    },
+    "source_plans_sha256": "9650bc2b7ad7e8b56e7290769e0457931f5470500ae5f68aecca289e17ca0539",
+    "total_calls": 548864
+  },
+  "source_hashes": {
+    "b3_plans_file_sha256": "7f13cefb2b3dbbf7b95cbf8465b57bc1e9ee4da4ef18893bc6da1d2d38ffb870",
+    "historical_a7_manifest_sha256": "f9474e85dcc06af0e8e64e5cfc8a966770aa8ca2086109cc8e938c154f994596",
+    "m1_admission_inputs_file_sha256": "84a942b7093ceda240731ec92b00811a8fc363461c59fd67eb96c2232cb43e7a",
+    "m1_summary_file_sha256": "01e530951262f26cfa19956e1cd39f555665ea8aa147b18075438a2bf58c041a",
+    "power_file_sha256": "e1af81f3593d9e65949dade57286aec3ed9767413213fbb080f5689947f3b89e",
+    "runtime_access_lock_manifest_sha256": "709c5a6bbb80498e848efe3c0a7e8cc66e865f56d8f95e8a3a0062f5fe67e112",
+    "scientific_seal_manifest_sha256": "3838c6e201388480eb08aa48e04a1ef3a5af6a86fac5d920e9837459382677d2",
+    "seal_script_file_sha256": "5522e7405038084a478d7ceca37c9203f1b9d06cfda7e1376033714703155040"
+  },
+  "status": "scientific_schedule_sealed_budget_release_pending",
+  "supersedes_for_a8_execution": "study-120h/admission-lock/20260914T012453Z-X1R4-A7"
+}

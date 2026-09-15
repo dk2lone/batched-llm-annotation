@@ -1,0 +1,116 @@
+{
+  "call_totals": {
+    "full_grid": {
+      "exact_context": 393216,
+      "joint": 24576,
+      "solo": 131072,
+      "total": 548864
+    },
+    "per_cell": {
+      "exact_context": 24576,
+      "joint": 1536,
+      "solo": 8192,
+      "total": 34304
+    }
+  },
+  "execution_policy": {
+    "a100_hour_stop": null,
+    "cost_based_block_admission": false,
+    "first_1000_attempt_pause_required": false,
+    "metering_role": "descriptive reporting only",
+    "protected_compute_reserve": null,
+    "released_calls": 548864,
+    "released_cells": 16,
+    "run_order": "run Qwen, Granite, Llama, then Mistral; within each model complete Civil Comments, MultiNLI, IMDb, then AG News",
+    "runtime_reforecast_required": false,
+    "scientific_outcome_rule": "accuracy, parse rate, covariance, and p-values cannot remove, reorder, or resize a cell",
+    "technical_failure_rule": "retry under the frozen technical policy; report any irrecoverable incomplete cell"
+  },
+  "instruction_basis": "Daniel directed that compute cost not constrain A8 and that the first-1,000-attempt pause be removed",
+  "items_per_cell": 8192,
+  "model_runs": [
+    {
+      "calls": 137216,
+      "cells": [
+        "Qwen/Qwen3-8B::civil_comments",
+        "Qwen/Qwen3-8B::multi_nli",
+        "Qwen/Qwen3-8B::imdb",
+        "Qwen/Qwen3-8B::ag_news"
+      ],
+      "family": "qwen",
+      "model_id": "Qwen/Qwen3-8B"
+    },
+    {
+      "calls": 137216,
+      "cells": [
+        "ibm-granite/granite-3.3-8b-instruct::civil_comments",
+        "ibm-granite/granite-3.3-8b-instruct::multi_nli",
+        "ibm-granite/granite-3.3-8b-instruct::imdb",
+        "ibm-granite/granite-3.3-8b-instruct::ag_news"
+      ],
+      "family": "granite",
+      "model_id": "ibm-granite/granite-3.3-8b-instruct"
+    },
+    {
+      "calls": 137216,
+      "cells": [
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+        "meta-llama/Llama-3.1-8B-Instruct::multi_nli",
+        "meta-llama/Llama-3.1-8B-Instruct::imdb",
+        "meta-llama/Llama-3.1-8B-Instruct::ag_news"
+      ],
+      "family": "llama",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct"
+    },
+    {
+      "calls": 137216,
+      "cells": [
+        "mistralai/Mistral-7B-Instruct-v0.3::civil_comments",
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+        "mistralai/Mistral-7B-Instruct-v0.3::imdb",
+        "mistralai/Mistral-7B-Instruct-v0.3::ag_news"
+      ],
+      "family": "mistral",
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3"
+    }
+  ],
+  "ordered_cells": [
+    "Qwen/Qwen3-8B::civil_comments",
+    "Qwen/Qwen3-8B::multi_nli",
+    "Qwen/Qwen3-8B::imdb",
+    "Qwen/Qwen3-8B::ag_news",
+    "ibm-granite/granite-3.3-8b-instruct::civil_comments",
+    "ibm-granite/granite-3.3-8b-instruct::multi_nli",
+    "ibm-granite/granite-3.3-8b-instruct::imdb",
+    "ibm-granite/granite-3.3-8b-instruct::ag_news",
+    "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+    "meta-llama/Llama-3.1-8B-Instruct::multi_nli",
+    "meta-llama/Llama-3.1-8B-Instruct::imdb",
+    "meta-llama/Llama-3.1-8B-Instruct::ag_news",
+    "mistralai/Mistral-7B-Instruct-v0.3::civil_comments",
+    "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+    "mistralai/Mistral-7B-Instruct-v0.3::imdb",
+    "mistralai/Mistral-7B-Instruct-v0.3::ag_news"
+  ],
+  "run_state": {
+    "budget_policy_allows_complete_grid": true,
+    "gpu_work_launched_by_this_release": false,
+    "scientific_model_outputs_generated_by_this_release": false
+  },
+  "schema_version": "ext-x1r4-a8-model-major-execution-release-v2",
+  "scientific_design_unchanged": true,
+  "source_hashes": {
+    "budget_manifest_sha256": "f37c9aaf2115ac7276009d649a74a53d1cea6942f952eea872da996d976a7da0",
+    "budget_release_sha256": "94fc0e148b7756493f07823d6fb7eeb89e3aa149a6eb0ebfc9e4dc08444a3590",
+    "execution_release_script_sha256": "4f71cf0a500750d30a0933c64b6d9b9a4464928bc08a09ce765b30d8d98fdaf9",
+    "full_grid_lock_sha256": "626ba2791acc1de4db1fec5a939b83839e9fd069beca2a9ab794f2eaaedae389",
+    "full_grid_manifest_sha256": "8ca1b0b520fbd77c464ab94c58fe637dbc8f686eb16a877ca69aed621baacc74",
+    "prior_execution_manifest_sha256": "e7fd5343f71f5673fec2f3e3c6e47f7cc81be9b63bd972c99a15500f41686a8b"
+  },
+  "status": "complete_grid_released_model_by_model",
+  "supersedes_budget_policy_only": [
+    "study-120h/full-grid-lock/20260914T032937Z-X1R4-A8",
+    "study-120h/budget-release/20260914T033645Z-X1R4-A8-budget"
+  ],
+  "supersedes_execution_order": "study-120h/execution-release/20260914T034111Z-X1R4-A8-complete"
+}

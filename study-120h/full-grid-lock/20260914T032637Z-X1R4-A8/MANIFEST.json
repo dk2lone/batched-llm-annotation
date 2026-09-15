@@ -1,0 +1,12 @@
+{
+  "files_sha256": {
+    "FULL_GRID_LOCK.json": "be709a6a1235b50f503d7c020ac6e7e8305d88de3e69fadcffa94a7f69f92f77",
+    "REPORT.md": "111c197131214a846c86ee70afca183082dae93c507252082875faef40d3cee8"
+  },
+  "gpu_start_authorized": false,
+  "gpu_work_launched": false,
+  "manifest_sha256": "ba0e0fb24fd03591eb611df423ccd6a303f218f8f4a96f0ffae0505b1215a7aa",
+  "schema_version": "ext-x1r4-a8-full-grid-manifest-v1",
+  "scientific_model_outputs": false,
+  "status": "sealed"
+}

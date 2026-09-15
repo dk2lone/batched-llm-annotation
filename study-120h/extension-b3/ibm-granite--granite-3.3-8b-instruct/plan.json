@@ -1,0 +1,55 @@
+{
+  "batch_invariant_env": "1",
+  "calls_per_cell": 34304,
+  "cells": [
+    {
+      "call_id_order_sha256": "ce0a040562e9ac117c816c7bf975bb118a680d9bffdb9b03e90e19cbdfe5e054",
+      "calls": 34304,
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::civil_comments",
+      "item_id_order_sha256": "0384663a83ec28d3ce666e6bee18341b3c70e39643c7645151a909a92cfb6ebf",
+      "output_path": "cells/civil_comments/events.jsonl",
+      "prompt_hash_order_sha256": "ca156138121a6d017dc503b7347437e522ad27ee99c4dca85766a351e6ab4462"
+    },
+    {
+      "call_id_order_sha256": "71424b360b90f4e5fa14af7c4343b97d4d961be990534bd6963ef885a4db0841",
+      "calls": 34304,
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::multi_nli",
+      "item_id_order_sha256": "55650209e7b05f41f0dda17b40de6aeaa16fcd5f2be3e3ef79a06c6c74755806",
+      "output_path": "cells/multi_nli/events.jsonl",
+      "prompt_hash_order_sha256": "373f188eea115ec1f20401e196773f2a2e599a1b082293b7fd51f694c5db5ca5"
+    },
+    {
+      "call_id_order_sha256": "a285f9c7279eb04a68673bf21d91f8c46e68ebf97d9333bb4dca409a05550cc1",
+      "calls": 34304,
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "item_id_order_sha256": "f932668ba6008d198044d3d9947ec973f905ce3b477eb0ce21ca94e664751103",
+      "output_path": "cells/imdb/events.jsonl",
+      "prompt_hash_order_sha256": "db64c4da71ab26b34249cb5c4be1137b668cefaffdb4d17999d9503787ad9eee"
+    },
+    {
+      "call_id_order_sha256": "60974822df275986ad1bccbc157b54c0f8c9e861ccbf7fd25af7c4b933af3048",
+      "calls": 34304,
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::ag_news",
+      "item_id_order_sha256": "1e611f0a402d74d9f6b7c7246deee4d67c057f7fb99aefc7f8b31162d6e869e8",
+      "output_path": "cells/ag_news/events.jsonl",
+      "prompt_hash_order_sha256": "08e708682b2a4e6a1b3070498671308ff689a13acad099dca00c3400a0a352c3"
+    }
+  ],
+  "chunk_size": 32,
+  "dataset_order": [
+    "civil_comments",
+    "multi_nli",
+    "imdb",
+    "ag_news"
+  ],
+  "execution_blocks": 8,
+  "execution_release_sha256": "b01931a18260b536559dcfb969849265a44ad4cf1d6ad69993fa8eeab7a0040b",
+  "full_grid_lock_sha256": "626ba2791acc1de4db1fec5a939b83839e9fd069beca2a9ab794f2eaaedae389",
+  "max_retries": 1,
+  "model_id": "ibm-granite/granite-3.3-8b-instruct",
+  "model_revision": "51dd4bc2ade4059a6bd87649d68aa11e4fb2529b",
+  "plan_sha256": "4ba71f083a09569e0fb76756f72f90bdaa0f8242965a0784ae899e3494bde32f",
+  "schema_version": "ext-x1r4-a8-b3-model-run-v1",
+  "total_calls": 137216,
+  "workers": 8
+}

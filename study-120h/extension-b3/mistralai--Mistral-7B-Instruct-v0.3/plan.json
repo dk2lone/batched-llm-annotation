@@ -1,0 +1,55 @@
+{
+  "batch_invariant_env": "1",
+  "calls_per_cell": 34304,
+  "cells": [
+    {
+      "call_id_order_sha256": "2d907c734f44c58c005c99b4463f13eab426a30ee1319b5cc228c126bd66a084",
+      "calls": 34304,
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::civil_comments",
+      "item_id_order_sha256": "0384663a83ec28d3ce666e6bee18341b3c70e39643c7645151a909a92cfb6ebf",
+      "output_path": "cells/civil_comments/events.jsonl",
+      "prompt_hash_order_sha256": "ac71ced7ed98f3ee3ffee44b5cbfc12c25b5f98327a8d50c5e29e21f82082fca"
+    },
+    {
+      "call_id_order_sha256": "ca2ce91da0d6242d8e8c4c66f89d7e0bddd5556344886ed1523102808a8e271f",
+      "calls": 34304,
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "item_id_order_sha256": "55650209e7b05f41f0dda17b40de6aeaa16fcd5f2be3e3ef79a06c6c74755806",
+      "output_path": "cells/multi_nli/events.jsonl",
+      "prompt_hash_order_sha256": "24b0c11731d94cf56080b15c90ecab88abe0ce1e94a89a8de935bdd30b5447b9"
+    },
+    {
+      "call_id_order_sha256": "d5abe8c7aa24b62cf41aca66921be01be31e09a4a2595dbb5cc31ec6c227740b",
+      "calls": 34304,
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::imdb",
+      "item_id_order_sha256": "f932668ba6008d198044d3d9947ec973f905ce3b477eb0ce21ca94e664751103",
+      "output_path": "cells/imdb/events.jsonl",
+      "prompt_hash_order_sha256": "3edd65c866e586005e7355f0f891421fc89f1335f710a68d380146782643b665"
+    },
+    {
+      "call_id_order_sha256": "41aed64275d9cd983e39dae018e140ea269930658dd97a1cfe013b78285e9aea",
+      "calls": 34304,
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::ag_news",
+      "item_id_order_sha256": "1e611f0a402d74d9f6b7c7246deee4d67c057f7fb99aefc7f8b31162d6e869e8",
+      "output_path": "cells/ag_news/events.jsonl",
+      "prompt_hash_order_sha256": "4182a9c7d8683fd135279aec807bd9587c3ac9a286a2b1d650fceba5084f068d"
+    }
+  ],
+  "chunk_size": 32,
+  "dataset_order": [
+    "civil_comments",
+    "multi_nli",
+    "imdb",
+    "ag_news"
+  ],
+  "execution_blocks": 8,
+  "execution_release_sha256": "b01931a18260b536559dcfb969849265a44ad4cf1d6ad69993fa8eeab7a0040b",
+  "full_grid_lock_sha256": "626ba2791acc1de4db1fec5a939b83839e9fd069beca2a9ab794f2eaaedae389",
+  "max_retries": 1,
+  "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+  "model_revision": "c170c708c41dac9275d15a8fff4eca08d52bab71",
+  "plan_sha256": "6d5dd5cce6cae5310e5885c86f5424f2097da10f2d98cc7784779c709be6667a",
+  "schema_version": "ext-x1r4-a8-b3-model-run-v1",
+  "total_calls": 137216,
+  "workers": 4
+}

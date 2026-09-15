@@ -1,0 +1,13 @@
+{
+  "complete_grid_released": true,
+  "cost_gate_active": false,
+  "files_sha256": {
+    "EXECUTION_RELEASE.json": "28b55811315c601cd0a93468d49fb689112c06a82c900bc84bc97e17a43a329c",
+    "REPORT.md": "7453273c8b11803508c7b25267249d220f371ffdff1efc489b8907a1eaf4180a"
+  },
+  "gpu_work_launched": false,
+  "manifest_sha256": "e7fd5343f71f5673fec2f3e3c6e47f7cc81be9b63bd972c99a15500f41686a8b",
+  "schema_version": "ext-x1r4-a8-complete-execution-manifest-v1",
+  "scientific_model_outputs": false,
+  "status": "sealed"
+}

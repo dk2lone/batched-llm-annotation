@@ -1,0 +1,55 @@
+{
+  "batch_invariant_env": "1",
+  "calls_per_cell": 34304,
+  "cells": [
+    {
+      "call_id_order_sha256": "3c2d8a56ac9d0e51293275834a60728e69d5bf792830990bf49612b713342f31",
+      "calls": 34304,
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "item_id_order_sha256": "0384663a83ec28d3ce666e6bee18341b3c70e39643c7645151a909a92cfb6ebf",
+      "output_path": "cells/civil_comments/events.jsonl",
+      "prompt_hash_order_sha256": "52107b5a693e6c71f8087768508e8138b45444e01bbfc75797271726c6e7790a"
+    },
+    {
+      "call_id_order_sha256": "afa90e9148b631e64e60be85101cd5c155a53388176b90e424c50f2d48066c67",
+      "calls": 34304,
+      "cell_key": "Qwen/Qwen3-8B::multi_nli",
+      "item_id_order_sha256": "55650209e7b05f41f0dda17b40de6aeaa16fcd5f2be3e3ef79a06c6c74755806",
+      "output_path": "cells/multi_nli/events.jsonl",
+      "prompt_hash_order_sha256": "8d8cbf1a3939b6a6b0ecaee2dbafe80e10d2656bf2df520ef36c6f263495d959"
+    },
+    {
+      "call_id_order_sha256": "475c2afd8882b61ee094be6057f8913fc07631bb60bc2a015ef7682c1bad21c6",
+      "calls": 34304,
+      "cell_key": "Qwen/Qwen3-8B::imdb",
+      "item_id_order_sha256": "f932668ba6008d198044d3d9947ec973f905ce3b477eb0ce21ca94e664751103",
+      "output_path": "cells/imdb/events.jsonl",
+      "prompt_hash_order_sha256": "8e2c1d5f5e2d00ddaa51a31458c9b1c260be10ef4f66e7df3880adb422f13290"
+    },
+    {
+      "call_id_order_sha256": "42df97c158f7dcf567814aef40b9f4c61fae064b8f640e9baa3e226f31f81d08",
+      "calls": 34304,
+      "cell_key": "Qwen/Qwen3-8B::ag_news",
+      "item_id_order_sha256": "1e611f0a402d74d9f6b7c7246deee4d67c057f7fb99aefc7f8b31162d6e869e8",
+      "output_path": "cells/ag_news/events.jsonl",
+      "prompt_hash_order_sha256": "933ea35ae045a6bc6cec742f504d5688d426ab662a0065b1f2957ac07e653b89"
+    }
+  ],
+  "chunk_size": 32,
+  "dataset_order": [
+    "civil_comments",
+    "multi_nli",
+    "imdb",
+    "ag_news"
+  ],
+  "execution_blocks": 8,
+  "execution_release_sha256": "b01931a18260b536559dcfb969849265a44ad4cf1d6ad69993fa8eeab7a0040b",
+  "full_grid_lock_sha256": "626ba2791acc1de4db1fec5a939b83839e9fd069beca2a9ab794f2eaaedae389",
+  "max_retries": 1,
+  "model_id": "Qwen/Qwen3-8B",
+  "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "plan_sha256": "fa36af1fbd59b66660c8fd82205f6dff4bf41856dfdb3649fa874d3e84806a8b",
+  "schema_version": "ext-x1r4-a8-b3-model-run-v1",
+  "total_calls": 137216,
+  "workers": 8
+}

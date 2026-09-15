@@ -1,0 +1,36 @@
+{
+  "attempted_datasets": [
+    "civil_comments",
+    "multi_nli",
+    "imdb",
+    "ag_news"
+  ],
+  "completed_at_utc": "2026-09-14T22:04:52.698023+00:00",
+  "completed_datasets": [
+    "civil_comments",
+    "multi_nli",
+    "imdb",
+    "ag_news"
+  ],
+  "dataset_order": [
+    "civil_comments",
+    "multi_nli",
+    "imdb",
+    "ag_news"
+  ],
+  "first_attempts": 137216,
+  "full_model_complete": true,
+  "incomplete_datasets": [],
+  "model_id": "ibm-granite/granite-3.3-8b-instruct",
+  "plan_sha256": "4ba71f083a09569e0fb76756f72f90bdaa0f8242965a0784ae899e3494bde32f",
+  "requested_datasets": [
+    "civil_comments",
+    "multi_nli",
+    "imdb",
+    "ag_news"
+  ],
+  "requested_scope_complete": true,
+  "retry_attempts": 99,
+  "terminal_malformed_outputs": 99,
+  "unresolved_outputs": 1367
+}
