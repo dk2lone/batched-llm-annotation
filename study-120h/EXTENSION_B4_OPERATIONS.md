@@ -3,6 +3,9 @@
 B4 measures repeated-sampling uncertainty in the four cells selected by the A7 solo screen.
 The initial prefix is 250 reference and 400 evaluation replicates per cell, with 32 fresh
 size-16 calls per replicate: 83,200 first calls. Frozen protocols and their seals are unchanged.
+Execution now uses up to four parallel A100s, one single-GPU worker per selected cell.
+The four reference streams finish before any evaluation starts. GPU-hours count the sum of
+all four workers' time, not the elapsed time of their shared round.
 
 ## CPU preparation
 
@@ -16,6 +19,9 @@ This verifies all source seals, private frames, and full nested B4 schedules. It
 immutable `PLAN-400.json`. It does not import the Modal transport or contact a remote service.
 Success prints `first_calls: 83200` and `gpu_work_launched: false`; changed/missing seals or
 frames stop preparation. The private frame files are not bundled with this implementation.
+Plans bind the four-GPU execution policy and updated code hashes. Existing timestamped
+single-lane drafts remain preserved but are superseded. Use a new output directory for the
+updated implementation rather than overwriting an old `PLAN-400.json`.
 
 ## Execution boundary
 
@@ -30,6 +36,7 @@ An operator budget input is a JSON object with these fields:
   "verified_at_utc": "REPLACE_WITH_FRESH_TIMEZONE_AWARE_UTC_TIME",
   "workspace_enabled": true,
   "exclusive_gpu_work": true,
+  "a100_concurrency_limit": "REPLACE_WITH_VERIFIED_INTEGER_AT_LEAST_4",
   "prior_extension_a100_hours": "REPLACE_WITH_METERED_PRIOR_EXTENSION_USE",
   "spend_limit_usd": "REPLACE_WITH_VERIFIED_LIMIT",
   "spend_used_usd": "REPLACE_WITH_CURRENT_SPEND",
@@ -53,6 +60,8 @@ Evaluation forecasts cover the requested full prefix. Evidence is operator-verif
 by preparation. Do not put account tokens or credentials in this file.
 Forecasts include fresh model startup. Resumes retain the full forecast rather than prorating
 startup costs by the number of missing calls.
+The concurrency limit is verified account capacity, not a promise that four GPUs are immediately
+available. Each forecast is that cell's single-GPU stream duration, not the four-lane round time.
 
 ```sh
 .venv/bin/python prepare_extension_b4_budget.py --plan extension-b4/initial/PLAN-400.json --input budget-evidence.json --profile VERIFIED_PROFILE --output budget-record.json
@@ -67,12 +76,22 @@ Only after authorization, the execution command is:
 MODAL_PROFILE=VERIFIED_PROFILE .venv/bin/python modal_extension_b4.py --output extension-b4/initial --execute --profile VERIFIED_PROFILE --budget-record budget-record.json
 ```
 
-This is the only GPU-starting path. One GPU lane runs all references before evaluation, with
-BF16, greedy decoding, vLLM 0.28.0 and required batch invariance. Each complete stream needs a
-guarded forecast that fits the protected ceiling and verified spend capacity. Whole-phase wall
-accounting includes model startup, generation, recovery and shutdown, plus 60 seconds of
-settlement allowance. A timeout cancels the outstanding call and terminates its container.
-An ambiguous failure leaves the meter unsettled and blocks further launches.
+This is the only GPU-starting path. Up to four independent cell lanes run together, with BF16,
+greedy decoding, vLLM 0.28.0 and required batch invariance. Each parameterized model pool is
+limited to one A100; the runner submits at most four lanes. All references precede evaluation,
+and every family completes a prefix before the next prefix starts.
+
+Before launching a round, the sum of all participating streams' 1.6x guarded forecasts plus
+60 seconds per lane must fit the protected ceiling and verified spend capacity. Each lane has
+its own guarded deadline. Per-lane wall accounting includes startup, recovery and generation,
+with 60 seconds for shutdown/idle settlement. Charges are added across lanes. The shared Modal
+app must shut down successfully before the round's meter is settled.
+
+A timeout or peer failure cancels outstanding calls and requests container termination. Polling
+checks for peer failure at least once per second while awaiting a remote result. No later round
+starts after a failure. An ambiguous failure, including app shutdown failure, leaves the entire
+round unsettled and blocks further launches. Reconcile each reserved phase with verified
+billing before resuming, including zero-charge phases that never started a worker.
 
 Reusing the command/output resumes missing attempts without reusing a response for a new
 scientific call. Raw responses, serving receipts and linked technical retries are preserved.

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import ast
 import copy
 import datetime as dt
 import importlib.util
@@ -11,6 +12,8 @@ import sys
 from collections.abc import Iterator
 from contextlib import contextmanager
 from pathlib import Path
+from threading import Barrier, Event, Lock
+from types import SimpleNamespace
 from typing import Any
 
 import numpy as np
@@ -50,6 +53,7 @@ def budget(plan: dict[str, Any]) -> dict[str, Any]:
         "profile": "cpu-test",
         "workspace_enabled": True,
         "exclusive_gpu_work": True,
+        "a100_concurrency_limit": 4,
         "verified_at_utc": dt.datetime.now(dt.UTC).isoformat(),
         "prior_extension_a100_hours": 0,
         "spend_limit_usd": 1000,
@@ -172,6 +176,8 @@ def test_budget_requires_hash_freshness_profile_and_finite_values() -> None:
         ("prior_extension_a100_hours", float("nan")),
         ("verified_at_utc", "2020-01-01T00:00:00+00:00"),
         ("profile", "other"),
+        ("a100_concurrency_limit", 3),
+        ("a100_concurrency_limit", True),
     ):
         changed = {**original, key: value}
         changed["record_sha256"] = sha256_json(
@@ -302,6 +308,10 @@ def test_remote_failure_blocks_next_cell_and_requires_reconciliation(
 
     class Failed:
         @contextmanager
+        def session(self) -> Iterator[None]:
+            yield
+
+        @contextmanager
         def phase(self, cell: str, stream: str, schedule: Any) -> Iterator[Any]:
             launches.append(cell)
             raise RuntimeError("synthetic startup failure")
@@ -309,7 +319,8 @@ def test_remote_failure_blocks_next_cell_and_requires_reconciliation(
 
     with pytest.raises(RuntimeError, match="startup"):
         runner.dispatch(STUDY, tmp_path, plan, budget(plan), Failed())
-    assert launches == [b4.CELLS[0]]
+    assert launches and set(launches) <= set(b4.CELLS)
+    assert len(launches) <= 4
     with pytest.raises(RuntimeError, match="unsettled"):
         runner.meter(tmp_path, budget(plan))
 
@@ -399,19 +410,26 @@ def test_dispatch_reference_barrier_resume_and_budget_stop(
 
     class Fake:
         @contextmanager
+        def session(self) -> Iterator[None]:
+            yield
+
+        @contextmanager
         def phase(self, cell: str, stream: str, schedule: Any) -> Iterator[Any]:
             launches.append((cell, stream))
             yield self
 
-        def recover(self, namespace: str) -> list[Any]:
+        def recover(self, namespace: str, timeout: float, stop: Event) -> list[Any]:
             return []
 
         def run(
-            self, namespace: str, chunk_id: str, group: list[Any], remaining: float
+            self,
+            namespace: str,
+            chunk_id: str,
+            group: list[Any],
+            remaining: float,
+            stop: Event,
         ) -> dict[str, Any]:
             result = payload(group, [response(job) for job in group])
-            requested_model = launches[-1][0].rsplit("::", 1)[0]
-            result["backend"]["model_id"] = requested_model
             return result
 
     record = budget(plan)
@@ -423,6 +441,175 @@ def test_dispatch_reference_barrier_resume_and_budget_stop(
     blocked = {**record, "prior_extension_a100_hours": 70}
     with pytest.raises(RuntimeError, match="budget"):
         runner.dispatch(STUDY, tmp_path / "blocked", plan, blocked, Fake())
+
+
+@pytest.mark.parametrize(
+    "mode", ["success", "nested", "aggregate_budget", "peer_failure", "shutdown"]
+)
+def test_four_parallel_lanes_and_round_safety(
+    mode: str, tmp_path: Path, rows: list[dict[str, Any]], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    original_jobs = b4.jobs
+    monkeypatch.setattr(b4, "frame", lambda study, task: rows)
+    monkeypatch.setattr(
+        b4,
+        "jobs",
+        lambda cell, data, stream, count, **kwargs: original_jobs(
+            cell,
+            data,
+            stream,
+            2 if mode == "nested" and stream == "evaluation" else 1,
+            **kwargs,
+        ),
+    )
+    if mode == "nested":
+        monkeypatch.setattr(
+            runner,
+            "phases",
+            lambda prefix: (
+                [(cell, "reference", 1) for cell in b4.CELLS]
+                + [(cell, "evaluation", count) for count in (1, 2) for cell in b4.CELLS]
+            ),
+        )
+    plan = {
+        "plan_sha256": "cpu-plan",
+        "evaluation_prefix": 400,
+        "schedules": dict.fromkeys(b4.CELLS, {}),
+        "serving_policy": {
+            cell.rsplit("::", 1)[0]: ext.ext_policy_for(cell.rsplit("::", 1)[0]).revision
+            for cell in b4.CELLS
+        },
+    }
+    record = budget(plan)
+    if mode == "aggregate_budget":
+        # Every lane fits by itself, but the combined four-lane round does not.
+        record["prior_extension_a100_hours"] = 65
+    lock = Lock()
+    barrier = Barrier(4, timeout=5)
+    active = 0
+    peak = 0
+    launches: list[tuple[str, str]] = []
+    finished_reference: set[str] = set()
+    failures: list[str] = []
+
+    class Fake:
+        @contextmanager
+        def session(self) -> Iterator[None]:
+            yield
+            if mode == "shutdown":
+                raise RuntimeError("synthetic app shutdown failure")
+
+        @contextmanager
+        def phase(self, cell: str, stream: str, schedule: Any) -> Iterator[Any]:
+            nonlocal active, peak
+            with lock:
+                if stream == "evaluation":
+                    assert finished_reference == set(b4.CELLS)
+                launches.append((cell, stream))
+                active += 1
+                peak = max(peak, active)
+            try:
+                barrier.wait()
+                yield SimpleNamespace(
+                    recover=lambda namespace, timeout, stop: [],
+                    run=lambda namespace, chunk, group, remaining, stop: self.run(
+                        cell, stream, group, remaining, stop
+                    ),
+                )
+                with lock:
+                    if stream == "reference":
+                        finished_reference.add(cell)
+            finally:
+                with lock:
+                    active -= 1
+
+        def run(
+            self, cell: str, stream: str, group: list[Any], remaining: float, stop: Event
+        ) -> dict[str, Any]:
+            assert 0 < remaining <= 1.6 * 3600
+            if mode == "peer_failure":
+                if cell == b4.CELLS[0]:
+                    raise RuntimeError("synthetic peer failure")
+                assert stop.wait(timeout=5)
+                failures.append(cell)
+                raise RuntimeError("peer canceled")
+            return payload(group, [response(job) for job in group])
+
+    if mode in ("success", "nested"):
+        runner.dispatch(STUDY, tmp_path, plan, record, Fake())
+        expected_rounds = 3 if mode == "nested" else 2
+        assert peak == 4 and len(launches) == expected_rounds * 4 and active == 0
+        records = b4.events(tmp_path / "meter.jsonl")
+        assert [row["kind"] for row in records] == (
+            ["start"] * 4 + ["settled"] * 4
+        ) * expected_rounds
+        # Accounting is the sum of four separate lane charges, not round wall time.
+        assert runner.meter(tmp_path, record) == sum(
+            row["charged_hours"] for row in records if row["kind"] == "settled"
+        )
+        runner.dispatch(STUDY, tmp_path, plan, record, Fake())
+        assert len(launches) == expected_rounds * 4
+    elif mode == "aggregate_budget":
+        with pytest.raises(RuntimeError, match="budget"):
+            runner.dispatch(STUDY, tmp_path, plan, record, Fake())
+        assert launches == [] and b4.events(tmp_path / "meter.jsonl") == []
+    else:
+        with pytest.raises(RuntimeError):
+            runner.dispatch(STUDY, tmp_path, plan, record, Fake())
+        assert peak == 4 and active == 0
+        assert [stream for _, stream in launches] == ["reference"] * 4
+        with pytest.raises(RuntimeError, match="unsettled"):
+            runner.dispatch(STUDY, tmp_path, plan, record, Fake())
+        assert len(launches) == 4
+
+
+@pytest.mark.parametrize("mode", ["ready", "stopped", "deadline", "failure"])
+def test_transport_polling_and_container_cancellation(mode: str) -> None:
+    # Compile only the local Lane class, with a fake Modal SDK. No transport
+    # import, volume lookup, app creation, or remote call is performed.
+    tree = ast.parse((STUDY / "extension_b4_transport.py").read_text())
+    lane_tree = ast.Module(
+        body=[node for node in tree.body if isinstance(node, ast.ClassDef) and node.name == "Lane"],
+        type_ignores=[],
+    )
+
+    class PollTimeout(Exception):
+        pass
+
+    state = {"gets": 0, "cancels": 0}
+    stop = Event()
+    if mode == "stopped":
+        stop.set()
+
+    class Call:
+        def get(self, timeout: float) -> dict[str, str]:
+            assert 0 < timeout <= 1
+            state["gets"] += 1
+            if mode == "failure":
+                raise ValueError("synthetic remote failure")
+            if state["gets"] == 1:
+                raise PollTimeout()
+            return {"result": "ready"}
+
+        def cancel(self, terminate_containers: bool) -> None:
+            assert terminate_containers is True
+            state["cancels"] += 1
+
+    namespace: dict[str, Any] = {
+        "Any": Any,
+        "Event": Event,
+        "time": SimpleNamespace(monotonic=lambda: 0),
+        "modal": SimpleNamespace(exception=SimpleNamespace(TimeoutError=PollTimeout)),
+    }
+    exec(compile(lane_tree, "b4-local-lane-test", "exec"), namespace)
+    lane = namespace["Lane"](None, "civil_comments")
+    if mode == "ready":
+        assert lane.wait(Call(), 5, stop) == {"result": "ready"}
+        assert state == {"gets": 2, "cancels": 0}
+    else:
+        with pytest.raises((RuntimeError, ValueError)):
+            lane.wait(Call(), 0 if mode == "deadline" else 5, stop)
+        assert state["cancels"] == 1
 
 
 def test_empty_ledgers_cannot_make_coverage_claim(
@@ -447,3 +634,4 @@ def test_real_a7_schedule_and_source_bindings() -> None:
     assert plan["cells"] == list(b4.CELLS)
     assert plan["first_calls"] == 83200
     assert plan["stop_a100_hours"] == 80
+    assert plan["max_concurrent_a100s"] == 4

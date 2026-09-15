@@ -170,6 +170,8 @@ def build_plan(study: Path, prefix: int = 400) -> dict[str, Any]:
             for cell in CELLS
         },
         "execution_order": "all_reference_cells_then_equal_family_evaluation_prefixes",
+        "max_concurrent_a100s": 4,
+        "parallelism": "one_single_gpu_lane_per_cell_with_round_barriers",
         "max_retries": 1,
         "unresolved_policy": "block_coverage_without_imputation",
         "stop_a100_hours": 80,
@@ -312,6 +314,13 @@ def verify_budget(record: dict[str, Any], plan: dict[str, Any], profile: str) ->
         raise ValueError("budget record is not bound to this plan/profile")
     if record.get("workspace_enabled") is not True or record.get("exclusive_gpu_work") is not True:
         raise ValueError("fresh workspace availability/exclusive metering must be confirmed")
+    concurrency = record.get("a100_concurrency_limit")
+    if (
+        isinstance(concurrency, bool)
+        or not isinstance(concurrency, int)
+        or concurrency < int(plan.get("max_concurrent_a100s", 4))
+    ):
+        raise ValueError("verified workspace capacity must permit four concurrent A100s")
     verified = dt.datetime.fromisoformat(str(record["verified_at_utc"]))
     if (
         verified.tzinfo is None

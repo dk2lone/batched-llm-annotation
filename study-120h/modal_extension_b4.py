@@ -10,7 +10,10 @@ import math
 import sys
 import time
 import uuid
+from concurrent.futures import Future, ThreadPoolExecutor, as_completed
+from itertools import groupby
 from pathlib import Path
+from threading import Event
 from typing import Any
 
 STUDY = Path(__file__).resolve().parent
@@ -64,56 +67,131 @@ def dispatch(
     transport: Any,
     chunk_size: int = 32,
 ) -> None:
-    """One GPU lane. Whole-phase wall accounting includes startup and failures."""
+    """Four independent lanes, with a shared budget and barriers between prefixes."""
     if not 1 <= chunk_size <= 64:
         raise ValueError("chunk size must be 1 through 64")
-    for cell, stream, count in phases(int(plan["evaluation_prefix"])):
-        rows = b4.frame(study, cell.rsplit("::", 1)[1])
-        full_count = 250 if stream == "reference" else int(plan["evaluation_prefix"])
-        all_jobs = list(b4.jobs(cell, rows, stream, full_count, render=False))
-        path = b4.stream_path(out, cell, stream)
-        stored = b4.events(path)
-        cache = b4.validate_events(all_jobs, stored)
-        planned = all_jobs[: count * 32]
-        ids = {job["call_id"] for job in planned}
-        selected = [event for event in stored if event["call_id"] in ids]
-        work = b4.pending(planned, selected)
-        if not work:
-            # A terminal malformed response is retained, not sampled again.
+    meter(out, budget)
+    for _, group in groupby(phases(int(plan["evaluation_prefix"])), key=lambda phase: phase[1:]):
+        prepared = []
+        for cell, stream, count in group:
+            rows = b4.frame(study, cell.rsplit("::", 1)[1])
+            full_count = 250 if stream == "reference" else int(plan["evaluation_prefix"])
+            all_jobs = list(b4.jobs(cell, rows, stream, full_count, render=False))
+            path = b4.stream_path(out, cell, stream)
+            cache = b4.validate_events(all_jobs, b4.events(path))
+            planned = all_jobs[: count * 32]
+            ids = {job["call_id"] for job in planned}
+            if b4.pending(planned, [row for row in cache.values() if row["call_id"] in ids]):
+                prepared.append((cell, stream, count, rows, all_jobs, path, cache, planned))
+        if not prepared:
             continue
+        if len(prepared) > 4 or len({phase[0] for phase in prepared}) != len(prepared):
+            raise ValueError("B4 round must have at most four distinct cell lanes")
         used = meter(out, budget)
-        base = float(budget["base_forecast_hours"][f"{cell}|{stream}"])
-        # A resume still pays for a fresh model load. Retain the full stream
-        # forecast rather than scaling startup cost down with missing calls.
-        guarded = 1.6 * base
         available = min(
             80 - used - 10,
             (budget["spend_limit_usd"] - budget["spend_used_usd"]) / budget["a100_usd_per_hour"]
             - (used - budget["prior_extension_a100_hours"]),
         )
-        # Sixty seconds of settlement allowance protects shutdown/idle billing.
-        if guarded + 60 / 3600 > available:
-            raise RuntimeError(f"complete B4 stream does not fit protected budget: {cell}|{stream}")
-        identity = uuid.uuid4().hex
-        started = time.monotonic()
+        # Allocate separate deadlines. Giving each lane the entire remaining
+        # budget would allow four lanes to overspend it simultaneously.
+        allowances = [
+            1.6 * float(budget["base_forecast_hours"][f"{cell}|{stream}"])
+            for cell, stream, *_ in prepared
+        ]
+        if sum(allowances) + len(prepared) * 60 / 3600 > available:
+            raise RuntimeError("complete parallel B4 round does not fit protected budget")
+        identities = [uuid.uuid4().hex for _ in prepared]
         b4.append(
             out / "meter.jsonl",
             [
                 {
                     "kind": "start",
                     "phase_id": identity,
-                    "cell_key": cell,
-                    "stream": stream,
-                    "prefix": count,
+                    "cell_key": phase[0],
+                    "stream": phase[1],
+                    "prefix": phase[2],
                     "budget_sha256": budget["record_sha256"],
-                    "guarded_forecast_hours": guarded,
+                    "guarded_forecast_hours": allowance,
                     "started_at_utc": dt.datetime.now(dt.UTC).isoformat(),
                 }
+                for identity, phase, allowance in zip(identities, prepared, allowances, strict=True)
             ],
         )
-        # A crash or ambiguous remote failure leaves this phase unsettled and
-        # blocks further launches. Never pretend lost receipts cost zero.
-        deadline = started + (available * 3600 - 60)
+        stop = Event()
+        failures: list[BaseException] = []
+        charges: dict[str, float] = {}
+        # One Modal app context owns every lane in this round. A lane must not
+        # stop the shared app while another cell is still generating.
+        with transport.session():
+            with ThreadPoolExecutor(max_workers=4, thread_name_prefix="b4-cell") as pool:
+                futures: dict[Future[float], str] = {}
+                failure: BaseException | None = None
+                try:
+                    for identity, phase, allowance in zip(
+                        identities, prepared, allowances, strict=True
+                    ):
+                        futures[
+                            pool.submit(
+                                run_phase,
+                                out,
+                                plan,
+                                transport,
+                                phase,
+                                allowance,
+                                stop,
+                                chunk_size,
+                                failures,
+                            )
+                        ] = identity
+                    for future in as_completed(futures):
+                        try:
+                            charged = future.result()
+                        except BaseException as exc:
+                            stop.set()
+                            if failure is None:
+                                failure = exc
+                        else:
+                            charges[futures[future]] = charged
+                except BaseException:
+                    stop.set()
+                    raise
+                if failure is not None:
+                    raise failures[0] if failures else failure
+        # Settle only after shared app shutdown succeeds. A shutdown failure
+        # cannot silently turn uncertain remote billing into a completed round.
+        b4.append(
+            out / "meter.jsonl",
+            [
+                {
+                    "kind": "settled",
+                    "phase_id": identity,
+                    "budget_sha256": budget["record_sha256"],
+                    "charged_hours": charges[identity],
+                    "accounting": "per_lane_wall_plus_60s_settlement",
+                }
+                for identity in identities
+            ],
+        )
+
+
+def run_phase(
+    out: Path,
+    plan: dict[str, Any],
+    transport: Any,
+    phase: tuple[Any, ...],
+    allowance: float,
+    stop: Event,
+    chunk_size: int,
+    failures: list[BaseException],
+) -> float:
+    cell, stream, _, rows, all_jobs, path, cache, planned = phase
+    started = time.monotonic()
+    deadline = started + allowance * 3600
+    ids = {job["call_id"] for job in planned}
+    try:
+        if stop.is_set():
+            raise RuntimeError("B4 peer lane failed; round stopped")
         with transport.phase(cell, stream, plan["schedules"][cell]) as worker:
             namespace = (
                 "b4-"
@@ -125,17 +203,15 @@ def dispatch(
                     }
                 )[:24]
             )
-            recover_chunks(out, path, all_jobs, worker.recover(namespace), plan, cell, cache)
+            recovered = worker.recover(namespace, deadline - time.monotonic(), stop)
+            recover_chunks(out, path, all_jobs, recovered, plan, cell, cache)
+            by_id = {str(row["doc_id"]): row for row in rows}
             while True:
                 stored = [event for event in cache.values() if event["call_id"] in ids]
                 work = b4.pending(planned, stored)
                 if not work:
                     break
-                by_id = {str(row["doc_id"]): row for row in rows}
                 for offset in range(0, len(work), chunk_size):
-                    remaining = deadline - time.monotonic()
-                    if remaining <= 0:
-                        raise RuntimeError("B4 protected budget deadline reached")
                     group = []
                     for job in work[offset : offset + chunk_size]:
                         documents = [
@@ -145,26 +221,26 @@ def dispatch(
                         if sha256_json(messages) != job["prompt_sha256"]:
                             raise ValueError("B4 rendered prompt changed")
                         group.append({**job, "messages": messages})
+                    remaining = deadline - time.monotonic()
+                    if remaining <= 0 or stop.is_set():
+                        raise RuntimeError("B4 protected deadline reached or peer lane failed")
                     chunk_id = sha256_json([job["attempt_id"] for job in group])
-                    payload = worker.run(namespace, chunk_id, group, remaining)
+                    payload = worker.run(namespace, chunk_id, group, remaining, stop)
                     ingest(out, path, all_jobs, payload, plan, cell, cache)
                     if payload.get("chunk_id") != chunk_id or {
                         event["attempt_id"] for event in payload.get("events", [])
                     } != {job["attempt_id"] for job in group}:
                         raise ValueError("B4 receipt does not match dispatched attempts")
         charged = (time.monotonic() - started + 60) / 3600
-        b4.append(
-            out / "meter.jsonl",
-            [
-                {
-                    "kind": "settled",
-                    "phase_id": identity,
-                    "budget_sha256": budget["record_sha256"],
-                    "charged_hours": charged,
-                    "accounting": "single_lane_wall_plus_60s_settlement",
-                }
-            ],
-        )
+        if charged > allowance + 60 / 3600:
+            raise RuntimeError("B4 lane exceeded reserved time; reconcile billing")
+        return charged
+    except BaseException as exc:
+        # Ambiguous lanes stay unsettled. Peers cancel their outstanding calls
+        # and no later reference/evaluation round can launch.
+        failures.append(exc)
+        stop.set()
+        raise
 
 
 def ingest(
@@ -270,6 +346,7 @@ def main() -> None:
                 {
                     "plan_sha256": plan["plan_sha256"],
                     "first_calls": plan["first_calls"],
+                    "max_concurrent_a100s": plan["max_concurrent_a100s"],
                     "gpu_work_launched": bool(args.execute),
                     "output": str(args.output),
                 },

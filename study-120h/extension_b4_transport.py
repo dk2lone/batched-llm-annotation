@@ -1,13 +1,15 @@
-"""Opt-in Modal transport for the single-lane, metered B4 runner."""
+"""Opt-in Modal transport for four independently metered B4 cell lanes."""
 
 from __future__ import annotations
 
 import json
 import os
 import sys
+import time
 from collections.abc import Iterator
 from contextlib import contextmanager
 from pathlib import Path
+from threading import Event
 from typing import Any
 
 import modal
@@ -45,7 +47,7 @@ def recover(namespace: str, task: str) -> list[dict[str, Any]]:
     image=image,
     gpu="A100",
     volumes={"/models": models, "/results": results},
-    max_containers=1,
+    max_containers=1,  # Each model/revision parameter pool has its own limit.
     scaledown_window=1,
     startup_timeout=1800,
     timeout=3600,
@@ -167,18 +169,38 @@ class Lane:
         self.handle = handle
         self.task = task
 
-    def recover(self, namespace: str) -> list[dict[str, Any]]:
-        return recover.remote(namespace, self.task)
-
-    def run(
-        self, namespace: str, chunk_id: str, jobs: list[dict[str, Any]], timeout: float
-    ) -> dict[str, Any]:
-        call = self.handle.chunk.spawn(namespace, chunk_id, jobs)
+    def wait(self, call: Any, timeout: float, stop: Event) -> Any:
+        deadline = time.monotonic() + timeout
         try:
-            return call.get(timeout=timeout)  # type: ignore[no-any-return]
+            while True:
+                remaining = deadline - time.monotonic()
+                if remaining <= 0 or stop.is_set():
+                    raise RuntimeError("B4 protected deadline reached or peer lane failed")
+                try:
+                    return call.get(timeout=min(1.0, remaining))
+                except modal.exception.TimeoutError:
+                    continue
         except BaseException:
             call.cancel(terminate_containers=True)
             raise
+
+    def recover(self, namespace: str, timeout: float, stop: Event) -> list[dict[str, Any]]:
+        if timeout <= 0 or stop.is_set():
+            raise RuntimeError("B4 round stopped before recovery")
+        return self.wait(recover.spawn(namespace, self.task), timeout, stop)  # type: ignore[no-any-return]
+
+    def run(
+        self,
+        namespace: str,
+        chunk_id: str,
+        jobs: list[dict[str, Any]],
+        timeout: float,
+        stop: Event,
+    ) -> dict[str, Any]:
+        if timeout <= 0 or stop.is_set():
+            raise RuntimeError("B4 round stopped before generation")
+        call = self.handle.chunk.spawn(namespace, chunk_id, jobs)
+        return self.wait(call, timeout, stop)  # type: ignore[no-any-return]
 
 
 class ModalTransport:
@@ -187,12 +209,16 @@ class ModalTransport:
             raise ValueError("active Modal profile does not match the verified budget profile")
 
     @contextmanager
+    def session(self) -> Iterator[None]:
+        with app.run():
+            yield
+
+    @contextmanager
     def phase(self, cell: str, stream: str, schedule: dict[str, Any]) -> Iterator[Lane]:
         from freezeb.extension import ext_policy_for
 
         model, task = cell.rsplit("::", 1)
-        with app.run():
-            handle = Worker(  # type: ignore[call-arg]
-                model_id=model, revision=ext_policy_for(model).revision
-            )
-            yield Lane(handle, task)
+        handle = Worker(  # type: ignore[call-arg]
+            model_id=model, revision=ext_policy_for(model).revision
+        )
+        yield Lane(handle, task)
