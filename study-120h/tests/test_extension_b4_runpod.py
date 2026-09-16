@@ -8,7 +8,7 @@ import importlib.util
 import json
 import sys
 from pathlib import Path
-from threading import Event
+from threading import Event, Lock
 from types import SimpleNamespace
 from typing import Any
 
@@ -222,6 +222,7 @@ def test_pod_ownership_and_cleanup(tmp_path: Path, monkeypatch: Any, mode: str) 
     owner.lease_id = "0123456789abcdef"
     owner.watchdog_run_id = 123
     owner.watchdog_deadline = dt.datetime.now(dt.UTC) + dt.timedelta(hours=1)
+    owner.creation_lock = Lock()
     monkeypatch.setattr(owner, "verify_watchdog", lambda: None)
     calls: list[list[str]] = []
     stop = Event()

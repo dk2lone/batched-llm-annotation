@@ -1,0 +1,20 @@
+{
+  "schema_version": "b4-runpod-config-v2",
+  "account_id": "user_3GCQlNiLDruYedpe87pTOrbYANt",
+  "cloud_type": "SECURE",
+  "gpu_type_id": "NVIDIA A100-SXM4-80GB",
+  "image": "ghcr.io/dk2lone/b4-a100-runtime@sha256:1cf3be1dfb50dbb800a658b371e8ec58f1ea485b55bae5b92ee281af2feba898",
+  "data_center_id": "EUR-IS-1",
+  "network_volumes": {
+    "ibm-granite/granite-3.3-8b-instruct::imdb": "fnsdztl4tk",
+    "meta-llama/Llama-3.1-8B-Instruct::civil_comments": "scqgo0j9sr",
+    "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": "l8doxgmrtn",
+    "Qwen/Qwen3-8B::civil_comments": "r4m3d3hmg2"
+  },
+  "watchdog": {
+    "repository": "dk2lone/batched-llm-annotation",
+    "workflow": "b4-pod-watchdog.yml",
+    "ref": "main",
+    "max_target_seconds": 18000
+  }
+}

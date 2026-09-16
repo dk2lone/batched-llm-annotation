@@ -16,7 +16,7 @@ import uuid
 from collections.abc import Iterator
 from contextlib import contextmanager
 from pathlib import Path
-from threading import Event
+from threading import Event, Lock
 from typing import Any, cast
 
 from freezeb import extension_b4 as b4
@@ -234,38 +234,43 @@ class Lane:
         )
         wait = min(600, max(1, int(timeout - 30)))
         try:
-            # Do not interrupt creation mid-response: recover its ID even if a peer fails.
-            pod = cli(
-                [
-                    "pod",
-                    "create",
-                    "--name",
-                    name,
-                    "--image",
-                    config["image"],
-                    "--gpu-id",
-                    config["gpu_type_id"],
-                    "--gpu-count",
-                    "1",
-                    "--cloud-type",
-                    "SECURE",
-                    "--data-center-ids",
-                    config["data_center_id"],
-                    "--network-volume-id",
-                    config["network_volumes"][self.cell],
-                    "--volume-mount-path",
-                    "/workspace",
-                    "--container-disk-in-gb",
-                    "40",
-                    "--ports",
-                    "22/tcp",
-                    "--ssh",
-                    "--wait",
-                    "--wait-timeout",
-                    f"{wait}s",
-                ],
-                min(timeout, wait + 30),
-            )
+            # Runpod's low-stock allocator races concurrent create requests. Retain each
+            # successful Pod while later lanes allocate, then serve all lanes concurrently.
+            with self.owner.creation_lock:
+                if stop.is_set() or deadline <= time.monotonic():
+                    raise RuntimeError("B4 stopped while waiting to create a Pod")
+                # Do not interrupt creation mid-response: recover its ID even if a peer fails.
+                pod = cli(
+                    [
+                        "pod",
+                        "create",
+                        "--name",
+                        name,
+                        "--image",
+                        config["image"],
+                        "--gpu-id",
+                        config["gpu_type_id"],
+                        "--gpu-count",
+                        "1",
+                        "--cloud-type",
+                        "SECURE",
+                        "--data-center-ids",
+                        config["data_center_id"],
+                        "--network-volume-id",
+                        config["network_volumes"][self.cell],
+                        "--volume-mount-path",
+                        "/workspace",
+                        "--container-disk-in-gb",
+                        "40",
+                        "--ports",
+                        "22/tcp",
+                        "--ssh",
+                        "--wait",
+                        "--wait-timeout",
+                        f"{wait}s",
+                    ],
+                    min(timeout, wait + 30),
+                )
         except CommandError as exc:
             self.capture_id(exc.payload.get("id"))
             raise
@@ -415,6 +420,7 @@ class RunpodTransport:
         self.lease_id: str | None = None
         self.watchdog_run_id: int | None = None
         self.watchdog_deadline: dt.datetime | None = None
+        self.creation_lock = Lock()
         user = cli(["user"])
         identity = user.get("user", user)
         if identity.get("id") != profile:

@@ -1,0 +1,4 @@
+{"at_utc":"2026-09-16T04:03:42.842617+00:00","expected_pods":4,"kind":"armed","lease_id":"2b98b3e9a9414ec5","shutdown_target_utc":"2026-09-16T06:51:52.408333+00:00","workflow_run_id":35054131285}
+{"at_utc":"2026-09-16T04:04:21.244365+00:00","kind":"released_after_local_deletion","lease_id":"2b98b3e9a9414ec5","workflow_run_id":35054131285}
+{"at_utc":"2026-09-16T04:06:47.780597+00:00","expected_pods":4,"kind":"armed","lease_id":"4541631e3480485b","shutdown_target_utc":"2026-09-16T06:54:58.435006+00:00","workflow_run_id":35054327751}
+{"at_utc":"2026-09-16T04:06:50.676923+00:00","kind":"released_after_local_deletion","lease_id":"4541631e3480485b","workflow_run_id":35054327751}
