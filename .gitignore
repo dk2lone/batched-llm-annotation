@@ -25,6 +25,7 @@ dist/
 .aris/
 graphify-out/
 .claude/
+.flash/
 
 # Immutable payloads are attached to milestone GitHub releases.
 study-120h/freeze/
@@ -82,6 +83,7 @@ study-120h/extension-b4/**/events.jsonl
 study-120h/extension-b4/**/receipts/
 study-120h/extension-b4/**/budgets/
 study-120h/extension-b4/**/meter.jsonl
+study-120h/extension-b4/**/local-watchdog.log
 
 # Idea-selection phase output. Kept locally, not published.
 idea-stage/
