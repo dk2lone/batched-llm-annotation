@@ -125,6 +125,7 @@ def build_plan(
     prefix: int = 400,
     provider: str = "modal",
     gpu_type_id: str = "NVIDIA A100-SXM4-80GB",
+    max_concurrent_a100s: int = 4,
 ) -> dict[str, Any]:
     if provider not in ("modal", "runpod"):
         raise ValueError("unsupported B4 provider")
@@ -135,6 +136,8 @@ def build_plan(
         raise ValueError("Runpod B4 requires an approved 80GB A100 type")
     if prefix not in ext.E5_EVALUATION_PREFIXES:
         raise ValueError("evaluation prefix must be 400, 1000, or 2500")
+    if isinstance(max_concurrent_a100s, bool) or not 1 <= max_concurrent_a100s <= 4:
+        raise ValueError("B4 concurrency must be one through four A100s")
     for relative in (SEAL, ADMISSION, RUNTIME):
         verify_manifest(study / relative)
     admission = load(study / ADMISSION / "ADMISSION_LOCK.json")
@@ -198,7 +201,7 @@ def build_plan(
             for cell in CELLS
         },
         "execution_order": "all_reference_cells_then_equal_family_evaluation_prefixes",
-        "max_concurrent_a100s": 4,
+        "max_concurrent_a100s": max_concurrent_a100s,
         "parallelism": "one_single_gpu_lane_per_cell_with_round_barriers",
         "max_retries": 1,
         "unresolved_policy": "block_coverage_without_imputation",
@@ -423,7 +426,13 @@ def verify_serving(payload: dict[str, Any], plan: dict[str, Any], cell: str) -> 
 def analyze(study: Path, out: Path, prefix: int = 400) -> dict[str, Any]:
     stored_plan = load(out / f"PLAN-{prefix}.json")
     plan = (
-        build_plan(study, prefix, "runpod")
+        build_plan(
+            study,
+            prefix,
+            "runpod",
+            str(stored_plan.get("gpu_type_id", "")),
+            int(stored_plan.get("max_concurrent_a100s", 4)),
+        )
         if stored_plan.get("provider") == "runpod"
         else build_plan(study, prefix)
     )

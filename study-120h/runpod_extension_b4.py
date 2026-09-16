@@ -34,7 +34,9 @@ def main() -> None:
         default="NVIDIA A100-SXM4-80GB",
     )
     args = parser.parse_args()
-    plan = b4.build_plan(STUDY, args.prefix, "runpod", args.gpu_type_id)
+    plan = b4.build_plan(
+        STUDY, args.prefix, "runpod", args.gpu_type_id, args.max_concurrent_lanes
+    )
     args.output.mkdir(parents=True, exist_ok=True)
     with (args.output / ".active-run.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)

@@ -719,3 +719,9 @@ def test_real_a7_schedule_and_source_bindings() -> None:
     assert plan["first_calls"] == 83200
     assert plan["stop_a100_hours"] == 80
     assert plan["max_concurrent_a100s"] == 4
+
+
+def test_runpod_plan_records_two_gpu_limit() -> None:
+    plan = b4.build_plan(STUDY, 400, "runpod", "NVIDIA A100 80GB PCIe", 2)
+    assert plan["gpu_type_id"] == "NVIDIA A100 80GB PCIe"
+    assert plan["max_concurrent_a100s"] == 2
