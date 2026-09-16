@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import copy
+import datetime as dt
 import importlib.util
 import json
 import sys
@@ -26,13 +27,19 @@ import extension_b4_runpod as transport  # noqa: E402
 
 def configuration() -> dict[str, Any]:
     return {
-        "schema_version": "b4-runpod-config-v1",
+        "schema_version": "b4-runpod-config-v2",
         "account_id": "user_cpu",
         "cloud_type": "SECURE",
         "gpu_type_id": "NVIDIA A100-SXM4-80GB",
         "image": "example/runtime@sha256:" + "a" * 64,
         "data_center_id": "US-MD-1",
         "network_volumes": {cell: f"volume{i}" for i, cell in enumerate(b4.CELLS)},
+        "watchdog": {
+            "repository": "dk2lone/batched-llm-annotation",
+            "workflow": "b4-pod-watchdog.yml",
+            "ref": "main",
+            "max_target_seconds": 18000,
+        },
     }
 
 
@@ -46,29 +53,23 @@ def budget(config: dict[str, Any]) -> dict[str, Any]:
             "model_caches_verified": True,
             "balance_verified": True,
             "ssh_verified": True,
+            "watchdog_cpu_test_passed": True,
+            "auto_pay_disabled_verified": True,
             "evidence_sha256": "b" * 64,
         },
     }
 
 
-@pytest.mark.parametrize("supported", [False, True])
-def test_creation_requires_server_side_termination(monkeypatch: Any, supported: bool) -> None:
+def test_cli_uses_live_pod_api_without_removed_termination_flag(monkeypatch: Any) -> None:
     calls: list[list[str]] = []
 
     def fake_command(argv: list[str], timeout: float) -> bytes:
         calls.append(argv)
-        if argv[-1] == "--help":
-            return b"--terminate-after" if supported else b"--wait"
         return b'{"id":"fake-pod"}'
 
     monkeypatch.setattr(transport, "command", fake_command)
-    if supported:
-        assert transport.cli(["pod", "create"]) == {"id": "fake-pod"}
-        assert len(calls) == 2
-    else:
-        with pytest.raises(RuntimeError, match="no Pod created"):
-            transport.cli(["pod", "create"])
-        assert len(calls) == 1
+    assert transport.cli(["pod", "create"]) == {"id": "fake-pod"}
+    assert calls == [["runpodctl", "pod", "create"]]
 
 
 @pytest.mark.parametrize(
@@ -153,6 +154,63 @@ def test_ssh_validates_details_and_retains_host_keys(tmp_path: Path) -> None:
         transport.ssh_args(info, tmp_path / "known_hosts")
 
 
+def test_watchdog_is_active_before_pod_creation_and_released_afterward(
+    tmp_path: Path, monkeypatch: Any
+) -> None:
+    owner = transport.RunpodTransport.__new__(transport.RunpodTransport)
+    owner.config, owner.out = configuration(), tmp_path
+    owner.lease_id = owner.watchdog_run_id = owner.watchdog_deadline = None
+    commands: list[list[str]] = []
+
+    def fake_command(argv: list[str], timeout: float) -> bytes:
+        commands.append(argv)
+        return b""
+
+    def fake_gh(args: list[str], timeout: float = 30) -> Any:
+        if args[:2] == ["run", "list"]:
+            return [
+                {
+                    "databaseId": 123,
+                    "displayTitle": f"b4 watchdog {owner.lease_id}",
+                    "status": "in_progress",
+                }
+            ]
+        if args[:2] == ["run", "view"]:
+            return {
+                "status": "in_progress",
+                "conclusion": "",
+                "jobs": [{"steps": [{"name": "watch Runpod lease", "status": "in_progress"}]}],
+            }
+        pytest.fail(f"unexpected GitHub command {args}")
+
+    monkeypatch.setattr(transport, "command", fake_command)
+    monkeypatch.setattr(transport, "gh", fake_gh)
+    monkeypatch.setattr(transport, "cli", lambda *args: [])
+    owner.arm_watchdog(4, 3600)
+    assert owner.watchdog_run_id == 123
+    assert commands[0][:3] == ["gh", "workflow", "run"]
+    owner.release_watchdog()
+    assert any(argv[:3] == ["gh", "run", "cancel"] for argv in commands)
+    rows = b4.events(tmp_path / "runpod-watchdog.jsonl")
+    assert [row["kind"] for row in rows] == ["armed", "released_after_local_deletion"]
+
+
+def test_watchdog_refuses_pod_creation_when_workflow_step_is_not_active(
+    tmp_path: Path, monkeypatch: Any
+) -> None:
+    owner = transport.RunpodTransport.__new__(transport.RunpodTransport)
+    owner.config, owner.out = configuration(), tmp_path
+    owner.lease_id, owner.watchdog_run_id = "0123456789abcdef", 123
+    owner.watchdog_deadline = dt.datetime.now(dt.UTC) + dt.timedelta(hours=1)
+    monkeypatch.setattr(
+        transport,
+        "gh",
+        lambda *args: {"status": "completed", "conclusion": "failure", "jobs": []},
+    )
+    with pytest.raises(RuntimeError, match="not actively guarding"):
+        owner.verify_watchdog()
+
+
 @pytest.mark.parametrize("mode", ["success", "price", "wait-failure", "shutdown", "peer-startup"])
 def test_pod_ownership_and_cleanup(tmp_path: Path, monkeypatch: Any, mode: str) -> None:
     config = configuration()
@@ -161,6 +219,10 @@ def test_pod_ownership_and_cleanup(tmp_path: Path, monkeypatch: Any, mode: str) 
     owner = transport.RunpodTransport.__new__(transport.RunpodTransport)
     owner.config, owner.plan, owner.out = config, plan, tmp_path
     owner.code_sha256, owner.archive, owner.max_rate = "a" * 64, b"tar", 1.59
+    owner.lease_id = "0123456789abcdef"
+    owner.watchdog_run_id = 123
+    owner.watchdog_deadline = dt.datetime.now(dt.UTC) + dt.timedelta(hours=1)
+    monkeypatch.setattr(owner, "verify_watchdog", lambda: None)
     calls: list[list[str]] = []
     stop = Event()
 
@@ -169,7 +231,8 @@ def test_pod_ownership_and_cleanup(tmp_path: Path, monkeypatch: Any, mode: str) 
         if args[:2] == ["pod", "create"]:
             assert args[args.index("--gpu-count") + 1] == "1"
             assert args[args.index("--cloud-type") + 1] == "SECURE"
-            assert "--terminate-after" in args and "--wait" in args
+            assert "--terminate-after" not in args and "--wait" in args
+            assert args[args.index("--name") + 1].startswith("b4-0123456789abcdef-")
             if mode == "wait-failure":
                 raise transport.CommandError("network_error", {"id": "created_cpu"})
             if mode == "peer-startup":
@@ -301,7 +364,23 @@ def test_runpod_serving_requires_80gb_evidence() -> None:
 def test_live_round_gates_do_not_create_pods(tmp_path: Path, monkeypatch: Any, mode: str) -> None:
     owner = transport.RunpodTransport.__new__(transport.RunpodTransport)
     owner.config, owner.out, owner.max_rate = configuration(), tmp_path, 1.59
-    owner.budget = {"record_sha256": "budget", "runpod_storage_reserve_usd": 5}
+    owner.budget = {
+        "record_sha256": "budget",
+        "runpod_storage_reserve_usd": 5,
+        "spend_limit_usd": 100,
+        "spend_used_usd": 0,
+    }
+    owner.lease_id = owner.watchdog_run_id = owner.watchdog_deadline = None
+    armed: list[tuple[int, float]] = []
+
+    def arm(expected: int, seconds: float) -> None:
+        armed.append((expected, seconds))
+        owner.lease_id = "0123456789abcdef"
+        owner.watchdog_run_id = 123
+        owner.watchdog_deadline = dt.datetime.now(dt.UTC) + dt.timedelta(seconds=seconds)
+
+    monkeypatch.setattr(owner, "arm_watchdog", arm)
+    monkeypatch.setattr(owner, "release_watchdog", lambda: None)
     b4.append(
         tmp_path / "meter.jsonl",
         [
@@ -347,6 +426,7 @@ def test_live_round_gates_do_not_create_pods(tmp_path: Path, monkeypatch: Any, m
         checks = list((tmp_path / "runpod-checks").glob("*.json"))
         assert len(checks) == 1
         assert json.loads(checks[0].read_text())["balance_usd"] == 100
+        assert armed == [(1, 3660)]
     else:
         with pytest.raises((RuntimeError, ValueError)):
             with owner.session():

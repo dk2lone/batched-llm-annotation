@@ -95,13 +95,12 @@ def command(
 
 
 def cli(args: list[str], timeout: float = 30) -> Any:
-    if args[:2] == ["pod", "create"]:
-        help_text = command(["runpodctl", "pod", "create", "--help"], min(timeout, 10))
-        if b"--terminate-after" not in help_text:
-            raise RuntimeError(
-                "Installed Runpod CLI lacks server-side automatic termination; no Pod created"
-            )
     output = command(["runpodctl", *args], timeout)
+    return json.loads(output) if output.strip() else {}
+
+
+def gh(args: list[str], timeout: float = 30) -> Any:
+    output = command(["gh", *args], timeout)
     return json.loads(output) if output.strip() else {}
 
 
@@ -114,9 +113,10 @@ def verify_config(config: dict[str, Any], budget: dict[str, Any], profile: str) 
         "image",
         "data_center_id",
         "network_volumes",
+        "watchdog",
     }:
         raise ValueError("Runpod configuration contains unknown fields; credentials are prohibited")
-    if config.get("schema_version") != "b4-runpod-config-v1":
+    if config.get("schema_version") != "b4-runpod-config-v2":
         raise ValueError("unknown Runpod configuration")
     if config.get("account_id") != profile:
         raise ValueError("Runpod account must match the verified profile")
@@ -131,6 +131,14 @@ def verify_config(config: dict[str, Any], budget: dict[str, Any], profile: str) 
         raise ValueError("four distinct preloaded network volumes are required")
     if any(not re.fullmatch(r"[a-zA-Z0-9_-]+", str(value)) for value in volumes.values()):
         raise ValueError("invalid Runpod volume ID")
+    watchdog = config.get("watchdog", {})
+    if watchdog != {
+        "repository": "dk2lone/batched-llm-annotation",
+        "workflow": "b4-pod-watchdog.yml",
+        "ref": "main",
+        "max_target_seconds": 18000,
+    }:
+        raise ValueError("Runpod watchdog configuration differs from the reviewed path")
     if budget.get("runpod_config_sha256") != sha256_json(config):
         raise ValueError("budget must bind the exact Runpod configuration")
     evidence = budget.get("runpod_preflight", {})
@@ -142,9 +150,11 @@ def verify_config(config: dict[str, Any], budget: dict[str, Any], profile: str) 
             "model_caches_verified",
             "balance_verified",
             "ssh_verified",
+            "watchdog_cpu_test_passed",
+            "auto_pay_disabled_verified",
         )
     ):
-        raise ValueError("Runpod smoke, cache, SSH, capacity and balance checks are required")
+        raise ValueError("Runpod smoke, watchdog, funding and infrastructure checks are required")
     if not re.fullmatch(r"[0-9a-f]{64}", str(evidence.get("evidence_sha256", ""))):
         raise ValueError("Runpod preflight needs a content-addressed evidence artifact")
     storage = budget.get("runpod_storage_reserve_usd")
@@ -212,9 +222,16 @@ class Lane:
         deadline = time.monotonic() + timeout
         config = self.owner.config
         self.identity = uuid.uuid4().hex
-        name = f"b4-{self.identity}"
-        terminate_at = (dt.datetime.now(dt.UTC) + dt.timedelta(seconds=timeout + 60)).isoformat()
-        self.audit("create_intent", name=name, terminate_at_utc=terminate_at)
+        self.owner.verify_watchdog()
+        if self.owner.watchdog_run_id is None or self.owner.watchdog_deadline is None:
+            raise RuntimeError("GitHub watchdog evidence is incomplete")
+        name = f"b4-{self.owner.lease_id}-{self.identity[:12]}"
+        self.audit(
+            "create_intent",
+            name=name,
+            watchdog_run_id=self.owner.watchdog_run_id,
+            shutdown_target_utc=self.owner.watchdog_deadline.isoformat(),
+        )
         wait = min(600, max(1, int(timeout - 30)))
         try:
             # Do not interrupt creation mid-response: recover its ID even if a peer fails.
@@ -243,8 +260,6 @@ class Lane:
                     "--ports",
                     "22/tcp",
                     "--ssh",
-                    "--terminate-after",
-                    terminate_at,
                     "--wait",
                     "--wait-timeout",
                     f"{wait}s",
@@ -397,6 +412,9 @@ class RunpodTransport:
         self.config, self.plan, self.out = config, plan, out
         self.budget = budget
         self.max_rate = float(budget["a100_usd_per_hour"])
+        self.lease_id: str | None = None
+        self.watchdog_run_id: int | None = None
+        self.watchdog_deadline: dt.datetime | None = None
         user = cli(["user"])
         identity = user.get("user", user)
         if identity.get("id") != profile:
@@ -419,6 +437,149 @@ class RunpodTransport:
             30,
         )
         self.code_sha256 = sha256_json(plan["implementation_sha256"])
+
+    def watchdog_audit(self, kind: str, **fields: Any) -> None:
+        b4.append(
+            self.out / "runpod-watchdog.jsonl",
+            [{"kind": kind, "at_utc": dt.datetime.now(dt.UTC).isoformat(), **fields}],
+        )
+
+    def arm_watchdog(self, expected_pods: int, target_seconds: float) -> None:
+        maximum = int(self.config["watchdog"]["max_target_seconds"])
+        if not 30 <= target_seconds <= maximum:
+            raise RuntimeError("Runpod round does not fit the five-hour watchdog target")
+        self.lease_id = uuid.uuid4().hex[:16]
+        self.watchdog_deadline = dt.datetime.now(dt.UTC) + dt.timedelta(
+            seconds=math.ceil(target_seconds)
+        )
+        title = f"b4 watchdog {self.lease_id}"
+        settings = self.config["watchdog"]
+        command(
+            [
+                "gh",
+                "workflow",
+                "run",
+                settings["workflow"],
+                "--repo",
+                settings["repository"],
+                "--ref",
+                settings["ref"],
+                "--field",
+                f"lease_id={self.lease_id}",
+                "--field",
+                f"deadline_utc={self.watchdog_deadline.isoformat()}",
+                "--field",
+                f"expected_pods={expected_pods}",
+            ],
+            30,
+        )
+        deadline = time.monotonic() + 180
+        while time.monotonic() < deadline:
+            runs = gh(
+                [
+                    "run",
+                    "list",
+                    "--repo",
+                    settings["repository"],
+                    "--workflow",
+                    settings["workflow"],
+                    "--event",
+                    "workflow_dispatch",
+                    "--limit",
+                    "20",
+                    "--json",
+                    "databaseId,displayTitle,status,conclusion,createdAt",
+                ]
+            )
+            matches = [row for row in runs if row.get("displayTitle") == title]
+            if len(matches) == 1:
+                run_id = matches[0].get("databaseId")
+                if isinstance(run_id, bool) or not isinstance(run_id, int):
+                    raise RuntimeError("GitHub watchdog returned an invalid run ID")
+                self.watchdog_run_id = run_id
+                try:
+                    self.verify_watchdog()
+                except RuntimeError:
+                    Event().wait(2)
+                    continue
+                self.watchdog_audit(
+                    "armed",
+                    lease_id=self.lease_id,
+                    workflow_run_id=run_id,
+                    shutdown_target_utc=self.watchdog_deadline.isoformat(),
+                    expected_pods=expected_pods,
+                )
+                return
+            Event().wait(2)
+        raise RuntimeError("GitHub watchdog did not reach its active deletion step")
+
+    def watchdog_state(self) -> dict[str, Any]:
+        if self.watchdog_run_id is None:
+            raise RuntimeError("GitHub watchdog is not armed")
+        return cast(
+            dict[str, Any],
+            gh(
+                [
+                    "run",
+                    "view",
+                    str(self.watchdog_run_id),
+                    "--repo",
+                    self.config["watchdog"]["repository"],
+                    "--json",
+                    "status,conclusion,jobs",
+                ]
+            ),
+        )
+
+    def verify_watchdog(self) -> None:
+        state = self.watchdog_state()
+        steps = [
+            step
+            for job in state.get("jobs", [])
+            for step in job.get("steps", [])
+            if step.get("name") == "watch Runpod lease"
+        ]
+        if (
+            state.get("status") != "in_progress"
+            or len(steps) != 1
+            or steps[0].get("status") != "in_progress"
+        ):
+            raise RuntimeError("GitHub watchdog is not actively guarding Pod creation")
+
+    def release_watchdog(self) -> None:
+        if self.watchdog_run_id is None or self.lease_id is None:
+            return
+        pods = cli(["pod", "list", "--all"])
+        if not isinstance(pods, list):
+            raise RuntimeError("Runpod Pod list response shape changed")
+        prefix = f"b4-{self.lease_id}-"
+        if any(
+            str(pod.get("name", "")).startswith(prefix)
+            and str(pod.get("desiredStatus", "")).upper() != "TERMINATED"
+            for pod in pods
+        ):
+            raise RuntimeError("lease Pods remain; keep the watchdog active")
+        try:
+            command(
+                [
+                    "gh",
+                    "run",
+                    "cancel",
+                    str(self.watchdog_run_id),
+                    "--repo",
+                    self.config["watchdog"]["repository"],
+                ],
+                30,
+            )
+        except CommandError:
+            state = self.watchdog_state()
+            if state.get("status") != "completed":
+                raise
+        self.watchdog_audit(
+            "released_after_local_deletion",
+            lease_id=self.lease_id,
+            workflow_run_id=self.watchdog_run_id,
+        )
 
     @contextmanager
     def session(self) -> Iterator[None]:
@@ -446,6 +607,11 @@ class RunpodTransport:
             or balance < needed
         ):
             raise RuntimeError("live Runpod balance cannot fund the protected round")
+        remaining_budget = float(self.budget["spend_limit_usd"]) - float(
+            self.budget["spend_used_usd"]
+        )
+        if balance > remaining_budget:
+            raise RuntimeError("prepaid Runpod balance exceeds the authorized remaining budget")
         pods = cli(["pod", "list", "--all"])
         if not isinstance(pods, list) or any(
             str(pod.get("desiredStatus", "")).upper() == "RUNNING" for pod in pods
@@ -479,19 +645,30 @@ class RunpodTransport:
             raise RuntimeError(
                 "live GPU stock is unavailable or unverified in the volume data center"
             )
-        write_json(
-            self.out / "runpod-checks" / f"{uuid.uuid4().hex}.json",
-            {
-                "at_utc": dt.datetime.now(dt.UTC).isoformat(),
-                "account_id": user["id"],
-                "balance_usd": balance,
-                "required_round_usd": needed,
-                "secure_price_usd_per_hour": rate,
-                "placement": placements[0],
-                "lane_reservations": [row["phase_id"] for row in reserved],
-            },
-        )
-        yield
+        target_seconds = max(float(row["guarded_forecast_hours"]) for row in reserved) * 3600 + 60
+        self.arm_watchdog(len(reserved), target_seconds)
+        if self.watchdog_run_id is None or self.lease_id is None or self.watchdog_deadline is None:
+            raise RuntimeError("GitHub watchdog evidence is incomplete")
+        try:
+            write_json(
+                self.out / "runpod-checks" / f"{uuid.uuid4().hex}.json",
+                {
+                    "at_utc": dt.datetime.now(dt.UTC).isoformat(),
+                    "account_id": user["id"],
+                    "balance_usd": balance,
+                    "authorized_remaining_usd": remaining_budget,
+                    "required_round_usd": needed,
+                    "secure_price_usd_per_hour": rate,
+                    "placement": placements[0],
+                    "lane_reservations": [row["phase_id"] for row in reserved],
+                    "watchdog_run_id": self.watchdog_run_id,
+                    "watchdog_lease_id": self.lease_id,
+                    "shutdown_target_utc": self.watchdog_deadline.isoformat(),
+                },
+            )
+            yield
+        finally:
+            self.release_watchdog()
 
     @contextmanager
     def phase(self, cell: str, stream: str, schedule: dict[str, Any]) -> Iterator[Lane]:

@@ -171,6 +171,8 @@ def build_plan(study: Path, prefix: int = 400, provider: str = "modal") -> dict[
                     "runpod_extension_b4.py",
                     "extension_b4_runpod.py",
                     "b4_runpod_worker.py",
+                    "runpod_watchdog.py",
+                    "../.github/workflows/b4-pod-watchdog.yml",
                     "extension-b4/runpod/Dockerfile",
                     "src/step1/backends.py",
                     "src/freezeb/e2.py",

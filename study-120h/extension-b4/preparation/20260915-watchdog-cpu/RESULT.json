@@ -1,0 +1,17 @@
+{
+  "schema_version": "b4-runpod-watchdog-cpu-probe-v1",
+  "completed_at_utc": "2026-09-16T02:00:24Z",
+  "gpu_work_launched": false,
+  "pod_id": "azujh0olbxc3rh",
+  "pod_name": "b4-a15c0de000000001-cpu",
+  "compute_type": "CPU",
+  "returned_rate_usd_per_hour": 0.06,
+  "watchdog_result": "failed_closed",
+  "watchdog_error": "saved Flash credential received HTTP 403 from REST v1 Pod list",
+  "fallback_deletion_verified": true,
+  "active_pods_after_probe": 0,
+  "active_spend_usd_per_hour_after_probe": 0,
+  "balance_usd_after_probe": 17.9732049803,
+  "preparation_cpu_cost_since_17_9770571637_balance_check_usd": 0.0038521834,
+  "next_requirement": "rotated Runpod key with REST v1 Pod list and delete permissions stored as B4_RUNPOD_WATCHDOG_KEY"
+}

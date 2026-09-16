@@ -70,6 +70,8 @@ def main() -> None:
                     "model_caches_verified",
                     "balance_verified",
                     "ssh_verified",
+                    "watchdog_cpu_test_passed",
+                    "auto_pay_disabled_verified",
                 )
             ):
                 raise ValueError("Runpod preflight artifact does not report all required checks")

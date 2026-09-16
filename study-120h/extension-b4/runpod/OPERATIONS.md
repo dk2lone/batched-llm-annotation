@@ -5,13 +5,15 @@ Each round creates only the Pods it needs and deletes each Pod when its lane fin
 References finish for all four families before evaluation starts. The initial study remains
 250 reference and 400 evaluation replicates per cell, or 83,200 first calls.
 
-The implementation is locally tested, not remotely validated. A hosted runtime image build
-has started; no network volumes, model caches or GPU smoke tests have been provisioned.
+The implementation is locally tested, not remotely validated. The pinned runtime image was
+published successfully; no network volumes, model caches or GPU smoke tests have been provisioned.
 Do not mark preflight checks passed without evidence.
 
-Runpod CLI 2.14.0 removed `--terminate-after`. This runner requires that server-side cost guard
-and rejects Pod creation when the flag is unavailable. Paid testing is blocked until a supported
-automatic-termination path and the live CLI response shapes have been verified.
+Runpod CLI 2.14.0 removed `--terminate-after`, and Runpod's backend did not enforce the old field.
+The runner now requires an independently active GitHub Actions watchdog before every Pod creation.
+Five hours is its shutdown target, not a guaranteed lease. Normal runner deletion remains the
+first cleanup path. Auto-pay must be disabled and prepaid credit must not exceed the authorized
+remaining budget; that financial ceiling is the backstop if both deletion paths fail.
 
 ## Local preparation
 
@@ -54,7 +56,7 @@ A secret-free configuration has exactly these fields:
 
 ```json
 {
-  "schema_version": "b4-runpod-config-v1",
+  "schema_version": "b4-runpod-config-v2",
   "account_id": "VERIFIED_RUNPOD_ACCOUNT_ID",
   "cloud_type": "SECURE",
   "gpu_type_id": "NVIDIA A100-SXM4-80GB",
@@ -65,18 +67,25 @@ A secret-free configuration has exactly these fields:
     "meta-llama/Llama-3.1-8B-Instruct::civil_comments": "VERIFIED_VOLUME_ID_2",
     "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": "VERIFIED_VOLUME_ID_3",
     "Qwen/Qwen3-8B::civil_comments": "VERIFIED_VOLUME_ID_4"
+  },
+  "watchdog": {
+    "repository": "dk2lone/batched-llm-annotation",
+    "workflow": "b4-pod-watchdog.yml",
+    "ref": "main",
+    "max_target_seconds": 18000
   }
 }
 ```
 
 The preflight JSON must contain `runpod_config_sha256`, the plan's `implementation_sha256` and
 `serving_policy`, and a `checks` object. Its required true checks are `runtime_smoke_passed`,
-`four_single_gpu_capacity_verified`, `model_caches_verified`, `balance_verified` and `ssh_verified`.
+`four_single_gpu_capacity_verified`, `model_caches_verified`, `balance_verified`, `ssh_verified`,
+`watchdog_cpu_test_passed`, and `auto_pay_disabled_verified`.
 Include the underlying sanitized receipts/catalog/account evidence, not just unsupported flags.
 
 The standard B4 budget evidence described in `../../EXTENSION_B4_OPERATIONS.md` still applies.
 For Runpod, its `profile` is the verified account ID. Add `runpod_config_sha256`, a finite
-nonnegative `runpod_storage_reserve_usd`, and `runpod_preflight` containing those five true checks
+nonnegative `runpod_storage_reserve_usd`, and `runpod_preflight` containing those seven true checks
 plus `evidence_sha256`, the SHA-256 of the exact preflight JSON file. Storage reserve is withheld
 from spend capacity. The GPU hourly rate must be a verified upper bound on the allocated rate.
 Forecasts include provisioning, model loading, recovery, generation and resume startup costs.
@@ -103,12 +112,12 @@ and retains accepted host keys. Each cell uses its own volume and durable atomic
 recovery does not substitute one response for a different scientific call. Runtime code is
 uploaded without private source frames or credentials. Only rendered selected prompts are sent.
 
-Each Pod is created with a server-side auto-termination deadline. Normal/error teardown deletes
-only the exact ID returned by that lane's create call and verifies `not_found`. Network volumes
-are never deleted automatically. A create timeout with a returned ID is cleaned up too. If the
-create response is lost without an ID, do not retry automatically: the meter stays unsettled,
-the creation intent records its name/deadline, and an operator must resolve the allocation.
-The server-side deadline limits orphan lifetime but does not prove billing or teardown success.
+Before a round, the runner dispatches `.github/workflows/b4-pod-watchdog.yml` and waits until its
+deletion step is actively running. Pods use the watchdog's unique lease prefix. Normal/error
+teardown deletes only the exact ID returned by that lane's create call and verifies `not_found`;
+only then may the runner cancel the watchdog. Network volumes are never deleted automatically.
+If the local process disappears, the independent workflow deletes matching Pods at the target.
+The prepaid balance remains the financial ceiling because GitHub is not guaranteed to execute.
 
 GPU-hour accounting sums each lane's wall time, including provisioning and verified termination,
 plus the existing conservative 60-second settlement allowance. Uncertain creation, cancellation,
