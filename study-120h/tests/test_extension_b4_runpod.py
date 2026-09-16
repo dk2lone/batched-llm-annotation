@@ -286,12 +286,13 @@ def test_pod_ownership_and_cleanup(tmp_path: Path, monkeypatch: Any, mode: str) 
             return {}
         if args[:3] == ["pod", "list", "--all"] and mode == "delayed":
             return [{"id": "created_cpu", "name": created_name}]  # type: ignore[return-value]
-        if args[:2] == ["pod", "get"] and mode == "delayed":
+        if args[:2] == ["pod", "get"] and mode in {"delayed", "ssh-delayed"}:
             if deleted:
                 raise transport.CommandError("not_found", {})
             return {
                 "id": "created_cpu", "gpuCount": 1, "imageName": config["image"],
                 "networkVolumeId": config["network_volumes"][cell], "costPerHr": 1.59,
+                "desiredStatus": "RUNNING",
             }
         if args[:2] == ["pod", "get"]:
             raise transport.CommandError("not_found", {})

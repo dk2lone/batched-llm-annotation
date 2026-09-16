@@ -331,6 +331,16 @@ class Lane:
                 self.ssh = ssh_args(info, self.owner.out / "runpod-known-hosts")
                 break
             except (CommandError, KeyError, ValueError):
+                try:
+                    status = str(
+                        cli(["pod", "get", self.pod_id], 15).get("desiredStatus", "")
+                    ).upper()
+                except CommandError as exc:
+                    if exc.code == "not_found":
+                        raise RuntimeError("Pod disappeared before SSH became ready") from None
+                    raise
+                if status in {"EXITED", "TERMINATED"}:
+                    raise RuntimeError("Pod exited before SSH became ready")
                 if stop.is_set() or time.monotonic() >= ssh_deadline:
                     raise RuntimeError("Pod SSH did not become ready before its deadline") from None
                 Event().wait(5)
