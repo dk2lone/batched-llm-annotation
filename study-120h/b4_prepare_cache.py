@@ -19,6 +19,9 @@ def main() -> None:
     token = sys.stdin.readline().strip()
     if not token:
         raise RuntimeError("Hugging Face token was not supplied on stdin")
+    stale_incomplete = sorted(args.cache.rglob("*.incomplete"))
+    for path in stale_incomplete:
+        path.unlink()
     snapshot = Path(
         snapshot_download(
             repo_id=args.model,
@@ -48,6 +51,7 @@ def main() -> None:
                 "cache_ready": True,
                 "model": args.model,
                 "revision": args.revision,
+                "removed_stale_incomplete_files": len(stale_incomplete),
                 "snapshot": str(snapshot),
                 "weight_files": len(weights),
                 "weight_bytes": sum(path.stat().st_size for path in weights),
