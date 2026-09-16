@@ -15,7 +15,7 @@ from urllib.error import HTTPError
 from urllib.parse import quote
 from urllib.request import Request, urlopen
 
-API_ROOT = "https://api.runpod.io/v2"
+API_ROOT = "https://rest.runpod.io/v1"
 LEASE = re.compile(r"[0-9a-f]{16}")
 POD_ID = re.compile(r"[A-Za-z0-9_-]+")
 MAX_TARGET_SECONDS = 5 * 60 * 60
@@ -64,9 +64,9 @@ class Runpod:
 
     def pods(self) -> list[dict[str, Any]]:
         value = self.request("GET", "/pods")
-        if not isinstance(value, dict) or not isinstance(value.get("pods"), list):
+        if not isinstance(value, list):
             raise RuntimeError("Runpod Pod list response shape changed")
-        return cast(list[dict[str, Any]], value["pods"])
+        return cast(list[dict[str, Any]], value)
 
     def delete(self, pod_id: str) -> None:
         if not POD_ID.fullmatch(pod_id):
@@ -89,7 +89,7 @@ def matching(pods: list[dict[str, Any]], prefix: str) -> dict[str, str]:
             continue
         if not isinstance(pod_id, str) or not POD_ID.fullmatch(pod_id):
             raise RuntimeError("matching Pod has an invalid ID")
-        status = str(pod.get("status", "UNKNOWN")).upper()
+        status = str(pod.get("desiredStatus", "UNKNOWN")).upper()
         if status != "TERMINATED":
             found[pod_id] = status
     return found

@@ -45,8 +45,12 @@ class FakeRunpod:
 def test_watchdog_deletes_only_exact_lease_and_records_evidence(tmp_path: Path) -> None:
     clock = Clock()
     lease = "0123456789abcdef"
-    own = {"id": "owned", "name": f"b4-{lease}-lane", "status": "RUNNING"}
-    foreign = {"id": "foreign", "name": "b4-fedcba9876543210-lane", "status": "RUNNING"}
+    own = {"id": "owned", "name": f"b4-{lease}-lane", "desiredStatus": "RUNNING"}
+    foreign = {
+        "id": "foreign",
+        "name": "b4-fedcba9876543210-lane",
+        "desiredStatus": "RUNNING",
+    }
     client = FakeRunpod([[foreign], [foreign, own], [foreign, own], [foreign, own]])
     audit = tmp_path / "audit.jsonl"
     watchdog.watch(
@@ -81,19 +85,19 @@ def test_watchdog_rejects_unbounded_or_ambiguous_targets(
         watchdog.validate(lease, now + dt.timedelta(seconds=seconds), expected, now)
 
 
-def test_matching_accepts_v2_shape_and_rejects_bad_ids() -> None:
+def test_matching_accepts_rest_v1_shape_and_rejects_bad_ids() -> None:
     prefix = "b4-0123456789abcdef-"
     assert watchdog.matching(
-        [{"id": "pod_one", "name": prefix + "lane", "status": "RUNNING"}], prefix
+        [{"id": "pod_one", "name": prefix + "lane", "desiredStatus": "RUNNING"}], prefix
     ) == {"pod_one": "RUNNING"}
     with pytest.raises(RuntimeError):
         watchdog.matching([{"id": "bad/id", "name": prefix + "lane"}], prefix)
 
 
-def test_runpod_requires_v2_list_envelope(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_runpod_requires_rest_v1_list(monkeypatch: pytest.MonkeyPatch) -> None:
     client = watchdog.Runpod("test")
-    monkeypatch.setattr(client, "request", lambda method, path: {"pods": [{"id": "one"}]})
+    monkeypatch.setattr(client, "request", lambda method, path: [{"id": "one"}])
     assert client.pods() == [{"id": "one"}]
-    monkeypatch.setattr(client, "request", lambda method, path: [])
+    monkeypatch.setattr(client, "request", lambda method, path: {"pods": []})
     with pytest.raises(RuntimeError, match="response shape changed"):
         client.pods()
