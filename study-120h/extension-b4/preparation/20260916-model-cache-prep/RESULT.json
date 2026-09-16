@@ -1,0 +1,57 @@
+{
+  "schema_version": "b4-model-cache-prep-v1",
+  "completed_at_utc": "2026-09-16T03:25:23Z",
+  "synthetic_only": true,
+  "scientific_calls_launched": false,
+  "data_center_id": "EUR-IS-1",
+  "cpu_staging_rate_usd_per_hour_each": 0.06,
+  "watchdog": {
+    "lease_id": "e889aca251a14e9e",
+    "workflow_run_id": 35051400457,
+    "deadline_utc": "2026-09-16T06:20:01.808070+00:00",
+    "expected_pods": 3,
+    "released_after_local_deletion": true
+  },
+  "cache_helper_sha256": "0ba0cb83ac397a453eee377624e451061acb9255aaefb462ecb434e8689f5707",
+  "runtime_files": {
+    "b4_runpod_worker.py": "326a589ba379b9dcb94c65fb015bf817aa780568ec511f5a2ca1d3b5cceccb75",
+    "b4_supervised_smoke_request.py": "756cbc307f2ad86f8026906c6425d4f7d74b08ebcf16a38ff9ce7963b3d69d03"
+  },
+  "caches": [
+    {
+      "model": "ibm-granite/granite-3.3-8b-instruct",
+      "revision": "51dd4bc2ade4059a6bd87649d68aa11e4fb2529b",
+      "volume_id": "fnsdztl4tk",
+      "staging_pod_id": "bwz00ylnla568g",
+      "weight_files": 4,
+      "weight_bytes": 16341771384,
+      "cache_ready": true,
+      "incomplete_files": 0,
+      "staging_pod_deleted": true
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+      "volume_id": "scqgo0j9sr",
+      "staging_pod_id": "vgcbihysauq940",
+      "weight_files": 4,
+      "weight_bytes": 16060556376,
+      "cache_ready": true,
+      "incomplete_files": 0,
+      "staging_pod_deleted": true
+    },
+    {
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "revision": "c170c708c41dac9275d15a8fff4eca08d52bab71",
+      "volume_id": "l8doxgmrtn",
+      "staging_pod_id": "f4j0gk9pg6v1kp",
+      "weight_files": 3,
+      "weight_bytes": 14496080928,
+      "cache_ready": true,
+      "incomplete_files": 0,
+      "staging_pod_deleted": true
+    }
+  ],
+  "credentials_persisted": false,
+  "active_staging_pods_after_cleanup": 0
+}

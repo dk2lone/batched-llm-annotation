@@ -1,0 +1,50 @@
+{
+  "schema_version": "b4-four-pod-capacity-v1",
+  "completed_at_utc": "2026-09-16T03:53:28Z",
+  "data_center_id": "EUR-IS-1",
+  "cloud_type": "SECURE",
+  "gpu_type_id": "NVIDIA A100-SXM4-80GB",
+  "image": "ghcr.io/dk2lone/b4-a100-runtime@sha256:1cf3be1dfb50dbb800a658b371e8ec58f1ea485b55bae5b92ee281af2feba898",
+  "requested_single_gpu_pods": 4,
+  "allocated_single_gpu_pods": 4,
+  "four_single_gpu_capacity_verified": true,
+  "rate_usd_per_hour_each": 1.59,
+  "watchdog": {
+    "lease_id": "c68a82a5b22548d2",
+    "workflow_run_id": 35053442072,
+    "deadline_utc": "2026-09-16T04:22:25.213118+00:00",
+    "released_after_local_deletion": true
+  },
+  "pods": [
+    {
+      "lane": "granite",
+      "pod_id": "l83v4mi3dn43ei",
+      "network_volume_id": "fnsdztl4tk",
+      "gpu_count": 1,
+      "deleted": true
+    },
+    {
+      "lane": "llama",
+      "pod_id": "cto07z3cgsnqj3",
+      "network_volume_id": "scqgo0j9sr",
+      "gpu_count": 1,
+      "deleted": true
+    },
+    {
+      "lane": "mistral",
+      "pod_id": "ldwqiu9ojv6v0n",
+      "network_volume_id": "l8doxgmrtn",
+      "gpu_count": 1,
+      "deleted": true
+    },
+    {
+      "lane": "qwen",
+      "pod_id": "a8ehisoz4jrlas",
+      "network_volume_id": "r4m3d3hmg2",
+      "gpu_count": 1,
+      "deleted": true
+    }
+  ],
+  "active_matching_pods_after_cleanup": 0,
+  "scientific_calls_launched": false
+}

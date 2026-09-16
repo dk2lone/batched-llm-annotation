@@ -1,0 +1,17 @@
+{
+  "schema_version": "b4-supervised-smoke-state-v1",
+  "completed_at_utc": "2026-09-16T03:34:41Z",
+  "scientific_run_authorized": false,
+  "synthetic_only": true,
+  "model": "mistralai/Mistral-7B-Instruct-v0.3",
+  "task": "multi_nli",
+  "revision": "c170c708c41dac9275d15a8fff4eca08d52bab71",
+  "pod_id": "sevo7k5yzmkd71",
+  "network_volume_id": "l8doxgmrtn",
+  "rate_usd_per_hour": 1.59,
+  "watchdog_run_id": 35051796651,
+  "smoke_result_sha256": "681f995b7a99f5a97752e91a8d62aa90050c5150ccd413e75f59e5d435908f49",
+  "receipt_replay_verified": true,
+  "recovery_verified": true,
+  "pod_deleted": true
+}

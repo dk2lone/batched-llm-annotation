@@ -1,0 +1,20 @@
+{
+  "schema_version": "b4-supervised-smoke-state-v1",
+  "completed_at_utc": "2026-09-16T03:39:23Z",
+  "scientific_run_authorized": false,
+  "synthetic_only": true,
+  "model": "ibm-granite/granite-3.3-8b-instruct",
+  "task": "imdb",
+  "revision": "51dd4bc2ade4059a6bd87649d68aa11e4fb2529b",
+  "pod_id": "fiwpkd5fpognut",
+  "rejected_incompatible_pod_id": "53bk1ptq9boom7",
+  "rejected_driver_cuda_version": 12080,
+  "network_volume_id": "fnsdztl4tk",
+  "rate_usd_per_hour": 1.59,
+  "watchdog_run_id": 35051796651,
+  "smoke_result_sha256": "063d6167042a4cdda45d28f8050ea344d8cdd45cb0092d5a34f2580f02afd371",
+  "seeded_cuda_witness": "WITNESS (8, 8) NVIDIA A100-SXM4-80GB",
+  "receipt_replay_verified": true,
+  "recovery_verified": true,
+  "pod_deleted": true
+}

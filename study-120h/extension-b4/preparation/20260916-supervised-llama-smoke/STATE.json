@@ -1,0 +1,17 @@
+{
+  "schema_version": "b4-supervised-smoke-state-v1",
+  "completed_at_utc": "2026-09-16T03:34:41Z",
+  "scientific_run_authorized": false,
+  "synthetic_only": true,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "task": "civil_comments",
+  "revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+  "pod_id": "fqv63ftvd09ic1",
+  "network_volume_id": "scqgo0j9sr",
+  "rate_usd_per_hour": 1.59,
+  "watchdog_run_id": 35051796651,
+  "smoke_result_sha256": "dce00badb563dd195d21da119bd95845e947fdb55d56fa76c4bf73de6568252d",
+  "receipt_replay_verified": true,
+  "recovery_verified": true,
+  "pod_deleted": true
+}

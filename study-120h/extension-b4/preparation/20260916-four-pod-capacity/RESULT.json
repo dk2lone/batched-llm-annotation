@@ -1,0 +1,20 @@
+{
+  "schema_version": "b4-four-pod-capacity-v1",
+  "attempted_at_utc": "2026-09-16T03:26:55Z",
+  "data_center_id": "EUR-IS-1",
+  "gpu_type_id": "NVIDIA A100-SXM4-80GB",
+  "cloud_type": "SECURE",
+  "requested_single_gpu_pods": 4,
+  "allocated_single_gpu_pods": 3,
+  "allocated_pod_ids": [
+    "53bk1ptq9boom7",
+    "fqv63ftvd09ic1",
+    "sevo7k5yzmkd71"
+  ],
+  "four_single_gpu_capacity_verified": false,
+  "fourth_create_result": "graphql_error",
+  "ambiguous_fourth_pod_reconciled_absent": true,
+  "watchdog_run_id": 35051796651,
+  "all_allocated_pods_deleted": true,
+  "scientific_calls_launched": false
+}
