@@ -160,6 +160,24 @@ def test_ssh_validates_details_and_retains_host_keys(tmp_path: Path) -> None:
         transport.ssh_args(info, tmp_path / "known_hosts")
 
 
+def test_ssh_uses_registered_default_key_when_info_omits_metadata(
+    tmp_path: Path, monkeypatch: Any
+) -> None:
+    private = tmp_path / ".ssh/id_ed25519"
+    private.parent.mkdir()
+    private.touch()
+    public = private.with_suffix(".pub")
+    public.write_text("ssh-ed25519 AAAA-test local-comment\n")
+    monkeypatch.setattr(transport.Path, "home", lambda: tmp_path)
+    monkeypatch.setattr(
+        transport,
+        "cli",
+        lambda args: {"keys": [{"key": "ssh-ed25519 AAAA-test account-comment"}]},
+    )
+    argv = transport.ssh_args({"ip": "127.0.0.1", "port": 22}, tmp_path / "known-hosts")
+    assert argv[argv.index("-i") + 1] == str(private)
+
+
 def test_watchdog_is_active_before_pod_creation_and_released_afterward(
     tmp_path: Path, monkeypatch: Any
 ) -> None:

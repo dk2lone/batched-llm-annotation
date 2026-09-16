@@ -175,7 +175,17 @@ def ssh_args(info: dict[str, Any], known_hosts: Path) -> list[str]:
     key = info.get("ssh_key", {})
     path = Path(str(key.get("path", "")))
     if not path.is_absolute() or not path.is_file() or key.get("in_account") is not True:
-        raise ValueError("Runpod SSH key is not locally available and registered")
+        path = Path.home() / ".ssh/id_ed25519"
+        public = path.with_suffix(".pub")
+        if not path.is_file() or not public.is_file():
+            raise ValueError("Runpod SSH key is not locally available and registered")
+        local = " ".join(public.read_text().split()[:2])
+        registered = {
+            " ".join(str(row.get("key", "")).split()[:2])
+            for row in cli(["ssh", "list-keys"]).get("keys", [])
+        }
+        if local not in registered:
+            raise ValueError("Runpod SSH key is not locally available and registered")
     return [
         "ssh",
         "-i",
