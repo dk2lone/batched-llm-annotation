@@ -286,7 +286,22 @@ class Lane:
                 )
         except CommandError as exc:
             self.capture_id(exc.payload.get("id"))
-            raise
+            reconcile_deadline = min(deadline, time.monotonic() + 60)
+            while self.pod_id is None and time.monotonic() < reconcile_deadline:
+                matches = [
+                    row
+                    for row in cli(["pod", "list", "--all"])
+                    if row.get("name") == name
+                ]
+                if len(matches) > 1:
+                    raise RuntimeError("ambiguous Pod creation produced duplicates")
+                if len(matches) == 1:
+                    self.capture_id(matches[0].get("id"))
+                    break
+                Event().wait(2)
+            if self.pod_id is None:
+                raise
+            pod = cli(["pod", "get", self.pod_id], min(30, deadline - time.monotonic()))
         self.capture_id(pod.get("id"))
         if self.pod_id is None:
             raise RuntimeError("ambiguous Pod creation: reconcile before resuming")

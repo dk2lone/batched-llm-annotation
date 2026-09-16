@@ -235,7 +235,9 @@ def test_watchdog_refuses_pod_creation_when_workflow_step_is_not_active(
         owner.verify_watchdog()
 
 
-@pytest.mark.parametrize("mode", ["success", "price", "wait-failure", "shutdown", "peer-startup"])
+@pytest.mark.parametrize(
+    "mode", ["success", "delayed", "price", "wait-failure", "shutdown", "peer-startup"]
+)
 def test_pod_ownership_and_cleanup(tmp_path: Path, monkeypatch: Any, mode: str) -> None:
     config = configuration()
     cell = b4.CELLS[0]
@@ -249,15 +251,21 @@ def test_pod_ownership_and_cleanup(tmp_path: Path, monkeypatch: Any, mode: str) 
     owner.creation_lock = Lock()
     monkeypatch.setattr(owner, "verify_watchdog", lambda: None)
     calls: list[list[str]] = []
+    created_name = ""
+    deleted = False
     stop = Event()
 
     def fake_cli(args: list[str], timeout: float = 30) -> dict[str, Any]:
+        nonlocal created_name, deleted
         calls.append(args)
         if args[:2] == ["pod", "create"]:
             assert args[args.index("--gpu-count") + 1] == "1"
             assert args[args.index("--cloud-type") + 1] == "SECURE"
             assert "--terminate-after" not in args and "--wait" in args
             assert args[args.index("--name") + 1].startswith("b4-0123456789abcdef-")
+            created_name = args[args.index("--name") + 1]
+            if mode == "delayed":
+                raise transport.CommandError("command_error", {})
             if mode == "wait-failure":
                 raise transport.CommandError("network_error", {"id": "created_cpu"})
             if mode == "peer-startup":
@@ -273,7 +281,17 @@ def test_pod_ownership_and_cleanup(tmp_path: Path, monkeypatch: Any, mode: str) 
             assert args[-1] == "created_cpu"
             if mode == "shutdown":
                 raise transport.CommandError("network_error", {})
+            deleted = True
             return {}
+        if args[:3] == ["pod", "list", "--all"] and mode == "delayed":
+            return [{"id": "created_cpu", "name": created_name}]  # type: ignore[return-value]
+        if args[:2] == ["pod", "get"] and mode == "delayed":
+            if deleted:
+                raise transport.CommandError("not_found", {})
+            return {
+                "id": "created_cpu", "gpuCount": 1, "imageName": config["image"],
+                "networkVolumeId": config["network_volumes"][cell], "costPerHr": 1.59,
+            }
         if args[:2] == ["pod", "get"]:
             raise transport.CommandError("not_found", {})
         return {}
@@ -282,7 +300,7 @@ def test_pod_ownership_and_cleanup(tmp_path: Path, monkeypatch: Any, mode: str) 
     monkeypatch.setattr(transport, "ssh_args", lambda *args: ["ssh-fake"])
     monkeypatch.setattr(transport, "command", lambda *args: b'{"ready":true}')
     monkeypatch.setattr(b4, "verify_serving", lambda *args: None)
-    if mode == "success":
+    if mode in {"success", "delayed"}:
         with owner.phase(cell, "reference", plan["schedules"][cell]) as lane:
             lane.start(300, stop)
             assert lane.ready
