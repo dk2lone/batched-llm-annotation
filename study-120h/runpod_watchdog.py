@@ -16,6 +16,7 @@ from urllib.parse import quote
 from urllib.request import Request, urlopen
 
 API_ROOT = "https://rest.runpod.io/v1"
+USER_AGENT = "b4-runpod-watchdog/1"
 LEASE = re.compile(r"[0-9a-f]{16}")
 POD_ID = re.compile(r"[A-Za-z0-9_-]+")
 MAX_TARGET_SECONDS = 5 * 60 * 60
@@ -51,7 +52,12 @@ class Runpod:
         request = Request(
             self.root + path,
             method=method,
-            headers={"Authorization": f"Bearer {self.api_key}", "Accept": "application/json"},
+            headers={
+                "Authorization": f"Bearer {self.api_key}",
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "User-Agent": USER_AGENT,
+            },
         )
         try:
             with urlopen(request, timeout=20) as response:

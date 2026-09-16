@@ -101,3 +101,30 @@ def test_runpod_requires_rest_v1_list(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(client, "request", lambda method, path: {"pods": []})
     with pytest.raises(RuntimeError, match="response shape changed"):
         client.pods()
+
+
+def test_runpod_request_identifies_watchdog(monkeypatch: pytest.MonkeyPatch) -> None:
+    captured: dict[str, object] = {}
+
+    class Response:
+        def __enter__(self) -> Response:
+            return self
+
+        def __exit__(self, *_: object) -> None:
+            return None
+
+        def read(self) -> bytes:
+            return b"[]"
+
+    def open_request(request: object, timeout: int) -> Response:
+        captured["request"] = request
+        captured["timeout"] = timeout
+        return Response()
+
+    monkeypatch.setattr(watchdog, "urlopen", open_request)
+    client = watchdog.Runpod("secret")
+    assert client.pods() == []
+    request = captured["request"]
+    assert request.get_header("Authorization") == "Bearer secret"  # type: ignore[attr-defined]
+    assert request.get_header("User-agent") == watchdog.USER_AGENT  # type: ignore[attr-defined]
+    assert captured["timeout"] == 20
