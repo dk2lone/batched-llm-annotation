@@ -4,9 +4,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 import uuid
+from pathlib import Path
 from typing import Any
 from urllib.request import Request, urlopen
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
 
 from freezeb.prompts import build_messages
 from step0.hashing import sha256_json
