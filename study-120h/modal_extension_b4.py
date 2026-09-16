@@ -66,10 +66,13 @@ def dispatch(
     budget: dict[str, Any],
     transport: Any,
     chunk_size: int = 32,
+    max_concurrent_lanes: int = 4,
 ) -> None:
-    """Four independent lanes, with a shared budget and barriers between prefixes."""
+    """Run independent lanes with a shared budget and barriers between prefixes."""
     if not 1 <= chunk_size <= 64:
         raise ValueError("chunk size must be 1 through 64")
+    if not 1 <= max_concurrent_lanes <= 4:
+        raise ValueError("max concurrent lanes must be 1 through 4")
     meter(out, budget)
     for _, group in groupby(phases(int(plan["evaluation_prefix"])), key=lambda phase: phase[1:]):
         prepared = []
@@ -87,97 +90,105 @@ def dispatch(
             continue
         if len(prepared) > 4 or len({phase[0] for phase in prepared}) != len(prepared):
             raise ValueError("B4 round must have at most four distinct cell lanes")
-        used = meter(out, budget)
-        available = min(
-            80 - used - 10,
-            (
-                budget["spend_limit_usd"]
-                - budget["spend_used_usd"]
-                - budget.get("runpod_storage_reserve_usd", 0)
+        prepared.sort(
+            key=lambda phase: float(budget["base_forecast_hours"][f"{phase[0]}|{phase[1]}"]),
+            reverse=True,
+        )
+        for offset in range(0, len(prepared), max_concurrent_lanes):
+            wave = prepared[offset : offset + max_concurrent_lanes]
+            used = meter(out, budget)
+            available = min(
+                80 - used - 10,
+                (
+                    budget["spend_limit_usd"]
+                    - budget["spend_used_usd"]
+                    - budget.get("runpod_storage_reserve_usd", 0)
+                )
+                / budget["a100_usd_per_hour"]
+                - (used - budget["prior_extension_a100_hours"]),
             )
-            / budget["a100_usd_per_hour"]
-            - (used - budget["prior_extension_a100_hours"]),
-        )
-        # Allocate separate deadlines. Giving each lane the entire remaining
-        # budget would allow four lanes to overspend it simultaneously.
-        allowances = [
-            1.6 * float(budget["base_forecast_hours"][f"{cell}|{stream}"])
-            for cell, stream, *_ in prepared
-        ]
-        if sum(allowances) + len(prepared) * 60 / 3600 > available:
-            raise RuntimeError("complete parallel B4 round does not fit protected budget")
-        identities = [uuid.uuid4().hex for _ in prepared]
-        b4.append(
-            out / "meter.jsonl",
-            [
-                {
-                    "kind": "start",
-                    "phase_id": identity,
-                    "cell_key": phase[0],
-                    "stream": phase[1],
-                    "prefix": phase[2],
-                    "budget_sha256": budget["record_sha256"],
-                    "guarded_forecast_hours": allowance,
-                    "started_at_utc": dt.datetime.now(dt.UTC).isoformat(),
-                }
-                for identity, phase, allowance in zip(identities, prepared, allowances, strict=True)
-            ],
-        )
-        stop = Event()
-        failures: list[BaseException] = []
-        charges: dict[str, float] = {}
-        # One transport context owns every lane in this round. A lane must not
-        # stop the shared app while another cell is still generating.
-        with transport.session():
-            with ThreadPoolExecutor(max_workers=4, thread_name_prefix="b4-cell") as pool:
-                futures: dict[Future[float], str] = {}
-                failure: BaseException | None = None
-                try:
-                    for identity, phase, allowance in zip(
-                        identities, prepared, allowances, strict=True
-                    ):
-                        futures[
-                            pool.submit(
-                                run_phase,
-                                out,
-                                plan,
-                                transport,
-                                phase,
-                                allowance,
-                                stop,
-                                chunk_size,
-                                failures,
-                            )
-                        ] = identity
-                    for future in as_completed(futures):
-                        try:
-                            charged = future.result()
-                        except BaseException as exc:
-                            stop.set()
-                            if failure is None:
-                                failure = exc
-                        else:
-                            charges[futures[future]] = charged
-                except BaseException:
-                    stop.set()
-                    raise
-                if failure is not None:
-                    raise failures[0] if failures else failure
-        # Settle only after shared app shutdown succeeds. A shutdown failure
-        # cannot silently turn uncertain remote billing into a completed round.
-        b4.append(
-            out / "meter.jsonl",
-            [
-                {
-                    "kind": "settled",
-                    "phase_id": identity,
-                    "budget_sha256": budget["record_sha256"],
-                    "charged_hours": charges[identity],
-                    "accounting": "per_lane_wall_plus_60s_settlement",
-                }
-                for identity in identities
-            ],
-        )
+            # Allocate separate deadlines. Giving each lane the entire remaining
+            # budget would allow concurrent lanes to overspend it simultaneously.
+            allowances = [
+                1.6 * float(budget["base_forecast_hours"][f"{cell}|{stream}"])
+                for cell, stream, *_ in wave
+            ]
+            if sum(allowances) + len(wave) * 60 / 3600 > available:
+                raise RuntimeError("complete parallel B4 wave does not fit protected budget")
+            identities = [uuid.uuid4().hex for _ in wave]
+            b4.append(
+                out / "meter.jsonl",
+                [
+                    {
+                        "kind": "start",
+                        "phase_id": identity,
+                        "cell_key": phase[0],
+                        "stream": phase[1],
+                        "prefix": phase[2],
+                        "budget_sha256": budget["record_sha256"],
+                        "guarded_forecast_hours": allowance,
+                        "started_at_utc": dt.datetime.now(dt.UTC).isoformat(),
+                    }
+                    for identity, phase, allowance in zip(identities, wave, allowances, strict=True)
+                ],
+            )
+            stop = Event()
+            failures: list[BaseException] = []
+            charges: dict[str, float] = {}
+            # One transport context owns every lane in this wave. A lane must not
+            # stop the shared app while another cell is still generating.
+            with transport.session():
+                with ThreadPoolExecutor(
+                    max_workers=len(wave), thread_name_prefix="b4-cell"
+                ) as pool:
+                    futures: dict[Future[float], str] = {}
+                    failure: BaseException | None = None
+                    try:
+                        for identity, phase, allowance in zip(
+                            identities, wave, allowances, strict=True
+                        ):
+                            futures[
+                                pool.submit(
+                                    run_phase,
+                                    out,
+                                    plan,
+                                    transport,
+                                    phase,
+                                    allowance,
+                                    stop,
+                                    chunk_size,
+                                    failures,
+                                )
+                            ] = identity
+                        for future in as_completed(futures):
+                            try:
+                                charged = future.result()
+                            except BaseException as exc:
+                                stop.set()
+                                if failure is None:
+                                    failure = exc
+                            else:
+                                charges[futures[future]] = charged
+                    except BaseException:
+                        stop.set()
+                        raise
+                    if failure is not None:
+                        raise failures[0] if failures else failure
+            # Settle only after shared app shutdown succeeds. A shutdown failure
+            # cannot silently turn uncertain remote billing into a completed wave.
+            b4.append(
+                out / "meter.jsonl",
+                [
+                    {
+                        "kind": "settled",
+                        "phase_id": identity,
+                        "budget_sha256": budget["record_sha256"],
+                        "charged_hours": charges[identity],
+                        "accounting": "per_lane_wall_plus_60s_settlement",
+                    }
+                    for identity in identities
+                ],
+            )
 
 
 def run_phase(

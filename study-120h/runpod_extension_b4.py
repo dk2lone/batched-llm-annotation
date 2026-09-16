@@ -27,6 +27,7 @@ def main() -> None:
     parser.add_argument("--runpod-config", type=Path)
     parser.add_argument("--preflight-evidence", type=Path)
     parser.add_argument("--chunk-size", type=int, default=32)
+    parser.add_argument("--max-concurrent-lanes", type=int, choices=range(1, 5), default=4)
     args = parser.parse_args()
     plan = b4.build_plan(STUDY, args.prefix, "runpod")
     args.output.mkdir(parents=True, exist_ok=True)
@@ -89,14 +90,22 @@ def main() -> None:
                         raise ValueError("immutable Runpod execution evidence differs")
                 else:
                     write_json(path, value)
-            dispatch(STUDY, args.output, plan, budget, transport, args.chunk_size)
+            dispatch(
+                STUDY,
+                args.output,
+                plan,
+                budget,
+                transport,
+                args.chunk_size,
+                args.max_concurrent_lanes,
+            )
         print(
             json.dumps(
                 {
                     "provider": "runpod",
                     "cloud_type": "SECURE",
                     "gpu_type_id": plan["gpu_type_id"],
-                    "max_concurrent_a100s": 4,
+                    "max_concurrent_a100s": args.max_concurrent_lanes,
                     "plan_sha256": plan["plan_sha256"],
                     "first_calls": plan["first_calls"],
                     "gpu_work_launched": bool(args.execute),

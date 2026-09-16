@@ -563,6 +563,90 @@ def test_four_parallel_lanes_and_round_safety(
         assert len(launches) == 4
 
 
+def test_two_lane_waves_preserve_reference_barrier(
+    tmp_path: Path, rows: list[dict[str, Any]], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    original_jobs = b4.jobs
+    monkeypatch.setattr(b4, "frame", lambda study, task: rows)
+    monkeypatch.setattr(
+        b4,
+        "jobs",
+        lambda cell, data, stream, count, **kwargs: original_jobs(cell, data, stream, 1, **kwargs),
+    )
+    plan = {
+        "plan_sha256": "cpu-plan",
+        "evaluation_prefix": 400,
+        "schedules": dict.fromkeys(b4.CELLS, {}),
+        "serving_policy": {
+            cell.rsplit("::", 1)[0]: ext.ext_policy_for(cell.rsplit("::", 1)[0]).revision
+            for cell in b4.CELLS
+        },
+    }
+    record = budget(plan)
+    for stream in ("reference", "evaluation"):
+        for rank, cell in enumerate(b4.CELLS):
+            record["base_forecast_hours"][f"{cell}|{stream}"] = 4 - rank
+    barrier = Barrier(2, timeout=5)
+    lock = Lock()
+    active = 0
+    peak = 0
+    session_index = -1
+    sessions: list[list[tuple[str, str]]] = []
+    finished_reference: set[str] = set()
+
+    class Fake:
+        @contextmanager
+        def session(self) -> Iterator[None]:
+            nonlocal session_index
+            session_index += 1
+            sessions.append([])
+            yield
+
+        @contextmanager
+        def phase(self, cell: str, stream: str, schedule: Any) -> Iterator[Any]:
+            nonlocal active, peak
+            with lock:
+                if stream == "evaluation":
+                    assert finished_reference == set(b4.CELLS)
+                sessions[session_index].append((cell, stream))
+                active += 1
+                peak = max(peak, active)
+            try:
+                barrier.wait()
+                yield SimpleNamespace(
+                    recover=lambda namespace, timeout, stop: [],
+                    run=lambda namespace, chunk, group, remaining, stop: payload(
+                        group, [response(job) for job in group]
+                    ),
+                )
+                with lock:
+                    if stream == "reference":
+                        finished_reference.add(cell)
+            finally:
+                with lock:
+                    active -= 1
+
+    runner.dispatch(STUDY, tmp_path, plan, record, Fake(), max_concurrent_lanes=2)
+    assert peak == 2 and active == 0
+    assert len(sessions) == 4
+    expected_pairs = [set(b4.CELLS[:2]), set(b4.CELLS[2:])]
+    assert [{cell for cell, _ in wave} for wave in sessions[:2]] == expected_pairs
+    assert [{cell for cell, _ in wave} for wave in sessions[2:]] == expected_pairs
+    assert [stream for wave in sessions for _, stream in wave] == [
+        "reference",
+        "reference",
+        "reference",
+        "reference",
+        "evaluation",
+        "evaluation",
+        "evaluation",
+        "evaluation",
+    ]
+    assert [row["kind"] for row in b4.events(tmp_path / "meter.jsonl")] == (
+        ["start"] * 2 + ["settled"] * 2
+    ) * 4
+
+
 @pytest.mark.parametrize("mode", ["ready", "stopped", "deadline", "failure"])
 def test_transport_polling_and_container_cancellation(mode: str) -> None:
     # Compile only the local Lane class, with a fake Modal SDK. No transport
