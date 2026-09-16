@@ -299,7 +299,10 @@ class Lane:
         info = cli(["ssh", "info", self.pod_id], min(30, deadline - time.monotonic()))
         self.ssh = ssh_args(info, self.owner.out / "runpod-known-hosts")
         command(
-            [*self.ssh, f"mkdir -p {self.remote} && tar -xf - -C {self.remote}"],
+            [
+                *self.ssh,
+                f"mkdir -p {self.remote} && tar --no-same-owner -xf - -C {self.remote}",
+            ],
             deadline - time.monotonic(),
             stop,
             self.owner.archive,
