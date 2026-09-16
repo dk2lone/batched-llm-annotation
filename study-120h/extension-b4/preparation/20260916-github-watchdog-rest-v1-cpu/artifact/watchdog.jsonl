@@ -1,0 +1,4 @@
+{"at_utc": "2026-09-16T03:00:30.108159+00:00", "deadline_utc": "2026-09-16T03:04:22.487121+00:00", "expected_pods": 1, "kind": "armed", "lease_id": "4e899a2401b3a8c1", "pod_name_prefix": "b4-4e899a2401b3a8c1-"}
+{"at_utc": "2026-09-16T03:01:01.318007+00:00", "kind": "pods_observed", "observed_count": 1, "pod_ids": ["4hrzdmho26umch"]}
+{"at_utc": "2026-09-16T03:04:23.094482+00:00", "kind": "delete_requested", "pod_id": "4hrzdmho26umch", "status": "RUNNING"}
+{"at_utc": "2026-09-16T03:04:23.923573+00:00", "kind": "termination_verified", "observed_count": 1, "observed_pod_ids": ["4hrzdmho26umch"]}
