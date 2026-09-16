@@ -36,8 +36,8 @@ four-GPU tensor-parallel model. No fallback to Community Cloud or 40GB is config
 
 The Runpod runner, SSH transport, offline inference worker, budget checks,
 durable raw receipts, recovery, independent lane cleanup, and CPU plan preparation
-are implemented. Local verification passed 509 regression tests, 64 focused B4
-tests, scoped Ruff, and strict mypy across 62 source files. No Runpod scientific
+are implemented. Local verification passed 517 regression tests, 72 focused B4
+tests, scoped Ruff, and strict mypy. No Runpod scientific
 annotation calls or GPU smoke tests have run.
 
 The active CPU-only plan is
@@ -80,9 +80,11 @@ server-side cost guard. Live CLI help and the REST v2 OpenAPI schema have no
 automatic-termination field. Runpod's merged removal PR documents that the old
 GraphQL fields were accepted but ignored while Pods continued billing; the restore
 PR remains a draft pending backend enforcement. There is currently no supported,
-verifiable server-side Pod deadline to substitute. The current working tree replaces
+verifiable server-side Pod deadline to substitute. The runner replaces
 that rejected path with a pre-armed GitHub Actions watchdog, normal local deletion and
-a separately verified prepaid-balance ceiling. The new path is not live-validated yet.
+a separately verified prepaid-balance ceiling. The watchdog uses the current REST v2
+Pod list and termination endpoints and fails closed before Pod creation unless GitHub
+reports its deletion step as active.
 
 Read-only 2.14.0 response shapes were checked for user, Pod list, volume list, SSH
 key list, GPU catalog, and registry list. User is an object; Pod, volume, and GPU
@@ -94,6 +96,14 @@ Daniel authorized preparation and a bounded paid synthetic smoke test, not
 the full scientific experiment. Paid work is paused at this compatibility
 blocker. Do not remove the guard, fabricate passed preflight checks, or launch
 the full runner to bootstrap its own smoke-test requirement.
+
+GitHub-hosted watchdog probes on 2026-09-15 America/Toronto exercised both the
+legacy REST v1 and current REST v2 Pod-list endpoints. The supplied key received
+HTTP 403 from both. Each workflow failed before Pod creation, the balance remained
+$17.9731773303, and no active Pods or hourly spend remained. GitHub Actions runs
+35047092222 and 35047394565 plus their downloaded audit artifacts preserve the
+evidence. The remaining blocker is a fresh key with Pod read and terminate access,
+not API selection.
 
 Two CPU-only lifecycle probes on 2026-09-15 America/Toronto tested whether a
 Pod could use container exit as the missing guard. An Alpine Pod with a
