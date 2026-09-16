@@ -51,6 +51,26 @@ def budget(config: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+@pytest.mark.parametrize("supported", [False, True])
+def test_creation_requires_server_side_termination(monkeypatch: Any, supported: bool) -> None:
+    calls: list[list[str]] = []
+
+    def fake_command(argv: list[str], timeout: float) -> bytes:
+        calls.append(argv)
+        if argv[-1] == "--help":
+            return b"--terminate-after" if supported else b"--wait"
+        return b'{"id":"fake-pod"}'
+
+    monkeypatch.setattr(transport, "command", fake_command)
+    if supported:
+        assert transport.cli(["pod", "create"]) == {"id": "fake-pod"}
+        assert len(calls) == 2
+    else:
+        with pytest.raises(RuntimeError, match="no Pod created"):
+            transport.cli(["pod", "create"])
+        assert len(calls) == 1
+
+
 @pytest.mark.parametrize(
     "fault",
     ["none", "community", "40gb", "tag", "same-volume", "binding", "smoke", "storage", "account"],
@@ -352,3 +372,33 @@ def test_storage_reserve_prevents_dispatch(tmp_path: Path, monkeypatch: Any) -> 
     with pytest.raises(RuntimeError, match="protected budget"):
         runner.dispatch(STUDY, tmp_path, {"evaluation_prefix": 400}, record, None)
     assert not (tmp_path / "meter.jsonl").exists()
+
+
+@pytest.mark.parametrize("mode", ["profile", "legacy", "environment", "missing"])
+def test_flash_credentials_are_resolved_without_rewriting(
+    tmp_path: Path,
+    monkeypatch: Any,
+    mode: str,
+) -> None:
+    monkeypatch.delenv("RUNPOD_API_KEY", raising=False)
+    monkeypatch.setattr(Path, "home", lambda: tmp_path)
+    path = tmp_path / ".runpod" / "config.toml"
+    if mode != "missing":
+        path.parent.mkdir()
+        path.write_text(
+            'apikey = "legacy-test-value"\n[default]\napi_key = "profile-test-value"\n'
+            if mode != "legacy"
+            else 'apikey = "legacy-test-value"\n'
+        )
+    original = path.read_bytes() if path.exists() else None
+    if mode == "environment":
+        monkeypatch.setenv("RUNPOD_API_KEY", "environment-test-value")
+    env = transport.credential_env()
+    expected = {
+        "profile": "profile-test-value",
+        "legacy": "legacy-test-value",
+        "environment": "environment-test-value",
+        "missing": None,
+    }[mode]
+    assert env.get("RUNPOD_API_KEY") == expected
+    assert (path.read_bytes() if path.exists() else None) == original

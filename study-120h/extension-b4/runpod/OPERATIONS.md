@@ -5,9 +5,13 @@ Each round creates only the Pods it needs and deletes each Pod when its lane fin
 References finish for all four families before evaluation starts. The initial study remains
 250 reference and 400 evaluation replicates per cell, or 83,200 first calls.
 
-The implementation is locally tested, not remotely validated. No runtime image has been built
-or published, no network volumes have been provisioned, and no model caches or GPU smoke tests
-have been run by this preparation. Do not mark preflight checks passed without evidence.
+The implementation is locally tested, not remotely validated. A hosted runtime image build
+has started; no network volumes, model caches or GPU smoke tests have been provisioned.
+Do not mark preflight checks passed without evidence.
+
+Runpod CLI 2.14.0 removed `--terminate-after`. This runner requires that server-side cost guard
+and rejects Pod creation when the flag is unavailable. Paid testing is blocked until a supported
+automatic-termination path and the live CLI response shapes have been verified.
 
 ## Local preparation
 
@@ -27,7 +31,8 @@ plan with different code hashes stop preparation. Use a new directory after chan
 Use the official Runpod PyTorch base specified in `Dockerfile`, build for `linux/amd64`, and
 publish a derived image containing the pinned Python 3.11/vLLM environment. Record its immutable
 image digest. The runner uses `/opt/b4/bin/python`; the base image alone is not sufficient.
-Building/publishing has not been done. The template and its image were checked live on 2026-09-15.
+The hosted build is tracked in GitHub Actions as `build b4 runtime`. The template and its image
+were checked live on 2026-09-15. A started build is not a verified published runtime.
 
 Prepare four distinct network volumes in the same data center, one per selected cell. Cache
 each exact sealed model/tokenizer revision under `/workspace/hf` using the HF hub cache layout.

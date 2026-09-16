@@ -6,10 +6,12 @@ import datetime as dt
 import ipaddress
 import json
 import math
+import os
 import re
 import shlex
 import subprocess
 import time
+import tomllib
 import uuid
 from collections.abc import Iterator
 from contextlib import contextmanager
@@ -21,6 +23,24 @@ from freezeb import extension_b4 as b4
 from step0.hashing import sha256_json, write_json
 
 STUDY = Path(__file__).resolve().parent
+
+
+def credential_env() -> dict[str, str]:
+    """Read Flash's saved default profile without rewriting or displaying credentials."""
+    env = os.environ.copy()
+    if env.get("RUNPOD_API_KEY"):
+        return env
+    path = Path.home() / ".runpod" / "config.toml"
+    if not path.is_file():
+        return env
+    try:
+        config = tomllib.loads(path.read_text())
+    except (OSError, ValueError):
+        raise RuntimeError("Runpod credential configuration cannot be read") from None
+    key = config.get("default", {}).get("api_key") or config.get("apikey")
+    if isinstance(key, str) and key:
+        env["RUNPOD_API_KEY"] = key
+    return env
 
 
 class CommandError(RuntimeError):
@@ -39,7 +59,11 @@ def command(
         raise RuntimeError("B4 protected deadline reached or peer lane failed")
     deadline = time.monotonic() + timeout
     with subprocess.Popen(
-        argv, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+        argv,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        env=credential_env() if argv[0] == "runpodctl" else None,
     ) as process:
         first = True
         try:
@@ -71,6 +95,12 @@ def command(
 
 
 def cli(args: list[str], timeout: float = 30) -> Any:
+    if args[:2] == ["pod", "create"]:
+        help_text = command(["runpodctl", "pod", "create", "--help"], min(timeout, 10))
+        if b"--terminate-after" not in help_text:
+            raise RuntimeError(
+                "Installed Runpod CLI lacks server-side automatic termination; no Pod created"
+            )
     output = command(["runpodctl", *args], timeout)
     return json.loads(output) if output.strip() else {}
 
