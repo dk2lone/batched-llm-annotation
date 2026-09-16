@@ -120,7 +120,10 @@ def verify_config(config: dict[str, Any], budget: dict[str, Any], profile: str) 
         raise ValueError("unknown Runpod configuration")
     if config.get("account_id") != profile:
         raise ValueError("Runpod account must match the verified profile")
-    if config.get("cloud_type") != "SECURE" or config.get("gpu_type_id") != "NVIDIA A100-SXM4-80GB":
+    if config.get("cloud_type") != "SECURE" or config.get("gpu_type_id") not in {
+        "NVIDIA A100-SXM4-80GB",
+        "NVIDIA A100 80GB PCIe",
+    }:
         raise ValueError("B4 Runpod allocation must be Secure Cloud 80GB A100")
     if not re.fullmatch(r"[a-zA-Z0-9./:_-]+@sha256:[0-9a-f]{64}", str(config.get("image", ""))):
         raise ValueError("Runpod runtime image must be pinned by digest after smoke testing")
@@ -414,6 +417,8 @@ class RunpodTransport:
         out: Path,
     ) -> None:
         verify_config(config, budget, profile)
+        if config["gpu_type_id"] != plan.get("gpu_type_id"):
+            raise ValueError("Runpod configuration GPU differs from the immutable plan")
         self.config, self.plan, self.out = config, plan, out
         self.budget = budget
         self.max_rate = float(budget["a100_usd_per_hour"])

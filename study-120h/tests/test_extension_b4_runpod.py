@@ -102,6 +102,12 @@ def test_configuration_fails_closed(fault: str) -> None:
             transport.verify_config(config, record, "user_cpu")
 
 
+def test_configuration_accepts_a100_pcie_80gb() -> None:
+    config = configuration()
+    config["gpu_type_id"] = "NVIDIA A100 80GB PCIe"
+    transport.verify_config(config, budget(config), "user_cpu")
+
+
 def test_imports_and_default_cli_are_cpu_only(tmp_path: Path, monkeypatch: Any) -> None:
     assert "vllm" not in sys.modules
     spec = importlib.util.spec_from_file_location("runpod_b4_cpu", STUDY / "runpod_extension_b4.py")

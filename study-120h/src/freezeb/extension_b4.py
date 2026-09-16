@@ -120,9 +120,19 @@ def jobs(
             }
 
 
-def build_plan(study: Path, prefix: int = 400, provider: str = "modal") -> dict[str, Any]:
+def build_plan(
+    study: Path,
+    prefix: int = 400,
+    provider: str = "modal",
+    gpu_type_id: str = "NVIDIA A100-SXM4-80GB",
+) -> dict[str, Any]:
     if provider not in ("modal", "runpod"):
         raise ValueError("unsupported B4 provider")
+    if provider == "runpod" and gpu_type_id not in {
+        "NVIDIA A100-SXM4-80GB",
+        "NVIDIA A100 80GB PCIe",
+    }:
+        raise ValueError("Runpod B4 requires an approved 80GB A100 type")
     if prefix not in ext.E5_EVALUATION_PREFIXES:
         raise ValueError("evaluation prefix must be 400, 1000, or 2500")
     for relative in (SEAL, ADMISSION, RUNTIME):
@@ -198,7 +208,7 @@ def build_plan(study: Path, prefix: int = 400, provider: str = "modal") -> dict[
     }
     if provider == "runpod":
         core["provider"] = "runpod"
-        core["gpu_type_id"] = "NVIDIA A100-SXM4-80GB"
+        core["gpu_type_id"] = gpu_type_id
         core["cloud_type"] = "SECURE"
     return {**core, "plan_sha256": sha256_json(core)}
 

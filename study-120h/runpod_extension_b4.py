@@ -28,8 +28,13 @@ def main() -> None:
     parser.add_argument("--preflight-evidence", type=Path)
     parser.add_argument("--chunk-size", type=int, default=32)
     parser.add_argument("--max-concurrent-lanes", type=int, choices=range(1, 5), default=4)
+    parser.add_argument(
+        "--gpu-type-id",
+        choices=("NVIDIA A100-SXM4-80GB", "NVIDIA A100 80GB PCIe"),
+        default="NVIDIA A100-SXM4-80GB",
+    )
     args = parser.parse_args()
-    plan = b4.build_plan(STUDY, args.prefix, "runpod")
+    plan = b4.build_plan(STUDY, args.prefix, "runpod", args.gpu_type_id)
     args.output.mkdir(parents=True, exist_ok=True)
     with (args.output / ".active-run.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
