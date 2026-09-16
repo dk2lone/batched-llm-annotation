@@ -321,8 +321,19 @@ class Lane:
             or pod.get("networkVolumeId") != config["network_volumes"][self.cell]
         ):
             raise RuntimeError("created Pod configuration differs")
-        info = cli(["ssh", "info", self.pod_id], min(30, deadline - time.monotonic()))
-        self.ssh = ssh_args(info, self.owner.out / "runpod-known-hosts")
+        ssh_deadline = min(deadline, time.monotonic() + 600)
+        while True:
+            try:
+                info = cli(
+                    ["ssh", "info", self.pod_id],
+                    min(30, ssh_deadline - time.monotonic()),
+                )
+                self.ssh = ssh_args(info, self.owner.out / "runpod-known-hosts")
+                break
+            except (CommandError, KeyError, ValueError):
+                if stop.is_set() or time.monotonic() >= ssh_deadline:
+                    raise RuntimeError("Pod SSH did not become ready before its deadline") from None
+                Event().wait(5)
         command(
             [
                 *self.ssh,

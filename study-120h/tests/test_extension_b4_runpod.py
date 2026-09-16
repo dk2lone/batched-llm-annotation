@@ -236,7 +236,8 @@ def test_watchdog_refuses_pod_creation_when_workflow_step_is_not_active(
 
 
 @pytest.mark.parametrize(
-    "mode", ["success", "delayed", "price", "wait-failure", "shutdown", "peer-startup"]
+    "mode",
+    ["success", "delayed", "ssh-delayed", "price", "wait-failure", "shutdown", "peer-startup"],
 )
 def test_pod_ownership_and_cleanup(tmp_path: Path, monkeypatch: Any, mode: str) -> None:
     config = configuration()
@@ -297,10 +298,21 @@ def test_pod_ownership_and_cleanup(tmp_path: Path, monkeypatch: Any, mode: str) 
         return {}
 
     monkeypatch.setattr(transport, "cli", fake_cli)
-    monkeypatch.setattr(transport, "ssh_args", lambda *args: ["ssh-fake"])
+    ssh_attempts = 0
+
+    def fake_ssh_args(*args: Any) -> list[str]:
+        nonlocal ssh_attempts
+        ssh_attempts += 1
+        if mode == "ssh-delayed" and ssh_attempts == 1:
+            raise KeyError("ip")
+        return ["ssh-fake"]
+
+    monkeypatch.setattr(transport, "ssh_args", fake_ssh_args)
+    if mode == "ssh-delayed":
+        monkeypatch.setattr(transport.Event, "wait", lambda self, timeout=None: False)
     monkeypatch.setattr(transport, "command", lambda *args: b'{"ready":true}')
     monkeypatch.setattr(b4, "verify_serving", lambda *args: None)
-    if mode in {"success", "delayed"}:
+    if mode in {"success", "delayed", "ssh-delayed"}:
         with owner.phase(cell, "reference", plan["schedules"][cell]) as lane:
             lane.start(300, stop)
             assert lane.ready
