@@ -1,0 +1,35 @@
+{
+  "schema_version": "b4-runpod-reconciliation-evidence-v1",
+  "failure": "second serialized launch retry allocated one Pod and the next creation returned graphql_error before scientific work",
+  "balance_before_usd": 26.924899495,
+  "balance_after_settlement_usd": 26.91887737,
+  "verified_rate_usd_per_a100_hour": 1.59,
+  "total_billed_a100_hours": 0.003787499999998527,
+  "allocation_method": "the full settled balance delta is assigned to the only returned Pod; the three lanes without Pod IDs are zero",
+  "scientific_calls_launched": false,
+  "phases": {
+    "c577f765e5f04b84a5c3996d928d4929": {
+      "cell": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "pod_id": null,
+      "billed_a100_hours": 0.0
+    },
+    "e7150810d41a4342ae6d5d817c938ac1": {
+      "cell": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "pod_id": null,
+      "billed_a100_hours": 0.0
+    },
+    "5e32de3d96e34aac8afb4a7f131e9729": {
+      "cell": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "pod_id": null,
+      "billed_a100_hours": 0.0
+    },
+    "8b41594b90074f5b8e9d21b587822713": {
+      "cell": "Qwen/Qwen3-8B::civil_comments",
+      "pod_id": "dzou9hav9f1p29",
+      "billed_a100_hours": 0.003787499999998527
+    }
+  },
+  "active_pods_after_cleanup": 0,
+  "watchdog_run_id": 35055401994,
+  "watchdog_released_after_local_deletion": true
+}

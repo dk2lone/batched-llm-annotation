@@ -1,0 +1,35 @@
+{
+  "schema_version": "b4-runpod-reconciliation-evidence-v1",
+  "failure": "second serialized Pod creation returned graphql_error before scientific work",
+  "balance_before_usd": 26.924899495,
+  "balance_after_settlement_usd": 26.924899495,
+  "verified_rate_usd_per_a100_hour": 1.59,
+  "total_billed_a100_hours": 0.0,
+  "allocation_method": "provider balance was unchanged after the sole returned Pod was deleted and billing settled; all four phases assigned zero",
+  "scientific_calls_launched": false,
+  "phases": {
+    "f5d96849ad3a4895b50876db41da63b5": {
+      "cell": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "pod_id": "1pjmaouylyiesk",
+      "billed_a100_hours": 0.0
+    },
+    "3e975b636db145218f9d221d1da5bba1": {
+      "cell": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "pod_id": null,
+      "billed_a100_hours": 0.0
+    },
+    "8e27a86d297b47bd96b787d07d06fc64": {
+      "cell": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "pod_id": null,
+      "billed_a100_hours": 0.0
+    },
+    "33f607c666f2484397aa2a48ae079cbc": {
+      "cell": "Qwen/Qwen3-8B::civil_comments",
+      "pod_id": null,
+      "billed_a100_hours": 0.0
+    }
+  },
+  "active_pods_after_cleanup": 0,
+  "watchdog_run_id": 35055189703,
+  "watchdog_released_after_local_deletion": true
+}

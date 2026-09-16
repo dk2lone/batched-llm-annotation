@@ -1,0 +1,21 @@
+{
+  "account_id": "user_3GCQlNiLDruYedpe87pTOrbYANt",
+  "at_utc": "2026-09-16T04:23:30.548201+00:00",
+  "authorized_remaining_usd": 79.3097769147,
+  "balance_usd": 26.91887737,
+  "lane_reservations": [
+    "c577f765e5f04b84a5c3996d928d4929",
+    "e7150810d41a4342ae6d5d817c938ac1",
+    "5e32de3d96e34aac8afb4a7f131e9729",
+    "8b41594b90074f5b8e9d21b587822713"
+  ],
+  "placement": {
+    "dataCenterId": "EUR-IS-1",
+    "stockStatus": "Low"
+  },
+  "required_round_usd": 15.782923076923076,
+  "secure_price_usd_per_hour": 1.59,
+  "shutdown_target_utc": "2026-09-16T07:11:44.585983+00:00",
+  "watchdog_lease_id": "28d2f3b408644399",
+  "watchdog_run_id": 35055401994
+}
