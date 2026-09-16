@@ -120,7 +120,9 @@ def jobs(
             }
 
 
-def build_plan(study: Path, prefix: int = 400) -> dict[str, Any]:
+def build_plan(study: Path, prefix: int = 400, provider: str = "modal") -> dict[str, Any]:
+    if provider not in ("modal", "runpod"):
+        raise ValueError("unsupported B4 provider")
     if prefix not in ext.E5_EVALUATION_PREFIXES:
         raise ValueError("evaluation prefix must be 400, 1000, or 2500")
     for relative in (SEAL, ADMISSION, RUNTIME):
@@ -164,6 +166,20 @@ def build_plan(study: Path, prefix: int = 400) -> dict[str, Any]:
                 "src/freezeb/labels.py",
                 "src/step0/stats.py",
             )
+            + (
+                (
+                    "runpod_extension_b4.py",
+                    "extension_b4_runpod.py",
+                    "b4_runpod_worker.py",
+                    "extension-b4/runpod/Dockerfile",
+                    "src/step1/backends.py",
+                    "src/freezeb/e2.py",
+                    "src/freezeb/batch_invariance.py",
+                    "src/freezeb/runtime_benchmark.py",
+                )
+                if provider == "runpod"
+                else ()
+            )
         },
         "serving_policy": {
             cell.rsplit("::", 1)[0]: ext.ext_policy_for(cell.rsplit("::", 1)[0]).revision
@@ -178,6 +194,10 @@ def build_plan(study: Path, prefix: int = 400) -> dict[str, Any]:
         "reserve_a100_hours": 10,
         "forecast_multiplier": 1.6,
     }
+    if provider == "runpod":
+        core["provider"] = "runpod"
+        core["gpu_type_id"] = "NVIDIA A100-SXM4-80GB"
+        core["cloud_type"] = "SECURE"
     return {**core, "plan_sha256": sha256_json(core)}
 
 
@@ -377,11 +397,24 @@ def verify_serving(payload: dict[str, Any], plan: dict[str, Any], cell: str) -> 
         or "A100" not in str(host.get("gpu_name", "")).upper()
     ):
         raise ValueError("B4 worker runtime/GPU differs")
+    if plan.get("provider") == "runpod":
+        memory = host.get("gpu_memory_bytes")
+        if (
+            host.get("provider") != "runpod"
+            or isinstance(memory, bool)
+            or not isinstance(memory, int)
+            or memory < 75 * 1024**3
+        ):
+            raise ValueError("Runpod serving evidence must identify an 80GB A100")
 
 
 def analyze(study: Path, out: Path, prefix: int = 400) -> dict[str, Any]:
-    plan = build_plan(study, prefix)
     stored_plan = load(out / f"PLAN-{prefix}.json")
+    plan = (
+        build_plan(study, prefix, "runpod")
+        if stored_plan.get("provider") == "runpod"
+        else build_plan(study, prefix)
+    )
     if stored_plan != plan:
         raise ValueError("analysis input plan differs from rebuilt sealed B4 plan")
     cells = []

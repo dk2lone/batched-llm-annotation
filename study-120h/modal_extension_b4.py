@@ -90,7 +90,12 @@ def dispatch(
         used = meter(out, budget)
         available = min(
             80 - used - 10,
-            (budget["spend_limit_usd"] - budget["spend_used_usd"]) / budget["a100_usd_per_hour"]
+            (
+                budget["spend_limit_usd"]
+                - budget["spend_used_usd"]
+                - budget.get("runpod_storage_reserve_usd", 0)
+            )
+            / budget["a100_usd_per_hour"]
             - (used - budget["prior_extension_a100_hours"]),
         )
         # Allocate separate deadlines. Giving each lane the entire remaining
@@ -121,7 +126,7 @@ def dispatch(
         stop = Event()
         failures: list[BaseException] = []
         charges: dict[str, float] = {}
-        # One Modal app context owns every lane in this round. A lane must not
+        # One transport context owns every lane in this round. A lane must not
         # stop the shared app while another cell is still generating.
         with transport.session():
             with ThreadPoolExecutor(max_workers=4, thread_name_prefix="b4-cell") as pool:

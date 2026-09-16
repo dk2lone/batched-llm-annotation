@@ -1,5 +1,9 @@
 # B4 / A11 operations
 
+Runpod-specific execution is documented in [Runpod operations](extension-b4/runpod/OPERATIONS.md).
+Its new runner defaults to CPU preparation and requires separately verified image/cache/smoke
+evidence before any paid execution. The Modal commands below remain the original transport lane.
+
 B4 measures repeated-sampling uncertainty in the four cells selected by the A7 solo screen.
 The initial prefix is 250 reference and 400 evaluation replicates per cell, with 32 fresh
 size-16 calls per replicate: 83,200 first calls. Frozen protocols and their seals are unchanged.
@@ -76,7 +80,7 @@ Only after authorization, the execution command is:
 MODAL_PROFILE=VERIFIED_PROFILE .venv/bin/python modal_extension_b4.py --output extension-b4/initial --execute --profile VERIFIED_PROFILE --budget-record budget-record.json
 ```
 
-This is the only GPU-starting path. Up to four independent cell lanes run together, with BF16,
+This is the Modal GPU-starting path. Up to four independent cell lanes run together, with BF16,
 greedy decoding, vLLM 0.28.0 and required batch invariance. Each parameterized model pool is
 limited to one A100; the runner submits at most four lanes. All references precede evaluation,
 and every family completes a prefix before the next prefix starts.
