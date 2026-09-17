@@ -347,6 +347,15 @@ class Lane:
                 if stop.is_set() or time.monotonic() >= ssh_deadline:
                     raise RuntimeError("Pod SSH did not become ready before its deadline") from None
                 Event().wait(5)
+        runtime_probe = shlex.join(
+            [
+                "/opt/b4/bin/python",
+                "-c",
+                "import torch; assert torch.cuda.device_count() == 1; "
+                "torch.cuda.get_device_properties(0)",
+            ]
+        )
+        command([*self.ssh, runtime_probe], min(30, deadline - time.monotonic()), stop)
         command(
             [
                 *self.ssh,

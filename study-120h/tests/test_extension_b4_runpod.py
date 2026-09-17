@@ -312,7 +312,13 @@ def test_pod_ownership_and_cleanup(tmp_path: Path, monkeypatch: Any, mode: str) 
     monkeypatch.setattr(transport, "ssh_args", fake_ssh_args)
     if mode == "ssh-delayed":
         monkeypatch.setattr(transport.Event, "wait", lambda self, timeout=None: False)
-    monkeypatch.setattr(transport, "command", lambda *args: b'{"ready":true}')
+    remote_commands: list[list[str]] = []
+
+    def fake_command(args: list[str], *unused: Any) -> bytes:
+        remote_commands.append(args)
+        return b'{"ready":true}'
+
+    monkeypatch.setattr(transport, "command", fake_command)
     monkeypatch.setattr(b4, "verify_serving", lambda *args: None)
     if mode in {"success", "delayed", "ssh-delayed"}:
         with owner.phase(cell, "reference", plan["schedules"][cell]) as lane:
@@ -324,6 +330,8 @@ def test_pod_ownership_and_cleanup(tmp_path: Path, monkeypatch: Any, mode: str) 
                 lane.start(300, stop)
     assert any(args[:2] == ["pod", "delete"] for args in calls)
     assert not any("other_pod" in args for args in calls)
+    if mode in {"success", "delayed", "ssh-delayed"}:
+        assert any("get_device_properties" in args[-1] for args in remote_commands)
     records = list((tmp_path / "runpod-lifecycle").glob("*.jsonl"))
     assert len(records) == 1
     audit = b4.events(records[0])
