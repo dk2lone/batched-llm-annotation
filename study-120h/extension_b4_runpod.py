@@ -10,6 +10,7 @@ import os
 import re
 import shlex
 import subprocess
+import tempfile
 import time
 import tomllib
 import uuid
@@ -59,40 +60,44 @@ def command(
     if timeout <= 0 or (stop is not None and stop.is_set()):
         raise RuntimeError("B4 protected deadline reached or peer lane failed")
     deadline = time.monotonic() + timeout
-    with subprocess.Popen(
-        argv,
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        env=credential_env() if argv[0] == "runpodctl" else None,
-    ) as process:
-        first = True
-        try:
-            while True:
-                remaining = deadline - time.monotonic()
-                if remaining <= 0 or (stop is not None and stop.is_set()):
-                    raise RuntimeError("B4 protected deadline reached or peer lane failed")
-                try:
-                    output, error = process.communicate(
-                        data if first else None, timeout=min(1.0, remaining)
+    # A finite file gives SSH deterministic EOF even when communicate() is polled
+    # repeatedly. A PIPE can remain open after a timed communicate call and leave
+    # the remote request client waiting in stdin.read() forever.
+    with tempfile.TemporaryFile() as stdin:
+        if data is not None:
+            stdin.write(data)
+        stdin.seek(0)
+        with subprocess.Popen(
+            argv,
+            stdin=stdin,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            env=credential_env() if argv[0] == "runpodctl" else None,
+        ) as process:
+            try:
+                while True:
+                    remaining = deadline - time.monotonic()
+                    if remaining <= 0 or (stop is not None and stop.is_set()):
+                        raise RuntimeError("B4 protected deadline reached or peer lane failed")
+                    try:
+                        output, error = process.communicate(timeout=min(1.0, remaining))
+                        break
+                    except subprocess.TimeoutExpired:
+                        pass
+                if process.returncode:
+                    # CLI output can contain environment values. Never echo it to chat/logs.
+                    try:
+                        payload = json.loads(error)
+                    except (ValueError, UnicodeDecodeError):
+                        payload = {}
+                    raise CommandError(
+                        str(payload.get("code", "command_error")), {"id": payload.get("id")}
                     )
-                    break
-                except subprocess.TimeoutExpired:
-                    first = False
-            if process.returncode:
-                # CLI output can contain environment values. Never echo it to chat/logs.
-                try:
-                    payload = json.loads(error)
-                except (ValueError, UnicodeDecodeError):
-                    payload = {}
-                raise CommandError(
-                    str(payload.get("code", "command_error")), {"id": payload.get("id")}
-                )
-            return output
-        finally:
-            if process.poll() is None:
-                process.kill()
-                process.communicate()
+                return output
+            finally:
+                if process.poll() is None:
+                    process.kill()
+                    process.communicate()
 
 
 def cli(args: list[str], timeout: float = 30) -> Any:
@@ -297,7 +302,7 @@ class Lane:
                     if row.get("name") == name
                 ]
                 if len(matches) > 1:
-                    raise RuntimeError("ambiguous Pod creation produced duplicates")
+                    raise RuntimeError("ambiguous Pod creation produced duplicates") from exc
                 if len(matches) == 1:
                     self.capture_id(matches[0].get("id"))
                     break
@@ -343,7 +348,7 @@ class Lane:
                         raise RuntimeError("Pod disappeared before SSH became ready") from None
                     raise
                 if status in {"EXITED", "TERMINATED"}:
-                    raise RuntimeError("Pod exited before SSH became ready")
+                    raise RuntimeError("Pod exited before SSH became ready") from None
                 if stop.is_set() or time.monotonic() >= ssh_deadline:
                     raise RuntimeError("Pod SSH did not become ready before its deadline") from None
                 Event().wait(5)

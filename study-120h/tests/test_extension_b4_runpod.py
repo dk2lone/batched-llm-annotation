@@ -125,6 +125,41 @@ def test_imports_and_default_cli_are_cpu_only(tmp_path: Path, monkeypatch: Any) 
         runner.main()
 
 
+def test_resume_plan_allows_only_transport_hash_change() -> None:
+    spec = importlib.util.spec_from_file_location(
+        "runpod_b4_resume", STUDY / "runpod_extension_b4.py"
+    )
+    assert spec is not None and spec.loader is not None
+    runner = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(runner)
+    previous = {
+        "plan_sha256": "old",
+        "cells": ["cell"],
+        "implementation_sha256": {
+            "extension_b4_runpod.py": "old",
+            "runpod_extension_b4.py": "old",
+            "worker.py": "same",
+        },
+    }
+    current = {
+        "plan_sha256": "new",
+        "cells": ["cell"],
+        "implementation_sha256": {
+            "extension_b4_runpod.py": "new",
+            "runpod_extension_b4.py": "new",
+            "worker.py": "same",
+        },
+    }
+    runner.verify_resume_plan(previous, current)
+    current["cells"] = ["different"]
+    with pytest.raises(ValueError, match="scientific plan"):
+        runner.verify_resume_plan(previous, current)
+    current["cells"] = ["cell"]
+    current["implementation_sha256"]["worker.py"] = "different"
+    with pytest.raises(ValueError, match="exactly"):
+        runner.verify_resume_plan(previous, current)
+
+
 @pytest.mark.parametrize("mode", ["success", "cancel", "timeout", "secret-error"])
 def test_bounded_commands_and_redacted_errors(mode: str) -> None:
     stop = Event()
@@ -141,6 +176,16 @@ def test_bounded_commands_and_redacted_errors(mode: str) -> None:
         return
     with pytest.raises(RuntimeError, match="deadline"):
         transport.command([sys.executable, "-c", "import time;time.sleep(10)"], 0.05, stop)
+
+
+def test_command_closes_stdin_across_poll_timeouts() -> None:
+    payload = b"x" * (2 * 1024 * 1024)
+    argv = [
+        sys.executable,
+        "-c",
+        "import sys,time;time.sleep(1.2);print(len(sys.stdin.buffer.read()))",
+    ]
+    assert transport.command(argv, 4, data=payload) == b"2097152\n"
 
 
 def test_ssh_validates_details_and_retains_host_keys(tmp_path: Path) -> None:
