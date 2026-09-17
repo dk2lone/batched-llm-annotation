@@ -152,6 +152,14 @@ def test_resume_plan_allows_only_transport_hash_change() -> None:
     }
     runner.verify_resume_plan(previous, current)
     runner.verify_resume_plan(current, current)
+    only_runner_changed = {
+        **current,
+        "implementation_sha256": {
+            **current["implementation_sha256"],
+            "extension_b4_runpod.py": "old",
+        },
+    }
+    runner.verify_resume_plan(previous, only_runner_changed)
     current["cells"] = ["different"]
     with pytest.raises(ValueError, match="scientific plan"):
         runner.verify_resume_plan(previous, current)

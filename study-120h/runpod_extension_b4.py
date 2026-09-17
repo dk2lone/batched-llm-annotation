@@ -30,7 +30,7 @@ def verify_resume_plan(previous: dict[str, Any], current: dict[str, Any]) -> Non
         key for key in set(old_impl) | set(new_impl) if old_impl.get(key) != new_impl.get(key)
     }
     reviewed = {"extension_b4_runpod.py", "runpod_extension_b4.py"}
-    if changed not in (set(), reviewed):
+    if not changed <= reviewed:
         raise ValueError("resume requires the reviewed implementation or its direct retry")
 
 
