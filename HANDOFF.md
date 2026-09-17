@@ -1,166 +1,186 @@
 # IEEE BigData 2026 handoff
 
-Updated: 2026-09-16 00:25 America/Toronto (2026-09-16 04:25 UTC).
+Updated: 2026-09-17 03:25:54 UTC during the active one-A100 B4 run.
 
 ## Current state
 
 Project: dependence in batched LLM text annotation. Repository:
-`dk2lone/batched-llm-annotation`, private, branch `main`. The latest execution
-evidence commit before this handoff is `606b616` (`record runpod capacity retries`).
+`dk2lone/batched-llm-annotation`, private, branch `main`. The branch matches
+`origin/main`; the latest commit is `8e2df6e` (`reject incompatible runpod drivers early`).
 
-Daniel authorized the initial B4 / A11 scientific run: 250 reference and 400
-evaluation replicates for four model-task cells, or 83,200 first calls. The run is
-not active. Live verification at this handoff showed:
+Daniel authorized the B4 / A11 scientific run: 250 reference and 400 evaluation
+replicates for four model-task cells, or 83,200 first calls. The execution plan uses
+one Secure Cloud NVIDIA A100 PCIe 80GB lane in `CA-MTL-3`. GPU concurrency changes
+wall-clock time, not the frozen prompts, schedules, calls, or analysis.
 
-- no Runpod Pods;
-- no detached `b4-a11` screen;
-- no scientific model calls or results from the attempted launch;
-- Runpod balance `$26.9081152783`;
-- four retained 40GB model-cache volumes costing `$0.016/hour` total.
+The scientific run is active. Live verification at this handoff showed:
 
-The only current launch blocker is provider capacity. `EUR-IS-1` repeatedly
-allocated one Secure Cloud A100 SXM 80GB and rejected the next allocation. All
-advertised A100 regions reported low or no stock. Do not describe this as an
-experiment failure. The scientific experiment has not begun.
+- Pod `u8due56secjnmr` is `RUNNING` in `CA-MTL-3`;
+- image digest:
+  `sha256:1cf3be1dfb50dbb800a658b371e8ec58f1ea485b55bae5b92ee281af2feba898`;
+- one NVIDIA A100 PCIe 80GB at `$1.59/hour`;
+- compatible driver `580.159.04`, PyTorch `2.13.0+cu130`;
+- Granite / IMDb reference phase active;
+- 14 durable receipts covering 448 events;
+- all 448 recorded events have status `ok`;
+- Runpod balance `$24.4061117831`;
+- total current spend `$1.627/hour`, including `$0.031/hour` retained storage;
+- spend limit `$80`.
+
+These are execution-integrity facts, not scientific findings. Do not analyze or cite
+partial outputs as results. The reference round must complete across all four cells
+before evaluation begins.
+
+## Active run
+
+Output directory:
+
+`study-120h/extension-b4/runpod-pcie-auto-20260917T030957Z/`
+
+Important identities:
+
+- plan SHA-256: `b8132b467997a6b8ec330a324af552dfa06708688735c7027a70089e8bdd591f`;
+- budget record SHA-256: `4a87ed5d9c01a2ff347de1a14f6baef6ac839d73f2bb8507a8da8d692850010f`;
+- current phase ID: `3df56fb9852b4e33a600fe28d2da90f4`;
+- current remote namespace: `b4-18559bf79867ad13f4fca5ee`;
+- current cell: `ibm-granite/granite-3.3-8b-instruct::imdb`;
+- current stream: `reference`;
+- watchdog run: `35177153106`;
+- watchdog shutdown target: `2026-09-17T05:58:36.283701+00:00`.
+
+The launcher state file is:
+
+`/Users/dz/.local/state/runpod-pcie-b4-launch.json`
+
+Its `attempt_status` is `running`. The top-level `status` string may still read
+`waiting_for_verified_caches_capacity_and_balance`; that field is not cleared when a
+live attempt starts. Use `attempt_status`, the live Pod list, lifecycle records, meter,
+and receipts to determine the actual state.
+
+Do not start a second launcher or execute `runpod_extension_b4.py --execute` manually.
+Do not interrupt Pod `u8due56secjnmr` while receipts continue to advance.
+
+## Durable progress and recovery
+
+The remote worker persists each accepted chunk atomically before replying:
+
+`/workspace/b4-results/b4-18559bf79867ad13f4fca5ee/imdb/`
+
+At the handoff snapshot it contained 14 JSON receipts, 448 events, and no non-`ok`
+statuses. The local runner ingests completed chunks into the timestamped output tree.
+If the connection or Pod fails, a replacement worker can recover completed chunks from
+the attached volume without accepting them twice. Preserve the network volume and every
+timestamped run directory.
+
+The Granite worker runs from the content-addressed runtime directory beginning with:
+
+`/workspace/b4-runtime/d82aa08424c345ca3ebc84de7349636b96a4c309e01ef43350aa1ed94af4c21a/`
+
+Old worker logs and smoke receipts remain on the volume under other content hashes and
+namespaces. Do not count them as current progress. Derive the namespace from the active
+plan, stream, and output directory before inspecting receipts.
+
+## Fixes made before execution
+
+Runpod first returned many allocation stubs with no machine. When real machines began
+appearing, two separate startup defects were identified and fixed:
+
+- `9a86689`: wait for delayed Runpod SSH readiness;
+- `0f9cb25`: stop waiting immediately when a pre-SSH Pod exits or disappears;
+- `508006b`: include the existing Runpod registry-auth resource when pulling the private
+  GHCR runtime image;
+- `8e2df6e`: initialize CUDA immediately after SSH and reject incompatible drivers before
+  uploading code or loading a model.
+
+The registry-auth omission caused real A100 Pods to remain at `awaiting_container`.
+After that fix, two hosts exposed driver `570.172.08`, which cannot initialize the pinned
+CUDA 13.0/PyTorch runtime. They were deleted before scientific calls. The successful
+preparation hosts and the active host use driver `580.159.04`.
+
+The driver gate and registry-auth change pass 71 focused Runpod/B4 tests. Strict mypy and
+Ruff pass for the changed code. Failed Pods were deleted and their watchdogs released.
+No failed attempt produced accepted scientific output.
+
+## Automatic launcher and safety
+
+LaunchAgent `com.dk2lone.runpod-pcie-b4-launch` runs:
+
+`/usr/bin/caffeinate -i /Users/dz/.local/bin/launch-runpod-pcie-b4.py`
+
+It checks every five minutes when idle. It requires verified caches, the expected account,
+at least `$8` balance, no existing running Pod, acceptable stock and price, and all four
+volumes. It creates fresh immutable plan, preflight, configuration, and budget records for
+each attempt. A file lock prevents overlapping automatic checks.
+
+The GitHub watchdog is a remote deletion fallback. The local runner remains responsible
+for normal phase cleanup. If an incompatible host reaches SSH, the CUDA gate fails and the
+runner deletes that exact Pod before retrying.
+
+## Runtime and budget
+
+The one-GPU plan forecasts exactly 15 A100-hours of scientific work. Expected wall time is
+about 15 hours; the 1.6 guard permits 24 hours. At `$1.59/hour`, the base GPU forecast is
+`$23.85`, excluding storage and failed startup attempts. The study-wide extension ceiling
+remains 80 A100-hours with a 10-hour reserve.
+
+The balance of `$24.4061117831` is too close to the base forecast to safely cover the run.
+Top up to approximately `$40` as soon as possible. Auto-pay is disabled. Do not raise or
+change the study's `$80` spending ceiling without Daniel's decision.
 
 ## Scientific execution lock
 
-The initial checkpoint uses four separate single-GPU Secure Cloud A100 SXM 80GB
-Pods, one per cell:
+The four frozen cells are:
 
 - `ibm-granite/granite-3.3-8b-instruct::imdb`
 - `meta-llama/Llama-3.1-8B-Instruct::civil_comments`
 - `mistralai/Mistral-7B-Instruct-v0.3::multi_nli`
 - `Qwen/Qwen3-8B::civil_comments`
 
-All four reference streams must finish before evaluation begins. Preserve the
-sealed prompts, schedules, model revisions, one-GPU-per-lane design, 80-A100-hour
-extension ceiling, 10-hour reserve, and 1.6 forecast guard. Do not substitute
-Community Cloud, a 40GB GPU, a different model revision, a sequential scientific
-runner, or a different accelerator without a new documented decision. Planned
-comparisons are not findings.
+All four reference streams must finish before evaluation begins. Preserve the sealed
+prompts, schedules, model revisions, exact decoding, reference/evaluation counts, round
+barriers, 80-A100-hour ceiling, 10-hour reserve, and 1.6 forecast guard.
 
-## Completed preparation
+The PCIe/data-center change is documented in:
 
-The pinned private runtime image is:
+`study-120h/amendments/20260916T213900Z-b4-a100-pcie-fallback.md`
+
+The current generated plan narrows actual execution to one lane, as Daniel authorized
+after two-GPU capacity remained unavailable.
+
+## Verified preparation
+
+Runtime image:
 
 `ghcr.io/dk2lone/b4-a100-runtime@sha256:1cf3be1dfb50dbb800a658b371e8ec58f1ea485b55bae5b92ee281af2feba898`
 
-Runpod registry authentication is configured as `cmu3hayz6002fmkgiko27jzi0`.
-Do not place registry or Runpod credentials in files, commands, logs, or chat.
+Exact offline caches:
 
-Four exact offline model caches exist in `EUR-IS-1`:
+| Cell | Volume ID | Model revision |
+|---|---|---|
+| Granite / IMDb | `nm92sgw9zy` | `51dd4bc2ade4059a6bd87649d68aa11e4fb2529b` |
+| Llama / Civil Comments | `871iih1km4` | `0e9e39f249a16976918f6564b8830bc894c89659` |
+| Mistral / MultiNLI | `16nchs8xkt` | `c170c708c41dac9275d15a8fff4eca08d52bab71` |
+| Qwen / Civil Comments | `pxk7r2wj35` | `b968826d9c46dd6066d109eabc6255188de91218` |
 
-| Cell | Volume ID | Size |
-|---|---|---:|
-| Granite / IMDb | `fnsdztl4tk` | 40GB |
-| Llama / Civil Comments | `scqgo0j9sr` | 40GB |
-| Mistral / MultiNLI | `l8doxgmrtn` | 40GB |
-| Qwen / Civil Comments | `r4m3d3hmg2` | 40GB |
-
-The exact Qwen, Granite, Llama, and Mistral revisions each passed a supervised
-synthetic A100 smoke test using the offline worker. Receipt replay, durable
-recovery, exact serving identity, image identity, A100 80GB hardware, and a seeded
-CUDA witness passed. The GitHub Actions watchdog passed a live CPU deletion test.
-A four-separate-A100 capacity probe also passed once before launch, showing that
-the required allocation is possible but intermittent.
-
-The launch-path change that serializes Pod creation passed Ruff, strict mypy, 65
-focused tests, and the full 519-test suite. An independent CPU-only audit passed
-all plan, source, configuration, preflight, budget, and evidence bindings. The
-change and launch package were pushed in `99a8fb4`.
-
-Auto-pay is disabled by Daniel's dashboard attestation. The GitHub watchdog is a
-remote deletion fallback, not a provider-enforced spending cap. Normal local
-cleanup and the prepaid balance remain independent controls.
-
-## Active immutable records
-
-The most recent clean launch package is:
-
-`study-120h/extension-b4/runpod-20260916-serialized-launch-v2/`
-
-Important identities:
-
-- plan SHA-256: `cc83c70acfe9dffd94cb495812124860346b3ac5fe6181b71b727c3ae1cbb6d2`
-- Runpod config canonical SHA-256:
-  `48d51ecc6c50e3bfe275d035cb476f11c754533450c0282d5a3665267f683809`
-- launch budget record SHA-256:
-  `0a9f65d0007ce221ea8a2e470ad1f5e31ccf322f62930ca390e5eaad84e32a42`
-- account ID: `user_3GCQlNiLDruYedpe87pTOrbYANt`
-- verified A100 price: `$1.59/GPU-hour`
-
-The old budget evidence is expired. Never edit or overwrite it. Prepare fresh
-budget evidence and a new immutable launch directory before another paid attempt.
-Use the same scientific plan, image, model revisions, cache volumes, and preflight
-evidence unless a live check proves one changed.
-
-`meter.jsonl` in the v2 directory is intentionally ignored by Git but remains in
-the local workspace. It has all failed phases reconciled. The committed
-reconciliation JSON files are the durable evidence if that ignored file is lost.
-
-## Launch attempts and accounting
-
-No attempted launch produced a scientific request.
-
-1. The original runner issued four concurrent create calls. Three Pods were
-   returned and the fourth failed with `graphql_error`. All three were deleted.
-   Settled charge: `0.00978336830188609` A100-hours.
-2. A retry returned no Pods and failed immediately. Settled charge: zero.
-3. After serializing creation, Runpod returned one Pod and rejected the next.
-   The returned Pod was deleted before inference. Settled charge: zero.
-4. The final retry again returned one Pod and rejected the next. The returned Pod
-   was deleted before inference. Settled charge:
-   `0.003787499999998527` A100-hours, about `$0.00602`.
-
-Total billed capacity-failure time is `0.013570868301884617` A100-hours. The B4
-budget baseline used before these attempts was 0.5 A100-hours for preparation, so
-fresh budget evidence should use at least `0.5135708683018846` prior extension
-A100-hours. Refresh the balance and storage spend rather than copying the old
-`spend_used_usd` value.
-
-The final two watchdog runs were `35055189703` and `35055401994`. Both were armed
-before Pod creation, then cancelled only after local deletion verified zero Pods.
-Evidence is under the v2 launch directory and commit `606b616`.
-
-## Recovery behavior
-
-Once scientific calls begin, the worker writes accepted chunk receipts atomically
-to the attached network volume before returning them. The local runner also
-absorbs receipts into append-only event files. A disconnected session can resume
-completed chunks without repeating accepted calls. A request that was in flight
-at the exact interruption point may run again, but receipt identity and ingestion
-deduplication prevent it from becoming two accepted scientific records.
-
-The failed capacity attempts have no scientific progress to recover. Keep all
-timestamped launch directories, reconciliation records, seals, and locks.
+`/Users/dz/.local/state/runpod-pcie-b4.json` reports
+`all_caches_and_smokes_ready`. Every exact revision passed the supervised synthetic A100
+PCIe smoke using driver `580.159.04`. Do not rerun cache preparation unless live evidence
+shows a cache or volume is invalid.
 
 ## Next action
 
-1. Read `study-120h/extension-b4/runpod/OPERATIONS.md`, this handoff, and the v2
-   reconciliation files.
-2. Verify live state before writing anything: no Pods, four volumes, account ID,
-   balance, `$0.016/hour` storage spend, A100 price, and per-datacenter stock.
-3. Do not retry while Runpod can allocate only one A100. The current runner tears
-   down the whole reference round if all four lanes cannot start.
-4. When four A100s appear feasible in `EUR-IS-1`, create a new timestamped output
-   directory, regenerate the deterministic plan, bind fresh preflight and budget
-   evidence, run the CPU-only consistency audit, then resume the authorized
-   initial A11 run. A fresh authorization is not needed for the unchanged initial
-   run, but any protocol, accelerator, cloud type, or spending-scope change does
-   need Daniel's decision.
-5. Confirm the remote watchdog step is active before any Pod appears. Verify every
-   returned Pod's image, one A100 SXM 80GB, `$1.59/hour` rate, data center, and
-   attached cell-specific volume. Monitor until scientific receipts appear.
+1. Top up the Runpod balance to approximately `$40` without changing the `$80` spending
+   ceiling.
+2. Verify Pod `u8due56secjnmr` remains `RUNNING`, watchdog `35177153106` remains active,
+   and current-namespace receipt counts continue to increase.
+3. Monitor `meter.jsonl`, lifecycle records, local receipts, and remote durable receipts.
+   Report stalls, non-`ok` events, worker exits, cleanup failures, or budget pressure.
+4. Let the runner advance through all reference cells and then the equal-family evaluation
+   prefixes. Do not manually launch another lane.
+5. Only analyze results after the planned phase completes and the integrity checks pass.
 
-Moving caches is not currently recommended. Four replacement 40GB volumes would
-add about `$0.016/hour`, or roughly `$11.20/month`, while retained, plus small CPU
-staging costs. Other A100 regions also showed low or no stock, and network-volume
-support must be verified before any move. Never delete the current volumes until
-replacement caches pass exact-revision and offline smoke checks.
-
-Do not rerun completed preparation, edit sealed protocols, overwrite timestamped
-data, or present the Gate A pilot as fresh confirmation. Preserve the unrelated
-untracked `.flash/` directory and the empty untracked Qwen
-`local-watchdog.log`. The Runpod key previously pasted in chat should be rotated.
-Do not invoke Claude CLI unless Daniel explicitly requests it.
+Keep all timestamped run data, lifecycle logs, meter records, seals, locks, and caches.
+Do not edit sealed protocols, overwrite run data, rerun completed preparation, or present
+the Gate A pilot as fresh confirmation. Do not expose credentials. The previously exposed
+Modal token and Runpod key should be rotated. Do not invoke Claude CLI unless Daniel
+explicitly requests it.
