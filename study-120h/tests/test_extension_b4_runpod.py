@@ -262,6 +262,7 @@ def test_pod_ownership_and_cleanup(tmp_path: Path, monkeypatch: Any, mode: str) 
         if args[:2] == ["pod", "create"]:
             assert args[args.index("--gpu-count") + 1] == "1"
             assert args[args.index("--cloud-type") + 1] == "SECURE"
+            assert args[args.index("--registry-auth-id") + 1] == transport.REGISTRY_AUTH_ID
             assert "--terminate-after" not in args and "--wait" in args
             assert args[args.index("--name") + 1].startswith("b4-0123456789abcdef-")
             created_name = args[args.index("--name") + 1]

@@ -23,6 +23,7 @@ from freezeb import extension_b4 as b4
 from step0.hashing import sha256_json, write_json
 
 STUDY = Path(__file__).resolve().parent
+REGISTRY_AUTH_ID = "cmu3hayz6002fmkgiko27jzi0"
 
 
 def credential_env() -> dict[str, str]:
@@ -261,6 +262,8 @@ class Lane:
                         name,
                         "--image",
                         config["image"],
+                        "--registry-auth-id",
+                        REGISTRY_AUTH_ID,
                         "--gpu-id",
                         config["gpu_type_id"],
                         "--gpu-count",
