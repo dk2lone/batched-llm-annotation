@@ -34,6 +34,20 @@ def verify_resume_plan(previous: dict[str, Any], current: dict[str, Any]) -> Non
         raise ValueError("resume requires the reviewed implementation or its direct retry")
 
 
+def verify_resume_lifecycle(source: Path) -> None:
+    lifecycle = [
+        row
+        for path in sorted((source / "runpod-lifecycle").glob("*.jsonl"))
+        for row in b4.events(path)
+    ]
+    created = {row["pod_id"] for row in lifecycle if row.get("kind") == "created"}
+    terminated = {
+        row["pod_id"] for row in lifecycle if row.get("kind") == "termination_verified"
+    }
+    if created != terminated:
+        raise ValueError("resume source does not prove termination of every created Pod")
+
+
 def carry_forward(source: Path, destination: Path, plan: dict[str, Any]) -> None:
     source = source.resolve()
     if source == destination.resolve() or not source.is_dir():
@@ -45,17 +59,7 @@ def carry_forward(source: Path, destination: Path, plan: dict[str, Any]) -> None
         previous = b4.load(source / f"PLAN-{plan['evaluation_prefix']}.json")
         verify_resume_plan(previous, plan)
         meter(source, b4.load(source / "budget-record.json"))
-        lifecycle = [
-            row
-            for path in sorted((source / "runpod-lifecycle").glob("*.jsonl"))
-            for row in b4.events(path)
-        ]
-        created = {row["pod_id"] for row in lifecycle if row.get("kind") == "created"}
-        terminated = {
-            row["pod_id"] for row in lifecycle if row.get("kind") == "termination_verified"
-        }
-        if not created or created != terminated:
-            raise ValueError("resume source does not prove termination of every created Pod")
+        verify_resume_lifecycle(source)
         receipt_paths = sorted((source / "receipts").glob("*.json"))
         payloads = [b4.load(path) for path in receipt_paths]
         if not payloads:

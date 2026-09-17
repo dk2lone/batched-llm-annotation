@@ -169,6 +169,27 @@ def test_resume_plan_allows_only_transport_hash_change() -> None:
         runner.verify_resume_plan(previous, current)
 
 
+def test_resume_lifecycle_allows_no_pod_but_requires_created_pod_termination(
+    tmp_path: Path,
+) -> None:
+    spec = importlib.util.spec_from_file_location(
+        "runpod_b4_resume_lifecycle", STUDY / "runpod_extension_b4.py"
+    )
+    assert spec is not None and spec.loader is not None
+    runner = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(runner)
+    runner.verify_resume_lifecycle(tmp_path)
+    lifecycle = tmp_path / "runpod-lifecycle"
+    lifecycle.mkdir()
+    record = lifecycle / "phase.jsonl"
+    record.write_text(json.dumps({"kind": "created", "pod_id": "pod1"}) + "\n")
+    with pytest.raises(ValueError, match="termination"):
+        runner.verify_resume_lifecycle(tmp_path)
+    with record.open("a") as handle:
+        handle.write(json.dumps({"kind": "termination_verified", "pod_id": "pod1"}) + "\n")
+    runner.verify_resume_lifecycle(tmp_path)
+
+
 @pytest.mark.parametrize("mode", ["success", "cancel", "timeout", "secret-error"])
 def test_bounded_commands_and_redacted_errors(mode: str) -> None:
     stop = Event()
