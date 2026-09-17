@@ -151,12 +151,13 @@ def test_resume_plan_allows_only_transport_hash_change() -> None:
         },
     }
     runner.verify_resume_plan(previous, current)
+    runner.verify_resume_plan(current, current)
     current["cells"] = ["different"]
     with pytest.raises(ValueError, match="scientific plan"):
         runner.verify_resume_plan(previous, current)
     current["cells"] = ["cell"]
     current["implementation_sha256"]["worker.py"] = "different"
-    with pytest.raises(ValueError, match="exactly"):
+    with pytest.raises(ValueError, match="reviewed"):
         runner.verify_resume_plan(previous, current)
 
 

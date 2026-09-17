@@ -28,6 +28,10 @@ reconciled. The continuation record must bind both plan hashes, the source meter
 and every imported receipt. Imported calls remain first attempts and must not be
 generated again.
 
+If a continuation fails before new output, a direct retry may use the same
+implementation hashes. Its interrupted phase must first be conservatively
+settled, and every created Pod must have a matching verified termination record.
+
 The interrupted phase is charged conservatively from its recorded phase start
 through launcher failure, plus the standard 60-second settlement allowance.
 This amendment changes transport and recovery only. It does not change any

@@ -29,8 +29,9 @@ def verify_resume_plan(previous: dict[str, Any], current: dict[str, Any]) -> Non
     changed = {
         key for key in set(old_impl) | set(new_impl) if old_impl.get(key) != new_impl.get(key)
     }
-    if changed != {"extension_b4_runpod.py", "runpod_extension_b4.py"}:
-        raise ValueError("resume requires exactly the reviewed transport and resume changes")
+    reviewed = {"extension_b4_runpod.py", "runpod_extension_b4.py"}
+    if changed not in (set(), reviewed):
+        raise ValueError("resume requires the reviewed implementation or its direct retry")
 
 
 def carry_forward(source: Path, destination: Path, plan: dict[str, Any]) -> None:
