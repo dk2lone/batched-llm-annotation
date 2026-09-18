@@ -1,0 +1,13 @@
+{
+  "base_run": "/Users/dz/bigdata/study-120h/extension-b4/runpod-pcie-auto-20260917T230203Z",
+  "files_sha256": {
+    "ORIGINAL_ANALYSIS.json": "5350c910006ca96938a96198ef9a53ab1ff70e4096184d560dca733780f67e86",
+    "REPORT.md": "6bccee059cdc1f5eafa9def816bdb9dfdc957a8deb4331ed4c3b84eb4281c8a5",
+    "REVISED_ANALYSIS.json": "f7b5e9ac5bbeace107765a702fe2a0bdfcec34ee4c9ee51cb0c1913e22326443"
+  },
+  "gpu_work_launched": false,
+  "inventory": "/Users/dz/bigdata/study-120h/output-recovery/20260918T013521Z-inventory/RECOVERY_INVENTORY.json",
+  "manifest_sha256": "76c8473bb9b27a0de9674700363bb7c1a28a5d8f8bfb9696d5ee71aa9ceeff6e",
+  "recovery_dir": "/Users/dz/bigdata/study-120h/output-recovery/20260918T015605Z-smoke",
+  "schema_version": "ext-x1r4-a11-b4-repaired-analysis-manifest-v1"
+}

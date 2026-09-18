@@ -1,0 +1,634 @@
+{
+  "cells": [
+    {
+      "analysis": {
+        "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+        "claim_note": "if reference precision fails, report the variance ratio and the widths and make no measured-coverage claim",
+        "coverage": 0.7775,
+        "coverage_with_reference_uncertainty": {
+          "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+          "least_favourable_upper_bound": 0.8196440427479089,
+          "least_favourable_variant": "target_minus_z_se",
+          "reference_se": 0.0019435321651365025,
+          "reference_target": 0.19815625,
+          "undercoverage_supported": true,
+          "variants": {
+            "at_target": {
+              "high": 0.8173264856181305,
+              "low": 0.733512367480889,
+              "method": "Clopper-Pearson exact interval on the coverage proportion",
+              "n_covered": 311,
+              "n_replicates": 400,
+              "point": 0.7775,
+              "target": 0.19815625
+            },
+            "target_minus_z_se": {
+              "high": 0.8196440427479089,
+              "low": 0.7361566841724915,
+              "method": "Clopper-Pearson exact interval on the coverage proportion",
+              "n_covered": 312,
+              "n_replicates": 400,
+              "point": 0.78,
+              "target": 0.1943469969535373
+            },
+            "target_plus_z_se": {
+              "high": 0.8010455214547819,
+              "low": 0.7150595703527098,
+              "method": "Clopper-Pearson exact interval on the coverage proportion",
+              "n_covered": 304,
+              "n_replicates": 400,
+              "point": 0.76,
+              "target": 0.2019655030464627
+            }
+          }
+        },
+        "finite_population_correction": {
+          "applied_to_call_aware_t": false,
+          "applied_to_iid_wald": false,
+          "factor": 0.9682458365518543,
+          "role": "reported sensitivity factor only; primary intervals use no correction"
+        },
+        "intervals": {
+          "call_aware_t_coverage": {
+            "high": 0.952984671599821,
+            "low": 0.9004174842299392,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 372,
+            "n_replicates": 400,
+            "point": 0.93,
+            "target": 0.19815625
+          },
+          "iid_wald_coverage": {
+            "high": 0.8173264856181305,
+            "low": 0.733512367480889,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 311,
+            "n_replicates": 400,
+            "point": 0.7775,
+            "target": 0.19815625
+          },
+          "mean_width_call_aware_t": 0.1216390374962161,
+          "mean_width_iid_wald": 0.06829377068433534,
+          "mean_width_whole_call_bootstrap": 0.11433361816406246,
+          "whole_call_bootstrap_coverage": {
+            "high": 0.9425316426372068,
+            "low": 0.8860892715325912,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 367,
+            "n_replicates": 400,
+            "point": 0.9175,
+            "target": 0.19815625
+          }
+        },
+        "n_covered": 311,
+        "n_evaluation": 400,
+        "reference": {
+          "n_replicates": 250,
+          "precision_check": {
+            "if_not": "report the empirical variance of replicate means and its ratio to the average nominal i.i.d. variance; make no measured-coverage claim",
+            "mean_nominal_half_width": 0.03414688534216767,
+            "n_reference_replicates": 250,
+            "precise_enough_for_a_coverage_claim": true,
+            "se_over_half_width": 0.05691682112911343,
+            "target_monte_carlo_se": 0.0019435321651365025,
+            "target_point": 0.19815625,
+            "threshold": 0.25
+          },
+          "target": 0.19815625,
+          "target_monte_carlo_se": 0.0019435321651365025
+        },
+        "reference_precise": true,
+        "schema_version": "ext-x1r2-e5-analysis-v1",
+        "sensitivities": [
+          "call-aware t interval",
+          "whole-call bootstrap",
+          "finite-population correction",
+          "variance ratio"
+        ],
+        "variance_ratio": {
+          "empirical_variance": 0.000825494536779877,
+          "floor": 1.25,
+          "high": 3.0784855158772175,
+          "low": 2.3284993061985615,
+          "mean_nominal_variance": 0.0003045003674924374,
+          "n_replicates": 400,
+          "point": 2.7109804286209247
+        },
+        "variance_ratio_floor": 1.25,
+        "worst_reference_upper_coverage": 0.8196440427479089
+      },
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "status": "analyzed_after_exact_repair",
+      "streams": {
+        "evaluation": {
+          "expected_calls": 12800,
+          "original_resolved_calls": 12331,
+          "original_status_counts": {
+            "ok": 12798,
+            "truncated": 4
+          },
+          "parsed_complete": true,
+          "repaired_calls": 469,
+          "revised_resolved_calls": 12800,
+          "revised_unresolved_calls": 0,
+          "stored_original_attempts": 12802
+        },
+        "reference": {
+          "expected_calls": 8000,
+          "original_resolved_calls": 7739,
+          "original_status_counts": {
+            "ok": 7999,
+            "truncated": 2
+          },
+          "parsed_complete": true,
+          "repaired_calls": 261,
+          "revised_resolved_calls": 8000,
+          "revised_unresolved_calls": 0,
+          "stored_original_attempts": 8001
+        }
+      }
+    },
+    {
+      "analysis": {
+        "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+        "claim_note": "if reference precision fails, report the variance ratio and the widths and make no measured-coverage claim",
+        "coverage": 0.9675,
+        "coverage_with_reference_uncertainty": {
+          "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+          "least_favourable_upper_bound": 0.9844044470001057,
+          "least_favourable_variant": "target_minus_z_se",
+          "reference_se": 0.0012053149117706842,
+          "reference_target": 0.2901796875,
+          "undercoverage_supported": false,
+          "variants": {
+            "at_target": {
+              "high": 0.9825838539157878,
+              "low": 0.9450651832493072,
+              "method": "Clopper-Pearson exact interval on the coverage proportion",
+              "n_covered": 387,
+              "n_replicates": 400,
+              "point": 0.9675,
+              "target": 0.2901796875
+            },
+            "target_minus_z_se": {
+              "high": 0.9844044470001057,
+              "low": 0.9481827845694164,
+              "method": "Clopper-Pearson exact interval on the coverage proportion",
+              "n_covered": 388,
+              "n_replicates": 400,
+              "point": 0.97,
+              "target": 0.28781731368290037
+            },
+            "target_plus_z_se": {
+              "high": 0.9731153743848582,
+              "low": 0.9298112045046578,
+              "method": "Clopper-Pearson exact interval on the coverage proportion",
+              "n_covered": 382,
+              "n_replicates": 400,
+              "point": 0.955,
+              "target": 0.29254206131709964
+            }
+          }
+        },
+        "finite_population_correction": {
+          "applied_to_call_aware_t": false,
+          "applied_to_iid_wald": false,
+          "factor": 0.9682458365518543,
+          "role": "reported sensitivity factor only; primary intervals use no correction"
+        },
+        "intervals": {
+          "call_aware_t_coverage": {
+            "high": 0.9807355334141201,
+            "low": 0.9419727383175839,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 386,
+            "n_replicates": 400,
+            "point": 0.965,
+            "target": 0.2901796875
+          },
+          "iid_wald_coverage": {
+            "high": 0.9825838539157878,
+            "low": 0.9450651832493072,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 387,
+            "n_replicates": 400,
+            "point": 0.9675,
+            "target": 0.2901796875
+          },
+          "mean_width_call_aware_t": 0.0801714500779745,
+          "mean_width_iid_wald": 0.07849468026973278,
+          "mean_width_whole_call_bootstrap": 0.07557128906249998,
+          "whole_call_bootstrap_coverage": {
+            "high": 0.9611822508955742,
+            "low": 0.9120375765951033,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 376,
+            "n_replicates": 400,
+            "point": 0.94,
+            "target": 0.2901796875
+          }
+        },
+        "n_covered": 387,
+        "n_evaluation": 400,
+        "reference": {
+          "n_replicates": 250,
+          "precision_check": {
+            "if_not": "report the empirical variance of replicate means and its ratio to the average nominal i.i.d. variance; make no measured-coverage claim",
+            "mean_nominal_half_width": 0.039247340134866394,
+            "n_reference_replicates": 250,
+            "precise_enough_for_a_coverage_claim": true,
+            "se_over_half_width": 0.030710741355435483,
+            "target_monte_carlo_se": 0.0012053149117706842,
+            "target_point": 0.2901796875,
+            "threshold": 0.25
+          },
+          "target": 0.2901796875,
+          "target_monte_carlo_se": 0.0012053149117706842
+        },
+        "reference_precise": true,
+        "schema_version": "ext-x1r2-e5-analysis-v1",
+        "sensitivities": [
+          "call-aware t interval",
+          "whole-call bootstrap",
+          "finite-population correction",
+          "variance ratio"
+        ],
+        "variance_ratio": {
+          "empirical_variance": 0.00036064195752442626,
+          "floor": 1.25,
+          "high": 1.009127168433757,
+          "low": 0.783019371758108,
+          "mean_nominal_variance": 0.00040113311260938647,
+          "n_replicates": 400,
+          "point": 0.8990580587537048
+        },
+        "variance_ratio_floor": 1.25,
+        "worst_reference_upper_coverage": 0.9844044470001057
+      },
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "status": "analyzed_after_exact_repair",
+      "streams": {
+        "evaluation": {
+          "expected_calls": 12800,
+          "original_resolved_calls": 12771,
+          "original_status_counts": {
+            "ok": 12800
+          },
+          "parsed_complete": true,
+          "repaired_calls": 29,
+          "revised_resolved_calls": 12800,
+          "revised_unresolved_calls": 0,
+          "stored_original_attempts": 12800
+        },
+        "reference": {
+          "expected_calls": 8000,
+          "original_resolved_calls": 7978,
+          "original_status_counts": {
+            "ok": 7999,
+            "truncated": 2
+          },
+          "parsed_complete": true,
+          "repaired_calls": 22,
+          "revised_resolved_calls": 8000,
+          "revised_unresolved_calls": 0,
+          "stored_original_attempts": 8001
+        }
+      }
+    },
+    {
+      "analysis": {
+        "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+        "claim_note": "if reference precision fails, report the variance ratio and the widths and make no measured-coverage claim",
+        "coverage": 0.9075,
+        "coverage_with_reference_uncertainty": {
+          "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+          "least_favourable_upper_bound": 0.9340340574093114,
+          "least_favourable_variant": "at_target",
+          "reference_se": 0.0016768083366672133,
+          "reference_target": 0.613828125,
+          "undercoverage_supported": true,
+          "variants": {
+            "at_target": {
+              "high": 0.9340340574093114,
+              "low": 0.8747566869033432,
+              "method": "Clopper-Pearson exact interval on the coverage proportion",
+              "n_covered": 363,
+              "n_replicates": 400,
+              "point": 0.9075,
+              "target": 0.613828125
+            },
+            "target_minus_z_se": {
+              "high": 0.9254353049597616,
+              "low": 0.8635218804179648,
+              "method": "Clopper-Pearson exact interval on the coverage proportion",
+              "n_covered": 359,
+              "n_replicates": 400,
+              "point": 0.8975,
+              "target": 0.6105416410511557
+            },
+            "target_plus_z_se": {
+              "high": 0.9232714126691962,
+              "low": 0.8607269465681882,
+              "method": "Clopper-Pearson exact interval on the coverage proportion",
+              "n_covered": 358,
+              "n_replicates": 400,
+              "point": 0.895,
+              "target": 0.6171146089488442
+            }
+          }
+        },
+        "finite_population_correction": {
+          "applied_to_call_aware_t": false,
+          "applied_to_iid_wald": false,
+          "factor": 0.9682458365518543,
+          "role": "reported sensitivity factor only; primary intervals use no correction"
+        },
+        "intervals": {
+          "call_aware_t_coverage": {
+            "high": 0.9711630696195768,
+            "low": 0.9268146345986293,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 381,
+            "n_replicates": 400,
+            "point": 0.9525,
+            "target": 0.613828125
+          },
+          "iid_wald_coverage": {
+            "high": 0.9340340574093114,
+            "low": 0.8747566869033432,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 363,
+            "n_replicates": 400,
+            "point": 0.9075,
+            "target": 0.613828125
+          },
+          "mean_width_call_aware_t": 0.10785561177882981,
+          "mean_width_iid_wald": 0.0842436280709003,
+          "mean_width_whole_call_bootstrap": 0.10150451660156247,
+          "whole_call_bootstrap_coverage": {
+            "high": 0.9672115754228463,
+            "low": 0.9208653695130558,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 379,
+            "n_replicates": 400,
+            "point": 0.9475,
+            "target": 0.613828125
+          }
+        },
+        "n_covered": 363,
+        "n_evaluation": 400,
+        "reference": {
+          "n_replicates": 250,
+          "precision_check": {
+            "if_not": "report the empirical variance of replicate means and its ratio to the average nominal i.i.d. variance; make no measured-coverage claim",
+            "mean_nominal_half_width": 0.04212181403545015,
+            "n_reference_replicates": 250,
+            "precise_enough_for_a_coverage_claim": true,
+            "se_over_half_width": 0.03980854991800672,
+            "target_monte_carlo_se": 0.0016768083366672133,
+            "target_point": 0.613828125,
+            "threshold": 0.25
+          },
+          "target": 0.613828125,
+          "target_monte_carlo_se": 0.0016768083366672133
+        },
+        "reference_precise": true,
+        "schema_version": "ext-x1r2-e5-analysis-v1",
+        "sensitivities": [
+          "call-aware t interval",
+          "whole-call bootstrap",
+          "finite-population correction",
+          "variance ratio"
+        ],
+        "variance_ratio": {
+          "empirical_variance": 0.0006215592912564001,
+          "floor": 1.25,
+          "high": 1.5532660444417978,
+          "low": 1.1564036006793375,
+          "mean_nominal_variance": 0.0004619351960718632,
+          "n_replicates": 400,
+          "point": 1.3455551699500816
+        },
+        "variance_ratio_floor": 1.25,
+        "worst_reference_upper_coverage": 0.9340340574093114
+      },
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "status": "analyzed_after_exact_repair",
+      "streams": {
+        "evaluation": {
+          "expected_calls": 12800,
+          "original_resolved_calls": 12653,
+          "original_status_counts": {
+            "ok": 12800
+          },
+          "parsed_complete": true,
+          "repaired_calls": 147,
+          "revised_resolved_calls": 12800,
+          "revised_unresolved_calls": 0,
+          "stored_original_attempts": 12800
+        },
+        "reference": {
+          "expected_calls": 8000,
+          "original_resolved_calls": 7914,
+          "original_status_counts": {
+            "ok": 8000
+          },
+          "parsed_complete": true,
+          "repaired_calls": 86,
+          "revised_resolved_calls": 8000,
+          "revised_unresolved_calls": 0,
+          "stored_original_attempts": 8000
+        }
+      }
+    },
+    {
+      "analysis": {
+        "cell_key": "Qwen/Qwen3-8B::civil_comments",
+        "claim_note": "if reference precision fails, report the variance ratio and the widths and make no measured-coverage claim",
+        "coverage": 0.88,
+        "coverage_with_reference_uncertainty": {
+          "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+          "least_favourable_upper_bound": 0.9101817952664786,
+          "least_favourable_variant": "at_target",
+          "reference_se": 0.0013814664207699675,
+          "reference_target": 0.1250234375,
+          "undercoverage_supported": true,
+          "variants": {
+            "at_target": {
+              "high": 0.9101817952664786,
+              "low": 0.8440606367550166,
+              "method": "Clopper-Pearson exact interval on the coverage proportion",
+              "n_covered": 352,
+              "n_replicates": 400,
+              "point": 0.88,
+              "target": 0.1250234375
+            },
+            "target_minus_z_se": {
+              "high": 0.9057814853134138,
+              "low": 0.8385413405693943,
+              "method": "Clopper-Pearson exact interval on the coverage proportion",
+              "n_covered": 350,
+              "n_replicates": 400,
+              "point": 0.875,
+              "target": 0.12231581306943941
+            },
+            "target_plus_z_se": {
+              "high": 0.9013642428711317,
+              "low": 0.8330385711920392,
+              "method": "Clopper-Pearson exact interval on the coverage proportion",
+              "n_covered": 348,
+              "n_replicates": 400,
+              "point": 0.87,
+              "target": 0.12773106193056058
+            }
+          }
+        },
+        "finite_population_correction": {
+          "applied_to_call_aware_t": false,
+          "applied_to_iid_wald": false,
+          "factor": 0.9682458365518543,
+          "role": "reported sensitivity factor only; primary intervals use no correction"
+        },
+        "intervals": {
+          "call_aware_t_coverage": {
+            "high": 0.9769666042594511,
+            "low": 0.9358539890609492,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 384,
+            "n_replicates": 400,
+            "point": 0.96,
+            "target": 0.1250234375
+          },
+          "iid_wald_coverage": {
+            "high": 0.9101817952664786,
+            "low": 0.8440606367550166,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 352,
+            "n_replicates": 400,
+            "point": 0.88,
+            "target": 0.1250234375
+          },
+          "mean_width_call_aware_t": 0.08374980925779511,
+          "mean_width_iid_wald": 0.05729345153798809,
+          "mean_width_whole_call_bootstrap": 0.07876708984374997,
+          "whole_call_bootstrap_coverage": {
+            "high": 0.9711630696195768,
+            "low": 0.9268146345986293,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 381,
+            "n_replicates": 400,
+            "point": 0.9525,
+            "target": 0.1250234375
+          }
+        },
+        "n_covered": 352,
+        "n_evaluation": 400,
+        "reference": {
+          "n_replicates": 250,
+          "precision_check": {
+            "if_not": "report the empirical variance of replicate means and its ratio to the average nominal i.i.d. variance; make no measured-coverage claim",
+            "mean_nominal_half_width": 0.02864672576899404,
+            "n_reference_replicates": 250,
+            "precise_enough_for_a_coverage_claim": true,
+            "se_over_half_width": 0.04822423448704236,
+            "target_monte_carlo_se": 0.0013814664207699675,
+            "target_point": 0.1250234375,
+            "threshold": 0.25
+          },
+          "target": 0.1250234375,
+          "target_monte_carlo_se": 0.0013814664207699675
+        },
+        "reference_precise": true,
+        "schema_version": "ext-x1r2-e5-analysis-v1",
+        "sensitivities": [
+          "call-aware t interval",
+          "whole-call bootstrap",
+          "finite-population correction",
+          "variance ratio"
+        ],
+        "variance_ratio": {
+          "empirical_variance": 0.0003651060854880732,
+          "floor": 1.25,
+          "high": 1.948721781666846,
+          "low": 1.4555377721420666,
+          "mean_nominal_variance": 0.00021451869979500772,
+          "n_replicates": 400,
+          "point": 1.701977896737979
+        },
+        "variance_ratio_floor": 1.25,
+        "worst_reference_upper_coverage": 0.9101817952664786
+      },
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "status": "analyzed_after_exact_repair",
+      "streams": {
+        "evaluation": {
+          "expected_calls": 12800,
+          "original_resolved_calls": 12751,
+          "original_status_counts": {
+            "ok": 12800
+          },
+          "parsed_complete": true,
+          "repaired_calls": 49,
+          "revised_resolved_calls": 12800,
+          "revised_unresolved_calls": 0,
+          "stored_original_attempts": 12800
+        },
+        "reference": {
+          "expected_calls": 8000,
+          "original_resolved_calls": 7968,
+          "original_status_counts": {
+            "ok": 8000
+          },
+          "parsed_complete": true,
+          "repaired_calls": 32,
+          "revised_resolved_calls": 8000,
+          "revised_unresolved_calls": 0,
+          "stored_original_attempts": 8000
+        }
+      }
+    }
+  ],
+  "coverage_gate": {
+    "family": [
+      "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "Qwen/Qwen3-8B::civil_comments"
+    ],
+    "holm_adjusted_p": {
+      "Qwen/Qwen3-8B::civil_comments": 8.27789468288045e-08,
+      "ibm-granite/granite-3.3-8b-instruct::imdb": 5.364719401037443e-32,
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.9644940958223821,
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.000576120695389083
+    },
+    "min_supported_cells": 2,
+    "passed": true,
+    "supported_cells": [
+      "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "Qwen/Qwen3-8B::civil_comments"
+    ]
+  },
+  "evaluation_prefix": 400,
+  "gpu_work_launched": false,
+  "input_sha256": {
+    "base_plan": "fd5a5527aef380e5bc57d5481d2a65586ffb24c118a7872dde0707a01789c95e",
+    "extension-b4/runpod-pcie-auto-20260917T230203Z/cells/Qwen--Qwen3-8B--civil_comments/evaluation/events.jsonl": "37f5ce96c888444d4cf35dd7fb0524b3c66fd65e444fa6663acb75ac12682bae",
+    "extension-b4/runpod-pcie-auto-20260917T230203Z/cells/Qwen--Qwen3-8B--civil_comments/reference/events.jsonl": "d28d83152d1d121aee060d156e9602fe5d37019fa5fd756fb6435e3b82ecb779",
+    "extension-b4/runpod-pcie-auto-20260917T230203Z/cells/ibm-granite--granite-3.3-8b-instruct--imdb/evaluation/events.jsonl": "3194ca84bea1a81a660d053d0f00022d35712f2fe5ead064cb26c74b01b6e3c5",
+    "extension-b4/runpod-pcie-auto-20260917T230203Z/cells/ibm-granite--granite-3.3-8b-instruct--imdb/reference/events.jsonl": "81b89dd70855edb6214632536247d38c2c62d4b93838e86e54a3c3c731fd6653",
+    "extension-b4/runpod-pcie-auto-20260917T230203Z/cells/meta-llama--Llama-3.1-8B-Instruct--civil_comments/evaluation/events.jsonl": "1f1b74ec5c4d1040b2af68f1b8490772a7895c0e4c58ff40066b02f452a3b3ef",
+    "extension-b4/runpod-pcie-auto-20260917T230203Z/cells/meta-llama--Llama-3.1-8B-Instruct--civil_comments/reference/events.jsonl": "cbe517bb5bac2157350b309e3a13e3dab779e5f6466696fba8e6c3a3853e7141",
+    "extension-b4/runpod-pcie-auto-20260917T230203Z/cells/mistralai--Mistral-7B-Instruct-v0.3--multi_nli/evaluation/events.jsonl": "4fb7b8b710068e53c46896347c1ce3a40df410fc8dd55bd8b2b3133724878a5a",
+    "extension-b4/runpod-pcie-auto-20260917T230203Z/cells/mistralai--Mistral-7B-Instruct-v0.3--multi_nli/reference/events.jsonl": "ed6aba2635e7ae8a24652f170fd43139d7b19441293fa77569d3f277be72dbb2",
+    "inventory_sha256": "0d917c3a4674bf1b152aff9b5651884f01a2cfa5be1cb2468ca843b20fcbe27e",
+    "recovery_events_sha256": "71969ef8d96bd586b52219029c00dae72470c4a372f5c1f94d599cf323c7d649",
+    "recovery_receipts": 138,
+    "recovery_report_sha256": "08e5a408969ede6aa1a65c87e350c8583488d2f59be4913c7934a2a5375cf3df"
+  },
+  "original_result": "coverage_unavailable_original",
+  "plan_sha256": "25520d493f3a9ba8b83d9255cf9118f118f5972006f317b5870c661326c5f6bc",
+  "post_execution_technical_amendment": true,
+  "repair_calls_used": 1095,
+  "replacement_rule": "valid original output else exact linked repair-v1 output",
+  "schema_version": "ext-x1r4-a11-b4-repaired-analysis-v1"
+}
