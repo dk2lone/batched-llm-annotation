@@ -1,0 +1,19 @@
+{
+  "by_model": {
+    "Qwen/Qwen3-8B": 211,
+    "ibm-granite/granite-3.3-8b-instruct": 2097,
+    "meta-llama/Llama-3.1-8B-Instruct": 174,
+    "mistralai/Mistral-7B-Instruct-v0.3": 1615
+  },
+  "complete": true,
+  "completed_calls": 4097,
+  "finished_at_utc": "2026-09-18T03:21:59.610853+00:00",
+  "inventory_sha256": "0d917c3a4674bf1b152aff9b5651884f01a2cfa5be1cb2468ca843b20fcbe27e",
+  "mode": "full",
+  "namespace": "repair-05f46e56bd5c4d58ab398266",
+  "passed": true,
+  "recovered_calls": 4097,
+  "schema_version": "ext-output-recovery-report-v1",
+  "selected_calls": 4097,
+  "unresolved_calls": 0
+}
