@@ -1,0 +1,21 @@
+{
+  "draws": 319,
+  "files_sha256": {
+    "A3_TABLE.csv": "4901268e4ff896d5b0de80912f5ddb382db7453a6d1bd9ad82bcda72d0ca8a0e",
+    "A4_TABLE.csv": "3a24d0c74fd5db8cefe9a106627d7beb089dcaeabe6041764d7fcafb531d95e8",
+    "A6_TABLE.csv": "5f6823955bf9027f54d5ef9bb301da0f0537067f380fe931061e918ee8f32a13",
+    "B3_AUDIT.json": "166b6dadc7a21339dac3bdac0149611cbef37a5c067748ec0071d7bab8db934e",
+    "B4_AUDIT.json": "1dfad098dbefa9ffafa0feee7afe6c7d1a0c447a468c44df4c8bfc07f4ccba72",
+    "DECISION.md": "fa1f9952bfbca0a15a94c30eed3abc27942f031cb70e96cac07383750000a41f"
+  },
+  "gpu_work_launched": false,
+  "inputs_sha256": {
+    "extension-b3/analysis/analysis.json": "b540b8f41edc93013ca2d6027384b22f48cfe489dc3ec93d3f288ae3a89206da",
+    "extension-b3/repaired-analysis-20260918T041906Z/REPAIRED_SENSITIVITY.json": "0086f0a1adeccfae9ac66046c437749a018a31d9abf1b7179be3f92de3f5901f",
+    "extension-b4/revised-analysis-20260918T034636Z/REVISED_ANALYSIS.json": "f7b5e9ac5bbeace107765a702fe2a0bdfcec34ee4c9ee51cb0c1913e22326443",
+    "output-recovery/20260918T013521Z-inventory/RECOVERY_INVENTORY.json": "0d917c3a4674bf1b152aff9b5651884f01a2cfa5be1cb2468ca843b20fcbe27e",
+    "output-recovery/20260918T015605Z-smoke/FULL_REPORT.json": "08e5a408969ede6aa1a65c87e350c8583488d2f59be4913c7934a2a5375cf3df"
+  },
+  "manifest_sha256": "3a43a7b68d1efb21e848fa92d3b9e5bb3127289d137f98172a145eaebdd9464f",
+  "schema_version": "b3-b4-posthoc-decision-v1"
+}

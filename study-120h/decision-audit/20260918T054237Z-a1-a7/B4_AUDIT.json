@@ -1,0 +1,1939 @@
+{
+  "a2_sensitivity_c2_checks": {
+    "existing_all": {
+      "family": [
+        "ibm-granite/granite-3.3-8b-instruct::imdb",
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+        "Qwen/Qwen3-8B::civil_comments"
+      ],
+      "holm_adjusted_p": {
+        "Qwen/Qwen3-8B::civil_comments": 8.27789468288045e-08,
+        "ibm-granite/granite-3.3-8b-instruct::imdb": 5.364719401037443e-32,
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.9644940958223821,
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.000576120695389083
+      },
+      "min_supported_cells": 2,
+      "passed": true,
+      "supported_cells": [
+        "ibm-granite/granite-3.3-8b-instruct::imdb",
+        "Qwen/Qwen3-8B::civil_comments"
+      ]
+    },
+    "existing_repair_free": {
+      "family": [
+        "ibm-granite/granite-3.3-8b-instruct::imdb",
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+        "Qwen/Qwen3-8B::civil_comments"
+      ],
+      "holm_adjusted_p": {
+        "Qwen/Qwen3-8B::civil_comments": 1.0,
+        "ibm-granite/granite-3.3-8b-instruct::imdb": 1.0,
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 1.0,
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 1.0
+      },
+      "min_supported_cells": 2,
+      "passed": false,
+      "supported_cells": []
+    },
+    "original_only_all": {
+      "family": [
+        "ibm-granite/granite-3.3-8b-instruct::imdb",
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+        "Qwen/Qwen3-8B::civil_comments"
+      ],
+      "holm_adjusted_p": {
+        "Qwen/Qwen3-8B::civil_comments": 8.27789468288045e-08,
+        "ibm-granite/granite-3.3-8b-instruct::imdb": 1.5632896178147612e-30,
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.9644940958223821,
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.000576120695389083
+      },
+      "min_supported_cells": 2,
+      "passed": true,
+      "supported_cells": [
+        "ibm-granite/granite-3.3-8b-instruct::imdb",
+        "Qwen/Qwen3-8B::civil_comments"
+      ]
+    },
+    "original_only_repair_free": {
+      "family": [
+        "ibm-granite/granite-3.3-8b-instruct::imdb",
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+        "Qwen/Qwen3-8B::civil_comments"
+      ],
+      "holm_adjusted_p": {
+        "Qwen/Qwen3-8B::civil_comments": 1.0,
+        "ibm-granite/granite-3.3-8b-instruct::imdb": 1.0,
+        "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 1.0,
+        "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 1.0
+      },
+      "min_supported_cells": 2,
+      "passed": false,
+      "supported_cells": []
+    }
+  },
+  "cells": [
+    {
+      "a1_a2_coverage_2x2": {
+        "existing_all": {
+          "call_aware_coverage": {
+            "high": 0.952984671599821,
+            "low": 0.9004174842299392,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 372,
+            "n_replicates": 400,
+            "point": 0.93,
+            "target": 0.19815625
+          },
+          "iid_coverage": {
+            "high": 0.8173264856181305,
+            "low": 0.733512367480889,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 311,
+            "n_replicates": 400,
+            "point": 0.7775,
+            "target": 0.19815625
+          },
+          "mean_width_call_aware": 0.1216390374962161,
+          "mean_width_iid": 0.06829377068433534,
+          "n_evaluation": 400,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.8196440427479089,
+            "least_favourable_variant": "target_minus_z_se",
+            "reference_se": 0.0019435321651365025,
+            "reference_target": 0.19815625,
+            "undercoverage_supported": true,
+            "variants": {
+              "at_target": {
+                "high": 0.8173264856181305,
+                "low": 0.733512367480889,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 311,
+                "n_replicates": 400,
+                "point": 0.7775,
+                "target": 0.19815625
+              },
+              "target_minus_z_se": {
+                "high": 0.8196440427479089,
+                "low": 0.7361566841724915,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 312,
+                "n_replicates": 400,
+                "point": 0.78,
+                "target": 0.1943469969535373
+              },
+              "target_plus_z_se": {
+                "high": 0.8010455214547819,
+                "low": 0.7150595703527098,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 304,
+                "n_replicates": 400,
+                "point": 0.76,
+                "target": 0.2019655030464627
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.000825494536779877,
+            "floor": 1.25,
+            "high": 3.089736085940814,
+            "low": 2.3317378686651766,
+            "mean_nominal_variance": 0.0003045003674924374,
+            "n_replicates": 400,
+            "point": 2.7109804286209247
+          },
+          "worst_reference_upper_coverage": 0.8196440427479089
+        },
+        "existing_repair_free": {
+          "call_aware_coverage": {
+            "high": 0.9633566370850066,
+            "low": 0.8660732078205806,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 123,
+            "n_replicates": 133,
+            "point": 0.924812030075188,
+            "target": 0.19815625
+          },
+          "iid_coverage": {
+            "high": 0.8423425439517109,
+            "low": 0.6939148481372835,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 103,
+            "n_replicates": 133,
+            "point": 0.7744360902255639,
+            "target": 0.19815625
+          },
+          "mean_width_call_aware": 0.12172539169890849,
+          "mean_width_iid": 0.06808638871381166,
+          "n_evaluation": 133,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.8423425439517109,
+            "least_favourable_variant": "at_target",
+            "reference_se": 0.0019435321651365025,
+            "reference_target": 0.19815625,
+            "undercoverage_supported": true,
+            "variants": {
+              "at_target": {
+                "high": 0.8423425439517109,
+                "low": 0.6939148481372835,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 103,
+                "n_replicates": 133,
+                "point": 0.7744360902255639,
+                "target": 0.19815625
+              },
+              "target_minus_z_se": {
+                "high": 0.8358066426264148,
+                "low": 0.6857672619477564,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 102,
+                "n_replicates": 133,
+                "point": 0.7669172932330827,
+                "target": 0.1943469969535373
+              },
+              "target_plus_z_se": {
+                "high": 0.8292392415772747,
+                "low": 0.6776502106657054,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 101,
+                "n_replicates": 133,
+                "point": 0.7593984962406015,
+                "target": 0.2019655030464627
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.0007852761613450797,
+            "floor": 1.25,
+            "high": 3.1871446328951456,
+            "low": 2.037099830465318,
+            "mean_nominal_variance": 0.0003026520511261503,
+            "n_replicates": 133,
+            "point": 2.5946500558086876
+          },
+          "worst_reference_upper_coverage": 0.8423425439517109
+        },
+        "original_only_all": {
+          "call_aware_coverage": {
+            "high": 0.9591485429904449,
+            "low": 0.9091176304486912,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 375,
+            "n_replicates": 400,
+            "point": 0.9375,
+            "target": 0.19293064024390244
+          },
+          "iid_coverage": {
+            "high": 0.8219594513896742,
+            "low": 0.7388031243070508,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 313,
+            "n_replicates": 400,
+            "point": 0.7825,
+            "target": 0.19293064024390244
+          },
+          "mean_width_call_aware": 0.1216390374962161,
+          "mean_width_iid": 0.06829377068433534,
+          "n_evaluation": 400,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.8219594513896742,
+            "least_favourable_variant": "at_target",
+            "reference_se": 0.0029701398647942225,
+            "reference_target": 0.19293064024390244,
+            "undercoverage_supported": true,
+            "variants": {
+              "at_target": {
+                "high": 0.8219594513896742,
+                "low": 0.7388031243070508,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 313,
+                "n_replicates": 400,
+                "point": 0.7825,
+                "target": 0.19293064024390244
+              },
+              "target_minus_z_se": {
+                "high": 0.8173264856181305,
+                "low": 0.733512367480889,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 311,
+                "n_replicates": 400,
+                "point": 0.7775,
+                "target": 0.1871092730798591
+              },
+              "target_plus_z_se": {
+                "high": 0.7963758456100446,
+                "low": 0.709805125566344,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 302,
+                "n_replicates": 400,
+                "point": 0.755,
+                "target": 0.19875200740794577
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.000825494536779877,
+            "floor": 1.25,
+            "high": 3.089736085940814,
+            "low": 2.3317378686651766,
+            "mean_nominal_variance": 0.0003045003674924374,
+            "n_replicates": 400,
+            "point": 2.7109804286209247
+          },
+          "worst_reference_upper_coverage": 0.8219594513896742
+        },
+        "original_only_repair_free": {
+          "call_aware_coverage": {
+            "high": 0.9832669268109437,
+            "low": 0.9043952385742638,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 127,
+            "n_replicates": 133,
+            "point": 0.9548872180451128,
+            "target": 0.19293064024390244
+          },
+          "iid_coverage": {
+            "high": 0.855315274732137,
+            "low": 0.7103058524006678,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 105,
+            "n_replicates": 133,
+            "point": 0.7894736842105263,
+            "target": 0.19293064024390244
+          },
+          "mean_width_call_aware": 0.12172539169890849,
+          "mean_width_iid": 0.06808638871381166,
+          "n_evaluation": 133,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.855315274732137,
+            "least_favourable_variant": "at_target",
+            "reference_se": 0.0029701398647942225,
+            "reference_target": 0.19293064024390244,
+            "undercoverage_supported": true,
+            "variants": {
+              "at_target": {
+                "high": 0.855315274732137,
+                "low": 0.7103058524006678,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 105,
+                "n_replicates": 133,
+                "point": 0.7894736842105263,
+                "target": 0.19293064024390244
+              },
+              "target_minus_z_se": {
+                "high": 0.8292392415772747,
+                "low": 0.6776502106657054,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 101,
+                "n_replicates": 133,
+                "point": 0.7593984962406015,
+                "target": 0.1871092730798591
+              },
+              "target_plus_z_se": {
+                "high": 0.816013968386801,
+                "low": 0.6615039794835633,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 99,
+                "n_replicates": 133,
+                "point": 0.7443609022556391,
+                "target": 0.19875200740794577
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.0007852761613450797,
+            "floor": 1.25,
+            "high": 3.1871446328951456,
+            "low": 2.037099830465318,
+            "mean_nominal_variance": 0.0003026520511261503,
+            "n_replicates": 133,
+            "point": 2.5946500558086876
+          },
+          "worst_reference_upper_coverage": 0.855315274732137
+        }
+      },
+      "a1_classification_reason": "Repair-free evaluation count is below the frozen 400-replicate C2 minimum",
+      "a1_prior_supported_cell_classification": "too_imprecise",
+      "a3_homogeneity": {
+        "evaluation": {
+          "distinct_labels": {
+            "bootstrap_95_interval": [
+              -0.003202063757005299,
+              0.059020481429178255
+            ],
+            "original_mean": 1.8352931635714864,
+            "repaired_mean": 1.8635394456289978,
+            "repaired_minus_original": 0.02824628205751134
+          },
+          "label_entropy": {
+            "bootstrap_95_interval": [
+              -0.023425646723485356,
+              0.022192154534261446
+            ],
+            "original_mean": 0.5193105282385249,
+            "repaired_mean": 0.5196643743245036,
+            "repaired_minus_original": 0.00035384608597877065
+          },
+          "maximum_label_share": {
+            "bootstrap_95_interval": [
+              -0.009047734215203657,
+              0.021417800539628464
+            ],
+            "original_mean": 0.7017070797177845,
+            "repaired_mean": 0.7084221748400853,
+            "repaired_minus_original": 0.00671509512230084
+          },
+          "original_calls": 12331,
+          "pairwise_label_agreement": {
+            "bootstrap_95_interval": [
+              -0.014565056810436761,
+              0.019101433109831176
+            ],
+            "original_mean": 0.6132552104452194,
+            "repaired_mean": 0.6158493248045488,
+            "repaired_minus_original": 0.002594114359329436
+          },
+          "repaired_calls": 469
+        },
+        "reference": {
+          "distinct_labels": {
+            "bootstrap_95_interval": [
+              0.008953481866983071,
+              0.08869563473851648
+            ],
+            "original_mean": 1.8234914071585475,
+            "repaired_mean": 1.8735632183908046,
+            "repaired_minus_original": 0.050071811232257124
+          },
+          "label_entropy": {
+            "bootstrap_95_interval": [
+              -0.005022852649951181,
+              0.05079864419471351
+            ],
+            "original_mean": 0.5138077121078761,
+            "repaired_mean": 0.537371505383974,
+            "repaired_minus_original": 0.023563793276097922
+          },
+          "maximum_label_share": {
+            "bootstrap_95_interval": [
+              -0.03002483688379351,
+              0.008639128259663073
+            ],
+            "original_mean": 0.7037892492570099,
+            "repaired_mean": 0.6922892720306514,
+            "repaired_minus_original": -0.011499977226358538
+          },
+          "original_calls": 7739,
+          "pairwise_label_agreement": {
+            "bootstrap_95_interval": [
+              -0.03855722607641343,
+              0.006368458209625538
+            ],
+            "original_mean": 0.6169660162811731,
+            "repaired_mean": 0.6004789272030651,
+            "repaired_minus_original": -0.01648708907810803
+          },
+          "repaired_calls": 261
+        }
+      },
+      "a3_variance_contribution": {
+        "all_minus_repair_free_variance_ratio": 0.11633037281223713,
+        "comparison_note": "Descriptive full-versus-clean-replicate contrast; it also changes the replicate population and is not a causal repair effect."
+      },
+      "a5_frozen_variance": {
+        "call_aware_coverage": {
+          "high": 0.952984671599821,
+          "low": 0.9004174842299392,
+          "method": "Clopper-Pearson exact interval on the coverage proportion",
+          "n_covered": 372,
+          "n_replicates": 400,
+          "point": 0.93,
+          "target": 0.19815625
+        },
+        "call_aware_variance": 0.0009075124802127963,
+        "effective_n_approx": 188.86156262679268,
+        "empirical_replicate_mean_variance": 0.000825494536779877,
+        "evaluation_marginal_error": 0.1945947265625,
+        "floor_0_002_inflation_approx": 1.1914148903666681,
+        "iid_coverage": {
+          "high": 0.8173264856181305,
+          "low": 0.733512367480889,
+          "method": "Clopper-Pearson exact interval on the coverage proportion",
+          "n_covered": 311,
+          "n_replicates": 400,
+          "point": 0.7775,
+          "target": 0.19815625
+        },
+        "iid_variance": 0.0003045003674924374,
+        "mean_width_call_aware": 0.1216390374962161,
+        "mean_width_iid": 0.06829377068433534,
+        "variance_ratio": {
+          "empirical_variance": 0.000825494536779877,
+          "floor": 1.25,
+          "high": 3.0784855158772175,
+          "low": 2.3284993061985615,
+          "mean_nominal_variance": 0.0003045003674924374,
+          "n_replicates": 400,
+          "point": 2.7109804286209247
+        }
+      },
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "reference_targets": {
+        "difference_original_minus_existing": -0.005225609756097566,
+        "existing": 0.19815625,
+        "existing_precise": true,
+        "existing_se": 0.0019435321651365025,
+        "inside_existing_95_uncertainty_band": false,
+        "original_only_complete_replicates": 0.19293064024390244,
+        "original_only_precision": {
+          "if_not": "report the empirical variance of replicate means and its ratio to the average nominal i.i.d. variance; make no measured-coverage claim",
+          "mean_nominal_half_width": 0.03414688534216767,
+          "n_reference_replicates": 82,
+          "precise_enough_for_a_coverage_claim": true,
+          "se_over_half_width": 0.08698128204174524,
+          "target_monte_carlo_se": 0.0029701398647942225,
+          "target_point": 0.19293064024390244,
+          "threshold": 0.25
+        },
+        "original_only_se": 0.0029701398647942225
+      },
+      "streams": {
+        "evaluation": {
+          "all_call_error_covariance": 0.020438230935732524,
+          "all_minus_original_call_covariance": -9.436918432484051e-05,
+          "excluded_replicates": 267,
+          "original_call_error_covariance": 0.020532600120057365,
+          "original_calls": 12331,
+          "repair_free_replicate_error_covariance": 0.020458595752760995,
+          "repaired_call_error_covariance": 0.01647273077197018,
+          "repaired_calls": 469,
+          "retained_replicates": 133
+        },
+        "reference": {
+          "all_call_error_covariance": 0.02145701725260416,
+          "all_minus_original_call_covariance": -0.00015491788615974722,
+          "excluded_replicates": 168,
+          "original_call_error_covariance": 0.02161193513876391,
+          "original_calls": 7739,
+          "repair_free_replicate_error_covariance": 0.020945959111988464,
+          "repaired_call_error_covariance": 0.0162407242260096,
+          "repaired_calls": 261,
+          "retained_replicates": 82
+        }
+      }
+    },
+    {
+      "a1_a2_coverage_2x2": {
+        "existing_all": {
+          "call_aware_coverage": {
+            "high": 0.9807355334141201,
+            "low": 0.9419727383175839,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 386,
+            "n_replicates": 400,
+            "point": 0.965,
+            "target": 0.2901796875
+          },
+          "iid_coverage": {
+            "high": 0.9825838539157878,
+            "low": 0.9450651832493072,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 387,
+            "n_replicates": 400,
+            "point": 0.9675,
+            "target": 0.2901796875
+          },
+          "mean_width_call_aware": 0.0801714500779745,
+          "mean_width_iid": 0.07849468026973278,
+          "n_evaluation": 400,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.9844044470001057,
+            "least_favourable_variant": "target_minus_z_se",
+            "reference_se": 0.0012053149117706842,
+            "reference_target": 0.2901796875,
+            "undercoverage_supported": false,
+            "variants": {
+              "at_target": {
+                "high": 0.9825838539157878,
+                "low": 0.9450651832493072,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 387,
+                "n_replicates": 400,
+                "point": 0.9675,
+                "target": 0.2901796875
+              },
+              "target_minus_z_se": {
+                "high": 0.9844044470001057,
+                "low": 0.9481827845694164,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 388,
+                "n_replicates": 400,
+                "point": 0.97,
+                "target": 0.28781731368290037
+              },
+              "target_plus_z_se": {
+                "high": 0.9731153743848582,
+                "low": 0.9298112045046578,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 382,
+                "n_replicates": 400,
+                "point": 0.955,
+                "target": 0.29254206131709964
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.00036064195752442626,
+            "floor": 1.25,
+            "high": 1.0124158455811092,
+            "low": 0.7818755595568206,
+            "mean_nominal_variance": 0.00040113311260938647,
+            "n_replicates": 400,
+            "point": 0.8990580587537048
+          },
+          "worst_reference_upper_coverage": 0.9844044470001057
+        },
+        "existing_repair_free": {
+          "call_aware_coverage": {
+            "high": 0.979330840737569,
+            "low": 0.937826483799998,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 359,
+            "n_replicates": 373,
+            "point": 0.9624664879356568,
+            "target": 0.2901796875
+          },
+          "iid_coverage": {
+            "high": 0.9813144102002213,
+            "low": 0.941138438032995,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 360,
+            "n_replicates": 373,
+            "point": 0.9651474530831099,
+            "target": 0.2901796875
+          },
+          "mean_width_call_aware": 0.07996072422506273,
+          "mean_width_iid": 0.07847236096687887,
+          "n_evaluation": 373,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.9832681459586754,
+            "least_favourable_variant": "target_minus_z_se",
+            "reference_se": 0.0012053149117706842,
+            "reference_target": 0.2901796875,
+            "undercoverage_supported": false,
+            "variants": {
+              "at_target": {
+                "high": 0.9813144102002213,
+                "low": 0.941138438032995,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 360,
+                "n_replicates": 373,
+                "point": 0.9651474530831099,
+                "target": 0.2901796875
+              },
+              "target_minus_z_se": {
+                "high": 0.9832681459586754,
+                "low": 0.9444774664020337,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 361,
+                "n_replicates": 373,
+                "point": 0.967828418230563,
+                "target": 0.28781731368290037
+              },
+              "target_plus_z_se": {
+                "high": 0.9711523159874512,
+                "low": 0.92480291386887,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 355,
+                "n_replicates": 373,
+                "point": 0.9517426273458445,
+                "target": 0.29254206131709964
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.0003671983446535082,
+            "floor": 1.25,
+            "high": 1.0353104636437072,
+            "low": 0.7923153885390569,
+            "mean_nominal_variance": 0.0004009081714913928,
+            "n_replicates": 373,
+            "point": 0.915916338865125
+          },
+          "worst_reference_upper_coverage": 0.9832681459586754
+        },
+        "original_only_all": {
+          "call_aware_coverage": {
+            "high": 0.9807355334141201,
+            "low": 0.9419727383175839,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 386,
+            "n_replicates": 400,
+            "point": 0.965,
+            "target": 0.29018831877729256
+          },
+          "iid_coverage": {
+            "high": 0.9825838539157878,
+            "low": 0.9450651832493072,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 387,
+            "n_replicates": 400,
+            "point": 0.9675,
+            "target": 0.29018831877729256
+          },
+          "mean_width_call_aware": 0.0801714500779745,
+          "mean_width_iid": 0.07849468026973278,
+          "n_evaluation": 400,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.9844044470001057,
+            "least_favourable_variant": "target_minus_z_se",
+            "reference_se": 0.0012529154867279813,
+            "reference_target": 0.29018831877729256,
+            "undercoverage_supported": false,
+            "variants": {
+              "at_target": {
+                "high": 0.9825838539157878,
+                "low": 0.9450651832493072,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 387,
+                "n_replicates": 400,
+                "point": 0.9675,
+                "target": 0.29018831877729256
+              },
+              "target_minus_z_se": {
+                "high": 0.9844044470001057,
+                "low": 0.9481827845694164,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 388,
+                "n_replicates": 400,
+                "point": 0.97,
+                "target": 0.2877326495476332
+              },
+              "target_plus_z_se": {
+                "high": 0.9731153743848582,
+                "low": 0.9298112045046578,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 382,
+                "n_replicates": 400,
+                "point": 0.955,
+                "target": 0.2926439880069519
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.00036064195752442626,
+            "floor": 1.25,
+            "high": 1.0124158455811092,
+            "low": 0.7818755595568206,
+            "mean_nominal_variance": 0.00040113311260938647,
+            "n_replicates": 400,
+            "point": 0.8990580587537048
+          },
+          "worst_reference_upper_coverage": 0.9844044470001057
+        },
+        "original_only_repair_free": {
+          "call_aware_coverage": {
+            "high": 0.979330840737569,
+            "low": 0.937826483799998,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 359,
+            "n_replicates": 373,
+            "point": 0.9624664879356568,
+            "target": 0.29018831877729256
+          },
+          "iid_coverage": {
+            "high": 0.9813144102002213,
+            "low": 0.941138438032995,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 360,
+            "n_replicates": 373,
+            "point": 0.9651474530831099,
+            "target": 0.29018831877729256
+          },
+          "mean_width_call_aware": 0.07996072422506273,
+          "mean_width_iid": 0.07847236096687887,
+          "n_evaluation": 373,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.9832681459586754,
+            "least_favourable_variant": "target_minus_z_se",
+            "reference_se": 0.0012529154867279813,
+            "reference_target": 0.29018831877729256,
+            "undercoverage_supported": false,
+            "variants": {
+              "at_target": {
+                "high": 0.9813144102002213,
+                "low": 0.941138438032995,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 360,
+                "n_replicates": 373,
+                "point": 0.9651474530831099,
+                "target": 0.29018831877729256
+              },
+              "target_minus_z_se": {
+                "high": 0.9832681459586754,
+                "low": 0.9444774664020337,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 361,
+                "n_replicates": 373,
+                "point": 0.967828418230563,
+                "target": 0.2877326495476332
+              },
+              "target_plus_z_se": {
+                "high": 0.9711523159874512,
+                "low": 0.92480291386887,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 355,
+                "n_replicates": 373,
+                "point": 0.9517426273458445,
+                "target": 0.2926439880069519
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.0003671983446535082,
+            "floor": 1.25,
+            "high": 1.0353104636437072,
+            "low": 0.7923153885390569,
+            "mean_nominal_variance": 0.0004009081714913928,
+            "n_replicates": 373,
+            "point": 0.915916338865125
+          },
+          "worst_reference_upper_coverage": 0.9832681459586754
+        }
+      },
+      "a1_classification_reason": null,
+      "a1_prior_supported_cell_classification": null,
+      "a3_homogeneity": {
+        "evaluation": {
+          "distinct_labels": {
+            "bootstrap_95_interval": [
+              -0.1029784614387661,
+              0.001174536058256903
+            ],
+            "original_mean": 1.999216975961162,
+            "repaired_mean": 1.9655172413793103,
+            "repaired_minus_original": -0.033699734581851715
+          },
+          "label_entropy": {
+            "bootstrap_95_interval": [
+              -0.11476188834303835,
+              -0.009031954629087884
+            ],
+            "original_mean": 0.612238880192722,
+            "repaired_mean": 0.555762161572521,
+            "repaired_minus_original": -0.05647671862020098
+          },
+          "maximum_label_share": {
+            "bootstrap_95_interval": [
+              0.009952446477606824,
+              0.09367558740303326
+            ],
+            "original_mean": 0.6692359642941038,
+            "repaired_mean": 0.7176724137931034,
+            "repaired_minus_original": 0.04843644949899961
+          },
+          "original_calls": 12771,
+          "pairwise_label_agreement": {
+            "bootstrap_95_interval": [
+              0.005537373872377976,
+              0.0929202229008432
+            ],
+            "original_mean": 0.5479830605799598,
+            "repaired_mean": 0.5968390804597701,
+            "repaired_minus_original": 0.04885601987981025
+          },
+          "repaired_calls": 29
+        },
+        "reference": {
+          "distinct_labels": {
+            "bootstrap_95_interval": [
+              0.00012534469791924963,
+              0.0012534469791927183
+            ],
+            "original_mean": 1.9993732765104035,
+            "repaired_mean": 2.0,
+            "repaired_minus_original": 0.0006267234895964702
+          },
+          "label_entropy": {
+            "bootstrap_95_interval": [
+              -0.08634550953839963,
+              0.010176120210617565
+            ],
+            "original_mean": 0.6131809352953157,
+            "repaired_mean": 0.5784178665558867,
+            "repaired_minus_original": -0.034763068739429026
+          },
+          "maximum_label_share": {
+            "bootstrap_95_interval": [
+              -0.019901924895735962,
+              0.07953131765764944
+            ],
+            "original_mean": 0.6679305590373528,
+            "repaired_mean": 0.6960227272727273,
+            "repaired_minus_original": 0.028092168235374526
+          },
+          "original_calls": 7978,
+          "pairwise_label_agreement": {
+            "bootstrap_95_interval": [
+              -0.012763627437574511,
+              0.08167809487454138
+            ],
+            "original_mean": 0.5470481323640011,
+            "repaired_mean": 0.5784090909090909,
+            "repaired_minus_original": 0.0313609585450898
+          },
+          "repaired_calls": 22
+        }
+      },
+      "a3_variance_contribution": {
+        "all_minus_repair_free_variance_ratio": -0.01685828011142021,
+        "comparison_note": "Descriptive full-versus-clean-replicate contrast; it also changes the replicate population and is not a causal repair effect."
+      },
+      "a5_frozen_variance": {
+        "call_aware_coverage": {
+          "high": 0.9807355334141201,
+          "low": 0.9419727383175839,
+          "method": "Clopper-Pearson exact interval on the coverage proportion",
+          "n_covered": 386,
+          "n_replicates": 400,
+          "point": 0.965,
+          "target": 0.2901796875
+        },
+        "call_aware_variance": 0.00039304364112115674,
+        "effective_n_approx": 569.4849125870095,
+        "empirical_replicate_mean_variance": 0.00036064195752442626,
+        "evaluation_marginal_error": 0.289619140625,
+        "floor_0_002_inflation_approx": 1.1458151815648387,
+        "iid_coverage": {
+          "high": 0.9825838539157878,
+          "low": 0.9450651832493072,
+          "method": "Clopper-Pearson exact interval on the coverage proportion",
+          "n_covered": 387,
+          "n_replicates": 400,
+          "point": 0.9675,
+          "target": 0.2901796875
+        },
+        "iid_variance": 0.00040113311260938647,
+        "mean_width_call_aware": 0.0801714500779745,
+        "mean_width_iid": 0.07849468026973278,
+        "variance_ratio": {
+          "empirical_variance": 0.00036064195752442626,
+          "floor": 1.25,
+          "high": 1.009127168433757,
+          "low": 0.783019371758108,
+          "mean_nominal_variance": 0.00040113311260938647,
+          "n_replicates": 400,
+          "point": 0.8990580587537048
+        }
+      },
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "reference_targets": {
+        "difference_original_minus_existing": 8.63127729255897e-06,
+        "existing": 0.2901796875,
+        "existing_precise": true,
+        "existing_se": 0.0012053149117706842,
+        "inside_existing_95_uncertainty_band": true,
+        "original_only_complete_replicates": 0.29018831877729256,
+        "original_only_precision": {
+          "if_not": "report the empirical variance of replicate means and its ratio to the average nominal i.i.d. variance; make no measured-coverage claim",
+          "mean_nominal_half_width": 0.03924734013486639,
+          "n_reference_replicates": 229,
+          "precise_enough_for_a_coverage_claim": true,
+          "se_over_half_width": 0.03192357704808947,
+          "target_monte_carlo_se": 0.0012529154867279813,
+          "target_point": 0.29018831877729256,
+          "threshold": 0.25
+        },
+        "original_only_se": 0.0012529154867279813
+      },
+      "streams": {
+        "evaluation": {
+          "all_call_error_covariance": -0.0003356268246968561,
+          "all_minus_original_call_covariance": 4.286414751298798e-05,
+          "excluded_replicates": 27,
+          "original_call_error_covariance": -0.0003784909722098441,
+          "original_calls": 12771,
+          "repair_free_replicate_error_covariance": -0.00039643578744055736,
+          "repaired_call_error_covariance": 0.01821368410622275,
+          "repaired_calls": 29,
+          "retained_replicates": 373
+        },
+        "reference": {
+          "all_call_error_covariance": -0.0003042510375976564,
+          "all_minus_original_call_covariance": 8.919647236196849e-06,
+          "excluded_replicates": 21,
+          "original_call_error_covariance": -0.00031317068483385324,
+          "original_calls": 7978,
+          "repair_free_replicate_error_covariance": -0.000335761446494633,
+          "repaired_call_error_covariance": 0.00279140840220386,
+          "repaired_calls": 22,
+          "retained_replicates": 229
+        }
+      }
+    },
+    {
+      "a1_a2_coverage_2x2": {
+        "existing_all": {
+          "call_aware_coverage": {
+            "high": 0.9711630696195768,
+            "low": 0.9268146345986293,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 381,
+            "n_replicates": 400,
+            "point": 0.9525,
+            "target": 0.613828125
+          },
+          "iid_coverage": {
+            "high": 0.9340340574093114,
+            "low": 0.8747566869033432,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 363,
+            "n_replicates": 400,
+            "point": 0.9075,
+            "target": 0.613828125
+          },
+          "mean_width_call_aware": 0.10785561177882981,
+          "mean_width_iid": 0.0842436280709003,
+          "n_evaluation": 400,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.9340340574093114,
+            "least_favourable_variant": "at_target",
+            "reference_se": 0.0016768083366672133,
+            "reference_target": 0.613828125,
+            "undercoverage_supported": true,
+            "variants": {
+              "at_target": {
+                "high": 0.9340340574093114,
+                "low": 0.8747566869033432,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 363,
+                "n_replicates": 400,
+                "point": 0.9075,
+                "target": 0.613828125
+              },
+              "target_minus_z_se": {
+                "high": 0.9254353049597616,
+                "low": 0.8635218804179648,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 359,
+                "n_replicates": 400,
+                "point": 0.8975,
+                "target": 0.6105416410511557
+              },
+              "target_plus_z_se": {
+                "high": 0.9232714126691962,
+                "low": 0.8607269465681882,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 358,
+                "n_replicates": 400,
+                "point": 0.895,
+                "target": 0.6171146089488442
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.0006215592912564001,
+            "floor": 1.25,
+            "high": 1.5447809306505451,
+            "low": 1.162849311366493,
+            "mean_nominal_variance": 0.0004619351960718632,
+            "n_replicates": 400,
+            "point": 1.3455551699500816
+          },
+          "worst_reference_upper_coverage": 0.9340340574093114
+        },
+        "existing_repair_free": {
+          "call_aware_coverage": {
+            "high": 0.9747776362620533,
+            "low": 0.9210828682311711,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 264,
+            "n_replicates": 277,
+            "point": 0.9530685920577617,
+            "target": 0.613828125
+          },
+          "iid_coverage": {
+            "high": 0.9377667169168009,
+            "low": 0.8654967704898113,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 251,
+            "n_replicates": 277,
+            "point": 0.9061371841155235,
+            "target": 0.613828125
+          },
+          "mean_width_call_aware": 0.10717459058642972,
+          "mean_width_iid": 0.0842183848839353,
+          "n_evaluation": 277,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.9377667169168009,
+            "least_favourable_variant": "at_target",
+            "reference_se": 0.0016768083366672133,
+            "reference_target": 0.613828125,
+            "undercoverage_supported": true,
+            "variants": {
+              "at_target": {
+                "high": 0.9377667169168009,
+                "low": 0.8654967704898113,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 251,
+                "n_replicates": 277,
+                "point": 0.9061371841155235,
+                "target": 0.613828125
+              },
+              "target_minus_z_se": {
+                "high": 0.9347778138987901,
+                "low": 0.8613545578569958,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 250,
+                "n_replicates": 277,
+                "point": 0.9025270758122743,
+                "target": 0.6105416410511557
+              },
+              "target_plus_z_se": {
+                "high": 0.9287565477884686,
+                "low": 0.853111683411652,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 248,
+                "n_replicates": 277,
+                "point": 0.8953068592057761,
+                "target": 0.6171146089488442
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.000597978295632748,
+            "floor": 1.25,
+            "high": 1.4887856886011333,
+            "low": 1.0993475167389597,
+            "mean_nominal_variance": 0.0004616559681479251,
+            "n_replicates": 277,
+            "point": 1.2952898627775176
+          },
+          "worst_reference_upper_coverage": 0.9377667169168009
+        },
+        "original_only_all": {
+          "call_aware_coverage": {
+            "high": 0.9769666042594511,
+            "low": 0.9358539890609492,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 384,
+            "n_replicates": 400,
+            "point": 0.96,
+            "target": 0.6150282118055556
+          },
+          "iid_coverage": {
+            "high": 0.9340340574093114,
+            "low": 0.8747566869033432,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 363,
+            "n_replicates": 400,
+            "point": 0.9075,
+            "target": 0.6150282118055556
+          },
+          "mean_width_call_aware": 0.10785561177882981,
+          "mean_width_iid": 0.0842436280709003,
+          "n_evaluation": 400,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.9340340574093114,
+            "least_favourable_variant": "at_target",
+            "reference_se": 0.002047385090189995,
+            "reference_target": 0.6150282118055556,
+            "undercoverage_supported": true,
+            "variants": {
+              "at_target": {
+                "high": 0.9340340574093114,
+                "low": 0.8747566869033432,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 363,
+                "n_replicates": 400,
+                "point": 0.9075,
+                "target": 0.6150282118055556
+              },
+              "target_minus_z_se": {
+                "high": 0.9254353049597616,
+                "low": 0.8635218804179648,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 359,
+                "n_replicates": 400,
+                "point": 0.8975,
+                "target": 0.6110154107662988
+              },
+              "target_plus_z_se": {
+                "high": 0.921102202346237,
+                "low": 0.8579371760441026,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 357,
+                "n_replicates": 400,
+                "point": 0.8925,
+                "target": 0.6190410128448123
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.0006215592912564001,
+            "floor": 1.25,
+            "high": 1.5447809306505451,
+            "low": 1.162849311366493,
+            "mean_nominal_variance": 0.0004619351960718632,
+            "n_replicates": 400,
+            "point": 1.3455551699500816
+          },
+          "worst_reference_upper_coverage": 0.9340340574093114
+        },
+        "original_only_repair_free": {
+          "call_aware_coverage": {
+            "high": 0.9800123761774879,
+            "low": 0.9300579036830504,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 266,
+            "n_replicates": 277,
+            "point": 0.9602888086642599,
+            "target": 0.6150282118055556
+          },
+          "iid_coverage": {
+            "high": 0.9377667169168009,
+            "low": 0.8654967704898113,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 251,
+            "n_replicates": 277,
+            "point": 0.9061371841155235,
+            "target": 0.6150282118055556
+          },
+          "mean_width_call_aware": 0.10717459058642972,
+          "mean_width_iid": 0.0842183848839353,
+          "n_evaluation": 277,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.9377667169168009,
+            "least_favourable_variant": "at_target",
+            "reference_se": 0.002047385090189995,
+            "reference_target": 0.6150282118055556,
+            "undercoverage_supported": true,
+            "variants": {
+              "at_target": {
+                "high": 0.9377667169168009,
+                "low": 0.8654967704898113,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 251,
+                "n_replicates": 277,
+                "point": 0.9061371841155235,
+                "target": 0.6150282118055556
+              },
+              "target_minus_z_se": {
+                "high": 0.9347778138987901,
+                "low": 0.8613545578569958,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 250,
+                "n_replicates": 277,
+                "point": 0.9025270758122743,
+                "target": 0.6110154107662988
+              },
+              "target_plus_z_se": {
+                "high": 0.9287565477884686,
+                "low": 0.853111683411652,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 248,
+                "n_replicates": 277,
+                "point": 0.8953068592057761,
+                "target": 0.6190410128448123
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.000597978295632748,
+            "floor": 1.25,
+            "high": 1.4887856886011333,
+            "low": 1.0993475167389597,
+            "mean_nominal_variance": 0.0004616559681479251,
+            "n_replicates": 277,
+            "point": 1.2952898627775176
+          },
+          "worst_reference_upper_coverage": 0.9377667169168009
+        }
+      },
+      "a1_classification_reason": null,
+      "a1_prior_supported_cell_classification": null,
+      "a3_homogeneity": {
+        "evaluation": {
+          "distinct_labels": {
+            "bootstrap_95_interval": [
+              0.1039099113920443,
+              0.3457955172901375
+            ],
+            "original_mean": 1.4758555283332015,
+            "repaired_mean": 1.7074829931972788,
+            "repaired_minus_original": 0.23162746486407726
+          },
+          "label_entropy": {
+            "bootstrap_95_interval": [
+              0.048205172538491485,
+              0.15323399518399797
+            ],
+            "original_mean": 0.20650759055736004,
+            "repaired_mean": 0.30780017365490575,
+            "repaired_minus_original": 0.10129258309754571
+          },
+          "maximum_label_share": {
+            "bootstrap_95_interval": [
+              -0.06509675987679511,
+              -0.017441225186035903
+            ],
+            "original_mean": 0.9087568165652414,
+            "repaired_mean": 0.8660714285714286,
+            "repaired_minus_original": -0.04268538799381283
+          },
+          "original_calls": 12653,
+          "pairwise_label_agreement": {
+            "bootstrap_95_interval": [
+              -0.10296461134310153,
+              -0.03662001052693254
+            ],
+            "original_mean": 0.8627440132774835,
+            "repaired_mean": 0.7952380952380953,
+            "repaired_minus_original": -0.06750591803938821
+          },
+          "repaired_calls": 147
+        },
+        "reference": {
+          "distinct_labels": {
+            "bootstrap_95_interval": [
+              0.08701535694765225,
+              0.43541016508865654
+            ],
+            "original_mean": 1.483826130907253,
+            "repaired_mean": 1.744186046511628,
+            "repaired_minus_original": 0.260359915604375
+          },
+          "label_entropy": {
+            "bootstrap_95_interval": [
+              0.017402325336891178,
+              0.14594072078723733
+            ],
+            "original_mean": 0.2117821250404839,
+            "repaired_mean": 0.2916522583035065,
+            "repaired_minus_original": 0.07987013326302259
+          },
+          "maximum_label_share": {
+            "bootstrap_95_interval": [
+              -0.056719637998013564,
+              0.002251961125705959
+            ],
+            "original_mean": 0.9061710260298206,
+            "repaired_mean": 0.8793604651162791,
+            "repaired_minus_original": -0.026810560913541504
+          },
+          "original_calls": 7914,
+          "pairwise_label_agreement": {
+            "bootstrap_95_interval": [
+              -0.0890592853308728,
+              -0.0019046587051106672
+            ],
+            "original_mean": 0.8588598264678629,
+            "repaired_mean": 0.8133720930232559,
+            "repaired_minus_original": -0.04548773344460699
+          },
+          "repaired_calls": 86
+        }
+      },
+      "a3_variance_contribution": {
+        "all_minus_repair_free_variance_ratio": 0.050265307172564055,
+        "comparison_note": "Descriptive full-versus-clean-replicate contrast; it also changes the replicate population and is not a causal repair effect."
+      },
+      "a5_frozen_variance": {
+        "call_aware_coverage": {
+          "high": 0.9711630696195768,
+          "low": 0.9268146345986293,
+          "method": "Clopper-Pearson exact interval on the coverage proportion",
+          "n_covered": 381,
+          "n_replicates": 400,
+          "point": 0.9525,
+          "target": 0.613828125
+        },
+        "call_aware_variance": 0.0007104064572241998,
+        "effective_n_approx": 380.5120826216249,
+        "empirical_replicate_mean_variance": 0.0006215592912564001,
+        "evaluation_marginal_error": 0.6134423828125,
+        "floor_0_002_inflation_approx": 1.126512442661513,
+        "iid_coverage": {
+          "high": 0.9340340574093114,
+          "low": 0.8747566869033432,
+          "method": "Clopper-Pearson exact interval on the coverage proportion",
+          "n_covered": 363,
+          "n_replicates": 400,
+          "point": 0.9075,
+          "target": 0.613828125
+        },
+        "iid_variance": 0.0004619351960718632,
+        "mean_width_call_aware": 0.10785561177882981,
+        "mean_width_iid": 0.0842436280709003,
+        "variance_ratio": {
+          "empirical_variance": 0.0006215592912564001,
+          "floor": 1.25,
+          "high": 1.5532660444417978,
+          "low": 1.1564036006793375,
+          "mean_nominal_variance": 0.0004619351960718632,
+          "n_replicates": 400,
+          "point": 1.3455551699500816
+        }
+      },
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "reference_targets": {
+        "difference_original_minus_existing": 0.0012000868055556113,
+        "existing": 0.613828125,
+        "existing_precise": true,
+        "existing_se": 0.0016768083366672133,
+        "inside_existing_95_uncertainty_band": true,
+        "original_only_complete_replicates": 0.6150282118055556,
+        "original_only_precision": {
+          "if_not": "report the empirical variance of replicate means and its ratio to the average nominal i.i.d. variance; make no measured-coverage claim",
+          "mean_nominal_half_width": 0.04212181403545015,
+          "n_reference_replicates": 180,
+          "precise_enough_for_a_coverage_claim": true,
+          "se_over_half_width": 0.048606289569269136,
+          "target_monte_carlo_se": 0.002047385090189995,
+          "target_point": 0.6150282118055556,
+          "threshold": 0.25
+        },
+        "original_only_se": 0.002047385090189995
+      },
+      "streams": {
+        "evaluation": {
+          "all_call_error_covariance": 0.008343390885988872,
+          "all_minus_original_call_covariance": 1.6834958147683016e-06,
+          "excluded_replicates": 123,
+          "original_call_error_covariance": 0.008341707390174103,
+          "original_calls": 12653,
+          "repair_free_replicate_error_covariance": 0.008021230124690614,
+          "repaired_call_error_covariance": 0.008087486695358413,
+          "repaired_calls": 147,
+          "retained_replicates": 277
+        },
+        "reference": {
+          "all_call_error_covariance": 0.009036907958984375,
+          "all_minus_original_call_covariance": -1.6041100302118666e-05,
+          "excluded_replicates": 70,
+          "original_call_error_covariance": 0.009052949059286493,
+          "original_calls": 7914,
+          "repair_free_replicate_error_covariance": 0.00911443062770514,
+          "repaired_call_error_covariance": 0.006399996619794482,
+          "repaired_calls": 86,
+          "retained_replicates": 180
+        }
+      }
+    },
+    {
+      "a1_a2_coverage_2x2": {
+        "existing_all": {
+          "call_aware_coverage": {
+            "high": 0.9769666042594511,
+            "low": 0.9358539890609492,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 384,
+            "n_replicates": 400,
+            "point": 0.96,
+            "target": 0.1250234375
+          },
+          "iid_coverage": {
+            "high": 0.9101817952664786,
+            "low": 0.8440606367550166,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 352,
+            "n_replicates": 400,
+            "point": 0.88,
+            "target": 0.1250234375
+          },
+          "mean_width_call_aware": 0.08374980925779511,
+          "mean_width_iid": 0.05729345153798809,
+          "n_evaluation": 400,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.9101817952664786,
+            "least_favourable_variant": "at_target",
+            "reference_se": 0.0013814664207699675,
+            "reference_target": 0.1250234375,
+            "undercoverage_supported": true,
+            "variants": {
+              "at_target": {
+                "high": 0.9101817952664786,
+                "low": 0.8440606367550166,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 352,
+                "n_replicates": 400,
+                "point": 0.88,
+                "target": 0.1250234375
+              },
+              "target_minus_z_se": {
+                "high": 0.9057814853134138,
+                "low": 0.8385413405693943,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 350,
+                "n_replicates": 400,
+                "point": 0.875,
+                "target": 0.12231581306943941
+              },
+              "target_plus_z_se": {
+                "high": 0.9013642428711317,
+                "low": 0.8330385711920392,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 348,
+                "n_replicates": 400,
+                "point": 0.87,
+                "target": 0.12773106193056058
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.0003651060854880732,
+            "floor": 1.25,
+            "high": 1.955775037627197,
+            "low": 1.4557886942237221,
+            "mean_nominal_variance": 0.00021451869979500772,
+            "n_replicates": 400,
+            "point": 1.701977896737979
+          },
+          "worst_reference_upper_coverage": 0.9101817952664786
+        },
+        "existing_repair_free": {
+          "call_aware_coverage": {
+            "high": 0.9803041615711992,
+            "low": 0.9380208999830907,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 341,
+            "n_replicates": 354,
+            "point": 0.963276836158192,
+            "target": 0.1250234375
+          },
+          "iid_coverage": {
+            "high": 0.915591542061467,
+            "low": 0.8461714351627462,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 313,
+            "n_replicates": 354,
+            "point": 0.884180790960452,
+            "target": 0.1250234375
+          },
+          "mean_width_call_aware": 0.08367815783359123,
+          "mean_width_iid": 0.057264351482123395,
+          "n_evaluation": 354,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.915591542061467,
+            "least_favourable_variant": "at_target",
+            "reference_se": 0.0013814664207699675,
+            "reference_target": 0.1250234375,
+            "undercoverage_supported": true,
+            "variants": {
+              "at_target": {
+                "high": 0.915591542061467,
+                "low": 0.8461714351627462,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 313,
+                "n_replicates": 354,
+                "point": 0.884180790960452,
+                "target": 0.1250234375
+              },
+              "target_minus_z_se": {
+                "high": 0.9106811675397403,
+                "low": 0.8398860614156793,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 311,
+                "n_replicates": 354,
+                "point": 0.8785310734463276,
+                "target": 0.12231581306943941
+              },
+              "target_plus_z_se": {
+                "high": 0.9057469433654399,
+                "low": 0.8336238741727003,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 309,
+                "n_replicates": 354,
+                "point": 0.8728813559322034,
+                "target": 0.12773106193056058
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.0003574605967323442,
+            "floor": 1.25,
+            "high": 1.9457413146068476,
+            "low": 1.41284511278949,
+            "mean_nominal_variance": 0.00021428294942877387,
+            "n_replicates": 354,
+            "point": 1.668170975270067
+          },
+          "worst_reference_upper_coverage": 0.915591542061467
+        },
+        "original_only_all": {
+          "call_aware_coverage": {
+            "high": 0.9769666042594511,
+            "low": 0.9358539890609492,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 384,
+            "n_replicates": 400,
+            "point": 0.96,
+            "target": 0.12490234375
+          },
+          "iid_coverage": {
+            "high": 0.9101817952664786,
+            "low": 0.8440606367550166,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 352,
+            "n_replicates": 400,
+            "point": 0.88,
+            "target": 0.12490234375
+          },
+          "mean_width_call_aware": 0.08374980925779511,
+          "mean_width_iid": 0.05729345153798809,
+          "n_evaluation": 400,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.9101817952664786,
+            "least_favourable_variant": "at_target",
+            "reference_se": 0.0014798256827045207,
+            "reference_target": 0.12490234375,
+            "undercoverage_supported": true,
+            "variants": {
+              "at_target": {
+                "high": 0.9101817952664786,
+                "low": 0.8440606367550166,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 352,
+                "n_replicates": 400,
+                "point": 0.88,
+                "target": 0.12490234375
+              },
+              "target_minus_z_se": {
+                "high": 0.9057814853134138,
+                "low": 0.8385413405693943,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 350,
+                "n_replicates": 400,
+                "point": 0.875,
+                "target": 0.12200193870850175
+              },
+              "target_plus_z_se": {
+                "high": 0.9013642428711317,
+                "low": 0.8330385711920392,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 348,
+                "n_replicates": 400,
+                "point": 0.87,
+                "target": 0.12780274879149828
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.0003651060854880732,
+            "floor": 1.25,
+            "high": 1.955775037627197,
+            "low": 1.4557886942237221,
+            "mean_nominal_variance": 0.00021451869979500772,
+            "n_replicates": 400,
+            "point": 1.701977896737979
+          },
+          "worst_reference_upper_coverage": 0.9101817952664786
+        },
+        "original_only_repair_free": {
+          "call_aware_coverage": {
+            "high": 0.9803041615711992,
+            "low": 0.9380208999830907,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 341,
+            "n_replicates": 354,
+            "point": 0.963276836158192,
+            "target": 0.12490234375
+          },
+          "iid_coverage": {
+            "high": 0.915591542061467,
+            "low": 0.8461714351627462,
+            "method": "Clopper-Pearson exact interval on the coverage proportion",
+            "n_covered": 313,
+            "n_replicates": 354,
+            "point": 0.884180790960452,
+            "target": 0.12490234375
+          },
+          "mean_width_call_aware": 0.08367815783359123,
+          "mean_width_iid": 0.057264351482123395,
+          "n_evaluation": 354,
+          "reference_uncertainty": {
+            "claim_rule": "the upper Clopper-Pearson bound of the least favourable variant must be below 0.95 before undercoverage is claimed",
+            "least_favourable_upper_bound": 0.915591542061467,
+            "least_favourable_variant": "at_target",
+            "reference_se": 0.0014798256827045207,
+            "reference_target": 0.12490234375,
+            "undercoverage_supported": true,
+            "variants": {
+              "at_target": {
+                "high": 0.915591542061467,
+                "low": 0.8461714351627462,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 313,
+                "n_replicates": 354,
+                "point": 0.884180790960452,
+                "target": 0.12490234375
+              },
+              "target_minus_z_se": {
+                "high": 0.9106811675397403,
+                "low": 0.8398860614156793,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 311,
+                "n_replicates": 354,
+                "point": 0.8785310734463276,
+                "target": 0.12200193870850175
+              },
+              "target_plus_z_se": {
+                "high": 0.9057469433654399,
+                "low": 0.8336238741727003,
+                "method": "Clopper-Pearson exact interval on the coverage proportion",
+                "n_covered": 309,
+                "n_replicates": 354,
+                "point": 0.8728813559322034,
+                "target": 0.12780274879149828
+              }
+            }
+          },
+          "variance_ratio": {
+            "empirical_variance": 0.0003574605967323442,
+            "floor": 1.25,
+            "high": 1.9457413146068476,
+            "low": 1.41284511278949,
+            "mean_nominal_variance": 0.00021428294942877387,
+            "n_replicates": 354,
+            "point": 1.668170975270067
+          },
+          "worst_reference_upper_coverage": 0.915591542061467
+        }
+      },
+      "a1_classification_reason": "Repair-free evaluation count is below the frozen 400-replicate C2 minimum",
+      "a1_prior_supported_cell_classification": "too_imprecise",
+      "a3_homogeneity": {
+        "evaluation": {
+          "distinct_labels": {
+            "bootstrap_95_interval": [
+              0.03402398211264745,
+              0.3132289744381793
+            ],
+            "original_mean": 1.376676339110658,
+            "repaired_mean": 1.5510204081632653,
+            "repaired_minus_original": 0.17434406905260724
+          },
+          "label_entropy": {
+            "bootstrap_95_interval": [
+              0.006573283636237013,
+              0.15167920685214428
+            ],
+            "original_mean": 0.1882571538812386,
+            "repaired_mean": 0.26236909245664136,
+            "repaired_minus_original": 0.07411193857540277
+          },
+          "maximum_label_share": {
+            "bootstrap_95_interval": [
+              -0.07034594825695942,
+              0.009480724000838589
+            ],
+            "original_mean": 0.9095953258567956,
+            "repaired_mean": 0.8813775510204082,
+            "repaired_minus_original": -0.028217774836387433
+          },
+          "original_calls": 12751,
+          "pairwise_label_agreement": {
+            "bootstrap_95_interval": [
+              -0.10286019984026865,
+              0.001186674968003024
+            ],
+            "original_mean": 0.8677711552035133,
+            "repaired_mean": 0.8192176870748299,
+            "repaired_minus_original": -0.04855346812868344
+          },
+          "repaired_calls": 49
+        },
+        "reference": {
+          "distinct_labels": {
+            "bootstrap_95_interval": [
+              -0.08143197791164648,
+              0.28828438755020086
+            ],
+            "original_mean": 1.3653363453815262,
+            "repaired_mean": 1.46875,
+            "repaired_minus_original": 0.10341365461847385
+          },
+          "label_entropy": {
+            "bootstrap_95_interval": [
+              -0.06356492303911833,
+              0.11958941576341695
+            ],
+            "original_mean": 0.18358292867127265,
+            "repaired_mean": 0.2114217275651084,
+            "repaired_minus_original": 0.027838798893835753
+          },
+          "maximum_label_share": {
+            "bootstrap_95_interval": [
+              -0.06327026857429717,
+              0.038585592369477915
+            ],
+            "original_mean": 0.9114583333333334,
+            "repaired_mean": 0.90234375,
+            "repaired_minus_original": -0.00911458333333337
+          },
+          "original_calls": 7968,
+          "pairwise_label_agreement": {
+            "bootstrap_95_interval": [
+              -0.08021351029116466,
+              0.04728696034136546
+            ],
+            "original_mean": 0.8708437918340026,
+            "repaired_mean": 0.8557291666666667,
+            "repaired_minus_original": -0.015114625167335971
+          },
+          "repaired_calls": 32
+        }
+      },
+      "a3_variance_contribution": {
+        "all_minus_repair_free_variance_ratio": 0.03380692146791198,
+        "comparison_note": "Descriptive full-versus-clean-replicate contrast; it also changes the replicate population and is not a causal repair effect."
+      },
+      "a5_frozen_variance": {
+        "call_aware_coverage": {
+          "high": 0.9769666042594511,
+          "low": 0.9358539890609492,
+          "method": "Clopper-Pearson exact interval on the coverage proportion",
+          "n_covered": 384,
+          "n_replicates": 400,
+          "point": 0.96,
+          "target": 0.1250234375
+        },
+        "call_aware_variance": 0.00043350373545000625,
+        "effective_n_approx": 300.8264684173057,
+        "empirical_replicate_mean_variance": 0.0003651060854880732,
+        "evaluation_marginal_error": 0.1260986328125,
+        "floor_0_002_inflation_approx": 1.2722378197780277,
+        "iid_coverage": {
+          "high": 0.9101817952664786,
+          "low": 0.8440606367550166,
+          "method": "Clopper-Pearson exact interval on the coverage proportion",
+          "n_covered": 352,
+          "n_replicates": 400,
+          "point": 0.88,
+          "target": 0.1250234375
+        },
+        "iid_variance": 0.00021451869979500772,
+        "mean_width_call_aware": 0.08374980925779511,
+        "mean_width_iid": 0.05729345153798809,
+        "variance_ratio": {
+          "empirical_variance": 0.0003651060854880732,
+          "floor": 1.25,
+          "high": 1.948721781666846,
+          "low": 1.4555377721420666,
+          "mean_nominal_variance": 0.00021451869979500772,
+          "n_replicates": 400,
+          "point": 1.701977896737979
+        }
+      },
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "reference_targets": {
+        "difference_original_minus_existing": -0.00012109374999999534,
+        "existing": 0.1250234375,
+        "existing_precise": true,
+        "existing_se": 0.0013814664207699675,
+        "inside_existing_95_uncertainty_band": true,
+        "original_only_complete_replicates": 0.12490234375,
+        "original_only_precision": {
+          "if_not": "report the empirical variance of replicate means and its ratio to the average nominal i.i.d. variance; make no measured-coverage claim",
+          "mean_nominal_half_width": 0.028646725768994043,
+          "n_reference_replicates": 220,
+          "precise_enough_for_a_coverage_claim": true,
+          "se_over_half_width": 0.05165775993521113,
+          "target_monte_carlo_se": 0.0014798256827045207,
+          "target_point": 0.12490234375,
+          "threshold": 0.25
+        },
+        "original_only_se": 0.0014798256827045207
+      },
+      "streams": {
+        "evaluation": {
+          "all_call_error_covariance": 0.007376478552818299,
+          "all_minus_original_call_covariance": 9.837295929565094e-06,
+          "excluded_replicates": 46,
+          "original_call_error_covariance": 0.0073666412568887335,
+          "original_calls": 12751,
+          "repair_free_replicate_error_covariance": 0.007337152849471536,
+          "repaired_call_error_covariance": 0.009274022108843538,
+          "repaired_calls": 49,
+          "retained_replicates": 354
+        },
+        "reference": {
+          "all_call_error_covariance": 0.007679556742350259,
+          "all_minus_original_call_covariance": 5.3726286521199595e-06,
+          "excluded_replicates": 30,
+          "original_call_error_covariance": 0.007674184113698139,
+          "original_calls": 7968,
+          "repair_free_replicate_error_covariance": 0.007553997328787141,
+          "repaired_call_error_covariance": 0.008982594807942708,
+          "repaired_calls": 32,
+          "retained_replicates": 220
+        }
+      }
+    }
+  ],
+  "frozen_c2": {
+    "family": [
+      "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "Qwen/Qwen3-8B::civil_comments"
+    ],
+    "holm_adjusted_p": {
+      "Qwen/Qwen3-8B::civil_comments": 8.27789468288045e-08,
+      "ibm-granite/granite-3.3-8b-instruct::imdb": 5.364719401037443e-32,
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.9644940958223821,
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.000576120695389083
+    },
+    "min_supported_cells": 2,
+    "passed": true,
+    "supported_cells": [
+      "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "Qwen/Qwen3-8B::civil_comments"
+    ]
+  },
+  "post_hoc": true,
+  "provenance": {
+    "b4_repair_calls": 1095,
+    "base_run": "/Users/dz/bigdata/study-120h/extension-b4/runpod-pcie-auto-20260917T230203Z",
+    "inventory_sha256": "0d917c3a4674bf1b152aff9b5651884f01a2cfa5be1cb2468ca843b20fcbe27e",
+    "recovery_events_sha256": "71969ef8d96bd586b52219029c00dae72470c4a372f5c1f94d599cf323c7d649",
+    "recovery_receipts": 138,
+    "recovery_report_sha256": "08e5a408969ede6aa1a65c87e350c8583488d2f59be4913c7934a2a5375cf3df",
+    "revised_analysis_sha256": "f7b5e9ac5bbeace107765a702fe2a0bdfcec34ee4c9ee51cb0c1913e22326443"
+  },
+  "repair_free_frozen_c2_check": {
+    "family": [
+      "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "Qwen/Qwen3-8B::civil_comments"
+    ],
+    "holm_adjusted_p": {
+      "Qwen/Qwen3-8B::civil_comments": 1.0,
+      "ibm-granite/granite-3.3-8b-instruct::imdb": 1.0,
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 1.0,
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 1.0
+    },
+    "min_supported_cells": 2,
+    "passed": false,
+    "supported_cells": []
+  }
+}

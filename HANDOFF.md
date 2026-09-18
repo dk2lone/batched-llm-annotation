@@ -1,6 +1,6 @@
 # IEEE BigData 2026 handoff
 
-Updated: 2026-09-18 after completed B3/B4 recovery and repaired B3/B4 analyses.
+Updated: 2026-09-18 after the CPU-only A1–A7 decision audit.
 
 ## Current state
 
@@ -33,6 +33,12 @@ undercoverage cells.
 The repaired B3 sensitivity analysis is complete. It leaves the sealed A9 result primary,
 substitutes only the 3,002 exact linked B3 repairs, and reaches the same recurrence verdict:
 the 16-cell recurrence gate passes.
+
+The post-hoc A1–A7 decision audit is complete in
+`study-120h/decision-audit/20260918T054237Z-a1-a7/`. Its recommendation is no additional
+experiment for the current paper if repaired C2 is presented as sensitivity evidence. A
+uniform-contract Granite/IMDb rerun is conditional on needing a clean C2 claim; it is not
+authorized or running.
 
 ## Repaired B3 recurrence sensitivity
 
@@ -157,6 +163,37 @@ the completed repaired analysis as a secondary post-execution sensitivity. Exact
 replacement reduces the global effect by 17.81% but does not change the family recurrence
 conclusion. Never overwrite the original A9 artifacts.
 
+## A1–A7 decision audit
+
+Regenerate with
+`cd study-120h && PYTHONPATH=src .venv/bin/python analyze_decision_audit.py --output <new-directory>`.
+The output contains `DECISION.md`, `B3_AUDIT.json`, `B4_AUDIT.json`, `A3_TABLE.csv`,
+`A4_TABLE.csv`, `A6_TABLE.csv`, and `MANIFEST.json`. It is CPU-only and post-hoc. The sealed
+A9 result, original B4 unavailable status, and revised repaired C2 result remain separate.
+
+Granite/IMDb has 133 repair-free evaluation replicates out of 400 and 82 complete original
+reference replicates out of 250. Qwen/Civil Comments has 354 and 220. IID coverage on the
+repair-free evaluation subsets is 0.7744 for Granite and 0.8842 for Qwen, close to the revised
+all-replicate estimates of 0.7775 and 0.8800. Neither subset meets the frozen C2 minimum of
+400 evaluation replicates. Granite's original-only reference target is 0.19293 versus 0.19816
+after repair, a −0.00523 shift outside the latter's Monte Carlo uncertainty band; coverage
+stays near 0.78–0.79 across the target/evaluation sensitivity combinations.
+
+Granite repaired calls are not measurably more label-homogeneous than original calls in the
+within-cell reference or evaluation comparisons. Standardized B3 joint-minus-exact dependence
+is positive in all 16 cells and all four families. The three assignment-level equal-cell raw
+excesses are 0.01013, 0.00899, and 0.00971. The assignments are seeded regroupings of the
+same items, not a composition intervention, so A6 gives no evidence motivating a new
+composition experiment. The old “exact-context fake covariance” column duplicates exact
+covariance in all 16 cells; solo fake covariance is the separate control. A9 permutation
+`p = 0.0002` is the 4,999-draw resolution floor, not an effect size.
+
+The strongest remaining validity threat is the mixed original/recovery output contract in
+Granite/IMDb. Current robustness checks preserve the substantive undercoverage pattern but
+cannot turn the repaired C2 result into a clean confirmation. A single clean Granite cell
+would address the largest repair objection but would not create a fully clean two-cell C2
+confirmation. At least two uniformly generated cells are needed for that.
+
 ## Recovery contract
 
 Each repaired call used the original sealed prompt, document order, target IDs, checkpoint,
@@ -186,9 +223,11 @@ delete, add wholesale, or overwrite them.
 
 ## Next action
 
-Do not launch another GPU recovery. Both repaired analyses are complete. The next scientific
-task is to integrate the sealed A9 primary analysis, repaired B3 sensitivity, and revised B4
-coverage evidence into the paper's results tables and claims.
+Do not launch GPU work. Use the A1–A7 decision report to frame the paper's A9 primary result,
+repaired B3 sensitivity, original B4 unavailable result, and revised B4 repaired coverage
+claim. If a clean C2 claim becomes necessary, decide explicitly between one uniform-contract
+Granite/IMDb rerun to address the largest objection and a two-cell Granite+Qwen rerun for fully
+clean confirmation. No such paid run is authorized by this handoff.
 
 Preserve the original ledgers, recovery events, receipts, seals, locks, and both original
 analysis directories. Do not expose credentials or invoke Claude CLI unless Daniel explicitly

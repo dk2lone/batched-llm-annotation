@@ -1,0 +1,4633 @@
+{
+  "assignment_global_excess": [
+    0.010132541817923387,
+    0.00899338846405347,
+    0.009705355080465477
+  ],
+  "assignment_global_range": 0.0011391533538699164,
+  "assignment_interpretation": "Three seeded length-stratified B3 item regroupings under the sealed assignment namespace. They are repeated assignments, not homogeneous/mixed composition arms. Exact-context and solo covariances use fake groups; only joint groups are shared calls.",
+  "cells": [
+    {
+      "assignment_excess_range": 0.0018020500739415477,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.8968505859375,
+            "covariance": -2.782245477040609e-05,
+            "marginal_error": 0.1031494140625,
+            "standardized": -0.00030075204117984534,
+            "within_group_error_homogeneity": 0.8968505859375
+          },
+          "joint": {
+            "accuracy": 0.87646484375,
+            "covariance": 0.008241669336954752,
+            "marginal_error": 0.12353515625,
+            "standardized": 0.07611848165560167,
+            "within_group_error_homogeneity": 0.878662109375
+          },
+          "joint_minus_exact": 0.008269491791725158,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0008182054060504478,
+              0.0006311761043662188
+            ],
+            "exact_context_homogeneity": [
+              0.8968536472619514,
+              0.8968536472619514
+            ],
+            "exact_context_standardized": [
+              -0.008844544739301761,
+              0.006822816437246838
+            ],
+            "joint": [
+              0.007288176467799841,
+              0.009049244176133174
+            ],
+            "joint_homogeneity": [
+              0.8784256220611285,
+              0.8786697626861285
+            ],
+            "joint_minus_exact": [
+              0.0073267594780169545,
+              0.009248146196766956
+            ],
+            "joint_standardized": [
+              0.06731220388562595,
+              0.08357708840968452
+            ],
+            "solo_fake": [
+              -0.0020434960831918186,
+              0.0007397070418081812
+            ],
+            "solo_fake_homogeneity": [
+              0.7573376503110305,
+              0.7593029823422806
+            ],
+            "solo_fake_standardized": [
+              -0.011153381285035804,
+              0.004037313672569508
+            ],
+            "standardized_joint_minus_exact": [
+              0.06748384456205408,
+              0.08623881805278392
+            ],
+            "standardized_joint_minus_solo": [
+              0.0680979114380442,
+              0.08999604898330776
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.7584228515625,
+            "covariance": -0.0005958467721939087,
+            "marginal_error": 0.2415771484375,
+            "standardized": -0.003252125752722921,
+            "within_group_error_homogeneity": 0.7584228515625
+          },
+          "standardized_joint_minus_exact": 0.07641923369678151,
+          "standardized_joint_minus_solo": 0.07937060740832459
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.8974609375,
+            "covariance": -0.00019524892171223957,
+            "marginal_error": 0.1025390625,
+            "standardized": -0.002121698879043819,
+            "within_group_error_homogeneity": 0.8974609375
+          },
+          "joint": {
+            "accuracy": 0.874267578125,
+            "covariance": 0.006424431006113688,
+            "marginal_error": 0.125732421875,
+            "standardized": 0.05844441492269972,
+            "within_group_error_homogeneity": 0.875
+          },
+          "joint_minus_exact": 0.006619679927825928,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0009073640111845489,
+              0.0004923755721487845
+            ],
+            "exact_context_homogeneity": [
+              0.8974624681622257,
+              0.8974624681622257
+            ],
+            "exact_context_standardized": [
+              -0.009859994045202856,
+              0.005350465909544369
+            ],
+            "joint": [
+              0.005505732640452768,
+              0.007314814671702768
+            ],
+            "joint_homogeneity": [
+              0.8747650433483543,
+              0.8750091839733543
+            ],
+            "joint_minus_exact": [
+              0.00571322685997065,
+              0.007474294568303984
+            ],
+            "joint_standardized": [
+              0.05008682054268425,
+              0.06654442445546015
+            ],
+            "solo_fake": [
+              -0.0013429553512495519,
+              0.0018357555862504485
+            ],
+            "solo_fake_homogeneity": [
+              0.7578389039233934,
+              0.7602803101733934
+            ],
+            "solo_fake_standardized": [
+              -0.007329836941928427,
+              0.0100195357201787
+            ],
+            "standardized_joint_minus_exact": [
+              0.051660818963224484,
+              0.06879627280732939
+            ],
+            "standardized_joint_minus_solo": [
+              0.04499628416602309,
+              0.06719486171612486
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.7584228515625,
+            "covariance": 0.0003318876028060913,
+            "marginal_error": 0.2415771484375,
+            "standardized": 0.001811439233145517,
+            "within_group_error_homogeneity": 0.7593994140625
+          },
+          "standardized_joint_minus_exact": 0.060566113801743544,
+          "standardized_joint_minus_solo": 0.05663297568955421
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.8916015625,
+            "covariance": 0.00031032562255859373,
+            "marginal_error": 0.1083984375,
+            "standardized": 0.0032108779096730903,
+            "within_group_error_homogeneity": 0.8916015625
+          },
+          "joint": {
+            "accuracy": 0.878662109375,
+            "covariance": 0.006777767340342204,
+            "marginal_error": 0.121337890625,
+            "standardized": 0.06357235754994914,
+            "within_group_error_homogeneity": 0.88037109375
+          },
+          "joint_minus_exact": 0.00646744171778361,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.00039754698144480296,
+              0.001053462133138531
+            ],
+            "exact_context_homogeneity": [
+              0.8916015625,
+              0.8916015625
+            ],
+            "exact_context_standardized": [
+              -0.004113340078895096,
+              0.010899964572963779
+            ],
+            "joint": [
+              0.005934275512037606,
+              0.007579783324537606
+            ],
+            "joint_homogeneity": [
+              0.8803657746987656,
+              0.8803779817300157
+            ],
+            "joint_minus_exact": [
+              0.0054993029622324085,
+              0.007439407128899076
+            ],
+            "joint_standardized": [
+              0.05566079000760077,
+              0.07109490064530866
+            ],
+            "solo_fake": [
+              -0.0027247249600531056,
+              0.00023100420661356256
+            ],
+            "solo_fake_homogeneity": [
+              0.757659051111873,
+              0.759856316736873
+            ],
+            "solo_fake_standardized": [
+              -0.014871521715304216,
+              0.0012608186607257627
+            ],
+            "standardized_joint_minus_exact": [
+              0.05075318112352725,
+              0.07001328045313324
+            ],
+            "standardized_joint_minus_solo": [
+              0.06071029906209968,
+              0.08122966492356956
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.7584228515625,
+            "covariance": -0.0012794405221939087,
+            "marginal_error": 0.2415771484375,
+            "standardized": -0.006983173637047034,
+            "within_group_error_homogeneity": 0.7589111328125
+          },
+          "standardized_joint_minus_exact": 0.06036147964027605,
+          "standardized_joint_minus_solo": 0.07055553118699617
+        }
+      ],
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          -0.0004247736085877108,
+          0.000427005905301178
+        ],
+        "exact_context_homogeneity_interval": [
+          0.8953058926413925,
+          0.8953058926413925
+        ],
+        "exact_context_standardized_interval": [
+          -0.004466464212264569,
+          0.004482896332690859
+        ],
+        "joint_covariance_interval": [
+          0.006640406158152294,
+          0.007666881852596738
+        ],
+        "joint_homogeneity_interval": [
+          0.8779375959214996,
+          0.8780189761298329
+        ],
+        "joint_minus_exact": 0.007118871145778232,
+        "joint_standardized_interval": [
+          0.06134354719491058,
+          0.0708433614789715
+        ],
+        "solo_fake_covariance_interval": [
+          -0.0014448821488592697,
+          0.00028363347614073083
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.7582629101154322,
+          0.759487682250849
+        ],
+        "solo_fake_standardized_interval": [
+          -0.00788615238889919,
+          0.0015480686900346402
+        ],
+        "standardized_joint_minus_exact": 0.0657822757129337,
+        "standardized_joint_minus_exact_interval": [
+          0.06049469963143241,
+          0.07157093866105188
+        ],
+        "standardized_joint_minus_solo": 0.06885303809495832,
+        "standardized_joint_minus_solo_interval": [
+          0.06272662968594578,
+          0.07573407836018822
+        ]
+      },
+      "family": "qwen",
+      "task": "civil_comments"
+    },
+    {
+      "assignment_excess_range": 0.0032110551993052164,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.62841796875,
+            "covariance": -0.00013375282287597656,
+            "marginal_error": 0.37158203125,
+            "standardized": -0.0005727955793658816,
+            "within_group_error_homogeneity": 0.646240234375
+          },
+          "joint": {
+            "accuracy": 0.72265625,
+            "covariance": 0.006983439127604167,
+            "marginal_error": 0.27734375,
+            "standardized": 0.03484329399822358,
+            "within_group_error_homogeneity": 0.736572265625
+          },
+          "joint_minus_exact": 0.0071171919504801435,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0021933532383997495,
+              0.0017324280116002512
+            ],
+            "exact_context_homogeneity": [
+              0.6412755314459248,
+              0.6503209416021748
+            ],
+            "exact_context_standardized": [
+              -0.009393020737275742,
+              0.007419111501926143
+            ],
+            "joint": [
+              0.005489221969492881,
+              0.008458785771576214
+            ],
+            "joint_homogeneity": [
+              0.734707153702978,
+              0.738125122452978
+            ],
+            "joint_minus_exact": [
+              0.005104450207892628,
+              0.009331338228725963
+            ],
+            "joint_standardized": [
+              0.02738802063134263,
+              0.042204414489990016
+            ],
+            "solo_fake": [
+              -0.0014146281559265525,
+              0.0015354043961567814
+            ],
+            "solo_fake_homogeneity": [
+              0.7316297572981975,
+              0.7345594447981975
+            ],
+            "solo_fake_standardized": [
+              -0.007214049208034841,
+              0.007829960701477184
+            ],
+            "standardized_joint_minus_exact": [
+              0.0262345246187739,
+              0.04539969222035764
+            ],
+            "standardized_joint_minus_solo": [
+              0.024780141385774508,
+              0.044025752380400275
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.732177734375,
+            "covariance": 9.740591049194336e-05,
+            "marginal_error": 0.267822265625,
+            "standardized": 0.0004967319705170639,
+            "within_group_error_homogeneity": 0.733154296875
+          },
+          "standardized_joint_minus_exact": 0.03541608957758946,
+          "standardized_joint_minus_solo": 0.034346562027706515
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.6357421875,
+            "covariance": 0.0003403345743815104,
+            "marginal_error": 0.3642578125,
+            "standardized": 0.0014696575969602,
+            "within_group_error_homogeneity": 0.651611328125
+          },
+          "joint": {
+            "accuracy": 0.7369384765625,
+            "covariance": 0.005880015095074972,
+            "marginal_error": 0.2630615234375,
+            "standardized": 0.03033121991595781,
+            "within_group_error_homogeneity": 0.7447509765625
+          },
+          "joint_minus_exact": 0.005539680520693461,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0014617140639413737,
+              0.0021523809881419595
+            ],
+            "exact_context_homogeneity": [
+              0.6472765309683581,
+              0.6556017262808582
+            ],
+            "exact_context_standardized": [
+              -0.006312080347872276,
+              0.00929456866533213
+            ],
+            "joint": [
+              0.004118273895362328,
+              0.007389758270362329
+            ],
+            "joint_homogeneity": [
+              0.7432218449990203,
+              0.7461515324990203
+            ],
+            "joint_minus_exact": [
+              0.003347728844720368,
+              0.007566478844720368
+            ],
+            "joint_standardized": [
+              0.021243529000292527,
+              0.03811901493447951
+            ],
+            "solo_fake": [
+              -0.0027801268252708577,
+              0.000496240362229143
+            ],
+            "solo_fake_homogeneity": [
+              0.731403984619906,
+              0.734577812744906
+            ],
+            "solo_fake_standardized": [
+              -0.014177557288152093,
+              0.0025306313727294005
+            ],
+            "standardized_joint_minus_exact": [
+              0.01858266377553773,
+              0.037989281963740344
+            ],
+            "standardized_joint_minus_solo": [
+              0.027671210201314814,
+              0.04491150306889166
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.732177734375,
+            "covariance": -0.0012372295061747233,
+            "marginal_error": 0.267822265625,
+            "standardized": -0.006309385616131134,
+            "within_group_error_homogeneity": 0.733154296875
+          },
+          "standardized_joint_minus_exact": 0.02886156231899761,
+          "standardized_joint_minus_solo": 0.03664060553208894
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.6351318359375,
+            "covariance": -0.0019113292296727498,
+            "marginal_error": 0.3648681640625,
+            "standardized": -0.008247753025963759,
+            "within_group_error_homogeneity": 0.6478271484375
+          },
+          "joint": {
+            "accuracy": 0.737060546875,
+            "covariance": 0.0068394064903259276,
+            "marginal_error": 0.262939453125,
+            "standardized": 0.03529063686100688,
+            "within_group_error_homogeneity": 0.7470703125
+          },
+          "joint_minus_exact": 0.008750735719998678,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.003490811927066951,
+              -0.00026571427081695026
+            ],
+            "exact_context_homogeneity": [
+              0.6435275565120493,
+              0.6516086111995494
+            ],
+            "exact_context_standardized": [
+              -0.015063524476872238,
+              -0.0011466081547591277
+            ],
+            "joint": [
+              0.005246836630901944,
+              0.00830673246423528
+            ],
+            "joint_homogeneity": [
+              0.7452679577292319,
+              0.7484417858542319
+            ],
+            "joint_minus_exact": [
+              0.0068064962142188965,
+              0.010782733193385564
+            ],
+            "joint_standardized": [
+              0.027073139529299333,
+              0.042861888573447575
+            ],
+            "solo_fake": [
+              -0.0019474542277982867,
+              0.00127682962636838
+            ],
+            "solo_fake_homogeneity": [
+              0.7321639966815242,
+              0.7353500318377743
+            ],
+            "solo_fake_standardized": [
+              -0.009931253362146258,
+              0.006511330709987987
+            ],
+            "standardized_joint_minus_exact": [
+              0.03444029708488582,
+              0.052986969162442735
+            ],
+            "standardized_joint_minus_solo": [
+              0.0260360142500368,
+              0.04692150731522618
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.732177734375,
+            "covariance": -0.00024439096450805663,
+            "marginal_error": 0.267822265625,
+            "standardized": -0.001246298143136743,
+            "within_group_error_homogeneity": 0.73388671875
+          },
+          "standardized_joint_minus_exact": 0.04353838988697063,
+          "standardized_joint_minus_solo": 0.03653693500414362
+        }
+      ],
+      "cell_key": "Qwen/Qwen3-8B::multi_nli",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          -0.0016861589618860245,
+          0.0003277299270028648
+        ],
+        "exact_context_homogeneity_interval": [
+          0.6460651138608607,
+          0.6507933039650275
+        ],
+        "exact_context_standardized_interval": [
+          -0.007256616498918914,
+          0.001402836915033893
+        ],
+        "joint_covariance_interval": [
+          0.005672472811085719,
+          0.007362468470807942
+        ],
+        "joint_homogeneity_interval": [
+          0.7417940050083267,
+          0.74366981881041
+        ],
+        "joint_minus_exact": 0.007135869397057427,
+        "joint_standardized_interval": [
+          0.028954367620788755,
+          0.03754775323802106
+        ],
+        "solo_fake_covariance_interval": [
+          -0.0013244755523041207,
+          0.0003853226247792127
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.7325463816165424,
+          0.7342594350019591
+        ],
+        "solo_fake_standardized_interval": [
+          -0.006754306260009956,
+          0.0019649943799582557
+        ],
+        "standardized_joint_minus_exact": 0.03593868059451923,
+        "standardized_joint_minus_exact_interval": [
+          0.03012017564867692,
+          0.04123203592207131
+        ],
+        "standardized_joint_minus_solo": 0.035841367521313026,
+        "standardized_joint_minus_solo_interval": [
+          0.029858798603202223,
+          0.04090114781212124
+        ]
+      },
+      "family": "qwen",
+      "task": "multi_nli"
+    },
+    {
+      "assignment_excess_range": 0.0026525517304738355,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.9034423828125,
+            "covariance": -0.0005017588535944621,
+            "marginal_error": 0.0965576171875,
+            "standardized": -0.0057518565189736155,
+            "within_group_error_homogeneity": 0.9034423828125
+          },
+          "joint": {
+            "accuracy": 0.893798828125,
+            "covariance": 0.011898394425710042,
+            "marginal_error": 0.106201171875,
+            "standardized": 0.12534853760409242,
+            "within_group_error_homogeneity": 0.89892578125
+          },
+          "joint_minus_exact": 0.012400153279304504,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0011235112985722574,
+              0.00019566187851107603
+            ],
+            "exact_context_homogeneity": [
+              0.9034423828125,
+              0.9034423828125
+            ],
+            "exact_context_standardized": [
+              -0.012879246156872746,
+              0.0022429480683128257
+            ],
+            "joint": [
+              0.011160566761949592,
+              0.012691328480699593
+            ],
+            "joint_homogeneity": [
+              0.8989265465811128,
+              0.8989265465811128
+            ],
+            "joint_minus_exact": [
+              0.01153456634177185,
+              0.013276916602188516
+            ],
+            "joint_standardized": [
+              0.11757558813316436,
+              0.13370202805442197
+            ],
+            "solo_fake": [
+              -0.000631257969508475,
+              0.00021509619715819164
+            ],
+            "solo_fake_homogeneity": [
+              0.944091796875,
+              0.944091796875
+            ],
+            "solo_fake_standardized": [
+              -0.01195961269657724,
+              0.004075144132471903
+            ],
+            "standardized_joint_minus_exact": [
+              0.12186364609729422,
+              0.14070424524443564
+            ],
+            "standardized_joint_minus_solo": [
+              0.11997608869652279,
+              0.13805999071212938
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.944091796875,
+            "covariance": -0.00019603967666625977,
+            "marginal_error": 0.055908203125,
+            "standardized": -0.0037141053568262635,
+            "within_group_error_homogeneity": 0.944091796875
+          },
+          "standardized_joint_minus_exact": 0.13110039412306604,
+          "standardized_joint_minus_solo": 0.12906264296091868
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.8994140625,
+            "covariance": -0.0007913589477539062,
+            "marginal_error": 0.1005859375,
+            "standardized": -0.008747351443660858,
+            "within_group_error_homogeneity": 0.8994140625
+          },
+          "joint": {
+            "accuracy": 0.9031982421875,
+            "covariance": 0.008956242601076763,
+            "marginal_error": 0.0968017578125,
+            "standardized": 0.10243762988772838,
+            "within_group_error_homogeneity": 0.9061279296875
+          },
+          "joint_minus_exact": 0.009747601548830668,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.001554899185802496,
+              -0.00016899423788582888
+            ],
+            "exact_context_homogeneity": [
+              0.8994171238244514,
+              0.8994171238244514
+            ],
+            "exact_context_standardized": [
+              -0.017187206483581987,
+              -0.0018679917563788938
+            ],
+            "joint": [
+              0.008266939480974882,
+              0.009684582710141549
+            ],
+            "joint_homogeneity": [
+              0.9061279296875,
+              0.9061279296875
+            ],
+            "joint_minus_exact": [
+              0.008955139448027376,
+              0.01053798450011071
+            ],
+            "joint_standardized": [
+              0.09455367887807577,
+              0.11076806909621927
+            ],
+            "solo_fake": [
+              -0.0006543709691166255,
+              0.00019198319755004117
+            ],
+            "solo_fake_homogeneity": [
+              0.944091796875,
+              0.944091796875
+            ],
+            "solo_fake_standardized": [
+              -0.012397504235253348,
+              0.003637252593795798
+            ],
+            "standardized_joint_minus_exact": [
+              0.10227418709242089,
+              0.12011403211567084
+            ],
+            "standardized_joint_minus_solo": [
+              0.09723439273186904,
+              0.11632099710764315
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.944091796875,
+            "covariance": -0.00024486780166625975,
+            "marginal_error": 0.055908203125,
+            "standardized": -0.004639187481579099,
+            "within_group_error_homogeneity": 0.944091796875
+          },
+          "standardized_joint_minus_exact": 0.11118498133138924,
+          "standardized_joint_minus_solo": 0.10707681736930748
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.9019775390625,
+            "covariance": -0.00024967888991038006,
+            "marginal_error": 0.0980224609375,
+            "standardized": -0.0028239727403793946,
+            "within_group_error_homogeneity": 0.9019775390625
+          },
+          "joint": {
+            "accuracy": 0.8924560546875,
+            "covariance": 0.01153000295162201,
+            "marginal_error": 0.1075439453125,
+            "standardized": 0.12013142077049944,
+            "within_group_error_homogeneity": 0.8966064453125
+          },
+          "joint_minus_exact": 0.011779681841532389,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0009128127881601188,
+              0.0004551885139232145
+            ],
+            "exact_context_homogeneity": [
+              0.9019798350558386,
+              0.9019798350558386
+            ],
+            "exact_context_standardized": [
+              -0.010324294664074921,
+              0.005148372597756908
+            ],
+            "joint": [
+              0.010804469056637683,
+              0.01230267869205435
+            ],
+            "joint_homogeneity": [
+              0.8966087413058386,
+              0.8966087413058386
+            ],
+            "joint_minus_exact": [
+              0.010870113876047801,
+              0.012631181584381136
+            ],
+            "joint_standardized": [
+              0.11257206298131865,
+              0.1281819507558345
+            ],
+            "solo_fake": [
+              -0.0003034411428365837,
+              0.000494084898830083
+            ],
+            "solo_fake_homogeneity": [
+              0.944091796875,
+              0.944091796875
+            ],
+            "solo_fake_standardized": [
+              -0.005748899372087201,
+              0.009360775332209107
+            ],
+            "standardized_joint_minus_exact": [
+              0.11320427018200234,
+              0.13240669774700603
+            ],
+            "standardized_joint_minus_solo": [
+              0.10739860103533791,
+              0.12872629671104946
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.944091796875,
+            "covariance": 0.00012948115666707358,
+            "marginal_error": 0.055908203125,
+            "standardized": 0.002453108808192638,
+            "within_group_error_homogeneity": 0.944091796875
+          },
+          "standardized_joint_minus_exact": 0.12295539351087884,
+          "standardized_joint_minus_solo": 0.11767831196230681
+        }
+      ],
+      "cell_key": "Qwen/Qwen3-8B::imdb",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          -0.0008878296325116239,
+          -0.00014374326098384608
+        ],
+        "exact_context_homogeneity_interval": [
+          0.9016131138975968,
+          0.9016131138975968
+        ],
+        "exact_context_standardized_interval": [
+          -0.00996511358708256,
+          -0.0015694940995712387
+        ],
+        "joint_covariance_interval": [
+          0.010376261731798496,
+          0.011217733085965163
+        ],
+        "joint_homogeneity_interval": [
+          0.9005544058581505,
+          0.9005544058581505
+        ],
+        "joint_minus_exact": 0.011309145556555855,
+        "joint_standardized_interval": [
+          0.111443381378592,
+          0.1204218143257723
+        ],
+        "solo_fake_covariance_interval": [
+          -0.0003400741417372282,
+          0.00013247360131832744
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.944091796875,
+          0.944091796875
+        ],
+        "solo_fake_standardized_interval": [
+          -0.006442936516849088,
+          0.0025098027127033536
+        ],
+        "standardized_joint_minus_exact": 0.1217469229884447,
+        "standardized_joint_minus_exact_interval": [
+          0.11628950555643364,
+          0.12734236109656033
+        ],
+        "standardized_joint_minus_solo": 0.11793925743084432,
+        "standardized_joint_minus_solo_interval": [
+          0.11239124125735192,
+          0.12376855880820238
+        ]
+      },
+      "family": "qwen",
+      "task": "imdb"
+    },
+    {
+      "assignment_excess_range": 0.001281243562698364,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.6414794921875,
+            "covariance": 9.260276953379313e-05,
+            "marginal_error": 0.3585205078125,
+            "standardized": 0.00040264952953777933,
+            "within_group_error_homogeneity": 0.6534423828125
+          },
+          "joint": {
+            "accuracy": 0.780517578125,
+            "covariance": 0.0026087164878845215,
+            "marginal_error": 0.219482421875,
+            "standardized": 0.015228055501142443,
+            "within_group_error_homogeneity": 0.78173828125
+          },
+          "joint_minus_exact": 0.0025161137183507282,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0021080277612590495,
+              0.0017664839574909508
+            ],
+            "exact_context_homogeneity": [
+              0.6492621442740988,
+              0.6573309919303488
+            ],
+            "exact_context_standardized": [
+              -0.00916599352910052,
+              0.007680914275033685
+            ],
+            "joint": [
+              0.0012195435761159733,
+              0.003925435503199307
+            ],
+            "joint_homogeneity": [
+              0.7805550793495298,
+              0.7822640637245298
+            ],
+            "joint_minus_exact": [
+              0.0006900387852916896,
+              0.004667903368625022
+            ],
+            "joint_standardized": [
+              0.0071189327584676425,
+              0.02291423770520523
+            ],
+            "solo_fake": [
+              -0.0022250433756639968,
+              0.00117990454100267
+            ],
+            "solo_fake_homogeneity": [
+              0.70126566632788,
+              0.70616068585913
+            ],
+            "solo_fake_standardized": [
+              -0.010587083704997832,
+              0.005614159380499506
+            ],
+            "standardized_joint_minus_exact": [
+              0.005556885855063049,
+              0.024636788077396
+            ],
+            "standardized_joint_minus_solo": [
+              0.006813501465715971,
+              0.028439976719956593
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.6995849609375,
+            "covariance": -0.0005031019449234009,
+            "marginal_error": 0.3004150390625,
+            "standardized": -0.0023938330646977863,
+            "within_group_error_homogeneity": 0.7037353515625
+          },
+          "standardized_joint_minus_exact": 0.014825405971604663,
+          "standardized_joint_minus_solo": 0.017621888565840228
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.63330078125,
+            "covariance": -0.0006141503651936849,
+            "marginal_error": 0.36669921875,
+            "standardized": -0.002644567801485281,
+            "within_group_error_homogeneity": 0.6494140625
+          },
+          "joint": {
+            "accuracy": 0.7860107421875,
+            "covariance": 0.0031832069158554076,
+            "marginal_error": 0.2139892578125,
+            "standardized": 0.018925371605767655,
+            "within_group_error_homogeneity": 0.7882080078125
+          },
+          "joint_minus_exact": 0.0037973572810490923,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.002782838526439767,
+              0.0011746810048102335
+            ],
+            "exact_context_homogeneity": [
+              0.6449239413940048,
+              0.6535054843627548
+            ],
+            "exact_context_standardized": [
+              -0.011983067308662127,
+              0.005058245892856897
+            ],
+            "joint": [
+              0.0018271167169917693,
+              0.004327930519075105
+            ],
+            "joint_homogeneity": [
+              0.7873669089194749,
+              0.7885876120444749
+            ],
+            "joint_minus_exact": [
+              0.0019244083684315362,
+              0.005935638837181538
+            ],
+            "joint_standardized": [
+              0.010862901391657489,
+              0.025731187297143892
+            ],
+            "solo_fake": [
+              -0.0023722446108063685,
+              0.0007755418475269649
+            ],
+            "solo_fake_homogeneity": [
+              0.7011898985477076,
+              0.7058407774539577
+            ],
+            "solo_fake_standardized": [
+              -0.011287488836410738,
+              0.003690142199608311
+            ],
+            "standardized_joint_minus_exact": [
+              0.01170154784476694,
+              0.03194201486611098
+            ],
+            "standardized_joint_minus_solo": [
+              0.012375577139633422,
+              0.03273029114231687
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.6995849609375,
+            "covariance": -0.0007635186115900676,
+            "marginal_error": 0.3004150390625,
+            "standardized": -0.0036329338742960536,
+            "within_group_error_homogeneity": 0.7034912109375
+          },
+          "standardized_joint_minus_exact": 0.021569939407252936,
+          "standardized_joint_minus_solo": 0.022558305480063708
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.6416015625,
+            "covariance": -0.00022678375244140626,
+            "marginal_error": 0.3583984375,
+            "standardized": -0.0009862350125871458,
+            "within_group_error_homogeneity": 0.65478515625
+          },
+          "joint": {
+            "accuracy": 0.790771484375,
+            "covariance": 0.0033913969993591307,
+            "marginal_error": 0.209228515625,
+            "standardized": 0.0204977766954161,
+            "within_group_error_homogeneity": 0.792724609375
+          },
+          "joint_minus_exact": 0.003618180751800537,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.001814333039765074,
+              0.001571897428984926
+            ],
+            "exact_context_homogeneity": [
+              0.6512133559463166,
+              0.6585375746963166
+            ],
+            "exact_context_standardized": [
+              -0.007890154162486998,
+              0.006835852498124568
+            ],
+            "joint": [
+              0.0020867140913458076,
+              0.004561486226762474
+            ],
+            "joint_homogeneity": [
+              0.7920802388445336,
+              0.7930690083757836
+            ],
+            "joint_minus_exact": [
+              0.0017363335894442153,
+              0.005253586193610882
+            ],
+            "joint_standardized": [
+              0.012612206556668904,
+              0.027569855753561745
+            ],
+            "solo_fake": [
+              -0.0012423505734500476,
+              0.0018045244265499532
+            ],
+            "solo_fake_homogeneity": [
+              0.7003932271257837,
+              0.7045802388445337
+            ],
+            "solo_fake_standardized": [
+              -0.005911286789248606,
+              0.008586192683051117
+            ],
+            "standardized_joint_minus_exact": [
+              0.012265181106418492,
+              0.02947534932311388
+            ],
+            "standardized_joint_minus_solo": [
+              0.008867145736542292,
+              0.027570923314796582
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.6995849609375,
+            "covariance": 0.00040835638840993244,
+            "marginal_error": 0.3004150390625,
+            "standardized": 0.0019430197688961467,
+            "within_group_error_homogeneity": 0.7027587890625
+          },
+          "standardized_joint_minus_exact": 0.021484011708003244,
+          "standardized_joint_minus_solo": 0.018554756926519953
+        }
+      ],
+      "cell_key": "Qwen/Qwen3-8B::ag_news",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          -0.0012471107133212966,
+          0.0009246557797342591
+        ],
+        "exact_context_homogeneity_interval": [
+          0.6504277435589734,
+          0.6548263438193901
+        ],
+        "exact_context_standardized_interval": [
+          -0.005396355917772456,
+          0.004008881886423577
+        ],
+        "joint_covariance_interval": [
+          0.0022010336489845174,
+          0.003771129135095629
+        ],
+        "joint_homogeneity_interval": [
+          0.7870783790899295,
+          0.7878921811732628
+        ],
+        "joint_minus_exact": 0.003310550583733453,
+        "joint_standardized_interval": [
+          0.013125283346423749,
+          0.022423514499069725
+        ],
+        "solo_fake_covariance_interval": [
+          -0.0012073426276123594,
+          0.0006500249939154184
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.7018610556671239,
+          0.704632051760874
+        ],
+        "solo_fake_standardized_interval": [
+          -0.0057447138329739765,
+          0.0030929145454836595
+        ],
+        "standardized_joint_minus_exact": 0.019293119028953615,
+        "standardized_joint_minus_exact_interval": [
+          0.013537331019526831,
+          0.025161193370898345
+        ],
+        "standardized_joint_minus_solo": 0.019578316990807962,
+        "standardized_joint_minus_solo_interval": [
+          0.013798755769726702,
+          0.025244825576294608
+        ]
+      },
+      "family": "qwen",
+      "task": "ag_news"
+    },
+    {
+      "assignment_excess_range": 0.0011991371711095175,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.8748779296875,
+            "covariance": -0.00042115747928619387,
+            "marginal_error": 0.1251220703125,
+            "standardized": -0.0038473627431962892,
+            "within_group_error_homogeneity": 0.8748779296875
+          },
+          "joint": {
+            "accuracy": 0.8995361328125,
+            "covariance": 0.0009258915980656942,
+            "marginal_error": 0.1004638671875,
+            "standardized": 0.010245464165476855,
+            "within_group_error_homogeneity": 0.8995361328125
+          },
+          "joint_minus_exact": 0.001347049077351888,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0013759794734737596,
+              0.0003020804223595741
+            ],
+            "exact_context_homogeneity": [
+              0.8746437383669671,
+              0.8748878789919671
+            ],
+            "exact_context_standardized": [
+              -0.012569863820579027,
+              0.002759568616482894
+            ],
+            "joint": [
+              0.00020995240413283084,
+              0.0015958573520494976
+            ],
+            "joint_homogeneity": [
+              0.8995384288058386,
+              0.8995384288058386
+            ],
+            "joint_minus_exact": [
+              0.00046125739843992327,
+              0.0022882430755232566
+            ],
+            "joint_standardized": [
+              0.0023232307513022816,
+              0.01765897794924781
+            ],
+            "solo_fake": [
+              -0.0016180612849093032,
+              0.0004514374130073635
+            ],
+            "solo_fake_homogeneity": [
+              0.8296541315634797,
+              0.8301424128134797
+            ],
+            "solo_fake_standardized": [
+              -0.011471671601656915,
+              0.0032005844271914084
+            ],
+            "standardized_joint_minus_exact": [
+              0.005344479983676376,
+              0.02360705644618414
+            ],
+            "standardized_joint_minus_solo": [
+              0.004206309339550672,
+              0.02341764711763654
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.830078125,
+            "covariance": -0.0005856831868489583,
+            "marginal_error": 0.169921875,
+            "standardized": -0.0041523551949515436,
+            "within_group_error_homogeneity": 0.830078125
+          },
+          "standardized_joint_minus_exact": 0.014092826908673145,
+          "standardized_joint_minus_solo": 0.014397819360428398
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.8809814453125,
+            "covariance": 0.0001900523900985718,
+            "marginal_error": 0.1190185546875,
+            "standardized": 0.0018125579561079077,
+            "within_group_error_homogeneity": 0.8809814453125
+          },
+          "joint": {
+            "accuracy": 0.900146484375,
+            "covariance": 0.0025455514589945477,
+            "marginal_error": 0.099853515625,
+            "standardized": 0.028320787878024268,
+            "within_group_error_homogeneity": 0.90185546875
+          },
+          "joint_minus_exact": 0.0023554990688959758,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0007651293097120345,
+              0.001010586836121299
+            ],
+            "exact_context_homogeneity": [
+              0.8809829759747257,
+              0.8809829759747257
+            ],
+            "exact_context_standardized": [
+              -0.007297152206560549,
+              0.009638117201259781
+            ],
+            "joint": [
+              0.0019033366111627817,
+              0.0032575032778294484
+            ],
+            "joint_homogeneity": [
+              0.9018562340811128,
+              0.9018562340811128
+            ],
+            "joint_minus_exact": [
+              0.001397307066708149,
+              0.0032535896187914828
+            ],
+            "joint_standardized": [
+              0.0211757622242333,
+              0.036241679191909106
+            ],
+            "solo_fake": [
+              -0.0007382800063369423,
+              0.0015151379624130583
+            ],
+            "solo_fake_homogeneity": [
+              0.8296594888812696,
+              0.8301477701312696
+            ],
+            "solo_fake_standardized": [
+              -0.005234230533636007,
+              0.0107419696015905
+            ],
+            "standardized_joint_minus_exact": [
+              0.01722135112257922,
+              0.035684479772350924
+            ],
+            "standardized_joint_minus_solo": [
+              0.014881906390334973,
+              0.03640391475350974
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.830078125,
+            "covariance": 0.00043970743815104166,
+            "marginal_error": 0.169921875,
+            "standardized": 0.0031174216813162044,
+            "within_group_error_homogeneity": 0.830078125
+          },
+          "standardized_joint_minus_exact": 0.02650822992191636,
+          "standardized_joint_minus_solo": 0.025203366196708064
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.87060546875,
+            "covariance": -0.00030414263407389325,
+            "marginal_error": 0.12939453125,
+            "standardized": -0.0026998522030215488,
+            "within_group_error_homogeneity": 0.87060546875
+          },
+          "joint": {
+            "accuracy": 0.90576171875,
+            "covariance": 0.0008522192637125651,
+            "marginal_error": 0.09423828125,
+            "standardized": 0.009984125432360842,
+            "within_group_error_homogeneity": 0.90576171875
+          },
+          "joint_minus_exact": 0.0011563618977864583,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0011162023135736327,
+              0.0005325607072597012
+            ],
+            "exact_context_homogeneity": [
+              0.8706115913989029,
+              0.8706115913989029
+            ],
+            "exact_context_standardized": [
+              -0.009908447345752105,
+              0.004727502946490849
+            ],
+            "joint": [
+              0.00015306633218827026,
+              0.001457591071771604
+            ],
+            "joint_homogeneity": [
+              0.9057624840811128,
+              0.9057624840811128
+            ],
+            "joint_minus_exact": [
+              0.00029107854159523573,
+              0.0019528623957619025
+            ],
+            "joint_standardized": [
+              0.001793239750743936,
+              0.01707632379284646
+            ],
+            "solo_fake": [
+              -0.0013039668450908605,
+              0.0008957401861591397
+            ],
+            "solo_fake_homogeneity": [
+              0.8296510702390282,
+              0.8301393514890282
+            ],
+            "solo_fake_standardized": [
+              -0.00924481635265716,
+              0.006350585946193416
+            ],
+            "standardized_joint_minus_exact": [
+              0.003528534830198724,
+              0.020737973111211686
+            ],
+            "standardized_joint_minus_solo": [
+              -0.00044797070486671947,
+              0.020850707859244477
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.830078125,
+            "covariance": -0.00017878214518229167,
+            "marginal_error": 0.169921875,
+            "standardized": -0.0012675231011945007,
+            "within_group_error_homogeneity": 0.830078125
+          },
+          "standardized_joint_minus_exact": 0.01268397763538239,
+          "standardized_joint_minus_solo": 0.011251648533555342
+        }
+      ],
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::civil_comments",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          -0.000680768195447587,
+          0.0003101714746913026
+        ],
+        "exact_context_homogeneity_interval": [
+          0.8754127685801983,
+          0.8754941487885317
+        ],
+        "exact_context_standardized_interval": [
+          -0.006231497774770121,
+          0.0028187053546531804
+        ],
+        "joint_covariance_interval": [
+          0.0010416388484668494,
+          0.0017976609838835163
+        ],
+        "joint_homogeneity_interval": [
+          0.9023857156560213,
+          0.9023857156560213
+        ],
+        "joint_minus_exact": 0.001619636681344774,
+        "joint_standardized_interval": [
+          0.011641621839490655,
+          0.020132765121617605
+        ],
+        "solo_fake_covariance_interval": [
+          -0.0006981843093345907,
+          0.0004907805344154095
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.8298990375195925,
+          0.8301431781445925
+        ],
+        "solo_fake_standardized_interval": [
+          -0.004949961530390992,
+          0.0034795178475670882
+        ],
+        "standardized_joint_minus_exact": 0.017761678155323965,
+        "standardized_joint_minus_exact_interval": [
+          0.012636331613049393,
+          0.0232396441288483
+        ],
+        "standardized_joint_minus_solo": 0.016950944696897268,
+        "standardized_joint_minus_solo_interval": [
+          0.011123758913642867,
+          0.022515597384913783
+        ]
+      },
+      "family": "granite",
+      "task": "civil_comments"
+    },
+    {
+      "assignment_excess_range": 0.004263865947723388,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.3848876953125,
+            "covariance": -0.00043345987796783447,
+            "marginal_error": 0.6151123046875,
+            "standardized": -0.0018308824533686406,
+            "within_group_error_homogeneity": 0.6346435546875
+          },
+          "joint": {
+            "accuracy": 0.3419189453125,
+            "covariance": 0.006382450461387634,
+            "marginal_error": 0.6580810546875,
+            "standardized": 0.0283651378979246,
+            "within_group_error_homogeneity": 0.6812744140625
+          },
+          "joint_minus_exact": 0.006815910339355469,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0020920242392531013,
+              0.0012982752399135658
+            ],
+            "exact_context_homogeneity": [
+              0.6302911549152624,
+              0.6391168385090125
+            ],
+            "exact_context_standardized": [
+              -0.008836459073507634,
+              0.005483758652691489
+            ],
+            "joint": [
+              0.004764800701395471,
+              0.008022450440978804
+            ],
+            "joint_homogeneity": [
+              0.6778159210300744,
+              0.6844321319675745
+            ],
+            "joint_minus_exact": [
+              0.005323621815648572,
+              0.008143446034398573
+            ],
+            "joint_standardized": [
+              0.021175915076640635,
+              0.03565369044606036
+            ],
+            "solo_fake": [
+              -0.0023848273935985678,
+              0.0009769890126514337
+            ],
+            "solo_fake_homogeneity": [
+              0.666086073728938,
+              0.6726900776351881
+            ],
+            "solo_fake_standardized": [
+              -0.010659849476827509,
+              0.0043670061168090005
+            ],
+            "standardized_joint_minus_exact": [
+              0.023631911436693853,
+              0.03586064937007199
+            ],
+            "standardized_joint_minus_solo": [
+              0.0269796015390876,
+              0.03541545584350706
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.337890625,
+            "covariance": -0.000644683837890625,
+            "marginal_error": 0.662109375,
+            "standardized": -0.002881647825123195,
+            "within_group_error_homogeneity": 0.669677734375
+          },
+          "standardized_joint_minus_exact": 0.03019602035129324,
+          "standardized_joint_minus_solo": 0.031246785723047794
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.385009765625,
+            "covariance": -0.0007878581682840984,
+            "marginal_error": 0.614990234375,
+            "standardized": -0.003327423481771049,
+            "within_group_error_homogeneity": 0.638671875
+          },
+          "joint": {
+            "accuracy": 0.33544921875,
+            "covariance": 0.0017641862233479819,
+            "marginal_error": 0.66455078125,
+            "standardized": 0.00791388014563884,
+            "within_group_error_homogeneity": 0.678466796875
+          },
+          "joint_minus_exact": 0.0025520443916320803,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0028563925489985707,
+              0.0010693887010014293
+            ],
+            "exact_context_homogeneity": [
+              0.6333398131367555,
+              0.6428735045430055
+            ],
+            "exact_context_standardized": [
+              -0.012063627722986876,
+              0.004516433563927568
+            ],
+            "joint": [
+              -0.00016383336504674126,
+              0.0033045911141199253
+            ],
+            "joint_homogeneity": [
+              0.6751965370297806,
+              0.6815564003110306
+            ],
+            "joint_minus_exact": [
+              0.0011609836631184959,
+              0.0038017714235351625
+            ],
+            "joint_standardized": [
+              -0.0007349323998098473,
+              0.014823910118659711
+            ],
+            "solo_fake": [
+              -0.003042764693592036,
+              0.00018640197307463096
+            ],
+            "solo_fake_homogeneity": [
+              0.6656628456235305,
+              0.6720349159360306
+            ],
+            "solo_fake_standardized": [
+              -0.013600738449315237,
+              0.0008331911066154453
+            ],
+            "standardized_joint_minus_exact": [
+              0.005530923601905984,
+              0.016849007606406594
+            ],
+            "standardized_joint_minus_solo": [
+              0.009459803186603808,
+              0.0185561881475111
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.337890625,
+            "covariance": -0.0014096577962239584,
+            "marginal_error": 0.662109375,
+            "standardized": -0.006300975895328548,
+            "within_group_error_homogeneity": 0.6689453125
+          },
+          "standardized_joint_minus_exact": 0.011241303627409889,
+          "standardized_joint_minus_solo": 0.014214856040967387
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.388916015625,
+            "covariance": -0.0004906932512919108,
+            "marginal_error": 0.611083984375,
+            "standardized": -0.0020646828743779073,
+            "within_group_error_homogeneity": 0.634521484375
+          },
+          "joint": {
+            "accuracy": 0.3370361328125,
+            "covariance": 0.0025362024704615274,
+            "marginal_error": 0.6629638671875,
+            "standardized": 0.01135056811082225,
+            "within_group_error_homogeneity": 0.6778564453125
+          },
+          "joint_minus_exact": 0.003026895721753438,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.002378507445224774,
+              0.0014479899506085593
+            ],
+            "exact_context_homogeneity": [
+              0.6295544854525862,
+              0.6393323174838362
+            ],
+            "exact_context_standardized": [
+              -0.010008011269375481,
+              0.006092686307426477
+            ],
+            "joint": [
+              0.0007433939297744839,
+              0.004263087940191151
+            ],
+            "joint_homogeneity": [
+              0.6746367355872844,
+              0.6812529465247845
+            ],
+            "joint_minus_exact": [
+              0.0016090433020825917,
+              0.004347487312499258
+            ],
+            "joint_standardized": [
+              0.0033269991380229166,
+              0.019079103735262535
+            ],
+            "solo_fake": [
+              -0.0017052133653854015,
+              0.0017339142387812663
+            ],
+            "solo_fake_homogeneity": [
+              0.6680192618534483,
+              0.6746232657596983
+            ],
+            "solo_fake_standardized": [
+              -0.007622068519371675,
+              0.007750357464338777
+            ],
+            "standardized_joint_minus_exact": [
+              0.00724845647770746,
+              0.019035505891008546
+            ],
+            "standardized_joint_minus_solo": [
+              0.006855191258259244,
+              0.01582312494265982
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.337890625,
+            "covariance": 3.8909912109375e-05,
+            "marginal_error": 0.662109375,
+            "standardized": 0.00017392193974116323,
+            "within_group_error_homogeneity": 0.671630859375
+          },
+          "standardized_joint_minus_exact": 0.013415250985200158,
+          "standardized_joint_minus_solo": 0.011176646171081087
+        }
+      ],
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::multi_nli",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          -0.0016900836854643715,
+          0.0004955174430078513
+        ],
+        "exact_context_homogeneity_interval": [
+          0.6334259128869515,
+          0.6383127943973681
+        ],
+        "exact_context_standardized_interval": [
+          -0.007134621953229371,
+          0.002087039971438883
+        ],
+        "joint_covariance_interval": [
+          0.002715698547041071,
+          0.004593953755374405
+        ],
+        "joint_homogeneity_interval": [
+          0.6774333575177964,
+          0.6810181556948798
+        ],
+        "joint_minus_exact": 0.004131616817580329,
+        "joint_standardized_interval": [
+          0.012096413278632909,
+          0.02050105748112479
+        ],
+        "solo_fake_covariance_interval": [
+          -0.0016411109321086675,
+          0.00026996762691911035
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.6682129288915556,
+          0.6718099340998891
+        ],
+        "solo_fake_standardized_interval": [
+          -0.007335539485168798,
+          0.0012067180519222333
+        ],
+        "standardized_joint_minus_exact": 0.01828419165463443,
+        "standardized_joint_minus_exact_interval": [
+          0.014423292382681028,
+          0.02161980796259181
+        ],
+        "standardized_joint_minus_solo": 0.018879429311698757,
+        "standardized_joint_minus_solo_interval": [
+          0.016570221581449232,
+          0.02132606608915072
+        ]
+      },
+      "family": "granite",
+      "task": "multi_nli"
+    },
+    {
+      "assignment_excess_range": 0.0036662797133127853,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.8475341796875,
+            "covariance": 0.0006311267614364624,
+            "marginal_error": 0.1524658203125,
+            "standardized": 0.0048841262265177255,
+            "within_group_error_homogeneity": 0.8475341796875
+          },
+          "joint": {
+            "accuracy": 0.81005859375,
+            "covariance": 0.021620829900105793,
+            "marginal_error": 0.18994140625,
+            "standardized": 0.14051939693799703,
+            "within_group_error_homogeneity": 0.82421875
+          },
+          "joint_minus_exact": 0.02098970313866933,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0004363545236667249,
+              0.001501308236749942
+            ],
+            "exact_context_homogeneity": [
+              0.8473129989958855,
+              0.8475571396208855
+            ],
+            "exact_context_standardized": [
+              -0.003376834422691259,
+              0.011618234847954025
+            ],
+            "joint": [
+              0.02046039149803552,
+              0.022839948789702188
+            ],
+            "joint_homogeneity": [
+              0.8236554663009404,
+              0.8243878881759404
+            ],
+            "joint_minus_exact": [
+              0.01972568482378558,
+              0.02225742310503558
+            ],
+            "joint_standardized": [
+              0.13297740594153626,
+              0.14844276768524886
+            ],
+            "solo_fake": [
+              -0.0003390445760300416,
+              0.0009304866739699585
+            ],
+            "solo_fake_homogeneity": [
+              0.9110107421875,
+              0.9110107421875
+            ],
+            "solo_fake_standardized": [
+              -0.004182112567907065,
+              0.011477546873172817
+            ],
+            "standardized_joint_minus_exact": [
+              0.12642120068263796,
+              0.14493491801486405
+            ],
+            "standardized_joint_minus_solo": [
+              0.12761006032976194,
+              0.14847993409374194
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.9110107421875,
+            "covariance": 0.0003003130356470744,
+            "marginal_error": 0.0889892578125,
+            "standardized": 0.0037043592774498994,
+            "within_group_error_homogeneity": 0.9110107421875
+          },
+          "standardized_joint_minus_exact": 0.1356352707114793,
+          "standardized_joint_minus_solo": 0.13681503766054715
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.84912109375,
+            "covariance": 0.0004777431488037109,
+            "marginal_error": 0.15087890625,
+            "standardized": 0.003729033722836656,
+            "within_group_error_homogeneity": 0.84912109375
+          },
+          "joint": {
+            "accuracy": 0.8209228515625,
+            "covariance": 0.017801166574160258,
+            "marginal_error": 0.1790771484375,
+            "standardized": 0.12108935025750316,
+            "within_group_error_homogeneity": 0.8306884765625
+          },
+          "joint_minus_exact": 0.017323423425356546,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0004893802674711062,
+              0.0013669022846122271
+            ],
+            "exact_context_homogeneity": [
+              0.8488960864028213,
+              0.8491402270278213
+            ],
+            "exact_context_standardized": [
+              -0.003819867485824221,
+              0.010669383177770587
+            ],
+            "joint": [
+              0.016649496315539566,
+              0.018944418190539568
+            ],
+            "joint_homogeneity": [
+              0.8302935657082681,
+              0.8307818469582681
+            ],
+            "joint_minus_exact": [
+              0.016013388301760672,
+              0.018523153926760672
+            ],
+            "joint_standardized": [
+              0.11325531293493243,
+              0.12886612122537672
+            ],
+            "solo_fake": [
+              -0.0010089108369691745,
+              0.00019633004844749237
+            ],
+            "solo_fake_homogeneity": [
+              0.9110107421875,
+              0.9110107421875
+            ],
+            "solo_fake_standardized": [
+              -0.012444908396978914,
+              0.002421729828815513
+            ],
+            "standardized_joint_minus_exact": [
+              0.10773595678294304,
+              0.12606900099777096
+            ],
+            "standardized_joint_minus_solo": [
+              0.11590672810323545,
+              0.13475131911320132
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.9110107421875,
+            "covariance": -0.00036700467268625895,
+            "marginal_error": 0.0889892578125,
+            "standardized": -0.0045270001723485,
+            "within_group_error_homogeneity": 0.9110107421875
+          },
+          "standardized_joint_minus_exact": 0.1173603165346665,
+          "standardized_joint_minus_solo": 0.12561635042985164
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.85205078125,
+            "covariance": 0.001027695337931315,
+            "marginal_error": 0.14794921875,
+            "standardized": 0.008152414095277722,
+            "within_group_error_homogeneity": 0.85205078125
+          },
+          "joint": {
+            "accuracy": 0.82177734375,
+            "covariance": 0.01905048688252767,
+            "marginal_error": 0.17822265625,
+            "standardized": 0.13007355315171593,
+            "within_group_error_homogeneity": 0.830810546875
+          },
+          "joint_minus_exact": 0.018022791544596357,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              0.00010149162515702033,
+              0.00204240959390702
+            ],
+            "exact_context_homogeneity": [
+              0.851821947247257,
+              0.852066087872257
+            ],
+            "exact_context_standardized": [
+              0.0008051041246798316,
+              0.016201852968618667
+            ],
+            "joint": [
+              0.017843467877825477,
+              0.02012943792990881
+            ],
+            "joint_homogeneity": [
+              0.8302327218847962,
+              0.8309651437597962
+            ],
+            "joint_minus_exact": [
+              0.01655626661725179,
+              0.019325635106835125
+            ],
+            "joint_standardized": [
+              0.12183222831674505,
+              0.13744045129321944
+            ],
+            "solo_fake": [
+              -0.0007783446348074712,
+              0.0004260824485258622
+            ],
+            "solo_fake_homogeneity": [
+              0.9110107421875,
+              0.9110107421875
+            ],
+            "solo_fake_standardized": [
+              -0.00960087584206902,
+              0.0052557241404939435
+            ],
+            "standardized_joint_minus_exact": [
+              0.11082040400945416,
+              0.13154875708553257
+            ],
+            "standardized_joint_minus_solo": [
+              0.12099661925404179,
+              0.1427927841356933
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.9110107421875,
+            "covariance": -0.00018796821435292563,
+            "marginal_error": 0.0889892578125,
+            "standardized": -0.0023185866614269784,
+            "within_group_error_homogeneity": 0.9110107421875
+          },
+          "standardized_joint_minus_exact": 0.1219211390564382,
+          "standardized_joint_minus_solo": 0.1323921398131429
+        }
+      ],
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          0.00015738118425639611,
+          0.0013216606981452856
+        ],
+        "exact_context_homogeneity_interval": [
+          0.8495023689549044,
+          0.8495878181736544
+        ],
+        "exact_context_standardized_interval": [
+          0.0012214722637912956,
+          0.010327092252103084
+        ],
+        "joint_covariance_interval": [
+          0.0188242413936613,
+          0.020165387226994635
+        ],
+        "joint_homogeneity_interval": [
+          0.8283047252563349,
+          0.8287116262980015
+        ],
+        "joint_minus_exact": 0.018778639369540745,
+        "joint_standardized_interval": [
+          0.1260651119816524,
+          0.13511069980137982
+        ],
+        "solo_fake_covariance_interval": [
+          -0.0004540466305188958,
+          0.00024690823059221546
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.9110107421875,
+          0.9110107421875
+        ],
+        "solo_fake_standardized_interval": [
+          -0.005600662137537562,
+          0.003045611365827911
+        ],
+        "standardized_joint_minus_exact": 0.12497224210086133,
+        "standardized_joint_minus_exact_interval": [
+          0.11971617966173646,
+          0.13044770556385513
+        ],
+        "standardized_joint_minus_solo": 0.1316078426345139,
+        "standardized_joint_minus_solo_interval": [
+          0.12622232361095112,
+          0.13729073193801494
+        ]
+      },
+      "family": "granite",
+      "task": "imdb"
+    },
+    {
+      "assignment_excess_range": 0.0026461650927861527,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.5003662109375,
+            "covariance": 0.0018146445353825888,
+            "marginal_error": 0.4996337890625,
+            "standardized": 0.007258582035337189,
+            "within_group_error_homogeneity": 0.6043701171875
+          },
+          "joint": {
+            "accuracy": 0.3751220703125,
+            "covariance": 0.029563380281130473,
+            "marginal_error": 0.6248779296875,
+            "standardized": 0.12612067525510276,
+            "within_group_error_homogeneity": 0.7098388671875
+          },
+          "joint_minus_exact": 0.027748735745747884,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -8.5703231075093e-05,
+              0.003440501196008242
+            ],
+            "exact_context_homogeneity": [
+              0.5975793342231583,
+              0.6100427131294084
+            ],
+            "exact_context_standardized": [
+              -0.0003428131081996532,
+              0.013762012166551586
+            ],
+            "joint": [
+              0.02808737545240137,
+              0.031152154098234706
+            ],
+            "joint_homogeneity": [
+              0.7060037929809952,
+              0.7138162929809952
+            ],
+            "joint_minus_exact": [
+              0.025382551339726462,
+              0.03011562425639313
+            ],
+            "joint_standardized": [
+              0.1198238741481629,
+              0.13289856143507753
+            ],
+            "solo_fake": [
+              -0.002194208924424064,
+              0.0014093067005759373
+            ],
+            "solo_fake_homogeneity": [
+              0.5948696794181034,
+              0.6058682145743535
+            ],
+            "solo_fake_standardized": [
+              -0.008799527349950613,
+              0.005651801302121536
+            ],
+            "standardized_joint_minus_exact": [
+              0.1089963846478004,
+              0.1286311796808462
+            ],
+            "standardized_joint_minus_solo": [
+              0.11702305544795905,
+              0.13590463270347308
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.525390625,
+            "covariance": -0.00023778279622395834,
+            "marginal_error": 0.474609375,
+            "standardized": -0.0009535902417631731,
+            "within_group_error_homogeneity": 0.600341796875
+          },
+          "standardized_joint_minus_exact": 0.11886209321976557,
+          "standardized_joint_minus_solo": 0.12707426549686593
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.505126953125,
+            "covariance": 0.002252360184987386,
+            "marginal_error": 0.494873046875,
+            "standardized": 0.009010388115523406,
+            "within_group_error_homogeneity": 0.606689453125
+          },
+          "joint": {
+            "accuracy": 0.3841552734375,
+            "covariance": 0.032226158181826274,
+            "marginal_error": 0.6158447265625,
+            "standardized": 0.13621674813344448,
+            "within_group_error_homogeneity": 0.7095947265625
+          },
+          "joint_minus_exact": 0.02997379799683889,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              0.00022703895000828487,
+              0.004317208220841618
+            ],
+            "exact_context_homogeneity": [
+              0.5995719503085816,
+              0.6132682393710815
+            ],
+            "exact_context_standardized": [
+              0.0009082512959298385,
+              0.01727064876416696
+            ],
+            "joint": [
+              0.03032427209983176,
+              0.03422075647483176
+            ],
+            "joint_homogeneity": [
+              0.7047815591937696,
+              0.7147913248187696
+            ],
+            "joint_minus_exact": [
+              0.02750608731649014,
+              0.032445865962323475
+            ],
+            "joint_standardized": [
+              0.12817766584669363,
+              0.14464771566524753
+            ],
+            "solo_fake": [
+              -0.0021548326386677933,
+              0.0016553887154988735
+            ],
+            "solo_fake_homogeneity": [
+              0.5936451879040948,
+              0.6058766332165949
+            ],
+            "solo_fake_standardized": [
+              -0.008641614992747564,
+              0.006638674245961061
+            ],
+            "standardized_joint_minus_exact": [
+              0.1170093506290469,
+              0.1373157939211315
+            ],
+            "standardized_joint_minus_solo": [
+              0.12758828247014936,
+              0.14801060099295404
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.525390625,
+            "covariance": -0.000254058837890625,
+            "marginal_error": 0.474609375,
+            "standardized": -0.0010188627288999035,
+            "within_group_error_homogeneity": 0.599365234375
+          },
+          "standardized_joint_minus_exact": 0.12720636001792107,
+          "standardized_joint_minus_solo": 0.13723561086234437
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.5106201171875,
+            "covariance": 0.002841314673423767,
+            "marginal_error": 0.4893798828125,
+            "standardized": 0.011370388416643475,
+            "within_group_error_homogeneity": 0.6082763671875
+          },
+          "joint": {
+            "accuracy": 0.3758544921875,
+            "covariance": 0.030168947577476502,
+            "marginal_error": 0.6241455078125,
+            "standardized": 0.12860402643040902,
+            "within_group_error_homogeneity": 0.7091064453125
+          },
+          "joint_minus_exact": 0.027327632904052736,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              0.0009560005611262223,
+              0.004667751863209555
+            ],
+            "exact_context_homogeneity": [
+              0.6011603185001959,
+              0.615088541156446
+            ],
+            "exact_context_standardized": [
+              0.003825728212439019,
+              0.01867943463412657
+            ],
+            "joint": [
+              0.028491624950615215,
+              0.032212328075615214
+            ],
+            "joint_homogeneity": [
+              0.7043606270817007,
+              0.7136501778629507
+            ],
+            "joint_minus_exact": [
+              0.02493634053532233,
+              0.02972637959782233
+            ],
+            "joint_standardized": [
+              0.12145394461588006,
+              0.13731453775716823
+            ],
+            "solo_fake": [
+              -0.0015384859824504474,
+              0.002471116882132886
+            ],
+            "solo_fake_homogeneity": [
+              0.5950840103962578,
+              0.6080356705525078
+            ],
+            "solo_fake_standardized": [
+              -0.006169854351331558,
+              0.009910022854802015
+            ],
+            "standardized_joint_minus_exact": [
+              0.10736862112494454,
+              0.12739960064715497
+            ],
+            "standardized_joint_minus_solo": [
+              0.11545635960265978,
+              0.1369182951554421
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.525390625,
+            "covariance": 0.0005922953287760417,
+            "marginal_error": 0.474609375,
+            "standardized": 0.002375306602210086,
+            "within_group_error_homogeneity": 0.6015625
+          },
+          "standardized_joint_minus_exact": 0.11723363801376555,
+          "standardized_joint_minus_solo": 0.12622871982819894
+        }
+      ],
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::ag_news",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          0.0012395309301586935,
+          0.003451444992658694
+        ],
+        "exact_context_homogeneity_interval": [
+          0.6026191671564787,
+          0.610110215333562
+        ],
+        "exact_context_standardized_interval": [
+          0.0049599324500553925,
+          0.013809238481896594
+        ],
+        "joint_covariance_interval": [
+          0.029684174601643895,
+          0.031676362101643894
+        ],
+        "joint_homogeneity_interval": [
+          0.7070831649604884,
+          0.712128737877155
+        ],
+        "joint_minus_exact": 0.02835005554887984,
+        "joint_standardized_interval": [
+          0.12620764048476205,
+          0.13466935948301842
+        ],
+        "solo_fake_covariance_interval": [
+          -0.0011009640429585463,
+          0.001192601495235899
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.5967383628853188,
+          0.6041439618436522
+        ],
+        "solo_fake_standardized_interval": [
+          -0.004415241912238976,
+          0.004782739400111976
+        ],
+        "standardized_joint_minus_exact": 0.12110069708381739,
+        "standardized_joint_minus_exact_interval": [
+          0.11544749139006093,
+          0.12638206829396306
+        ],
+        "standardized_joint_minus_solo": 0.13017953206246977,
+        "standardized_joint_minus_solo_interval": [
+          0.12413635550291564,
+          0.13691488531221124
+        ]
+      },
+      "family": "granite",
+      "task": "ag_news"
+    },
+    {
+      "assignment_excess_range": 0.0015212376912434895,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.7852783203125,
+            "covariance": -0.0020949830611546832,
+            "marginal_error": 0.2147216796875,
+            "standardized": -0.012424559844729455,
+            "within_group_error_homogeneity": 0.7852783203125
+          },
+          "joint": {
+            "accuracy": 0.718017578125,
+            "covariance": 0.0001734137535095215,
+            "marginal_error": 0.281982421875,
+            "standardized": 0.0008564981431353414,
+            "within_group_error_homogeneity": 0.7197265625
+          },
+          "joint_minus_exact": 0.002268396814664205,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0033752799688088106,
+              -0.0008345898646421439
+            ],
+            "exact_context_homogeneity": [
+              0.7844112384281935,
+              0.7856441485844435
+            ],
+            "exact_context_standardized": [
+              -0.02001752125960758,
+              -0.0049496398855538755
+            ],
+            "joint": [
+              -0.0012935167993248572,
+              0.0017037162735918099
+            ],
+            "joint_homogeneity": [
+              0.717471897041536,
+              0.721622287666536
+            ],
+            "joint_minus_exact": [
+              0.0010083582215672873,
+              0.003629614731983954
+            ],
+            "joint_standardized": [
+              -0.0063887362698442475,
+              0.008414729484998591
+            ],
+            "solo_fake": [
+              -0.0004985972588089694,
+              0.0016197295641076975
+            ],
+            "solo_fake_homogeneity": [
+              0.8365960674226097,
+              0.8370843486726097
+            ],
+            "solo_fake_standardized": [
+              -0.003650824088481395,
+              0.011859968351200801
+            ],
+            "standardized_joint_minus_exact": [
+              0.006548034479246812,
+              0.020524656969383426
+            ],
+            "standardized_joint_minus_solo": [
+              -0.011154450594889734,
+              0.005956052522954422
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.8367919921875,
+            "covariance": 0.00047903160254160563,
+            "marginal_error": 0.1632080078125,
+            "standardized": 0.0035075606269483937,
+            "within_group_error_homogeneity": 0.8370361328125
+          },
+          "standardized_joint_minus_exact": 0.013281057987864796,
+          "standardized_joint_minus_solo": -0.002651062483813052
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.78466796875,
+            "covariance": -0.0011042118072509765,
+            "marginal_error": 0.21533203125,
+            "standardized": -0.006535184079854717,
+            "within_group_error_homogeneity": 0.784912109375
+          },
+          "joint": {
+            "accuracy": 0.7109375,
+            "covariance": 0.00057373046875,
+            "marginal_error": 0.2890625,
+            "standardized": 0.002791802791802792,
+            "within_group_error_homogeneity": 0.71484375
+          },
+          "joint_minus_exact": 0.0016779422760009764,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0025258857802786675,
+              6.607385513799952e-05
+            ],
+            "exact_context_homogeneity": [
+              0.7840717758130877,
+              0.7852924789380877
+            ],
+            "exact_context_standardized": [
+              -0.014949241106110223,
+              0.000391052516697403
+            ],
+            "joint": [
+              -0.0010568686936716313,
+              0.0021869464104950363
+            ],
+            "joint_homogeneity": [
+              0.7128117958953761,
+              0.7167302529266262
+            ],
+            "joint_minus_exact": [
+              0.00020111344077370307,
+              0.0031666082324403703
+            ],
+            "joint_standardized": [
+              -0.0051427789358823904,
+              0.010641796848693399
+            ],
+            "solo_fake": [
+              -0.002088952760213097,
+              -0.00022778739562976324
+            ],
+            "solo_fake_homogeneity": [
+              0.8363481001420454,
+              0.8368363813920454
+            ],
+            "solo_fake_standardized": [
+              -0.01529570995818014,
+              -0.0016679026936572104
+            ],
+            "standardized_joint_minus_exact": [
+              0.0013582003376651792,
+              0.017526039856913714
+            ],
+            "standardized_joint_minus_solo": [
+              0.0023297748627341044,
+              0.020367634753699272
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.8367919921875,
+            "covariance": -0.0011648486057917278,
+            "marginal_error": 0.1632080078125,
+            "standardized": -0.00852924334084186,
+            "within_group_error_homogeneity": 0.8367919921875
+          },
+          "standardized_joint_minus_exact": 0.009326986871657509,
+          "standardized_joint_minus_solo": 0.011321046132644653
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.7830810546875,
+            "covariance": -0.002473750710487366,
+            "marginal_error": 0.2169189453125,
+            "standardized": -0.014563029548342443,
+            "within_group_error_homogeneity": 0.7830810546875
+          },
+          "joint": {
+            "accuracy": 0.711181640625,
+            "covariance": -0.0017265915870666505,
+            "marginal_error": 0.288818359375,
+            "standardized": -0.0084059013156692,
+            "within_group_error_homogeneity": 0.71337890625
+          },
+          "joint_minus_exact": 0.0007471591234207153,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.003848622134860408,
+              -0.0012664281244437398
+            ],
+            "exact_context_homogeneity": [
+              0.7822621503967476,
+              0.7834828535217476
+            ],
+            "exact_context_standardized": [
+              -0.022656930479197188,
+              -0.007455492632680247
+            ],
+            "joint": [
+              -0.003494855958964509,
+              -0.0003023103860478418
+            ],
+            "joint_homogeneity": [
+              0.7112673959761951,
+              0.7151858530074452
+            ],
+            "joint_minus_exact": [
+              -0.0006602312199374353,
+              0.002565680238395898
+            ],
+            "joint_standardized": [
+              -0.017014686347130957,
+              -0.0014717963940374043
+            ],
+            "solo_fake": [
+              -0.0017923104208714042,
+              0.000264981245795263
+            ],
+            "solo_fake_homogeneity": [
+              0.8363481001420454,
+              0.8368363813920454
+            ],
+            "solo_fake_standardized": [
+              -0.013123638253014477,
+              0.001940243148259668
+            ],
+            "standardized_joint_minus_exact": [
+              -0.001105880206166361,
+              0.0158477117467112
+            ],
+            "standardized_joint_minus_solo": [
+              -0.01196273246382389,
+              0.005468435328937728
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.8367919921875,
+            "covariance": -0.0007416715224583943,
+            "marginal_error": 0.1632080078125,
+            "standardized": -0.005430660141212686,
+            "within_group_error_homogeneity": 0.8367919921875
+          },
+          "standardized_joint_minus_exact": 0.006157128232673243,
+          "standardized_joint_minus_solo": -0.0029752411744565135
+        }
+      ],
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          -0.002754866360621518,
+          -0.0011741914474270728
+        ],
+        "exact_context_homogeneity_interval": [
+          0.7839113113897596,
+          0.7847291824835096
+        ],
+        "exact_context_standardized_interval": [
+          -0.016289857634057128,
+          -0.006940829713979428
+        ],
+        "joint_covariance_interval": [
+          -0.0012075826541258874,
+          0.0005844095333741127
+        ],
+        "joint_homogeneity_interval": [
+          0.7147455452627023,
+          0.7172724007314524
+        ],
+        "joint_minus_exact": 0.0015644994046952988,
+        "joint_standardized_interval": [
+          -0.0058758274188271155,
+          0.0028679422830179867
+        ],
+        "solo_fake_covariance_interval": [
+          -0.0010248406327422678,
+          0.00011610988809106568
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.8366748965272335,
+          0.8369190371522335
+        ],
+        "solo_fake_standardized_interval": [
+          -0.007504078297196364,
+          0.0008501787141115286
+        ],
+        "standardized_joint_minus_exact": 0.00958839103073185,
+        "standardized_joint_minus_exact_interval": [
+          0.00534999943043868,
+          0.014281769417614764
+        ],
+        "standardized_joint_minus_solo": 0.001898247491458363,
+        "standardized_joint_minus_solo_interval": [
+          -0.00375393603939324,
+          0.0064477517563327385
+        ]
+      },
+      "family": "llama",
+      "task": "civil_comments"
+    },
+    {
+      "assignment_excess_range": 0.0023907025655110683,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.41259765625,
+            "covariance": 0.001394033432006836,
+            "marginal_error": 0.58740234375,
+            "standardized": 0.005751892458203603,
+            "within_group_error_homogeneity": 0.625732421875
+          },
+          "joint": {
+            "accuracy": 0.4822998046875,
+            "covariance": 0.007963070273399353,
+            "marginal_error": 0.5177001953125,
+            "standardized": 0.03189224806520766,
+            "within_group_error_homogeneity": 0.6209716796875
+          },
+          "joint_minus_exact": 0.006569036841392517,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0007961375735770198,
+              0.0033127491451729802
+            ],
+            "exact_context_homogeneity": [
+              0.6205511685075431,
+              0.6308294888200432
+            ],
+            "exact_context_standardized": [
+              -0.003284926745664822,
+              0.013668665604819913
+            ],
+            "joint": [
+              0.005883568697837701,
+              0.009909447604087702
+            ],
+            "joint_homogeneity": [
+              0.6139145614958855,
+              0.6280869247771356
+            ],
+            "joint_minus_exact": [
+              0.004856789604748055,
+              0.008455422417248054
+            ],
+            "joint_standardized": [
+              0.02356380466048921,
+              0.03968752633446631
+            ],
+            "solo_fake": [
+              -0.0022773639118160703,
+              0.0018274537965172635
+            ],
+            "solo_fake_homogeneity": [
+              0.615905225986971,
+              0.627880323643221
+            ],
+            "solo_fake_standardized": [
+              -0.009404082654835003,
+              0.0075462364452047025
+            ],
+            "standardized_joint_minus_exact": [
+              0.019178428659410877,
+              0.03372425964005529
+            ],
+            "standardized_joint_minus_solo": [
+              0.024282538261552064,
+              0.04117561715639484
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.4114990234375,
+            "covariance": -0.000207097331682841,
+            "marginal_error": 0.5885009765625,
+            "standardized": -0.0008551819121381203,
+            "within_group_error_homogeneity": 0.6217041015625
+          },
+          "standardized_joint_minus_exact": 0.026140355607004055,
+          "standardized_joint_minus_solo": 0.032747429977345775
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.4112548828125,
+            "covariance": 0.0014423380295435588,
+            "marginal_error": 0.5887451171875,
+            "standardized": 0.005957014660117871,
+            "within_group_error_homogeneity": 0.6260986328125
+          },
+          "joint": {
+            "accuracy": 0.492919921875,
+            "covariance": 0.00667187770207723,
+            "marginal_error": 0.507080078125,
+            "standardized": 0.02669286299493601,
+            "within_group_error_homogeneity": 0.61669921875
+          },
+          "joint_minus_exact": 0.005229539672533671,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0003283269309449473,
+              0.0031075454648883862
+            ],
+            "exact_context_homogeneity": [
+              0.6211377948055447,
+              0.6314039080867947
+            ],
+            "exact_context_standardized": [
+              -0.001356026327316284,
+              0.012834504472700565
+            ],
+            "joint": [
+              0.004783305830342642,
+              0.008679790205342644
+            ],
+            "joint_homogeneity": [
+              0.6100332230236089,
+              0.6232290238048589
+            ],
+            "joint_minus_exact": [
+              0.003223611927954256,
+              0.007050923125870923
+            ],
+            "joint_standardized": [
+              0.019137060493849084,
+              0.03472612375731415
+            ],
+            "solo_fake": [
+              -0.0031364225749560912,
+              0.00030840164379390906
+            ],
+            "solo_fake_homogeneity": [
+              0.6129135466668298,
+              0.6222153044793299
+            ],
+            "solo_fake_standardized": [
+              -0.012951455400844024,
+              0.0012735050968697105
+            ],
+            "standardized_joint_minus_exact": [
+              0.01264726264276683,
+              0.028177215973684486
+            ],
+            "standardized_joint_minus_solo": [
+              0.024342133773268475,
+              0.04043181756824676
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.4114990234375,
+            "covariance": -0.001281316081682841,
+            "marginal_error": 0.5885009765625,
+            "standardized": -0.005291030685344387,
+            "within_group_error_homogeneity": 0.6175537109375
+          },
+          "standardized_joint_minus_exact": 0.02073584833481814,
+          "standardized_joint_minus_solo": 0.031983893680280394
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.4151611328125,
+            "covariance": 0.0031457910935084026,
+            "marginal_error": 0.5848388671875,
+            "standardized": 0.012956179700278871,
+            "within_group_error_homogeneity": 0.6270751953125
+          },
+          "joint": {
+            "accuracy": 0.484619140625,
+            "covariance": 0.010766033331553142,
+            "marginal_error": 0.515380859375,
+            "standardized": 0.0431049227965465,
+            "within_group_error_homogeneity": 0.627197265625
+          },
+          "joint_minus_exact": 0.0076202422380447395,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              0.0014117140624216725,
+              0.00521216979158834
+            ],
+            "exact_context_homogeneity": [
+              0.621807536062402,
+              0.632830485281152
+            ],
+            "exact_context_standardized": [
+              0.0058142516570441295,
+              0.021466717414114656
+            ],
+            "joint": [
+              0.00883520752907796,
+              0.012598228362411291
+            ],
+            "joint_homogeneity": [
+              0.6200972888910659,
+              0.6335372302973159
+            ],
+            "joint_minus_exact": [
+              0.005723460914572952,
+              0.009635407529156287
+            ],
+            "joint_standardized": [
+              0.03537430423108587,
+              0.050440644591303686
+            ],
+            "solo_fake": [
+              -0.0002881152832894245,
+              0.0033430696125439094
+            ],
+            "solo_fake_homogeneity": [
+              0.6194211571194161,
+              0.6313962547756662
+            ],
+            "solo_fake_standardized": [
+              -0.0011897351688577116,
+              0.013804777881177413
+            ],
+            "standardized_joint_minus_exact": [
+              0.022339656828587226,
+              0.03829437053359876
+            ],
+            "standardized_joint_minus_solo": [
+              0.028894530221205847,
+              0.044235995651138615
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.4114990234375,
+            "covariance": 0.0016158193349838257,
+            "marginal_error": 0.5885009765625,
+            "standardized": 0.00667231903633312,
+            "within_group_error_homogeneity": 0.6256103515625
+          },
+          "standardized_joint_minus_exact": 0.030148743096267628,
+          "standardized_joint_minus_solo": 0.03643260376021338
+        }
+      ],
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::multi_nli",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          0.0009271843144387911,
+          0.002941344470688791
+        ],
+        "exact_context_homogeneity_interval": [
+          0.6232203500522466,
+          0.62924655447933
+        ],
+        "exact_context_standardized_interval": [
+          0.0038234907205831267,
+          0.01212737978122226
+        ],
+        "joint_covariance_interval": [
+          0.007259157560752768,
+          0.009494943151030546
+        ],
+        "joint_homogeneity_interval": [
+          0.6172899268139367,
+          0.6254320166576868
+        ],
+        "joint_minus_exact": 0.006472939583990309,
+        "joint_standardized_interval": [
+          0.02906198581625414,
+          0.03801041800208929
+        ],
+        "solo_fake_covariance_interval": [
+          -0.0010534659546038616,
+          0.001276178142618361
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.6180453086223223,
+          0.6248080039348223
+        ],
+        "solo_fake_standardized_interval": [
+          -0.004350152762036698,
+          0.005269814223896489
+        ],
+        "standardized_joint_minus_exact": 0.02567498234602994,
+        "standardized_joint_minus_exact_interval": [
+          0.021406439410211718,
+          0.030028665078538495
+        ],
+        "standardized_joint_minus_solo": 0.03372130913927985,
+        "standardized_joint_minus_solo_interval": [
+          0.0288810463339651,
+          0.038092264304117246
+        ]
+      },
+      "family": "llama",
+      "task": "multi_nli"
+    },
+    {
+      "assignment_excess_range": 0.0015681107838948567,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.889892578125,
+            "covariance": -0.00016075372695922852,
+            "marginal_error": 0.110107421875,
+            "standardized": -0.0016406157327566542,
+            "within_group_error_homogeneity": 0.889892578125
+          },
+          "joint": {
+            "accuracy": 0.9140625,
+            "covariance": 0.00115966796875,
+            "marginal_error": 0.0859375,
+            "standardized": 0.014763014763014764,
+            "within_group_error_homogeneity": 0.9140625
+          },
+          "joint_minus_exact": 0.0013204216957092285,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0009610349606321648,
+              0.0005851889977011686
+            ],
+            "exact_context_homogeneity": [
+              0.8898956394494514,
+              0.8898956394494514
+            ],
+            "exact_context_standardized": [
+              -0.009808102779117476,
+              0.005972304931431756
+            ],
+            "joint": [
+              0.0005607223909352139,
+              0.0018310674430185477
+            ],
+            "joint_homogeneity": [
+              0.9140625,
+              0.9140625
+            ],
+            "joint_minus_exact": [
+              0.0005923953724007117,
+              0.0020938602161507123
+            ],
+            "joint_standardized": [
+              0.0071382095206546595,
+              0.023310185692630835
+            ],
+            "solo_fake": [
+              -0.0009016047232826177,
+              0.0004021062142173823
+            ],
+            "solo_fake_homogeneity": [
+              0.9095458984375,
+              0.9095458984375
+            ],
+            "solo_fake_standardized": [
+              -0.010958807394370315,
+              0.004887512720257128
+            ],
+            "standardized_joint_minus_exact": [
+              0.008020282103040347,
+              0.02505015323227914
+            ],
+            "standardized_joint_minus_solo": [
+              0.008278560254957507,
+              0.025844571397528493
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.9095458984375,
+            "covariance": -0.00019040803114573162,
+            "marginal_error": 0.0904541015625,
+            "standardized": -0.0023143677997494866,
+            "within_group_error_homogeneity": 0.9095458984375
+          },
+          "standardized_joint_minus_exact": 0.01640363049577142,
+          "standardized_joint_minus_solo": 0.01707738256276425
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.8900146484375,
+            "covariance": 0.0001753578583399455,
+            "marginal_error": 0.1099853515625,
+            "standardized": 0.0017914027262514772,
+            "within_group_error_homogeneity": 0.8900146484375
+          },
+          "joint": {
+            "accuracy": 0.9149169921875,
+            "covariance": 0.0002641369899113973,
+            "marginal_error": 0.0850830078125,
+            "standardized": 0.0033931627940067812,
+            "within_group_error_homogeneity": 0.9149169921875
+          },
+          "joint_minus_exact": 8.877913157145182e-05,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0005819117667906711,
+              0.0008365452644593288
+            ],
+            "exact_context_homogeneity": [
+              0.8900177097619514,
+              0.8900177097619514
+            ],
+            "exact_context_standardized": [
+              -0.0059446342201885825,
+              0.008545892847756312
+            ],
+            "joint": [
+              -0.00037440426857867585,
+              0.0008471126585046575
+            ],
+            "joint_homogeneity": [
+              0.9149169921875,
+              0.9149169921875
+            ],
+            "joint_minus_exact": [
+              -0.0008032346892880053,
+              0.0008422731232119951
+            ],
+            "joint_standardized": [
+              -0.004809680895071287,
+              0.010882198499098395
+            ],
+            "solo_fake": [
+              -0.0007649140354234226,
+              0.0005217070583265778
+            ],
+            "solo_fake_homogeneity": [
+              0.9095466637686128,
+              0.9095466637686128
+            ],
+            "solo_fake_standardized": [
+              -0.009297362104466527,
+              0.006341234712778162
+            ],
+            "standardized_joint_minus_exact": [
+              -0.008221372283361799,
+              0.010266585954743685
+            ],
+            "standardized_joint_minus_solo": [
+              -0.004711702041385266,
+              0.014662779641210665
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.9095458984375,
+            "covariance": -0.00012530386447906494,
+            "marginal_error": 0.0904541015625,
+            "standardized": -0.0015230409525770797,
+            "within_group_error_homogeneity": 0.9095458984375
+          },
+          "standardized_joint_minus_exact": 0.001601760067755304,
+          "standardized_joint_minus_solo": 0.004916203746583861
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.8895263671875,
+            "covariance": -0.00029036104679107665,
+            "marginal_error": 0.1104736328125,
+            "standardized": -0.0029547510248705976,
+            "within_group_error_homogeneity": 0.8895263671875
+          },
+          "joint": {
+            "accuracy": 0.9127197265625,
+            "covariance": 0.0013665288686752319,
+            "marginal_error": 0.0872802734375,
+            "standardized": 0.017153994861631612,
+            "within_group_error_homogeneity": 0.9129638671875
+          },
+          "joint_minus_exact": 0.0016568899154663086,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0010534956593498542,
+              0.000494355903150146
+            ],
+            "exact_context_homogeneity": [
+              0.8895286631808386,
+              0.8895286631808386
+            ],
+            "exact_context_standardized": [
+              -0.010720506120094241,
+              0.00503062868668723
+            ],
+            "joint": [
+              0.0007655398567891295,
+              0.001953690898455796
+            ],
+            "joint_homogeneity": [
+              0.9129638671875,
+              0.9129638671875
+            ],
+            "joint_minus_exact": [
+              0.0008408454119723167,
+              0.0025514573911389836
+            ],
+            "joint_standardized": [
+              0.009609798278514,
+              0.024524621763619685
+            ],
+            "solo_fake": [
+              -0.0010324253215062333,
+              0.0002550095743271002
+            ],
+            "solo_fake_homogeneity": [
+              0.9095458984375,
+              0.9095458984375
+            ],
+            "solo_fake_standardized": [
+              -0.012548903033986342,
+              0.003099585368848001
+            ],
+            "standardized_joint_minus_exact": [
+              0.011234216088039968,
+              0.029648072996828118
+            ],
+            "standardized_joint_minus_solo": [
+              0.011129177792192892,
+              0.031182345300575967
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.9095458984375,
+            "covariance": -0.00032061636447906495,
+            "marginal_error": 0.0904541015625,
+            "standardized": -0.0038970214940943,
+            "within_group_error_homogeneity": 0.9095458984375
+          },
+          "standardized_joint_minus_exact": 0.02010874588650221,
+          "standardized_joint_minus_solo": 0.021051016355725913
+        }
+      ],
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::imdb",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          -0.0005616613511464522,
+          0.00031236208635354785
+        ],
+        "exact_context_homogeneity_interval": [
+          0.8897326239224139,
+          0.8898140041307473
+        ],
+        "exact_context_standardized_interval": [
+          -0.00572755750173483,
+          0.003188824300412172
+        ],
+        "joint_covariance_interval": [
+          0.0005994040486041114,
+          0.0012398662881874449
+        ],
+        "joint_homogeneity_interval": [
+          0.9139811197916665,
+          0.9139811197916665
+        ],
+        "joint_minus_exact": 0.0010220302475823296,
+        "joint_standardized_interval": [
+          0.0075708674465905365,
+          0.015679697147233954
+        ],
+        "solo_fake_covariance_interval": [
+          -0.0005792812732652021,
+          0.00013794962951257562
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.909546153547871,
+          0.909546153547871
+        ],
+        "solo_fake_standardized_interval": [
+          -0.0070410366504801754,
+          0.0016767474492025039
+        ],
+        "standardized_joint_minus_exact": 0.012704712150009645,
+        "standardized_joint_minus_exact_interval": [
+          0.007401783333784254,
+          0.017396140910557405
+        ],
+        "standardized_joint_minus_solo": 0.014348200888358009,
+        "standardized_joint_minus_solo_interval": [
+          0.00853211632384959,
+          0.01959710339173159
+        ]
+      },
+      "family": "llama",
+      "task": "imdb"
+    },
+    {
+      "assignment_excess_range": 0.004239005843798319,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.5762939453125,
+            "covariance": 0.004083205262819926,
+            "marginal_error": 0.4237060546875,
+            "standardized": 0.016722164278504703,
+            "within_group_error_homogeneity": 0.6256103515625
+          },
+          "joint": {
+            "accuracy": 0.6640625,
+            "covariance": 0.012455240885416666,
+            "marginal_error": 0.3359375,
+            "standardized": 0.05583219334245326,
+            "within_group_error_homogeneity": 0.69482421875
+          },
+          "joint_minus_exact": 0.008372035622596741,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              0.0019365586376240006,
+              0.005863967491790668
+            ],
+            "exact_context_homogeneity": [
+              0.6192879512392241,
+              0.6314949824892241
+            ],
+            "exact_context_standardized": [
+              0.007930889972193385,
+              0.02401501306202132
+            ],
+            "joint": [
+              0.010586412005289968,
+              0.014170396380289968
+            ],
+            "joint_homogeneity": [
+              0.690943990007837,
+              0.697560200945337
+            ],
+            "joint_minus_exact": [
+              0.006190543471832634,
+              0.010540315607249301
+            ],
+            "joint_standardized": [
+              0.047454931407570684,
+              0.06352059488226289
+            ],
+            "solo_fake": [
+              -0.003285374659480471,
+              0.0003148857571861961
+            ],
+            "solo_fake_homogeneity": [
+              0.6271892679148706,
+              0.6364788186961207
+            ],
+            "solo_fake_standardized": [
+              -0.013815962048086855,
+              0.0013241867737104705
+            ],
+            "standardized_joint_minus_exact": [
+              0.029527203127527494,
+              0.04809840330142694
+            ],
+            "standardized_joint_minus_solo": [
+              0.05150452359326681,
+              0.07169056154982205
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.6104736328125,
+            "covariance": -0.0012425094842910766,
+            "marginal_error": 0.3895263671875,
+            "standardized": -0.005225116054821,
+            "within_group_error_homogeneity": 0.6319580078125
+          },
+          "standardized_joint_minus_exact": 0.03911002906394856,
+          "standardized_joint_minus_solo": 0.06105730939727426
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.579833984375,
+            "covariance": 0.004938383897145589,
+            "marginal_error": 0.420166015625,
+            "standardized": 0.020270303882891423,
+            "within_group_error_homogeneity": 0.628662109375
+          },
+          "joint": {
+            "accuracy": 0.6689453125,
+            "covariance": 0.009071413675944011,
+            "marginal_error": 0.3310546875,
+            "standardized": 0.040962326579534775,
+            "within_group_error_homogeneity": 0.69140625
+          },
+          "joint_minus_exact": 0.004133029778798422,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              0.003062763978944178,
+              0.0066784866351941785
+            ],
+            "exact_context_homogeneity": [
+              0.6232152478448276,
+              0.6347020642510777
+            ],
+            "exact_context_standardized": [
+              0.012571553339677893,
+              0.027412804754094237
+            ],
+            "joint": [
+              0.007271469698181471,
+              0.010484360323181473
+            ],
+            "joint_homogeneity": [
+              0.6884337039576802,
+              0.6940489383326802
+            ],
+            "joint_minus_exact": [
+              0.0018283346254872922,
+              0.0061984518129872945
+            ],
+            "joint_standardized": [
+              0.032834608488858746,
+              0.047342542946150486
+            ],
+            "solo_fake": [
+              -0.0014261864002720068,
+              0.0022749854747279932
+            ],
+            "solo_fake_homogeneity": [
+              0.6299015631122649,
+              0.6396793951435149
+            ],
+            "solo_fake_standardized": [
+              -0.005997531247401643,
+              0.009566979792728157
+            ],
+            "standardized_joint_minus_exact": [
+              0.010542728116858842,
+              0.029159553690388123
+            ],
+            "standardized_joint_minus_solo": [
+              0.029294308414229593,
+              0.04821849315260868
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.6104736328125,
+            "covariance": 0.00041764676570892333,
+            "marginal_error": 0.3895263671875,
+            "standardized": 0.0017563268919390674,
+            "within_group_error_homogeneity": 0.6348876953125
+          },
+          "standardized_joint_minus_exact": 0.02069202269664335,
+          "standardized_joint_minus_solo": 0.03920599968759571
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.579345703125,
+            "covariance": 0.0029327750205993654,
+            "marginal_error": 0.420654296875,
+            "standardized": 0.012034155775007039,
+            "within_group_error_homogeneity": 0.623046875
+          },
+          "joint": {
+            "accuracy": 0.6776123046875,
+            "covariance": 0.009314871827761332,
+            "marginal_error": 0.3223876953125,
+            "standardized": 0.042639994708572805,
+            "within_group_error_homogeneity": 0.6986083984375
+          },
+          "joint_minus_exact": 0.006382096807161967,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              0.0010828166546119047,
+              0.004615531498361905
+            ],
+            "exact_context_homogeneity": [
+              0.6175380981827978,
+              0.6283046997452978
+            ],
+            "exact_context_standardized": [
+              0.004443158512277761,
+              0.01893906782675317
+            ],
+            "joint": [
+              0.007700449213961697,
+              0.010962167963961697
+            ],
+            "joint_homogeneity": [
+              0.6952715547854624,
+              0.7013750704104624
+            ],
+            "joint_minus_exact": [
+              0.004554644278099793,
+              0.008565874746849793
+            ],
+            "joint_standardized": [
+              0.03524977260109793,
+              0.05018069949011322
+            ],
+            "solo_fake": [
+              -0.001587043693571381,
+              0.002054720629345287
+            ],
+            "solo_fake_homogeneity": [
+              0.63071974033846,
+              0.64049757236971
+            ],
+            "solo_fake_standardized": [
+              -0.006673983247470812,
+              0.00864070164799552
+            ],
+            "standardized_joint_minus_exact": [
+              0.022481378045406446,
+              0.04033439852204389
+            ],
+            "standardized_joint_minus_solo": [
+              0.032620494690061806,
+              0.050290520075079476
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.6104736328125,
+            "covariance": 0.00027116239070892336,
+            "marginal_error": 0.3895263671875,
+            "standardized": 0.0011403172201661204,
+            "within_group_error_homogeneity": 0.6356201171875
+          },
+          "standardized_joint_minus_exact": 0.030605838933565766,
+          "standardized_joint_minus_solo": 0.04149967748840668
+        }
+      ],
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::ag_news",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          0.0028843133508100285,
+          0.0050943285417822505
+        ],
+        "exact_context_homogeneity_interval": [
+          0.6226952436201998,
+          0.6291405561201999
+        ],
+        "exact_context_standardized_interval": [
+          0.01183193247136713,
+          0.02089387816276227
+        ],
+        "joint_covariance_interval": [
+          0.00926678521900549,
+          0.01133438504539438
+        ],
+        "joint_homogeneity_interval": [
+          0.6930959735419933,
+          0.6967580829169933
+        ],
+        "joint_minus_exact": 0.00629572073618571,
+        "joint_standardized_interval": [
+          0.04189751403197713,
+          0.05125640903556895
+        ],
+        "solo_fake_covariance_interval": [
+          -0.0012409737198579528,
+          0.0008174030162531589
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.6314674560801985,
+          0.6368466878510318
+        ],
+        "solo_fake_standardized_interval": [
+          -0.005218657715872773,
+          0.0034374189311885688
+        ],
+        "standardized_joint_minus_exact": 0.030135963564719228,
+        "standardized_joint_minus_exact_interval": [
+          0.024495310762532696,
+          0.03533934988395669
+        ],
+        "standardized_joint_minus_solo": 0.04725432885775888,
+        "standardized_joint_minus_solo_interval": [
+          0.04251803714937996,
+          0.05215743086640812
+        ]
+      },
+      "family": "llama",
+      "task": "ag_news"
+    },
+    {
+      "assignment_excess_range": 0.0017622590065002439,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.8759765625,
+            "covariance": -0.00019626617431640626,
+            "marginal_error": 0.1240234375,
+            "standardized": -0.001806546756906223,
+            "within_group_error_homogeneity": 0.8759765625
+          },
+          "joint": {
+            "accuracy": 0.890869140625,
+            "covariance": 0.003145794073740641,
+            "marginal_error": 0.109130859375,
+            "standardized": 0.032357041012533644,
+            "within_group_error_homogeneity": 0.890869140625
+          },
+          "joint_minus_exact": 0.0033420602480570476,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0010323036775818197,
+              0.0006799359057515144
+            ],
+            "exact_context_homogeneity": [
+              0.87598191981779,
+              0.87598191981779
+            ],
+            "exact_context_standardized": [
+              -0.009501916809522856,
+              0.006258521162486503
+            ],
+            "joint": [
+              0.002488530265126482,
+              0.0038736214109598155
+            ],
+            "joint_homogeneity": [
+              0.8908699059561128,
+              0.8908699059561128
+            ],
+            "joint_minus_exact": [
+              0.0022797857656249674,
+              0.004315918578124968
+            ],
+            "joint_standardized": [
+              0.025596550175288904,
+              0.03984333491747461
+            ],
+            "solo_fake": [
+              -0.0011026558364072938,
+              0.0013566540594260397
+            ],
+            "solo_fake_homogeneity": [
+              0.8020605009551333,
+              0.8027929228301333
+            ],
+            "solo_fake_standardized": [
+              -0.006960077744709922,
+              0.008563340812711897
+            ],
+            "standardized_joint_minus_exact": [
+              0.02398751427381996,
+              0.042788437454187186
+            ],
+            "standardized_joint_minus_solo": [
+              0.02116212625858662,
+              0.04132121513637457
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.8026123046875,
+            "covariance": 0.0002796341975529989,
+            "marginal_error": 0.1973876953125,
+            "standardized": 0.0017650799921305083,
+            "within_group_error_homogeneity": 0.8026123046875
+          },
+          "standardized_joint_minus_exact": 0.03416358776943987,
+          "standardized_joint_minus_solo": 0.030591961020403135
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.8699951171875,
+            "covariance": 0.0003350585699081421,
+            "marginal_error": 0.1300048828125,
+            "standardized": 0.0029624037664083753,
+            "within_group_error_homogeneity": 0.8699951171875
+          },
+          "joint": {
+            "accuracy": 0.8856201171875,
+            "covariance": 0.005439377824465434,
+            "marginal_error": 0.1143798828125,
+            "standardized": 0.05369725757405251,
+            "within_group_error_homogeneity": 0.8858642578125
+          },
+          "joint_minus_exact": 0.0051043192545572914,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0006276233748084203,
+              0.0011969208960249133
+            ],
+            "exact_context_homogeneity": [
+              0.8699997091741771,
+              0.8699997091741771
+            ],
+            "exact_context_standardized": [
+              -0.005549101012184612,
+              0.010582516875927627
+            ],
+            "joint": [
+              0.0046662403342616725,
+              0.0062124642925950055
+            ],
+            "joint_homogeneity": [
+              0.8858650231436128,
+              0.8858650231436128
+            ],
+            "joint_minus_exact": [
+              0.004088622823653425,
+              0.006160562927820091
+            ],
+            "joint_standardized": [
+              0.0460648841130845,
+              0.06132912734773346
+            ],
+            "solo_fake": [
+              0.00017193935445608045,
+              0.002798078677372748
+            ],
+            "solo_fake_homogeneity": [
+              0.8035085074206505,
+              0.8042409292956505
+            ],
+            "solo_fake_standardized": [
+              0.001085298997998068,
+              0.017661762163054394
+            ],
+            "standardized_joint_minus_exact": [
+              0.04127287671128774,
+              0.06067986360492727
+            ],
+            "standardized_joint_minus_solo": [
+              0.034611198028232544,
+              0.055843691375655556
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.8026123046875,
+            "covariance": 0.001532889405886332,
+            "marginal_error": 0.1973876953125,
+            "standardized": 0.009675756556799468,
+            "within_group_error_homogeneity": 0.8040771484375
+          },
+          "standardized_joint_minus_exact": 0.050734853807644135,
+          "standardized_joint_minus_solo": 0.044021501017253044
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.8748779296875,
+            "covariance": 3.457168738047282e-05,
+            "marginal_error": 0.1251220703125,
+            "standardized": 0.00031581968393982806,
+            "within_group_error_homogeneity": 0.8748779296875
+          },
+          "joint": {
+            "accuracy": 0.892578125,
+            "covariance": 0.004280853271484375,
+            "marginal_error": 0.107421875,
+            "standardized": 0.044646906703799484,
+            "within_group_error_homogeneity": 0.892822265625
+          },
+          "joint_minus_exact": 0.004246281584103903,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0008453550041033307,
+              0.0007830629646466692
+            ],
+            "exact_context_homogeneity": [
+              0.8748718453051528,
+              0.8748840523364029
+            ],
+            "exact_context_standardized": [
+              -0.0077224969459739065,
+              0.0071534459767035406
+            ],
+            "joint": [
+              0.0034735335426769034,
+              0.005020571303093571
+            ],
+            "joint_homogeneity": [
+              0.892822265625,
+              0.892822265625
+            ],
+            "joint_minus_exact": [
+              0.0032072349009469,
+              0.005348348182196902
+            ],
+            "joint_standardized": [
+              0.036227013209130465,
+              0.05236175228478858
+            ],
+            "solo_fake": [
+              -0.0007007447535964271,
+              0.00189121488182024
+            ],
+            "solo_fake_homogeneity": [
+              0.8025411288940048,
+              0.8032735507690048
+            ],
+            "solo_fake_standardized": [
+              -0.004423173399344525,
+              0.011937544041220828
+            ],
+            "standardized_joint_minus_exact": [
+              0.033926090348522994,
+              0.05476856902295455
+            ],
+            "standardized_joint_minus_solo": [
+              0.029840525047683728,
+              0.05139953196339409
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.8026123046875,
+            "covariance": 0.0006377071142196656,
+            "marginal_error": 0.1973876953125,
+            "standardized": 0.00402527329632164,
+            "within_group_error_homogeneity": 0.8031005859375
+          },
+          "standardized_joint_minus_exact": 0.044331087019859654,
+          "standardized_joint_minus_solo": 0.04062163340747785
+        }
+      ],
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::civil_comments",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          -0.0004376873348034122,
+          0.0005185301131132546
+        ],
+        "exact_context_homogeneity_interval": [
+          0.87354051356779,
+          0.8736218937761232
+        ],
+        "exact_context_standardized_interval": [
+          -0.003989497782427941,
+          0.004686346863179959
+        ],
+        "joint_covariance_interval": [
+          0.003819732023049463,
+          0.004672054071660574
+        ],
+        "joint_homogeneity_interval": [
+          0.8898523982415755,
+          0.8898523982415755
+        ],
+        "joint_minus_exact": 0.004230887028906081,
+        "joint_standardized_interval": [
+          0.0387546816267281,
+          0.04750803500890059
+        ],
+        "solo_fake_covariance_interval": [
+          7.060016106745363e-05,
+          0.0014532499006507872
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.8029475197149295,
+          0.8034358009649295
+        ],
+        "solo_fake_standardized_interval": [
+          0.00044563552252129424,
+          0.009173063758477505
+        ],
+        "standardized_joint_minus_exact": 0.04307650953231456,
+        "standardized_joint_minus_exact_interval": [
+          0.03731646953268178,
+          0.04867569275159068
+        ],
+        "standardized_joint_minus_solo": 0.03841169848171134,
+        "standardized_joint_minus_solo_interval": [
+          0.03282464283495774,
+          0.04440833584619379
+        ]
+      },
+      "family": "mistral",
+      "task": "civil_comments"
+    },
+    {
+      "assignment_excess_range": 0.002515522638956706,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.593505859375,
+            "covariance": -0.0004751165707906087,
+            "marginal_error": 0.406494140625,
+            "standardized": -0.001969340792870205,
+            "within_group_error_homogeneity": 0.62353515625
+          },
+          "joint": {
+            "accuracy": 0.3985595703125,
+            "covariance": 0.01160925328731537,
+            "marginal_error": 0.6014404296875,
+            "standardized": 0.048430441257054375,
+            "within_group_error_homogeneity": 0.6558837890625
+          },
+          "joint_minus_exact": 0.012084369858105978,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0020885825206991776,
+              0.0013326414376341562
+            ],
+            "exact_context_homogeneity": [
+              0.6183500762269788,
+              0.6283842559144789
+            ],
+            "exact_context_standardized": [
+              -0.008657098089515572,
+              0.005523749973685434
+            ],
+            "joint": [
+              0.009848540182397657,
+              0.013337309713647657
+            ],
+            "joint_homogeneity": [
+              0.6513224538964537,
+              0.6606242117089538
+            ],
+            "joint_minus_exact": [
+              0.0101272268697635,
+              0.013973255515596835
+            ],
+            "joint_standardized": [
+              0.0410852563008941,
+              0.05563939201151884
+            ],
+            "solo_fake": [
+              -0.0010892342356429744,
+              0.002122028785190363
+            ],
+            "solo_fake_homogeneity": [
+              0.6853176965982563,
+              0.6904568567545063
+            ],
+            "solo_fake_standardized": [
+              -0.00502450048751216,
+              0.009788651803998764
+            ],
+            "standardized_joint_minus_exact": [
+              0.04223570081684207,
+              0.05823703297153225
+            ],
+            "standardized_joint_minus_solo": [
+              0.03599983371889365,
+              0.05592027695936502
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.6822509765625,
+            "covariance": 0.000581782062848409,
+            "marginal_error": 0.3177490234375,
+            "standardized": 0.0026836874592746514,
+            "within_group_error_homogeneity": 0.6881103515625
+          },
+          "standardized_joint_minus_exact": 0.05039978204992458,
+          "standardized_joint_minus_solo": 0.045746753797779725
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.5894775390625,
+            "covariance": -0.00021814405918121337,
+            "marginal_error": 0.4105224609375,
+            "standardized": -0.0009014449387611163,
+            "within_group_error_homogeneity": 0.6209716796875
+          },
+          "joint": {
+            "accuracy": 0.38720703125,
+            "covariance": 0.01112214724222819,
+            "marginal_error": 0.61279296875,
+            "standardized": 0.046873958558368456,
+            "within_group_error_homogeneity": 0.6640625
+          },
+          "joint_minus_exact": 0.011340291301409403,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.002133249960598403,
+              0.0016143086331515976
+            ],
+            "exact_context_homogeneity": [
+              0.61532816632788,
+              0.62681498273413
+            ],
+            "exact_context_standardized": [
+              -0.00881530942126794,
+              0.006670868564630644
+            ],
+            "joint": [
+              0.0091562820303029,
+              0.012695507290719568
+            ],
+            "joint_homogeneity": [
+              0.6589784054173198,
+              0.6682679561985698
+            ],
+            "joint_minus_exact": [
+              0.00905483147006797,
+              0.013554343188817972
+            ],
+            "joint_standardized": [
+              0.038588878126663666,
+              0.053504837659695895
+            ],
+            "solo_fake": [
+              -0.002803478986491978,
+              0.0005681030447580223
+            ],
+            "solo_fake_homogeneity": [
+              0.6834609650519201,
+              0.6890761994269201
+            ],
+            "solo_fake_standardized": [
+              -0.012932095846256642,
+              0.0026205878698431244
+            ],
+            "standardized_joint_minus_exact": [
+              0.03822853579673335,
+              0.05692356738895787
+            ],
+            "standardized_joint_minus_solo": [
+              0.04242734928563147,
+              0.06071154372228279
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.6822509765625,
+            "covariance": -0.0010458221038182577,
+            "marginal_error": 0.3177490234375,
+            "standardized": -0.00482424578528232,
+            "within_group_error_homogeneity": 0.6866455078125
+          },
+          "standardized_joint_minus_exact": 0.047775403497129575,
+          "standardized_joint_minus_solo": 0.05169820434365077
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.5855712890625,
+            "covariance": -0.0006574064493179322,
+            "marginal_error": 0.4144287109375,
+            "standardized": -0.0027089709664514794,
+            "within_group_error_homogeneity": 0.6170654296875
+          },
+          "joint": {
+            "accuracy": 0.3857421875,
+            "covariance": 0.013198407491048177,
+            "marginal_error": 0.6142578125,
+            "standardized": 0.05570237400468227,
+            "within_group_error_homogeneity": 0.668212890625
+          },
+          "joint_minus_exact": 0.01385581394036611,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.002453837557272478,
+              0.001112243171894189
+            ],
+            "exact_context_homogeneity": [
+              0.6116270633326802,
+              0.6219053836451802
+            ],
+            "exact_context_standardized": [
+              -0.0101115142784743,
+              0.00458321402751878
+            ],
+            "joint": [
+              0.011454582692687414,
+              0.015087395192687415
+            ],
+            "joint_homogeneity": [
+              0.6637502831725117,
+              0.6725515527037618
+            ],
+            "joint_minus_exact": [
+              0.011611056968709892,
+              0.01609266504162656
+            ],
+            "joint_standardized": [
+              0.048342760264705464,
+              0.06367463122725402
+            ],
+            "solo_fake": [
+              -0.0016709828233519577,
+              0.0013319468641480431
+            ],
+            "solo_fake_homogeneity": [
+              0.6848692890992358,
+              0.6902770039429859
+            ],
+            "solo_fake_standardized": [
+              -0.007708033530180302,
+              0.006144103306027316
+            ],
+            "standardized_joint_minus_exact": [
+              0.04909495817576864,
+              0.06774775493862378
+            ],
+            "standardized_joint_minus_solo": [
+              0.04664710141361128,
+              0.06631701718454017
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.6822509765625,
+            "covariance": -2.043147881825765e-05,
+            "marginal_error": 0.3177490234375,
+            "standardized": -9.424784121142777e-05,
+            "within_group_error_homogeneity": 0.6876220703125
+          },
+          "standardized_joint_minus_exact": 0.05841134497113375,
+          "standardized_joint_minus_solo": 0.05579662184589369
+        }
+      ],
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          -0.0014778817663289086,
+          0.0008531186676988699
+        ],
+        "exact_context_homogeneity_interval": [
+          0.6173112412854297,
+          0.6239193142020965
+        ],
+        "exact_context_standardized_interval": [
+          -0.006109002670290154,
+          0.0035251038876683806
+        ],
+        "joint_covariance_interval": [
+          0.01079088453443488,
+          0.013115645819157104
+        ],
+        "joint_homogeneity_interval": [
+          0.659974241505845,
+          0.6654348534850119
+        ],
+        "joint_minus_exact": 0.012426825033293828,
+        "joint_standardized_interval": [
+          0.04535635910549504,
+          0.05512146663092845
+        ],
+        "solo_fake_covariance_interval": [
+          -0.0011579507651623016,
+          0.0006983317869210318
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.6857862960831375,
+          0.6890415044164708
+        ],
+        "solo_fake_standardized_interval": [
+          -0.005341481192645976,
+          0.0032213166727712503
+        ],
+        "standardized_joint_minus_exact": 0.0521955101727293,
+        "standardized_joint_minus_exact_interval": [
+          0.04704179624820214,
+          0.05812984207442869
+        ],
+        "standardized_joint_minus_solo": 0.051080526662441395,
+        "standardized_joint_minus_solo_interval": [
+          0.04543919197035799,
+          0.05696109004864535
+        ]
+      },
+      "family": "mistral",
+      "task": "multi_nli"
+    },
+    {
+      "assignment_excess_range": 0.0012083152929941825,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.6170654296875,
+            "covariance": 0.0009359846512476603,
+            "marginal_error": 0.3829345703125,
+            "standardized": 0.003961073815486876,
+            "within_group_error_homogeneity": 0.6417236328125
+          },
+          "joint": {
+            "accuracy": 0.6068115234375,
+            "covariance": 0.01835204064846039,
+            "marginal_error": 0.3931884765625,
+            "standardized": 0.07691831498818576,
+            "within_group_error_homogeneity": 0.6610107421875
+          },
+          "joint_minus_exact": 0.01741605599721273,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0011093015213620603,
+              0.002912508374471276
+            ],
+            "exact_context_homogeneity": [
+              0.637344408184757,
+              0.6463898183410071
+            ],
+            "exact_context_standardized": [
+              -0.004694548360264036,
+              0.012325694277279156
+            ],
+            "joint": [
+              0.01654404538739064,
+              0.019921324033223973
+            ],
+            "joint_homogeneity": [
+              0.6558218355089145,
+              0.6653677339464146
+            ],
+            "joint_minus_exact": [
+              0.015471543523336028,
+              0.019049831283752698
+            ],
+            "joint_standardized": [
+              0.06934052286947785,
+              0.0834956017328671
+            ],
+            "solo_fake": [
+              -0.003138136430220171,
+              0.00015206539269649625
+            ],
+            "solo_fake_homogeneity": [
+              0.6761034543985109,
+              0.6826952512735109
+            ],
+            "solo_fake_standardized": [
+              -0.014278289271259853,
+              0.000691886319587439
+            ],
+            "standardized_joint_minus_exact": [
+              0.06471939897794436,
+              0.07984112345702428
+            ],
+            "standardized_joint_minus_solo": [
+              0.07554947425077331,
+              0.09077856236558617
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.673828125,
+            "covariance": -0.001407623291015625,
+            "marginal_error": 0.326171875,
+            "standardized": -0.006404582140067691,
+            "within_group_error_homogeneity": 0.6796875
+          },
+          "standardized_joint_minus_exact": 0.07295724117269888,
+          "standardized_joint_minus_solo": 0.08332289712825344
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.6214599609375,
+            "covariance": 0.0005388190348943074,
+            "marginal_error": 0.3785400390625,
+            "standardized": 0.002290434905952131,
+            "within_group_error_homogeneity": 0.6429443359375
+          },
+          "joint": {
+            "accuracy": 0.60546875,
+            "covariance": 0.0173919677734375,
+            "marginal_error": 0.39453125,
+            "standardized": 0.07280740977323538,
+            "within_group_error_homogeneity": 0.660400390625
+          },
+          "joint_minus_exact": 0.01685314873854319,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0013809732440372507,
+              0.002304736391379417
+            ],
+            "exact_context_homogeneity": [
+              0.6380454897506856,
+              0.6475791811569357
+            ],
+            "exact_context_standardized": [
+              -0.005870299891965243,
+              0.00979707162882441
+            ],
+            "joint": [
+              0.015437526403923391,
+              0.01900604853934006
+            ],
+            "joint_homogeneity": [
+              0.6556102597227664,
+              0.6646678769102664
+            ],
+            "joint_minus_exact": [
+              0.014873512668793972,
+              0.018624326470877306
+            ],
+            "joint_standardized": [
+              0.064625597598692,
+              0.07956438179969276
+            ],
+            "solo_fake": [
+              -0.0036561380384359512,
+              -0.0003577981946859489
+            ],
+            "solo_fake_homogeneity": [
+              0.6767953519910854,
+              0.6829110746473355
+            ],
+            "solo_fake_standardized": [
+              -0.01663515837798757,
+              -0.0016279553926538803
+            ],
+            "standardized_joint_minus_exact": [
+              0.06214224613123508,
+              0.0780331760824373
+            ],
+            "standardized_joint_minus_solo": [
+              0.07425608798126265,
+              0.08853689029703438
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.673828125,
+            "covariance": -0.001895904541015625,
+            "marginal_error": 0.326171875,
+            "standardized": -0.008626225809251063,
+            "within_group_error_homogeneity": 0.68017578125
+          },
+          "standardized_joint_minus_exact": 0.07051697486728326,
+          "standardized_joint_minus_solo": 0.08143363558248645
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.61279296875,
+            "covariance": 0.0011286576588948568,
+            "marginal_error": 0.38720703125,
+            "standardized": 0.004756694114672039,
+            "within_group_error_homogeneity": 0.63916015625
+          },
+          "joint": {
+            "accuracy": 0.6024169921875,
+            "covariance": 0.01919012169043223,
+            "marginal_error": 0.3975830078125,
+            "standardized": 0.0801221695157506,
+            "within_group_error_homogeneity": 0.6627197265625
+          },
+          "joint_minus_exact": 0.018061464031537373,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0006654187803358128,
+              0.0030186632509141883
+            ],
+            "exact_context_homogeneity": [
+              0.6342130559365203,
+              0.6437345403115203
+            ],
+            "exact_context_standardized": [
+              -0.0028043876469281727,
+              0.012722066435857965
+            ],
+            "joint": [
+              0.017440324758287506,
+              0.020885148977037506
+            ],
+            "joint_homogeneity": [
+              0.6577259410511364,
+              0.6674915660511364
+            ],
+            "joint_minus_exact": [
+              0.01632433077820665,
+              0.019960398486539986
+            ],
+            "joint_standardized": [
+              0.0728164562598863,
+              0.08719920976500146
+            ],
+            "solo_fake": [
+              -0.000979081236581195,
+              0.002556888815502139
+            ],
+            "solo_fake_homogeneity": [
+              0.6786015334174177,
+              0.6847172560736677
+            ],
+            "solo_fake_standardized": [
+              -0.004454747404015287,
+              0.011633655500320968
+            ],
+            "standardized_joint_minus_exact": [
+              0.06808035714264507,
+              0.08331341978496282
+            ],
+            "standardized_joint_minus_solo": [
+              0.06884118888684121,
+              0.08537441063773134
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.673828125,
+            "covariance": 0.0007245381673177083,
+            "marginal_error": 0.326171875,
+            "standardized": 0.0032965952153663687,
+            "within_group_error_homogeneity": 0.681884765625
+          },
+          "standardized_joint_minus_exact": 0.07536547540107856,
+          "standardized_joint_minus_solo": 0.07682557430038424
+        }
+      ],
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::imdb",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          -0.0003889204180228176,
+          0.001972461960449405
+        ],
+        "exact_context_homogeneity_interval": [
+          0.6386420653531544,
+          0.6441921955614878
+        ],
+        "exact_context_standardized_interval": [
+          -0.001641636103876879,
+          0.008333350728156625
+        ],
+        "joint_covariance_interval": [
+          0.01729129407556162,
+          0.01932878322486718
+        ],
+        "joint_homogeneity_interval": [
+          0.6583513441255224,
+          0.6640479587088557
+        ],
+        "joint_minus_exact": 0.017443556255764433,
+        "joint_standardized_interval": [
+          0.07234616415218782,
+          0.08087692847305046
+        ],
+        "solo_fake_covariance_interval": [
+          -0.0018410643149402162,
+          9.008802880978452e-05
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.6787170729044213,
+          0.682139110664838
+        ],
+        "solo_fake_standardized_interval": [
+          -0.008376706825925333,
+          0.0004098938856949069
+        ],
+        "standardized_joint_minus_exact": 0.0729465638136869,
+        "standardized_joint_minus_exact_interval": [
+          0.06803232767380353,
+          0.07728170794898992
+        ],
+        "standardized_joint_minus_solo": 0.08052736900370805,
+        "standardized_joint_minus_solo_interval": [
+          0.07582283165497528,
+          0.08512611570384485
+        ]
+      },
+      "family": "mistral",
+      "task": "imdb"
+    },
+    {
+      "assignment_excess_range": 0.0019858618577321373,
+      "assignments": [
+        {
+          "assignment": 1,
+          "exact_context": {
+            "accuracy": 0.450439453125,
+            "covariance": 0.001140757401784261,
+            "marginal_error": 0.549560546875,
+            "standardized": 0.0046083061748727954,
+            "within_group_error_homogeneity": 0.6083984375
+          },
+          "joint": {
+            "accuracy": 0.3709716796875,
+            "covariance": 0.0246847003698349,
+            "marginal_error": 0.6290283203125,
+            "standardized": 0.10578324973481745,
+            "within_group_error_homogeneity": 0.6951904296875
+          },
+          "joint_minus_exact": 0.023543942968050638,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.0006682200342136499,
+              0.0030305104345363506
+            ],
+            "exact_context_homogeneity": [
+              0.6030197287054271,
+              0.6140182638616771
+            ],
+            "exact_context_standardized": [
+              -0.002699401735219106,
+              0.01224232244879306
+            ],
+            "joint": [
+              0.023012148306910396,
+              0.02643174466107706
+            ],
+            "joint_homogeneity": [
+              0.6905349587945728,
+              0.6993362283258229
+            ],
+            "joint_minus_exact": [
+              0.021155140476540713,
+              0.025848337091124045
+            ],
+            "joint_standardized": [
+              0.09861573342244463,
+              0.1132699933367003
+            ],
+            "solo_fake": [
+              -0.003004372147308,
+              0.0007952697797753344
+            ],
+            "solo_fake_homogeneity": [
+              0.602639397408895,
+              0.614138420846395
+            ],
+            "solo_fake_standardized": [
+              -0.012223696792124194,
+              0.003235663286461858
+            ],
+            "standardized_joint_minus_exact": [
+              0.09115418570163232,
+              0.11071262360922743
+            ],
+            "standardized_joint_minus_solo": [
+              0.09975285746614004,
+              0.11997884958596088
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.56494140625,
+            "covariance": -0.000897073745727539,
+            "marginal_error": 0.43505859375,
+            "standardized": -0.0036498665712148856,
+            "within_group_error_homogeneity": 0.6083984375
+          },
+          "standardized_joint_minus_exact": 0.10117494355994466,
+          "standardized_joint_minus_solo": 0.10943311630603234
+        },
+        {
+          "assignment": 2,
+          "exact_context": {
+            "accuracy": 0.4493408203125,
+            "covariance": 0.0012015511592229208,
+            "marginal_error": 0.5506591796875,
+            "standardized": 0.004856054022151131,
+            "within_group_error_homogeneity": 0.6104736328125
+          },
+          "joint": {
+            "accuracy": 0.361083984375,
+            "covariance": 0.022759632269541422,
+            "marginal_error": 0.638916015625,
+            "standardized": 0.0986536686626829,
+            "within_group_error_homogeneity": 0.695556640625
+          },
+          "joint_minus_exact": 0.0215580811103185,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.001051364242096307,
+              0.0031209990391536943
+            ],
+            "exact_context_homogeneity": [
+              0.6039124491820141,
+              0.6166199687132642
+            ],
+            "exact_context_standardized": [
+              -0.004249075469977922,
+              0.012613478686179107
+            ],
+            "joint": [
+              0.021060191573518697,
+              0.024758108240185362
+            ],
+            "joint_homogeneity": [
+              0.6914713031445925,
+              0.6997720843945925
+            ],
+            "joint_minus_exact": [
+              0.019289290190615,
+              0.024290103992698334
+            ],
+            "joint_standardized": [
+              0.09128729044743929,
+              0.10731624211304969
+            ],
+            "solo_fake": [
+              -0.0011079964493260243,
+              0.002790929331923976
+            ],
+            "solo_fake_homogeneity": [
+              0.6055024245689655,
+              0.6165009597252156
+            ],
+            "solo_fake_standardized": [
+              -0.004508034284450129,
+              0.011355275661256822
+            ],
+            "standardized_joint_minus_exact": [
+              0.08412210467350899,
+              0.10513500559451239
+            ],
+            "standardized_joint_minus_solo": [
+              0.08552309567066528,
+              0.10617645550191787
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.56494140625,
+            "covariance": 0.0009258429209391277,
+            "marginal_error": 0.43505859375,
+            "standardized": 0.0037669178742836674,
+            "within_group_error_homogeneity": 0.611328125
+          },
+          "standardized_joint_minus_exact": 0.09379761464053177,
+          "standardized_joint_minus_solo": 0.09488675078839923
+        },
+        {
+          "assignment": 3,
+          "exact_context": {
+            "accuracy": 0.4515380859375,
+            "covariance": 0.001809971531232198,
+            "marginal_error": 0.5484619140625,
+            "standardized": 0.0073085442593999565,
+            "within_group_error_homogeneity": 0.6107177734375
+          },
+          "joint": {
+            "accuracy": 0.363525390625,
+            "covariance": 0.024375983079274497,
+            "marginal_error": 0.636474609375,
+            "standardized": 0.10535285440199962,
+            "within_group_error_homogeneity": 0.699951171875
+          },
+          "joint_minus_exact": 0.0225660115480423,
+          "replay_shift_95_intervals": {
+            "exact_context": [
+              -0.00010109852411654876,
+              0.0038588624133834523
+            ],
+            "exact_context_homogeneity": [
+              0.6039124491820141,
+              0.6166199687132642
+            ],
+            "exact_context_standardized": [
+              -0.00040822909383706873,
+              0.015581828914153138
+            ],
+            "joint": [
+              0.022347804608140745,
+              0.02623777856647408
+            ],
+            "joint_homogeneity": [
+              0.6951587067128722,
+              0.7037158356191222
+            ],
+            "joint_minus_exact": [
+              0.02036068698642396,
+              0.025489267715590628
+            ],
+            "joint_standardized": [
+              0.0965870790699557,
+              0.11339952346356492
+            ],
+            "solo_fake": [
+              -0.002185266319362598,
+              0.0016485552952207366
+            ],
+            "solo_fake_homogeneity": [
+              0.6060496745812107,
+              0.6183055339562108
+            ],
+            "solo_fake_standardized": [
+              -0.00889105330105804,
+              0.006707371485881108
+            ],
+            "standardized_joint_minus_exact": [
+              0.08869795269755365,
+              0.11012161462669692
+            ],
+            "standardized_joint_minus_solo": [
+              0.09507458567170579,
+              0.11707839146812293
+            ]
+          },
+          "solo_fake": {
+            "accuracy": 0.56494140625,
+            "covariance": -0.00016465187072753907,
+            "marginal_error": 0.43505859375,
+            "standardized": -0.0006699085350770744,
+            "within_group_error_homogeneity": 0.6123046875
+          },
+          "standardized_joint_minus_exact": 0.09804431014259966,
+          "standardized_joint_minus_solo": 0.1060227629370767
+        }
+      ],
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::ag_news",
+      "cell_mean": {
+        "exact_context_covariance_interval": [
+          0.00013068168805227586,
+          0.002592161722774499
+        ],
+        "exact_context_homogeneity_interval": [
+          0.6061417311585684,
+          0.6137955397523185
+        ],
+        "exact_context_standardized_interval": [
+          0.0005273092578092541,
+          0.010472321841323249
+        ],
+        "joint_covariance_interval": [
+          0.022903665784384387,
+          0.024973164482301056
+        ],
+        "joint_homogeneity_interval": [
+          0.6945123463215126,
+          0.6991591562173459
+        ],
+        "joint_minus_exact": 0.022556011875470478,
+        "joint_standardized_interval": [
+          0.09878069352545808,
+          0.1077174564498836
+        ],
+        "solo_fake_covariance_interval": [
+          -0.00119100851366554,
+          0.0010575266425844603
+        ],
+        "solo_fake_homogeneity_interval": [
+          0.6071800431238571,
+          0.6141868790613572
+        ],
+        "solo_fake_standardized_interval": [
+          -0.004845780161066566,
+          0.004302691009876516
+        ],
+        "standardized_joint_minus_exact": 0.09767228944769203,
+        "standardized_joint_minus_exact_interval": [
+          0.0922104613792818,
+          0.10435433965042834
+        ],
+        "standardized_joint_minus_solo": 0.10344754334383609,
+        "standardized_joint_minus_solo_interval": [
+          0.09732863569301725,
+          0.10930205534711562
+        ]
+      },
+      "family": "mistral",
+      "task": "ag_news"
+    }
+  ],
+  "interval_method": "319 conditional assignment replays; mean-centred shift interval, fixed labels",
+  "post_hoc": true,
+  "provenance": {
+    "a9_analysis_sha256": "b540b8f41edc93013ca2d6027384b22f48cfe489dc3ec93d3f288ae3a89206da",
+    "assignment_lock_sha256": "626ba2791acc1de4db1fec5a939b83839e9fd069beca2a9ab794f2eaaedae389",
+    "malformed_treatment": "unresolved_as_correct"
+  },
+  "standardized_positive_cells": 16,
+  "standardized_positive_families": [
+    "granite",
+    "llama",
+    "mistral",
+    "qwen"
+  ]
+}
