@@ -85,6 +85,12 @@ study-120h/extension-b4/**/budgets/
 study-120h/extension-b4/**/meter.jsonl
 study-120h/extension-b4/**/local-watchdog.log
 
+# Post-output recovery call inventories and repaired model outputs stay local.
+study-120h/output-recovery/**/RECOVERY_INVENTORY.json
+study-120h/output-recovery/**/events.jsonl
+study-120h/output-recovery/**/receipts/
+study-120h/output-recovery/**/meter.jsonl
+
 # Idea-selection phase output. Kept locally, not published.
 idea-stage/
 refine-logs/REFINE_STATE*.json

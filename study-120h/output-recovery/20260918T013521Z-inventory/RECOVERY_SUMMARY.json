@@ -1,0 +1,34 @@
+{
+  "gpu_work_launched": false,
+  "inventory_sha256": "0d917c3a4674bf1b152aff9b5651884f01a2cfa5be1cb2468ca843b20fcbe27e",
+  "manifest_sha256": "fca4dcc5a0e848b6b2ebd248b67ea48721a319ff3c4ad0afcf68b1247701df11",
+  "schema_version": "ext-output-recovery-v1",
+  "summary": {
+    "by_condition": {
+      "exact_context": 1808,
+      "joint": 1485,
+      "solo": 804
+    },
+    "by_failure_class": {
+      "malformed": 3966,
+      "truncated": 131
+    },
+    "by_model": {
+      "Qwen/Qwen3-8B": 211,
+      "ibm-granite/granite-3.3-8b-instruct": 2097,
+      "meta-llama/Llama-3.1-8B-Instruct": 174,
+      "mistralai/Mistral-7B-Instruct-v0.3": 1615
+    },
+    "by_study": {
+      "b3": 3002,
+      "b4": 1095
+    },
+    "by_task": {
+      "ag_news": 577,
+      "civil_comments": 1315,
+      "imdb": 1372,
+      "multi_nli": 833
+    },
+    "calls": 4097
+  }
+}
