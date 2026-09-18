@@ -1,0 +1,112 @@
+{
+  "cells": [
+    {
+      "by_size": [
+        {
+          "batch_size": 2,
+          "fits": true,
+          "headroom_tokens": 31925,
+          "max_required_group": "k02::a1::g03173",
+          "max_required_tokens": 843
+        },
+        {
+          "batch_size": 32,
+          "fits": true,
+          "headroom_tokens": 24356,
+          "max_required_group": "k32::a1::g00143",
+          "max_required_tokens": 8412
+        }
+      ],
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "fits": true,
+      "max_model_len": 32768,
+      "method": "measured pinned-tokenizer solo prompt lengths, upper-bounded per size",
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a1::g00143",
+        "required_tokens": 8412
+      }
+    },
+    {
+      "by_size": [
+        {
+          "batch_size": 2,
+          "fits": true,
+          "headroom_tokens": 30927,
+          "max_required_group": "k02::a1::g02930",
+          "max_required_tokens": 1841
+        },
+        {
+          "batch_size": 32,
+          "fits": true,
+          "headroom_tokens": 15660,
+          "max_required_group": "k32::a1::g00129",
+          "max_required_tokens": 17108
+        }
+      ],
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "fits": true,
+      "max_model_len": 32768,
+      "method": "measured pinned-tokenizer solo prompt lengths, upper-bounded per size",
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a1::g00129",
+        "required_tokens": 17108
+      }
+    },
+    {
+      "by_size": [
+        {
+          "batch_size": 2,
+          "fits": true,
+          "headroom_tokens": 31934,
+          "max_required_group": "k02::a1::g03109",
+          "max_required_tokens": 834
+        },
+        {
+          "batch_size": 32,
+          "fits": true,
+          "headroom_tokens": 23891,
+          "max_required_group": "k32::a1::g00184",
+          "max_required_tokens": 8877
+        }
+      ],
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "fits": true,
+      "max_model_len": 32768,
+      "method": "measured pinned-tokenizer solo prompt lengths, upper-bounded per size",
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a1::g00184",
+        "required_tokens": 8877
+      }
+    },
+    {
+      "by_size": [
+        {
+          "batch_size": 2,
+          "fits": true,
+          "headroom_tokens": 32027,
+          "max_required_group": "k02::a1::g02757",
+          "max_required_tokens": 741
+        },
+        {
+          "batch_size": 32,
+          "fits": true,
+          "headroom_tokens": 25089,
+          "max_required_group": "k32::a1::g00127",
+          "max_required_tokens": 7679
+        }
+      ],
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "fits": true,
+      "max_model_len": 32768,
+      "method": "measured pinned-tokenizer solo prompt lengths, upper-bounded per size",
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a1::g00127",
+        "required_tokens": 7679
+      }
+    }
+  ]
+}

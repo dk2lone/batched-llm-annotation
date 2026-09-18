@@ -1,0 +1,254 @@
+{
+  "assignments": 1,
+  "built_at_utc": "2026-09-18T22:02:47.228431+00:00",
+  "cell_digests": [
+    {
+      "call_id_order_sha256": "7111b65770b61ddb05d1e6bf30f1423ed55bd20c434a3366ee350acb7842d50b",
+      "calls_by_assignment": {
+        "1": 20736
+      },
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "counts": {
+        "exact_context": 16384,
+        "joint": 4352,
+        "total": 20736
+      },
+      "counts_by_size": {
+        "2": {
+          "exact_context": 8192,
+          "joint": 4096
+        },
+        "32": {
+          "exact_context": 8192,
+          "joint": 256
+        }
+      },
+      "first_call_ids": [
+        "b5-endpoint-pilot-v1::Qwen--Qwen3-8B::civil_comments::k02::a1::g00000::joint",
+        "b5-endpoint-pilot-v1::Qwen--Qwen3-8B::civil_comments::k02::a1::g00000::exact::cc5f0cee6843497e",
+        "b5-endpoint-pilot-v1::Qwen--Qwen3-8B::civil_comments::k02::a1::g00000::exact::cc78e1d1e6579e52"
+      ],
+      "last_call_ids": [
+        "b5-endpoint-pilot-v1::Qwen--Qwen3-8B::civil_comments::k32::a1::g00255::exact::cc8d14c6b7224caf",
+        "b5-endpoint-pilot-v1::Qwen--Qwen3-8B::civil_comments::k32::a1::g00255::exact::cc21762d9a2514aa",
+        "b5-endpoint-pilot-v1::Qwen--Qwen3-8B::civil_comments::k32::a1::g00255::exact::ccd34b9e5a19e92e"
+      ],
+      "prompt_sha256_order_sha256": "bdfb38b3ca0aae3d9d34f6fcb6c00974a1c34134dde8dfb35db07eafe8d232cb",
+      "record_stream_sha256": "763601d93ace4bf83714d876ca3692c3e706c86bb7848c28e81a70e638678053"
+    },
+    {
+      "call_id_order_sha256": "df50d52368b2b63d3b7b161b1d344435330f087967457eaa7f5d70ffdf2d73ee",
+      "calls_by_assignment": {
+        "1": 20736
+      },
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "counts": {
+        "exact_context": 16384,
+        "joint": 4352,
+        "total": 20736
+      },
+      "counts_by_size": {
+        "2": {
+          "exact_context": 8192,
+          "joint": 4096
+        },
+        "32": {
+          "exact_context": 8192,
+          "joint": 256
+        }
+      },
+      "first_call_ids": [
+        "b5-endpoint-pilot-v1::ibm-granite--granite-3.3-8b-instruct::imdb::k02::a1::g00000::joint",
+        "b5-endpoint-pilot-v1::ibm-granite--granite-3.3-8b-instruct::imdb::k02::a1::g00000::exact::im24bb3168227ca0",
+        "b5-endpoint-pilot-v1::ibm-granite--granite-3.3-8b-instruct::imdb::k02::a1::g00000::exact::imef195b481d5290"
+      ],
+      "last_call_ids": [
+        "b5-endpoint-pilot-v1::ibm-granite--granite-3.3-8b-instruct::imdb::k32::a1::g00255::exact::im9448e9f7a4efbe",
+        "b5-endpoint-pilot-v1::ibm-granite--granite-3.3-8b-instruct::imdb::k32::a1::g00255::exact::im77e78c38b9c7bc",
+        "b5-endpoint-pilot-v1::ibm-granite--granite-3.3-8b-instruct::imdb::k32::a1::g00255::exact::im03e361609765a0"
+      ],
+      "prompt_sha256_order_sha256": "beeacaf8245ad0f692bbbc5186ed7ae0351a7c65a00d503caedd79b7caa89654",
+      "record_stream_sha256": "5efe27693efdc9736f12a3b3c253ad46257268c83b248d5f9b5944d6887e5124"
+    },
+    {
+      "call_id_order_sha256": "92b35f581983873a3470c0036b422584e5047dedfd8853cfbb742098f66e3547",
+      "calls_by_assignment": {
+        "1": 20736
+      },
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "counts": {
+        "exact_context": 16384,
+        "joint": 4352,
+        "total": 20736
+      },
+      "counts_by_size": {
+        "2": {
+          "exact_context": 8192,
+          "joint": 4096
+        },
+        "32": {
+          "exact_context": 8192,
+          "joint": 256
+        }
+      },
+      "first_call_ids": [
+        "b5-endpoint-pilot-v1::meta-llama--Llama-3.1-8B-Instruct::civil_comments::k02::a1::g00000::joint",
+        "b5-endpoint-pilot-v1::meta-llama--Llama-3.1-8B-Instruct::civil_comments::k02::a1::g00000::exact::ccf7cc8060b418f2",
+        "b5-endpoint-pilot-v1::meta-llama--Llama-3.1-8B-Instruct::civil_comments::k02::a1::g00000::exact::ccccc08f86aec190"
+      ],
+      "last_call_ids": [
+        "b5-endpoint-pilot-v1::meta-llama--Llama-3.1-8B-Instruct::civil_comments::k32::a1::g00255::exact::ccddfde4df7fc3da",
+        "b5-endpoint-pilot-v1::meta-llama--Llama-3.1-8B-Instruct::civil_comments::k32::a1::g00255::exact::cc6904abea018646",
+        "b5-endpoint-pilot-v1::meta-llama--Llama-3.1-8B-Instruct::civil_comments::k32::a1::g00255::exact::ccc30538f691321c"
+      ],
+      "prompt_sha256_order_sha256": "31c29d18b45c16e5e27112a9fb7acf200b86e351d7e8aa7f0672e4c5a10a87c7",
+      "record_stream_sha256": "00c5c640857e7b6c9b7aded109ff57e1db4ce8b1e5a0dd6328543103aeaff47a"
+    },
+    {
+      "call_id_order_sha256": "32f94f28bb63cd35de78ff5f154162d26d07b6c1ebc1c362578e1608488b87ff",
+      "calls_by_assignment": {
+        "1": 20736
+      },
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "counts": {
+        "exact_context": 16384,
+        "joint": 4352,
+        "total": 20736
+      },
+      "counts_by_size": {
+        "2": {
+          "exact_context": 8192,
+          "joint": 4096
+        },
+        "32": {
+          "exact_context": 8192,
+          "joint": 256
+        }
+      },
+      "first_call_ids": [
+        "b5-endpoint-pilot-v1::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k02::a1::g00000::joint",
+        "b5-endpoint-pilot-v1::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k02::a1::g00000::exact::mn2c9400fe29be81",
+        "b5-endpoint-pilot-v1::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k02::a1::g00000::exact::mn2ad2fb74204e4e"
+      ],
+      "last_call_ids": [
+        "b5-endpoint-pilot-v1::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k32::a1::g00255::exact::mnabedc77260f664",
+        "b5-endpoint-pilot-v1::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k32::a1::g00255::exact::mnbbed11fcdbb59c",
+        "b5-endpoint-pilot-v1::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k32::a1::g00255::exact::mn0e36dbf9687bfb"
+      ],
+      "prompt_sha256_order_sha256": "9d9df03833615094b17a0a002e7a0deb85bc712d44fbc8709c6b3363f7044a07",
+      "record_stream_sha256": "fb38ac43f47ac05da6b81d502c858fa9ddc7d3e6cd8f0dfb1806dd8b2fde5585"
+    }
+  ],
+  "cells": [
+    "Qwen/Qwen3-8B::civil_comments",
+    "ibm-granite/granite-3.3-8b-instruct::imdb",
+    "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+    "mistralai/Mistral-7B-Instruct-v0.3::multi_nli"
+  ],
+  "chunk_calls": 512,
+  "contract_version": "b5-structured-output-v1",
+  "expected_counts": {
+    "cells": 4,
+    "exact_context": 65536,
+    "exact_context_per_cell": 16384,
+    "joint": 17408,
+    "joint_per_cell": 4352,
+    "total": 82944,
+    "total_per_cell": 20736
+  },
+  "frames": [
+    {
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "frame_file": "ext-work/20260913-cpu-draft/civil_comments/confirm.jsonl",
+      "frame_file_sha256": "7280ecef90628a7e543a7df9dd518cd6b81eda254738e9e9ac247a89955d320b",
+      "items": 8192,
+      "ordered_doc_ids_sha256": "0384663a83ec28d3ce666e6bee18341b3c70e39643c7645151a909a92cfb6ebf",
+      "sealed_identifier_sha256": "faa263affda23a11065a849a1245cbb046ebff43efceec2f3161b32d990c59f5",
+      "task_id": "civil_comments"
+    },
+    {
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "frame_file": "ext-work/20260913-cpu-draft/imdb/confirm.jsonl",
+      "frame_file_sha256": "ac4afd88bed50bf6cc1966c9e76c5a1a73c16fff470436a3d284502d9c534620",
+      "items": 8192,
+      "ordered_doc_ids_sha256": "f932668ba6008d198044d3d9947ec973f905ce3b477eb0ce21ca94e664751103",
+      "sealed_identifier_sha256": "fc509ed8165745e9a5d3d5c5b7bd85675912386110340bb33d817a8155d0f83d",
+      "task_id": "imdb"
+    },
+    {
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "frame_file": "ext-work/20260913-cpu-draft/civil_comments/confirm.jsonl",
+      "frame_file_sha256": "7280ecef90628a7e543a7df9dd518cd6b81eda254738e9e9ac247a89955d320b",
+      "items": 8192,
+      "ordered_doc_ids_sha256": "0384663a83ec28d3ce666e6bee18341b3c70e39643c7645151a909a92cfb6ebf",
+      "sealed_identifier_sha256": "faa263affda23a11065a849a1245cbb046ebff43efceec2f3161b32d990c59f5",
+      "task_id": "civil_comments"
+    },
+    {
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "frame_file": "ext-work/20260913-cpu-draft/multi_nli/confirm.jsonl",
+      "frame_file_sha256": "54b7a871c799214b76518773a73cbaea6428ef1bc71a6d074ae022f94db5be66",
+      "items": 8192,
+      "ordered_doc_ids_sha256": "55650209e7b05f41f0dda17b40de6aeaa16fcd5f2be3e3ef79a06c6c74755806",
+      "sealed_identifier_sha256": "b1bfc3d457dd85a0d2d131707e67b32b9aff5811251beebe6192869738facf77",
+      "task_id": "multi_nli"
+    }
+  ],
+  "items_per_cell": 8192,
+  "nesting": [
+    {
+      "assignments": 1,
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "nested_pairs_checked": 256,
+      "rule": "one canonical permutation; every size-32 group is the union of 16 adjacent size-2 groups",
+      "sizes": [
+        2,
+        32
+      ]
+    },
+    {
+      "assignments": 1,
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "nested_pairs_checked": 256,
+      "rule": "one canonical permutation; every size-32 group is the union of 16 adjacent size-2 groups",
+      "sizes": [
+        2,
+        32
+      ]
+    },
+    {
+      "assignments": 1,
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "nested_pairs_checked": 256,
+      "rule": "one canonical permutation; every size-32 group is the union of 16 adjacent size-2 groups",
+      "sizes": [
+        2,
+        32
+      ]
+    },
+    {
+      "assignments": 1,
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "nested_pairs_checked": 256,
+      "rule": "one canonical permutation; every size-32 group is the union of 16 adjacent size-2 groups",
+      "sizes": [
+        2,
+        32
+      ]
+    }
+  ],
+  "observed_counts": {
+    "exact_context": 65536,
+    "joint": 17408,
+    "total": 82944
+  },
+  "parser_rule_sha256": "719901a3fc78cfc1f0c5c72e2c5896e84bbe2efeda499fcc1bf5b53320594006",
+  "prompt_rule_sha256": "3b5b5bdbb168bf07b9da437e401e807e2061861404b8c24545959c6fbcabb5b5",
+  "schedule_rule_sha256": "0b63c57281b5c0b3c95151170048907477a5200f91c8c4c36d972cdbe0986439",
+  "schedule_sha256": "3efe37e5afa3760dd71183268950b6d6d19fb7f18f3e123abb37c745a6628cc6",
+  "schema_version": "b5-endpoint-pilot-v1",
+  "sizes": [
+    2,
+    32
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "full_repository_tests_passed": 663,
+  "gpu_work_launched": false,
+  "ruff_new_live_files": "passed",
+  "schema_version": "b5-endpoint-pilot-cpu-tests-v1",
+  "strict_mypy_new_live_files": "passed",
+  "targeted_b5_and_pilot_tests_passed": 120
+}
