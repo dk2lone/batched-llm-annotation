@@ -1,7 +1,7 @@
-# B5 batch-size dose-response: prepared, sealed, not launched
+# B5 batch-size dose-response: calibrated, full run not launched
 
-**No GPU work ran. No Pod was created. No model was called. No Runpod write operation was
-made.** This document describes work that is ready to launch later.
+The 1,080-call GPU calibration smoke completed on 2026-09-18. The 586,752-call experiment has
+not launched. No Pod remains running.
 
 ## 1. What is ready
 
@@ -61,14 +61,16 @@ reproduces all four measured lanes within 0.73 percent. No unexplained multiplie
 | Ceiling, metered A100 hours | **35.00** |
 | Wall time on one A100 PCIe 80GB | equal to metered hours |
 | Smoke budget | 2.00 h / **$5.18 including reserve** |
-| Full-run required balance | **set after the paid smoke calibration** |
+| Calibrated full-run projection | **27.49 metered A100 hours** |
+| Full-run required balance | **$45.71 including $2 reserve** |
 
 Per cell, at the point estimate: Qwen 3.71 h, Granite 7.24 h, Llama 3.66 h, Mistral 3.48 h.
 Each cell includes a 0.25 h boot allowance and a 2 percent retry allowance.
 
-The recorded Runpod balance is `$8.9472095511`, which covers the guarded smoke budget. The
-full-run top-up cannot be stated until the smoke measures actual cache reuse and throughput.
-The launcher refuses a full preflight without the resulting calibration file.
+The completed smoke used 0.4194 metered A100 hours. All 20 blocks observed prefix reuse, the
+overall cache-hit fraction was 83.41%, and measured generation was 1.5504 times the fitted
+forecast. The live balance after teardown is `$7.9940765883`, so the funding gap is `$37.72`.
+The launcher requires `extension-b5/smoke-01/SMOKE_CALIBRATION.json` for the full run.
 
 The point estimate sits inside the 35-hour ceiling. The no-reuse upper bound does not, so the
 run carries a live meter and a per-block projection gate. If measured throughput projects past
@@ -81,17 +83,9 @@ estimate is recalculated from the locked B4 runtime evidence and the generated B
 
 Run every command from `/Users/dz/bigdata/study-120h`.
 
-### Step 1 — paid calibration smoke. Creates four sequential Pods and stops within 2 hours.
+### Step 1 — complete. The calibration smoke passed.
 
-```
-.venv/bin/python run_b5.py --launch --smoke --output extension-b5/smoke-01 --confirm f764f75d002f
-```
-
-Success: `extension-b5/smoke-01/SMOKE_CALIBRATION.json` has `"passed": true`, cache reuse in
-all 20 blocks, and a full-run projection at or below 35 hours. Failure leaves the receipts
-durable and keeps the full launch locked.
-
-### Step 2 — reload credit to the calibrated requirement, then run read-only preflight.
+### Step 2 — reload at least $37.72, then run read-only preflight.
 
 ```
 .venv/bin/python run_b5.py --preflight --output extension-b5/run-01 \
@@ -133,8 +127,8 @@ Resume reconciles the durable receipts first, then dispatches only the outstandi
   --output extension-b5/run-01/analysis
 ```
 
-The smoke selection reads the same generator as the full schedule and runs 1,080 calls. It
-differs only in which chunks it selects. **This task did not run it.**
+The smoke selection read the same generator as the full schedule and completed 1,080 calls.
+It differed only in which chunks it selected.
 
 ## 5. Success and failure indicators
 

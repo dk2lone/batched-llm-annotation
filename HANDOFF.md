@@ -9,7 +9,7 @@ Project: dependence in batched LLM text annotation. Repository:
 
 The four-cell B4 execution and the post-execution B3/B4 output recovery are complete. No
 runner or Runpod Pod remains. Runpod now bills only `$0.031/hour` for retained storage; the
-verified balance is `$8.9472095511` against the unchanged `$80` spending limit.
+verified balance is `$7.9940765883` against the unchanged `$80` spending limit.
 
 The original B4 run finished all 83,200 planned calls at `2026-09-18T00:46:32Z`. Its final
 records contained 1,095 unresolved outputs: 1,091 malformed and four exhausted truncations.
@@ -40,10 +40,9 @@ experiment for the current paper if repaired C2 is presented as sensitivity evid
 uniform-contract Granite/IMDb rerun is conditional on needing a clean C2 claim; it is not
 authorized or running.
 
-The B5 batch-size dose-response experiment is prepared, sealed, and **not launched**. No Pod
-was created, no model was called, and no Runpod write operation was made. Its full launch is
-now locked behind a paid 20-block calibration smoke, which must prove effective prefix reuse,
-project no more than 35 metered hours, and set the actual credit requirement.
+The B5 batch-size dose-response experiment is prepared and sealed. Its 1,080-call calibration
+smoke passed and every Pod was deleted. The 586,752-call full experiment has not launched. It
+now waits only for the calibrated credit requirement and read-only preflight.
 
 ## Repaired B3 recurrence sensitivity
 
@@ -199,7 +198,7 @@ cannot turn the repaired C2 result into a clean confirmation. A single clean Gra
 would address the largest repair objection but would not create a fully clean two-cell C2
 confirmation. At least two uniformly generated cells are needed for that.
 
-## B5 batch-size dose-response (prepared, not launched)
+## B5 batch-size dose-response (calibrated, full run not launched)
 
 Artifacts:
 
@@ -232,12 +231,14 @@ cluster bootstrap over size-32 super-groups inside cell and assignment. Practica
 floor of 1.25 at size 16. The raw 0.002 covariance floor is not transferred. All six outcome
 readings are frozen; success is not defined as a positive slope.
 
-Budget: the planning point is **18.09 metered A100 hours**, the no-prefix-reuse upper bound is
-70.21, and the ceiling is **35.00**. The point depends on prompt-prefix reuse. B5 now explicitly
-enables and verifies vLLM prefix caching, stores cache-token counters, and times every block.
-The smoke budget is 2.00 hours or **$5.18 including reserve**, which the last recorded balance
-of `$8.9472095511` covers. The full required balance is intentionally unset until smoke data
-calibrates the projection.
+The 1,080-call calibration smoke completed. All 20 cell-size blocks passed, all 1,080 outputs
+have `status=ok` and `parse_status=ok`, prefix reuse appeared in every block, and the overall
+cache-hit fraction was 0.8341. It used 0.4194 metered A100 hours. The self-hashed calibration
+projects **27.4904 metered A100 hours** for the full run, below the 35-hour ceiling.
+
+The calibrated balance requirement is **$45.71**, including the $2 reserve. Live balance after
+teardown is `$7.9940765883`, so the funding gap is **$37.72**. All four smoke Pods have verified
+termination, no Pod is running, and account burn is back to `$0.031/hour` storage only.
 
 Verification: 126 targeted tests and 659 total tests pass; Ruff reports 23 errors, all inside
 sealed source snapshots; strict mypy reports 8 errors, all pre-existing and none in a B5 file;
@@ -248,8 +249,8 @@ created no Pod.
 Seal manifest SHA-256 `f764f75d002f97baf57e8e9bee71e33cf8a89e6d8c05ca14ae3040ec7b8717b3`.
 Confirmation token `f764f75d002f`.
 
-Remaining sequence: run the paid smoke after Daniel reloads credit or explicitly starts the
-GPU phase, inspect its calibration, reload to the resulting full-run requirement, then launch.
+Remaining sequence: reload at least $37.72, run the read-only calibrated preflight, then launch
+and monitor the full experiment.
 
 ## Recovery contract
 
@@ -283,18 +284,10 @@ delete, add wholesale, or overwrite them.
 
 ## Next action
 
-Wait for Daniel's credit reload and authorization to begin paid work. Then run the calibration
-smoke first:
+Wait for Daniel to reload at least `$37.72`. Then run the read-only full preflight:
 
 ```
 cd /Users/dz/bigdata/study-120h
-.venv/bin/python run_b5.py --launch --smoke --output extension-b5/smoke-01 --confirm f764f75d002f
-```
-
-If `SMOKE_CALIBRATION.json` passes, its projection determines the balance to load. Run the
-read-only full preflight after the balance is ready:
-
-```
 .venv/bin/python run_b5.py --preflight --output extension-b5/run-01 \
   --calibration extension-b5/smoke-01/SMOKE_CALIBRATION.json --confirm f764f75d002f
 ```
