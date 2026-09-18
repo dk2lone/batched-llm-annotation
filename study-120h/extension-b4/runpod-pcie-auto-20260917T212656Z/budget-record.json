@@ -1,0 +1,36 @@
+{
+  "a100_concurrency_limit": 1,
+  "a100_usd_per_hour": 1.59,
+  "base_forecast_hours": {
+    "Qwen/Qwen3-8B::civil_comments|evaluation": 2.1781424416742206,
+    "Qwen/Qwen3-8B::civil_comments|reference": 1.361339026046388,
+    "ibm-granite/granite-3.3-8b-instruct::imdb|evaluation": 2.7896963402091957,
+    "ibm-granite/granite-3.3-8b-instruct::imdb|reference": 1.7435602126307475,
+    "meta-llama/Llama-3.1-8B-Instruct::civil_comments|evaluation": 1.978430396102013,
+    "meta-llama/Llama-3.1-8B-Instruct::civil_comments|reference": 1.236518997563758,
+    "mistralai/Mistral-7B-Instruct-v0.3::multi_nli|evaluation": 2.284500052783801,
+    "mistralai/Mistral-7B-Instruct-v0.3::multi_nli|reference": 1.4278125329898754
+  },
+  "evidence_file_sha256": "325809e785c648863891becc504d63321e3773a590ee9f206f5438f4b45edff3",
+  "exclusive_gpu_work": true,
+  "plan_sha256": "25520d493f3a9ba8b83d9255cf9118f118f5972006f317b5870c661326c5f6bc",
+  "prior_extension_a100_hours": 16.605456976507703,
+  "profile": "user_3GCQlNiLDruYedpe87pTOrbYANt",
+  "record_sha256": "c42f911870ba9fdff92a16563c4784678bf8a92a48fb4101c0032b73160e4ac4",
+  "runpod_config_sha256": "d27c6aa39f5975445f6a84cb8abea819956117179db95d8d9d3018ee6540194e",
+  "runpod_preflight": {
+    "auto_pay_disabled_verified": true,
+    "balance_verified": true,
+    "evidence_sha256": "2c4d4e309c0032e53c3630393a84461f28957ae251407bf11cb8119839d64a11",
+    "four_single_gpu_capacity_verified": true,
+    "model_caches_verified": true,
+    "runtime_smoke_passed": true,
+    "ssh_verified": true,
+    "watchdog_cpu_test_passed": true
+  },
+  "runpod_storage_reserve_usd": 1.0,
+  "spend_limit_usd": 80.0,
+  "spend_used_usd": 13.3435875409,
+  "verified_at_utc": "2026-09-17T21:27:01.244077+00:00",
+  "workspace_enabled": true
+}

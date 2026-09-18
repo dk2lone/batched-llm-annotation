@@ -1,0 +1,18 @@
+{
+  "provider": "runpod",
+  "cloud_type": "SECURE",
+  "gpu_type_id": "NVIDIA A100 80GB PCIe",
+  "max_concurrent_a100s": 2,
+  "plan_sha256": "51facafd958369f13bc4b8e8bebf4040821d203da6f99afcfe7b4d736601633e",
+  "first_calls": 83200,
+  "gpu_work_launched": false,
+  "output": "/Users/dz/bigdata/study-120h/extension-b4/runpod-pcie-auto-20260916T225821Z"
+}
+Traceback (most recent call last):
+  File "/Users/dz/bigdata/study-120h/prepare_extension_b4_budget.py", line 53, in <module>
+    main()
+  File "/Users/dz/bigdata/study-120h/prepare_extension_b4_budget.py", line 38, in main
+    verify_budget(record, plan, args.profile)
+  File "/Users/dz/bigdata/study-120h/src/freezeb/extension_b4.py", line 355, in verify_budget
+    raise ValueError("verified workspace capacity must permit four concurrent A100s")
+ValueError: verified workspace capacity must permit four concurrent A100s

@@ -1,0 +1,859 @@
+{
+  "batch_size": 16,
+  "calls_per_replicate": 32,
+  "cells": [
+    "ibm-granite/granite-3.3-8b-instruct::imdb",
+    "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+    "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+    "Qwen/Qwen3-8B::civil_comments"
+  ],
+  "cloud_type": "SECURE",
+  "evaluation_prefix": 400,
+  "execution_order": "all_reference_cells_then_equal_family_evaluation_prefixes",
+  "first_calls": 83200,
+  "forecast_multiplier": 1.6,
+  "frame_sha256": {
+    "civil_comments": "7280ecef90628a7e543a7df9dd518cd6b81eda254738e9e9ac247a89955d320b",
+    "imdb": "ac4afd88bed50bf6cc1966c9e76c5a1a73c16fff470436a3d284502d9c534620",
+    "multi_nli": "54b7a871c799214b76518773a73cbaea6428ef1bc71a6d074ae022f94db5be66"
+  },
+  "gpu_type_id": "NVIDIA A100 80GB PCIe",
+  "implementation_sha256": {
+    "../.github/workflows/b4-pod-watchdog.yml": "82e2c193c59f827ed570f1cfbcfb3aaf80225ba4ce7a48a55be34a57cffdabad",
+    "b4_runpod_worker.py": "326a589ba379b9dcb94c65fb015bf817aa780568ec511f5a2ca1d3b5cceccb75",
+    "extension-b4/runpod/Dockerfile": "dff91397b02d711ab59c87919b3db76cb1f8552614947396bc07330497e913f6",
+    "extension_b4_runpod.py": "1889b75f12245c236090d569db445fdec768cadc7fbf79d9ad1790c891be4b87",
+    "extension_b4_transport.py": "3372be5c8fa370f76eaf81fa91cd926fe99a3a0c316676c834024e2ebbc14641",
+    "modal_extension_b4.py": "3a47d3bddc8ed4f3c4858f5405e4778835dcb3753a18fa72cfdeff4df4ebff93",
+    "runpod_extension_b4.py": "1295c7c65c064d5c6d9f02e2680650dea2a5c2c03c57315402e0e2d701b51a1e",
+    "runpod_watchdog.py": "baaa2759ac28a4197dcf4f35cfcaa07a9ddee8c11db99080469cc17c834eaf07",
+    "src/freezeb/batch_invariance.py": "279578280405267218ee2d920be763cceafe8d3e019e9d1d3f7e9bfaa88edb40",
+    "src/freezeb/e2.py": "7940f859e10df324cb4997dd5bdc3835f6ec30801ede08fbb2109e2938383843",
+    "src/freezeb/extension.py": "3016fc6a2d950cbd5187e11611899eb0dfa18a29e45d0f90e919f57013f63a42",
+    "src/freezeb/extension_b4.py": "d4aa8dfa37e034c76ff1b7bb546d503e3dc72e94ca4ace70793f562e45a3353a",
+    "src/freezeb/labels.py": "719901a3fc78cfc1f0c5c72e2c5896e84bbe2efeda499fcc1bf5b53320594006",
+    "src/freezeb/prompts.py": "3b5b5bdbb168bf07b9da437e401e807e2061861404b8c24545959c6fbcabb5b5",
+    "src/freezeb/runtime_benchmark.py": "eaebf821e65f9873a5a53da2bb8d301b317a5495b60bb1d96d60b05b28a4c025",
+    "src/step0/stats.py": "da6306c0d204fb96f15ce15b7508d3d8c30b140159fa91a38595bf9c756aadbe",
+    "src/step1/backends.py": "f71eb36ac2a9b364e794b3855334a1729f05d919e14e58b44801cfe79965e327"
+  },
+  "max_concurrent_a100s": 1,
+  "max_retries": 1,
+  "parallelism": "one_single_gpu_lane_per_cell_with_round_barriers",
+  "plan_sha256": "25520d493f3a9ba8b83d9255cf9118f118f5972006f317b5870c661326c5f6bc",
+  "provider": "runpod",
+  "reference_replicates": 250,
+  "reserve_a100_hours": 10,
+  "schedules": {
+    "Qwen/Qwen3-8B::civil_comments": {
+      "appearances_per_replicate": 512,
+      "batch_size": 16,
+      "call_id_prefix": "extx1::b4::",
+      "calls_per_replicate": 32,
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "evaluation": {
+        "call_id_order_sha256": "c76846a821e65c31465fbb400867f77fc59dc6bb6fc93661eb55ec397e39cd1d",
+        "doc_order_sha256_order_sha256": "bde548731ac7d4735156af6d5c1c2b1c9a291ba330166d817f4da6742e297377",
+        "first_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r0:b0",
+            "call_index": 0,
+            "cell_key": "Qwen/Qwen3-8B::civil_comments",
+            "doc_order_sha256": "5caaeab5dc83f1c57f77f2100a0bf352d119311291c0c0213494008061bf20cb",
+            "position": 1,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r0:b1",
+            "call_index": 1,
+            "cell_key": "Qwen/Qwen3-8B::civil_comments",
+            "doc_order_sha256": "37d5da9feac0676113369ba1bc258105ae2c6975369c387f16148f5b5bf3927a",
+            "position": 2,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r0:b2",
+            "call_index": 2,
+            "cell_key": "Qwen/Qwen3-8B::civil_comments",
+            "doc_order_sha256": "2affa1b8ad52349c306296c6ce6525f99dcc40be97bdd0deeb184048ed768c00",
+            "position": 3,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          }
+        ],
+        "last_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r2499:b29",
+            "call_index": 29,
+            "cell_key": "Qwen/Qwen3-8B::civil_comments",
+            "doc_order_sha256": "c5c76d4b0e2026efc06c837e11369f9082337788cf9d92e4c6c7554a53577b85",
+            "position": 79998,
+            "replicate": 2499,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r2499:b30",
+            "call_index": 30,
+            "cell_key": "Qwen/Qwen3-8B::civil_comments",
+            "doc_order_sha256": "2e3a547161ca998bf8a89b09d0b82ed6a86df1cbbd23d7ac1182e5c3e9f5a12f",
+            "position": 79999,
+            "replicate": 2499,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r2499:b31",
+            "call_index": 31,
+            "cell_key": "Qwen/Qwen3-8B::civil_comments",
+            "doc_order_sha256": "9092321e419b7ffd7ada5c1184932dfe57f5b6aada89a6b81b3118754085e4e6",
+            "position": 80000,
+            "replicate": 2499,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          }
+        ],
+        "max_replicates": 2500,
+        "n_calls": 80000,
+        "prefixes": {
+          "1000": {
+            "call_id_order_sha256": "eb6faba1076d672649386e1be542728bb6d06750b358e1d287ee20482f8f9c99",
+            "doc_order_sha256_order_sha256": "9e8f157d87af0a010b54ed80d3fa92674c3bcb7a916eda0c735c44bc64524210",
+            "first_call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r999:b31",
+            "n_calls": 32000,
+            "replicates": 1000
+          },
+          "2500": {
+            "call_id_order_sha256": "c76846a821e65c31465fbb400867f77fc59dc6bb6fc93661eb55ec397e39cd1d",
+            "doc_order_sha256_order_sha256": "bde548731ac7d4735156af6d5c1c2b1c9a291ba330166d817f4da6742e297377",
+            "first_call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r2499:b31",
+            "n_calls": 80000,
+            "replicates": 2500
+          },
+          "400": {
+            "call_id_order_sha256": "b95e97f122f0ceeb92f32eb53bafe6954ca49d347b38d4571ab0aaf2d1def955",
+            "doc_order_sha256_order_sha256": "267a98f92489d92d9c71bc24fd7d43b28c628d36bacaaf03eac76d2b40c386be",
+            "first_call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:evaluation:r399:b31",
+            "n_calls": 12800,
+            "replicates": 400
+          }
+        },
+        "prefixes_are_nested": true
+      },
+      "model_id": "Qwen/Qwen3-8B",
+      "reference": {
+        "call_id_order_sha256": "51427c9edaf24b1f0552cdeee3efc0888a034134aa8293d2487b1842abe970e9",
+        "first_call_ids": [
+          "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:reference:r0:b0",
+          "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:reference:r0:b1",
+          "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:reference:r0:b2"
+        ],
+        "first_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:reference:r0:b0",
+            "call_index": 0,
+            "cell_key": "Qwen/Qwen3-8B::civil_comments",
+            "doc_order_sha256": "2ecbb533640c12c4deab093bfe77767874ed7cead8edceae2bc16b9e2d285773",
+            "position": 1,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:reference:r0:b1",
+            "call_index": 1,
+            "cell_key": "Qwen/Qwen3-8B::civil_comments",
+            "doc_order_sha256": "f3d409525a6097dfe2496506762cbd09423048ecddf8a4df9267eb1663142e80",
+            "position": 2,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:reference:r0:b2",
+            "call_index": 2,
+            "cell_key": "Qwen/Qwen3-8B::civil_comments",
+            "doc_order_sha256": "e7971aebc95097c7648fe005eceabec966b04cb4b55a3e996720a75c5edf9e44",
+            "position": 3,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          }
+        ],
+        "last_call_ids": [
+          "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:reference:r249:b29",
+          "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:reference:r249:b30",
+          "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:reference:r249:b31"
+        ],
+        "last_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:reference:r249:b29",
+            "call_index": 29,
+            "cell_key": "Qwen/Qwen3-8B::civil_comments",
+            "doc_order_sha256": "09338fb6611316f5d3194bef4651b99642dde52dd9f1f632d168ed6907ff5759",
+            "position": 7998,
+            "replicate": 249,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:reference:r249:b30",
+            "call_index": 30,
+            "cell_key": "Qwen/Qwen3-8B::civil_comments",
+            "doc_order_sha256": "25b5a19d82793e65c169f86eff16ef4fee0ca245e4c9130a900e2ed8836b8e2c",
+            "position": 7999,
+            "replicate": 249,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::Qwen/Qwen3-8B::civil_comments:e5:reference:r249:b31",
+            "call_index": 31,
+            "cell_key": "Qwen/Qwen3-8B::civil_comments",
+            "doc_order_sha256": "4570073c15b1bedce7c410789dbb1f6690fb77704e4a20245a6befc2350b16de",
+            "position": 8000,
+            "replicate": 249,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          }
+        ],
+        "n_calls": 8000,
+        "record_stream_sha256": "db9737e01a72155e2635ae7e820d06e5e863deb80d16870f98013c8b0140e13b",
+        "replicates": 250
+      },
+      "repeated_namespace": "bigdata2026-ext-e5-v1",
+      "task_id": "civil_comments"
+    },
+    "ibm-granite/granite-3.3-8b-instruct::imdb": {
+      "appearances_per_replicate": 512,
+      "batch_size": 16,
+      "call_id_prefix": "extx1::b4::",
+      "calls_per_replicate": 32,
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "evaluation": {
+        "call_id_order_sha256": "1cc51c46a2b85488a853ece5c2f2e392498e367e843ace9eb8c29af83c5ab4da",
+        "doc_order_sha256_order_sha256": "04766902150e1ae2512ce6dff8ead7e18b862fa451687ed795a43f9ae90ebf97",
+        "first_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r0:b0",
+            "call_index": 0,
+            "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+            "doc_order_sha256": "58d4b20b3652039bc48749f8d87f52f1f8af9f2adbda63012032d0cb54b12897",
+            "position": 1,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r0:b1",
+            "call_index": 1,
+            "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+            "doc_order_sha256": "b659302f13ae45434c3b0540917957f5dfc55ddbc97b5de2f93dd3424fd983e0",
+            "position": 2,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r0:b2",
+            "call_index": 2,
+            "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+            "doc_order_sha256": "645d5cf059b169ad06e098f95d3ebda2c3d05cf70254eea43241cdf69e386cd0",
+            "position": 3,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          }
+        ],
+        "last_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r2499:b29",
+            "call_index": 29,
+            "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+            "doc_order_sha256": "aae2f84ce592223f6189b7e97daaebbaa9432df2d75b532ccac65832a337d661",
+            "position": 79998,
+            "replicate": 2499,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r2499:b30",
+            "call_index": 30,
+            "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+            "doc_order_sha256": "4ead42b4752a296d534ea775fe1ecb6b76050cce1ee888b80da49eabdae7bb79",
+            "position": 79999,
+            "replicate": 2499,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r2499:b31",
+            "call_index": 31,
+            "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+            "doc_order_sha256": "b7a2269da2ab181431bb20931717d9f5f281e725a03c53a1e7e5a75b2f9b881b",
+            "position": 80000,
+            "replicate": 2499,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          }
+        ],
+        "max_replicates": 2500,
+        "n_calls": 80000,
+        "prefixes": {
+          "1000": {
+            "call_id_order_sha256": "e7675b8c8d93b9b5e6ec3b45dde636ce8b6d52a3d8bd37f7e5c691fbba19f315",
+            "doc_order_sha256_order_sha256": "e1e043899e09a1b77a454ec06974f281ed8aa393f662fd070ba1a148a155365a",
+            "first_call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r999:b31",
+            "n_calls": 32000,
+            "replicates": 1000
+          },
+          "2500": {
+            "call_id_order_sha256": "1cc51c46a2b85488a853ece5c2f2e392498e367e843ace9eb8c29af83c5ab4da",
+            "doc_order_sha256_order_sha256": "04766902150e1ae2512ce6dff8ead7e18b862fa451687ed795a43f9ae90ebf97",
+            "first_call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r2499:b31",
+            "n_calls": 80000,
+            "replicates": 2500
+          },
+          "400": {
+            "call_id_order_sha256": "6ea2a5ffe2baf28c186c012c274b044ab5417ea67594624231d23133e1a54e93",
+            "doc_order_sha256_order_sha256": "c8cfc8d86b204585b6f219c952688bb1cf2815a3599fbc5d2e969832a04ed155",
+            "first_call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:evaluation:r399:b31",
+            "n_calls": 12800,
+            "replicates": 400
+          }
+        },
+        "prefixes_are_nested": true
+      },
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "reference": {
+        "call_id_order_sha256": "85a95ca8d49a2e14aaf40af646673c95be91b7508ab279ce457e330ff7425d97",
+        "first_call_ids": [
+          "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:reference:r0:b0",
+          "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:reference:r0:b1",
+          "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:reference:r0:b2"
+        ],
+        "first_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:reference:r0:b0",
+            "call_index": 0,
+            "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+            "doc_order_sha256": "8f3218d5c86381ea0ef1652d486f1ba93ca67126d66ee19289c320ed56d3575b",
+            "position": 1,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:reference:r0:b1",
+            "call_index": 1,
+            "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+            "doc_order_sha256": "0838586c7352e9b5a910f5a5149cccd55132cdcb4066bf3f2b3557d891252827",
+            "position": 2,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:reference:r0:b2",
+            "call_index": 2,
+            "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+            "doc_order_sha256": "2d2cfb77d7019a348251cf4a58b1b49b791ae2f04e8d96abfecdb724e16118d2",
+            "position": 3,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          }
+        ],
+        "last_call_ids": [
+          "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:reference:r249:b29",
+          "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:reference:r249:b30",
+          "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:reference:r249:b31"
+        ],
+        "last_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:reference:r249:b29",
+            "call_index": 29,
+            "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+            "doc_order_sha256": "f244d0dc24dd7a4aa7dcbffaf658ab0d2c000f3140b31b839a9a280eb047473c",
+            "position": 7998,
+            "replicate": 249,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:reference:r249:b30",
+            "call_index": 30,
+            "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+            "doc_order_sha256": "d59a05b242037929023eb04805a273f2bf502560bb7a53aa9924821ccfc6bc02",
+            "position": 7999,
+            "replicate": 249,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::ibm-granite/granite-3.3-8b-instruct::imdb:e5:reference:r249:b31",
+            "call_index": 31,
+            "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+            "doc_order_sha256": "698a3300b8faa7b33ceeba6570de1f8de216d20fdc151d7cc05f070034dae87b",
+            "position": 8000,
+            "replicate": 249,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          }
+        ],
+        "n_calls": 8000,
+        "record_stream_sha256": "1b6ae2af239335ec7367119fef9936891b990ba6cfb99292eb3d9f68705563cf",
+        "replicates": 250
+      },
+      "repeated_namespace": "bigdata2026-ext-e5-v1",
+      "task_id": "imdb"
+    },
+    "meta-llama/Llama-3.1-8B-Instruct::civil_comments": {
+      "appearances_per_replicate": 512,
+      "batch_size": 16,
+      "call_id_prefix": "extx1::b4::",
+      "calls_per_replicate": 32,
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "evaluation": {
+        "call_id_order_sha256": "856dffbe036a2019d2b0e8bdd6d5c10d19e9d08a818c5060fa6c328362ac95a8",
+        "doc_order_sha256_order_sha256": "aadc26730abee2c89101322325334bc7fa4fd58bb16c3b489b20b3c617bf682b",
+        "first_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r0:b0",
+            "call_index": 0,
+            "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+            "doc_order_sha256": "f99e75e65525c0cfb48dee794c65a3c525bfab7b52649026ca859f4523f64903",
+            "position": 1,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r0:b1",
+            "call_index": 1,
+            "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+            "doc_order_sha256": "6beb44ac77b5882059b8d6cc120a3b90f9c948f3f9764644d38814ece1ddf50b",
+            "position": 2,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r0:b2",
+            "call_index": 2,
+            "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+            "doc_order_sha256": "ed313282fbc8359044479c71fa97d68c6867e657d3b09b5bda5c1d662bf59a2f",
+            "position": 3,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          }
+        ],
+        "last_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r2499:b29",
+            "call_index": 29,
+            "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+            "doc_order_sha256": "70cf89ed7d4f0144128f2e9ca500964e36e06f51f65b82452eb7d9fb3a2d7940",
+            "position": 79998,
+            "replicate": 2499,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r2499:b30",
+            "call_index": 30,
+            "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+            "doc_order_sha256": "a300733f64a89eea2ca3782fe40dd2e0f9502015b8ba1ae2109e0f5245daa192",
+            "position": 79999,
+            "replicate": 2499,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r2499:b31",
+            "call_index": 31,
+            "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+            "doc_order_sha256": "e719a289ed3030faef66361a8dc350cdc84b70139a91a79798d3f0d4bf487e42",
+            "position": 80000,
+            "replicate": 2499,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          }
+        ],
+        "max_replicates": 2500,
+        "n_calls": 80000,
+        "prefixes": {
+          "1000": {
+            "call_id_order_sha256": "b0c057dd8b027a9df264f56158047aaa0f2d79ced227ecda97c6516ccdd52495",
+            "doc_order_sha256_order_sha256": "4fb0a9fc47aa0223ab5e03e315303fa168c96b86d2dcb34b0d47aab80a7532e4",
+            "first_call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r999:b31",
+            "n_calls": 32000,
+            "replicates": 1000
+          },
+          "2500": {
+            "call_id_order_sha256": "856dffbe036a2019d2b0e8bdd6d5c10d19e9d08a818c5060fa6c328362ac95a8",
+            "doc_order_sha256_order_sha256": "aadc26730abee2c89101322325334bc7fa4fd58bb16c3b489b20b3c617bf682b",
+            "first_call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r2499:b31",
+            "n_calls": 80000,
+            "replicates": 2500
+          },
+          "400": {
+            "call_id_order_sha256": "eef1f63a78f8b2193f9ea882f1b6ea68837599a6e75ba2d953bb68c1d2dab811",
+            "doc_order_sha256_order_sha256": "269d0b04e1db7eebf1baafc7a822707d32cc6954c09ab0e68a9d92194aabd990",
+            "first_call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:evaluation:r399:b31",
+            "n_calls": 12800,
+            "replicates": 400
+          }
+        },
+        "prefixes_are_nested": true
+      },
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "reference": {
+        "call_id_order_sha256": "72ba10e594a6da7d570d6888969fe31f6be297f68ad2b6981b6d9cdf0f3d6ab3",
+        "first_call_ids": [
+          "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:reference:r0:b0",
+          "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:reference:r0:b1",
+          "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:reference:r0:b2"
+        ],
+        "first_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:reference:r0:b0",
+            "call_index": 0,
+            "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+            "doc_order_sha256": "6cfa67c9fd47369fb3d69fb4abae893fa265e6d99cb625a816675db36b98f1b1",
+            "position": 1,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:reference:r0:b1",
+            "call_index": 1,
+            "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+            "doc_order_sha256": "6c17f4f4868049ff3037a0d077710c9342f1f244607f4b715766666ab0be2a14",
+            "position": 2,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:reference:r0:b2",
+            "call_index": 2,
+            "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+            "doc_order_sha256": "269a6c0b99ab50967614e0e6918bd56724942cb357accbe4b16c657ff51b3b83",
+            "position": 3,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          }
+        ],
+        "last_call_ids": [
+          "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:reference:r249:b29",
+          "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:reference:r249:b30",
+          "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:reference:r249:b31"
+        ],
+        "last_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:reference:r249:b29",
+            "call_index": 29,
+            "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+            "doc_order_sha256": "533acb68e7a46c9b0111ab0c4e8d5aa82a0b1f1f193d4a7f5bcf44d47b66b076",
+            "position": 7998,
+            "replicate": 249,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:reference:r249:b30",
+            "call_index": 30,
+            "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+            "doc_order_sha256": "7ba37dfe8274ff45c151a7e220c7e6346bd3f613ba06addb3d0e0fcf06f84fff",
+            "position": 7999,
+            "replicate": 249,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::meta-llama/Llama-3.1-8B-Instruct::civil_comments:e5:reference:r249:b31",
+            "call_index": 31,
+            "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+            "doc_order_sha256": "db3f80d9b9daa8a07c2598a29ed3102c29acd535c12ee4af8fc2600bc7b5f022",
+            "position": 8000,
+            "replicate": 249,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          }
+        ],
+        "n_calls": 8000,
+        "record_stream_sha256": "6289932d1f1bb679b9d12f550e22610f0550fd9138ffa5b4cbb11d409790112a",
+        "replicates": 250
+      },
+      "repeated_namespace": "bigdata2026-ext-e5-v1",
+      "task_id": "civil_comments"
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": {
+      "appearances_per_replicate": 512,
+      "batch_size": 16,
+      "call_id_prefix": "extx1::b4::",
+      "calls_per_replicate": 32,
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "evaluation": {
+        "call_id_order_sha256": "6210b5e676bba29b086455a2efa1bbda9a3812c5281d1623e8ad0fc82b4e21a3",
+        "doc_order_sha256_order_sha256": "c01ffe3f375f0210958a8d15a839a80a894c0bae3f20c4f9752f0f8791b64ebc",
+        "first_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r0:b0",
+            "call_index": 0,
+            "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+            "doc_order_sha256": "3bd7e265a012fdea08586061ddea4deab8b594811f1e2b0c6287ebe4f5092fa8",
+            "position": 1,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r0:b1",
+            "call_index": 1,
+            "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+            "doc_order_sha256": "d29a8b0b6a748cd2023f8579fdaf2eec919945afee6a39613ab8460f47eb2266",
+            "position": 2,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r0:b2",
+            "call_index": 2,
+            "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+            "doc_order_sha256": "25101278a88a306f8b50b648934ec06c299a0d95d0819422837b9324baae61b9",
+            "position": 3,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          }
+        ],
+        "last_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r2499:b29",
+            "call_index": 29,
+            "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+            "doc_order_sha256": "aeaf9c52d4d3cc9f79da62a39c436e5974b5dae63adce4b2eb41f5de28eba5c1",
+            "position": 79998,
+            "replicate": 2499,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r2499:b30",
+            "call_index": 30,
+            "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+            "doc_order_sha256": "e6f3bb589a8b7cea50f0b34bfaf7003e401b523689c190ad474a1b07fe983e6b",
+            "position": 79999,
+            "replicate": 2499,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r2499:b31",
+            "call_index": 31,
+            "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+            "doc_order_sha256": "d666d08b052c798bf97b5fb6662593d18149b733a9e7be230de152de2752a54a",
+            "position": 80000,
+            "replicate": 2499,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "evaluation"
+          }
+        ],
+        "max_replicates": 2500,
+        "n_calls": 80000,
+        "prefixes": {
+          "1000": {
+            "call_id_order_sha256": "50b1bec5aba42a69f3d2a7cd278bbdde9729857eafedf541988b36a25da8ef09",
+            "doc_order_sha256_order_sha256": "ad4478b2bf4b601067a9464c9752446c87e16545e1f7c7a682b922a397d14aac",
+            "first_call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r999:b31",
+            "n_calls": 32000,
+            "replicates": 1000
+          },
+          "2500": {
+            "call_id_order_sha256": "6210b5e676bba29b086455a2efa1bbda9a3812c5281d1623e8ad0fc82b4e21a3",
+            "doc_order_sha256_order_sha256": "c01ffe3f375f0210958a8d15a839a80a894c0bae3f20c4f9752f0f8791b64ebc",
+            "first_call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r2499:b31",
+            "n_calls": 80000,
+            "replicates": 2500
+          },
+          "400": {
+            "call_id_order_sha256": "42a630303e38642edf25708b674cc6b19cc2a30c43a5ed8b95cb04924d55ab66",
+            "doc_order_sha256_order_sha256": "024fa80381b3c8126d020589fca420bc2304672095e28027d5ac3dd84acefc32",
+            "first_call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r0:b0",
+            "last_call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:evaluation:r399:b31",
+            "n_calls": 12800,
+            "replicates": 400
+          }
+        },
+        "prefixes_are_nested": true
+      },
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "reference": {
+        "call_id_order_sha256": "d9ea8219bddaaadd563f06940330d6bcb9073e004f78034f3b3fc14f965d38ef",
+        "first_call_ids": [
+          "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:reference:r0:b0",
+          "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:reference:r0:b1",
+          "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:reference:r0:b2"
+        ],
+        "first_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:reference:r0:b0",
+            "call_index": 0,
+            "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+            "doc_order_sha256": "0c63b31eb4684af4bcd7613b1e02e8a4e889986e57c1dad1bf87906f0b00682e",
+            "position": 1,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:reference:r0:b1",
+            "call_index": 1,
+            "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+            "doc_order_sha256": "fcd32630334ec116315fcbd19d32134811705c82552fd980c2ba5a320ad462d5",
+            "position": 2,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:reference:r0:b2",
+            "call_index": 2,
+            "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+            "doc_order_sha256": "9502ffe58936fe12d7681f3633248ac01899cd2356024b2777a5f88c94a21442",
+            "position": 3,
+            "replicate": 0,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          }
+        ],
+        "last_call_ids": [
+          "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:reference:r249:b29",
+          "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:reference:r249:b30",
+          "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:reference:r249:b31"
+        ],
+        "last_records": [
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:reference:r249:b29",
+            "call_index": 29,
+            "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+            "doc_order_sha256": "24bcf8e226a24f6b2f82be64d88f62558d551c63c456874806a75702a1ee3972",
+            "position": 7998,
+            "replicate": 249,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:reference:r249:b30",
+            "call_index": 30,
+            "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+            "doc_order_sha256": "a83c8daba4639a14f3dd4286a0c85df2196fe8002d9e987266d8f158e83a3719",
+            "position": 7999,
+            "replicate": 249,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          },
+          {
+            "batch_size": 16,
+            "call_id": "extx1::b4::mistralai/Mistral-7B-Instruct-v0.3::multi_nli:e5:reference:r249:b31",
+            "call_index": 31,
+            "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+            "doc_order_sha256": "80511e2b04cdff1755b91f829e9b58b024b7c2311c90d6eb7ce9da3a6675c603",
+            "position": 8000,
+            "replicate": 249,
+            "schema_version": "ext-x1r2-b4-schedule-v1",
+            "stream": "reference"
+          }
+        ],
+        "n_calls": 8000,
+        "record_stream_sha256": "f160b4a078c3f2a4f79c4d660917a1b89bbe0e4d6343cf8412f11720c845b97f",
+        "replicates": 250
+      },
+      "repeated_namespace": "bigdata2026-ext-e5-v1",
+      "task_id": "multi_nli"
+    }
+  },
+  "schema_version": "ext-x1r4-a11-b4-run-v1",
+  "serving_policy": {
+    "Qwen/Qwen3-8B": "b968826d9c46dd6066d109eabc6255188de91218",
+    "ibm-granite/granite-3.3-8b-instruct": "51dd4bc2ade4059a6bd87649d68aa11e4fb2529b",
+    "meta-llama/Llama-3.1-8B-Instruct": "0e9e39f249a16976918f6564b8830bc894c89659",
+    "mistralai/Mistral-7B-Instruct-v0.3": "c170c708c41dac9275d15a8fff4eca08d52bab71"
+  },
+  "source_sha256": {
+    "admission-lock/20260914T012453Z-X1R4-A7": "30d1002d6e25744f194dbf9a0fe261f1a5fd4cc371f3893318f13259da76e0c1",
+    "freeze/20260913T183353Z-X1R4": "08119533ba717230ea381bb4635c38158bc4119abdd09e007558240210ab0d1d",
+    "runtime-lock/20260913T205646Z-X1R4": "f96a96f6691c575f1004de91dde540e722d1dd42fb4db97d8a5f46886001066a"
+  },
+  "stop_a100_hours": 80,
+  "unresolved_policy": "block_coverage_without_imputation"
+}

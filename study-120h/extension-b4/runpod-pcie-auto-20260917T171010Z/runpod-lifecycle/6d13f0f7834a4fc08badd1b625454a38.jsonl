@@ -1,0 +1,3 @@
+{"at_utc":"2026-09-17T17:17:48.801831+00:00","cell_key":"mistralai/Mistral-7B-Instruct-v0.3::multi_nli","kind":"create_intent","name":"b4-62e41bcf97d64c61-6d13f0f7834a","shutdown_target_utc":"2026-09-17T20:57:56.597927+00:00","stream":"evaluation","watchdog_run_id":35251838889}
+{"at_utc":"2026-09-17T17:18:18.240439+00:00","cell_key":"mistralai/Mistral-7B-Instruct-v0.3::multi_nli","kind":"created","pod_id":"1zmn9vr82e07wz","stream":"evaluation"}
+{"at_utc":"2026-09-17T19:13:16.794365+00:00","cell_key":"mistralai/Mistral-7B-Instruct-v0.3::multi_nli","kind":"termination_verified","pod_id":"1zmn9vr82e07wz","stream":"evaluation"}

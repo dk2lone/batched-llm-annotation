@@ -1,0 +1,9 @@
+{
+  "cache_ready": true,
+  "model": "ibm-granite/granite-3.3-8b-instruct",
+  "removed_stale_incomplete_files": 0,
+  "revision": "51dd4bc2ade4059a6bd87649d68aa11e4fb2529b",
+  "snapshot": "/workspace/hf/models--ibm-granite--granite-3.3-8b-instruct/snapshots/51dd4bc2ade4059a6bd87649d68aa11e4fb2529b",
+  "weight_bytes": 16341771384,
+  "weight_files": 4
+}

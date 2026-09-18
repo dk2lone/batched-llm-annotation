@@ -1,0 +1,4 @@
+{"at_utc": "2026-09-16T22:22:48.451058+00:00", "deadline_utc": "2026-09-17T00:22:48.378079+00:00", "expected_pods": 1, "kind": "armed", "lease_id": "e38dcc848c784632", "pod_name_prefix": "b4-e38dcc848c784632-"}
+{"at_utc": "2026-09-16T22:22:59.266539+00:00", "kind": "pods_observed", "observed_count": 1, "pod_ids": ["m0cxhqj6eonfr0"]}
+{"at_utc": "2026-09-16T22:45:12.376036+00:00", "deadline_utc": "2026-09-17T00:45:12.307224+00:00", "expected_pods": 1, "kind": "armed", "lease_id": "dbdd28342c224cd9", "pod_name_prefix": "b4-dbdd28342c224cd9-"}
+{"at_utc": "2026-09-16T22:45:23.470383+00:00", "kind": "pods_observed", "observed_count": 1, "pod_ids": ["vs919nbivgdwow"]}

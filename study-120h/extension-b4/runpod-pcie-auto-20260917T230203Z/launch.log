@@ -1,0 +1,25 @@
+{
+  "provider": "runpod",
+  "cloud_type": "SECURE",
+  "gpu_type_id": "NVIDIA A100 80GB PCIe",
+  "max_concurrent_a100s": 1,
+  "plan_sha256": "25520d493f3a9ba8b83d9255cf9118f118f5972006f317b5870c661326c5f6bc",
+  "first_calls": 83200,
+  "gpu_work_launched": false,
+  "output": "/Users/dz/bigdata/study-120h/extension-b4/runpod-pcie-auto-20260917T230203Z"
+}
+{
+  "output": "/Users/dz/bigdata/study-120h/extension-b4/runpod-pcie-auto-20260917T230203Z/budget-record.json",
+  "record_sha256": "ec5951d70232e19ea640e1f87c70a53a9f07568fc284ab61ff28c7e597f8cf5a",
+  "gpu_work_launched": false
+}
+{
+  "provider": "runpod",
+  "cloud_type": "SECURE",
+  "gpu_type_id": "NVIDIA A100 80GB PCIe",
+  "max_concurrent_a100s": 1,
+  "plan_sha256": "25520d493f3a9ba8b83d9255cf9118f118f5972006f317b5870c661326c5f6bc",
+  "first_calls": 83200,
+  "gpu_work_launched": true,
+  "output": "/Users/dz/bigdata/study-120h/extension-b4/runpod-pcie-auto-20260917T230203Z"
+}

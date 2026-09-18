@@ -1,0 +1,228 @@
+{
+  "at_utc": "2026-09-18T20:00:45.075244+00:00",
+  "blocks": [
+    {
+      "batch_size": 2,
+      "cache_hit_fraction": 0.3973485880323254,
+      "cached_tokens": 8752,
+      "calls": 63,
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 22026
+    },
+    {
+      "batch_size": 4,
+      "cache_hit_fraction": 0.639962382813648,
+      "cached_tokens": 21776,
+      "calls": 60,
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 34027
+    },
+    {
+      "batch_size": 8,
+      "cache_hit_fraction": 0.770091331416111,
+      "cached_tokens": 48736,
+      "calls": 63,
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 63286
+    },
+    {
+      "batch_size": 16,
+      "cache_hit_fraction": 0.8691429854864758,
+      "cached_tokens": 81264,
+      "calls": 51,
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 93499
+    },
+    {
+      "batch_size": 32,
+      "cache_hit_fraction": 0.9324596356647585,
+      "cached_tokens": 112560,
+      "calls": 33,
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 120713
+    },
+    {
+      "batch_size": 2,
+      "cache_hit_fraction": 0.3563921568627451,
+      "cached_tokens": 18176,
+      "calls": 63,
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 51000
+    },
+    {
+      "batch_size": 4,
+      "cache_hit_fraction": 0.6576393885872528,
+      "cached_tokens": 60320,
+      "calls": 60,
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 91722
+    },
+    {
+      "batch_size": 8,
+      "cache_hit_fraction": 0.8096788596195101,
+      "cached_tokens": 148704,
+      "calls": 63,
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 183658
+    },
+    {
+      "batch_size": 16,
+      "cache_hit_fraction": 0.9002723373273852,
+      "cached_tokens": 262144,
+      "calls": 51,
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 291183
+    },
+    {
+      "batch_size": 32,
+      "cache_hit_fraction": 0.9486256032114336,
+      "cached_tokens": 333200,
+      "calls": 33,
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 351245
+    },
+    {
+      "batch_size": 2,
+      "cache_hit_fraction": 0.4682352941176471,
+      "cached_tokens": 9552,
+      "calls": 63,
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 20400
+    },
+    {
+      "batch_size": 4,
+      "cache_hit_fraction": 0.649404453650958,
+      "cached_tokens": 20064,
+      "calls": 60,
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 30896
+    },
+    {
+      "batch_size": 8,
+      "cache_hit_fraction": 0.7786993796612532,
+      "cached_tokens": 44688,
+      "calls": 63,
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 57388
+    },
+    {
+      "batch_size": 16,
+      "cache_hit_fraction": 0.8799559336556705,
+      "cached_tokens": 71888,
+      "calls": 51,
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 81695
+    },
+    {
+      "batch_size": 32,
+      "cache_hit_fraction": 0.9342053423686076,
+      "cached_tokens": 82992,
+      "calls": 33,
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 88837
+    },
+    {
+      "batch_size": 2,
+      "cache_hit_fraction": 0.42759839858576404,
+      "cached_tokens": 8224,
+      "calls": 63,
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 19233
+    },
+    {
+      "batch_size": 4,
+      "cache_hit_fraction": 0.6347731193015806,
+      "cached_tokens": 18032,
+      "calls": 60,
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 28407
+    },
+    {
+      "batch_size": 8,
+      "cache_hit_fraction": 0.7654114365411436,
+      "cached_tokens": 38416,
+      "calls": 63,
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 50190
+    },
+    {
+      "batch_size": 16,
+      "cache_hit_fraction": 0.8677753948663997,
+      "cached_tokens": 64336,
+      "calls": 51,
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 74139
+    },
+    {
+      "batch_size": 32,
+      "cache_hit_fraction": 0.9292366611541475,
+      "cached_tokens": 85408,
+      "calls": 33,
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "metrics_complete": true,
+      "prefix_reuse_observed": true,
+      "prompt_tokens": 91912
+    }
+  ],
+  "cache_hit_fraction": 0.834065943593345,
+  "cached_tokens": 1539232,
+  "ceiling_metered_a100_hours": 35.0,
+  "gates": {
+    "all_smoke_blocks_complete": true,
+    "cache_metrics_complete": true,
+    "prefix_reuse_observed_in_every_block": true,
+    "projection_fits_ceiling": true,
+    "projection_is_finite": true
+  },
+  "measured_generation_seconds": 239.79666099999997,
+  "measured_over_forecast_ratio": 1.550369675181816,
+  "measured_smoke_metered_hours": 0.4193585183333333,
+  "passed": true,
+  "predicted_smoke_seconds": 154.67063426139214,
+  "projected_full_metered_a100_hours": 27.49036828418844,
+  "prompt_tokens": 1845456,
+  "record_sha256": "6c9fd0e6906adc4016738d191fb860994a83fa2baa21ef9818543ac136f7fd83",
+  "schedule_sha256": "6145f5088a56fc869929257daa9b145fc1351ce34eb03cafa7101448bd547a25",
+  "schema_version": "b5-smoke-calibration-v1",
+  "seal_manifest_sha256": "f764f75d002f97baf57e8e9bee71e33cf8a89e6d8c05ca14ae3040ec7b8717b3",
+  "smoke_blocks": 20,
+  "smoke_calls": 1080
+}

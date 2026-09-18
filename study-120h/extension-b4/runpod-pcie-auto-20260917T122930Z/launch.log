@@ -1,0 +1,44 @@
+{
+  "provider": "runpod",
+  "cloud_type": "SECURE",
+  "gpu_type_id": "NVIDIA A100 80GB PCIe",
+  "max_concurrent_a100s": 1,
+  "plan_sha256": "25520d493f3a9ba8b83d9255cf9118f118f5972006f317b5870c661326c5f6bc",
+  "first_calls": 83200,
+  "gpu_work_launched": false,
+  "output": "/Users/dz/bigdata/study-120h/extension-b4/runpod-pcie-auto-20260917T122930Z"
+}
+{
+  "output": "/Users/dz/bigdata/study-120h/extension-b4/runpod-pcie-auto-20260917T122930Z/budget-record.json",
+  "record_sha256": "a8f26dddbb0410f2087dea898ce1faae22cd31dd76995e17c64926da315a342a",
+  "gpu_work_launched": false
+}
+Traceback (most recent call last):
+  File "/Users/dz/bigdata/study-120h/runpod_extension_b4.py", line 222, in <module>
+    main()
+  File "/Users/dz/bigdata/study-120h/runpod_extension_b4.py", line 195, in main
+    dispatch(
+  File "/Users/dz/bigdata/study-120h/modal_extension_b4.py", line 176, in dispatch
+    raise failures[0] if failures else failure
+  File "/Users/dz/bigdata/study-120h/modal_extension_b4.py", line 165, in dispatch
+    charged = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/bigdata/study-120h/modal_extension_b4.py", line 244, in run_phase
+    payload = worker.run(namespace, chunk_id, group, remaining, stop)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 442, in run
+    self.rpc(
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 420, in rpc
+    output = command([*self.ssh, shlex.join(argv)], timeout, stop, json.dumps(payload).encode())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 81, in command
+    raise RuntimeError("B4 protected deadline reached or peer lane failed")
+RuntimeError: B4 protected deadline reached or peer lane failed

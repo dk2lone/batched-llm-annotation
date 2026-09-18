@@ -1,0 +1,46 @@
+{
+  "provider": "runpod",
+  "cloud_type": "SECURE",
+  "gpu_type_id": "NVIDIA A100 80GB PCIe",
+  "max_concurrent_a100s": 1,
+  "plan_sha256": "b8132b467997a6b8ec330a324af552dfa06708688735c7027a70089e8bdd591f",
+  "first_calls": 83200,
+  "gpu_work_launched": false,
+  "output": "/Users/dz/bigdata/study-120h/extension-b4/runpod-pcie-auto-20260917T030957Z"
+}
+{
+  "output": "/Users/dz/bigdata/study-120h/extension-b4/runpod-pcie-auto-20260917T030957Z/budget-record.json",
+  "record_sha256": "4a87ed5d9c01a2ff347de1a14f6baef6ac839d73f2bb8507a8da8d692850010f",
+  "gpu_work_launched": false
+}
+Traceback (most recent call last):
+  File "/Users/dz/bigdata/study-120h/runpod_extension_b4.py", line 127, in <module>
+    main()
+  File "/Users/dz/bigdata/study-120h/runpod_extension_b4.py", line 100, in main
+    dispatch(
+  File "/Users/dz/bigdata/study-120h/modal_extension_b4.py", line 176, in dispatch
+    raise failures[0] if failures else failure
+  File "/Users/dz/bigdata/study-120h/modal_extension_b4.py", line 165, in dispatch
+    charged = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/bigdata/study-120h/modal_extension_b4.py", line 244, in run_phase
+    payload = worker.run(namespace, chunk_id, group, remaining, stop)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 437, in run
+    ) -> dict[str, Any]:
+            ^^^^^^^^^^^^
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 415, in rpc
+    f"{self.remote}/b4_runpod_worker.py",
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 88, in command
+    # CLI output can contain environment values. Never echo it to chat/logs.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+extension_b4_runpod.CommandError: Runpod command failed (command_error); reconcile if creation was ambiguous

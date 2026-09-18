@@ -1,0 +1,3 @@
+{"at_utc":"2026-09-17T09:31:08.713915+00:00","cell_key":"meta-llama/Llama-3.1-8B-Instruct::civil_comments","kind":"create_intent","name":"b4-20dcbecaa7944c5e-08c6eb4ed102","shutdown_target_utc":"2026-09-17T11:30:38.375605+00:00","stream":"reference","watchdog_run_id":35205532612}
+{"at_utc":"2026-09-17T09:31:42.519989+00:00","cell_key":"meta-llama/Llama-3.1-8B-Instruct::civil_comments","kind":"created","pod_id":"h81oymq2mhjicy","stream":"reference"}
+{"at_utc":"2026-09-17T10:37:12.303794+00:00","cell_key":"meta-llama/Llama-3.1-8B-Instruct::civil_comments","kind":"termination_verified","pod_id":"h81oymq2mhjicy","stream":"reference"}

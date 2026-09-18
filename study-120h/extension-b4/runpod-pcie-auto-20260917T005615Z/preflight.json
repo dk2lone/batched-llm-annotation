@@ -1,0 +1,67 @@
+{
+  "checks": {
+    "auto_pay_disabled_verified": true,
+    "balance_verified": true,
+    "four_single_gpu_capacity_verified": true,
+    "model_caches_verified": true,
+    "runtime_smoke_passed": true,
+    "ssh_verified": true,
+    "watchdog_cpu_test_passed": true
+  },
+  "evidence": {
+    "account": {
+      "client_balance_usd": 25.2134758276,
+      "current_spend_usd_per_hour": 0.031,
+      "id": "user_3GCQlNiLDruYedpe87pTOrbYANt",
+      "spend_limit_usd": 80
+    },
+    "amendment_sha256": "b1addd81ee08fc0a1f6f90a7d1651591b520bc55f69a92ac9b3fc11bc8303192",
+    "catalog": {
+      "data_center_id": "CA-MTL-3",
+      "gpu_type_id": "NVIDIA A100 80GB PCIe",
+      "placement": {
+        "dataCenterId": "CA-MTL-3",
+        "stockStatus": "Low"
+      },
+      "secure_cloud": true,
+      "secure_price_usd_per_hour": 1.59
+    },
+    "completed_smokes": [
+      "granite",
+      "llama",
+      "mistral",
+      "qwen"
+    ],
+    "preparation_state_sha256": "82f1e860e7065f5e48243186fe24e7484af086ac73aace2f0eb74eb87ad27736",
+    "scientific_calls_launched": false
+  },
+  "implementation_sha256": {
+    "../.github/workflows/b4-pod-watchdog.yml": "82e2c193c59f827ed570f1cfbcfb3aaf80225ba4ce7a48a55be34a57cffdabad",
+    "b4_runpod_worker.py": "326a589ba379b9dcb94c65fb015bf817aa780568ec511f5a2ca1d3b5cceccb75",
+    "extension-b4/runpod/Dockerfile": "dff91397b02d711ab59c87919b3db76cb1f8552614947396bc07330497e913f6",
+    "extension_b4_runpod.py": "0d4648c363ed6b756afff2dda2f9915d3fa725ab80e9f2a307532ad54fa03f9e",
+    "extension_b4_transport.py": "3372be5c8fa370f76eaf81fa91cd926fe99a3a0c316676c834024e2ebbc14641",
+    "modal_extension_b4.py": "3a47d3bddc8ed4f3c4858f5405e4778835dcb3753a18fa72cfdeff4df4ebff93",
+    "runpod_extension_b4.py": "3ff88d9df4cb107e2a9781dfa1148ee8f0496f364bccec70de40bfa0260b8d53",
+    "runpod_watchdog.py": "baaa2759ac28a4197dcf4f35cfcaa07a9ddee8c11db99080469cc17c834eaf07",
+    "src/freezeb/batch_invariance.py": "279578280405267218ee2d920be763cceafe8d3e019e9d1d3f7e9bfaa88edb40",
+    "src/freezeb/e2.py": "7940f859e10df324cb4997dd5bdc3835f6ec30801ede08fbb2109e2938383843",
+    "src/freezeb/extension.py": "3016fc6a2d950cbd5187e11611899eb0dfa18a29e45d0f90e919f57013f63a42",
+    "src/freezeb/extension_b4.py": "d4aa8dfa37e034c76ff1b7bb546d503e3dc72e94ca4ace70793f562e45a3353a",
+    "src/freezeb/labels.py": "719901a3fc78cfc1f0c5c72e2c5896e84bbe2efeda499fcc1bf5b53320594006",
+    "src/freezeb/prompts.py": "3b5b5bdbb168bf07b9da437e401e807e2061861404b8c24545959c6fbcabb5b5",
+    "src/freezeb/runtime_benchmark.py": "eaebf821e65f9873a5a53da2bb8d301b317a5495b60bb1d96d60b05b28a4c025",
+    "src/step0/stats.py": "da6306c0d204fb96f15ce15b7508d3d8c30b140159fa91a38595bf9c756aadbe",
+    "src/step1/backends.py": "f71eb36ac2a9b364e794b3855334a1729f05d919e14e58b44801cfe79965e327"
+  },
+  "plan_sha256": "ceada27571ca020fc099b39b895f0fd0f00dd779541245dec6d897aefa20fae0",
+  "runpod_config_sha256": "d27c6aa39f5975445f6a84cb8abea819956117179db95d8d9d3018ee6540194e",
+  "schema_version": "b4-runpod-preflight-v1",
+  "serving_policy": {
+    "Qwen/Qwen3-8B": "b968826d9c46dd6066d109eabc6255188de91218",
+    "ibm-granite/granite-3.3-8b-instruct": "51dd4bc2ade4059a6bd87649d68aa11e4fb2529b",
+    "meta-llama/Llama-3.1-8B-Instruct": "0e9e39f249a16976918f6564b8830bc894c89659",
+    "mistralai/Mistral-7B-Instruct-v0.3": "c170c708c41dac9275d15a8fff4eca08d52bab71"
+  },
+  "verified_at_utc": "2026-09-17T00:56:20.458724+00:00"
+}

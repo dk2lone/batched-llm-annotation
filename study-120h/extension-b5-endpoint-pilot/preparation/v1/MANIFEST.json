@@ -1,0 +1,14 @@
+{
+  "built_at_utc": "2026-09-18T22:00:11.750911+00:00",
+  "files_sha256": {
+    "CONTEXT_AUDIT.json": "03b166632830cfc81d5f0927420c3b24888f5330599a75cb61f4a563c6a2c082",
+    "FORECAST.json": "67d322ea7d18fe1799234100e64d9c6a9099ed43ec55d619d7368ff6a47e1799",
+    "RUNTIME_EVIDENCE.json": "045ec8cd4c5fb2577f80f174f0f90573977870a6beb7a2b83891776018210f70",
+    "SCHEDULE_DIGEST.json": "b07fe60f54c224915fb8c642e674124dd397e8e9b3fbcbd4569a6f47f66b36d4",
+    "TOKEN_EVIDENCE.json": "8a93caee7adfa661540be5e9ee9702bd8fd743e8c06016e84ab5d4cffa83573d"
+  },
+  "gpu_work_launched": false,
+  "manifest_sha256": "8dd12ff512c85fcf55c5599cd54bade8a959d2b4bbecd651c54ed89354ed1d91",
+  "schedule_sha256": "37dbb14b803e55639d8c065a8b0dfc769f6688cdd84fba82587850c33c5de05e",
+  "schema_version": "b5-preparation-manifest-v1"
+}

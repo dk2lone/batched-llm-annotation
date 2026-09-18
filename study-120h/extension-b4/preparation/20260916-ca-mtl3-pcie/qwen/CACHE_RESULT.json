@@ -1,0 +1,9 @@
+{
+  "cache_ready": true,
+  "model": "Qwen/Qwen3-8B",
+  "removed_stale_incomplete_files": 1,
+  "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "snapshot": "/workspace/hf/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+  "weight_bytes": 16381516776,
+  "weight_files": 5
+}

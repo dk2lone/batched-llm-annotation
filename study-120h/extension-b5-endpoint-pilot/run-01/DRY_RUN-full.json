@@ -1,0 +1,97 @@
+{
+  "at_utc": "2026-09-18T22:06:35.790335+00:00",
+  "by_size": {
+    "2": {
+      "calls": 49152,
+      "chunks": 100
+    },
+    "32": {
+      "calls": 33792,
+      "chunks": 72
+    }
+  },
+  "calls": 82944,
+  "chunks": 172,
+  "context_audit": [
+    {
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "fits": true,
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a1::g00143",
+        "required_tokens": 8412
+      }
+    },
+    {
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "fits": true,
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a1::g00129",
+        "required_tokens": 17108
+      }
+    },
+    {
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "fits": true,
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a1::g00184",
+        "required_tokens": 8877
+      }
+    },
+    {
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "fits": true,
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a1::g00127",
+        "required_tokens": 7679
+      }
+    }
+  ],
+  "expected_counts": {
+    "cells": 4,
+    "exact_context": 65536,
+    "exact_context_per_cell": 16384,
+    "joint": 17408,
+    "joint_per_cell": 4352,
+    "total": 82944,
+    "total_per_cell": 20736
+  },
+  "first_call_ids": [
+    "b5-endpoint-pilot-v1::Qwen--Qwen3-8B::civil_comments::k02::a1::g00000::joint",
+    "b5-endpoint-pilot-v1::Qwen--Qwen3-8B::civil_comments::k02::a1::g00000::exact::cc5f0cee6843497e",
+    "b5-endpoint-pilot-v1::Qwen--Qwen3-8B::civil_comments::k02::a1::g00000::exact::cc78e1d1e6579e52"
+  ],
+  "forecast": {
+    "full_launch_required_balance_usd": 13.0,
+    "full_launch_requires_smoke_calibration": false,
+    "planning_point_balance_usd": 7.1557068908631924,
+    "point_metered_a100_hours": 3.3243439565177306,
+    "smoke_required_balance_usd": 13.0,
+    "upper_metered_a100_hours": 13.077871606430005
+  },
+  "gpu_work_launched": false,
+  "last_call_ids": [
+    "b5-endpoint-pilot-v1::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k32::a1::g00255::exact::mnabedc77260f664",
+    "b5-endpoint-pilot-v1::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k32::a1::g00255::exact::mnbbed11fcdbb59c",
+    "b5-endpoint-pilot-v1::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k32::a1::g00255::exact::mn0e36dbf9687bfb"
+  ],
+  "observed_counts": {
+    "exact_context": 65536,
+    "joint": 17408,
+    "total": 82944
+  },
+  "pod_created": false,
+  "schema_version": "b5-dry-run-v1",
+  "seal": {
+    "confirmation_token": "463e0b9031cc",
+    "files_verified": 26,
+    "manifest_sha256": "463e0b9031cc71bebd214e3e47521874fbe2cc97e82b4881daf09433c916e743",
+    "preparation_directory": "extension-b5-endpoint-pilot/preparation/v2",
+    "schedule_sha256": "3efe37e5afa3760dd71183268950b6d6d19fb7f18f3e123abb37c745a6628cc6",
+    "seal": "freeze/20260918T220625Z-B5-ENDPOINT-PILOT"
+  },
+  "smoke": false
+}

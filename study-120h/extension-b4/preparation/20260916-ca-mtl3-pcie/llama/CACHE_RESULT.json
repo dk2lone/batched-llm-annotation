@@ -1,0 +1,9 @@
+{
+  "cache_ready": true,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "removed_stale_incomplete_files": 0,
+  "revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+  "snapshot": "/workspace/hf/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659",
+  "weight_bytes": 16060556376,
+  "weight_files": 4
+}

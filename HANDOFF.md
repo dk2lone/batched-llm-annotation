@@ -1,6 +1,43 @@
 # IEEE BigData 2026 handoff
 
-Updated: 2026-09-18 after the CPU-only B5 batch-size dose-response preparation.
+Updated: 2026-09-18 after the separate B5 endpoint pilot started and paused on Runpod capacity.
+
+## Separate B5 endpoint pilot
+
+The exploratory `b5-endpoint-pilot-v1` is prepared, sealed, and locally committed as
+`a0102cc`. Its seal is `study-120h/freeze/20260918T220625Z-B5-ENDPOINT-PILOT/` and its
+run is `study-120h/extension-b5-endpoint-pilot/run-01/`. It uses only sizes 2 and 32,
+one fresh assignment, four cells, and exactly 82,944 scheduled calls. It is separate
+from the sealed five-size B5 confirmation run and must never be pooled into it.
+
+The live preflight passed with $17.82739523 available balance, no Pods, and the secure
+A100 PCIe at $1.59/hour. Qwen/Civil Comments completed all 20,736 calls with zero
+generation or parse failures. The pilot has 20,736/82,944 terminal calls, all
+successful; Granite, Llama, and Mistral have no pilot output. The local meter has five
+settled phases, no open phases, and a conservative 0.733388 A100-hour upper bound
+including one-minute settlement allowances per Pod. At $1.59/hour this is a $1.16609
+GPU-cost upper bound, not a final provider bill. The last live balance read was
+$16.796877918. Runpod API checks confirmed no Pod remains.
+
+Two Granite Pods started on hosts whose NVIDIA driver was too old for the pinned
+PyTorch runtime. Both were deleted before model calls. Other resume attempts stopped
+before Pod creation when CA-MTL-3 A100 PCIe stock changed from `Low` to `none`.
+The Qwen receipts and all run data are intact. The runner refuses a new Pod unless
+the live balance is at least $13.00 and the rate and placement gates pass.
+
+Resume only through the sealed pilot runner after checking stock and balance:
+
+```
+cd /Users/dz/bigdata/study-120h
+.venv/bin/python run_b5_endpoint.py --resume \
+  --output extension-b5-endpoint-pilot/run-01 \
+  --seal freeze/20260918T220625Z-B5-ENDPOINT-PILOT \
+  --confirm 463e0b9031cc
+```
+
+On a new Granite Pod, check `torch.cuda.init()` promptly over SSH. If its driver is
+incompatible, stop the runner with SIGINT so its `finally` block deletes the Pod and
+settles the meter, then verify the Pod list is empty. Do not launch the full B5 run.
 
 ## Current state
 
@@ -249,8 +286,7 @@ created no Pod.
 Seal manifest SHA-256 `f764f75d002f97baf57e8e9bee71e33cf8a89e6d8c05ca14ae3040ec7b8717b3`.
 Confirmation token `f764f75d002f`.
 
-Remaining sequence: reload at least $37.72, run the read-only calibrated preflight, then launch
-and monitor the full experiment.
+The full five-size B5 run still needs its own calibrated funding and authorization.
 
 ## Recovery contract
 
@@ -284,16 +320,10 @@ delete, add wholesale, or overwrite them.
 
 ## Next action
 
-Wait for Daniel to reload at least `$37.72`. Then run the read-only full preflight:
-
-```
-cd /Users/dz/bigdata/study-120h
-.venv/bin/python run_b5.py --preflight --output extension-b5/run-01 \
-  --calibration extension-b5/smoke-01/SMOKE_CALIBRATION.json --confirm f764f75d002f
-```
-
-`study-120h/PREPARED.md` carries the full command list, the success and failure indicators, and
-what the design can and cannot resolve.
+Resume the separate endpoint pilot from its durable receipts when a compatible CA-MTL-3
+A100 PCIe host is available. `study-120h/B5_ENDPOINT_PREPARED.md` carries the command
+sequence and success indicators. Do not run the full five-size B5 experiment as part of
+this pilot.
 
 If B5 is not funded, use the A1–A7 decision report to frame the paper's A9 primary result,
 repaired B3 sensitivity, original B4 unavailable result, and revised B4 repaired coverage

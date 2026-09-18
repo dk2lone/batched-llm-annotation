@@ -1,0 +1,2 @@
+{"at_utc": "2026-09-16T22:54:20.653836+00:00", "deadline_utc": "2026-09-17T00:54:20.584301+00:00", "expected_pods": 1, "kind": "armed", "lease_id": "c1b71e5b9ec74c7c", "pod_name_prefix": "b4-c1b71e5b9ec74c7c-"}
+{"at_utc": "2026-09-16T22:54:31.567661+00:00", "kind": "pods_observed", "observed_count": 1, "pod_ids": ["10j6gwvqfn4was"]}

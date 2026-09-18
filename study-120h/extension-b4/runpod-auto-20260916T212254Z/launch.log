@@ -1,0 +1,62 @@
+{
+  "provider": "runpod",
+  "cloud_type": "SECURE",
+  "gpu_type_id": "NVIDIA A100-SXM4-80GB",
+  "max_concurrent_a100s": 2,
+  "plan_sha256": "d92caca97638f8c79e261bbbb7767105af0939c118723d3464f19ca35233bed2",
+  "first_calls": 83200,
+  "gpu_work_launched": false,
+  "output": "/Users/dz/bigdata/study-120h/extension-b4/runpod-auto-20260916T212254Z"
+}
+{
+  "output": "/Users/dz/bigdata/study-120h/extension-b4/runpod-auto-20260916T212254Z/budget-record.json",
+  "record_sha256": "04e206cdf0156e07eb127fb6aa9852aae5e8a4b3e8525af0b2a2fb2d9d8b1281",
+  "gpu_work_launched": false
+}
+Traceback (most recent call last):
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 675, in session
+    yield
+  File "/Users/dz/bigdata/study-120h/modal_extension_b4.py", line 176, in dispatch
+    raise failures[0] if failures else failure
+  File "/Users/dz/bigdata/study-120h/modal_extension_b4.py", line 165, in dispatch
+    charged = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/bigdata/study-120h/modal_extension_b4.py", line 222, in run_phase
+    recovered = worker.recover(namespace, deadline - time.monotonic(), stop)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 356, in recover
+    self.start(timeout, stop)
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 243, in start
+    pod = cli(
+          ^^^^
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 98, in cli
+    output = command(["runpodctl", *args], timeout)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 87, in command
+    raise CommandError(
+extension_b4_runpod.CommandError: Runpod command failed (command_error); reconcile if creation was ambiguous
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/dz/bigdata/study-120h/runpod_extension_b4.py", line 120, in <module>
+    main()
+  File "/Users/dz/bigdata/study-120h/runpod_extension_b4.py", line 93, in main
+    dispatch(
+  File "/Users/dz/bigdata/study-120h/modal_extension_b4.py", line 140, in dispatch
+    with transport.session():
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 677, in session
+    self.release_watchdog()
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 567, in release_watchdog
+    raise RuntimeError("lease Pods remain; keep the watchdog active")
+RuntimeError: lease Pods remain; keep the watchdog active

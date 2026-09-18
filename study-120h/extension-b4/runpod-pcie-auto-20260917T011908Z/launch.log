@@ -1,0 +1,52 @@
+{
+  "provider": "runpod",
+  "cloud_type": "SECURE",
+  "gpu_type_id": "NVIDIA A100 80GB PCIe",
+  "max_concurrent_a100s": 1,
+  "plan_sha256": "ceada27571ca020fc099b39b895f0fd0f00dd779541245dec6d897aefa20fae0",
+  "first_calls": 83200,
+  "gpu_work_launched": false,
+  "output": "/Users/dz/bigdata/study-120h/extension-b4/runpod-pcie-auto-20260917T011908Z"
+}
+{
+  "output": "/Users/dz/bigdata/study-120h/extension-b4/runpod-pcie-auto-20260917T011908Z/budget-record.json",
+  "record_sha256": "62387abf92d3342bd8eb919c41de90830ea8b85fe793653fc0cee915adf92ea8",
+  "gpu_work_launched": false
+}
+Traceback (most recent call last):
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 331, in start
+    self.ssh = ssh_args(info, self.owner.out / "runpod-known-hosts")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 171, in ssh_args
+    ip = str(ipaddress.ip_address(info["ip"]))
+                                  ~~~~^^^^^^
+KeyError: 'ip'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/dz/bigdata/study-120h/runpod_extension_b4.py", line 127, in <module>
+    main()
+  File "/Users/dz/bigdata/study-120h/runpod_extension_b4.py", line 100, in main
+    dispatch(
+  File "/Users/dz/bigdata/study-120h/modal_extension_b4.py", line 176, in dispatch
+    raise failures[0] if failures else failure
+  File "/Users/dz/bigdata/study-120h/modal_extension_b4.py", line 165, in dispatch
+    charged = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/bigdata/study-120h/modal_extension_b4.py", line 222, in run_phase
+    recovered = worker.recover(namespace, deadline - time.monotonic(), stop)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 408, in recover
+    self.start(timeout, stop)
+  File "/Users/dz/bigdata/study-120h/extension_b4_runpod.py", line 343, in start
+    raise RuntimeError("Pod exited before SSH became ready")
+RuntimeError: Pod exited before SSH became ready

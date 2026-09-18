@@ -1,0 +1,30 @@
+{
+  "provider": "runpod",
+  "cloud_type": "SECURE",
+  "gpu_type_id": "NVIDIA A100 80GB PCIe",
+  "max_concurrent_a100s": 1,
+  "plan_sha256": "0d17e2703d61998c36745b1cf3e21a159bc8995308e530bef69227f2801e949e",
+  "first_calls": 83200,
+  "gpu_work_launched": false,
+  "output": "/Users/dz/bigdata/study-120h/extension-b4/runpod-pcie-auto-20260917T030437Z"
+}
+{
+  "output": "/Users/dz/bigdata/study-120h/extension-b4/runpod-pcie-auto-20260917T030437Z/budget-record.json",
+  "record_sha256": "eb87085a62d9a7100ce82ac9a31a8cb9db86c93795d7d20f1d76bf45ef7247b1",
+  "gpu_work_launched": false
+}
+Traceback (most recent call last):
+  File "/Users/dz/bigdata/study-120h/runpod_extension_b4.py", line 127, in <module>
+    main()
+  File "/Users/dz/bigdata/study-120h/runpod_extension_b4.py", line 100, in main
+    dispatch(
+  File "/Users/dz/bigdata/study-120h/modal_extension_b4.py", line 163, in dispatch
+    for future in as_completed(futures):
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/concurrent/futures/_base.py", line 243, in as_completed
+    waiter.event.wait(wait_timeout)
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/threading.py", line 629, in wait
+    signaled = self._cond.wait(timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dz/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/threading.py", line 327, in wait
+    waiter.acquire()
+KeyboardInterrupt

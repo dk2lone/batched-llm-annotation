@@ -1,0 +1,18 @@
+{
+  "account_id": "user_3GCQlNiLDruYedpe87pTOrbYANt",
+  "at_utc": "2026-09-17T01:56:45.453088+00:00",
+  "authorized_remaining_usd": 77.5624460779,
+  "balance_usd": 25.1775686582,
+  "lane_reservations": [
+    "0990bd651f7745e59c6605208bcceb90"
+  ],
+  "placement": {
+    "dataCenterId": "CA-MTL-3",
+    "stockStatus": "Low"
+  },
+  "required_round_usd": 5.462117180932622,
+  "secure_price_usd_per_hour": 1.59,
+  "shutdown_target_utc": "2026-09-17T04:44:57.445065+00:00",
+  "watchdog_lease_id": "da3ed602deed4f0e",
+  "watchdog_run_id": 35172482485
+}
