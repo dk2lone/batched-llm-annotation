@@ -100,15 +100,16 @@ study-120h/output-recovery/**/runpod-watchdog.jsonl
 idea-stage/
 refine-logs/REFINE_STATE*.json
 
-# B5 dose-response run payloads stay local. The preparation artifacts stay tracked.
-study-120h/extension-b5/**/events.jsonl
-study-120h/extension-b5/**/receipts/
-study-120h/extension-b5/**/meter.jsonl
-study-120h/extension-b5/**/projection.jsonl
-study-120h/extension-b5/**/RUN.json
-study-120h/extension-b5/**/EXECUTION-*.json
-study-120h/extension-b5/**/preflight-*.json
-study-120h/extension-b5/**/runpod-known-hosts
-study-120h/extension-b5/**/runpod-lifecycle/
-study-120h/extension-b5/**/runpod-watchdog.jsonl
-study-120h/extension-b5/**/.active-run.lock
+# B5 dose-response and endpoint-pilot run payloads stay local. The preparation
+# artifacts stay tracked.
+study-120h/extension-b5*/**/events.jsonl
+study-120h/extension-b5*/**/receipts/
+study-120h/extension-b5*/**/meter.jsonl
+study-120h/extension-b5*/**/projection.jsonl
+study-120h/extension-b5*/**/RUN.json
+study-120h/extension-b5*/**/EXECUTION-*.json
+study-120h/extension-b5*/**/preflight-*.json
+study-120h/extension-b5*/**/runpod-known-hosts
+study-120h/extension-b5*/**/runpod-lifecycle/
+study-120h/extension-b5*/**/runpod-watchdog.jsonl
+study-120h/extension-b5*/**/.active-run.lock
