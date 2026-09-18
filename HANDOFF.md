@@ -1,6 +1,6 @@
 # IEEE BigData 2026 handoff
 
-Updated: 2026-09-18 02:50 UTC during the active B3/B4 output-recovery run.
+Updated: 2026-09-18 03:02 UTC during the active B3/B4 output-recovery run.
 
 ## Current state
 
@@ -18,13 +18,13 @@ and 127 exhausted truncations. The combined recovery inventory therefore contain
 A structured-output recovery smoke passed for all four models and both observed request
 shapes, one target and 16 targets. The full recovery is active now. At this handoff:
 
-- 2,096 of 4,097 recovery events are durable locally;
-- all 2,096 have `status=ok` and `parse_status=ok`;
+- 2,312 of 4,097 recovery events are durable locally;
+- all 2,312 have `status=ok` and `parse_status=ok`;
 - Qwen is complete at 211 of 211;
-- Granite is at 1,881 of 2,097, with 216 left;
+- Granite is complete at 2,097 of 2,097;
 - Llama has only its two smoke calls recorded, with 172 left;
 - Mistral has only its two smoke calls recorded, with 1,613 left;
-- 2,001 calls remain overall.
+- 1,785 calls remain overall.
 
 These recovery outputs are a post-execution technical amendment. For B4, the original
 result remains `coverage_unavailable_original`, and successful repairs feed a separate
@@ -66,22 +66,22 @@ Recovery namespace: `repair-05f46e56bd5c4d58ab398266`.
 
 ## Live Runpod state
 
-Active model: `ibm-granite/granite-3.3-8b-instruct`.
+Active model: `meta-llama/Llama-3.1-8B-Instruct`, currently booting.
 
-- Pod: `tnn5muoixrz7cp`
-- Pod name: `b4-2012baeaa7374679-fcc9d73caa3f`
-- Runtime status: `running`
+- Pod: `9cfr5ssg5zt9aj`
+- Pod name: `b4-4be8fcd1156e4105-33e2ed6ca285`
+- Runtime status: `initializing`
 - GPU: one Secure Cloud NVIDIA A100 PCIe 80GB in `CA-MTL-3`
 - Price: `$1.59/hour`
-- Watchdog workflow run: `35299630533`
-- Watchdog lease: `2012baeaa7374679`
-- Watchdog deletion target: `2026-09-18T04:00:52.175233Z`
+- Watchdog workflow run: `35301662603`
+- Watchdog lease: `4be8fcd1156e4105`
+- Watchdog deletion target: `2026-09-18T04:32:12.753973Z`
 - Runpod balance at handoff: `$9.6027180225`
 - Current total spend: `$1.627/hour`, including `$0.031/hour` storage
 
-The current rate and remaining work leave substantial balance margin. Qwen full recovery
-used about 7.2 wall-clock minutes including boot and model load. Granite has 216 calls left;
-Llama and Mistral then run serially with separate Pods and separate 90-minute watchdogs.
+The current rate and remaining work leave substantial balance margin. Qwen and Granite full
+recovery are complete. Llama and Mistral run serially with separate Pods and separate
+90-minute watchdogs.
 
 ## Recovery contract
 
