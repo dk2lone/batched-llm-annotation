@@ -1,6 +1,6 @@
 # IEEE BigData 2026 handoff
 
-Updated: 2026-09-18 after completed B3/B4 recovery and revised B4 coverage analysis.
+Updated: 2026-09-18 after completed B3/B4 recovery and repaired B3/B4 analyses.
 
 ## Current state
 
@@ -29,6 +29,41 @@ The revised B4 coverage analysis is also complete. It preserves the original res
 `coverage_unavailable_original`, substitutes only the 1,095 exact linked B4 repairs, and
 passes the prespecified C2 gate with Granite/IMDb and Qwen/Civil Comments as the two supported
 undercoverage cells.
+
+The repaired B3 sensitivity analysis is complete. It leaves the sealed A9 result primary,
+substitutes only the 3,002 exact linked B3 repairs, and reaches the same recurrence verdict:
+the 16-cell recurrence gate passes.
+
+## Repaired B3 recurrence sensitivity
+
+Artifacts:
+
+`study-120h/extension-b3/repaired-analysis-20260918T041906Z/`
+
+The sealed A9 analysis reproduced exactly before repair substitution. After all 3,002 exact
+repairs were substituted, the equal-cell joint-minus-exact covariance effect was 0.0078988744
+with one-sided replay `p = 0.0002` and a 95% shift interval of [0.0076483472, 0.0081461906].
+The original primary estimate was 0.0096104285, so repair reduced the estimate by 0.0017115540,
+or 17.81%, without changing the conclusion.
+
+The repaired recurrence gate passes every criterion:
+
+- 13 of 16 cells remain Holm-positive at the 0.002 practical floor;
+- positive cells still cover all four model families and all four tasks;
+- every leave-one-model-out and leave-one-task-out mean remains positive;
+- every repaired sensitivity treatment has the same global effect, 0.0078988744, because no
+  unresolved output remains.
+
+Cell membership changed in one place while the total stayed 13: Granite/MultiNLI fell below
+the 0.002 practical floor at 0.001632, and Granite/Civil Comments rose above it at 0.002739.
+Llama/Civil Comments and Llama/IMDb are the other two repaired cells below the floor.
+
+The repaired sensitivity SHA-256 is:
+
+`0086f0a1adeccfae9ac66046c437749a018a31d9abf1b7179be3f92de3f5901f`
+
+All three scientific artifacts reproduced byte-for-byte in a second independent CPU run. No
+GPU work was launched.
 
 ## Revised B4 coverage result
 
@@ -117,10 +152,10 @@ revised repaired analysis separately as post-execution sensitivity evidence. Its
 passes, with strong IID undercoverage in Granite and Qwen and substantially improved coverage
 from the call-aware intervals.
 
-For the 16-cell B3 study, retain the original A9 malformed-output bounds as primary. Use the
-repaired 16-cell results only as a secondary sensitivity analysis. Report whether the family
-recurrence conclusions change after exact linked replacement; never overwrite the original
-A9 artifacts.
+For the 16-cell B3 study, retain the original A9 malformed-output bounds as primary. Report
+the completed repaired analysis as a secondary post-execution sensitivity. Exact linked
+replacement reduces the global effect by 17.81% but does not change the family recurrence
+conclusion. Never overwrite the original A9 artifacts.
 
 ## Recovery contract
 
@@ -143,18 +178,18 @@ Relevant local commits:
 - `5092dfc refresh recovery handoff state`
 
 The recovery implementation passed 39 targeted tests, Ruff, strict mypy, and reconstruction
-of all 4,097 unique jobs. The revised B4 analysis added exact-replacement regression tests and
-passed 36 combined targeted tests, Ruff, strict mypy, manifest verification, and deterministic
+of all 4,097 unique jobs. The repaired B3 and B4 analyses add fail-closed exact-replacement
+tests, independent parsing and hash verification, manifest verification, and deterministic
 full-data reproduction. Commits remain local and have not been pushed. The branch is ahead of
 `origin/main`. Many timestamped B4 execution directories are untracked user data; do not
 delete, add wholesale, or overwrite them.
 
 ## Next action
 
-Do not launch another GPU recovery. The revised B4 coverage analysis is complete. The next
-scientific task is the repaired B3 16-cell sensitivity analysis while keeping original A9
-primary.
+Do not launch another GPU recovery. Both repaired analyses are complete. The next scientific
+task is to integrate the sealed A9 primary analysis, repaired B3 sensitivity, and revised B4
+coverage evidence into the paper's results tables and claims.
 
-Before either analysis, verify the inventory and event-ledger hashes above. Preserve the
-original ledgers, recovery events, receipts, seals, and locks. Do not expose credentials or
-invoke Claude CLI unless Daniel explicitly requests it.
+Preserve the original ledgers, recovery events, receipts, seals, locks, and both original
+analysis directories. Do not expose credentials or invoke Claude CLI unless Daniel explicitly
+requests it.
