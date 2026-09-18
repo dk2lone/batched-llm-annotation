@@ -1,186 +1,175 @@
 # IEEE BigData 2026 handoff
 
-Updated: 2026-09-17 03:25:54 UTC during the active one-A100 B4 run.
+Updated: 2026-09-18 02:50 UTC during the active B3/B4 output-recovery run.
 
 ## Current state
 
 Project: dependence in batched LLM text annotation. Repository:
-`dk2lone/batched-llm-annotation`, private, branch `main`. The branch matches
-`origin/main`; the latest commit is `8e2df6e` (`reject incompatible runpod drivers early`).
+`dk2lone/batched-llm-annotation`, private, branch `main`.
 
-Daniel authorized the B4 / A11 scientific run: 250 reference and 400 evaluation
-replicates for four model-task cells, or 83,200 first calls. The execution plan uses
-one Secure Cloud NVIDIA A100 PCIe 80GB lane in `CA-MTL-3`. GPU concurrency changes
-wall-clock time, not the frozen prompts, schedules, calls, or analysis.
+The original four-cell B4 run is complete. It finished all 83,200 planned calls at
+`2026-09-18T00:46:32Z`, deleted its final Runpod Pod, and left 1,095 terminal unresolved
+calls: 1,091 malformed outputs and four exhausted truncations.
 
-The scientific run is active. Live verification at this handoff showed:
+The completed 16-cell B3 grid has 3,002 terminal unresolved calls: 2,875 malformed outputs
+and 127 exhausted truncations. The combined recovery inventory therefore contains exactly
+4,097 calls. Successful original calls are not being rerun.
 
-- Pod `u8due56secjnmr` is `RUNNING` in `CA-MTL-3`;
-- image digest:
-  `sha256:1cf3be1dfb50dbb800a658b371e8ec58f1ea485b55bae5b92ee281af2feba898`;
-- one NVIDIA A100 PCIe 80GB at `$1.59/hour`;
-- compatible driver `580.159.04`, PyTorch `2.13.0+cu130`;
-- Granite / IMDb reference phase active;
-- 14 durable receipts covering 448 events;
-- all 448 recorded events have status `ok`;
-- Runpod balance `$24.4061117831`;
-- total current spend `$1.627/hour`, including `$0.031/hour` retained storage;
-- spend limit `$80`.
+A structured-output recovery smoke passed for all four models and both observed request
+shapes, one target and 16 targets. The full recovery is active now. At this handoff:
 
-These are execution-integrity facts, not scientific findings. Do not analyze or cite
-partial outputs as results. The reference round must complete across all four cells
-before evaluation begins.
+- 2,096 of 4,097 recovery events are durable locally;
+- all 2,096 have `status=ok` and `parse_status=ok`;
+- Qwen is complete at 211 of 211;
+- Granite is at 1,881 of 2,097, with 216 left;
+- Llama has only its two smoke calls recorded, with 172 left;
+- Mistral has only its two smoke calls recorded, with 1,613 left;
+- 2,001 calls remain overall.
 
-## Active run
+These recovery outputs are a post-execution technical amendment. For B4, the original
+result remains `coverage_unavailable_original`, and successful repairs feed a separate
+revised coverage analysis. For B3, the original A9 malformed-output analysis remains
+primary; repaired 16-cell results are secondary sensitivity evidence only.
 
-Output directory:
+## Active recovery run
 
-`study-120h/extension-b4/runpod-pcie-auto-20260917T030957Z/`
+Local runner PID: `83833`.
 
-Important identities:
+Command:
 
-- plan SHA-256: `b8132b467997a6b8ec330a324af552dfa06708688735c7027a70089e8bdd591f`;
-- budget record SHA-256: `4a87ed5d9c01a2ff347de1a14f6baef6ac839d73f2bb8507a8da8d692850010f`;
-- current phase ID: `3df56fb9852b4e33a600fe28d2da90f4`;
-- current remote namespace: `b4-18559bf79867ad13f4fca5ee`;
-- current cell: `ibm-granite/granite-3.3-8b-instruct::imdb`;
-- current stream: `reference`;
-- watchdog run: `35177153106`;
-- watchdog shutdown target: `2026-09-17T05:58:36.283701+00:00`.
+```bash
+cd /Users/dz/bigdata/study-120h
+PYTHONPATH=src .venv/bin/python run_output_recovery.py \
+  --inventory output-recovery/20260918T013521Z-inventory/RECOVERY_INVENTORY.json \
+  --output output-recovery/20260918T015605Z-smoke \
+  --mode full
+```
 
-The launcher state file is:
+Do not start a second copy while PID `83833` is alive. If the process exits before
+completion, first verify that no recovery Pod remains, then rerun the exact command above.
+The runner uses the same recovery namespace, imports remote durable receipts, and skips every
+locally recorded recovery ID. It never intentionally invokes a call twice.
 
-`/Users/dz/.local/state/runpod-pcie-b4-launch.json`
+Important paths:
 
-Its `attempt_status` is `running`. The top-level `status` string may still read
-`waiting_for_verified_caches_capacity_and_balance`; that field is not cleared when a
-live attempt starts. Use `attempt_status`, the live Pod list, lifecycle records, meter,
-and receipts to determine the actual state.
+- inventory: `study-120h/output-recovery/20260918T013521Z-inventory/RECOVERY_INVENTORY.json`
+- inventory summary: `study-120h/output-recovery/20260918T013521Z-inventory/RECOVERY_SUMMARY.json`
+- active output: `study-120h/output-recovery/20260918T015605Z-smoke/`
+- local event ledger: `study-120h/output-recovery/20260918T015605Z-smoke/events.jsonl`
+- receipts: `study-120h/output-recovery/20260918T015605Z-smoke/receipts/`
+- meter: `study-120h/output-recovery/20260918T015605Z-smoke/meter.jsonl`
+- lifecycle logs: `study-120h/output-recovery/20260918T015605Z-smoke/runpod-lifecycle/`
+- watchdog audit: `study-120h/output-recovery/20260918T015605Z-smoke/runpod-watchdog.jsonl`
+- final report: `study-120h/output-recovery/20260918T015605Z-smoke/FULL_REPORT.json`
 
-Do not start a second launcher or execute `runpod_extension_b4.py --execute` manually.
-Do not interrupt Pod `u8due56secjnmr` while receipts continue to advance.
+Recovery namespace: `repair-05f46e56bd5c4d58ab398266`.
 
-## Durable progress and recovery
+## Live Runpod state
 
-The remote worker persists each accepted chunk atomically before replying:
+Active model: `ibm-granite/granite-3.3-8b-instruct`.
 
-`/workspace/b4-results/b4-18559bf79867ad13f4fca5ee/imdb/`
+- Pod: `tnn5muoixrz7cp`
+- Pod name: `b4-2012baeaa7374679-fcc9d73caa3f`
+- Runtime status: `running`
+- GPU: one Secure Cloud NVIDIA A100 PCIe 80GB in `CA-MTL-3`
+- Price: `$1.59/hour`
+- Watchdog workflow run: `35299630533`
+- Watchdog lease: `2012baeaa7374679`
+- Watchdog deletion target: `2026-09-18T04:00:52.175233Z`
+- Runpod balance at handoff: `$9.6027180225`
+- Current total spend: `$1.627/hour`, including `$0.031/hour` storage
 
-At the handoff snapshot it contained 14 JSON receipts, 448 events, and no non-`ok`
-statuses. The local runner ingests completed chunks into the timestamped output tree.
-If the connection or Pod fails, a replacement worker can recover completed chunks from
-the attached volume without accepting them twice. Preserve the network volume and every
-timestamped run directory.
+The current rate and remaining work leave substantial balance margin. Qwen full recovery
+used about 7.2 wall-clock minutes including boot and model load. Granite has 216 calls left;
+Llama and Mistral then run serially with separate Pods and separate 90-minute watchdogs.
 
-The Granite worker runs from the content-addressed runtime directory beginning with:
+## Recovery contract
 
-`/workspace/b4-runtime/d82aa08424c345ca3ebc84de7349636b96a4c309e01ef43350aa1ed94af4c21a/`
+The runner reconstructs each original prompt from the sealed frame and verifies its original
+prompt hash, source event hash, source ledger hash, document order, target IDs, model revision,
+and tokenizer revision. It changes only the output contract:
 
-Old worker logs and smoke receipts remain on the volume under other content hashes and
-namespaces. Do not count them as current progress. Derive the namespace from the active
-plan, stream, and output directory before inspecting receipts.
+- vLLM structured decoding requires exactly `{"labels": {...}}`;
+- every requested document ID is required and extra IDs are rejected;
+- labels are restricted to the task's legal integer values;
+- one-target calls receive 128 output tokens;
+- 16-target calls receive 512 output tokens;
+- each unresolved source call gets exactly one `repair-v1` attempt;
+- an unsuccessful recovery remains unresolved and is not retried again.
 
-## Fixes made before execution
+The original B3 and B4 ledgers are immutable. Recovery events and receipts live only in the
+separate output-recovery tree.
 
-Runpod first returned many allocation stubs with no machine. When real machines began
-appearing, two separate startup defects were identified and fixed:
+## Safety and monitoring
 
-- `9a86689`: wait for delayed Runpod SSH readiness;
-- `0f9cb25`: stop waiting immediately when a pre-SSH Pod exits or disappears;
-- `508006b`: include the existing Runpod registry-auth resource when pulling the private
-  GHCR runtime image;
-- `8e2df6e`: initialize CUDA immediately after SSH and reject incompatible drivers before
-  uploading code or loading a model.
+Every model runs on its existing offline cache volume. Pods run serially and are named with
+the `b4-<watchdog lease>-` prefix so the existing GitHub watchdog can delete them remotely.
+The local runner deletes and verifies the exact Pod ID before moving to the next model.
 
-The registry-auth omission caused real A100 Pods to remain at `awaiting_container`.
-After that fix, two hosts exposed driver `570.172.08`, which cannot initialize the pinned
-CUDA 13.0/PyTorch runtime. They were deleted before scientific calls. The successful
-preparation hosts and the active host use driver `580.159.04`.
+Use this read-only status check:
 
-The driver gate and registry-auth change pass 71 focused Runpod/B4 tests. Strict mypy and
-Ruff pass for the changed code. Failed Pods were deleted and their watchdogs released.
-No failed attempt produced accepted scientific output.
+```bash
+cd /Users/dz/bigdata/study-120h
+ps aux | rg '[r]un_output_recovery.py'
+wc -l output-recovery/20260918T015605Z-smoke/events.jsonl
+PYTHONPATH=src .venv/bin/python - <<'PY'
+import json
+from collections import Counter
+from pathlib import Path
 
-## Automatic launcher and safety
+path = Path('output-recovery/20260918T015605Z-smoke/events.jsonl')
+rows = [json.loads(line) for line in path.read_text().splitlines()]
+print('events', len(rows), '/ 4097')
+print('models', Counter(row['model_id'] for row in rows))
+print('outcomes', Counter((row['status'], row['parse_status']) for row in rows))
+PY
+```
 
-LaunchAgent `com.dk2lone.runpod-pcie-b4-launch` runs:
+Use the existing credential loader for live Runpod checks; do not print credentials:
 
-`/usr/bin/caffeinate -i /Users/dz/.local/bin/launch-runpod-pcie-b4.py`
+```bash
+cd /Users/dz/bigdata/study-120h
+PYTHONPATH=src .venv/bin/python - <<'PY'
+import json, subprocess
+from extension_b4_runpod import credential_env
 
-It checks every five minutes when idle. It requires verified caches, the expected account,
-at least `$8` balance, no existing running Pod, acceptable stock and price, and all four
-volumes. It creates fresh immutable plan, preflight, configuration, and budget records for
-each attempt. A file lock prevents overlapping automatic checks.
+for args in (['runpodctl', 'pod', 'list', '--all'], ['runpodctl', 'user']):
+    result = subprocess.run(args, env=credential_env(), capture_output=True,
+                            text=True, check=True)
+    value = json.loads(result.stdout)
+    if args[-1] == 'user':
+        value = {key: value.get(key) for key in
+                 ('clientBalance', 'currentSpendPerHr')}
+    print(json.dumps(value, indent=2))
+PY
+```
 
-The GitHub watchdog is a remote deletion fallback. The local runner remains responsible
-for normal phase cleanup. If an incompatible host reaches SSH, the CUDA gate fails and the
-runner deletes that exact Pod before retrying.
+Do not kill a healthy runner or Pod while receipts advance. If the runner dies, its `finally`
+block normally deletes the Pod and releases the watchdog. If a Pod remains after a crash, do
+not launch another runner until the exact remaining Pod is reconciled or deleted. The active
+watchdog is the independent deletion fallback.
 
-## Runtime and budget
+## Code and validation
 
-The one-GPU plan forecasts exactly 15 A100-hours of scientific work. Expected wall time is
-about 15 hours; the 1.6 guard permits 24 hours. At `$1.59/hour`, the base GPU forecast is
-`$23.85`, excluding storage and failed startup attempts. The study-wide extension ceiling
-remains 80 A100-hours with a 10-hour reserve.
+Latest local commits:
 
-The balance of `$24.4061117831` is too close to the base forecast to safely cover the run.
-Top up to approximately `$40` as soon as possible. Auto-pay is disabled. Do not raise or
-change the study's `$80` spending ceiling without Daniel's decision.
+- `d6ee79d add guarded output recovery runner`
+- `89fa1b7 plan structured output recovery`
+- `8990c57 allow no-pod b4 continuations`
 
-## Scientific execution lock
+The recovery implementation passed 39 targeted tests, Ruff, strict mypy, and reconstruction
+of all 4,097 unique recovery jobs. The four-model paid smoke recorded eight successful calls
+and deleted every smoke Pod. Smoke evidence is committed in:
 
-The four frozen cells are:
+`study-120h/output-recovery/20260918T015605Z-smoke/SMOKE_REPORT.json`
 
-- `ibm-granite/granite-3.3-8b-instruct::imdb`
-- `meta-llama/Llama-3.1-8B-Instruct::civil_comments`
-- `mistralai/Mistral-7B-Instruct-v0.3::multi_nli`
-- `Qwen/Qwen3-8B::civil_comments`
-
-All four reference streams must finish before evaluation begins. Preserve the sealed
-prompts, schedules, model revisions, exact decoding, reference/evaluation counts, round
-barriers, 80-A100-hour ceiling, 10-hour reserve, and 1.6 forecast guard.
-
-The PCIe/data-center change is documented in:
-
-`study-120h/amendments/20260916T213900Z-b4-a100-pcie-fallback.md`
-
-The current generated plan narrows actual execution to one lane, as Daniel authorized
-after two-GPU capacity remained unavailable.
-
-## Verified preparation
-
-Runtime image:
-
-`ghcr.io/dk2lone/b4-a100-runtime@sha256:1cf3be1dfb50dbb800a658b371e8ec58f1ea485b55bae5b92ee281af2feba898`
-
-Exact offline caches:
-
-| Cell | Volume ID | Model revision |
-|---|---|---|
-| Granite / IMDb | `nm92sgw9zy` | `51dd4bc2ade4059a6bd87649d68aa11e4fb2529b` |
-| Llama / Civil Comments | `871iih1km4` | `0e9e39f249a16976918f6564b8830bc894c89659` |
-| Mistral / MultiNLI | `16nchs8xkt` | `c170c708c41dac9275d15a8fff4eca08d52bab71` |
-| Qwen / Civil Comments | `pxk7r2wj35` | `b968826d9c46dd6066d109eabc6255188de91218` |
-
-`/Users/dz/.local/state/runpod-pcie-b4.json` reports
-`all_caches_and_smokes_ready`. Every exact revision passed the supervised synthetic A100
-PCIe smoke using driver `580.159.04`. Do not rerun cache preparation unless live evidence
-shows a cache or volume is invalid.
+The commits are local and have not been pushed. Many timestamped B4 run directories are
+untracked user data. Do not delete, add wholesale, or overwrite them.
 
 ## Next action
 
-1. Top up the Runpod balance to approximately `$40` without changing the `$80` spending
-   ceiling.
-2. Verify Pod `u8due56secjnmr` remains `RUNNING`, watchdog `35177153106` remains active,
-   and current-namespace receipt counts continue to increase.
-3. Monitor `meter.jsonl`, lifecycle records, local receipts, and remote durable receipts.
-   Report stalls, non-`ok` events, worker exits, cleanup failures, or budget pressure.
-4. Let the runner advance through all reference cells and then the equal-family evaluation
-   prefixes. Do not manually launch another lane.
-5. Only analyze results after the planned phase completes and the integrity checks pass.
-
-Keep all timestamped run data, lifecycle logs, meter records, seals, locks, and caches.
-Do not edit sealed protocols, overwrite run data, rerun completed preparation, or present
-the Gate A pilot as fresh confirmation. Do not expose credentials. The previously exposed
-Modal token and Runpod key should be rotated. Do not invoke Claude CLI unless Daniel
-explicitly requests it.
+Monitor the active recovery until `FULL_REPORT.json` exists and reports 4,097 completed
+calls. Then verify zero Runpod Pods, all watchdog leases released, the final balance, exact
+event uniqueness, source linkage, and counts by model/status. Commit only the compact full
+report and the updated handoff, not raw events or receipts. Do not begin revised B4 coverage
+analysis until those completion checks pass.
