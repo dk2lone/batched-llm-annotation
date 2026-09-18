@@ -1,6 +1,6 @@
 # IEEE BigData 2026 handoff
 
-Updated: 2026-09-18 after the CPU-only A1–A7 decision audit.
+Updated: 2026-09-18 after the CPU-only B5 batch-size dose-response preparation.
 
 ## Current state
 
@@ -39,6 +39,11 @@ The post-hoc A1–A7 decision audit is complete in
 experiment for the current paper if repaired C2 is presented as sensitivity evidence. A
 uniform-contract Granite/IMDb rerun is conditional on needing a clean C2 claim; it is not
 authorized or running.
+
+The B5 batch-size dose-response experiment is prepared, sealed, and **not launched**. No Pod
+was created, no model was called, and no Runpod write operation was made. It answers whether
+pairwise error dependence changes with batch size or is peculiar to size 16. It is ready for
+a one-command launch once the Runpod balance is topped up.
 
 ## Repaired B3 recurrence sensitivity
 
@@ -194,6 +199,55 @@ cannot turn the repaired C2 result into a clean confirmation. A single clean Gra
 would address the largest repair objection but would not create a fully clean two-cell C2
 confirmation. At least two uniformly generated cells are needed for that.
 
+## B5 batch-size dose-response (prepared, not launched)
+
+Artifacts:
+
+- protocol: `study-120h/B5_PROTOCOL.md`
+- seal: `study-120h/freeze/20260918T071333Z-B5/` (gitignored, local only)
+- preparation: `study-120h/extension-b5/preparation/20260918T070340Z/`
+- CPU test evidence: `study-120h/extension-b5/CPU_TESTS.json`
+- CPU dry-run artifacts: `study-120h/extension-b5/dry-run/DRY_RUN-full.json` and
+  `DRY_RUN-smoke.json`
+- launch instructions: `study-120h/PREPARED.md`
+- code: `study-120h/src/freezeb/b5.py`, `b5_analysis.py`, `b5_power.py`,
+  `study-120h/prepare_b5.py`, `seal_b5.py`, `run_b5.py`, `b5_worker.py`, `analyze_b5.py`
+- tests: `study-120h/tests/test_b5.py`, `test_b5_analysis.py`, `test_b5_runner.py`
+
+Design: four cells, batch sizes 2, 4, 8, 16, 32, three independently seeded assignments, the
+existing sealed 8,192-item confirmation frame per cell. Size 16 is generated fresh. Groups are
+contiguous slices of one canonical permutation per assignment, so a size-2k group is the union
+of two adjacent size-k groups. Every scientific call uses structured JSON-schema decoding from
+the first attempt.
+
+Exact schedule: joint 95,232, exact-context 491,520, **total 586,752**. The launcher fails
+closed if the generated schedule differs.
+
+Primary estimand: standardized joint dependence minus standardized exact-context dependence,
+where standardized dependence is covariance divided by `p (1 - p)`. Primary statistic: the
+equal-weight mean over four cells of the within-cell slope on `log2(batch size)`. Uncertainty:
+cluster bootstrap over size-32 super-groups inside cell and assignment. Practical contrast
+0.0166667 and practical slope 0.0041667, both derived from the existing B4 practical inflation
+floor of 1.25 at size 16. The raw 0.002 covariance floor is not transferred. All six outcome
+readings are frozen; success is not defined as a positive slope.
+
+Budget: point estimate **18.09 metered A100 hours**, no-prefix-reuse upper bound 70.21, ceiling
+**35.00**, required balance **$30.76** at $1.59 per hour including a $2.00 reserve. The current
+balance is `$8.9472095511`, so **top up by at least $21.82 before launch**. The earlier working
+figure of 29 to 30 hours is superseded by this recalculation from locked B4 runtime evidence.
+
+Verification: 113 targeted tests and 655 total tests pass; Ruff reports 23 errors, all inside
+sealed source snapshots; strict mypy reports 8 errors, all pre-existing and none in a B5 file;
+the seal verifies over 25 files; two independent CPU analysis regenerations are byte-for-byte
+identical; the full CPU schedule build and dry run produced 586,752 calls in 1,212 chunks and
+created no Pod.
+
+Seal manifest SHA-256 `d0bc6f17ab647d0d23a3ba6468e564939a87e15a45b7ec4c610da94c0c5928c9`.
+Confirmation token `d0bc6f17ab64`.
+
+Remaining blockers: the Runpod balance, and Daniel's explicit decision to spend it. Nothing
+else blocks the launch.
+
 ## Recovery contract
 
 Each repaired call used the original sealed prompt, document order, target IDs, checkpoint,
@@ -214,6 +268,9 @@ Relevant local commits:
 - `89fa1b7 plan structured output recovery`
 - `5092dfc refresh recovery handoff state`
 
+The B5 preparation passed 113 targeted tests, the full 655-test suite, Ruff, strict mypy, seal
+verification, two independent analysis regenerations, and a full CPU-only dry run.
+
 The recovery implementation passed 39 targeted tests, Ruff, strict mypy, and reconstruction
 of all 4,097 unique jobs. The repaired B3 and B4 analyses add fail-closed exact-replacement
 tests, independent parsing and hash verification, manifest verification, and deterministic
@@ -223,11 +280,28 @@ delete, add wholesale, or overwrite them.
 
 ## Next action
 
-Do not launch GPU work. Use the A1–A7 decision report to frame the paper's A9 primary result,
+Decide whether to fund the B5 batch-size dose-response run. It needs $30.76 on Runpod against
+the current $8.9472095511, so it needs about $21.82 more. Nothing else blocks it.
+
+When the balance is ready, run the read-only preflight first. It creates no Pod:
+
+```
+cd /Users/dz/bigdata/study-120h
+.venv/bin/python run_b5.py --preflight --output extension-b5/run-01 --confirm d0bc6f17ab64
+```
+
+Then, and only then, launch:
+
+```
+.venv/bin/python run_b5.py --launch --output extension-b5/run-01 --confirm d0bc6f17ab64
+```
+
+`study-120h/PREPARED.md` carries the full command list, the success and failure indicators, and
+what the design can and cannot resolve.
+
+If B5 is not funded, use the A1–A7 decision report to frame the paper's A9 primary result,
 repaired B3 sensitivity, original B4 unavailable result, and revised B4 repaired coverage
-claim. If a clean C2 claim becomes necessary, decide explicitly between one uniform-contract
-Granite/IMDb rerun to address the largest objection and a two-cell Granite+Qwen rerun for fully
-clean confirmation. No such paid run is authorized by this handoff.
+claim. No paid run is authorized by this handoff.
 
 Preserve the original ledgers, recovery events, receipts, seals, locks, and both original
 analysis directories. Do not expose credentials or invoke Claude CLI unless Daniel explicitly

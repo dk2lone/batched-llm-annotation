@@ -1,0 +1,196 @@
+{
+  "cells": [
+    {
+      "by_size": [
+        {
+          "batch_size": 2,
+          "fits": true,
+          "headroom_tokens": 31854,
+          "max_required_group": "k02::a2::g01269",
+          "max_required_tokens": 914
+        },
+        {
+          "batch_size": 4,
+          "fits": true,
+          "headroom_tokens": 31243,
+          "max_required_group": "k04::a2::g00634",
+          "max_required_tokens": 1525
+        },
+        {
+          "batch_size": 8,
+          "fits": true,
+          "headroom_tokens": 30034,
+          "max_required_group": "k08::a3::g00122",
+          "max_required_tokens": 2734
+        },
+        {
+          "batch_size": 16,
+          "fits": true,
+          "headroom_tokens": 28081,
+          "max_required_group": "k16::a1::g00120",
+          "max_required_tokens": 4687
+        },
+        {
+          "batch_size": 32,
+          "fits": true,
+          "headroom_tokens": 24032,
+          "max_required_group": "k32::a3::g00030",
+          "max_required_tokens": 8736
+        }
+      ],
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "fits": true,
+      "max_model_len": 32768,
+      "method": "measured pinned-tokenizer solo prompt lengths, upper-bounded per size",
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a3::g00030",
+        "required_tokens": 8736
+      }
+    },
+    {
+      "by_size": [
+        {
+          "batch_size": 2,
+          "fits": true,
+          "headroom_tokens": 30719,
+          "max_required_group": "k02::a1::g01765",
+          "max_required_tokens": 2049
+        },
+        {
+          "batch_size": 4,
+          "fits": true,
+          "headroom_tokens": 29721,
+          "max_required_group": "k04::a3::g00152",
+          "max_required_tokens": 3047
+        },
+        {
+          "batch_size": 8,
+          "fits": true,
+          "headroom_tokens": 27283,
+          "max_required_group": "k08::a1::g00052",
+          "max_required_tokens": 5485
+        },
+        {
+          "batch_size": 16,
+          "fits": true,
+          "headroom_tokens": 23116,
+          "max_required_group": "k16::a1::g00240",
+          "max_required_tokens": 9652
+        },
+        {
+          "batch_size": 32,
+          "fits": true,
+          "headroom_tokens": 15097,
+          "max_required_group": "k32::a2::g00242",
+          "max_required_tokens": 17671
+        }
+      ],
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "fits": true,
+      "max_model_len": 32768,
+      "method": "measured pinned-tokenizer solo prompt lengths, upper-bounded per size",
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a2::g00242",
+        "required_tokens": 17671
+      }
+    },
+    {
+      "by_size": [
+        {
+          "batch_size": 2,
+          "fits": true,
+          "headroom_tokens": 31907,
+          "max_required_group": "k02::a3::g02015",
+          "max_required_tokens": 861
+        },
+        {
+          "batch_size": 4,
+          "fits": true,
+          "headroom_tokens": 31263,
+          "max_required_group": "k04::a1::g00257",
+          "max_required_tokens": 1505
+        },
+        {
+          "batch_size": 8,
+          "fits": true,
+          "headroom_tokens": 30125,
+          "max_required_group": "k08::a2::g00440",
+          "max_required_tokens": 2643
+        },
+        {
+          "batch_size": 16,
+          "fits": true,
+          "headroom_tokens": 27928,
+          "max_required_group": "k16::a1::g00098",
+          "max_required_tokens": 4840
+        },
+        {
+          "batch_size": 32,
+          "fits": true,
+          "headroom_tokens": 23622,
+          "max_required_group": "k32::a2::g00050",
+          "max_required_tokens": 9146
+        }
+      ],
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "fits": true,
+      "max_model_len": 32768,
+      "method": "measured pinned-tokenizer solo prompt lengths, upper-bounded per size",
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a2::g00050",
+        "required_tokens": 9146
+      }
+    },
+    {
+      "by_size": [
+        {
+          "batch_size": 2,
+          "fits": true,
+          "headroom_tokens": 31998,
+          "max_required_group": "k02::a3::g02491",
+          "max_required_tokens": 770
+        },
+        {
+          "batch_size": 4,
+          "fits": true,
+          "headroom_tokens": 31541,
+          "max_required_group": "k04::a3::g01245",
+          "max_required_tokens": 1227
+        },
+        {
+          "batch_size": 8,
+          "fits": true,
+          "headroom_tokens": 30642,
+          "max_required_group": "k08::a3::g00622",
+          "max_required_tokens": 2126
+        },
+        {
+          "batch_size": 16,
+          "fits": true,
+          "headroom_tokens": 28753,
+          "max_required_group": "k16::a1::g00189",
+          "max_required_tokens": 4015
+        },
+        {
+          "batch_size": 32,
+          "fits": true,
+          "headroom_tokens": 25103,
+          "max_required_group": "k32::a2::g00082",
+          "max_required_tokens": 7665
+        }
+      ],
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "fits": true,
+      "max_model_len": 32768,
+      "method": "measured pinned-tokenizer solo prompt lengths, upper-bounded per size",
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a2::g00082",
+        "required_tokens": 7665
+      }
+    }
+  ]
+}

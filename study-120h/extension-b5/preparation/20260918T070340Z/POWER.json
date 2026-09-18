@@ -1,0 +1,219 @@
+{
+  "half_width_below_practical_slope": {
+    "decreasing": true,
+    "flat_positive": true,
+    "non_monotonic": true,
+    "null": true,
+    "positive_monotonic": true,
+    "threshold": true
+  },
+  "item_logit_sd": 1.0,
+  "n_replicates": 200,
+  "namespace": "b5-power-v1",
+  "planning_inputs": [
+    {
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "exact_standardized": 0.00026280899648314205,
+      "marginal_error": 0.12353515625,
+      "observed_b3_raw_contrast": 0.007118871145778232,
+      "observed_b3_standardized_contrast": 0.0657822757129337
+    },
+    {
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "exact_standardized": 0.005588524681544034,
+      "marginal_error": 0.18241373697916666,
+      "observed_b3_raw_contrast": 0.018778639369540745,
+      "observed_b3_standardized_contrast": 0.12497224210086133
+    },
+    {
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "exact_standardized": -0.011174257824308871,
+      "marginal_error": 0.28662109375,
+      "observed_b3_raw_contrast": 0.0015644994046952988,
+      "observed_b3_standardized_contrast": 0.00958839103073185
+    },
+    {
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "exact_standardized": -0.0018599188993609335,
+      "marginal_error": 0.6094970703125,
+      "observed_b3_raw_contrast": 0.012426825033293828,
+      "observed_b3_standardized_contrast": 0.0521955101727293
+    }
+  ],
+  "planning_source": "completed B3 marginal error rates and standardized dependence of the same four cells; no B5 output exists",
+  "practical_contrast": 0.016666666666666666,
+  "practical_slope": 0.004166666666666667,
+  "record_sha256": "b57d5512f6dbe1d047ce65ccda38337fe8ec498d5d8eaa33619f23ec1ddbc056",
+  "scenarios": {
+    "decreasing": {
+      "mean_estimated_slope": -0.004070460128354873,
+      "per_size_mean_estimate": {
+        "16": 0.004112142251879916,
+        "2": 0.01621314623344683,
+        "32": -7.731130938876342e-05,
+        "4": 0.012235828449757466,
+        "8": 0.008335063030906793
+      },
+      "per_size_standard_error": {
+        "16": 0.0016460195376892005,
+        "2": 0.006395271727384091,
+        "32": 0.0012676252509635946,
+        "4": 0.003301683591091888,
+        "8": 0.0024927797803310538
+      },
+      "rejection_rate_against_zero": 0.845,
+      "slope_95_half_width": 0.0026205233574400455,
+      "slope_standard_error": 0.0013370262811512861,
+      "true_contrast_by_size": {
+        "16": 0.004166666666666667,
+        "2": 0.016666666666666666,
+        "32": 0.0,
+        "4": 0.0125,
+        "8": 0.008333333333333333
+      },
+      "true_slope": -0.0041666666666666675
+    },
+    "flat_positive": {
+      "mean_estimated_slope": 3.978652544578031e-05,
+      "per_size_mean_estimate": {
+        "16": 0.016523868602734148,
+        "2": 0.01621314623344683,
+        "32": 0.016353623995378846,
+        "4": 0.01640695887214038,
+        "8": 0.016575252332590735
+      },
+      "per_size_standard_error": {
+        "16": 0.001926738353608552,
+        "2": 0.006395271727384091,
+        "32": 0.0016490140087863112,
+        "4": 0.0034180112712690123,
+        "8": 0.002577348140129688
+      },
+      "rejection_rate_against_zero": 0.045,
+      "slope_95_half_width": 0.0026725140162366843,
+      "slope_standard_error": 0.0013635526149037094,
+      "true_contrast_by_size": {
+        "16": 0.016666666666666666,
+        "2": 0.016666666666666666,
+        "32": 0.016666666666666666,
+        "4": 0.016666666666666666,
+        "8": 0.016666666666666666
+      },
+      "true_slope": -6.938893903907229e-19
+    },
+    "non_monotonic": {
+      "mean_estimated_slope": 2.0693120350179038e-05,
+      "per_size_mean_estimate": {
+        "16": 0.008275153365674802,
+        "2": -0.00010512712253100318,
+        "32": -7.731130938876342e-05,
+        "4": 0.00812385378845749,
+        "8": 0.016575252332590735
+      },
+      "per_size_standard_error": {
+        "16": 0.0017593233741096466,
+        "2": 0.0059338587291182295,
+        "32": 0.0012676252509635946,
+        "4": 0.0033659693580246667,
+        "8": 0.002577348140129688
+      },
+      "rejection_rate_against_zero": 0.05,
+      "slope_95_half_width": 0.002438162646337425,
+      "slope_standard_error": 0.0012439833923323803,
+      "true_contrast_by_size": {
+        "16": 0.008333333333333333,
+        "2": 0.0,
+        "32": 0.0,
+        "4": 0.008333333333333333,
+        "8": 0.016666666666666666
+      },
+      "true_slope": 0.0
+    },
+    "null": {
+      "mean_estimated_slope": 2.5227997824788525e-05,
+      "per_size_mean_estimate": {
+        "16": 1.6689703609864235e-06,
+        "2": -0.00010512712253100318,
+        "32": -7.731130938876342e-05,
+        "4": -0.00019497938160241933,
+        "8": 5.683314192415833e-05
+      },
+      "per_size_standard_error": {
+        "16": 0.0016102820182046066,
+        "2": 0.0059338587291182295,
+        "32": 0.0012676252509635946,
+        "4": 0.0033841447133853976,
+        "8": 0.0024164079460706565
+      },
+      "rejection_rate_against_zero": 0.06,
+      "slope_95_half_width": 0.0024339788334320272,
+      "slope_standard_error": 0.0012418487546867912,
+      "true_contrast_by_size": {
+        "16": 0.0,
+        "2": 0.0,
+        "32": 0.0,
+        "4": 0.0,
+        "8": 0.0
+      },
+      "true_slope": 0.0
+    },
+    "positive_monotonic": {
+      "mean_estimated_slope": 0.004121362940010116,
+      "per_size_mean_estimate": {
+        "16": 0.016523868602734148,
+        "2": 0.004081820015290692,
+        "32": 0.020488627308202948,
+        "4": 0.00812385378845749,
+        "8": 0.012490737015091062
+      },
+      "per_size_standard_error": {
+        "16": 0.001926738353608552,
+        "2": 0.006053825834998177,
+        "32": 0.0017378085278749917,
+        "4": 0.0033659693580246667,
+        "8": 0.002553941003486559
+      },
+      "rejection_rate_against_zero": 0.89,
+      "slope_95_half_width": 0.0025434284257347724,
+      "slope_standard_error": 0.0012976914095345687,
+      "true_contrast_by_size": {
+        "16": 0.016666666666666666,
+        "2": 0.004166666666666667,
+        "32": 0.020833333333333332,
+        "4": 0.008333333333333333,
+        "8": 0.0125
+      },
+      "true_slope": 0.004166666666666667
+    },
+    "threshold": {
+      "mean_estimated_slope": 0.0044152266962796975,
+      "per_size_mean_estimate": {
+        "16": 0.011039785345374855,
+        "2": -0.00010512712253100318,
+        "32": 0.016353623995378846,
+        "4": -0.00019497938160241933,
+        "8": 0.005546140899582379
+      },
+      "per_size_standard_error": {
+        "16": 0.0017861505463074704,
+        "2": 0.0059338587291182295,
+        "32": 0.0016490140087863112,
+        "4": 0.0033841447133853976,
+        "8": 0.002458315338573572
+      },
+      "rejection_rate_against_zero": 0.93,
+      "slope_95_half_width": 0.0025107358086442553,
+      "slope_standard_error": 0.001281011196352902,
+      "true_contrast_by_size": {
+        "16": 0.011111111111111112,
+        "2": 0.0,
+        "32": 0.016666666666666666,
+        "4": 0.0,
+        "8": 0.005555555555555556
+      },
+      "true_slope": 0.0044444444444444444
+    }
+  },
+  "schema_version": "b5-power-v1",
+  "what_8192_items_resolve": "8,192 items, three assignments and five sizes resolve a cross-family slope whose half width is reported above; a per-size contrast smaller than its own reported standard error is not resolvable by this design, and no reduction of the four-family scope is used to buy precision"
+}

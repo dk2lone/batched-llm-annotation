@@ -1,0 +1,369 @@
+{
+  "assumptions": [
+    "coefficients come from the four completed B4 A100 PCIe 80GB lanes only",
+    "token counts come from the sealed B3 ledgers of the same four cells",
+    "the point estimate assumes the engine reuses a group's document prefix across that group's exact-context calls, which the chunk order enforces",
+    "the upper bound assumes no prefix reuse at all and exceeds the ceiling, so the run carries a live meter and a projection gate rather than a multiplier",
+    "one A100 PCIe 80GB runs at a time, so wall hours equal metered hours"
+  ],
+  "boot_hours_per_model": 0.25,
+  "ceiling_metered_a100_hours": 35.0,
+  "chunk_calls": 512,
+  "coefficients": {
+    "max_absolute_relative_error": 0.007295221224387825,
+    "seconds_per_chunk": 3.856967656885155,
+    "seconds_per_output_token": 0.00017732053652753902,
+    "seconds_per_prompt_token": 0.0002326237770804025
+  },
+  "point_estimated_usd": 28.757511236905568,
+  "point_fits_ceiling": true,
+  "point_metered_a100_hours": 18.08648505465759,
+  "required_balance_usd": 30.757511236905568,
+  "reserve_usd": 2.0,
+  "retry_fraction": 0.02,
+  "scenarios": {
+    "no_prefix_reuse": {
+      "blocks": [
+        {
+          "batch_size": 2,
+          "calls": 36864,
+          "cell_key": "Qwen/Qwen3-8B::civil_comments",
+          "generation_hours": 0.8931590179477789
+        },
+        {
+          "batch_size": 4,
+          "calls": 30720,
+          "cell_key": "Qwen/Qwen3-8B::civil_comments",
+          "generation_hours": 1.122398303014688
+        },
+        {
+          "batch_size": 8,
+          "calls": 27648,
+          "cell_key": "Qwen/Qwen3-8B::civil_comments",
+          "generation_hours": 1.6680437506150956
+        },
+        {
+          "batch_size": 16,
+          "calls": 26112,
+          "cell_key": "Qwen/Qwen3-8B::civil_comments",
+          "generation_hours": 2.8029180845492045
+        },
+        {
+          "batch_size": 32,
+          "calls": 25344,
+          "cell_key": "Qwen/Qwen3-8B::civil_comments",
+          "generation_hours": 5.094458471784069
+        },
+        {
+          "batch_size": 2,
+          "calls": 36864,
+          "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+          "generation_hours": 1.9363747094574084
+        },
+        {
+          "batch_size": 4,
+          "calls": 30720,
+          "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+          "generation_hours": 2.878668376095702
+        },
+        {
+          "batch_size": 8,
+          "calls": 27648,
+          "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+          "generation_hours": 4.845060314611462
+        },
+        {
+          "batch_size": 16,
+          "calls": 26112,
+          "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+          "generation_hours": 8.81874649426257
+        },
+        {
+          "batch_size": 32,
+          "calls": 25344,
+          "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+          "generation_hours": 16.78657000487458
+        },
+        {
+          "batch_size": 2,
+          "calls": 36864,
+          "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+          "generation_hours": 0.8843343176186877
+        },
+        {
+          "batch_size": 4,
+          "calls": 30720,
+          "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+          "generation_hours": 1.0908854717408394
+        },
+        {
+          "batch_size": 8,
+          "calls": 27648,
+          "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+          "generation_hours": 1.6019110615230159
+        },
+        {
+          "batch_size": 16,
+          "calls": 26112,
+          "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+          "generation_hours": 2.672923881856306
+        },
+        {
+          "batch_size": 32,
+          "calls": 25344,
+          "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+          "generation_hours": 4.839430342907355
+        },
+        {
+          "batch_size": 2,
+          "calls": 36864,
+          "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+          "generation_hours": 0.8220368903284639
+        },
+        {
+          "batch_size": 4,
+          "calls": 30720,
+          "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+          "generation_hours": 1.0008400002999362
+        },
+        {
+          "batch_size": 8,
+          "calls": 27648,
+          "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+          "generation_hours": 1.4456124475341694
+        },
+        {
+          "batch_size": 16,
+          "calls": 26112,
+          "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+          "generation_hours": 2.378740455648279
+        },
+        {
+          "batch_size": 32,
+          "calls": 25344,
+          "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+          "generation_hours": 4.266788028699322
+        }
+      ],
+      "cells": [
+        {
+          "boot_hours": 0.25,
+          "calls": 146688,
+          "cell_key": "Qwen/Qwen3-8B::civil_comments",
+          "generation_hours": 11.580977627910835,
+          "metered_hours": 12.062597180469051,
+          "output_tokens": 5066035.1,
+          "prompt_tokens": 170611047.0,
+          "retry_hours": 0.2316195525582167
+        },
+        {
+          "boot_hours": 0.25,
+          "calls": 146688,
+          "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+          "generation_hours": 35.26541989930172,
+          "metered_hours": 36.22072829728776,
+          "output_tokens": 5081622.0,
+          "prompt_tokens": 537130881.5999999,
+          "retry_hours": 0.7053083979860344
+        },
+        {
+          "boot_hours": 0.25,
+          "calls": 146688,
+          "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+          "generation_hours": 11.089485075646204,
+          "metered_hours": 11.561274777159127,
+          "output_tokens": 4033802.7,
+          "prompt_tokens": 163791721.8,
+          "retry_hours": 0.22178970151292407
+        },
+        {
+          "boot_hours": 0.25,
+          "calls": 146688,
+          "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+          "generation_hours": 9.914017822510171,
+          "metered_hours": 10.362298178960375,
+          "output_tokens": 5169087.0,
+          "prompt_tokens": 144735237.60000002,
+          "retry_hours": 0.19828035645020342
+        }
+      ],
+      "estimated_usd": 111.62896850986333,
+      "metered_a100_hours": 70.2068984338763,
+      "wall_hours_one_a100": 70.2068984338763
+    },
+    "prefix_reuse": {
+      "blocks": [
+        {
+          "batch_size": 2,
+          "calls": 36864,
+          "cell_key": "Qwen/Qwen3-8B::civil_comments",
+          "generation_hours": 0.7494837495921282
+        },
+        {
+          "batch_size": 4,
+          "calls": 30720,
+          "cell_key": "Qwen/Qwen3-8B::civil_comments",
+          "generation_hours": 0.6913724979477353
+        },
+        {
+          "batch_size": 8,
+          "calls": 27648,
+          "cell_key": "Qwen/Qwen3-8B::civil_comments",
+          "generation_hours": 0.6623168721255389
+        },
+        {
+          "batch_size": 16,
+          "calls": 26112,
+          "cell_key": "Qwen/Qwen3-8B::civil_comments",
+          "generation_hours": 0.6477890592144407
+        },
+        {
+          "batch_size": 32,
+          "calls": 25344,
+          "cell_key": "Qwen/Qwen3-8B::civil_comments",
+          "generation_hours": 0.6405251527588915
+        },
+        {
+          "batch_size": 2,
+          "calls": 36864,
+          "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+          "generation_hours": 1.4379596743918708
+        },
+        {
+          "batch_size": 4,
+          "calls": 30720,
+          "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+          "generation_hours": 1.383423270899089
+        },
+        {
+          "batch_size": 8,
+          "calls": 27648,
+          "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+          "generation_hours": 1.356155069152698
+        },
+        {
+          "batch_size": 16,
+          "calls": 26112,
+          "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+          "generation_hours": 1.3425209682795025
+        },
+        {
+          "batch_size": 32,
+          "calls": 25344,
+          "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+          "generation_hours": 1.3357039178429053
+        },
+        {
+          "batch_size": 2,
+          "calls": 36864,
+          "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+          "generation_hours": 0.748417646711654
+        },
+        {
+          "batch_size": 4,
+          "calls": 30720,
+          "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+          "generation_hours": 0.6831354590197385
+        },
+        {
+          "batch_size": 8,
+          "calls": 27648,
+          "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+          "generation_hours": 0.6504943651737807
+        },
+        {
+          "batch_size": 16,
+          "calls": 26112,
+          "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+          "generation_hours": 0.6341738182508015
+        },
+        {
+          "batch_size": 32,
+          "calls": 25344,
+          "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+          "generation_hours": 0.626013544789312
+        },
+        {
+          "batch_size": 2,
+          "calls": 36864,
+          "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+          "generation_hours": 0.7035799262456316
+        },
+        {
+          "batch_size": 4,
+          "calls": 30720,
+          "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+          "generation_hours": 0.6454691080514392
+        },
+        {
+          "batch_size": 8,
+          "calls": 27648,
+          "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+          "generation_hours": 0.616413698954343
+        },
+        {
+          "batch_size": 16,
+          "calls": 26112,
+          "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+          "generation_hours": 0.6018859944057948
+        },
+        {
+          "batch_size": 32,
+          "calls": 25344,
+          "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+          "generation_hours": 0.5946221421315209
+        }
+      ],
+      "cells": [
+        {
+          "boot_hours": 0.25,
+          "calls": 146688,
+          "cell_key": "Qwen/Qwen3-8B::civil_comments",
+          "generation_hours": 3.391487331638734,
+          "metered_hours": 3.709317078271509,
+          "output_tokens": 5066035.1,
+          "prompt_tokens": 43873507.80000001,
+          "retry_hours": 0.06782974663277468
+        },
+        {
+          "boot_hours": 0.25,
+          "calls": 146688,
+          "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+          "generation_hours": 6.855762900566065,
+          "metered_hours": 7.242878158577386,
+          "output_tokens": 5081622.0,
+          "prompt_tokens": 97473480.8,
+          "retry_hours": 0.1371152580113213
+        },
+        {
+          "boot_hours": 0.25,
+          "calls": 146688,
+          "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+          "generation_hours": 3.3422348339452865,
+          "metered_hours": 3.6590795306241923,
+          "output_tokens": 4033802.7,
+          "prompt_tokens": 43898127.00000001,
+          "retry_hours": 0.06684469667890573
+        },
+        {
+          "boot_hours": 0.25,
+          "calls": 146688,
+          "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+          "generation_hours": 3.161970869788729,
+          "metered_hours": 3.475210287184504,
+          "output_tokens": 5169087.0,
+          "prompt_tokens": 40243042.80000002,
+          "retry_hours": 0.06323941739577459
+        }
+      ],
+      "estimated_usd": 28.757511236905568,
+      "metered_a100_hours": 18.08648505465759,
+      "wall_hours_one_a100": 18.08648505465759
+    }
+  },
+  "schema_version": "b5-forecast-v1",
+  "upper_estimated_usd": 111.62896850986333,
+  "upper_fits_ceiling": false,
+  "upper_metered_a100_hours": 70.2068984338763,
+  "usd_per_hour": 1.59
+}
