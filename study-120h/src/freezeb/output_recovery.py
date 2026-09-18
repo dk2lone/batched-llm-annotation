@@ -6,7 +6,10 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from step0.hashing import sha256_file, sha256_json, sha256_text
+from step0.hashing import read_jsonl, sha256_file, sha256_json, sha256_text
+
+from .extension_b4 import frame
+from .prompts import build_messages
 
 SCHEMA_VERSION = "ext-output-recovery-v1"
 LABEL_VALUES = {
@@ -137,3 +140,92 @@ def summarize(records: list[dict[str, Any]]) -> dict[str, Any]:
         "by_condition": count("condition"),
         "by_failure_class": count("failure_class"),
     }
+
+
+def source_event(record: dict[str, Any]) -> dict[str, Any]:
+    """Reload and authenticate the exact final event named by an inventory record."""
+    ledger = Path(str(record["source_ledger"]))
+    if sha256_file(ledger) != record["source_ledger_sha256"]:
+        raise ValueError("recovery source ledger differs from the inventory")
+    matches = [
+        event
+        for event in read_jsonl(ledger)
+        if event.get("attempt_id") == record["source_attempt_id"]
+    ]
+    if len(matches) != 1 or sha256_json(matches[0]) != record["source_event_sha256"]:
+        raise ValueError("recovery source event differs from the inventory")
+    return matches[0]
+
+
+def _recovery_job(
+    record: dict[str, Any], event: dict[str, Any], by_id: dict[str, dict[str, Any]]
+) -> dict[str, Any]:
+    order = [str(value) for value in event["doc_order"]]
+    if sha256_json(order) != record["doc_order_sha256"]:
+        raise ValueError("recovery document order differs from the inventory")
+    try:
+        documents = [(doc_id, str(by_id[doc_id]["text"])) for doc_id in order]
+    except KeyError as exc:
+        raise ValueError("recovery document is absent from the sealed frame") from exc
+    messages = build_messages(
+        str(record["task_id"]), documents, [str(value) for value in record["target_ids"]]
+    )
+    if sha256_json(messages) != record["prompt_sha256"]:
+        raise ValueError("reconstructed recovery prompt differs from the source event")
+    return {
+        **{
+            key: event[key]
+            for key in (
+                "cell_key",
+                "call_id",
+                "model_id",
+                "task_id",
+                "condition",
+                "assignment",
+                "call_index",
+                "execution_block",
+                "execution_order_key",
+                "batch_size",
+                "doc_order",
+                "target_ids",
+                "prompt_sha256",
+            )
+        },
+        "schema_version": SCHEMA_VERSION,
+        "attempt_id": record["recovery_id"],
+        "attempt": 1,
+        "parent_attempt_id": record["source_attempt_id"],
+        "max_tokens": record["recovery_max_tokens"],
+        "messages": messages,
+        "json_schema": record["json_schema"],
+        "json_schema_sha256": record["json_schema_sha256"],
+        "source_attempt_id": record["source_attempt_id"],
+        "source_event_sha256": record["source_event_sha256"],
+        "record_sha256": record["record_sha256"],
+    }
+
+
+def recovery_jobs(study: Path, records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Reconstruct records while hashing each source ledger and frame only once."""
+    ledgers: dict[Path, dict[str, dict[str, Any]]] = {}
+    frames: dict[str, dict[str, dict[str, Any]]] = {}
+    output = []
+    for record in records:
+        ledger = Path(str(record["source_ledger"]))
+        if ledger not in ledgers:
+            if sha256_file(ledger) != record["source_ledger_sha256"]:
+                raise ValueError("recovery source ledger differs from the inventory")
+            ledgers[ledger] = {str(event["attempt_id"]): event for event in read_jsonl(ledger)}
+        event = ledgers[ledger].get(str(record["source_attempt_id"]))
+        if event is None or sha256_json(event) != record["source_event_sha256"]:
+            raise ValueError("recovery source event differs from the inventory")
+        task = str(record["task_id"])
+        if task not in frames:
+            frames[task] = {str(row["doc_id"]): row for row in frame(study, task)}
+        output.append(_recovery_job(record, event, frames[task]))
+    return output
+
+
+def recovery_job(study: Path, record: dict[str, Any]) -> dict[str, Any]:
+    """Reconstruct one exact original prompt and attach the amended output contract."""
+    return recovery_jobs(study, [record])[0]

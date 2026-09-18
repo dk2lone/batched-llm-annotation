@@ -90,6 +90,11 @@ study-120h/output-recovery/**/RECOVERY_INVENTORY.json
 study-120h/output-recovery/**/events.jsonl
 study-120h/output-recovery/**/receipts/
 study-120h/output-recovery/**/meter.jsonl
+study-120h/output-recovery/**/RUN.json
+study-120h/output-recovery/**/preflight-*.json
+study-120h/output-recovery/**/runpod-known-hosts
+study-120h/output-recovery/**/runpod-lifecycle/
+study-120h/output-recovery/**/runpod-watchdog.jsonl
 
 # Idea-selection phase output. Kept locally, not published.
 idea-stage/

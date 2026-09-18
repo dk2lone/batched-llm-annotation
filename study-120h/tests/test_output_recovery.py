@@ -8,6 +8,7 @@ from freezeb.output_recovery import (
     final_events,
     inventory_record,
     label_schema,
+    recovery_job,
     recovery_max_tokens,
     summarize,
 )
@@ -63,3 +64,12 @@ def test_inventory_is_content_addressed_and_unique(tmp_path: Path) -> None:
     assert summarize([first])["calls"] == 1
     with pytest.raises(ValueError, match="duplicate"):
         summarize([first, first])
+
+
+def test_recovery_job_rejects_a_changed_source_ledger(tmp_path: Path) -> None:
+    ledger = tmp_path / "events.jsonl"
+    ledger.write_text("{}\n")
+    record = inventory_record("b4", ledger, event("call"))
+    ledger.write_text('{"changed":true}\n')
+    with pytest.raises(ValueError, match="ledger differs"):
+        recovery_job(tmp_path, record)
