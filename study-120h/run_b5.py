@@ -52,6 +52,7 @@ from step0.hashing import read_jsonl, sha256_json, write_json  # noqa: E402
 RUN_SCHEMA = "b5-run-v1"
 CEILING_HOURS = 35.0
 RESERVE_USD = 2.00
+SMOKE_CEILING_HOURS = 2.0
 SMOKE_CHUNK_CALLS = 64
 CHUNK_TIMEOUT_SECONDS = 45 * 60
 POD_START_TIMEOUT_SECONDS = 40 * 60
@@ -230,8 +231,11 @@ class Ledger:
                 verify_event(self.texts_of(str(call["cell_key"])), event, call, attempt)
                 checked += 1
             imported += self.add(events)
-        return {"receipts": len(list(self.receipts.glob("*.json"))),
-                "events_checked": checked, "events_imported": imported}
+        return {
+            "receipts": len(list(self.receipts.glob("*.json"))),
+            "events_checked": checked,
+            "events_imported": imported,
+        }
 
     def pending(self, chunk: dict[str, Any]) -> list[str]:
         return [
@@ -319,6 +323,146 @@ def projection(progress: dict[str, Any], measured: float) -> dict[str, Any]:
     }
 
 
+def calibrate_smoke(
+    plan: Plan, output: Path, chunks: list[dict[str, Any]], ceiling_hours: float
+) -> dict[str, Any]:
+    """Turn a completed 20-block smoke run into the full-launch runtime gate."""
+    ledger = Ledger(output, plan.texts)
+    ledger.reconcile(chunks)
+    progress = ledger.progress(chunks, plan.block_hours())
+    timings = list(read_jsonl(output / "block-meter.jsonl"))
+    timing_by_block: dict[tuple[str, int], list[dict[str, Any]]] = {}
+    for row in timings:
+        key = (str(row["cell_key"]), int(row["batch_size"]))
+        timing_by_block.setdefault(key, []).append(row)
+    expected_blocks = set(plan.blocks())
+    complete = (
+        all(bool(row["complete"]) for row in progress["blocks"])
+        and set(timing_by_block) == expected_blocks
+    )
+    coefficients = cast(dict[str, float], plan.forecast["coefficients"])
+    prompt_tokens = 0
+    cached_tokens = 0
+    output_tokens = 0
+    missing_metrics = 0
+    cache_by_block: list[dict[str, Any]] = []
+    for cell_key, k in plan.blocks():
+        events = [
+            event
+            for event in ledger.by_attempt.values()
+            if int(event.get("attempt", 0)) == 1
+            and event.get("cell_key") == cell_key
+            and int(event.get("batch_size", 0)) == k
+        ]
+        block_prompt = block_cached = 0
+        block_missing = 0
+        for event in events:
+            prompt = event.get("prompt_tokens")
+            cached = event.get("num_cached_tokens")
+            generated = event.get("output_tokens")
+            if not isinstance(prompt, int) or not isinstance(cached, int):
+                block_missing += 1
+                continue
+            block_prompt += prompt
+            block_cached += cached
+            output_tokens += int(generated or 0)
+        prompt_tokens += block_prompt
+        cached_tokens += block_cached
+        missing_metrics += block_missing
+        cache_by_block.append(
+            {
+                "cell_key": cell_key,
+                "batch_size": k,
+                "calls": len(events),
+                "prompt_tokens": block_prompt,
+                "cached_tokens": block_cached,
+                "cache_hit_fraction": (block_cached / block_prompt if block_prompt else None),
+                "metrics_complete": block_missing == 0 and bool(events),
+                "prefix_reuse_observed": block_cached > 0,
+            }
+        )
+    active_prompt_tokens = prompt_tokens - cached_tokens
+    predicted_smoke_seconds = (
+        coefficients["seconds_per_prompt_token"] * active_prompt_tokens
+        + coefficients["seconds_per_output_token"] * output_tokens
+        + coefficients["seconds_per_chunk"] * len(chunks)
+    )
+    measured_generation_seconds = sum(
+        float(row["elapsed_seconds"]) for rows in timing_by_block.values() for row in rows
+    )
+    ratio = (
+        measured_generation_seconds / predicted_smoke_seconds
+        if predicted_smoke_seconds > 0
+        else math.nan
+    )
+    full_generation = sum(plan.block_hours().values())
+    retry_fraction = float(plan.forecast["retry_fraction"])
+    settled = metered_hours(output)["settled_hours"]
+    observed_overhead = max(0.0, settled - measured_generation_seconds / 3600.0)
+    planned_boot = float(plan.forecast["boot_hours_per_model"]) * len(b5.CELLS)
+    projected = (
+        full_generation * ratio * (1.0 + retry_fraction) + max(observed_overhead, planned_boot)
+        if math.isfinite(ratio)
+        else math.nan
+    )
+    metrics_complete = missing_metrics == 0 and all(
+        bool(row["metrics_complete"]) for row in cache_by_block
+    )
+    prefix_reuse_observed = all(bool(row["prefix_reuse_observed"]) for row in cache_by_block)
+    gates = {
+        "all_smoke_blocks_complete": complete,
+        "cache_metrics_complete": metrics_complete,
+        "prefix_reuse_observed_in_every_block": prefix_reuse_observed,
+        "projection_is_finite": math.isfinite(projected),
+        "projection_fits_ceiling": math.isfinite(projected) and projected <= ceiling_hours,
+    }
+    record = {
+        "schema_version": "b5-smoke-calibration-v1",
+        "at_utc": now(),
+        "seal_manifest_sha256": plan.seal["manifest_sha256"],
+        "schedule_sha256": plan.schedule["schedule_sha256"],
+        "gates": gates,
+        "passed": all(gates.values()),
+        "smoke_calls": int(progress["planned_calls"]),
+        "smoke_blocks": len(expected_blocks),
+        "measured_smoke_metered_hours": settled,
+        "measured_generation_seconds": measured_generation_seconds,
+        "predicted_smoke_seconds": b5.safe_float(predicted_smoke_seconds),
+        "measured_over_forecast_ratio": b5.safe_float(ratio),
+        "prompt_tokens": prompt_tokens,
+        "cached_tokens": cached_tokens,
+        "cache_hit_fraction": cached_tokens / prompt_tokens if prompt_tokens else None,
+        "projected_full_metered_a100_hours": b5.safe_float(projected),
+        "ceiling_metered_a100_hours": ceiling_hours,
+        "blocks": cache_by_block,
+    }
+    record["record_sha256"] = sha256_json(record)
+    return record
+
+
+def load_calibration(plan: Plan, path: Path | None, ceiling_hours: float) -> dict[str, Any] | None:
+    if path is None or not path.is_file():
+        return None
+    record = json.loads(path.read_text())
+    recorded_digest = record.pop("record_sha256", None)
+    digest_valid = recorded_digest == sha256_json(record)
+    record["record_sha256"] = recorded_digest
+    projected = record.get("projected_full_metered_a100_hours")
+    if (
+        not digest_valid
+        or record.get("schema_version") != "b5-smoke-calibration-v1"
+        or record.get("seal_manifest_sha256") != plan.seal["manifest_sha256"]
+        or record.get("schedule_sha256") != plan.schedule["schedule_sha256"]
+        or record.get("passed") is not True
+        or isinstance(projected, bool)
+        or not isinstance(projected, (int, float))
+        or not math.isfinite(projected)
+        or float(projected) > ceiling_hours
+    ):
+        return None
+    return cast(dict[str, Any], record)
+
+
 # --- read-only gates ---------------------------------------------------------
 
 
@@ -335,7 +479,7 @@ def account_checks(required_usd: float) -> dict[str, Any]:
         or not math.isfinite(balance)
         or float(balance) < required_usd
     ):
-        raise RuntimeError("the live Runpod balance cannot fund the complete B5 block")
+        raise RuntimeError("the live Runpod balance cannot fund the requested B5 run")
     pods = cli(["pod", "list", "--all"])
     if not isinstance(pods, list):
         raise RuntimeError("the Runpod Pod list response shape changed")
@@ -349,8 +493,9 @@ def account_checks(required_usd: float) -> dict[str, Any]:
     catalog = cli(["gpu", "list", "--include-unavailable"])
     gpu = next(row for row in catalog if row.get("gpuId") == GPU_ID)
     placement = next(
-        row for row in gpu.get("dataCenterAvailability", []) if row.get("dataCenterId")
-        == DATA_CENTER
+        row
+        for row in gpu.get("dataCenterAvailability", [])
+        if row.get("dataCenterId") == DATA_CENTER
     )
     rate = gpu.get("securePricePerHr")
     if (
@@ -383,12 +528,21 @@ def preflight(
     reserve_usd: float,
     live: bool,
     confirm: str | None,
+    smoke: bool = False,
+    calibration_path: Path | None = None,
 ) -> dict[str, Any]:
     ledger = Ledger(output, plan.texts)
     reconciled = ledger.reconcile(chunks)
     progress = ledger.progress(chunks, plan.block_hours())
     measured = metered_hours(output)
-    point = float(plan.forecast["point_metered_a100_hours"])
+    calibration = None if smoke else load_calibration(plan, calibration_path, ceiling_hours)
+    point = (
+        SMOKE_CEILING_HOURS
+        if smoke
+        else float(calibration["projected_full_metered_a100_hours"])
+        if calibration is not None
+        else ceiling_hours
+    )
     remaining = max(0.0, point - float(measured["settled_hours"]))
     required = remaining * usd_per_hour + reserve_usd
     gates: dict[str, Any] = {
@@ -398,8 +552,9 @@ def preflight(
         "context_fits_every_size": True,
         "cpu_tests_evidence_present": (STUDY / "extension-b5" / "CPU_TESTS.json").is_file(),
         "no_conflicting_active_run": measured["open_lanes"] == 0,
-        "ceiling_covers_point_estimate": point <= ceiling_hours,
+        "ceiling_covers_runtime_budget": point <= ceiling_hours,
         "confirmation_token_supplied": confirm == plan.seal["confirmation_token"],
+        "smoke_calibration_passed_or_is_smoke": smoke or calibration is not None,
     }
     checks: dict[str, Any] | None = None
     if live:
@@ -418,6 +573,8 @@ def preflight(
         "reserve_usd": reserve_usd,
         "ceiling_metered_a100_hours": ceiling_hours,
         "point_metered_a100_hours": point,
+        "smoke": smoke,
+        "smoke_calibration": calibration,
         "upper_metered_a100_hours": float(plan.forecast["upper_metered_a100_hours"]),
         "receipt_reconciliation": reconciled,
         "progress": progress,
@@ -457,13 +614,34 @@ class B5Pod:
         try:
             pod = cli(
                 [
-                    "pod", "create", "--name", name, "--image", IMAGE,
-                    "--registry-auth-id", REGISTRY_AUTH_ID, "--gpu-id", GPU_ID,
-                    "--gpu-count", "1", "--cloud-type", "SECURE",
-                    "--data-center-ids", DATA_CENTER,
-                    "--network-volume-id", VOLUMES[self.model],
-                    "--volume-mount-path", "/workspace", "--container-disk-in-gb", "40",
-                    "--ports", "22/tcp", "--ssh", "--wait", "--wait-timeout", "10m",
+                    "pod",
+                    "create",
+                    "--name",
+                    name,
+                    "--image",
+                    IMAGE,
+                    "--registry-auth-id",
+                    REGISTRY_AUTH_ID,
+                    "--gpu-id",
+                    GPU_ID,
+                    "--gpu-count",
+                    "1",
+                    "--cloud-type",
+                    "SECURE",
+                    "--data-center-ids",
+                    DATA_CENTER,
+                    "--network-volume-id",
+                    VOLUMES[self.model],
+                    "--volume-mount-path",
+                    "/workspace",
+                    "--container-disk-in-gb",
+                    "40",
+                    "--ports",
+                    "22/tcp",
+                    "--ssh",
+                    "--wait",
+                    "--wait-timeout",
+                    "10m",
                 ],
                 min(timeout, 660),
             )
@@ -511,8 +689,13 @@ class B5Pod:
         )
         launch = shlex.join(
             [
-                "/opt/b4/bin/python", f"{self.remote}/b5_worker.py", "serve",
-                "--model", self.model, "--source", f"{self.remote}/src",
+                "/opt/b4/bin/python",
+                f"{self.remote}/b5_worker.py",
+                "serve",
+                "--model",
+                self.model,
+                "--source",
+                f"{self.remote}/src",
             ]
         )
         command(
@@ -529,6 +712,8 @@ class B5Pod:
                     or backend.get("model_id") != self.model
                     or backend.get("model_revision") != policy.revision
                     or backend.get("batch_invariant") is not True
+                    or backend.get("enable_prefix_caching") is not True
+                    or backend.get("prefix_caching_required") is not True
                     or backend.get("max_num_seqs") != 32
                     or backend.get("dtype") != "bfloat16"
                     or str(ready.get("host", {}).get("installed_engine_version_string")) != "0.28.0"
@@ -542,12 +727,13 @@ class B5Pod:
 
     def rpc(self, payload: dict[str, Any], timeout: float) -> dict[str, Any]:
         argv = [
-            "/opt/b4/bin/python", f"{self.remote}/b5_worker.py",
-            "request", "--timeout", str(max(0.01, timeout)),
+            "/opt/b4/bin/python",
+            f"{self.remote}/b5_worker.py",
+            "request",
+            "--timeout",
+            str(max(0.01, timeout)),
         ]
-        raw = command(
-            [*self.ssh, shlex.join(argv)], timeout, data=json.dumps(payload).encode()
-        )
+        raw = command([*self.ssh, shlex.join(argv)], timeout, data=json.dumps(payload).encode())
         return cast(dict[str, Any], json.loads(raw))
 
     def load_frame(self, plan: Plan, cell_key: str, timeout: float) -> None:
@@ -645,6 +831,7 @@ def execute(
     ceiling_hours: float,
     usd_per_hour: float,
     reserve_usd: float,
+    runtime_budget_hours: float,
 ) -> dict[str, Any]:
     ledger = Ledger(output, plan.texts)
     ledger.reconcile(chunks)
@@ -657,15 +844,14 @@ def execute(
         outstanding = [
             chunk
             for chunk in chunks
-            if chunk["cell_key"] == cell_key
-            and (ledger.pending(chunk) or ledger.retryable(chunk))
+            if chunk["cell_key"] == cell_key and (ledger.pending(chunk) or ledger.retryable(chunk))
         ]
         if not outstanding:
             continue
         measured = metered_hours(output)["settled_hours"]
         if measured >= ceiling_hours:
             raise RuntimeError("the B5 metered ceiling is reached; no further Pod is created")
-        remaining = max(0.0, float(plan.forecast["point_metered_a100_hours"]) - measured)
+        remaining = max(0.0, runtime_budget_hours - measured)
         account_checks(remaining * usd_per_hour + reserve_usd)
         guard = Guard(output)
         guard.arm_watchdog(1, WATCHDOG_TARGET_SECONDS)
@@ -690,7 +876,11 @@ def execute(
             pod.start(POD_START_TIMEOUT_SECONDS)
             pod.load_frame(plan, cell_key, 600)
             for k in b5.SIZES:
-                for chunk in [c for c in outstanding if int(c["batch_size"]) == k]:
+                block_chunks = [c for c in outstanding if int(c["batch_size"]) == k]
+                if not block_chunks:
+                    continue
+                block_started = dt.datetime.now(dt.UTC)
+                for chunk in block_chunks:
                     pending = ledger.pending(chunk)
                     if pending:
                         run_chunk(
@@ -704,10 +894,27 @@ def execute(
                     lane = (dt.datetime.now(dt.UTC) - started).total_seconds() / 3600
                     if metered_hours(output)["settled_hours"] + lane > ceiling_hours:
                         raise RuntimeError("the B5 metered ceiling is reached mid-block")
+                block_finished = dt.datetime.now(dt.UTC)
+                append(
+                    output / "block-meter.jsonl",
+                    [
+                        {
+                            "phase_id": phase,
+                            "cell_key": cell_key,
+                            "batch_size": k,
+                            "started_at_utc": block_started.isoformat(),
+                            "finished_at_utc": block_finished.isoformat(),
+                            "elapsed_seconds": (block_finished - block_started).total_seconds(),
+                            "chunks": len(block_chunks),
+                            "calls": sum(int(chunk["calls"]) for chunk in block_chunks),
+                        }
+                    ],
+                )
                 progress = ledger.progress(chunks, plan.block_hours())
-                spent = metered_hours(output)["settled_hours"] + (
-                    dt.datetime.now(dt.UTC) - started
-                ).total_seconds() / 3600
+                spent = (
+                    metered_hours(output)["settled_hours"]
+                    + (dt.datetime.now(dt.UTC) - started).total_seconds() / 3600
+                )
                 forward = projection(progress, spent)
                 append(output / "projection.jsonl", [{"at_utc": now(), **forward}])
                 projected = forward["projected_total_metered_hours"]
@@ -792,7 +999,10 @@ def dry_run(plan: Plan, output: Path, chunks: list[dict[str, Any]], smoke: bool)
         "forecast": {
             "point_metered_a100_hours": plan.forecast["point_metered_a100_hours"],
             "upper_metered_a100_hours": plan.forecast["upper_metered_a100_hours"],
-            "required_balance_usd": plan.forecast["required_balance_usd"],
+            "planning_point_balance_usd": plan.forecast["planning_point_balance_usd"],
+            "full_launch_required_balance_usd": plan.forecast["full_launch_required_balance_usd"],
+            "full_launch_requires_smoke_calibration": True,
+            "smoke_required_balance_usd": plan.forecast["smoke_required_balance_usd"],
         },
         "pod_created": False,
         "gpu_work_launched": False,
@@ -856,6 +1066,11 @@ def main() -> None:
     parser.add_argument("--usd-per-hour", type=float, default=MAX_RATE)
     parser.add_argument("--reserve-usd", type=float, default=RESERVE_USD)
     parser.add_argument("--confirm", help="the confirmation token printed by seal_b5.py")
+    parser.add_argument(
+        "--calibration",
+        type=Path,
+        help="SMOKE_CALIBRATION.json from a completed all-cell B5 smoke run",
+    )
     args = parser.parse_args()
     creates_pod = bool(args.launch or args.resume)
     plan = Plan(args.seal or seal_b5.latest(), recompute=not args.status)
@@ -881,6 +1096,8 @@ def main() -> None:
                 reserve_usd=args.reserve_usd,
                 live=True,
                 confirm=args.confirm,
+                smoke=args.smoke,
+                calibration_path=args.calibration,
             )
             write_json(args.output / f"preflight-{uuid.uuid4().hex}.json", report)
         else:
@@ -894,24 +1111,46 @@ def main() -> None:
                 reserve_usd=args.reserve_usd,
                 live=True,
                 confirm=args.confirm,
+                smoke=args.smoke,
+                calibration_path=args.calibration,
             )
             write_json(args.output / f"preflight-{uuid.uuid4().hex}.json", gate)
             if not gate["passed"]:
                 failed = [key for key, value in gate["gates"].items() if not value]
                 raise SystemExit(f"B5 preflight refused the launch: {failed}")
+            calibration = gate.get("smoke_calibration")
+            if args.smoke:
+                runtime_budget = SMOKE_CEILING_HOURS
+            elif isinstance(calibration, dict):
+                runtime_budget = float(calibration["projected_full_metered_a100_hours"])
+            else:
+                raise RuntimeError("the passing B5 preflight lacks its smoke calibration")
+            run_progress = execute(
+                plan,
+                args.output,
+                state,
+                chunks,
+                ceiling_hours=args.ceiling_hours,
+                usd_per_hour=args.usd_per_hour,
+                reserve_usd=args.reserve_usd,
+                runtime_budget_hours=runtime_budget,
+            )
+            smoke_calibration = None
+            if args.smoke:
+                calibration_output = args.output / "SMOKE_CALIBRATION.json"
+                if calibration_output.is_file():
+                    smoke_calibration = json.loads(calibration_output.read_text())
+                else:
+                    smoke_calibration = calibrate_smoke(
+                        plan, args.output, chunks, args.ceiling_hours
+                    )
+                    write_json(calibration_output, smoke_calibration)
             report = {
                 "schema_version": "b5-execution-v1",
                 "namespace": state["namespace"],
-                "progress": execute(
-                    plan,
-                    args.output,
-                    state,
-                    chunks,
-                    ceiling_hours=args.ceiling_hours,
-                    usd_per_hour=args.usd_per_hour,
-                    reserve_usd=args.reserve_usd,
-                ),
+                "progress": run_progress,
                 "metered": metered_hours(args.output),
+                "smoke_calibration": smoke_calibration,
                 "pod_created": True,
             }
             write_json(args.output / f"EXECUTION-{uuid.uuid4().hex}.json", report)

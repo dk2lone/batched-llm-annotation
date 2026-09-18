@@ -8,10 +8,10 @@ made.** This document describes work that is ready to launch later.
 | Item | Path |
 |---|---|
 | Protocol | `study-120h/B5_PROTOCOL.md` |
-| Seal | `study-120h/freeze/20260918T071333Z-B5/` |
-| Preparation artifacts | `study-120h/extension-b5/preparation/20260918T070340Z/` |
+| Seal | `study-120h/freeze/20260918T190501Z-B5/` |
+| Preparation artifacts | `study-120h/extension-b5/preparation/20260918T185042Z/` |
 | CPU test evidence | `study-120h/extension-b5/CPU_TESTS.json` |
-| CPU dry-run artifacts | `study-120h/extension-b5/dry-run/DRY_RUN-full.json`, `DRY_RUN-smoke.json` |
+| CPU dry-run artifacts | `study-120h/extension-b5/dry-run-20260918-calibration-digest/DRY_RUN-full.json`, `DRY_RUN-smoke.json` |
 | Schedule, contract, forecast | `study-120h/src/freezeb/b5.py` |
 | Estimands and readings | `study-120h/src/freezeb/b5_analysis.py` |
 | Power and precision | `study-120h/src/freezeb/b5_power.py` |
@@ -20,11 +20,11 @@ made.** This document describes work that is ready to launch later.
 | Launcher | `study-120h/run_b5.py` |
 | Remote worker | `study-120h/b5_worker.py` |
 | Analysis | `study-120h/analyze_b5.py` |
-| Tests | `study-120h/tests/test_b5.py`, `test_b5_analysis.py`, `test_b5_runner.py` |
+| Tests | `study-120h/tests/test_b5.py`, `test_b5_analysis.py`, `test_b5_runner.py`, `test_batch_invariance.py` |
 
-Seal manifest SHA-256: `d0bc6f17ab647d0d23a3ba6468e564939a87e15a45b7ec4c610da94c0c5928c9`.
-Schedule SHA-256: `2caac185988ae7d49af649b123a14465308a2c6725bc7ed3d29699f3b7a935e5`.
-Confirmation token: `d0bc6f17ab64`. The seal covers 25 files and fails if any of them changes.
+Seal manifest SHA-256: `f764f75d002f97baf57e8e9bee71e33cf8a89e6d8c05ca14ae3040ec7b8717b3`.
+Schedule SHA-256: `6145f5088a56fc869929257daa9b145fc1351ce34eb03cafa7101448bd547a25`.
+Confirmation token: `f764f75d002f`. The seal covers 27 files and fails if any changes.
 
 ## 2. Exact design and call count
 
@@ -56,24 +56,19 @@ reproduces all four measured lanes within 0.73 percent. No unexplained multiplie
 
 | Quantity | Value |
 |---|---:|
-| Point estimate, metered A100 hours | **18.09** |
+| Planning point estimate, metered A100 hours | **18.09** |
 | Upper bound, no prefix reuse at all | 70.21 |
 | Ceiling, metered A100 hours | **35.00** |
 | Wall time on one A100 PCIe 80GB | equal to metered hours |
-| Estimated cost at $1.59 per hour | $28.76 |
-| Explicit reserve | $2.00 |
-| **Required balance** | **$30.76** |
+| Smoke budget | 2.00 h / **$5.18 including reserve** |
+| Full-run required balance | **set after the paid smoke calibration** |
 
 Per cell, at the point estimate: Qwen 3.71 h, Granite 7.24 h, Llama 3.66 h, Mistral 3.48 h.
 Each cell includes a 0.25 h boot allowance and a 2 percent retry allowance.
 
-**Required balance formula:**
-`required = min(point_metered_hours - settled_metered_hours, ceiling_hours) * usd_per_hour + reserve`.
-
-At launch time nothing is settled, so the balance needed is
-`18.086 * 1.59 + 2.00 = $30.76`.
-
-The recorded Runpod balance is `$8.9472095511`. **Top up by at least $21.82 before launch.**
+The recorded Runpod balance is `$8.9472095511`, which covers the guarded smoke budget. The
+full-run top-up cannot be stated until the smoke measures actual cache reuse and throughput.
+The launcher refuses a full preflight without the resulting calibration file.
 
 The point estimate sits inside the 35-hour ceiling. The no-reuse upper bound does not, so the
 run carries a live meter and a per-block projection gate. If measured throughput projects past
@@ -86,40 +81,51 @@ estimate is recalculated from the locked B4 runtime evidence and the generated B
 
 Run every command from `/Users/dz/bigdata/study-120h`.
 
-### Step 1 — read-only preflight. Creates no Pod.
+### Step 1 — paid calibration smoke. Creates four sequential Pods and stops within 2 hours.
 
 ```
-.venv/bin/python run_b5.py --preflight --output extension-b5/run-01 --confirm d0bc6f17ab64
+.venv/bin/python run_b5.py --launch --smoke --output extension-b5/smoke-01 --confirm f764f75d002f
 ```
 
-Success: the printed JSON has `"passed": true` and `"pod_created": false`.
-Failure: `"passed": false` and the failing gate names appear under `gates`.
+Success: `extension-b5/smoke-01/SMOKE_CALIBRATION.json` has `"passed": true`, cache reuse in
+all 20 blocks, and a full-run projection at or below 35 hours. Failure leaves the receipts
+durable and keeps the full launch locked.
 
-### Step 2 — launch. This creates a Pod and spends money.
+### Step 2 — reload credit to the calibrated requirement, then run read-only preflight.
 
 ```
-.venv/bin/python run_b5.py --launch --output extension-b5/run-01 --confirm d0bc6f17ab64
+.venv/bin/python run_b5.py --preflight --output extension-b5/run-01 \
+  --calibration extension-b5/smoke-01/SMOKE_CALIBRATION.json --confirm f764f75d002f
 ```
 
-Success: the run ends with `"completed_calls": 586752`.
-Failure: the process stops with a message naming the refused gate or the reached ceiling.
-Every completed call is already durable in `extension-b5/run-01/`.
+Success: `"passed": true` and `"pod_created": false`. The printed
+`required_balance_usd` is the funding target.
 
-### Step 3 — progress, at any time, from another terminal. Creates no Pod.
+### Step 3 — launch the full experiment.
+
+```
+.venv/bin/python run_b5.py --launch --output extension-b5/run-01 \
+  --calibration extension-b5/smoke-01/SMOKE_CALIBRATION.json --confirm f764f75d002f
+```
+
+Success: the run ends with `"completed_calls": 586752`. Every completed call is durable.
+
+### Step 4 — progress, at any time, from another terminal. Creates no Pod.
 
 ```
 .venv/bin/python run_b5.py --status --output extension-b5/run-01
 ```
 
-### Step 4 — resume after any stop.
+### Step 5 — resume after any stop.
 
 ```
-.venv/bin/python run_b5.py --resume --output extension-b5/run-01 --confirm d0bc6f17ab64
+.venv/bin/python run_b5.py --resume --output extension-b5/run-01 \
+  --calibration extension-b5/smoke-01/SMOKE_CALIBRATION.json --confirm f764f75d002f
 ```
 
 Resume reconciles the durable receipts first, then dispatches only the outstanding calls.
 
-### Step 5 — analysis, CPU only.
+### Step 6 — analysis, CPU only.
 
 ```
 .venv/bin/python analyze_b5.py \
@@ -127,22 +133,16 @@ Resume reconciles the durable receipts first, then dispatches only the outstandi
   --output extension-b5/run-01/analysis
 ```
 
-### Optional — paid GPU smoke run, 1,080 calls, roughly two minutes of A100 time.
-
-```
-.venv/bin/python run_b5.py --launch --smoke --output extension-b5/smoke-01 --confirm d0bc6f17ab64
-```
-
-The smoke selection reads the same generator as the full schedule. It differs only in which
-chunks it selects. **This task did not run it.**
+The smoke selection reads the same generator as the full schedule and runs 1,080 calls. It
+differs only in which chunks it selects. **This task did not run it.**
 
 ## 5. Success and failure indicators
 
 **The preparation is healthy when:**
 
-- `seal_b5.py --verify freeze/20260918T071333Z-B5` prints the manifest hash above;
+- `seal_b5.py --verify freeze/20260918T190501Z-B5` prints the manifest hash above;
 - `run_b5.py --dry-run` prints 586,752 calls and `"gpu_work_launched": false`;
-- the 113 targeted tests pass.
+- the 126 targeted tests pass.
 
 **The run is healthy when:**
 
@@ -193,8 +193,8 @@ non-monotonic shapes stays between 0.04 and 0.06.
 
 | Check | Result |
 |---|---|
-| Targeted B5 tests | 113 passed, 0 failed |
-| Full repository suite | 655 passed, 0 failed |
+| Targeted B5 tests | 126 passed, 0 failed |
+| Full repository suite | 659 passed, 0 failed |
 | Ruff | 23 errors, all inside sealed source snapshots, 0 in live code |
 | Strict mypy | 8 errors, all pre-existing, 0 in any B5 file |
 | Seal verification | passes against live files and snapshot, 25 files |

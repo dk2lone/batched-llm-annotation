@@ -1,0 +1,66 @@
+{
+  "b4_anchors": [
+    {
+      "calls": 20800,
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "chunk_calls": 32,
+      "mean_output_tokens": 295.648125,
+      "mean_prompt_tokens": 1849.8292788461538,
+      "metered_hours": 3.460310475763884,
+      "seconds_per_call": 0.5988998900360569
+    },
+    {
+      "calls": 20803,
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "chunk_calls": 32,
+      "mean_output_tokens": 296.1716098639619,
+      "mean_prompt_tokens": 5414.22823631207,
+      "metered_hours": 8.27958126290501,
+      "seconds_per_call": 1.4327977958207008
+    },
+    {
+      "calls": 20801,
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "chunk_calls": 32,
+      "mean_output_tokens": 228.5020431710014,
+      "mean_prompt_tokens": 1723.6332868612085,
+      "metered_hours": 3.249446706088044,
+      "seconds_per_call": 0.562377200226766
+    },
+    {
+      "calls": 20800,
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "chunk_calls": 32,
+      "mean_output_tokens": 302.29182692307694,
+      "mean_prompt_tokens": 1602.09875,
+      "metered_hours": 3.1809280979397268,
+      "seconds_per_call": 0.5505452477203373
+    }
+  ],
+  "contributing_runs": [
+    "runpod-pcie-auto-20260917T030957Z:28",
+    "runpod-pcie-auto-20260917T040458Z:0",
+    "runpod-pcie-auto-20260917T042016Z:0",
+    "runpod-pcie-auto-20260917T042412Z:0",
+    "runpod-pcie-auto-20260917T042601Z:974",
+    "runpod-pcie-auto-20260917T104225Z:0",
+    "runpod-pcie-auto-20260917T122830Z:0",
+    "runpod-pcie-auto-20260917T122930Z:396",
+    "runpod-pcie-auto-20260917T170313Z:0",
+    "runpod-pcie-auto-20260917T171010Z:805",
+    "runpod-pcie-auto-20260917T212656Z:0",
+    "runpod-pcie-auto-20260917T213519Z:0",
+    "runpod-pcie-auto-20260917T214652Z:0",
+    "runpod-pcie-auto-20260917T215853Z:0",
+    "runpod-pcie-auto-20260917T220712Z:0",
+    "runpod-pcie-auto-20260917T221341Z:0",
+    "runpod-pcie-auto-20260917T222149Z:0",
+    "runpod-pcie-auto-20260917T222821Z:0",
+    "runpod-pcie-auto-20260917T230203Z:400"
+  ],
+  "gpu_type_id": "NVIDIA A100 80GB PCIe",
+  "schema_version": "b5-runtime-evidence-v1",
+  "source": "completed B4 Runpod A100 PCIe 80GB meters and durable receipts",
+  "total_calls": 83204,
+  "total_metered_hours": 18.170266542696666
+}

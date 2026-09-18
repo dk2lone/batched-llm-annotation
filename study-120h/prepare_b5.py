@@ -80,9 +80,7 @@ def token_evidence(cell_key: str, doc_ids: list[str]) -> dict[str, Any]:
     joint_offset = max(joint_offsets)
     joint_template = -joint_offset / (ext.BATCH_SIZE - 1)
     solo_output_mean = sum(solo_output) / len(solo_output)
-    per_target = (sum(joint_output) / len(joint_output) - solo_output_mean) / (
-        ext.BATCH_SIZE - 1
-    )
+    per_target = (sum(joint_output) / len(joint_output) - solo_output_mean) / (ext.BATCH_SIZE - 1)
     single_constant = joint_template + per_target
     exact_offset_mean = sum(exact_offsets) / len(exact_offsets)
     return {
@@ -173,8 +171,7 @@ def runtime_evidence() -> dict[str, Any]:
 def planning_inputs() -> list[dict[str, Any]]:
     """Completed B3 marginal error and standardized dependence, planning use only."""
     rows = {
-        str(row["cell"]): row
-        for row in csv.DictReader((STUDY / A4_TABLE).open(encoding="utf-8"))
+        str(row["cell"]): row for row in csv.DictReader((STUDY / A4_TABLE).open(encoding="utf-8"))
     }
     inputs = []
     for cell_key in b5.CELLS:
@@ -268,7 +265,13 @@ def build(output: Path, *, usd_per_hour: float, replicates: int) -> dict[str, An
             **estimate,
             "ceiling_metered_a100_hours": CEILING_HOURS,
             "reserve_usd": RESERVE_USD,
-            "required_balance_usd": b5.required_balance_usd(estimate, CEILING_HOURS, RESERVE_USD),
+            "planning_point_balance_usd": b5.required_balance_usd(
+                estimate, CEILING_HOURS, RESERVE_USD
+            ),
+            "full_launch_required_balance_usd": None,
+            "full_launch_requires_smoke_calibration": True,
+            "smoke_budget_metered_a100_hours": 2.0,
+            "smoke_required_balance_usd": 2.0 * usd_per_hour + RESERVE_USD,
             "point_fits_ceiling": estimate["point_metered_a100_hours"] <= CEILING_HOURS,
             "upper_fits_ceiling": estimate["upper_metered_a100_hours"] <= CEILING_HOURS,
         },
@@ -290,7 +293,8 @@ def build(output: Path, *, usd_per_hour: float, replicates: int) -> dict[str, An
         "counts": counts,
         "point_metered_a100_hours": estimate["point_metered_a100_hours"],
         "upper_metered_a100_hours": estimate["upper_metered_a100_hours"],
-        "required_balance_usd": written["FORECAST.json"]["required_balance_usd"],
+        "full_launch_required_balance_usd": None,
+        "smoke_required_balance_usd": written["FORECAST.json"]["smoke_required_balance_usd"],
         "context_fits": True,
         "manifest_sha256": manifest["manifest_sha256"],
         "gpu_work_launched": False,
@@ -303,8 +307,11 @@ def main() -> None:
     parser.add_argument("--usd-per-hour", type=float, default=DEFAULT_USD_PER_HOUR)
     parser.add_argument("--replicates", type=int, default=b5_power.N_REPLICATES)
     args = parser.parse_args()
-    print(json.dumps(build(args.output, usd_per_hour=args.usd_per_hour,
-                           replicates=args.replicates), indent=2))
+    print(
+        json.dumps(
+            build(args.output, usd_per_hour=args.usd_per_hour, replicates=args.replicates), indent=2
+        )
+    )
 
 
 if __name__ == "__main__":

@@ -287,6 +287,7 @@ class VLLMBackend:
         enable_thinking: bool = False,
         max_num_seqs: int | None = None,
         require_batch_invariance: bool = False,
+        require_prefix_caching: bool = False,
     ) -> None:
         batch_invariant = os.environ.get("VLLM_BATCH_INVARIANT") == "1"
         if require_batch_invariance and not batch_invariant:
@@ -303,9 +304,10 @@ class VLLMBackend:
         self.enable_thinking = enable_thinking
         self.batch_invariant = batch_invariant
         self.batch_invariance_required = require_batch_invariance
+        self.prefix_caching_required = require_prefix_caching
         self.max_num_seqs = int(max_num_seqs or serving["max_num_seqs"])
         self._sampling_cls = SamplingParams
-        self.llm = LLM(
+        llm_kwargs: dict[str, Any] = dict(
             model=model_id,
             revision=model_revision,
             tokenizer_revision=tokenizer_revision,
@@ -316,6 +318,19 @@ class VLLMBackend:
             max_num_seqs=self.max_num_seqs,
             seed=int(decoding["seed"]),
         )
+        if "enable_prefix_caching" in serving:
+            llm_kwargs["enable_prefix_caching"] = bool(serving["enable_prefix_caching"])
+        self.llm = LLM(**llm_kwargs)
+        cache_config = getattr(
+            getattr(getattr(self.llm, "llm_engine", None), "vllm_config", None),
+            "cache_config",
+            None,
+        )
+        self.prefix_caching_enabled = getattr(
+            cache_config, "enable_prefix_caching", serving.get("enable_prefix_caching")
+        )
+        if require_prefix_caching and self.prefix_caching_enabled is not True:
+            raise RuntimeError("vLLM prefix caching was required but is not enabled")
         self.tokenizer = self.llm.get_tokenizer()
 
     def count_tokens(self, messages: list[Message]) -> int:
@@ -378,6 +393,8 @@ class VLLMBackend:
             "tensor_parallel_size": int(self.serving["tensor_parallel_size"]),
             "enable_thinking": self.enable_thinking,
             "batch_invariant": self.batch_invariant,
+            "enable_prefix_caching": self.prefix_caching_enabled,
+            "prefix_caching_required": self.prefix_caching_required,
             "batch_invariance_required": self.batch_invariance_required,
             "seed": int(self.decoding["seed"]),
         }

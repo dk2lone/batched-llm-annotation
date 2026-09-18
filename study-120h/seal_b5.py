@@ -46,9 +46,11 @@ CODE_FILES = (
     "src/freezeb/extension_b4.py",
     "src/step0/stats.py",
     "src/step0/hashing.py",
+    "src/step1/backends.py",
     "tests/test_b5.py",
     "tests/test_b5_analysis.py",
     "tests/test_b5_runner.py",
+    "tests/test_batch_invariance.py",
     "pyproject.toml",
 )
 
@@ -67,6 +69,7 @@ def covered(preparation: Path) -> dict[str, Path]:
 def seal(preparation: Path) -> Path:
     preparation = preparation.resolve()
     files = covered(preparation)
+    prior = sorted(FREEZE.glob("*-B5"))
     stamp = dt.datetime.now(dt.UTC).strftime("%Y%m%dT%H%M%SZ")
     destination = FREEZE / f"{stamp}-B5"
     if destination.exists():
@@ -81,11 +84,11 @@ def seal(preparation: Path) -> Path:
         "sealed_at_utc": dt.datetime.now(dt.UTC).isoformat(),
         "preparation_directory": str(preparation.relative_to(STUDY)),
         "files_sha256": {relative: sha256_file(source) for relative, source in files.items()},
-        "schedule_sha256": json.loads(
-            (preparation / "SCHEDULE_DIGEST.json").read_text()
-        )["schedule_sha256"],
+        "schedule_sha256": json.loads((preparation / "SCHEDULE_DIGEST.json").read_text())[
+            "schedule_sha256"
+        ],
         "gpu_work_launched": False,
-        "supersedes": None,
+        "supersedes": str(prior[-1].relative_to(STUDY)) if prior else None,
         "scope": (
             "B5 batch-size dose-response. It adds a new protocol and never edits the "
             "sealed X1R4, Freeze B or output-recovery artifacts."

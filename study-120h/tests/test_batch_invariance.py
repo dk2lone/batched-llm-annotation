@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import importlib.util
+import sys
+import types
 from pathlib import Path
 from typing import Any
 
@@ -159,6 +161,50 @@ def test_backend_rejects_required_mode_before_importing_vllm(
             {"max_num_seqs": 32},
             {"seed": 1},
             require_batch_invariance=True,
+        )
+
+
+def test_backend_requires_effective_prefix_caching(monkeypatch: pytest.MonkeyPatch) -> None:
+    class FakeLLM:
+        def __init__(self, **kwargs: Any) -> None:
+            enabled = kwargs.get("enable_prefix_caching", False)
+            cache = types.SimpleNamespace(enable_prefix_caching=enabled)
+            config = types.SimpleNamespace(cache_config=cache)
+            self.llm_engine = types.SimpleNamespace(vllm_config=config)
+
+        def get_tokenizer(self) -> object:
+            return object()
+
+    fake = types.ModuleType("vllm")
+    fake.LLM = FakeLLM  # type: ignore[attr-defined]
+    fake.SamplingParams = object  # type: ignore[attr-defined]
+    monkeypatch.setitem(sys.modules, "vllm", fake)
+    serving = {
+        "tensor_parallel_size": 1,
+        "dtype": "bfloat16",
+        "max_model_len": 32768,
+        "gpu_memory_utilization": 0.9,
+        "max_num_seqs": 32,
+        "enable_prefix_caching": True,
+    }
+    backend = VLLMBackend(
+        "example/model",
+        "revision",
+        "revision",
+        serving,
+        {"seed": 1},
+        require_prefix_caching=True,
+    )
+    assert backend.describe()["enable_prefix_caching"] is True
+    serving["enable_prefix_caching"] = False
+    with pytest.raises(RuntimeError, match="prefix caching was required"):
+        VLLMBackend(
+            "example/model",
+            "revision",
+            "revision",
+            serving,
+            {"seed": 1},
+            require_prefix_caching=True,
         )
 
 

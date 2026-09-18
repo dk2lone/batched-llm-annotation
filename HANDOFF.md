@@ -41,9 +41,9 @@ uniform-contract Granite/IMDb rerun is conditional on needing a clean C2 claim; 
 authorized or running.
 
 The B5 batch-size dose-response experiment is prepared, sealed, and **not launched**. No Pod
-was created, no model was called, and no Runpod write operation was made. It answers whether
-pairwise error dependence changes with batch size or is peculiar to size 16. It is ready for
-a one-command launch once the Runpod balance is topped up.
+was created, no model was called, and no Runpod write operation was made. Its full launch is
+now locked behind a paid 20-block calibration smoke, which must prove effective prefix reuse,
+project no more than 35 metered hours, and set the actual credit requirement.
 
 ## Repaired B3 recurrence sensitivity
 
@@ -204,15 +204,16 @@ confirmation. At least two uniformly generated cells are needed for that.
 Artifacts:
 
 - protocol: `study-120h/B5_PROTOCOL.md`
-- seal: `study-120h/freeze/20260918T071333Z-B5/` (gitignored, local only)
-- preparation: `study-120h/extension-b5/preparation/20260918T070340Z/`
+- seal: `study-120h/freeze/20260918T190501Z-B5/` (gitignored, local only)
+- preparation: `study-120h/extension-b5/preparation/20260918T185042Z/`
 - CPU test evidence: `study-120h/extension-b5/CPU_TESTS.json`
-- CPU dry-run artifacts: `study-120h/extension-b5/dry-run/DRY_RUN-full.json` and
+- CPU dry-run artifacts: `study-120h/extension-b5/dry-run-20260918-calibration-digest/DRY_RUN-full.json` and
   `DRY_RUN-smoke.json`
 - launch instructions: `study-120h/PREPARED.md`
 - code: `study-120h/src/freezeb/b5.py`, `b5_analysis.py`, `b5_power.py`,
   `study-120h/prepare_b5.py`, `seal_b5.py`, `run_b5.py`, `b5_worker.py`, `analyze_b5.py`
-- tests: `study-120h/tests/test_b5.py`, `test_b5_analysis.py`, `test_b5_runner.py`
+- tests: `study-120h/tests/test_b5.py`, `test_b5_analysis.py`, `test_b5_runner.py`,
+  `test_batch_invariance.py`
 
 Design: four cells, batch sizes 2, 4, 8, 16, 32, three independently seeded assignments, the
 existing sealed 8,192-item confirmation frame per cell. Size 16 is generated fresh. Groups are
@@ -231,22 +232,24 @@ cluster bootstrap over size-32 super-groups inside cell and assignment. Practica
 floor of 1.25 at size 16. The raw 0.002 covariance floor is not transferred. All six outcome
 readings are frozen; success is not defined as a positive slope.
 
-Budget: point estimate **18.09 metered A100 hours**, no-prefix-reuse upper bound 70.21, ceiling
-**35.00**, required balance **$30.76** at $1.59 per hour including a $2.00 reserve. The current
-balance is `$8.9472095511`, so **top up by at least $21.82 before launch**. The earlier working
-figure of 29 to 30 hours is superseded by this recalculation from locked B4 runtime evidence.
+Budget: the planning point is **18.09 metered A100 hours**, the no-prefix-reuse upper bound is
+70.21, and the ceiling is **35.00**. The point depends on prompt-prefix reuse. B5 now explicitly
+enables and verifies vLLM prefix caching, stores cache-token counters, and times every block.
+The smoke budget is 2.00 hours or **$5.18 including reserve**, which the last recorded balance
+of `$8.9472095511` covers. The full required balance is intentionally unset until smoke data
+calibrates the projection.
 
-Verification: 113 targeted tests and 655 total tests pass; Ruff reports 23 errors, all inside
+Verification: 126 targeted tests and 659 total tests pass; Ruff reports 23 errors, all inside
 sealed source snapshots; strict mypy reports 8 errors, all pre-existing and none in a B5 file;
-the seal verifies over 25 files; two independent CPU analysis regenerations are byte-for-byte
+the seal verifies over 27 files; two independent CPU analysis regenerations are byte-for-byte
 identical; the full CPU schedule build and dry run produced 586,752 calls in 1,212 chunks and
 created no Pod.
 
-Seal manifest SHA-256 `d0bc6f17ab647d0d23a3ba6468e564939a87e15a45b7ec4c610da94c0c5928c9`.
-Confirmation token `d0bc6f17ab64`.
+Seal manifest SHA-256 `f764f75d002f97baf57e8e9bee71e33cf8a89e6d8c05ca14ae3040ec7b8717b3`.
+Confirmation token `f764f75d002f`.
 
-Remaining blockers: the Runpod balance, and Daniel's explicit decision to spend it. Nothing
-else blocks the launch.
+Remaining sequence: run the paid smoke after Daniel reloads credit or explicitly starts the
+GPU phase, inspect its calibration, reload to the resulting full-run requirement, then launch.
 
 ## Recovery contract
 
@@ -268,7 +271,7 @@ Relevant local commits:
 - `89fa1b7 plan structured output recovery`
 - `5092dfc refresh recovery handoff state`
 
-The B5 preparation passed 113 targeted tests, the full 655-test suite, Ruff, strict mypy, seal
+The B5 preparation passed 126 targeted tests, the full 659-test suite, Ruff, strict mypy, seal
 verification, two independent analysis regenerations, and a full CPU-only dry run.
 
 The recovery implementation passed 39 targeted tests, Ruff, strict mypy, and reconstruction
@@ -280,20 +283,20 @@ delete, add wholesale, or overwrite them.
 
 ## Next action
 
-Decide whether to fund the B5 batch-size dose-response run. It needs $30.76 on Runpod against
-the current $8.9472095511, so it needs about $21.82 more. Nothing else blocks it.
-
-When the balance is ready, run the read-only preflight first. It creates no Pod:
+Wait for Daniel's credit reload and authorization to begin paid work. Then run the calibration
+smoke first:
 
 ```
 cd /Users/dz/bigdata/study-120h
-.venv/bin/python run_b5.py --preflight --output extension-b5/run-01 --confirm d0bc6f17ab64
+.venv/bin/python run_b5.py --launch --smoke --output extension-b5/smoke-01 --confirm f764f75d002f
 ```
 
-Then, and only then, launch:
+If `SMOKE_CALIBRATION.json` passes, its projection determines the balance to load. Run the
+read-only full preflight after the balance is ready:
 
 ```
-.venv/bin/python run_b5.py --launch --output extension-b5/run-01 --confirm d0bc6f17ab64
+.venv/bin/python run_b5.py --preflight --output extension-b5/run-01 \
+  --calibration extension-b5/smoke-01/SMOKE_CALIBRATION.json --confirm f764f75d002f
 ```
 
 `study-120h/PREPARED.md` carries the full command list, the success and failure indicators, and

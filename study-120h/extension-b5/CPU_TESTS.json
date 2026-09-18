@@ -1,18 +1,18 @@
 {
   "checks": [
     {
-      "collected": 113,
-      "command": "python -m pytest tests/test_b5.py tests/test_b5_analysis.py tests/test_b5_runner.py",
+      "collected": 126,
+      "command": "python -m pytest tests/test_b5.py tests/test_b5_analysis.py tests/test_b5_runner.py tests/test_batch_invariance.py",
       "failed": 0,
       "name": "targeted B5 tests",
-      "passed": 113
+      "passed": 126
     },
     {
-      "collected": 655,
+      "collected": 659,
       "command": "python -m pytest",
       "failed": 0,
       "name": "full repository suite",
-      "passed": 655
+      "passed": 659
     },
     {
       "command": "python -m ruff check .",
@@ -53,6 +53,10 @@
     "retry identity",
     "terminal-failure retention",
     "budget refusal",
+    "effective prefix-cache enforcement",
+    "per-event cache-token accounting",
+    "all-block smoke calibration",
+    "uncalibrated full-launch refusal",
     "missing-balance refusal",
     "active-Pod refusal",
     "seal failure",
@@ -64,13 +68,14 @@
   "gpu_work_launched": false,
   "host": "local CPU only; no GPU, no Pod, no model call",
   "pod_created": false,
-  "record_sha256": "1fa0f0bfbe956beb09f1cdcc4d4adb2d75f5c6ff1436e6d9128f5396873cf0d1",
-  "run_at_utc": "2026-09-18T07:11:54.877258+00:00",
+  "record_sha256": "465b6e6e237e17ef00fb38442cee6230b7a4cc473731ebd70d71522d2566983a",
+  "run_at_utc": "2026-09-18T19:13:14+00:00",
   "schema_version": "b5-cpu-tests-v1",
   "test_files_sha256": {
     "test_b5.py": "ca29c1bb0c81d8050a5f1a0bd737bca3a4d3aefb57b4f54ad5749a191450046b",
     "test_b5_analysis.py": "7f140393051aedef80cb49099fc41f7445cb370a6d16bd9a912de6065e0d98e4",
-    "test_b5_runner.py": "45e75692bb02441b2a5c5c77af447bb9c49772d98913cbc3ebf267ad14b2e998"
+    "test_b5_runner.py": "6db07f45aa428e1423b333e9feed074ba71346770ce6a4c6f4ced196e000000b",
+    "test_batch_invariance.py": "7158d11411313e1338617b700faeb8b54fce1988b009f219d950b5f2358aaadd"
   },
   "tools": {
     "mypy": "2.3.1",

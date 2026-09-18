@@ -59,7 +59,16 @@ class StubPlan(run_b5.Plan):
         self.forecast = {
             "point_metered_a100_hours": 18.0,
             "upper_metered_a100_hours": 70.0,
-            "required_balance_usd": 30.76,
+            "planning_point_balance_usd": 30.76,
+            "full_launch_required_balance_usd": None,
+            "smoke_required_balance_usd": 5.18,
+            "retry_fraction": 0.02,
+            "boot_hours_per_model": 0.25,
+            "coefficients": {
+                "seconds_per_prompt_token": 0.001,
+                "seconds_per_output_token": 0.002,
+                "seconds_per_chunk": 1.0,
+            },
             "scenarios": {
                 "prefix_reuse": {
                     "blocks": [
@@ -126,6 +135,10 @@ def make_event(
         "status": status,
         "parse_status": parse_status,
         "predictions": dict.fromkeys(targets, 0) if resolved else None,
+        "prompt_tokens": 100,
+        "output_tokens": 5,
+        "num_cached_tokens": 50 if call["condition"] == "exact_context" else 0,
+        "num_cache_creation_tokens": 50,
     }
     if attempt == 2:
         event["parent_attempt_id"] = f"{call['call_id']}::attempt::1"
@@ -136,8 +149,9 @@ def chunk_events(plan: StubPlan, chunk: dict[str, Any], **kwargs: Any) -> list[d
     return [make_event(plan, call, **kwargs) for call in run_b5.expected_calls(chunk).values()]
 
 
-def write_receipt(output: Path, chunk: dict[str, Any], events: list[dict[str, Any]],
-                  attempt: int = 1) -> Path:
+def write_receipt(
+    output: Path, chunk: dict[str, Any], events: list[dict[str, Any]], attempt: int = 1
+) -> Path:
     chunk_id = sha256_json([str(event["attempt_id"]) for event in events])
     return write_json(
         output / "receipts" / f"{chunk_id}.json",
@@ -200,6 +214,7 @@ def test_preflight_creates_no_pod_when_the_account_is_not_read(
         reserve_usd=2.0,
         live=False,
         confirm=TOKEN,
+        smoke=True,
     )
     assert record["pod_created"] is False
     assert record["live_account_checks"] is None
@@ -336,8 +351,12 @@ def test_reconcile_refuses_a_receipt_carrying_a_foreign_call(tmp_path: Path) -> 
     chunk_id = sha256_json([str(event["attempt_id"]) for event in events])
     write_json(
         tmp_path / "receipts" / f"{chunk_id}.json",
-        {"chunk_id": chunk_id, "source_chunk_id": chunk["chunk_id"], "attempt": 1,
-         "events": events},
+        {
+            "chunk_id": chunk_id,
+            "source_chunk_id": chunk["chunk_id"],
+            "attempt": 1,
+            "events": events,
+        },
     )
     with pytest.raises(RuntimeError, match="foreign call"):
         run_b5.Ledger(tmp_path, plan.texts).reconcile([chunk])
@@ -438,16 +457,98 @@ def test_projection_scales_the_forecast_by_measured_throughput() -> None:
     forward = run_b5.projection(progress, 3.0)
     assert forward["measured_over_forecast_ratio"] == pytest.approx(1.5)
     assert forward["projected_total_metered_hours"] == pytest.approx(12.0)
-    empty = run_b5.projection({"blocks": [{"complete": False,
-                                          "forecast_generation_hours": 6.0}]}, 0.0)
+    empty = run_b5.projection(
+        {"blocks": [{"complete": False, "forecast_generation_hours": 6.0}]}, 0.0
+    )
     assert empty["projected_total_metered_hours"] is None
+
+
+def test_completed_smoke_produces_a_full_launch_calibration(tmp_path: Path) -> None:
+    plan = one_cell_plan()
+    chunks = run_b5.selected_chunks(plan, run_b5.SMOKE_CHUNK_CALLS, True)
+    ledger = run_b5.Ledger(tmp_path, plan.texts)
+    for chunk in chunks:
+        ledger.add(chunk_events(plan, chunk))
+        append(
+            tmp_path / "block-meter.jsonl",
+            [
+                {
+                    "cell_key": chunk["cell_key"],
+                    "batch_size": chunk["batch_size"],
+                    "elapsed_seconds": 0.01,
+                }
+            ],
+        )
+    append(
+        tmp_path / "meter.jsonl",
+        [
+            {"kind": "start", "phase_id": "smoke"},
+            {"kind": "settled", "phase_id": "smoke", "charged_hours": 0.1},
+        ],
+    )
+    record = run_b5.calibrate_smoke(plan, tmp_path, chunks, 35.0)
+    assert record["passed"] is True
+    assert record["gates"]["prefix_reuse_observed_in_every_block"] is True
+    assert record["projected_full_metered_a100_hours"] < 35.0
+
+
+def test_smoke_calibration_refuses_missing_cache_metrics(tmp_path: Path) -> None:
+    plan = one_cell_plan()
+    chunks = run_b5.selected_chunks(plan, run_b5.SMOKE_CHUNK_CALLS, True)
+    ledger = run_b5.Ledger(tmp_path, plan.texts)
+    for chunk in chunks:
+        events = chunk_events(plan, chunk)
+        events[0].pop("num_cached_tokens")
+        ledger.add(events)
+        append(
+            tmp_path / "block-meter.jsonl",
+            [
+                {
+                    "cell_key": chunk["cell_key"],
+                    "batch_size": chunk["batch_size"],
+                    "elapsed_seconds": 0.01,
+                }
+            ],
+        )
+    record = run_b5.calibrate_smoke(plan, tmp_path, chunks, 35.0)
+    assert record["passed"] is False
+    assert record["gates"]["cache_metrics_complete"] is False
+
+
+def test_full_preflight_requires_matching_passing_calibration(tmp_path: Path) -> None:
+    plan = one_cell_plan()
+    record = run_b5.preflight(
+        plan,
+        tmp_path,
+        [first_chunk(plan)],
+        ceiling_hours=35.0,
+        usd_per_hour=1.59,
+        reserve_usd=2.0,
+        live=False,
+        confirm=TOKEN,
+    )
+    assert record["gates"]["smoke_calibration_passed_or_is_smoke"] is False
+    assert record["passed"] is False
 
 
 # --- refusals ----------------------------------------------------------------
 
 
-def test_preflight_refuses_a_point_estimate_above_the_ceiling(tmp_path: Path) -> None:
+def test_preflight_refuses_a_runtime_budget_above_the_ceiling(tmp_path: Path) -> None:
     plan = one_cell_plan()
+    calibration = tmp_path / "calibration.json"
+    calibration_record = {
+        "schema_version": "b5-smoke-calibration-v1",
+        "seal_manifest_sha256": plan.seal["manifest_sha256"],
+        "schedule_sha256": plan.schedule["schedule_sha256"],
+        "passed": True,
+        "projected_full_metered_a100_hours": 12.0,
+    }
+    calibration_record["record_sha256"] = sha256_json(calibration_record)
+    write_json(
+        calibration,
+        calibration_record,
+    )
     record = run_b5.preflight(
         plan,
         tmp_path,
@@ -457,8 +558,10 @@ def test_preflight_refuses_a_point_estimate_above_the_ceiling(tmp_path: Path) ->
         reserve_usd=2.0,
         live=False,
         confirm=TOKEN,
+        calibration_path=calibration,
     )
-    assert record["gates"]["ceiling_covers_point_estimate"] is False
+    assert record["gates"]["ceiling_covers_runtime_budget"] is True
+    assert record["gates"]["smoke_calibration_passed_or_is_smoke"] is False
     assert record["passed"] is False
 
 
@@ -498,25 +601,21 @@ def test_preflight_refuses_while_a_metered_lane_is_still_open(tmp_path: Path) ->
 
 def account(balance: float, running: bool = False) -> Any:
     volumes = [
-        {"id": VOLUMES[b5.split_cell(key)[0]], "dataCenterId": DATA_CENTER}
-        for key in b5.CELLS
+        {"id": VOLUMES[b5.split_cell(key)[0]], "dataCenterId": DATA_CENTER} for key in b5.CELLS
     ]
     gpu = [
         {
             "gpuId": GPU_ID,
             "secureCloud": True,
             "securePricePerHr": 1.59,
-            "dataCenterAvailability": [
-                {"dataCenterId": DATA_CENTER, "stockStatus": "high"}
-            ],
+            "dataCenterAvailability": [{"dataCenterId": DATA_CENTER, "stockStatus": "high"}],
         }
     ]
     pods = [{"desiredStatus": "RUNNING" if running else "EXITED"}]
 
     def stub(argv: list[str], *args: Any, **kwargs: Any) -> Any:
         if argv[0] == "user":
-            return {"id": ACCOUNT_ID, "clientBalance": balance,
-                    "currentSpendPerHr": 0.031}
+            return {"id": ACCOUNT_ID, "clientBalance": balance, "currentSpendPerHr": 0.031}
         if argv[:2] == ["pod", "list"]:
             return pods
         if argv[:2] == ["network-volume", "list"]:
@@ -536,17 +635,15 @@ def test_account_checks_pass_on_a_funded_idle_account(monkeypatch: pytest.Monkey
     assert checks["required_balance_usd"] == 32.0
 
 
-def test_account_checks_refuse_a_balance_below_the_block(
-    monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_account_checks_refuse_a_balance_below_the_block(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(run_b5, "cli", account(8.94))
-    with pytest.raises(RuntimeError, match="cannot fund the complete B5 block"):
+    with pytest.raises(RuntimeError, match="cannot fund the requested B5 run"):
         run_b5.account_checks(32.0)
 
 
 def test_account_checks_refuse_a_missing_balance(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(run_b5, "cli", account(cast(float, None)))
-    with pytest.raises(RuntimeError, match="cannot fund the complete B5 block"):
+    with pytest.raises(RuntimeError, match="cannot fund the requested B5 run"):
         run_b5.account_checks(32.0)
 
 
@@ -559,7 +656,7 @@ def test_account_checks_refuse_an_active_pod(monkeypatch: pytest.MonkeyPatch) ->
 def test_no_credential_balance_or_pod_identifier_is_hard_coded() -> None:
     source = (STUDY / "run_b5.py").read_text()
     assert "clientBalance" in source
-    for forbidden in ("RUNPOD_API_KEY=", "api_key", "8.947", "pod_id = \""):
+    for forbidden in ("RUNPOD_API_KEY=", "api_key", "8.947", 'pod_id = "'):
         assert forbidden not in source
 
 
@@ -661,9 +758,11 @@ def test_the_seal_covers_every_decision_relevant_input() -> None:
         "src/freezeb/b5_analysis.py",
         "src/freezeb/b5_power.py",
         "src/freezeb/prompts.py",
+        "src/step1/backends.py",
         "tests/test_b5.py",
         "tests/test_b5_analysis.py",
         "tests/test_b5_runner.py",
+        "tests/test_batch_invariance.py",
     ):
         assert name in seal_b5.CODE_FILES
     assert "SCHEDULE_DIGEST.json" in seal_b5.PREPARATION_FILES

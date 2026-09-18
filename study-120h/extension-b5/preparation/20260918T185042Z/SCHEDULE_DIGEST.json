@@ -1,0 +1,325 @@
+{
+  "assignments": 3,
+  "built_at_utc": "2026-09-18T18:51:43.162886+00:00",
+  "cell_digests": [
+    {
+      "call_id_order_sha256": "d53723738025979f24b2e7a84494c8a32dd42f9d6ff2896a4b39a8ee3d18088e",
+      "calls_by_assignment": {
+        "1": 48896,
+        "2": 48896,
+        "3": 48896
+      },
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "counts": {
+        "exact_context": 122880,
+        "joint": 23808,
+        "total": 146688
+      },
+      "counts_by_size": {
+        "16": {
+          "exact_context": 24576,
+          "joint": 1536
+        },
+        "2": {
+          "exact_context": 24576,
+          "joint": 12288
+        },
+        "32": {
+          "exact_context": 24576,
+          "joint": 768
+        },
+        "4": {
+          "exact_context": 24576,
+          "joint": 6144
+        },
+        "8": {
+          "exact_context": 24576,
+          "joint": 3072
+        }
+      },
+      "first_call_ids": [
+        "b5::Qwen--Qwen3-8B::civil_comments::k02::a1::g00000::joint",
+        "b5::Qwen--Qwen3-8B::civil_comments::k02::a1::g00000::exact::cc734ead592c23f9",
+        "b5::Qwen--Qwen3-8B::civil_comments::k02::a1::g00000::exact::ccf13ba6f6161f45"
+      ],
+      "last_call_ids": [
+        "b5::Qwen--Qwen3-8B::civil_comments::k32::a3::g00255::exact::cca78e8f67397da2",
+        "b5::Qwen--Qwen3-8B::civil_comments::k32::a3::g00255::exact::cc52676adb9bdb63",
+        "b5::Qwen--Qwen3-8B::civil_comments::k32::a3::g00255::exact::cca1854c3c7fe260"
+      ],
+      "prompt_sha256_order_sha256": "63f46dd2c15e05dec45327a454453a2cbaa022dde58b2002bf659057c2a31637",
+      "record_stream_sha256": "8d25ab1d008932baa6fc327ff5d6f4eaef6a1410818ae0bbb0f34463b01a03d3"
+    },
+    {
+      "call_id_order_sha256": "4bbfc4bd47b29b6ae8d2129cc0cc0cc44ea47972bd2c2d774e1d57f7960fcd53",
+      "calls_by_assignment": {
+        "1": 48896,
+        "2": 48896,
+        "3": 48896
+      },
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "counts": {
+        "exact_context": 122880,
+        "joint": 23808,
+        "total": 146688
+      },
+      "counts_by_size": {
+        "16": {
+          "exact_context": 24576,
+          "joint": 1536
+        },
+        "2": {
+          "exact_context": 24576,
+          "joint": 12288
+        },
+        "32": {
+          "exact_context": 24576,
+          "joint": 768
+        },
+        "4": {
+          "exact_context": 24576,
+          "joint": 6144
+        },
+        "8": {
+          "exact_context": 24576,
+          "joint": 3072
+        }
+      },
+      "first_call_ids": [
+        "b5::ibm-granite--granite-3.3-8b-instruct::imdb::k02::a1::g00000::joint",
+        "b5::ibm-granite--granite-3.3-8b-instruct::imdb::k02::a1::g00000::exact::im743dbf8a203495",
+        "b5::ibm-granite--granite-3.3-8b-instruct::imdb::k02::a1::g00000::exact::im5d1de6c7fddc4d"
+      ],
+      "last_call_ids": [
+        "b5::ibm-granite--granite-3.3-8b-instruct::imdb::k32::a3::g00255::exact::im1b78825af64d5e",
+        "b5::ibm-granite--granite-3.3-8b-instruct::imdb::k32::a3::g00255::exact::im216010993191bb",
+        "b5::ibm-granite--granite-3.3-8b-instruct::imdb::k32::a3::g00255::exact::im7db3903e9fd577"
+      ],
+      "prompt_sha256_order_sha256": "9391378f33e97b2efbed037aa985b219c392f05c00b53272fd79b9b7cbad3556",
+      "record_stream_sha256": "d3e0c67f2ee5f8119a74d870056d980f9911ff635bc75dec2fd522ca01067807"
+    },
+    {
+      "call_id_order_sha256": "3f492ef1a4f49b064f5dfc47e46c605f484a171c7df5acc6162eac1149aa2b26",
+      "calls_by_assignment": {
+        "1": 48896,
+        "2": 48896,
+        "3": 48896
+      },
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "counts": {
+        "exact_context": 122880,
+        "joint": 23808,
+        "total": 146688
+      },
+      "counts_by_size": {
+        "16": {
+          "exact_context": 24576,
+          "joint": 1536
+        },
+        "2": {
+          "exact_context": 24576,
+          "joint": 12288
+        },
+        "32": {
+          "exact_context": 24576,
+          "joint": 768
+        },
+        "4": {
+          "exact_context": 24576,
+          "joint": 6144
+        },
+        "8": {
+          "exact_context": 24576,
+          "joint": 3072
+        }
+      },
+      "first_call_ids": [
+        "b5::meta-llama--Llama-3.1-8B-Instruct::civil_comments::k02::a1::g00000::joint",
+        "b5::meta-llama--Llama-3.1-8B-Instruct::civil_comments::k02::a1::g00000::exact::cc977ffc54e26470",
+        "b5::meta-llama--Llama-3.1-8B-Instruct::civil_comments::k02::a1::g00000::exact::cc455d0b337886c3"
+      ],
+      "last_call_ids": [
+        "b5::meta-llama--Llama-3.1-8B-Instruct::civil_comments::k32::a3::g00255::exact::ccd7952bba87e198",
+        "b5::meta-llama--Llama-3.1-8B-Instruct::civil_comments::k32::a3::g00255::exact::cc00d97622601283",
+        "b5::meta-llama--Llama-3.1-8B-Instruct::civil_comments::k32::a3::g00255::exact::ccc1657bdc40ae2a"
+      ],
+      "prompt_sha256_order_sha256": "15cf31157d36dbd9bf51146cb96e2ce692f6070701228c21a026d68e13c40c64",
+      "record_stream_sha256": "34f1bec143783074b045161acdce051fc48186509714a85626cdd98205b858b3"
+    },
+    {
+      "call_id_order_sha256": "c1760ab4bdd408eebdf274393e09aa963702c0d2d6031eaaa8073ad20ec1ccd1",
+      "calls_by_assignment": {
+        "1": 48896,
+        "2": 48896,
+        "3": 48896
+      },
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "counts": {
+        "exact_context": 122880,
+        "joint": 23808,
+        "total": 146688
+      },
+      "counts_by_size": {
+        "16": {
+          "exact_context": 24576,
+          "joint": 1536
+        },
+        "2": {
+          "exact_context": 24576,
+          "joint": 12288
+        },
+        "32": {
+          "exact_context": 24576,
+          "joint": 768
+        },
+        "4": {
+          "exact_context": 24576,
+          "joint": 6144
+        },
+        "8": {
+          "exact_context": 24576,
+          "joint": 3072
+        }
+      },
+      "first_call_ids": [
+        "b5::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k02::a1::g00000::joint",
+        "b5::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k02::a1::g00000::exact::mnee1fc060c16598",
+        "b5::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k02::a1::g00000::exact::mn1ac642915ad979"
+      ],
+      "last_call_ids": [
+        "b5::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k32::a3::g00255::exact::mnf97f51d51951fe",
+        "b5::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k32::a3::g00255::exact::mnde0f9a9c4f8de8",
+        "b5::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k32::a3::g00255::exact::mnb97801234a73b2"
+      ],
+      "prompt_sha256_order_sha256": "2f2c87304d2cf56f51830276bb6c0416406453765703a6ed94822bb2173db03e",
+      "record_stream_sha256": "123f2e2b43236fb06fb2b6f55ae658f1e6ac9a68236db04c2207ccd7451888b8"
+    }
+  ],
+  "cells": [
+    "Qwen/Qwen3-8B::civil_comments",
+    "ibm-granite/granite-3.3-8b-instruct::imdb",
+    "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+    "mistralai/Mistral-7B-Instruct-v0.3::multi_nli"
+  ],
+  "chunk_calls": 512,
+  "contract_version": "b5-structured-output-v1",
+  "expected_counts": {
+    "cells": 4,
+    "exact_context": 491520,
+    "exact_context_per_cell": 122880,
+    "joint": 95232,
+    "joint_per_cell": 23808,
+    "total": 586752,
+    "total_per_cell": 146688
+  },
+  "frames": [
+    {
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "frame_file": "ext-work/20260913-cpu-draft/civil_comments/confirm.jsonl",
+      "frame_file_sha256": "7280ecef90628a7e543a7df9dd518cd6b81eda254738e9e9ac247a89955d320b",
+      "items": 8192,
+      "ordered_doc_ids_sha256": "0384663a83ec28d3ce666e6bee18341b3c70e39643c7645151a909a92cfb6ebf",
+      "sealed_identifier_sha256": "faa263affda23a11065a849a1245cbb046ebff43efceec2f3161b32d990c59f5",
+      "task_id": "civil_comments"
+    },
+    {
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "frame_file": "ext-work/20260913-cpu-draft/imdb/confirm.jsonl",
+      "frame_file_sha256": "ac4afd88bed50bf6cc1966c9e76c5a1a73c16fff470436a3d284502d9c534620",
+      "items": 8192,
+      "ordered_doc_ids_sha256": "f932668ba6008d198044d3d9947ec973f905ce3b477eb0ce21ca94e664751103",
+      "sealed_identifier_sha256": "fc509ed8165745e9a5d3d5c5b7bd85675912386110340bb33d817a8155d0f83d",
+      "task_id": "imdb"
+    },
+    {
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "frame_file": "ext-work/20260913-cpu-draft/civil_comments/confirm.jsonl",
+      "frame_file_sha256": "7280ecef90628a7e543a7df9dd518cd6b81eda254738e9e9ac247a89955d320b",
+      "items": 8192,
+      "ordered_doc_ids_sha256": "0384663a83ec28d3ce666e6bee18341b3c70e39643c7645151a909a92cfb6ebf",
+      "sealed_identifier_sha256": "faa263affda23a11065a849a1245cbb046ebff43efceec2f3161b32d990c59f5",
+      "task_id": "civil_comments"
+    },
+    {
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "frame_file": "ext-work/20260913-cpu-draft/multi_nli/confirm.jsonl",
+      "frame_file_sha256": "54b7a871c799214b76518773a73cbaea6428ef1bc71a6d074ae022f94db5be66",
+      "items": 8192,
+      "ordered_doc_ids_sha256": "55650209e7b05f41f0dda17b40de6aeaa16fcd5f2be3e3ef79a06c6c74755806",
+      "sealed_identifier_sha256": "b1bfc3d457dd85a0d2d131707e67b32b9aff5811251beebe6192869738facf77",
+      "task_id": "multi_nli"
+    }
+  ],
+  "items_per_cell": 8192,
+  "nesting": [
+    {
+      "assignments": 3,
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "nested_pairs_checked": 11520,
+      "rule": "one canonical permutation per assignment; size-k groups are the contiguous k-slices of that permutation, so each size-2k group is the union of the two adjacent size-k groups",
+      "sizes": [
+        2,
+        4,
+        8,
+        16,
+        32
+      ]
+    },
+    {
+      "assignments": 3,
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "nested_pairs_checked": 11520,
+      "rule": "one canonical permutation per assignment; size-k groups are the contiguous k-slices of that permutation, so each size-2k group is the union of the two adjacent size-k groups",
+      "sizes": [
+        2,
+        4,
+        8,
+        16,
+        32
+      ]
+    },
+    {
+      "assignments": 3,
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "nested_pairs_checked": 11520,
+      "rule": "one canonical permutation per assignment; size-k groups are the contiguous k-slices of that permutation, so each size-2k group is the union of the two adjacent size-k groups",
+      "sizes": [
+        2,
+        4,
+        8,
+        16,
+        32
+      ]
+    },
+    {
+      "assignments": 3,
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "nested_pairs_checked": 11520,
+      "rule": "one canonical permutation per assignment; size-k groups are the contiguous k-slices of that permutation, so each size-2k group is the union of the two adjacent size-k groups",
+      "sizes": [
+        2,
+        4,
+        8,
+        16,
+        32
+      ]
+    }
+  ],
+  "observed_counts": {
+    "exact_context": 491520,
+    "joint": 95232,
+    "total": 586752
+  },
+  "parser_rule_sha256": "719901a3fc78cfc1f0c5c72e2c5896e84bbe2efeda499fcc1bf5b53320594006",
+  "prompt_rule_sha256": "3b5b5bdbb168bf07b9da437e401e807e2061861404b8c24545959c6fbcabb5b5",
+  "schedule_rule_sha256": "c67de5cc78a20d1c27fe7a6cd91afa914ff6a8245b7c4e1d17ee893ca3114202",
+  "schedule_sha256": "6145f5088a56fc869929257daa9b145fc1351ce34eb03cafa7101448bd547a25",
+  "schema_version": "b5-dose-response-v1",
+  "sizes": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ]
+}

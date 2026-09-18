@@ -1,0 +1,109 @@
+{
+  "at_utc": "2026-09-18T19:06:40.865561+00:00",
+  "by_size": {
+    "16": {
+      "calls": 104448,
+      "chunks": 216
+    },
+    "2": {
+      "calls": 147456,
+      "chunks": 300
+    },
+    "32": {
+      "calls": 101376,
+      "chunks": 216
+    },
+    "4": {
+      "calls": 122880,
+      "chunks": 252
+    },
+    "8": {
+      "calls": 110592,
+      "chunks": 228
+    }
+  },
+  "calls": 586752,
+  "chunks": 1212,
+  "context_audit": [
+    {
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "fits": true,
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a3::g00030",
+        "required_tokens": 8736
+      }
+    },
+    {
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "fits": true,
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a2::g00242",
+        "required_tokens": 17671
+      }
+    },
+    {
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "fits": true,
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a2::g00050",
+        "required_tokens": 9146
+      }
+    },
+    {
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "fits": true,
+      "worst_case": {
+        "batch_size": 32,
+        "group": "k32::a2::g00082",
+        "required_tokens": 7665
+      }
+    }
+  ],
+  "expected_counts": {
+    "cells": 4,
+    "exact_context": 491520,
+    "exact_context_per_cell": 122880,
+    "joint": 95232,
+    "joint_per_cell": 23808,
+    "total": 586752,
+    "total_per_cell": 146688
+  },
+  "first_call_ids": [
+    "b5::Qwen--Qwen3-8B::civil_comments::k02::a1::g00000::joint",
+    "b5::Qwen--Qwen3-8B::civil_comments::k02::a1::g00000::exact::cc734ead592c23f9",
+    "b5::Qwen--Qwen3-8B::civil_comments::k02::a1::g00000::exact::ccf13ba6f6161f45"
+  ],
+  "forecast": {
+    "full_launch_required_balance_usd": null,
+    "full_launch_requires_smoke_calibration": true,
+    "planning_point_balance_usd": 30.757511236905568,
+    "point_metered_a100_hours": 18.08648505465759,
+    "smoke_required_balance_usd": 5.18,
+    "upper_metered_a100_hours": 70.2068984338763
+  },
+  "gpu_work_launched": false,
+  "last_call_ids": [
+    "b5::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k32::a3::g00255::exact::mnf97f51d51951fe",
+    "b5::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k32::a3::g00255::exact::mnde0f9a9c4f8de8",
+    "b5::mistralai--Mistral-7B-Instruct-v0.3::multi_nli::k32::a3::g00255::exact::mnb97801234a73b2"
+  ],
+  "observed_counts": {
+    "exact_context": 491520,
+    "joint": 95232,
+    "total": 586752
+  },
+  "pod_created": false,
+  "schema_version": "b5-dry-run-v1",
+  "seal": {
+    "confirmation_token": "f764f75d002f",
+    "files_verified": 27,
+    "manifest_sha256": "f764f75d002f97baf57e8e9bee71e33cf8a89e6d8c05ca14ae3040ec7b8717b3",
+    "preparation_directory": "extension-b5/preparation/20260918T185042Z",
+    "schedule_sha256": "6145f5088a56fc869929257daa9b145fc1351ce34eb03cafa7101448bd547a25",
+    "seal": "freeze/20260918T190501Z-B5"
+  },
+  "smoke": false
+}

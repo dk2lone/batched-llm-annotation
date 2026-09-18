@@ -79,10 +79,12 @@ class Worker:
                 "max_model_len": policy.max_model_len,
                 "gpu_memory_utilization": 0.90,
                 "max_num_seqs": 32,
+                "enable_prefix_caching": True,
             },
             bi.DECODING,
             enable_thinking=policy.enable_thinking,
             require_batch_invariance=True,
+            require_prefix_caching=True,
         )
         self.host = host_facts()
         self.host.update(gpu_memory_bytes=properties.total_memory, provider="runpod")
@@ -199,18 +201,21 @@ class Worker:
             for job, result in zip(ready, generated, strict=True):
                 queue, prefill, decode = request_timing(getattr(result, "metrics", None))
                 sample = result.outputs[0]
-                output.append(
-                    e2.event_for_result(
-                        job,
-                        raw=sample.text,
-                        finish_reason=str(sample.finish_reason),
-                        prompt_tokens=len(result.prompt_token_ids),
-                        output_tokens=len(sample.token_ids),
-                        queue_seconds=queue,
-                        prefill_seconds=prefill,
-                        decode_seconds=decode,
-                    )
+                event = e2.event_for_result(
+                    job,
+                    raw=sample.text,
+                    finish_reason=str(sample.finish_reason),
+                    prompt_tokens=len(result.prompt_token_ids),
+                    output_tokens=len(sample.token_ids),
+                    queue_seconds=queue,
+                    prefill_seconds=prefill,
+                    decode_seconds=decode,
                 )
+                event["num_cached_tokens"] = getattr(result, "num_cached_tokens", None)
+                event["num_cache_creation_tokens"] = getattr(
+                    result, "num_cache_creation_tokens", None
+                )
+                output.append(event)
         except Exception as exc:  # noqa: BLE001 - record, never silently drop a scientific call
             output.extend(
                 e2.event_for_result(job, generation_error=f"{type(exc).__name__}: {exc}")

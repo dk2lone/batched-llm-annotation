@@ -115,11 +115,13 @@ is no selective repair path and no second contract.
 
 Every scientific event stores the raw output, the parsed output, prompt and output token
 counts, the finish reason, the prompt SHA-256, the schema SHA-256, the assignment, the
-document order hash, and the target ID hash.
+document order hash, the target ID hash, `num_cached_tokens`, and
+`num_cache_creation_tokens`.
 
 ### Serving configuration
 
-vLLM 0.28.0, `VLLM_BATCH_INVARIANT=1`, `tensor_parallel_size=1`, `dtype=bfloat16`,
+vLLM 0.28.0, `VLLM_BATCH_INVARIANT=1`, `enable_prefix_caching=True`,
+`tensor_parallel_size=1`, `dtype=bfloat16`,
 `max_model_len=32768`, `gpu_memory_utilization=0.90`, `max_num_seqs=32`, `temperature=0.0`,
 `top_p=1.0`, `top_k=-1`, `seed=20260912`,
 `StructuredOutputsParams(json=…, disable_any_whitespace=True,
@@ -260,19 +262,20 @@ No unexplained multiplier is used.
 
 | Quantity | Value |
 |---|---:|
-| Point estimate, metered A100 hours | 18.09 |
+| Planning point estimate, metered A100 hours | 18.09 |
 | Upper bound with no prefix reuse | 70.21 |
 | Wall time on one A100 PCIe 80GB | equal to metered hours |
 | Ceiling, metered A100 hours | 35.00 |
-| Required balance at $1.59 per hour | $30.76 |
-| Explicit reserve inside that balance | $2.00 |
+| Smoke budget, metered A100 hours | 2.00 |
+| Smoke balance at $1.59 per hour, including reserve | $5.18 |
+| Full-run required balance | set by the completed smoke calibration |
 
-The point estimate assumes the engine reuses a group's document prefix across that group's
-exact-context calls. The chunk order enforces that condition: a joint call and its `k`
-exact-context calls always reach the engine inside one dispatched chunk. The upper bound
-assumes no prefix reuse at all and exceeds the ceiling, so the run carries a live meter and a
-per-block projection gate instead of a multiplier. The ceiling is specific to this
-experiment and is kept separate from historical usage.
+The planning point assumes the engine reuses a group's document prefix across that group's
+exact-context calls. Chunk order makes reuse possible but does not prove it. Before the full
+run, one smoke chunk from every cell-size block must complete. The smoke records effective
+prefix-cache configuration, cache-token counters, and elapsed block time, then scales the
+planning forecast by measured throughput. The upper bound assumes no prefix reuse and exceeds
+the ceiling.
 
 **Launch authorization boundary.** Only `--launch` and `--resume` may create a Pod.
 `--dry-run`, `--preflight`, `--status`, and `--verify-only` never create one. A launch is
@@ -284,8 +287,10 @@ refused unless every gate passes:
 4. the CPU test evidence artifact is present;
 5. no metered lane of this run is still open;
 6. no Pod is running on the account;
-7. the live Runpod balance covers the remaining block plus the explicit reserve;
-8. the ceiling covers the point estimate;
+7. for a full run, a matching all-20-block smoke calibration passed, observed prefix reuse in
+   every block, and projects no more than 35 metered hours;
+8. the live Runpod balance covers the smoke budget or the calibrated full-run projection,
+   plus the explicit reserve;
 9. Daniel supplies the confirmation token printed by the seal.
 
 No credential, balance, Pod identifier, or API key is hard-coded. The launcher reads the
