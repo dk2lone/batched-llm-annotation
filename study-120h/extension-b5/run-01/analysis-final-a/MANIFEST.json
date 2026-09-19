@@ -1,0 +1,20 @@
+{
+  "analyzed_at_utc": "2026-09-19T23:24:54.772203+00:00",
+  "events_sha256": "28ebc3c56a7a049a3486432985766d308492ce7b4247fb5b824e20db686b63a9",
+  "files_sha256": {
+    "ANALYSIS.json": "ea6d286029be4399e8c33da65fe71ad8fd24672991ced5de3c24fe0b0951523b",
+    "REPORT.md": "78faddabde14ee1dba3ce2c81ea038e6b889b716fb05efcbcfbf397e412016c0"
+  },
+  "gpu_work_launched": false,
+  "manifest_sha256": "6e359eca27d3f1454cbb2a26d505ab2e1c3fff33f7df6d6ae45498cc5e024557",
+  "result_sha256": "f3f99838c7d55c063303ef300babfdaca0ab5eadad1b61853ad67752017456c0",
+  "schema_version": "b5-analysis-manifest-v1",
+  "seal": {
+    "confirmation_token": "f239a63ac05b",
+    "files_verified": 24,
+    "manifest_sha256": "f239a63ac05b93e35e4c3b0d7edec7d08b3a2b77b2c239e227e1a720a0315171",
+    "preparation_directory": "extension-b5/preparation/20260918T185042Z",
+    "schedule_sha256": "6145f5088a56fc869929257daa9b145fc1351ce34eb03cafa7101448bd547a25",
+    "seal": "freeze/20260919T170405Z-B5"
+  }
+}

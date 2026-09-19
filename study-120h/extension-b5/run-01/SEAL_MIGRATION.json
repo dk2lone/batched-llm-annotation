@@ -1,0 +1,9 @@
+{
+  "at_utc": "2026-09-19T17:20:00Z",
+  "from_manifest_sha256": "91e5be1e8feed7e36a189b10da4e3f56a1c695e6607698bf3c675ba94f8b9edf",
+  "from_seal": "freeze/20260919T025246Z-B5",
+  "reason": "The execution seal now excludes the flexible analyzer implementation; the scientific schedule is unchanged.",
+  "schedule_sha256": "6145f5088a56fc869929257daa9b145fc1351ce34eb03cafa7101448bd547a25",
+  "to_manifest_sha256": "f239a63ac05b93e35e4c3b0d7edec7d08b3a2b77b2c239e227e1a720a0315171",
+  "to_seal": "freeze/20260919T170405Z-B5"
+}

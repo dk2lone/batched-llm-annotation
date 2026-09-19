@@ -1,0 +1,2972 @@
+{
+  "analysis_scope": {
+    "cells": [
+      "Qwen/Qwen3-8B::civil_comments",
+      "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli"
+    ],
+    "model_phase": "all",
+    "planned_final_cells": 4,
+    "status": "final",
+    "warning": "Complete four-cell confirmatory analysis."
+  },
+  "cells": [
+    {
+      "by_size": [
+        {
+          "approximate_variance_inflation": 1.0238393253035953,
+          "assignment_range": 0.04186451549610962,
+          "batch_size": 2,
+          "exact_covariance": -0.013299807906150818,
+          "exact_standardized": -0.09090722713193307,
+          "joint_covariance": 0.004024242361386617,
+          "joint_standardized": 0.023839325303595272,
+          "log2_batch_size": 1.0,
+          "marginal_error_exact": 0.17801920572916666,
+          "marginal_error_joint": 0.2147216796875,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.8231201171875,
+                "covariance": -0.014929071068763733,
+                "marginal_error": 0.1768798828125,
+                "standardized": -0.10253948398497657,
+                "variance_inflation": 0.8974605160150234
+              },
+              "exact_label_homogeneity": 0.678955078125,
+              "joint": {
+                "accuracy": 0.7843017578125,
+                "covariance": 0.006452783942222595,
+                "marginal_error": 0.2156982421875,
+                "standardized": 0.03814321796709673,
+                "variance_inflation": 1.0381432179670966
+              },
+              "joint_label_homogeneity": 0.674560546875,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.021381855010986328,
+              "standardized_contrast": 0.1406827019520733
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.822021484375,
+                "covariance": -0.01141268014907837,
+                "marginal_error": 0.177978515625,
+                "standardized": -0.07800759652611504,
+                "variance_inflation": 0.921992403473885
+              },
+              "exact_label_homogeneity": 0.6845703125,
+              "joint": {
+                "accuracy": 0.785400390625,
+                "covariance": 0.003507554531097412,
+                "marginal_error": 0.214599609375,
+                "standardized": 0.020810589929848647,
+                "variance_inflation": 1.0208105899298487
+              },
+              "joint_label_homogeneity": 0.669921875,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.014920234680175781,
+              "standardized_contrast": 0.09881818645596369
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.82080078125,
+                "covariance": -0.013557672500610352,
+                "marginal_error": 0.17919921875,
+                "standardized": -0.0921746008847076,
+                "variance_inflation": 0.9078253991152924
+              },
+              "exact_label_homogeneity": 0.6787109375,
+              "joint": {
+                "accuracy": 0.7861328125,
+                "covariance": 0.0021123886108398438,
+                "marginal_error": 0.2138671875,
+                "standardized": 0.012564168013840438,
+                "variance_inflation": 1.0125641680138404
+              },
+              "joint_label_homogeneity": 0.66796875,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.015670061111450195,
+              "standardized_contrast": 0.10473876889854804
+            }
+          ],
+          "raw_contrast": 0.017324050267537434,
+          "standardized_contrast": 0.11474655243552834
+        },
+        {
+          "approximate_variance_inflation": 1.2108339980844829,
+          "assignment_range": 0.030147268015384046,
+          "batch_size": 4,
+          "exact_covariance": -0.00544854998588562,
+          "exact_standardized": -0.04128106689641606,
+          "joint_covariance": 0.010286284817589654,
+          "joint_standardized": 0.07027799936149431,
+          "log2_batch_size": 2.0,
+          "marginal_error_exact": 0.156494140625,
+          "marginal_error_joint": 0.177978515625,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.8448486328125,
+                "covariance": -0.005924160281817119,
+                "marginal_error": 0.1551513671875,
+                "standardized": -0.04519519739711289,
+                "variance_inflation": 0.8644144078086613
+              },
+              "exact_label_homogeneity": 0.7259928385416666,
+              "joint": {
+                "accuracy": 0.821044921875,
+                "covariance": 0.012164533138275146,
+                "marginal_error": 0.178955078125,
+                "standardized": 0.08279126145652939,
+                "variance_inflation": 1.2483737843695881
+              },
+              "joint_label_homogeneity": 0.73046875,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 2048,
+                  "parse_failures": 0,
+                  "resolved_calls": 2048,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.018088693420092266,
+              "standardized_contrast": 0.1279864588536423
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.8433837890625,
+                "covariance": -0.004590486486752828,
+                "marginal_error": 0.1566162109375,
+                "standardized": -0.03475335618844255,
+                "variance_inflation": 0.8957399314346723
+              },
+              "exact_label_homogeneity": 0.7266438802083334,
+              "joint": {
+                "accuracy": 0.82421875,
+                "covariance": 0.0091400146484375,
+                "marginal_error": 0.17578125,
+                "standardized": 0.0630858346498157,
+                "variance_inflation": 1.189257503949447
+              },
+              "joint_label_homogeneity": 0.728515625,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 2048,
+                  "parse_failures": 0,
+                  "resolved_calls": 2048,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.013730501135190327,
+              "standardized_contrast": 0.09783919083825825
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.84228515625,
+                "covariance": -0.005831003189086914,
+                "marginal_error": 0.15771484375,
+                "standardized": -0.04389464710369274,
+                "variance_inflation": 0.8683160586889218
+              },
+              "exact_label_homogeneity": 0.72265625,
+              "joint": {
+                "accuracy": 0.82080078125,
+                "covariance": 0.009554306666056315,
+                "marginal_error": 0.17919921875,
+                "standardized": 0.06495690197813787,
+                "variance_inflation": 1.1948707059344137
+              },
+              "joint_label_homogeneity": 0.7249348958333334,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 2048,
+                  "parse_failures": 0,
+                  "resolved_calls": 2048,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.015385309855143229,
+              "standardized_contrast": 0.10885154908183062
+            }
+          ],
+          "raw_contrast": 0.015734834803475272,
+          "standardized_contrast": 0.11155906625791039
+        },
+        {
+          "approximate_variance_inflation": 1.5345323602095544,
+          "assignment_range": 0.014784675429461519,
+          "batch_size": 8,
+          "exact_covariance": -0.0011879815941765195,
+          "exact_standardized": -0.010654188446534657,
+          "joint_covariance": 0.01036731827826727,
+          "joint_standardized": 0.07636176574422208,
+          "log2_batch_size": 3.0,
+          "marginal_error_exact": 0.12882486979166666,
+          "marginal_error_joint": 0.16194661458333334,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.8743896484375,
+                "covariance": -0.0015131724732262747,
+                "marginal_error": 0.1256103515625,
+                "standardized": -0.01377710580167814,
+                "variance_inflation": 0.903560259388253
+              },
+              "exact_label_homogeneity": 0.7773088727678571,
+              "joint": {
+                "accuracy": 0.8377685546875,
+                "covariance": 0.010511315294674464,
+                "marginal_error": 0.1622314453125,
+                "standardized": 0.077338896427022,
+                "variance_inflation": 1.541372274989154
+              },
+              "joint_label_homogeneity": 0.7491978236607143,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 1024,
+                  "parse_failures": 0,
+                  "resolved_calls": 1024,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.012024487767900738,
+              "standardized_contrast": 0.09111600222870014
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.87158203125,
+                "covariance": -0.001459087644304548,
+                "marginal_error": 0.12841796875,
+                "standardized": -0.01303608896029895,
+                "variance_inflation": 0.9087473772779073
+              },
+              "exact_label_homogeneity": 0.7732282366071429,
+              "joint": {
+                "accuracy": 0.8358154296875,
+                "covariance": 0.010885223746299744,
+                "marginal_error": 0.1641845703125,
+                "standardized": 0.07932217892621683,
+                "variance_inflation": 1.555255252483518
+              },
+              "joint_label_homogeneity": 0.747314453125,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 1024,
+                  "parse_failures": 0,
+                  "resolved_calls": 1024,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.012344311390604292,
+              "standardized_contrast": 0.09235826788651579
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.8675537109375,
+                "covariance": -0.0005916846649987357,
+                "marginal_error": 0.1324462890625,
+                "standardized": -0.005149370577626876,
+                "variance_inflation": 0.9639544059566119
+              },
+              "exact_label_homogeneity": 0.7690080915178571,
+              "joint": {
+                "accuracy": 0.840576171875,
+                "covariance": 0.009705415793827601,
+                "marginal_error": 0.159423828125,
+                "standardized": 0.07242422187942739,
+                "variance_inflation": 1.5069695531559917
+              },
+              "joint_label_homogeneity": 0.7513950892857143,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 1024,
+                  "parse_failures": 0,
+                  "resolved_calls": 1024,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.010297100458826336,
+              "standardized_contrast": 0.07757359245705427
+            }
+          ],
+          "raw_contrast": 0.011555299872443789,
+          "standardized_contrast": 0.08701595419075674
+        },
+        {
+          "approximate_variance_inflation": 2.1261280539084013,
+          "assignment_range": 0.005460002497542804,
+          "batch_size": 16,
+          "exact_covariance": -7.353723049163818e-05,
+          "exact_standardized": -0.0007987309841574492,
+          "joint_covariance": 0.008382087614801194,
+          "joint_standardized": 0.07507520359389341,
+          "log2_batch_size": 4.0,
+          "marginal_error_exact": 0.10477701822916667,
+          "marginal_error_joint": 0.12797037760416666,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.895751953125,
+                "covariance": -0.0003533323605855306,
+                "marginal_error": 0.104248046875,
+                "standardized": -0.003783796089735529,
+                "variance_inflation": 0.9432430586539671
+              },
+              "exact_label_homogeneity": 0.8125325520833333,
+              "joint": {
+                "accuracy": 0.8778076171875,
+                "covariance": 0.008083344499270121,
+                "marginal_error": 0.1221923828125,
+                "standardized": 0.07536116597443256,
+                "variance_inflation": 2.1304174896164882
+              },
+              "joint_label_homogeneity": 0.8016438802083333,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 512,
+                  "parse_failures": 0,
+                  "resolved_calls": 512,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.00843667685985565,
+              "standardized_contrast": 0.07914496206416809
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.8953857421875,
+                "covariance": -0.0002507835626602173,
+                "marginal_error": 0.1046142578125,
+                "standardized": -0.0026773060222602427,
+                "variance_inflation": 0.9598404096660964
+              },
+              "exact_label_homogeneity": 0.812158203125,
+              "joint": {
+                "accuracy": 0.87255859375,
+                "covariance": 0.007896057764689128,
+                "marginal_error": 0.12744140625,
+                "standardized": 0.07100765354436504,
+                "variance_inflation": 2.065114803165476
+              },
+              "joint_label_homogeneity": 0.7933919270833333,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 512,
+                  "parse_failures": 0,
+                  "resolved_calls": 512,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.008146841327349346,
+              "standardized_contrast": 0.07368495956662528
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.89453125,
+                "covariance": 0.0003835042317708333,
+                "marginal_error": 0.10546875,
+                "standardized": 0.004064909159523424,
+                "variance_inflation": 1.0609736373928513
+              },
+              "exact_label_homogeneity": 0.8120768229166667,
+              "joint": {
+                "accuracy": 0.86572265625,
+                "covariance": 0.009166860580444336,
+                "marginal_error": 0.13427734375,
+                "standardized": 0.07885679126288263,
+                "variance_inflation": 2.1828518689432395
+              },
+              "joint_label_homogeneity": 0.78583984375,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 512,
+                  "parse_failures": 0,
+                  "resolved_calls": 512,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.008783356348673502,
+              "standardized_contrast": 0.0747918821033592
+            }
+          ],
+          "raw_contrast": 0.008455624845292832,
+          "standardized_contrast": 0.07587393457805086
+        },
+        {
+          "approximate_variance_inflation": 2.6476531048464067,
+          "assignment_range": 0.011285068619763965,
+          "batch_size": 32,
+          "exact_covariance": -2.220657563978626e-05,
+          "exact_standardized": -0.00027334320623790317,
+          "joint_covariance": 0.0053800807524752884,
+          "joint_standardized": 0.0531501001563357,
+          "log2_batch_size": 5.0,
+          "marginal_error_exact": 0.09098307291666667,
+          "marginal_error_joint": 0.11429850260416667,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.909423828125,
+                "covariance": -0.00024978383894889587,
+                "marginal_error": 0.090576171875,
+                "standardized": -0.0030323829442318703,
+                "variance_inflation": 0.9059961287288121
+              },
+              "exact_label_homogeneity": 0.8347561743951613,
+              "joint": {
+                "accuracy": 0.8857421875,
+                "covariance": 0.00575973141577936,
+                "marginal_error": 0.1142578125,
+                "standardized": 0.056912674723963275,
+                "variance_inflation": 2.7642929164428613
+              },
+              "joint_label_homogeneity": 0.809113533266129,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.006009515254728256,
+              "standardized_contrast": 0.05994505766819515
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.9080810546875,
+                "covariance": 8.007835957311815e-05,
+                "marginal_error": 0.0919189453125,
+                "standardized": 0.0009593686448694595,
+                "variance_inflation": 1.0297404279909532
+              },
+              "exact_label_homogeneity": 0.833220451108871,
+              "joint": {
+                "accuracy": 0.8851318359375,
+                "covariance": 0.005044972223620261,
+                "marginal_error": 0.1148681640625,
+                "standardized": 0.04961935769330064,
+                "variance_inflation": 2.53820008849232
+              },
+              "joint_label_homogeneity": 0.8067430065524194,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.0049648938640471435,
+              "standardized_contrast": 0.04865998904843118
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.9095458984375,
+                "covariance": 0.00010308575245641893,
+                "marginal_error": 0.0904541015625,
+                "standardized": 0.0012529846806487014,
+                "variance_inflation": 1.0388425251001097
+              },
+              "exact_label_homogeneity": 0.835661857358871,
+              "joint": {
+                "accuracy": 0.88623046875,
+                "covariance": 0.005335538618026241,
+                "marginal_error": 0.11376953125,
+                "standardized": 0.05291826805174319,
+                "variance_inflation": 2.640466309604039
+              },
+              "joint_label_homogeneity": 0.8090190272177419,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.005232452865569823,
+              "standardized_contrast": 0.05166528337109449
+            }
+          ],
+          "raw_contrast": 0.005402287328115075,
+          "standardized_contrast": 0.053423443362573604
+        }
+      ],
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "model_id": "Qwen/Qwen3-8B",
+      "replay": [
+        {
+          "batch_size": 2,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.11474655243552834,
+          "p_value_one_sided_upper": 0.001
+        },
+        {
+          "batch_size": 4,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.11155906625791039,
+          "p_value_one_sided_upper": 0.001
+        },
+        {
+          "batch_size": 8,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.08701595419075674,
+          "p_value_one_sided_upper": 0.001
+        },
+        {
+          "batch_size": 16,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.07587393457805086,
+          "p_value_one_sided_upper": 0.001
+        },
+        {
+          "batch_size": 32,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.053423443362573604,
+          "p_value_one_sided_upper": 0.001
+        }
+      ],
+      "size_contrast_interval": {
+        "16": {
+          "high": 0.08655720292038055,
+          "low": 0.06517244698947208,
+          "width": 0.021384755930908467
+        },
+        "2": {
+          "high": 0.13114772675587066,
+          "low": 0.09820464955146792,
+          "width": 0.032943077204402746
+        },
+        "32": {
+          "high": 0.06392820972249108,
+          "low": 0.0424330278158259,
+          "width": 0.021495181906665183
+        },
+        "4": {
+          "high": 0.12279593386579328,
+          "low": 0.09996881409305697,
+          "width": 0.022827119772736312
+        },
+        "8": {
+          "high": 0.09704198909122169,
+          "low": 0.07709551460696173,
+          "width": 0.019946474484259957
+        }
+      },
+      "slope_interval": {
+        "high": -0.011909124803591657,
+        "low": -0.020239761951136918,
+        "width": 0.00833063714754526
+      },
+      "slope_raw": -0.0031122735837027155,
+      "slope_standardized": -0.0158331349825769,
+      "slope_two_sided_p": 0.0,
+      "task_id": "civil_comments"
+    },
+    {
+      "by_size": [
+        {
+          "approximate_variance_inflation": 0.9703845189423888,
+          "assignment_range": 0.016600781621444,
+          "batch_size": 2,
+          "exact_covariance": -0.0020631402730941772,
+          "exact_standardized": -0.02147749019289628,
+          "joint_covariance": -0.0031431963046391806,
+          "joint_standardized": -0.02961548105761118,
+          "log2_batch_size": 1.0,
+          "marginal_error_exact": 0.10762532552083333,
+          "marginal_error_joint": 0.12056477864583333,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.8935546875,
+                "covariance": -0.0020532608032226562,
+                "marginal_error": 0.1064453125,
+                "standardized": -0.02158720609615481,
+                "variance_inflation": 0.9784127939038452
+              },
+              "exact_label_homogeneity": 0.8056640625,
+              "joint": {
+                "accuracy": 0.87939453125,
+                "covariance": -0.0038034915924072266,
+                "marginal_error": 0.12060546875,
+                "standardized": -0.035861768203449725,
+                "variance_inflation": 0.9641382317965502
+              },
+              "joint_label_homogeneity": 0.7802734375,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": -0.0017502307891845703,
+              "standardized_contrast": -0.014274562107294914
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.892822265625,
+                "covariance": -0.0019655823707580566,
+                "marginal_error": 0.107177734375,
+                "standardized": -0.020541003835126317,
+                "variance_inflation": 0.9794589961648736
+              },
+              "exact_label_homogeneity": 0.8046875,
+              "joint": {
+                "accuracy": 0.8785400390625,
+                "covariance": -0.003522053360939026,
+                "marginal_error": 0.1214599609375,
+                "standardized": -0.033006633836125183,
+                "variance_inflation": 0.9669933661638748
+              },
+              "joint_label_homogeneity": 0.779541015625,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": -0.0015564709901809692,
+              "standardized_contrast": -0.012465630000998866
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.8907470703125,
+                "covariance": -0.002170577645301819,
+                "marginal_error": 0.1092529296875,
+                "standardized": -0.022304260647407714,
+                "variance_inflation": 0.9776957393525922
+              },
+              "exact_label_homogeneity": 0.801025390625,
+              "joint": {
+                "accuracy": 0.88037109375,
+                "covariance": -0.002104043960571289,
+                "marginal_error": 0.11962890625,
+                "standardized": -0.01997804113325863,
+                "variance_inflation": 0.9800219588667414
+              },
+              "joint_label_homogeneity": 0.78515625,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 6.653368473052979e-05,
+              "standardized_contrast": 0.0023262195141490853
+            }
+          ],
+          "raw_contrast": -0.0010800560315450032,
+          "standardized_contrast": -0.008137990864714898
+        },
+        {
+          "approximate_variance_inflation": 1.292550271954516,
+          "assignment_range": 0.025818571202848598,
+          "batch_size": 4,
+          "exact_covariance": 0.0007837944560580784,
+          "exact_standardized": 0.008363901822092595,
+          "joint_covariance": 0.013745455278290642,
+          "joint_standardized": 0.09751675731817205,
+          "log2_batch_size": 2.0,
+          "marginal_error_exact": 0.10441080729166667,
+          "marginal_error_joint": 0.16988118489583334,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.898681640625,
+                "covariance": 0.0003140171368916829,
+                "marginal_error": 0.101318359375,
+                "standardized": 0.003448731082984478,
+                "variance_inflation": 1.0103461932489535
+              },
+              "exact_label_homogeneity": 0.8185221354166666,
+              "joint": {
+                "accuracy": 0.8294677734375,
+                "covariance": 0.015433733661969503,
+                "marginal_error": 0.1705322265625,
+                "standardized": 0.10911011700499108,
+                "variance_inflation": 1.3273303510149732
+              },
+              "joint_label_homogeneity": 0.7479654947916666,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 2048,
+                  "parse_failures": 0,
+                  "resolved_calls": 2048,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.01511971652507782,
+              "standardized_contrast": 0.1056613859220066
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.892578125,
+                "covariance": 0.0005048116048177084,
+                "marginal_error": 0.107421875,
+                "standardized": 0.00526490285790067,
+                "variance_inflation": 1.015794708573702
+              },
+              "exact_label_homogeneity": 0.8092447916666666,
+              "joint": {
+                "accuracy": 0.826416015625,
+                "covariance": 0.012511829535166422,
+                "marginal_error": 0.173583984375,
+                "standardized": 0.08721926870497444,
+                "variance_inflation": 1.2616578061149233
+              },
+              "joint_label_homogeneity": 0.7381184895833334,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 2048,
+                  "parse_failures": 0,
+                  "resolved_calls": 2048,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.012007017930348713,
+              "standardized_contrast": 0.08195436584707377
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.8955078125,
+                "covariance": 0.0015325546264648438,
+                "marginal_error": 0.1044921875,
+                "standardized": 0.016378071525392637,
+                "variance_inflation": 1.049134214576178
+              },
+              "exact_label_homogeneity": 0.81591796875,
+              "joint": {
+                "accuracy": 0.83447265625,
+                "covariance": 0.013290802637736002,
+                "marginal_error": 0.16552734375,
+                "standardized": 0.09622088624455065,
+                "variance_inflation": 1.288662658733652
+              },
+              "joint_label_homogeneity": 0.7503255208333334,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 2048,
+                  "parse_failures": 0,
+                  "resolved_calls": 2048,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.011758248011271158,
+              "standardized_contrast": 0.07984281471915801
+            }
+          ],
+          "raw_contrast": 0.012961660822232565,
+          "standardized_contrast": 0.08915285549607947
+        },
+        {
+          "approximate_variance_inflation": 1.9222603900205992,
+          "assignment_range": 0.019370841408553274,
+          "batch_size": 8,
+          "exact_covariance": 0.0008663052604311988,
+          "exact_standardized": 0.009273320324223422,
+          "joint_covariance": 0.018947032235917594,
+          "joint_standardized": 0.13175148428865704,
+          "log2_batch_size": 3.0,
+          "marginal_error_exact": 0.10400390625,
+          "marginal_error_joint": 0.17399088541666666,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.895263671875,
+                "covariance": 0.0009234377316066197,
+                "marginal_error": 0.104736328125,
+                "standardized": 0.009848255553191469,
+                "variance_inflation": 1.0689377888723404
+              },
+              "exact_label_homogeneity": 0.8143136160714286,
+              "joint": {
+                "accuracy": 0.823486328125,
+                "covariance": 0.021089017391204834,
+                "marginal_error": 0.176513671875,
+                "standardized": 0.1450846954437218,
+                "variance_inflation": 2.0155928681060526
+              },
+              "joint_label_homogeneity": 0.75146484375,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 1024,
+                  "parse_failures": 0,
+                  "resolved_calls": 1024,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.020165579659598216,
+              "standardized_contrast": 0.13523643989053033
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.8955078125,
+                "covariance": 0.0012535367693219865,
+                "marginal_error": 0.1044921875,
+                "standardized": 0.013396269544416181,
+                "variance_inflation": 1.0937738868109133
+              },
+              "exact_label_homogeneity": 0.8153599330357143,
+              "joint": {
+                "accuracy": 0.8265380859375,
+                "covariance": 0.018599580441202437,
+                "marginal_error": 0.1734619140625,
+                "standardized": 0.12972872306520972,
+                "variance_inflation": 1.908101061456468
+              },
+              "joint_label_homogeneity": 0.7504534040178571,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 1024,
+                  "parse_failures": 0,
+                  "resolved_calls": 1024,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.01734604367188045,
+              "standardized_contrast": 0.11633245352079354
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.897216796875,
+                "covariance": 0.00042194128036499023,
+                "marginal_error": 0.102783203125,
+                "standardized": 0.0045754358750626145,
+                "variance_inflation": 1.0320280511254383
+              },
+              "exact_label_homogeneity": 0.81640625,
+              "joint": {
+                "accuracy": 0.8280029296875,
+                "covariance": 0.017152498875345503,
+                "marginal_error": 0.1719970703125,
+                "standardized": 0.12044103435703966,
+                "variance_inflation": 1.8430872404992775
+              },
+              "joint_label_homogeneity": 0.7494768415178571,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 1024,
+                  "parse_failures": 0,
+                  "resolved_calls": 1024,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.016730557594980513,
+              "standardized_contrast": 0.11586559848197706
+            }
+          ],
+          "raw_contrast": 0.01808072697548639,
+          "standardized_contrast": 0.12247816396443363
+        },
+        {
+          "approximate_variance_inflation": 2.931611700598669,
+          "assignment_range": 0.0213824917728086,
+          "batch_size": 16,
+          "exact_covariance": 0.0008315440681245593,
+          "exact_standardized": 0.006505931433894856,
+          "joint_covariance": 0.020756074455049303,
+          "joint_standardized": 0.1287741133732446,
+          "log2_batch_size": 4.0,
+          "marginal_error_exact": 0.1502685546875,
+          "marginal_error_joint": 0.20174153645833334,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.8524169921875,
+                "covariance": 0.0007127453883488973,
+                "marginal_error": 0.1475830078125,
+                "standardized": 0.005665600664515079,
+                "variance_inflation": 1.0849840099677261
+              },
+              "exact_label_homogeneity": 0.7498209635416667,
+              "joint": {
+                "accuracy": 0.8092041015625,
+                "covariance": 0.01900057097276052,
+                "marginal_error": 0.1907958984375,
+                "standardized": 0.12306641288475022,
+                "variance_inflation": 2.845996193271253
+              },
+              "joint_label_homogeneity": 0.7292154947916667,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 512,
+                  "parse_failures": 0,
+                  "resolved_calls": 512,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.01828782558441162,
+              "standardized_contrast": 0.11740081222023514
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.8485107421875,
+                "covariance": 0.0007814735174179078,
+                "marginal_error": 0.1514892578125,
+                "standardized": 0.006079601066102061,
+                "variance_inflation": 1.091194015991531
+              },
+              "exact_label_homogeneity": 0.744482421875,
+              "joint": {
+                "accuracy": 0.7908935546875,
+                "covariance": 0.02339689036210378,
+                "marginal_error": 0.2091064453125,
+                "standardized": 0.14147271375141343,
+                "variance_inflation": 3.1220907062712016
+              },
+              "joint_label_homogeneity": 0.7160319010416667,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 512,
+                  "parse_failures": 0,
+                  "resolved_calls": 512,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.022615416844685873,
+              "standardized_contrast": 0.13539311268531137
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.8482666015625,
+                "covariance": 0.0010004132986068726,
+                "marginal_error": 0.1517333984375,
+                "standardized": 0.007772592571067427,
+                "variance_inflation": 1.1165888885660114
+              },
+              "exact_label_homogeneity": 0.744580078125,
+              "joint": {
+                "accuracy": 0.794677734375,
+                "covariance": 0.01987076203028361,
+                "marginal_error": 0.205322265625,
+                "standardized": 0.1217832134835702,
+                "variance_inflation": 2.826748202253553
+              },
+              "joint_label_homogeneity": 0.7134114583333333,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 512,
+                  "parse_failures": 0,
+                  "resolved_calls": 512,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.018870348731676735,
+              "standardized_contrast": 0.11401062091250277
+            }
+          ],
+          "raw_contrast": 0.01992453038692474,
+          "standardized_contrast": 0.12226818193934978
+        },
+        {
+          "approximate_variance_inflation": 4.127952751984208,
+          "assignment_range": 0.01640053955538115,
+          "batch_size": 32,
+          "exact_covariance": 0.0008882870597224082,
+          "exact_standardized": 0.005363195312209932,
+          "joint_covariance": 0.019699093795591784,
+          "joint_standardized": 0.10090170167690994,
+          "log2_batch_size": 5.0,
+          "marginal_error_exact": 0.20890299479166666,
+          "marginal_error_joint": 0.265869140625,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.7994384765625,
+                "covariance": 0.0007985758204613962,
+                "marginal_error": 0.2005615234375,
+                "standardized": 0.004980620935379713,
+                "variance_inflation": 1.1543992489967712
+              },
+              "exact_label_homogeneity": 0.6809239541330645,
+              "joint": {
+                "accuracy": 0.7296142578125,
+                "covariance": 0.021413349816876072,
+                "marginal_error": 0.2703857421875,
+                "standardized": 0.10854442259248573,
+                "variance_inflation": 4.364877100367058
+              },
+              "joint_label_homogeneity": 0.6482721144153226,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.020614773996414676,
+              "standardized_contrast": 0.10356380165710602
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.788330078125,
+                "covariance": 0.0005508718952055901,
+                "marginal_error": 0.211669921875,
+                "standardized": 0.0033012876652344864,
+                "variance_inflation": 1.102339917622269
+              },
+              "exact_label_homogeneity": 0.6673702116935484,
+              "joint": {
+                "accuracy": 0.739013671875,
+                "covariance": 0.019130970201184674,
+                "marginal_error": 0.260986328125,
+                "standardized": 0.09918974300050365,
+                "variance_inflation": 4.074882033015613
+              },
+              "joint_label_homogeneity": 0.6525170110887096,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.018580098305979082,
+              "standardized_contrast": 0.09588845533526916
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.7855224609375,
+                "covariance": 0.0013154134635002383,
+                "marginal_error": 0.2144775390625,
+                "standardized": 0.007807677336015596,
+                "variance_inflation": 1.2420379974164835
+              },
+              "exact_label_homogeneity": 0.6656769783266129,
+              "joint": {
+                "accuracy": 0.7337646484375,
+                "covariance": 0.01855296136871461,
+                "marginal_error": 0.2662353515625,
+                "standardized": 0.09497093943774047,
+                "variance_inflation": 3.9440991225699547
+              },
+              "joint_label_homogeneity": 0.6463977444556451,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.01723754790521437,
+              "standardized_contrast": 0.08716326210172487
+            }
+          ],
+          "raw_contrast": 0.018810806735869375,
+          "standardized_contrast": 0.09553850636470002
+        }
+      ],
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "replay": [
+        {
+          "batch_size": 2,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": -0.008137990864714898,
+          "p_value_one_sided_upper": 0.815
+        },
+        {
+          "batch_size": 4,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.08915285549607947,
+          "p_value_one_sided_upper": 0.001
+        },
+        {
+          "batch_size": 8,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.12247816396443363,
+          "p_value_one_sided_upper": 0.001
+        },
+        {
+          "batch_size": 16,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.12226818193934978,
+          "p_value_one_sided_upper": 0.001
+        },
+        {
+          "batch_size": 32,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.09553850636470002,
+          "p_value_one_sided_upper": 0.001
+        }
+      ],
+      "size_contrast_interval": {
+        "16": {
+          "high": 0.13429342910584344,
+          "low": 0.11039371124468483,
+          "width": 0.023899717861158604
+        },
+        "2": {
+          "high": 0.01040814259485734,
+          "low": -0.025470795320287384,
+          "width": 0.035878937915144724
+        },
+        "32": {
+          "high": 0.10591474344160885,
+          "low": 0.08533964770625099,
+          "width": 0.02057509573535786
+        },
+        "4": {
+          "high": 0.1031074417592499,
+          "low": 0.07547351532590356,
+          "width": 0.027633926433346334
+        },
+        "8": {
+          "high": 0.13683603235960262,
+          "low": 0.1098737031693849,
+          "width": 0.026962329190217724
+        }
+      },
+      "slope_interval": {
+        "high": 0.028423184658852168,
+        "low": 0.019648049323213807,
+        "width": 0.00877513533563836
+      },
+      "slope_raw": 0.004674459509952093,
+      "slope_standardized": 0.024046832090210014,
+      "slope_two_sided_p": 0.0,
+      "task_id": "imdb"
+    },
+    {
+      "by_size": [
+        {
+          "approximate_variance_inflation": 0.9560088216602569,
+          "assignment_range": 0.012921394992417179,
+          "batch_size": 2,
+          "exact_covariance": -0.03922627866268158,
+          "exact_standardized": -0.2116442739860451,
+          "joint_covariance": -0.00788616140683492,
+          "joint_standardized": -0.04399117833974298,
+          "log2_batch_size": 1.0,
+          "marginal_error_exact": 0.2457275390625,
+          "marginal_error_joint": 0.233642578125,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.7562255859375,
+                "covariance": -0.0394064337015152,
+                "marginal_error": 0.2437744140625,
+                "standardized": -0.2137605924625437,
+                "variance_inflation": 0.7862394075374564
+              },
+              "exact_label_homogeneity": 0.552490234375,
+              "joint": {
+                "accuracy": 0.7625732421875,
+                "covariance": -0.00974060595035553,
+                "marginal_error": 0.2374267578125,
+                "standardized": -0.05379906776846717,
+                "variance_inflation": 0.9462009322315328
+              },
+              "joint_label_homogeneity": 0.618408203125,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.029665827751159668,
+              "standardized_contrast": 0.15996152469407654
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.754638671875,
+                "covariance": -0.038717806339263916,
+                "marginal_error": 0.245361328125,
+                "standardized": -0.20910555601159522,
+                "variance_inflation": 0.7908944439884048
+              },
+              "exact_label_homogeneity": 0.55224609375,
+              "joint": {
+                "accuracy": 0.766357421875,
+                "covariance": -0.0069814324378967285,
+                "marginal_error": 0.233642578125,
+                "standardized": -0.038990713453259176,
+                "variance_inflation": 0.9610092865467408
+              },
+              "joint_label_homogeneity": 0.6279296875,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.03173637390136719,
+              "standardized_contrast": 0.17011484255833603
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.751953125,
+                "covariance": -0.039554595947265625,
+                "marginal_error": 0.248046875,
+                "standardized": -0.21206667348399633,
+                "variance_inflation": 0.7879333265160037
+              },
+              "exact_label_homogeneity": 0.5478515625,
+              "joint": {
+                "accuracy": 0.7701416015625,
+                "covariance": -0.0069364458322525024,
+                "marginal_error": 0.2298583984375,
+                "standardized": -0.039183753797502614,
+                "variance_inflation": 0.9608162462024974
+              },
+              "joint_label_homogeneity": 0.632080078125,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.03261815011501312,
+              "standardized_contrast": 0.17288291968649372
+            }
+          ],
+          "raw_contrast": 0.03134011725584666,
+          "standardized_contrast": 0.16765309564630212
+        },
+        {
+          "approximate_variance_inflation": 0.8492431408113418,
+          "assignment_range": 0.006042751657289687,
+          "batch_size": 4,
+          "exact_covariance": -0.01721884806950887,
+          "exact_standardized": -0.09190321329390945,
+          "joint_covariance": -0.010964986350801257,
+          "joint_standardized": -0.05025228639621939,
+          "log2_batch_size": 2.0,
+          "marginal_error_exact": 0.24959309895833334,
+          "marginal_error_joint": 0.321533203125,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.7529296875,
+                "covariance": -0.017098426818847656,
+                "marginal_error": 0.2470703125,
+                "standardized": -0.09191389448537139,
+                "variance_inflation": 0.7242583165438858
+              },
+              "exact_label_homogeneity": 0.59375,
+              "joint": {
+                "accuracy": 0.6776123046875,
+                "covariance": -0.011485909422238668,
+                "marginal_error": 0.3223876953125,
+                "standardized": -0.0525781917393391,
+                "variance_inflation": 0.8422654247819827
+              },
+              "joint_label_homogeneity": 0.5401204427083334,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 2048,
+                  "parse_failures": 0,
+                  "resolved_calls": 2048,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.005612517396608988,
+              "standardized_contrast": 0.03933570274603229
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.746826171875,
+                "covariance": -0.01893097162246704,
+                "marginal_error": 0.253173828125,
+                "standardized": -0.10012316439499234,
+                "variance_inflation": 0.699630506815023
+              },
+              "exact_label_homogeneity": 0.583984375,
+              "joint": {
+                "accuracy": 0.67724609375,
+                "covariance": -0.011966307957967123,
+                "marginal_error": 0.32275390625,
+                "standardized": -0.054744709991670366,
+                "variance_inflation": 0.8357658700249889
+              },
+              "joint_label_homogeneity": 0.5388997395833334,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 2048,
+                  "parse_failures": 0,
+                  "resolved_calls": 2048,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.006964663664499918,
+              "standardized_contrast": 0.04537845440332198
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.75146484375,
+                "covariance": -0.015627145767211914,
+                "marginal_error": 0.24853515625,
+                "standardized": -0.08367258100136465,
+                "variance_inflation": 0.748982256995906
+              },
+              "exact_label_homogeneity": 0.59521484375,
+              "joint": {
+                "accuracy": 0.6805419921875,
+                "covariance": -0.009442741672197977,
+                "marginal_error": 0.3194580078125,
+                "standardized": -0.043433957457648706,
+                "variance_inflation": 0.8696981276270539
+              },
+              "joint_label_homogeneity": 0.5463053385416666,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 2048,
+                  "parse_failures": 0,
+                  "resolved_calls": 2048,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.006184404095013937,
+              "standardized_contrast": 0.04023862354371595
+            }
+          ],
+          "raw_contrast": 0.006253861718707614,
+          "standardized_contrast": 0.04165092689769007
+        },
+        {
+          "approximate_variance_inflation": 0.893019036520012,
+          "assignment_range": 0.013630193675990913,
+          "batch_size": 8,
+          "exact_covariance": -0.00582564373811086,
+          "exact_standardized": -0.031931224125518576,
+          "joint_covariance": -0.003216904543694996,
+          "joint_standardized": -0.015282994782855419,
+          "log2_batch_size": 3.0,
+          "marginal_error_exact": 0.23978678385416666,
+          "marginal_error_joint": 0.3021240234375,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.76220703125,
+                "covariance": -0.0054852281297956195,
+                "marginal_error": 0.23779296875,
+                "standardized": -0.030263749591511634,
+                "variance_inflation": 0.7881537528594186
+              },
+              "exact_label_homogeneity": 0.6265345982142857,
+              "joint": {
+                "accuracy": 0.696533203125,
+                "covariance": -0.001062520912715367,
+                "marginal_error": 0.303466796875,
+                "standardized": -0.005026717541722707,
+                "variance_inflation": 0.964812977207941
+              },
+              "joint_label_homogeneity": 0.5751255580357143,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 1024,
+                  "parse_failures": 0,
+                  "resolved_calls": 1024,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.004422707217080253,
+              "standardized_contrast": 0.02523703204978893
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.75732421875,
+                "covariance": -0.007203476769583566,
+                "marginal_error": 0.24267578125,
+                "standardized": -0.03919528963409266,
+                "variance_inflation": 0.7256329725613514
+              },
+              "exact_label_homogeneity": 0.6180245535714286,
+              "joint": {
+                "accuracy": 0.7003173828125,
+                "covariance": -0.005476523722921099,
+                "marginal_error": 0.2996826171875,
+                "standardized": -0.02609447202969013,
+                "variance_inflation": 0.8173386957921691
+              },
+              "joint_label_homogeneity": 0.5693010602678571,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 1024,
+                  "parse_failures": 0,
+                  "resolved_calls": 1024,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.0017269530466624662,
+              "standardized_contrast": 0.013100817604402532
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.7611083984375,
+                "covariance": -0.004788226314953395,
+                "marginal_error": 0.2388916015625,
+                "standardized": -0.026334633150951435,
+                "variance_inflation": 0.81565756794334
+              },
+              "exact_label_homogeneity": 0.6267787388392857,
+              "joint": {
+                "accuracy": 0.69677734375,
+                "covariance": -0.003111668995448521,
+                "marginal_error": 0.30322265625,
+                "standardized": -0.014727794777153419,
+                "variance_inflation": 0.896905436559926
+              },
+              "joint_label_homogeneity": 0.5712193080357143,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 1024,
+                  "parse_failures": 0,
+                  "resolved_calls": 1024,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.0016765573195048743,
+              "standardized_contrast": 0.011606838373798016
+            }
+          ],
+          "raw_contrast": 0.002608739194415864,
+          "standardized_contrast": 0.01664822934266316
+        },
+        {
+          "approximate_variance_inflation": 1.0121682504167329,
+          "assignment_range": 0.014991243270589085,
+          "batch_size": 16,
+          "exact_covariance": -0.0013543470038308036,
+          "exact_standardized": -0.007905956835863885,
+          "joint_covariance": 0.00016844107045067684,
+          "joint_standardized": 0.0008112166944488549,
+          "log2_batch_size": 4.0,
+          "marginal_error_exact": 0.2186279296875,
+          "marginal_error_joint": 0.2874755859375,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.782958984375,
+                "covariance": -0.0014850576718648276,
+                "marginal_error": 0.217041015625,
+                "standardized": -0.008739015200274897,
+                "variance_inflation": 0.8689147719958765
+              },
+              "exact_label_homogeneity": 0.6571614583333333,
+              "joint": {
+                "accuracy": 0.7122802734375,
+                "covariance": 0.001250562071800232,
+                "marginal_error": 0.2877197265625,
+                "standardized": 0.006102175546667859,
+                "variance_inflation": 1.091532633200018
+              },
+              "joint_label_homogeneity": 0.592626953125,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 512,
+                  "parse_failures": 0,
+                  "resolved_calls": 512,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.0027356197436650596,
+              "standardized_contrast": 0.014841190746942755
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.7791748046875,
+                "covariance": -0.002653740843137105,
+                "marginal_error": 0.2208251953125,
+                "standardized": -0.015423217553097683,
+                "variance_inflation": 0.7686517367035348
+              },
+              "exact_label_homogeneity": 0.6505696614583333,
+              "joint": {
+                "accuracy": 0.7159423828125,
+                "covariance": -0.0008059173822402954,
+                "marginal_error": 0.2840576171875,
+                "standardized": -0.003962835185455883,
+                "variance_inflation": 0.9405574722181618
+              },
+              "joint_label_homogeneity": 0.591650390625,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 512,
+                  "parse_failures": 0,
+                  "resolved_calls": 512,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.0018478234608968098,
+              "standardized_contrast": 0.0114603823676418
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.781982421875,
+                "covariance": 7.575750350952148e-05,
+                "marginal_error": 0.218017578125,
+                "standardized": 0.0004443622457809186,
+                "variance_inflation": 1.0066654336867138
+              },
+              "exact_label_homogeneity": 0.6591796875,
+              "joint": {
+                "accuracy": 0.7093505859375,
+                "covariance": 6.067852179209391e-05,
+                "marginal_error": 0.2906494140625,
+                "standardized": 0.00029430972213458843,
+                "variance_inflation": 1.004414645832019
+              },
+              "joint_label_homogeneity": 0.5877766927083333,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 512,
+                  "parse_failures": 0,
+                  "resolved_calls": 512,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": -1.5078981717427573e-05,
+              "standardized_contrast": -0.00015005252364633015
+            }
+          ],
+          "raw_contrast": 0.0015227880742814807,
+          "standardized_contrast": 0.008717173530312742
+        },
+        {
+          "approximate_variance_inflation": 1.3012001328223644,
+          "assignment_range": 0.0008880713548877137,
+          "batch_size": 32,
+          "exact_covariance": 0.00025792227637383246,
+          "exact_standardized": 0.002014883759096593,
+          "joint_covariance": 0.0018689052392077705,
+          "joint_standardized": 0.009716133316850466,
+          "log2_batch_size": 5.0,
+          "marginal_error_exact": 0.15254720052083334,
+          "marginal_error_joint": 0.2596842447916667,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.8505859375,
+                "covariance": 0.000167877443375126,
+                "marginal_error": 0.1494140625,
+                "standardized": 0.0013209387306642964,
+                "variance_inflation": 1.040949100650593
+              },
+              "exact_label_homogeneity": 0.7461567540322581,
+              "joint": {
+                "accuracy": 0.7420654296875,
+                "covariance": 0.0017897549175447034,
+                "marginal_error": 0.2579345703125,
+                "standardized": 0.009350650210377896,
+                "variance_inflation": 1.2898701565217148
+              },
+              "joint_label_homogeneity": 0.6207708543346774,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.0016218774741695774,
+              "standardized_contrast": 0.008029711479713599
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.843505859375,
+                "covariance": -8.422905398953346e-05,
+                "marginal_error": 0.156494140625,
+                "standardized": -0.0006380808894649797,
+                "variance_inflation": 0.9802194924265857
+              },
+              "exact_label_homogeneity": 0.7358240927419355,
+              "joint": {
+                "accuracy": 0.740478515625,
+                "covariance": 0.0014017493494095342,
+                "marginal_error": 0.259521484375,
+                "standardized": 0.007294316179257155,
+                "variance_inflation": 1.2261238015569718
+              },
+              "joint_label_homogeneity": 0.6184633316532258,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.0014859784033990676,
+              "standardized_contrast": 0.007932397068722135
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.8482666015625,
+                "covariance": 0.0006901184397359048,
+                "marginal_error": 0.1517333984375,
+                "standardized": 0.0053617934360904625,
+                "variance_inflation": 1.1662155965188044
+              },
+              "exact_label_homogeneity": 0.7439594884072581,
+              "joint": {
+                "accuracy": 0.7384033203125,
+                "covariance": 0.0024152114506690732,
+                "marginal_error": 0.2615966796875,
+                "standardized": 0.012503433560916348,
+                "variance_inflation": 1.3876064403884067
+              },
+              "joint_label_homogeneity": 0.6185027091733871,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.0017250930109331685,
+              "standardized_contrast": 0.007141640124825885
+            }
+          ],
+          "raw_contrast": 0.001610982962833938,
+          "standardized_contrast": 0.007701249557753874
+        }
+      ],
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "replay": [
+        {
+          "batch_size": 2,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.16765309564630212,
+          "p_value_one_sided_upper": 0.001
+        },
+        {
+          "batch_size": 4,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.04165092689769007,
+          "p_value_one_sided_upper": 0.001
+        },
+        {
+          "batch_size": 8,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.01664822934266316,
+          "p_value_one_sided_upper": 0.001
+        },
+        {
+          "batch_size": 16,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.008717173530312742,
+          "p_value_one_sided_upper": 0.001
+        },
+        {
+          "batch_size": 32,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.007701249557753874,
+          "p_value_one_sided_upper": 0.001
+        }
+      ],
+      "size_contrast_interval": {
+        "16": {
+          "high": 0.013837393744535615,
+          "low": 0.0036576586122585015,
+          "width": 0.010179735132277113
+        },
+        "2": {
+          "high": 0.18324328704129214,
+          "low": 0.15241409078857465,
+          "width": 0.03082919625271749
+        },
+        "32": {
+          "high": 0.012625431968981035,
+          "low": 0.0029978745857574215,
+          "width": 0.009627557383223614
+        },
+        "4": {
+          "high": 0.05033720067661487,
+          "low": 0.03272327947465602,
+          "width": 0.01761392120195885
+        },
+        "8": {
+          "high": 0.023122642538554276,
+          "low": 0.01060368852851631,
+          "width": 0.012518954010037966
+        }
+      },
+      "slope_interval": {
+        "high": -0.03171761639534349,
+        "low": -0.038958422969711075,
+        "width": 0.007240806574367584
+      },
+      "slope_raw": -0.0064189342230451555,
+      "slope_standardized": -0.03528374455444738,
+      "slope_two_sided_p": 0.0,
+      "task_id": "civil_comments"
+    },
+    {
+      "by_size": [
+        {
+          "approximate_variance_inflation": 1.034534041713129,
+          "assignment_range": 0.034566363095776605,
+          "batch_size": 2,
+          "exact_covariance": -0.0021167099475860596,
+          "exact_standardized": -0.009121200493006618,
+          "joint_covariance": 0.008242343862851461,
+          "joint_standardized": 0.03453404171312894,
+          "log2_batch_size": 1.0,
+          "marginal_error_exact": 0.355712890625,
+          "marginal_error_joint": 0.3931884765625,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.6422119140625,
+                "covariance": -0.004721298813819885,
+                "marginal_error": 0.3577880859375,
+                "standardized": -0.02054741795893396,
+                "variance_inflation": 0.979452582041066
+              },
+              "exact_label_homogeneity": 0.531005859375,
+              "joint": {
+                "accuracy": 0.60888671875,
+                "covariance": 0.0057218074798583984,
+                "marginal_error": 0.39111328125,
+                "standardized": 0.024026702788314928,
+                "variance_inflation": 1.024026702788315
+              },
+              "joint_label_homogeneity": 0.53515625,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.010443106293678284,
+              "standardized_contrast": 0.04457412074724888
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.640869140625,
+                "covariance": -0.006904661655426025,
+                "marginal_error": 0.359130859375,
+                "standardized": -0.029999935256223496,
+                "variance_inflation": 0.9700000647437765
+              },
+              "exact_label_homogeneity": 0.52587890625,
+              "joint": {
+                "accuracy": 0.606201171875,
+                "covariance": 0.007275998592376709,
+                "marginal_error": 0.393798828125,
+                "standardized": 0.030479049227243708,
+                "variance_inflation": 1.0304790492272438
+              },
+              "joint_label_homogeneity": 0.537109375,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.014180660247802734,
+              "standardized_contrast": 0.0604789844834672
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.6497802734375,
+                "covariance": 0.005275830626487732,
+                "marginal_error": 0.3502197265625,
+                "standardized": 0.023183751736137598,
+                "variance_inflation": 1.0231837517361375
+              },
+              "exact_label_homogeneity": 0.555419921875,
+              "joint": {
+                "accuracy": 0.6053466796875,
+                "covariance": 0.011729225516319275,
+                "marginal_error": 0.3946533203125,
+                "standardized": 0.049096373123828196,
+                "variance_inflation": 1.0490963731238283
+              },
+              "joint_label_homogeneity": 0.545654296875,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.006453394889831543,
+              "standardized_contrast": 0.0259126213876906
+            }
+          ],
+          "raw_contrast": 0.010359053810437521,
+          "standardized_contrast": 0.043655242206135564
+        },
+        {
+          "approximate_variance_inflation": 1.2356118121170367,
+          "assignment_range": 0.02094298549670931,
+          "batch_size": 4,
+          "exact_covariance": -0.00040372709433237713,
+          "exact_standardized": -0.0017319265411934782,
+          "joint_covariance": 0.019560237725575764,
+          "joint_standardized": 0.07853727070567888,
+          "log2_batch_size": 2.0,
+          "marginal_error_exact": 0.3748779296875,
+          "marginal_error_joint": 0.530517578125,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.6219482421875,
+                "covariance": -0.0008332878351211548,
+                "marginal_error": 0.3780517578125,
+                "standardized": -0.0035439659070492418,
+                "variance_inflation": 0.9893681022788523
+              },
+              "exact_label_homogeneity": 0.528076171875,
+              "joint": {
+                "accuracy": 0.4658203125,
+                "covariance": 0.015677452087402344,
+                "marginal_error": 0.5341796875,
+                "standardized": 0.0630042273655809,
+                "variance_inflation": 1.1890126820967426
+              },
+              "joint_label_homogeneity": 0.53369140625,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 2048,
+                  "parse_failures": 0,
+                  "resolved_calls": 2048,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.0165107399225235,
+              "standardized_contrast": 0.06654819327263013
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.62841796875,
+                "covariance": -0.002493778864542643,
+                "marginal_error": 0.37158203125,
+                "standardized": -0.010679591494308971,
+                "variance_inflation": 0.9679612255170731
+              },
+              "exact_label_homogeneity": 0.5279947916666666,
+              "joint": {
+                "accuracy": 0.47509765625,
+                "covariance": 0.019155263900756836,
+                "marginal_error": 0.52490234375,
+                "standardized": 0.07681158727503047,
+                "variance_inflation": 1.2304347618250915
+              },
+              "joint_label_homogeneity": 0.53955078125,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 2048,
+                  "parse_failures": 0,
+                  "resolved_calls": 2048,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.02164904276529948,
+              "standardized_contrast": 0.08749117876933944
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.625,
+                "covariance": 0.0021158854166666665,
+                "marginal_error": 0.375,
+                "standardized": 0.009027777777777777,
+                "variance_inflation": 1.0270833333333333
+              },
+              "exact_label_homogeneity": 0.5354817708333334,
+              "joint": {
+                "accuracy": 0.467529296875,
+                "covariance": 0.023847997188568115,
+                "marginal_error": 0.532470703125,
+                "standardized": 0.09579599747642528,
+                "variance_inflation": 1.287387992429276
+              },
+              "joint_label_homogeneity": 0.5498046875,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 2048,
+                  "parse_failures": 0,
+                  "resolved_calls": 2048,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.021732111771901447,
+              "standardized_contrast": 0.08676821969864751
+            }
+          ],
+          "raw_contrast": 0.019963964819908142,
+          "standardized_contrast": 0.08026919724687236
+        },
+        {
+          "approximate_variance_inflation": 1.4037475680459182,
+          "assignment_range": 0.014619136933490505,
+          "batch_size": 8,
+          "exact_covariance": -0.0001444461799803234,
+          "exact_standardized": -0.0006182995320312681,
+          "joint_covariance": 0.0139793689761843,
+          "joint_standardized": 0.05767822400655973,
+          "log2_batch_size": 3.0,
+          "marginal_error_exact": 0.3859049479166667,
+          "marginal_error_joint": 0.5875244140625,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.6138916015625,
+                "covariance": -0.00043293195111410957,
+                "marginal_error": 0.3861083984375,
+                "standardized": -0.0018264958862103705,
+                "variance_inflation": 0.9872145287965274
+              },
+              "exact_label_homogeneity": 0.5250767299107143,
+              "joint": {
+                "accuracy": 0.4110107421875,
+                "covariance": 0.012117881860051836,
+                "marginal_error": 0.5889892578125,
+                "standardized": 0.0500571555197758,
+                "variance_inflation": 1.3504000886384306
+              },
+              "joint_label_homogeneity": 0.5400739397321429,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 1024,
+                  "parse_failures": 0,
+                  "resolved_calls": 1024,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.012550813811165946,
+              "standardized_contrast": 0.05188365140598617
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.61767578125,
+                "covariance": -0.0009430135999407087,
+                "marginal_error": 0.38232421875,
+                "standardized": -0.003993241474500845,
+                "variance_inflation": 0.9720473096784941
+              },
+              "exact_label_homogeneity": 0.5258091517857143,
+              "joint": {
+                "accuracy": 0.4124755859375,
+                "covariance": 0.012725219130516052,
+                "marginal_error": 0.5875244140625,
+                "standardized": 0.052509889395809306,
+                "variance_inflation": 1.367569225770665
+              },
+              "joint_label_homogeneity": 0.540771484375,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 1024,
+                  "parse_failures": 0,
+                  "resolved_calls": 1024,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.013668232730456762,
+              "standardized_contrast": 0.05650313087031015
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.6107177734375,
+                "covariance": 0.000942607011113848,
+                "marginal_error": 0.3892822265625,
+                "standardized": 0.003964838764617411,
+                "variance_inflation": 1.027753871352322
+              },
+              "exact_label_homogeneity": 0.5264020647321429,
+              "joint": {
+                "accuracy": 0.4139404296875,
+                "covariance": 0.017095005937985013,
+                "marginal_error": 0.5860595703125,
+                "standardized": 0.07046762710409409,
+                "variance_inflation": 1.4932733897286585
+              },
+              "joint_label_homogeneity": 0.5490025111607143,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 1024,
+                  "parse_failures": 0,
+                  "resolved_calls": 1024,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.016152398926871165,
+              "standardized_contrast": 0.06650278833947668
+            }
+          ],
+          "raw_contrast": 0.014123815156164626,
+          "standardized_contrast": 0.058296523538590994
+        },
+        {
+          "approximate_variance_inflation": 1.5047674645469522,
+          "assignment_range": 0.010977188973057782,
+          "batch_size": 16,
+          "exact_covariance": 0.0005528721544477674,
+          "exact_standardized": 0.002274545002513628,
+          "joint_covariance": 0.00793454216586219,
+          "joint_standardized": 0.03365116430313016,
+          "log2_batch_size": 4.0,
+          "marginal_error_exact": 0.416015625,
+          "marginal_error_joint": 0.6200764973958334,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.583984375,
+                "covariance": -0.000754547119140625,
+                "marginal_error": 0.416015625,
+                "standardized": -0.0031058143734200073,
+                "variance_inflation": 0.9534127843986999
+              },
+              "exact_label_homogeneity": 0.51259765625,
+              "joint": {
+                "accuracy": 0.3792724609375,
+                "covariance": 0.005338598291079203,
+                "marginal_error": 0.6207275390625,
+                "standardized": 0.022676442332087165,
+                "variance_inflation": 1.3401466349813074
+              },
+              "joint_label_homogeneity": 0.5398274739583333,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 512,
+                  "parse_failures": 0,
+                  "resolved_calls": 512,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.006093145410219828,
+              "standardized_contrast": 0.025782256705507173
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.5843505859375,
+                "covariance": -0.00044998228549957274,
+                "marginal_error": 0.4156494140625,
+                "standardized": -0.001852655886736809,
+                "variance_inflation": 0.9722101616989479
+              },
+              "exact_label_homogeneity": 0.513330078125,
+              "joint": {
+                "accuracy": 0.3758544921875,
+                "covariance": 0.006975588202476501,
+                "marginal_error": 0.6241455078125,
+                "standardized": 0.029735499631040656,
+                "variance_inflation": 1.4460324944656098
+              },
+              "joint_label_homogeneity": 0.544775390625,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 512,
+                  "parse_failures": 0,
+                  "resolved_calls": 512,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.007425570487976074,
+              "standardized_contrast": 0.031588155517777466
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.5836181640625,
+                "covariance": 0.0028631458679835003,
+                "marginal_error": 0.4163818359375,
+                "standardized": 0.0117821052676977,
+                "variance_inflation": 1.1767315790154655
+              },
+              "exact_label_homogeneity": 0.5197102864583333,
+              "joint": {
+                "accuracy": 0.3846435546875,
+                "covariance": 0.011489440004030864,
+                "marginal_error": 0.6153564453125,
+                "standardized": 0.048541550946262654,
+                "variance_inflation": 1.7281232641939397
+              },
+              "joint_label_homogeneity": 0.5495930989583333,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 512,
+                  "parse_failures": 0,
+                  "resolved_calls": 512,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.008626294136047364,
+              "standardized_contrast": 0.036759445678564956
+            }
+          ],
+          "raw_contrast": 0.007381670011414422,
+          "standardized_contrast": 0.03137661930061653
+        },
+        {
+          "approximate_variance_inflation": 1.6997473491514137,
+          "assignment_range": 0.0087277370148231,
+          "batch_size": 32,
+          "exact_covariance": 0.0002560911960499261,
+          "exact_standardized": 0.00102483668967001,
+          "joint_covariance": 0.005133102337519328,
+          "joint_standardized": 0.022572495133916567,
+          "log2_batch_size": 5.0,
+          "marginal_error_exact": 0.4897867838541667,
+          "marginal_error_joint": 0.650390625,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.5107421875,
+                "covariance": 0.0002941316173922631,
+                "marginal_error": 0.4892578125,
+                "standardized": 0.0011770697795182472,
+                "variance_inflation": 1.0364891631650657
+              },
+              "exact_label_homogeneity": 0.5008190524193549,
+              "joint": {
+                "accuracy": 0.3497314453125,
+                "covariance": 0.004483531078984661,
+                "marginal_error": 0.6502685546875,
+                "standardized": 0.01971481693538268,
+                "variance_inflation": 1.611159324996863
+              },
+              "joint_label_homogeneity": 0.5541283392137096,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.004189399461592398,
+              "standardized_contrast": 0.018537747155864433
+            },
+            {
+              "assignment": 2,
+              "exact_context": {
+                "accuracy": 0.5091552734375,
+                "covariance": 6.7492646555746756e-06,
+                "marginal_error": 0.4908447265625,
+                "standardized": 2.7006113127309612e-05,
+                "variance_inflation": 1.0008371895069466
+              },
+              "exact_label_homogeneity": 0.5001811365927419,
+              "joint": {
+                "accuracy": 0.3489990234375,
+                "covariance": 0.004286501196122939,
+                "marginal_error": 0.6510009765625,
+                "standardized": 0.018866750119315014,
+                "variance_inflation": 1.5848692536987654
+              },
+              "joint_label_homogeneity": 0.5541755922379032,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.004279751931467364,
+              "standardized_contrast": 0.018839744006187705
+            },
+            {
+              "assignment": 3,
+              "exact_context": {
+                "accuracy": 0.5107421875,
+                "covariance": 0.00046739270610194055,
+                "marginal_error": 0.4892578125,
+                "standardized": 0.0018704341763644734,
+                "variance_inflation": 1.0579834594672988
+              },
+              "exact_label_homogeneity": 0.5011655745967742,
+              "joint": {
+                "accuracy": 0.35009765625,
+                "covariance": 0.006629274737450385,
+                "marginal_error": 0.64990234375,
+                "standardized": 0.029135918347052005,
+                "variance_inflation": 1.9032134687586122
+              },
+              "joint_label_homogeneity": 0.5581999747983871,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.006161882031348444,
+              "standardized_contrast": 0.027265484170687533
+            }
+          ],
+          "raw_contrast": 0.004877011141469403,
+          "standardized_contrast": 0.021547658444246554
+        }
+      ],
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "replay": [
+        {
+          "batch_size": 2,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.043655242206135564,
+          "p_value_one_sided_upper": 0.001
+        },
+        {
+          "batch_size": 4,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.08026919724687236,
+          "p_value_one_sided_upper": 0.001
+        },
+        {
+          "batch_size": 8,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.058296523538590994,
+          "p_value_one_sided_upper": 0.001
+        },
+        {
+          "batch_size": 16,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.03137661930061653,
+          "p_value_one_sided_upper": 0.001
+        },
+        {
+          "batch_size": 32,
+          "min_reachable_p": 0.001,
+          "n_draws": 999,
+          "observed": 0.021547658444246554,
+          "p_value_one_sided_upper": 0.001
+        }
+      ],
+      "size_contrast_interval": {
+        "16": {
+          "high": 0.03866332210080049,
+          "low": 0.024361618453211602,
+          "width": 0.014301703647588891
+        },
+        "2": {
+          "high": 0.06071126361138132,
+          "low": 0.0270761198051032,
+          "width": 0.03363514380627812
+        },
+        "32": {
+          "high": 0.02830396962053608,
+          "low": 0.014981327558244354,
+          "width": 0.013322642062291725
+        },
+        "4": {
+          "high": 0.09180416075579897,
+          "low": 0.06895108989898416,
+          "width": 0.022853070856814817
+        },
+        "8": {
+          "high": 0.06764624222214961,
+          "low": 0.04910213312273927,
+          "width": 0.018544109099410344
+        }
+      },
+      "slope_interval": {
+        "high": -0.005551888420436207,
+        "low": -0.013340578874797032,
+        "width": 0.007788690454360825
+      },
+      "slope_raw": -0.0023546380146429956,
+      "slope_standardized": -0.009310774547003386,
+      "slope_two_sided_p": 0.0,
+      "task_id": "multi_nli"
+    }
+  ],
+  "cross_family": {
+    "categorical_by_size": {
+      "16": {
+        "cells": {
+          "Qwen/Qwen3-8B::civil_comments": 0.07587393457805086,
+          "ibm-granite/granite-3.3-8b-instruct::imdb": 0.12226818193934978,
+          "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.008717173530312742,
+          "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.03137661930061653
+        },
+        "holm_adjusted_p": {
+          "Qwen/Qwen3-8B::civil_comments": 0.004,
+          "ibm-granite/granite-3.3-8b-instruct::imdb": 0.004,
+          "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.004,
+          "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.004
+        },
+        "replay_p": {
+          "Qwen/Qwen3-8B::civil_comments": 0.001,
+          "ibm-granite/granite-3.3-8b-instruct::imdb": 0.001,
+          "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.001,
+          "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.001
+        }
+      },
+      "2": {
+        "cells": {
+          "Qwen/Qwen3-8B::civil_comments": 0.11474655243552834,
+          "ibm-granite/granite-3.3-8b-instruct::imdb": -0.008137990864714898,
+          "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.16765309564630212,
+          "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.043655242206135564
+        },
+        "holm_adjusted_p": {
+          "Qwen/Qwen3-8B::civil_comments": 0.004,
+          "ibm-granite/granite-3.3-8b-instruct::imdb": 0.815,
+          "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.004,
+          "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.004
+        },
+        "replay_p": {
+          "Qwen/Qwen3-8B::civil_comments": 0.001,
+          "ibm-granite/granite-3.3-8b-instruct::imdb": 0.815,
+          "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.001,
+          "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.001
+        }
+      },
+      "32": {
+        "cells": {
+          "Qwen/Qwen3-8B::civil_comments": 0.053423443362573604,
+          "ibm-granite/granite-3.3-8b-instruct::imdb": 0.09553850636470002,
+          "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.007701249557753874,
+          "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.021547658444246554
+        },
+        "holm_adjusted_p": {
+          "Qwen/Qwen3-8B::civil_comments": 0.004,
+          "ibm-granite/granite-3.3-8b-instruct::imdb": 0.004,
+          "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.004,
+          "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.004
+        },
+        "replay_p": {
+          "Qwen/Qwen3-8B::civil_comments": 0.001,
+          "ibm-granite/granite-3.3-8b-instruct::imdb": 0.001,
+          "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.001,
+          "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.001
+        }
+      },
+      "4": {
+        "cells": {
+          "Qwen/Qwen3-8B::civil_comments": 0.11155906625791039,
+          "ibm-granite/granite-3.3-8b-instruct::imdb": 0.08915285549607947,
+          "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.04165092689769007,
+          "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.08026919724687236
+        },
+        "holm_adjusted_p": {
+          "Qwen/Qwen3-8B::civil_comments": 0.004,
+          "ibm-granite/granite-3.3-8b-instruct::imdb": 0.004,
+          "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.004,
+          "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.004
+        },
+        "replay_p": {
+          "Qwen/Qwen3-8B::civil_comments": 0.001,
+          "ibm-granite/granite-3.3-8b-instruct::imdb": 0.001,
+          "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.001,
+          "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.001
+        }
+      },
+      "8": {
+        "cells": {
+          "Qwen/Qwen3-8B::civil_comments": 0.08701595419075674,
+          "ibm-granite/granite-3.3-8b-instruct::imdb": 0.12247816396443363,
+          "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.01664822934266316,
+          "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.058296523538590994
+        },
+        "holm_adjusted_p": {
+          "Qwen/Qwen3-8B::civil_comments": 0.004,
+          "ibm-granite/granite-3.3-8b-instruct::imdb": 0.004,
+          "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.004,
+          "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.004
+        },
+        "replay_p": {
+          "Qwen/Qwen3-8B::civil_comments": 0.001,
+          "ibm-granite/granite-3.3-8b-instruct::imdb": 0.001,
+          "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.001,
+          "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.001
+        }
+      }
+    },
+    "leave_one_family_out_slope": {
+      "Qwen/Qwen3-8B": -0.006849229003746918,
+      "ibm-granite/granite-3.3-8b-instruct": -0.020142551361342558,
+      "meta-llama/Llama-3.1-8B-Instruct": -0.000365692479790091,
+      "mistralai/Mistral-7B-Instruct-v0.3": -0.00902334914893809
+    },
+    "model_slopes": {
+      "Qwen/Qwen3-8B": -0.0158331349825769,
+      "ibm-granite/granite-3.3-8b-instruct": 0.024046832090210014,
+      "meta-llama/Llama-3.1-8B-Instruct": -0.03528374455444738,
+      "mistralai/Mistral-7B-Instruct-v0.3": -0.009310774547003386
+    },
+    "raw_contrast_by_size": {
+      "16": 0.00932115332947837,
+      "2": 0.014485791325569153,
+      "32": 0.007675272042071948,
+      "4": 0.013728580541080898,
+      "8": 0.011592145299627668
+    },
+    "raw_slope_cross_family": -0.0018028465778596936,
+    "standardized_contrast_by_size": {
+      "16": 0.05955897733708248,
+      "2": 0.0794792248558128,
+      "32": 0.04455271443231851,
+      "4": 0.08065801147463807,
+      "8": 0.07110971775911112
+    },
+    "standardized_contrast_interval_by_size": {
+      "16": {
+        "high": 0.06433577943058887,
+        "low": 0.05481319336357254,
+        "width": 0.009522586067016323
+      },
+      "2": {
+        "high": 0.08804782204277052,
+        "low": 0.0712508880987406,
+        "width": 0.016796933944029924
+      },
+      "32": {
+        "high": 0.04852355115720319,
+        "low": 0.04026137423599505,
+        "width": 0.00826217692120814
+      },
+      "4": {
+        "high": 0.08625642703077122,
+        "low": 0.07481656344744364,
+        "width": 0.011439863583327575
+      },
+      "8": {
+        "high": 0.07618578494977069,
+        "low": 0.06629237874301927,
+        "width": 0.009893406206751415
+      }
+    }
+  },
+  "design": {
+    "alpha": 0.05,
+    "assignments": 3,
+    "cells": [
+      "Qwen/Qwen3-8B::civil_comments",
+      "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli"
+    ],
+    "items_per_cell": 8192,
+    "n_bootstrap": 2000,
+    "n_replay": 999,
+    "primary_estimand": "standardized joint dependence minus standardized exact-context dependence, where standardized dependence is covariance divided by p (1 - p)",
+    "primary_statistic": "ordinary least squares slope on log2(batch size) inside each cell, then the equal-weight mean over the 4 analyzed cells",
+    "sizes": [
+      2,
+      4,
+      8,
+      16,
+      32
+    ],
+    "uncertainty": "cluster bootstrap over size-32 super-groups within cell and assignment"
+  },
+  "historical_size_16_b3": {
+    "scale": "raw joint-minus-exact covariance from the sealed A9 analysis",
+    "use": "descriptive comparison only; the sealed A9 result used the earlier output contract and is never pooled into this experiment",
+    "values": {
+      "Qwen/Qwen3-8B::civil_comments": 0.007118871145778232,
+      "ibm-granite/granite-3.3-8b-instruct::imdb": 0.018778639369540745,
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments": 0.0015644994046952988,
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli": 0.012426825033293828
+    }
+  },
+  "outcome": {
+    "interpretations": {
+      "flat_positive": "per-size contrasts are above the practical contrast at every size and the slope interval contains zero and excludes the practical slope: batching introduces dependence, but dependence does not materially grow with size",
+      "inconclusive": "the slope interval is wider than twice the practical slope or a cell slope interval is wider than four times it: the experiment is inconclusive, and the absence of significance is not evidence of equivalence",
+      "non_monotonic": "the per-size contrasts are not ordered in size and the slope interval contains zero while some per-size intervals exclude it: dependence varies with size without a simple dose response",
+      "null": "every per-size contrast interval contains zero and lies below the practical contrast: the earlier size-16 effect does not replicate under the uniform contract",
+      "positive_monotonic": "the cross-family slope interval lies wholly above zero and every cell slope is positive: pairwise error dependence strengthens with batch size",
+      "threshold": "contrasts at the two smallest sizes lie below the practical contrast and at least the largest size lies above it: evidence for a practical batch-size boundary"
+    },
+    "matched": [
+      "non_monotonic"
+    ],
+    "note": "these labels are descriptive readings of the frozen thresholds; success is not defined as a positive slope, and an inconclusive label never becomes an equivalence claim",
+    "practical_contrast": 0.016666666666666666,
+    "practical_inflation": 1.25,
+    "practical_slope": 0.004166666666666667
+  },
+  "primary": {
+    "cross_family_slope": -0.009095205498454413,
+    "cross_family_slope_interval": {
+      "high": -0.007181566258109577,
+      "low": -0.011181794781879095,
+      "width": 0.004000228523769518
+    },
+    "cross_family_slope_two_sided_p": 0.0,
+    "rejects_zero_at_alpha": true
+  },
+  "result_sha256": "f3f99838c7d55c063303ef300babfdaca0ab5eadad1b61853ad67752017456c0",
+  "schema_version": "b5-analysis-v1"
+}
