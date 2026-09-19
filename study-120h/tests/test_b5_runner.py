@@ -240,6 +240,14 @@ def test_full_selection_covers_every_scheduled_call_once() -> None:
     assert len(call_ids) == len(set(call_ids)) == b5.expected_counts()["total_per_cell"]
 
 
+def test_model_phases_are_disjoint_and_cover_all_cells() -> None:
+    first = run_b5.MODEL_PHASES["1"]
+    second = run_b5.MODEL_PHASES["2"]
+    assert len(first) == len(second) == 2
+    assert set(first).isdisjoint(second)
+    assert first + second == tuple(b5.CELLS)
+
+
 # --- event identity ----------------------------------------------------------
 
 

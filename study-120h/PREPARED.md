@@ -8,7 +8,7 @@ not launched. No Pod remains running.
 | Item | Path |
 |---|---|
 | Protocol | `study-120h/B5_PROTOCOL.md` |
-| Seal | `study-120h/freeze/20260918T190501Z-B5/` |
+| Seal | `study-120h/freeze/20260919T025246Z-B5/` |
 | Preparation artifacts | `study-120h/extension-b5/preparation/20260918T185042Z/` |
 | CPU test evidence | `study-120h/extension-b5/CPU_TESTS.json` |
 | CPU dry-run artifacts | `study-120h/extension-b5/dry-run-20260918-calibration-digest/DRY_RUN-full.json`, `DRY_RUN-smoke.json` |
@@ -22,9 +22,9 @@ not launched. No Pod remains running.
 | Analysis | `study-120h/analyze_b5.py` |
 | Tests | `study-120h/tests/test_b5.py`, `test_b5_analysis.py`, `test_b5_runner.py`, `test_batch_invariance.py` |
 
-Seal manifest SHA-256: `f764f75d002f97baf57e8e9bee71e33cf8a89e6d8c05ca14ae3040ec7b8717b3`.
+Seal manifest SHA-256: `91e5be1e8feed7e36a189b10da4e3f56a1c695e6607698bf3c675ba94f8b9edf`.
 Schedule SHA-256: `6145f5088a56fc869929257daa9b145fc1351ce34eb03cafa7101448bd547a25`.
-Confirmation token: `f764f75d002f`. The seal covers 27 files and fails if any changes.
+Confirmation token: `91e5be1e8fee`. The seal covers 27 files and fails if any changes.
 
 ## 2. Exact design and call count
 
@@ -70,7 +70,8 @@ Each cell includes a 0.25 h boot allowance and a 2 percent retry allowance.
 The completed smoke used 0.4194 metered A100 hours. All 20 blocks observed prefix reuse, the
 overall cache-hit fraction was 83.41%, and measured generation was 1.5504 times the fitted
 forecast. The live balance after teardown is `$7.9940765883`, so the funding gap is `$37.72`.
-The launcher requires `extension-b5/smoke-01/SMOKE_CALIBRATION.json` for the full run.
+The phased launcher uses `extension-b5/smoke-01/SMOKE_CALIBRATION_PHASED.json`. It points to
+the original smoke record and transfers its projection because the schedule hash is unchanged.
 
 The point estimate sits inside the 35-hour ceiling. The no-reuse upper bound does not, so the
 run carries a live meter and a per-block projection gate. If measured throughput projects past
@@ -89,37 +90,51 @@ Run every command from `/Users/dz/bigdata/study-120h`.
 
 ```
 .venv/bin/python run_b5.py --preflight --output extension-b5/run-01 \
-  --calibration extension-b5/smoke-01/SMOKE_CALIBRATION.json --confirm f764f75d002f
+  --calibration extension-b5/smoke-01/SMOKE_CALIBRATION_PHASED.json \
+  --confirm 91e5be1e8fee --usd-per-hour 0 --reserve-usd 0
 ```
 
 Success: `"passed": true` and `"pod_created": false`. The printed
 `required_balance_usd` is the funding target.
 
-### Step 3 — launch the full experiment.
+### Step 3 — launch phase 1: Qwen and Granite, all five batch sizes.
 
 ```
 .venv/bin/python run_b5.py --launch --output extension-b5/run-01 \
-  --calibration extension-b5/smoke-01/SMOKE_CALIBRATION.json --confirm f764f75d002f
+  --model-phase 1 --calibration extension-b5/smoke-01/SMOKE_CALIBRATION_PHASED.json \
+  --confirm 91e5be1e8fee --usd-per-hour 0 --reserve-usd 0
 ```
 
-Success: the run ends with `"completed_calls": 586752`. Every completed call is durable.
+Success: the command exits after both model cells, with every completed call durable.
 
-### Step 4 — progress, at any time, from another terminal. Creates no Pod.
+### Step 4 — resume phase 2: Llama and Mistral, all five batch sizes.
+
+```
+.venv/bin/python run_b5.py --resume --output extension-b5/run-01 \
+  --model-phase 2 --calibration extension-b5/smoke-01/SMOKE_CALIBRATION_PHASED.json \
+  --confirm 91e5be1e8fee --usd-per-hour 0 --reserve-usd 0
+```
+
+Success: the combined ledger reaches `"completed_calls": 586752`.
+
+### Step 5 — progress, at any time, from another terminal. Creates no Pod.
 
 ```
 .venv/bin/python run_b5.py --status --output extension-b5/run-01
 ```
 
-### Step 5 — resume after any stop.
+### Step 6 — resume after any stop.
 
 ```
 .venv/bin/python run_b5.py --resume --output extension-b5/run-01 \
-  --calibration extension-b5/smoke-01/SMOKE_CALIBRATION.json --confirm f764f75d002f
+  --model-phase <1-or-2> \
+  --calibration extension-b5/smoke-01/SMOKE_CALIBRATION_PHASED.json \
+  --confirm 91e5be1e8fee --usd-per-hour 0 --reserve-usd 0
 ```
 
 Resume reconciles the durable receipts first, then dispatches only the outstanding calls.
 
-### Step 6 — analysis, CPU only.
+### Step 7 — analysis, CPU only.
 
 ```
 .venv/bin/python analyze_b5.py \

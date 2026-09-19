@@ -1,0 +1,20 @@
+{
+  "at_utc": "2026-09-19T02:52:46Z",
+  "ceiling_metered_a100_hours": 35.0,
+  "gates": {
+    "projected_runtime_within_ceiling": true,
+    "schedule_sha256_unchanged": true,
+    "source_calibration_passed": true,
+    "source_record_digest_valid": true
+  },
+  "passed": true,
+  "projected_full_metered_a100_hours": 27.49036828418844,
+  "record_sha256": "b1c0347fcd39ed266f5002b29dbf538dec0a7489d047abf9231a092e05f0c642",
+  "schedule_sha256": "6145f5088a56fc869929257daa9b145fc1351ce34eb03cafa7101448bd547a25",
+  "schema_version": "b5-smoke-calibration-v1",
+  "seal_manifest_sha256": "91e5be1e8feed7e36a189b10da4e3f56a1c695e6607698bf3c675ba94f8b9edf",
+  "source_calibration": "extension-b5/smoke-01/SMOKE_CALIBRATION.json",
+  "source_record_sha256": "6c9fd0e6906adc4016738d191fb860994a83fa2baa21ef9818543ac136f7fd83",
+  "source_seal_manifest_sha256": "f764f75d002f97baf57e8e9bee71e33cf8a89e6d8c05ca14ae3040ec7b8717b3",
+  "transfer_basis": "The scientific schedule is unchanged; the superseding runner only partitions the four model cells into two execution phases."
+}

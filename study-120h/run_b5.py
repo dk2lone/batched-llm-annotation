@@ -57,6 +57,10 @@ SMOKE_CHUNK_CALLS = 64
 CHUNK_TIMEOUT_SECONDS = 45 * 60
 POD_START_TIMEOUT_SECONDS = 40 * 60
 WATCHDOG_TARGET_SECONDS = 5 * 3600
+MODEL_PHASES = {
+    "1": tuple(b5.CELLS[:2]),
+    "2": tuple(b5.CELLS[2:]),
+}
 
 
 def now() -> str:
@@ -832,6 +836,7 @@ def execute(
     usd_per_hour: float,
     reserve_usd: float,
     runtime_budget_hours: float,
+    active_cells: tuple[str, ...] = tuple(b5.CELLS),
 ) -> dict[str, Any]:
     ledger = Ledger(output, plan.texts)
     ledger.reconcile(chunks)
@@ -839,7 +844,7 @@ def execute(
         ["tar", "--exclude=__pycache__", "-cf", "-", "-C", str(STUDY), "src", "b5_worker.py"],
         60,
     )
-    for cell_key in b5.CELLS:
+    for cell_key in active_cells:
         model_id = b5.split_cell(cell_key)[0]
         outstanding = [
             chunk
@@ -1061,6 +1066,11 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--seal", type=Path)
     parser.add_argument("--smoke", action="store_true")
+    parser.add_argument(
+        "--model-phase",
+        choices=tuple(MODEL_PHASES),
+        help="run one of two disjoint two-model phases while retaining the full ledger",
+    )
     parser.add_argument("--chunk-calls", type=int, default=b5.CHUNK_CALLS)
     parser.add_argument("--ceiling-hours", type=float, default=CEILING_HOURS)
     parser.add_argument("--usd-per-hour", type=float, default=MAX_RATE)
@@ -1072,6 +1082,8 @@ def main() -> None:
         help="SMOKE_CALIBRATION.json from a completed all-cell B5 smoke run",
     )
     args = parser.parse_args()
+    if args.smoke and args.model_phase is not None:
+        parser.error("--model-phase cannot be combined with --smoke")
     creates_pod = bool(args.launch or args.resume)
     plan = Plan(args.seal or seal_b5.latest(), recompute=not args.status)
     chunk_calls = SMOKE_CHUNK_CALLS if args.smoke else args.chunk_calls
@@ -1134,6 +1146,11 @@ def main() -> None:
                 usd_per_hour=args.usd_per_hour,
                 reserve_usd=args.reserve_usd,
                 runtime_budget_hours=runtime_budget,
+                active_cells=(
+                    MODEL_PHASES[args.model_phase]
+                    if args.model_phase is not None
+                    else tuple(b5.CELLS)
+                ),
             )
             smoke_calibration = None
             if args.smoke:
@@ -1150,6 +1167,12 @@ def main() -> None:
                 "namespace": state["namespace"],
                 "progress": run_progress,
                 "metered": metered_hours(args.output),
+                "model_phase": args.model_phase,
+                "active_cells": (
+                    list(MODEL_PHASES[args.model_phase])
+                    if args.model_phase is not None
+                    else list(b5.CELLS)
+                ),
                 "smoke_calibration": smoke_calibration,
                 "pod_created": True,
             }
