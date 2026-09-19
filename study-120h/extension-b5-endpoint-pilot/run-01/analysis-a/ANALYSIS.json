@@ -1,0 +1,541 @@
+{
+  "cells": [
+    {
+      "by_size": [
+        {
+          "approximate_variance_inflation": 1.0346845119596029,
+          "assignment_range": 0.0,
+          "batch_size": 2,
+          "exact_covariance": -0.015201807022094727,
+          "exact_standardized": -0.10469666194313038,
+          "joint_covariance": 0.005903661251068115,
+          "joint_standardized": 0.03468451195960296,
+          "log2_batch_size": 1.0,
+          "marginal_error_exact": 0.17626953125,
+          "marginal_error_joint": 0.217529296875,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.82373046875,
+                "covariance": -0.015201807022094727,
+                "marginal_error": 0.17626953125,
+                "standardized": -0.10469666194313038,
+                "variance_inflation": 0.8953033380568696
+              },
+              "exact_label_homogeneity": 0.67919921875,
+              "joint": {
+                "accuracy": 0.782470703125,
+                "covariance": 0.005903661251068115,
+                "marginal_error": 0.217529296875,
+                "standardized": 0.03468451195960296,
+                "variance_inflation": 1.0346845119596029
+              },
+              "joint_label_homogeneity": 0.67138671875,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.021105468273162842,
+              "standardized_contrast": 0.13938117390273333
+            }
+          ],
+          "raw_contrast": 0.021105468273162842,
+          "standardized_contrast": 0.13938117390273333
+        },
+        {
+          "approximate_variance_inflation": 2.557554945631908,
+          "assignment_range": 0.0,
+          "batch_size": 32,
+          "exact_covariance": 0.00014330927402742447,
+          "exact_standardized": 0.0017292941779466487,
+          "joint_covariance": 0.004812671772895321,
+          "joint_standardized": 0.05024370792360994,
+          "log2_batch_size": 5.0,
+          "marginal_error_exact": 0.0911865234375,
+          "marginal_error_joint": 0.1072998046875,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.9088134765625,
+                "covariance": 0.00014330927402742447,
+                "marginal_error": 0.0911865234375,
+                "standardized": 0.0017292941779466487,
+                "variance_inflation": 1.053608119516346
+              },
+              "exact_label_homogeneity": 0.8345435357862904,
+              "joint": {
+                "accuracy": 0.8927001953125,
+                "covariance": 0.004812671772895321,
+                "marginal_error": 0.1072998046875,
+                "standardized": 0.05024370792360994,
+                "variance_inflation": 2.557554945631908
+              },
+              "joint_label_homogeneity": 0.8180522303427419,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.0046693624988678965,
+              "standardized_contrast": 0.04851441374566329
+            }
+          ],
+          "raw_contrast": 0.0046693624988678965,
+          "standardized_contrast": 0.04851441374566329
+        }
+      ],
+      "cell_key": "Qwen/Qwen3-8B::civil_comments",
+      "endpoint_difference": -0.09086676015707004,
+      "endpoint_difference_interval": {
+        "high": -0.05580595074560666,
+        "low": -0.12809554767822548,
+        "width": 0.07228959693261883
+      },
+      "model_id": "Qwen/Qwen3-8B",
+      "slope_raw": -0.004109026443573737,
+      "slope_standardized": -0.02271669003926751,
+      "task_id": "civil_comments"
+    },
+    {
+      "by_size": [
+        {
+          "approximate_variance_inflation": 0.935493412218675,
+          "assignment_range": 0.0,
+          "batch_size": 2,
+          "exact_covariance": -0.003391280770301819,
+          "exact_standardized": -0.034847871207498604,
+          "joint_covariance": -0.006990328431129456,
+          "joint_standardized": -0.06450658778132501,
+          "log2_batch_size": 1.0,
+          "marginal_error_exact": 0.1092529296875,
+          "marginal_error_joint": 0.1236572265625,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.8907470703125,
+                "covariance": -0.003391280770301819,
+                "marginal_error": 0.1092529296875,
+                "standardized": -0.034847871207498604,
+                "variance_inflation": 0.9651521287925013
+              },
+              "exact_label_homogeneity": 0.798583984375,
+              "joint": {
+                "accuracy": 0.8763427734375,
+                "covariance": -0.006990328431129456,
+                "marginal_error": 0.1236572265625,
+                "standardized": -0.06450658778132501,
+                "variance_inflation": 0.935493412218675
+              },
+              "joint_label_homogeneity": 0.769287109375,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": -0.0035990476608276367,
+              "standardized_contrast": -0.029658716573826405
+            }
+          ],
+          "raw_contrast": -0.0035990476608276367,
+          "standardized_contrast": -0.029658716573826405
+        },
+        {
+          "approximate_variance_inflation": 3.8692196060117605,
+          "assignment_range": 0.0,
+          "batch_size": 32,
+          "exact_covariance": 0.0015276790626587407,
+          "exact_standardized": 0.0093095661988413,
+          "joint_covariance": 0.017577909654186617,
+          "joint_standardized": 0.09255547116166969,
+          "log2_batch_size": 5.0,
+          "marginal_error_exact": 0.2069091796875,
+          "marginal_error_joint": 0.2548828125,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.7930908203125,
+                "covariance": 0.0015276790626587407,
+                "marginal_error": 0.2069091796875,
+                "standardized": 0.0093095661988413,
+                "variance_inflation": 1.2885965521640803
+              },
+              "exact_label_homogeneity": 0.6748598160282258,
+              "joint": {
+                "accuracy": 0.7451171875,
+                "covariance": 0.017577909654186617,
+                "marginal_error": 0.2548828125,
+                "standardized": 0.09255547116166969,
+                "variance_inflation": 3.8692196060117605
+              },
+              "joint_label_homogeneity": 0.6553206905241935,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.016050230591527877,
+              "standardized_contrast": 0.0832459049628284
+            }
+          ],
+          "raw_contrast": 0.016050230591527877,
+          "standardized_contrast": 0.0832459049628284
+        }
+      ],
+      "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "endpoint_difference": 0.1129046215366548,
+      "endpoint_difference_interval": {
+        "high": 0.14443889825273099,
+        "low": 0.08043494460976557,
+        "width": 0.06400395364296542
+      },
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "slope_raw": 0.0049123195630888785,
+      "slope_standardized": 0.0282261553841637,
+      "task_id": "imdb"
+    },
+    {
+      "by_size": [
+        {
+          "approximate_variance_inflation": 0.9414056738012719,
+          "assignment_range": 0.0,
+          "batch_size": 2,
+          "exact_covariance": -0.041078463196754456,
+          "exact_standardized": -0.21987456267021116,
+          "joint_covariance": -0.01060129702091217,
+          "joint_standardized": -0.05859432619872808,
+          "log2_batch_size": 1.0,
+          "marginal_error_exact": 0.2486572265625,
+          "marginal_error_joint": 0.2371826171875,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.7513427734375,
+                "covariance": -0.041078463196754456,
+                "marginal_error": 0.2486572265625,
+                "standardized": -0.21987456267021116,
+                "variance_inflation": 0.7801254373297888
+              },
+              "exact_label_homogeneity": 0.544189453125,
+              "joint": {
+                "accuracy": 0.7628173828125,
+                "covariance": -0.01060129702091217,
+                "marginal_error": 0.2371826171875,
+                "standardized": -0.05859432619872808,
+                "variance_inflation": 0.9414056738012719
+              },
+              "joint_label_homogeneity": 0.616943359375,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.030477166175842285,
+              "standardized_contrast": 0.1612802364714831
+            }
+          ],
+          "raw_contrast": 0.030477166175842285,
+          "standardized_contrast": 0.1612802364714831
+        },
+        {
+          "approximate_variance_inflation": 1.0524405843916858,
+          "assignment_range": 0.0,
+          "batch_size": 32,
+          "exact_covariance": -0.0005551110352239301,
+          "exact_standardized": -0.004218680800450478,
+          "joint_covariance": 0.0003328650228438839,
+          "joint_standardized": 0.0016916317545705088,
+          "log2_batch_size": 5.0,
+          "marginal_error_exact": 0.1558837890625,
+          "marginal_error_joint": 0.269287109375,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.8441162109375,
+                "covariance": -0.0005551110352239301,
+                "marginal_error": 0.1558837890625,
+                "standardized": -0.004218680800450478,
+                "variance_inflation": 0.8692208951860352
+              },
+              "exact_label_homogeneity": 0.7357217111895161,
+              "joint": {
+                "accuracy": 0.730712890625,
+                "covariance": 0.0003328650228438839,
+                "marginal_error": 0.269287109375,
+                "standardized": 0.0016916317545705088,
+                "variance_inflation": 1.0524405843916858
+              },
+              "joint_label_homogeneity": 0.6071226058467742,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.000887976058067814,
+              "standardized_contrast": 0.005910312555020987
+            }
+          ],
+          "raw_contrast": 0.000887976058067814,
+          "standardized_contrast": 0.005910312555020987
+        }
+      ],
+      "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "endpoint_difference": -0.15536992391646212,
+      "endpoint_difference_interval": {
+        "high": -0.12487170355859858,
+        "low": -0.18675096597199375,
+        "width": 0.06187926241339517
+      },
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "slope_raw": -0.007397297529443618,
+      "slope_standardized": -0.03884248097911553,
+      "task_id": "civil_comments"
+    },
+    {
+      "by_size": [
+        {
+          "approximate_variance_inflation": 1.0233793540114449,
+          "assignment_range": 0.0,
+          "batch_size": 2,
+          "exact_covariance": -0.004792347550392151,
+          "exact_standardized": -0.020907520938627806,
+          "joint_covariance": 0.005599021911621094,
+          "joint_standardized": 0.023379354011444774,
+          "log2_batch_size": 1.0,
+          "marginal_error_exact": 0.3558349609375,
+          "marginal_error_joint": 0.3974609375,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.6441650390625,
+                "covariance": -0.004792347550392151,
+                "marginal_error": 0.3558349609375,
+                "standardized": -0.020907520938627806,
+                "variance_inflation": 0.9790924790613722
+              },
+              "exact_label_homogeneity": 0.531982421875,
+              "joint": {
+                "accuracy": 0.6025390625,
+                "covariance": 0.005599021911621094,
+                "marginal_error": 0.3974609375,
+                "standardized": 0.023379354011444774,
+                "variance_inflation": 1.0233793540114449
+              },
+              "joint_label_homogeneity": 0.5322265625,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 4096,
+                  "parse_failures": 0,
+                  "resolved_calls": 4096,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.010391369462013245,
+              "standardized_contrast": 0.04428687495007258
+            }
+          ],
+          "raw_contrast": 0.010391369462013245,
+          "standardized_contrast": 0.04428687495007258
+        },
+        {
+          "approximate_variance_inflation": 1.6374217598014131,
+          "assignment_range": 0.0,
+          "batch_size": 32,
+          "exact_covariance": -0.0005362649117746661,
+          "exact_standardized": -0.0021470273569165477,
+          "joint_covariance": 0.004684455933109406,
+          "joint_standardized": 0.020561992251658483,
+          "log2_batch_size": 5.0,
+          "marginal_error_exact": 0.48486328125,
+          "marginal_error_joint": 0.64892578125,
+          "per_assignment": [
+            {
+              "assignment": 1,
+              "exact_context": {
+                "accuracy": 0.51513671875,
+                "covariance": -0.0005362649117746661,
+                "marginal_error": 0.48486328125,
+                "standardized": -0.0021470273569165477,
+                "variance_inflation": 0.933442151935587
+              },
+              "exact_label_homogeneity": 0.4993857106854839,
+              "joint": {
+                "accuracy": 0.35107421875,
+                "covariance": 0.004684455933109406,
+                "marginal_error": 0.64892578125,
+                "standardized": 0.020561992251658483,
+                "variance_inflation": 1.6374217598014131
+              },
+              "joint_label_homogeneity": 0.5537266885080645,
+              "quality": {
+                "exact_context": {
+                  "calls": 8192,
+                  "parse_failures": 0,
+                  "resolved_calls": 8192,
+                  "terminal_failures": 0
+                },
+                "joint": {
+                  "calls": 256,
+                  "parse_failures": 0,
+                  "resolved_calls": 256,
+                  "terminal_failures": 0
+                }
+              },
+              "raw_contrast": 0.005220720844884072,
+              "standardized_contrast": 0.02270901960857503
+            }
+          ],
+          "raw_contrast": 0.005220720844884072,
+          "standardized_contrast": 0.02270901960857503
+        }
+      ],
+      "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+      "endpoint_difference": -0.02157785534149755,
+      "endpoint_difference_interval": {
+        "high": 0.011614326980596501,
+        "low": -0.05285954860615045,
+        "width": 0.06447387558674694
+      },
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "slope_raw": -0.001292662154282293,
+      "slope_standardized": -0.005394463835374387,
+      "task_id": "multi_nli"
+    }
+  ],
+  "completed_calls": 82944,
+  "cross_family": {
+    "endpoint_difference": -0.03872747946959371,
+    "intervals": {
+      "2": {
+        "high": 0.094200451719189,
+        "low": 0.06383667139411199,
+        "width": 0.030363780325077014
+      },
+      "32": {
+        "high": 0.047120987006074554,
+        "low": 0.032132049791449104,
+        "width": 0.01498893721462545
+      },
+      "delta": {
+        "high": -0.021600227370430675,
+        "low": -0.0555729156003892,
+        "width": 0.033972688229958525
+      }
+    },
+    "leave_one_family_out_endpoint_difference": {
+      "Qwen/Qwen3-8B": -0.021347719240434954,
+      "ibm-granite/granite-3.3-8b-instruct": -0.08927151313834324,
+      "meta-llama/Llama-3.1-8B-Instruct": 0.00015333534602906979,
+      "mistralai/Mistral-7B-Instruct-v0.3": -0.044444020845625785
+    },
+    "raw_contrast_size_2": 0.014593739062547684,
+    "raw_contrast_size_32": 0.006707072498336915,
+    "standardized_contrast_size_2": 0.07882239218761564,
+    "standardized_contrast_size_32": 0.04009491271802192
+  },
+  "decision": {
+    "go_conditions": {
+      "clear_endpoint_change": true,
+      "dose_response": true,
+      "endpoint_boundary": false,
+      "flat_positive": true
+    },
+    "interpretation": "exploratory spending decision; not a confirmatory scientific gate",
+    "no_go_equivalence_intervals": false,
+    "tau": 0.0166667,
+    "verdict": "GO"
+  },
+  "design": {
+    "assignments": 1,
+    "bootstrap_draws": 2000,
+    "bootstrap_unit": "size-32 super-group with nested size-2 groups",
+    "cells": [
+      "Qwen/Qwen3-8B::civil_comments",
+      "ibm-granite/granite-3.3-8b-instruct::imdb",
+      "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+      "mistralai/Mistral-7B-Instruct-v0.3::multi_nli"
+    ],
+    "items_per_cell": 8192,
+    "sizes": [
+      2,
+      32
+    ]
+  },
+  "quality": {
+    "first_attempt_failures_by_status": {},
+    "first_attempt_parse_failures_by_status": {},
+    "retried_calls": 0,
+    "stored_attempts": 82944,
+    "terminal_failures_by_status": {},
+    "terminal_parse_failures_by_status": {}
+  },
+  "result_sha256": "1012c7be95c79d0be2dc3ff093e6cc2c2adc4ae28ee64e5632a70727fe860758",
+  "schema_version": "b5-endpoint-pilot-analysis-v1"
+}

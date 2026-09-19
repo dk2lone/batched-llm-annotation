@@ -1,0 +1,12 @@
+{
+  "events_sha256": "0373be680f0ec700f9b57dd5db79fa8e3ecd4ea3581363454f2ed20cbc33d411",
+  "files_sha256": {
+    "ANALYSIS.json": "435300bb5e202ad6073c69c5d5f330eee43b9e5063db69690d7bc4c78aff1615",
+    "EXECUTION_COST.json": "783fd5b0b62866c018edb41840d3a3ffb46818b52c3c180115359f75d8b15aae",
+    "REPORT.md": "f000440404f67f3d079af901a6f802c35467a60216b601242162f652e68c680a"
+  },
+  "manifest_sha256": "bcb1f4c1d5c7c08d48d63a986ebc83072d0bdbca854919e916d5337507023dad",
+  "result_sha256": "1012c7be95c79d0be2dc3ff093e6cc2c2adc4ae28ee64e5632a70727fe860758",
+  "schema_version": "b5-endpoint-pilot-analysis-manifest-v1",
+  "seal_manifest_sha256": "463e0b9031cc71bebd214e3e47521874fbe2cc97e82b4881daf09433c916e743"
+}

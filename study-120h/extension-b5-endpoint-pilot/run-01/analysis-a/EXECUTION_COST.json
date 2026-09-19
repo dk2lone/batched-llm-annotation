@@ -1,0 +1,7 @@
+{
+  "billing_note": "settlement includes a one-minute allowance per Pod; actual Runpod billing requires a separate read-only account check",
+  "gpu_cost_upper_bound_usd_at_1_59_per_hour": 4.537853109116668,
+  "meter_source_sha256": "af88dee6cf247f82156a30460ad3d7249ffb76ee5123d7252a5880af2a05188b",
+  "schema_version": "b5-endpoint-pilot-cost-v1",
+  "settled_metered_a100_hours_upper_bound": 2.8539956661111114
+}

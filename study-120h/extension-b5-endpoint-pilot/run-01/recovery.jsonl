@@ -2,3 +2,4 @@
 {"at_utc":"2026-09-18T22:54:23.641364+00:00","attempt":1,"error_type":"RuntimeError","transient":false}
 {"at_utc":"2026-09-18T22:58:14.583067+00:00","attempt":1,"error_type":"CommandError","transient":false}
 {"at_utc":"2026-09-18T23:01:51.873381+00:00","attempt":1,"error_type":"RuntimeError","transient":false}
+{"at_utc":"2026-09-19T00:30:43.268451+00:00","attempt":1,"error_type":"CommandError","transient":false}
