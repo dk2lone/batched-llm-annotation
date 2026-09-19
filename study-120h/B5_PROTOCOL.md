@@ -64,7 +64,8 @@ target list, the JSON schema, and the output token limit.
 
 Held fixed across every size: the item frame, item marginals, prompt template and wording,
 document preprocessing, model revision, tokenizer revision, temperature, seed policy,
-serving configuration, parser, and analysis code.
+serving configuration, parser, estimands, thresholds, and resampling rules. The analyzer
+implementation is versioned with its output rather than included in the execution seal.
 
 ## 5. Conditions
 
@@ -252,6 +253,9 @@ outcome, the per-size table, the cell table, every matched reading, both practic
 thresholds, and the descriptive historical comparison. An inconclusive result is reported as
 inconclusive and never as equivalence. Two independent CPU regenerations of the analysis must
 produce the same `result_sha256`.
+
+The analyzer may run on an explicitly selected complete model phase. A phase-only result is
+interim and descriptive; it never replaces the final equal-weight four-cell result.
 
 ## 14. Runtime, budget, and the launch boundary
 

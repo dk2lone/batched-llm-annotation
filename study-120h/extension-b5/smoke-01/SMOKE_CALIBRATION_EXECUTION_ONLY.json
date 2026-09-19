@@ -1,0 +1,20 @@
+{
+  "at_utc": "2026-09-19T17:04:05Z",
+  "ceiling_metered_a100_hours": 35.0,
+  "gates": {
+    "projected_runtime_within_ceiling": true,
+    "schedule_sha256_unchanged": true,
+    "source_calibration_passed": true,
+    "source_record_digest_valid": true
+  },
+  "passed": true,
+  "projected_full_metered_a100_hours": 27.49036828418844,
+  "record_sha256": "1849e80bbc71d3ec133ecfa470b3d138cc1ac87c625cb39fe9f082d59b508868",
+  "schedule_sha256": "6145f5088a56fc869929257daa9b145fc1351ce34eb03cafa7101448bd547a25",
+  "schema_version": "b5-smoke-calibration-v1",
+  "seal_manifest_sha256": "f239a63ac05b93e35e4c3b0d7edec7d08b3a2b77b2c239e227e1a720a0315171",
+  "source_calibration": "extension-b5/smoke-01/SMOKE_CALIBRATION.json",
+  "source_record_sha256": "6c9fd0e6906adc4016738d191fb860994a83fa2baa21ef9818543ac136f7fd83",
+  "source_seal_manifest_sha256": "f764f75d002f97baf57e8e9bee71e33cf8a89e6d8c05ca14ae3040ec7b8717b3",
+  "transfer_basis": "The scientific schedule is unchanged; the execution seal now excludes the flexible analyzer implementation."
+}

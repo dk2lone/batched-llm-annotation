@@ -5,7 +5,7 @@ minus the standardized exact-context dependence, where standardized dependence i
 pair-weighted within-call error covariance divided by `p (1 - p)` and `p` is the
 marginal error probability of that condition. The primary cross-size statistic is the
 ordinary least squares slope of that contrast on `log2(batch size)`, fitted inside each
-cell, then averaged with equal weight over the four cells.
+cell, then averaged with equal weight over the analyzed cells.
 """
 
 from __future__ import annotations
@@ -484,6 +484,8 @@ def analyze(
     n_replay: int = N_REPLAY,
     historical: dict[str, float] | None = None,
 ) -> dict[str, Any]:
+    if not cells:
+        raise ValueError("analysis needs at least one complete cell")
     tables = [cell_table(cell) for cell in cells]
     draws = bootstrap(cells, n_bootstrap)
     slopes = cast(np.ndarray, draws["cell_slope"])
@@ -514,7 +516,7 @@ def analyze(
     result: dict[str, Any] = {
         "schema_version": "b5-analysis-v1",
         "design": {
-            "cells": list(b5.CELLS),
+            "cells": [cell.cell_key for cell in cells],
             "sizes": list(b5.SIZES),
             "assignments": b5.N_ASSIGNMENTS,
             "items_per_cell": b5.N_ITEMS,
@@ -524,7 +526,7 @@ def analyze(
             ),
             "primary_statistic": (
                 "ordinary least squares slope on log2(batch size) inside each cell, then the "
-                "equal-weight mean over the four cells"
+                f"equal-weight mean over the {len(cells)} analyzed cells"
             ),
             "uncertainty": (
                 "cluster bootstrap over size-32 super-groups within cell and assignment"

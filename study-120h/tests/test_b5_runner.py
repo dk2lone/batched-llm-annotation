@@ -755,24 +755,23 @@ def test_seal_refuses_to_start_without_every_covered_file(
         seal_b5.covered(seal_b5.STUDY / "extension-b5" / "stub")
 
 
-def test_the_seal_covers_every_decision_relevant_input() -> None:
+def test_the_seal_covers_every_execution_input() -> None:
     for name in (
         "B5_PROTOCOL.md",
         "prepare_b5.py",
         "run_b5.py",
         "b5_worker.py",
-        "analyze_b5.py",
         "src/freezeb/b5.py",
-        "src/freezeb/b5_analysis.py",
         "src/freezeb/b5_power.py",
         "src/freezeb/prompts.py",
         "src/step1/backends.py",
         "tests/test_b5.py",
-        "tests/test_b5_analysis.py",
         "tests/test_b5_runner.py",
         "tests/test_batch_invariance.py",
     ):
         assert name in seal_b5.CODE_FILES
+    for name in ("analyze_b5.py", "src/freezeb/b5_analysis.py", "tests/test_b5_analysis.py"):
+        assert name not in seal_b5.CODE_FILES
     assert "SCHEDULE_DIGEST.json" in seal_b5.PREPARATION_FILES
     assert "FORECAST.json" in seal_b5.PREPARATION_FILES
     assert "POWER.json" in seal_b5.PREPARATION_FILES

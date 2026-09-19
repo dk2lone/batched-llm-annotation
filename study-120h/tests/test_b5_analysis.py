@@ -207,6 +207,14 @@ def test_analysis_regenerates_byte_for_byte() -> None:
     assert first == second
 
 
+def test_analysis_accepts_a_complete_cell_subset() -> None:
+    cells = family("null")[:2]
+    result = b5_analysis.analyze(cells, n_bootstrap=200, n_replay=20)
+    assert result["design"]["cells"] == [cell.cell_key for cell in cells]
+    assert "2 analyzed cells" in result["design"]["primary_statistic"]
+    assert len(result["cells"]) == 2
+
+
 def test_analysis_reports_the_frozen_secondary_views() -> None:
     result = b5_analysis.analyze(family("positive_monotonic"), n_bootstrap=200, n_replay=20)
     cross = result["cross_family"]

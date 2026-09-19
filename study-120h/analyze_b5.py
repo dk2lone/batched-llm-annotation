@@ -19,6 +19,11 @@ from freezeb import extension_b4 as b4  # noqa: E402
 from step0.hashing import read_jsonl, sha256_file, sha256_json, write_json  # noqa: E402
 
 A9_ANALYSIS = "extension-b3/analysis/analysis.json"
+MODEL_PHASES = {
+    "1": tuple(b5.CELLS[:2]),
+    "2": tuple(b5.CELLS[2:]),
+    "all": tuple(b5.CELLS),
+}
 
 
 def final_events(path: Path) -> dict[str, dict[str, Any]]:
@@ -50,30 +55,39 @@ def final_events(path: Path) -> dict[str, dict[str, Any]]:
     return final
 
 
-def historical_b3() -> dict[str, float]:
+def historical_b3(cell_keys: tuple[str, ...]) -> dict[str, float]:
     path = STUDY / A9_ANALYSIS
     if not path.is_file():
         return {}
     deltas = cast(dict[str, float], json.loads(path.read_text())["primary"]["cell_delta"])
-    return {cell_key: float(deltas[cell_key]) for cell_key in b5.CELLS if cell_key in deltas}
+    return {cell_key: float(deltas[cell_key]) for cell_key in cell_keys if cell_key in deltas}
 
 
 def render_report(result: dict[str, Any]) -> str:
     primary = result["primary"]
     interval = primary["cross_family_slope_interval"]
+    scope = result["analysis_scope"]
+    interim = scope["model_phase"] != "all"
+    title = "# B5 interim analysis" if interim else "# B5 batch-size dose-response analysis"
+    aggregate = "selected-cell mean" if interim else "cross-family"
     lines = [
-        "# B5 batch-size dose-response analysis",
+        title,
+        "",
+        scope["warning"],
         "",
         "## Primary result",
         "",
         (
-            "The equal-weight cross-family slope of the standardized joint-minus-exact "
+            f"The equal-weight {aggregate} slope of the standardized joint-minus-exact "
             f"contrast on log2(batch size) is {primary['cross_family_slope']:.6f} "
             f"(95% cluster-bootstrap interval [{interval['low']}, {interval['high']}]; "
             f"two-sided bootstrap p = {primary['cross_family_slope_two_sided_p']:.4f})."
         ),
         "",
-        f"The prespecified test against zero rejects: **{primary['rejects_zero_at_alpha']}**.",
+        (
+            f"The {'interim selected-cell' if interim else 'prespecified'} test against zero "
+            f"rejects: **{primary['rejects_zero_at_alpha']}**."
+        ),
         "",
         "## Contrast by size",
         "",
@@ -102,7 +116,7 @@ def render_report(result: dict[str, Any]) -> str:
         )
     lines += [
         "",
-        "## Prespecified reading",
+        "## Interim threshold reading" if interim else "## Prespecified reading",
         "",
         f"Matched interpretations: {', '.join(result['outcome']['matched']) or 'none'}.",
         "",
@@ -127,11 +141,19 @@ def render_report(result: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def analyze(events: Path, output: Path, *, n_bootstrap: int, n_replay: int) -> dict[str, Any]:
+def analyze(
+    events: Path,
+    output: Path,
+    *,
+    n_bootstrap: int,
+    n_replay: int,
+    model_phase: str = "all",
+) -> dict[str, Any]:
+    cell_keys = MODEL_PHASES[model_phase]
     frames: dict[str, list[dict[str, Any]]] = {}
     cells = []
     stored = final_events(events)
-    for cell_key in b5.CELLS:
+    for cell_key in cell_keys:
         task_id = b5.split_cell(cell_key)[1]
         if task_id not in frames:
             frames[task_id] = b4.frame(STUDY, task_id)
@@ -144,8 +166,24 @@ def analyze(events: Path, output: Path, *, n_bootstrap: int, n_replay: int) -> d
         data.load({key: row for key, row in stored.items() if row["cell_key"] == cell_key})
         cells.append(data)
     result = b5_analysis.analyze(
-        cells, n_bootstrap=n_bootstrap, n_replay=n_replay, historical=historical_b3()
+        cells,
+        n_bootstrap=n_bootstrap,
+        n_replay=n_replay,
+        historical=historical_b3(cell_keys),
     )
+    result.pop("result_sha256", None)
+    result["analysis_scope"] = {
+        "model_phase": model_phase,
+        "cells": list(cell_keys),
+        "planned_final_cells": len(b5.CELLS),
+        "status": "final" if model_phase == "all" else "interim_descriptive_only",
+        "warning": (
+            "Complete four-cell confirmatory analysis."
+            if model_phase == "all"
+            else "Interim selected-cell analysis; this cannot replace the final four-cell result."
+        ),
+    }
+    result["result_sha256"] = sha256_json(result)
     output.mkdir(parents=True, exist_ok=True)
     write_json(output / "ANALYSIS.json", result)
     (output / "REPORT.md").write_text(render_report(result), encoding="utf-8")
@@ -171,11 +209,16 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--bootstrap", type=int, default=b5_analysis.N_BOOTSTRAP)
     parser.add_argument("--replay", type=int, default=b5_analysis.N_REPLAY)
+    parser.add_argument("--model-phase", choices=tuple(MODEL_PHASES), default="all")
     args = parser.parse_args()
     print(
         json.dumps(
             analyze(
-                args.events, args.output, n_bootstrap=args.bootstrap, n_replay=args.replay
+                args.events,
+                args.output,
+                n_bootstrap=args.bootstrap,
+                n_replay=args.replay,
+                model_phase=args.model_phase,
             ),
             indent=2,
         )
