@@ -1,4 +1,5 @@
 \documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
 
 \usepackage{amsmath}
 \usepackage{booktabs}
@@ -13,13 +14,16 @@
 
 \newcommand{\joint}{\mathrm{joint}}
 \newcommand{\exact}{\mathrm{exact}}
+\newcommand{\figref}[1]{\hyperref[#1]{Fig.~\ref*{#1}}}
+\newcommand{\figureref}[1]{\hyperref[#1]{Figure~\ref*{#1}}}
 
 \title{When LLM Labels Fail Together}
 
 \author{\IEEEauthorblockN{HanRui Zhang}
 \IEEEauthorblockA{\textit{High School Student, Marc Garneau Collegiate Institute}\\
 Toronto, Canada\\
-daniel21cn2016@gmail.com}}
+daniel21cn2016@gmail.com}
+\thanks{Code and data: \url{https://anonymous.4open.science/r/batched-annotation-D206/}}}
 
 \begin{document}
 \maketitle
@@ -44,7 +48,7 @@ Large language models (LLMs) can label text quickly and at low cost. Prior studi
 
 Overall accuracy does not reveal whether errors are independent. When 16 texts share one prompt and response, the model can carry an interpretation or formatting decision across the call. Positively correlated errors leave a dataset with less independent information than its row count suggests. Confidence intervals that treat the labels as independent may then be too narrow even when their point estimates are unbiased. Classical methods for clustered data address this gap \cite{liang1986longitudinal,cameron2015cluster}.
 
-We test whether requesting multiple labels in one call makes errors co-occur across items (Fig.~\ref{fig:overview}). Each joint prompt is paired with an exact-context control showing the same documents in the same order but requesting only one target label. This keeps context fixed while changing whether labels share a response. The study includes a $4\times4$ model--task grid at batch size 16, five batch sizes from 2 to 32 in one prespecified combination per model family, and a recovered analysis comparing item-level confidence intervals with intervals based on calls.
+We test whether requesting multiple labels in one call makes errors co-occur across items (\figref{fig:overview}). Each joint prompt is paired with an exact-context control showing the same documents in the same order but requesting only one target label. This keeps context fixed while changing whether labels share a response. The study includes a $4\times4$ model--task grid at batch size 16, five batch sizes from 2 to 32 in one prespecified combination per model family, and a recovered analysis comparing item-level confidence intervals with intervals based on calls.
 
 The study makes two contributions. First, it measures excess error covariance across a balanced $4\times4$ grid and separates weaker pairwise dependence from greater total information loss as batch size grows. Second, a recovered repeated-sampling analysis measures how often 95\% confidence intervals miss their target when call membership is ignored. We recommend storing a call identifier with every LLM-generated label and using it to estimate uncertainty.
 
@@ -94,7 +98,7 @@ The reviewer artifact contains analysis code, frozen protocols and prompts, data
 
 \subsection{Dependence Recurs Across Models and Tasks}
 
-The mean excess covariance across cells was 0.00961, with a 95\% randomization-based interval of $[0.00936,0.00986]$ and one-sided replay $p=0.0002$. All 16 cells rejected the sharp null after Holm adjustment, and 13 also met the separate 0.002 practical threshold. Those 13 cells covered all four model families and all four tasks (Fig.~\ref{fig:covariance}). Every mean calculated after removing one model or one task remained positive, so no single family or dataset drove the combined result.
+The mean excess covariance across cells was 0.00961, with a 95\% randomization-based interval of $[0.00936,0.00986]$ and one-sided replay $p=0.0002$. All 16 cells rejected the sharp null after Holm adjustment, and 13 also met the separate 0.002 practical threshold. Those 13 cells covered all four model families and all four tasks (\figref{fig:covariance}). Every mean calculated after removing one model or one task remained positive, so no single family or dataset drove the combined result.
 
 All four prespecified rules for malformed outputs gave combined excess covariance from 0.00752 to 0.01550, always above the practical threshold. A sensitivity using 3,002 recovered calls gave 0.00790. Thirteen cells passed a combined rule requiring both a large enough effect and rejection by the replay test, although two differed from the primary set. All 48 assignment-specific contrasts were positive, and means calculated after removing one assignment ranged from 0.00935 to 0.00992. Across cells and assignments, standardized covariance averaged 0.0557 in the joint condition and 0.0014 in the exact-context condition. These values gave mean design effects of 1.835 and 1.021 and effective sample sizes of 5,022 and 8,105 per 8,192 labels, respectively.
 
@@ -121,14 +125,14 @@ The information loss varied across settings. A descriptive calculation assuming 
 \end{figure*}
 
 \subsection{Dependence Persists but Does Not Grow Uniformly with Batch Size}
-Standardized excess dependence averaged across the four cells was positive at every tested size: 0.079 at batch size 2, 0.081 at size 4, and 0.045 at size 32 (Fig.~\ref{fig:batch-size}). The mean slope was $-0.00910$ per doubling of batch size. It was negative in each complete assignment ($-0.00960$, $-0.00879$, and $-0.00889$). Dependence between pairs therefore decreased on average after size 4, although the three-assignment comparison is descriptive.
+Standardized excess dependence averaged across the four cells was positive at every tested size: 0.079 at batch size 2, 0.081 at size 4, and 0.045 at size 32 (\figref{fig:batch-size}). The mean slope was $-0.00910$ per doubling of batch size. It was negative in each complete assignment ($-0.00960$, $-0.00879$, and $-0.00889$). Dependence between pairs therefore decreased on average after size 4, although the three-assignment comparison is descriptive.
 
 Three cells had negative slopes, whereas Granite/IMDb had a positive slope; no single trend described every selected cell.
 
 Weaker pairwise dependence did not prevent the total variance penalty from growing. The descriptive design effect increased from 1.079 at batch size 2 (assignment range 1.076--1.083) to 2.381 at size 32 (2.328--2.473). Relative to the exact-context baseline, the corresponding effective sample size fell from 7,589 to 3,440 out of 8,192 rows. Each pair became less dependent on average, but every label shared its call with more labels.
 
 \subsection{Recovered Sensitivity: Ignoring Calls Can Understate Uncertainty}
-We next tested whether the observed covariance made 95\% confidence intervals miss their target more often than expected. Figure~\ref{fig:coverage} reports coverage with exact binomial intervals. For Granite/IMDb, the item-level method covered the target in only 77.8\% of replicates, and the observed variance was 2.71 times the value assumed by that method. The call-aware $t$ interval reached 93.0\% coverage. Qwen/Civil Comments showed the same pattern, improving from 88.0\% to 96.0\%.
+We next tested whether the observed covariance made 95\% confidence intervals miss their target more often than expected. \figureref{fig:coverage} reports coverage with exact binomial intervals. For Granite/IMDb, the item-level method covered the target in only 77.8\% of replicates, and the observed variance was 2.71 times the value assumed by that method. The call-aware $t$ interval reached 93.0\% coverage. Qwen/Civil Comments showed the same pattern, improving from 88.0\% to 96.0\%.
 
 Mistral/MultiNLI had milder undercoverage (90.8\%) and improved to 95.3\% with the call-aware interval. Llama/Civil Comments showed no item-level undercoverage. Whole-call bootstrap coverage was 91.8\%, 95.3\%, 94.8\%, and 94.0\% for Granite, Qwen, Mistral, and Llama, respectively. Wilson-score intervals reproduced the item-level result, so the undercoverage did not result from using the Wald formula near a probability boundary. Undercoverage varied across cells, but the risk created by positive dependence cannot be diagnosed from the number of labeled rows alone.
 
