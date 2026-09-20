@@ -1,0 +1,64 @@
+panel,model,task,method,value,n,low,high
+covariance,Qwen,AG News,Joint minus exact,0.0033105506,8192
+covariance,Qwen,Civil Comments,Joint minus exact,0.0071188711,8192
+covariance,Qwen,IMDb,Joint minus exact,0.0113091456,8192
+covariance,Qwen,MultiNLI,Joint minus exact,0.0071358694,8192
+covariance,Granite,AG News,Joint minus exact,0.0283500555,8192
+covariance,Granite,Civil Comments,Joint minus exact,0.0016196367,8192
+covariance,Granite,IMDb,Joint minus exact,0.0187786394,8192
+covariance,Granite,MultiNLI,Joint minus exact,0.0041316168,8192
+covariance,Llama,AG News,Joint minus exact,0.0062957207,8192
+covariance,Llama,Civil Comments,Joint minus exact,0.0015644994,8192
+covariance,Llama,IMDb,Joint minus exact,0.0010220302,8192
+covariance,Llama,MultiNLI,Joint minus exact,0.0064729396,8192
+covariance,Mistral,AG News,Joint minus exact,0.0225560119,8192
+covariance,Mistral,Civil Comments,Joint minus exact,0.0042308870,8192
+covariance,Mistral,IMDb,Joint minus exact,0.0174435563,8192
+covariance,Mistral,MultiNLI,Joint minus exact,0.0124268250,8192
+coverage,Granite,IMDb,IID Wald,0.7775,400,0.733512,0.817326
+coverage,Granite,IMDb,Call-aware t,0.9300,400,0.900417,0.952985
+coverage,Granite,IMDb,Whole-call bootstrap,0.9175,400,0.886089,0.942532
+coverage,Llama,Civil Comments,IID Wald,0.9675,400,0.945065,0.982584
+coverage,Llama,Civil Comments,Call-aware t,0.9650,400,0.941973,0.980736
+coverage,Llama,Civil Comments,Whole-call bootstrap,0.9400,400,0.912038,0.961182
+coverage,Mistral,MultiNLI,IID Wald,0.9075,400,0.874757,0.934034
+coverage,Mistral,MultiNLI,Call-aware t,0.9525,400,0.926815,0.971163
+coverage,Mistral,MultiNLI,Whole-call bootstrap,0.9475,400,0.920865,0.967212
+coverage,Qwen,Civil Comments,IID Wald,0.8800,400,0.844061,0.910182
+coverage,Qwen,Civil Comments,Call-aware t,0.9600,400,0.935854,0.976967
+coverage,Qwen,Civil Comments,Whole-call bootstrap,0.9525,400,0.926815,0.971163
+batch_size,Qwen,Civil Comments,Standardized contrast,0.11474655243552834,2
+batch_size,Qwen,Civil Comments,Standardized contrast,0.11155906625791039,4
+batch_size,Qwen,Civil Comments,Standardized contrast,0.08701595419075674,8
+batch_size,Qwen,Civil Comments,Standardized contrast,0.07587393457805086,16
+batch_size,Qwen,Civil Comments,Standardized contrast,0.053423443362573604,32
+batch_size,Granite,IMDb,Standardized contrast,-0.008137990864714898,2
+batch_size,Granite,IMDb,Standardized contrast,0.08915285549607947,4
+batch_size,Granite,IMDb,Standardized contrast,0.12247816396443363,8
+batch_size,Granite,IMDb,Standardized contrast,0.12226818193934978,16
+batch_size,Granite,IMDb,Standardized contrast,0.09553850636470002,32
+batch_size,Llama,Civil Comments,Standardized contrast,0.16765309564630212,2
+batch_size,Llama,Civil Comments,Standardized contrast,0.04165092689769007,4
+batch_size,Llama,Civil Comments,Standardized contrast,0.01664822934266316,8
+batch_size,Llama,Civil Comments,Standardized contrast,0.008717173530312742,16
+batch_size,Llama,Civil Comments,Standardized contrast,0.007701249557753874,32
+batch_size,Mistral,MultiNLI,Standardized contrast,0.043655242206135564,2
+batch_size,Mistral,MultiNLI,Standardized contrast,0.08026919724687236,4
+batch_size,Mistral,MultiNLI,Standardized contrast,0.058296523538590994,8
+batch_size,Mistral,MultiNLI,Standardized contrast,0.03137661930061653,16
+batch_size,Mistral,MultiNLI,Standardized contrast,0.021547658444246554,32
+batch_size,Pooled,,Pooled,0.0794792248558128,2
+batch_size,Pooled,,Pooled,0.08065801147463807,4
+batch_size,Pooled,,Pooled,0.07110971775911112,8
+batch_size,Pooled,,Pooled,0.05955897733708248,16
+batch_size,Pooled,,Pooled,0.04455271443231851,32
+batch_size,Pooled,,Pooled low,0.07646513237172037,2
+batch_size,Pooled,,Pooled low,0.07816579746449837,4
+batch_size,Pooled,,Pooled low,0.06788720441307651,8
+batch_size,Pooled,,Pooled low,0.05635297404269515,16
+batch_size,Pooled,,Pooled low,0.04283014636465255,32
+batch_size,Pooled,,Pooled high,0.08273594632152595,2
+batch_size,Pooled,,Pooled high,0.08488293519857783,4
+batch_size,Pooled,,Pooled high,0.07586828139375139,8
+batch_size,Pooled,,Pooled high,0.06303165253433898,16
+batch_size,Pooled,,Pooled high,0.0475190794902198,32
