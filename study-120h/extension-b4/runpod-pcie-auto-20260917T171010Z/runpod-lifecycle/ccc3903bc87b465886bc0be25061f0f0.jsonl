@@ -1,3 +1,0 @@
-{"at_utc":"2026-09-17T19:13:33.204160+00:00","cell_key":"Qwen/Qwen3-8B::civil_comments","kind":"create_intent","name":"b4-387c962d60ea4aef-ccc3903bc87b","shutdown_target_utc":"2026-09-17T22:43:27.019110+00:00","stream":"evaluation","watchdog_run_id":35263579325}
-{"at_utc":"2026-09-17T19:14:17.796428+00:00","cell_key":"Qwen/Qwen3-8B::civil_comments","kind":"created","pod_id":"sole20n168uxjo","stream":"evaluation"}
-{"at_utc":"2026-09-17T21:19:27.010046+00:00","cell_key":"Qwen/Qwen3-8B::civil_comments","kind":"termination_verified","pod_id":"sole20n168uxjo","stream":"evaluation"}

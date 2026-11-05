@@ -1,8 +1,0 @@
-{"at_utc":"2026-09-17T17:10:58.032536+00:00","expected_pods":1,"kind":"armed","lease_id":"3bff35c6afd54400","shutdown_target_utc":"2026-09-17T21:39:36.081471+00:00","workflow_run_id":35251136135}
-{"at_utc":"2026-09-17T17:17:36.293391+00:00","kind":"released_after_local_deletion","lease_id":"3bff35c6afd54400","workflow_run_id":35251136135}
-{"at_utc":"2026-09-17T17:17:47.960439+00:00","expected_pods":1,"kind":"armed","lease_id":"62e41bcf97d64c61","shutdown_target_utc":"2026-09-17T20:57:56.597927+00:00","workflow_run_id":35251838889}
-{"at_utc":"2026-09-17T19:13:18.701302+00:00","kind":"released_after_local_deletion","lease_id":"62e41bcf97d64c61","workflow_run_id":35251838889}
-{"at_utc":"2026-09-17T19:13:32.168057+00:00","expected_pods":1,"kind":"armed","lease_id":"387c962d60ea4aef","shutdown_target_utc":"2026-09-17T22:43:27.019110+00:00","workflow_run_id":35263579325}
-{"at_utc":"2026-09-17T21:19:28.510039+00:00","kind":"released_after_local_deletion","lease_id":"387c962d60ea4aef","workflow_run_id":35263579325}
-{"at_utc":"2026-09-17T21:19:43.447432+00:00","expected_pods":1,"kind":"armed","lease_id":"3fda5b8c387f4c07","shutdown_target_utc":"2026-09-18T00:30:25.819400+00:00","workflow_run_id":35276016548}
-{"at_utc":"2026-09-17T21:21:50.192953+00:00","kind":"released_after_local_deletion","lease_id":"3fda5b8c387f4c07","workflow_run_id":35276016548}

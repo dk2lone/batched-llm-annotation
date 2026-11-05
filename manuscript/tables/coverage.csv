@@ -1,0 +1,13 @@
+cell,method,point,low,high,n_covered,n_replicates
+ibm-granite/granite-3.3-8b-instruct::imdb,item_wald,0.7775,0.733512367480889,0.8173264856181305,311,400
+ibm-granite/granite-3.3-8b-instruct::imdb,call_t,0.93,0.9004174842299392,0.952984671599821,372,400
+ibm-granite/granite-3.3-8b-instruct::imdb,whole_call_bootstrap,0.9175,0.8860892715325912,0.9425316426372068,367,400
+meta-llama/Llama-3.1-8B-Instruct::civil_comments,item_wald,0.9675,0.9450651832493072,0.9825838539157878,387,400
+meta-llama/Llama-3.1-8B-Instruct::civil_comments,call_t,0.965,0.9419727383175839,0.9807355334141201,386,400
+meta-llama/Llama-3.1-8B-Instruct::civil_comments,whole_call_bootstrap,0.94,0.9120375765951033,0.9611822508955742,376,400
+mistralai/Mistral-7B-Instruct-v0.3::multi_nli,item_wald,0.9075,0.8747566869033432,0.9340340574093114,363,400
+mistralai/Mistral-7B-Instruct-v0.3::multi_nli,call_t,0.9525,0.9268146345986293,0.9711630696195768,381,400
+mistralai/Mistral-7B-Instruct-v0.3::multi_nli,whole_call_bootstrap,0.9475,0.9208653695130558,0.9672115754228463,379,400
+Qwen/Qwen3-8B::civil_comments,item_wald,0.88,0.8440606367550166,0.9101817952664786,352,400
+Qwen/Qwen3-8B::civil_comments,call_t,0.96,0.9358539890609492,0.9769666042594511,384,400
+Qwen/Qwen3-8B::civil_comments,whole_call_bootstrap,0.9525,0.9268146345986293,0.9711630696195768,381,400

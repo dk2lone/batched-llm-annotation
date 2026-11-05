@@ -1,155 +1,165 @@
 \documentclass[conference]{IEEEtran}
-\IEEEoverridecommandlockouts
-
 \usepackage{amsmath}
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{microtype}
 \usepackage{newtxtext,newtxmath}
-\usepackage{placeins}
 \usepackage{url}
-\usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
-
-
 \newcommand{\joint}{\mathrm{joint}}
 \newcommand{\exact}{\mathrm{exact}}
-\newcommand{\figref}[1]{\hyperref[#1]{Fig.~\ref*{#1}}}
-\newcommand{\figureref}[1]{\hyperref[#1]{Figure~\ref*{#1}}}
-
 \title{When LLM Labels Fail Together}
-
-\author{\IEEEauthorblockN{HanRui Zhang\textsuperscript{*}\thanks{\raggedright * Currently a high school senior in the TOPS program.}}
-\IEEEauthorblockA{\textit{Marc Garneau Collegiate Institute}\\
-Toronto, Canada\\
-daniel21cn2016@gmail.com}
-\thanks{\raggedright Code and data: \href{https://anonymous.4open.science/r/batched-annotation-D206/}{anonymous.4open.science/r/batched-annotation-D206}}}
+\author{\IEEEauthorblockN{HanRui Zhang}
+\IEEEauthorblockA{\textit{High School Senior, TOPS Program}\\
+\textit{Marc Garneau Collegiate Institute}\\
+Toronto, Canada\\daniel21cn2016@gmail.com}}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-Large language models can label many texts in one prompt, saving repeated instructions and inference cost. Because those items share one generated response, their errors may be dependent. We measure this dependence with one-target controls that show the same neighboring texts in the same order. Across a batch-16 grid of four open-weight model families and four text-classification tasks, mean excess error covariance (the added tendency for errors to occur together) was 0.00961 (one-sided randomization $p=0.0002$). All 16 estimates were positive, and 13 exceeded the prespecified practical threshold of 0.002. In four selected model--task combinations, pairwise dependence weakened as batch size increased, but total dependence raised the estimated variance from 1.08 to 2.38 times the independent-label value. A secondary analysis completed after the main experiment found that treating every label as independent made confidence intervals too narrow in three of four model--task combinations. Accounting for which labels came from the same LLM call made the intervals contain the target error rate about 95\% of the time, as intended. Each batched annotation call should therefore be treated as a statistical cluster. Studies using batched labels should record which call and protocol produced each label and account for within-call dependence when estimating uncertainty.
+Labeling several texts in one large language model (LLM) call can save inference cost, but does the resulting dataset contain as much independent information as its row count suggests? In one tested setting, 16 jointly generated labels had approximately the variance of eight independent labels. We compare joint annotation with separate target-only calls that show exactly the same neighboring texts in the same order. Across four model families and four English classification tasks, joint annotation increased across-item error covariance in all 16 combinations. Dependence and accuracy changed differently with batch size, so neither accuracy nor pairwise correlation alone characterized the statistical cost of batching. A secondary repeated-sampling analysis, completed using disclosed output-format recovery, found item-level 95\% interval coverage of 77.8--90.8\% in three combinations; intervals based on annotation calls reached 93.0--96.0\%. The matched comparison identifies the combined effect of multi-target instructions and shared generation, without isolating either mechanism. Studies using batched labels should retain call identifiers and account for call membership when estimating uncertainty.
 \end{abstract}
-
 \begin{IEEEkeywords}
 large language models, data annotation, batch prompting, dependent errors, uncertainty estimation
 \end{IEEEkeywords}
 
 \section{Introduction}
-Large language models (LLMs) can label text quickly and at low cost. Prior studies compare their labels with those of crowd workers and experts \cite{gilardi2023chatgpt,tan2024survey}. Larger evaluations show that quality varies across tasks and datasets and still requires human validation \cite{ziems2024css,pangakis2025humans}; even meaning-preserving prompt changes can alter performance \cite{sclar2024prompt}. Batch-prompting studies focus on efficiency and per-item accuracy \cite{cheng2023batch,pipal2026waste}. Related work reports interference between items, correlated errors across models, and unreliable uncertainty estimates under other forms of dependence \cite{yue2025vulnerable,kim2025correlated,llewellyn2025prompt,zeng2025missing}. This leaves a missing question: do items labeled in the same response also tend to be wrong together, making confidence intervals too narrow?
+Large language models (LLMs) can label multiple texts in one response, reducing repeated instructions and inference cost \cite{cheng2023batch,pipal2026waste}. Accuracy measures how often these labels agree with references. It does not reveal whether errors occur together within a call. Positive error dependence can make a dataset less informative than its row count suggests and make confidence intervals too narrow when every label is treated as independent.
 
-\begin{figure}[!t]
-    \centering
-    \includegraphics[width=\columnwidth]{figures/study_overview.pdf}
-    \caption{Matched-context design for a batch of $b$ texts. The joint condition returns $b$ labels in one call, whereas the control generates each target label in one of $b$ separate calls using the same visible context. Covariance matrices are schematic; the reported measure subtracts exact-context covariance from joint-call covariance. The $4\times4$ model--task grid and recovered coverage analysis use $b=16$; the batch-size study uses $b\in\{2,4,8,16,32\}$ in four prespecified model--task combinations.}
-    \label{fig:overview}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/study_overview.pdf}
+\caption{Matched-context comparison. Joint annotation returns $b$ labels in one call. The control uses $b$ separate target-only calls, each showing the same texts and order. Colored errors and covariance matrices are schematic. This comparison changes both the number of requested labels and the shared output history.}
+\label{fig:overview}
 \end{figure}
 
-Overall accuracy does not reveal whether errors are independent. When 16 texts share one prompt and response, the model can carry an interpretation or formatting decision across the call. Positively correlated errors leave a dataset with less independent information than its row count suggests. Confidence intervals that treat the labels as independent may then be too narrow even when their point estimates are unbiased. Classical methods for clustered data address this gap \cite{liang1986longitudinal,cameron2015cluster}.
+We measure this dependence by pairing joint annotation with an exact-context control: each separate call sees the same neighboring texts in the same order but requests only one label (Fig.~\ref{fig:overview}). The contrast holds visible text fixed while changing the annotation policy. It measures the combined effect of requesting multiple targets and generating their labels together, rather than identifying a particular decoding mechanism.
 
-We test whether requesting multiple labels in one call makes errors co-occur across items (\figref{fig:overview}). Each joint prompt is paired with an exact-context control showing the same documents in the same order but requesting only one target label. This keeps context fixed while changing whether labels share a response. The study includes a $4\times4$ model--task grid at batch size 16, five batch sizes from 2 to 32 in one prespecified combination per model family, and a recovered analysis comparing item-level confidence intervals with intervals based on calls.
-
-The study makes two contributions. First, it measures excess error covariance across a balanced $4\times4$ grid and separates weaker pairwise dependence from greater total information loss as batch size grows. Second, a recovered repeated-sampling analysis measures how often 95\% confidence intervals miss their target when call membership is ignored. We recommend storing a call identifier with every LLM-generated label and using it to estimate uncertainty.
+Our contribution is an empirical measurement of call-associated error covariance across a balanced four-model by four-task grid, followed by batch-size comparisons and a disclosed, recovered sensitivity analysis of interval coverage. Methods for clustered data are established \cite{liang1986longitudinal,cameron2015cluster}. The question here is when an annotation call creates a cluster that ordinary item-level analysis overlooks.
 
 \section{Related Work}
-LLMs are increasingly evaluated as substitutes or complements for human annotators. Gilardi et al. found that ChatGPT could outperform crowd workers on several text-annotation tasks, and Tan et al. organize the broader literature around annotation generation, assessment, and downstream use \cite{gilardi2023chatgpt,tan2024survey}. Larger evaluations add important qualifications. Ziems et al. found substantial variation across models and computational social science tasks. Pangakis and Wolken found that performance varied across 27 tasks from 11 protected datasets and argued for validation against human labels \cite{ziems2024css,pangakis2025humans}. Even minor prompt-format changes can alter model performance \cite{sclar2024prompt}. These studies show that LLM annotation quality depends on the task and protocol, but they mainly measure item-level accuracy, agreement, or sensitivity. Kim et al. measure error correlation across distinct models \cite{kim2025correlated}; we measure dependence among items labeled within one shared generation.
+LLMs can outperform crowd workers on some annotation tasks \cite{gilardi2023chatgpt}, but performance varies across models, tasks, and prompts \cite{tan2024survey,ziems2024css,pangakis2025humans,sclar2024prompt}. Batch-prompting studies quantify token, time, and accuracy tradeoffs \cite{cheng2023batch,pipal2026waste}. Lin et al.~\cite{lin2024batchprompt} examine sensitivity to item order and position, while Yue and Yao~\cite{yue2025vulnerable} show that malicious instructions can affect other items in a batch. We examine ordinary classification inputs and measure error covariance beyond an exact-context target-only control.
 
-Batch prompting is the closest setting to our study. Cheng et al. evaluate its token, time, and accuracy tradeoffs across ten datasets \cite{cheng2023batch}. Pipal et al. study annotation more directly across eight production models, four tasks, and batch sizes up to 1,000 \cite{pipal2026waste}. Both focus on efficiency and per-item accuracy rather than whether labels sharing a response also share errors. Lin et al. show that batch-prompt performance depends on item position and order because earlier outputs change the decoder context \cite{lin2024batchprompt}. Yue and Yao show that a malicious instruction in one item can disrupt other outputs in the same batch \cite{yue2025vulnerable}. We study ordinary classification inputs and compare them with target-only calls that show the same context.
-
-Methods for correlated data are also established outside batched annotation. Gligori{\'c} et al. use LLM confidence and selective human annotation to construct confidence intervals with correct coverage \cite{gligoric2025unconfident}. Llewellyn et al. cluster semantically dependent benchmark prompts, while Zeng et al. address missing responses when observations from the same user are dependent \cite{llewellyn2025prompt,zeng2025missing}. These studies address annotation error, prompt structure, or user-level dependence. We test dependence created when multiple labels share one generation. Standard methods already handle known clusters \cite{liang1986longitudinal,cameron2015cluster,mackinnon2023cluster,field2007bootstrap}. Our contribution is a matched estimate of call-associated error covariance and a repeated-sampling evaluation of confidence-interval coverage when call membership is discarded.
+Kim et al.~\cite{kim2025correlated} study correlated errors across distinct models. Our unit is instead the group of items labeled in one generation. Other work constructs confidence intervals using selective human annotation \cite{gligoric2025unconfident}, clusters semantically related benchmark prompts \cite{llewellyn2025prompt}, or handles missing responses under user-level dependence \cite{zeng2025missing}. These address different sources of uncertainty. We test whether shared annotation calls add dependence and evaluate familiar call-aware intervals \cite{cameron2015cluster,mackinnon2023cluster,field2007bootstrap}.
 
 \section{Experimental Design}
-\subsection{Models and Tasks}
-We evaluated Qwen3-8B, Granite-3.3-8B-Instruct, Llama-3.1-8B-Instruct, and Mistral-7B-Instruct-v0.3, representing four similarly sized open-weight model families \cite{yang2025qwen3,ibm2025granite,dubey2024llama,mistral2024v03}. The tasks were toxicity classification on Civil Comments \cite{borkan2019civil}, natural-language inference on MultiNLI \cite{williams2018multinli}, sentiment classification on IMDb \cite{maas2011imdb}, and topic classification on AG News \cite{zhang2015character}. We call each model--task combination a \emph{cell}. Civil Comments scores $\geq0.5$ were labeled toxic. After fixed exclusions, we hash-ordered candidates and divided the confirmation set into 16 equal-sized text-length strata. Dataset labels served as references, so an ``error'' means disagreement with that label, not necessarily an objectively wrong prediction.
+\subsection{Models, Tasks, and Conditions}
+We cross Qwen3-8B, Granite-3.3-8B-Instruct, Llama-3.1-8B-Instruct, and Mistral-7B-Instruct-v0.3 \cite{yang2025qwen3,ibm2025granite,dubey2024llama,mistral2024v03} with Civil Comments toxicity, MultiNLI inference, IMDb sentiment, and AG News topic classification \cite{borkan2019civil,williams2018multinli,maas2011imdb,zhang2015character}. Each combination is a \emph{cell}. Civil Comments scores $\geq0.5$ are labeled toxic. An error means disagreement with a dataset reference, not necessarily an objectively wrong judgment.
 
-Every model used the same instruction template, JSON grammar, parser, greedy decoding, and 32,768-token context limit. Each task had 8,192 fixed items, a count chosen before observing joint outputs using solo-prompt error rates and CPU-based power simulations. No cell was removed based on accuracy or parse rate.
+All models use a common instruction template, JSON output grammar, parser, greedy decoding, and 32,768-token context limit. Before joint outputs were observed, solo error rates and CPU power simulations fixed 8,192 items per task. Candidates were hash-ordered after fixed exclusions and divided into 16 equal-sized text-length strata. No cell was subsequently removed based on accuracy or parse rate.
 
-\subsection{Joint and Exact-Context Conditions}
-For each cell, we formed length-balanced groups of 16 items under three independent randomized assignments. In the \emph{joint} condition, one prompt requested labels for all 16 items. In the \emph{exact-context} condition, the prompt showed those same 16 items in the same order but requested only one target label. Repeating the prompt for all targets produced one label per item in separate calls. This control keeps the visible context constant while changing whether labels share a generated response.
+Three independent randomized assignments form length-balanced groups of 16. A joint call requests all labels; 16 separate exact-context calls each request one target from the same ordered group. Solo calls show only the target. Fake batches regroup solo outputs as a negative control. Original outputs, including failures, are retained.
 
-Let $e_i\in\{0,1\}$ indicate disagreement with the reference label, and let $\bar e$ be the mean error for each model, task, condition, and assignment. We placed these fixed errors into matched 16-item groups representing either one joint call or 16 corresponding exact-context calls. Within each group, we averaged $(e_i-\bar e)(e_j-\bar e)$ over distinct item pairs, then averaged the three assignment contrasts. The primary statistic for each cell was
+\subsection{Measuring Whether Errors Occur Together}
+We measure whether two items in a group tend to be wrong together, beyond their overall error rate. Let $e_i=1$ when item $i$ disagrees with its reference and $e_i=0$ otherwise. For each model, task, condition, and assignment, $\bar e_c$ is the error rate over all items. We average $(e_i-\bar e_c)(e_j-\bar e_c)$ over distinct item pairs within groups, then subtract the target-only value from the joint value. Averaging this difference over the three assignments gives
 \begin{equation}
-\Delta=\operatorname{Cov}_{\joint}(e_i,e_j)-
-\operatorname{Cov}_{\exact}(e_i,e_j).
+\Delta=\operatorname{Cov}_{\joint}(e_i,e_j)-\operatorname{Cov}_{\exact}(e_i,e_j).
+\label{eq:delta}
 \end{equation}
-A positive $\Delta$ means that errors co-occur more often when labels share a response than when they only share context. We tested a \emph{sharp null}: with outputs fixed, group assignment has no effect. In 4,999 paired replays, we permuted items within assignment, length stratum, and execution block while preserving group size and repeated appearances; both conditions used the same regrouping. We calculated upper-tail $p$-values and applied Holm's adjustment to control for testing 16 cells. The 95\% randomization-based interval subtracts mean-centered replay quantiles from the estimate and applies only to the fixed outputs and replay design. Before observing joint results, we set $\Delta\geq0.002$ as the practical threshold and evaluated it separately from statistical rejection. The combined estimate gives every cell equal weight and applies only to the tested models, tasks, and items.
+Positive $\Delta$ means errors occur together more often when labels share a response. Each condition uses its own overall error rate, so a change in accuracy alone does not define the covariance contrast.
 
-We retained malformed outputs under four prespecified rules: count unresolved targets as correct, count them as errors, drop only unresolved targets, or drop their entire calls. Testing all four rules prevents selective parsing choices from creating the result.
+To assess the null hypothesis that group assignment has no effect on outputs, we regroup the saved outputs 4,999 times. Each regrouping, or \emph{replay}, uses the same groups for both conditions and preserves group size and repeated appearances. Regrouping stays within each assignment, text-length stratum, and scheduled run segment. The $p$-value compares the observed contrast with these replay contrasts, adding one to both the exceedance count and the number of replays. Its minimum is therefore $1/5{,}000=0.0002$. Holm adjustment accounts for testing 16 cells; the combined estimate weights cells equally.
 
-\subsection{Batch-Size Robustness}
-We repeated the joint-versus-exact comparison in one prespecified cell per model family at batch sizes 2, 4, 8, 16, and 32. Each size used all 8,192 items, three nested randomized assignments, and the same output format. Dividing covariance by its condition-specific Bernoulli variance produced excess within-call error correlation. We regressed this value on $\log_2$ batch size for each cell and averaged the four slopes. Because items recur across assignments, these slopes are descriptive rather than independent replicates. A size-32 block-bootstrap sensitivity separately resamples assignments and breaks recurring item identity, so it does not support the main uncertainty claims. We converted pooled excess correlation $\rho_\Delta$ into a design effect, the factor by which dependence increases variance: $1+(b-1)\rho_\Delta$. The effective sample size, $8{,}192/[1+(b-1)\rho_\Delta]$, is the equivalent number of independent labels.
+Table~\ref{tab:grid} also reports 95\% \emph{replay ranges}. We center the replay contrasts at their mean and subtract their upper and lower 2.5\% cutoffs from the observed contrast. This assumes that the effect shifts the distribution without changing its shape. The ranges hold model outputs fixed. They do not measure uncertainty from sampling new items, prompts, or models.
 
-\subsection{Recovered Repeated-Sampling Sensitivity}
-The repeated-sampling analysis tested whether call dependence changes uncertainty in the mean disagreement rate. Granite/IMDb, Qwen/Civil Comments, Llama/Civil Comments, and Mistral/MultiNLI were selected by a fixed task order and solo-prompt results before we inspected covariance. Each of 250 reference and 400 evaluation replicates sampled 512 item appearances and generated 32 new 16-item calls. The reference replicates estimated the target disagreement rate. Each evaluation replicate produced three nominal 95\% intervals: a Wald interval treating 512 errors as independent, a $t$ interval over 32 call means, and a whole-call bootstrap interval. Coverage is the percentage containing the target rate; a calibrated 95\% method should cover it about 95\% of the time. With 400 replicates, its maximum Monte Carlo standard error is 2.5 percentage points. Prespecified precision and stability checks supported assessing undercoverage for Granite, Qwen, and Mistral.
+Before observing joint outputs, we chose $\Delta\geq0.002$ as a separate reporting threshold. It is not the null hypothesis or a universal standard for practical importance. For illustration, at a 20\% error rate in both conditions and batch size 16, this covariance increment adds 0.1875 to the design effect defined below. Its meaning changes with the error rate.
 
-We recovered 1,095 of 83,200 calls (1.3\%) with malformed or truncated responses. Reruns kept the original prompt, model, seed, numerical precision, runtime, and decoding settings; only the output format and maximum length changed. We retained all successful original outputs. Because the original coverage analysis could not be completed, the recovered analysis is a secondary, post-execution sensitivity. The primary covariance analysis was unchanged and includes all prespecified malformed-output rules.
+Four prespecified checks handle malformed outputs: count unresolved targets as correct, count them as errors, omit those targets, or omit their entire calls.
 
-\subsection{Artifact Availability}
-The reviewer artifact contains analysis code, frozen protocols and prompts, dataset indices, and analysis-ready error arrays. It reproduces the reported analyses. Because it excludes dataset text, raw model responses, and cloud execution records, it cannot verify model execution or parsing. It is available at \url{https://anonymous.4open.science/r/batched-annotation-D206/README.md}.
+\subsection{Batch Size and Variance Measures}
+One prespecified cell per family uses batch sizes 2, 4, 8, 16, and 32. Each size has 8,192 items, three nested assignments, and its own exact-context controls. To compare dependence across error rates, we divide covariance by the variance of an individual error. For condition $c$, with error rate $p_c$, this gives
+\begin{equation}
+\rho_c=\frac{\operatorname{Cov}_c(e_i,e_j)}{p_c(1-p_c)},\qquad
+D_c=1+(b-1)\rho_c,
+\label{eq:de}
+\end{equation}
+Here $\rho_c$ summarizes pairwise dependence. The \emph{design effect} $D_c$ translates that dependence into the variance of a mean, assuming equal-sized calls and the same correlation for all pairs within a call. A design effect of 2 means twice the variance of independent labels with the same error rate. Thus $n$ joint labels have the variance-equivalent sample size $n/D_\joint$.
+
+We keep three comparisons separate. $D_\joint$ describes the variance penalty within joint calls. The contrast $\rho_\joint-\rho_\exact$ measures added pairwise dependence; multiplying it by $b-1$ gives the \emph{difference} $D_\joint-D_\exact$, not a ratio. The repeated-sampling study below instead measures variance directly across fresh annotation runs.
+
+Slopes against $\log_2 b$ describe change per doubling of batch size. They are descriptive because the same items recur across assignments. The stored bootstrap resamples assignments separately and loses those item links. We therefore show the range across complete assignments rather than using those bootstrap intervals to claim population uncertainty.
+
+\begin{table*}[t]
+\caption{Error rates and excess covariance at batch size 16. Lower error rates mean better label accuracy. Positive excess covariance means more errors occur together in joint calls. Error rates use resolved targets; replay ranges concern only regrouping of saved outputs (Section~III-B).}
+\label{tab:grid}
+\centering
+\small
+\setlength{\tabcolsep}{6pt}
+\input{tables/grid_table.tex}
+\end{table*}
+
+\subsection{Repeated Sampling and Output Recovery}
+We assess confidence intervals by repeating the annotation exercise. Four cells were selected by fixed task order and solo results before covariance was inspected. Each repetition, or \emph{replicate}, samples 512 item appearances and generates 32 fresh calls of 16 labels each. We use 250 reference replicates to estimate the target: the expected disagreement rate under this sampling and annotation policy. A separate set of 400 evaluation replicates tests the intervals. No model output is reused across replicates.
+
+Each evaluation replicate gives three nominal 95\% intervals. The item-level Wald interval treats all 512 errors as independent. The call-mean $t$ interval uses the 32 call averages, while the whole-call bootstrap resamples complete calls. \emph{Coverage} is the percentage of intervals containing the reference target; a 95\% method should cover it about 95\% of the time. Exact binomial intervals describe uncertainty in this measured percentage. Prespecified checks on reference precision and target uncertainty support assessing undercoverage in Granite, Qwen, and Mistral. The main comparison uses no finite-population correction.
+
+Too many replicates initially contained malformed or truncated responses to complete the planned coverage analysis. We later recovered 1,095 of 83,200 calls (1.3\%) by rerunning them with a modified output format and response-length limit. Prompts, models, seeds, numerical precision, runtime, and decoding settings stayed the same, and successful original outputs were retained. Because recovery changed the output policy, coverage remains a secondary sensitivity analysis. The primary covariance analysis uses original outputs and all four failure-handling rules.
+
+\subsection{Reproducibility}
+Study code and artifacts are in the GitHub repository
+\href{https://github.com/dk2lone/batched-llm-annotation}{\textit{Batched LLM Annotation}}.
+Frozen protocols, prompts, dataset indices, and saved analysis outputs document the comparisons and output-recovery procedure.
 
 \section{Results}
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=0.78\columnwidth]{figures/covariance_results.pdf}
-    \caption{Joint-minus-exact error covariance at batch size 16 ($\times100$; 8,192 items per cell). Bold estimates meet the prespecified 0.002 practical threshold; all 16 cells reject the sharp null after Holm adjustment.}
-    \label{fig:covariance}
-\end{figure}
+\subsection{Covariance and Accuracy Are Distinct}
+Mean excess covariance was 0.00961, with a 95\% replay range of $[0.00936,0.00986]$. All 16 cells rejected the null hypothesis of no assignment effect after Holm adjustment ($p_{\rm adj}=0.0032$); each raw $p=0.0002$ was the smallest possible with 4,999 replays. Thirteen estimates also met the separate 0.002 reporting threshold. The combined mean stayed positive when we omitted any one model or any one task.
 
-\subsection{Dependence Recurs Across Models and Tasks}
+Table~\ref{tab:grid} makes the marginal error rates explicit. Joint annotation improved accuracy over solo calls in some cells and reduced it in others, despite positive covariance contrasts throughout. For example, Qwen/AG News accuracy increased from 69.9\% to 78.5\%, while Mistral/MultiNLI fell from 68.0\% to 38.6\%. These descriptive accuracy comparisons use resolved targets; they do not replace the failure-handling sensitivities or establish population accuracy differences.
 
-The mean excess covariance across cells was 0.00961, with a 95\% randomization-based interval of $[0.00936,0.00986]$ and one-sided replay $p=0.0002$. All 16 cells rejected the sharp null after Holm adjustment, and 13 also met the separate 0.002 practical threshold. Those 13 cells covered all four model families and all four tasks (\figref{fig:covariance}). Every mean calculated after removing one model or one task remained positive, so no single family or dataset drove the combined result.
+Across the four malformed-output rules, combined $\Delta$ ranged from 0.00752 to 0.01550. All 48 assignment-specific primary contrasts were positive; leave-one-assignment-out means ranged from 0.00935 to 0.00992. Fake-batch covariance ranged from $-0.00086$ to $0.00082$, so regrouping separately generated labels did not reproduce the shared-call result. Post-hoc Civil Comments thresholds of 0.4 and 0.6, or exclusion of 509 ambiguous items, preserved positive four-cell covariance.
 
-All four prespecified rules for malformed outputs gave combined excess covariance from 0.00752 to 0.01550, always above the practical threshold. A sensitivity using 3,002 recovered calls gave 0.00790. Thirteen cells passed a combined rule requiring both a large enough effect and rejection by the replay test, although two differed from the primary set. All 48 assignment-specific contrasts were positive, and means calculated after removing one assignment ranged from 0.00935 to 0.00992. Across cells and assignments, standardized covariance averaged 0.0557 in the joint condition and 0.0014 in the exact-context condition. These values gave mean design effects of 1.835 and 1.021 and effective sample sizes of 5,022 and 8,105 per 8,192 labels, respectively.
+For Qwen/Civil Comments, the observed joint covariance implies $D_\joint\approx1.99$ at $b=16$, or approximately eight independent-label equivalents per 16 jointly produced labels. This is a descriptive translation of covariance, not measured coverage or an estimate of label quality.
 
-A post-hoc Civil Comments sensitivity kept four-cell covariance positive at thresholds 0.4 (0.00343), 0.5 (0.00464), and 0.6 (0.00626), and after excluding 509 ambiguous items (0.00524). Both Civil Comments batch-size slopes remained negative, and the repeated-sampling conclusions were qualitatively unchanged.
-
-The information loss varied across settings. A descriptive calculation assuming equal correlation among all pairs within a call gave cell-level design effects from 1.14 to 2.87. For 8,192 labeled rows, these values correspond to effective sample sizes from 7,162 down to 2,850. As a negative control, fake batches assembled from separately generated solo labels had covariance between $-0.00086$ and $0.00082$ across the 16 cells. Regrouping independent labels therefore did not reproduce the dependence observed when labels shared a response.
-
-\begin{figure*}[!t]
-    \begin{minipage}[t]{0.48\textwidth}
-        \vspace{0pt}
-        \centering
-        \includegraphics[width=0.92\linewidth]{figures/batch_size_results.pdf}
-        \caption{Standardized joint-minus-exact dependence across batch sizes 2--32 in four prespecified cells. The black line is the equal-cell mean; shading spans the three complete randomized assignments.}
-        \label{fig:batch-size}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.48\textwidth}
-        \vspace{0pt}
-        \centering
-        \includegraphics[width=0.90\linewidth]{figures/coverage_results.pdf}
-        \caption{Recovered post-execution analysis of coverage: the share of 400 repeated confidence intervals containing the target error rate at batch size 16. Error bars are exact 95\% binomial intervals; shading marks 94--96\% coverage.}
-        \label{fig:coverage}
-    \end{minipage}
+\begin{figure*}[t]
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=0.92\linewidth]{figures/batch_size_results.pdf}
+\caption{Standardized excess dependence $\rho_\joint-\rho_\exact$ across batch sizes. The black line gives the equal-cell mean and shading the range across three complete assignments. Negative values and nonmonotone cell patterns are retained.}
+\label{fig:batch}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=0.90\linewidth]{figures/coverage_results.pdf}
+\caption{Secondary recovered analysis: coverage across 400 evaluation replicates per cell. Error bars are exact 95\% binomial Monte Carlo intervals; shading marks 94--96\%. Original unrecovered outputs could not support the prespecified complete-replicate analysis.}
+\label{fig:coverage}
+\end{minipage}
 \end{figure*}
 
-\subsection{Dependence Persists but Does Not Grow Uniformly with Batch Size}
-Standardized excess dependence averaged across the four cells was positive at every tested size: 0.079 at batch size 2, 0.081 at size 4, and 0.045 at size 32 (\figref{fig:batch-size}). The mean slope was $-0.00910$ per doubling of batch size. It was negative in each complete assignment ($-0.00960$, $-0.00879$, and $-0.00889$). Dependence between pairs therefore decreased on average after size 4, although the three-assignment comparison is descriptive.
+\subsection{Batch Size Changes Accuracy and Dependence Differently}
+Mean excess standardized dependence was 0.079 at $b=2$, 0.081 at $b=4$, and 0.045 at $b=32$ (Fig.~\ref{fig:batch}). The descriptive mean slope was $-0.00910$ per doubling, negative in all three complete assignments (range $-0.00960$ to $-0.00879$). Three cells had negative slopes; Granite/IMDb had a positive slope.
 
-Three cells had negative slopes, whereas Granite/IMDb had a positive slope; no single trend described every selected cell.
+The unusual small-batch values reflect both arms of the contrast. For Llama/Civil at $b=2$, joint and exact standardized covariance were $-0.044$ and $-0.212$, giving positive excess dependence despite negative joint covariance. The exact-control value approached zero as batch size grew, contributing to the sharp decline in the contrast. Granite/IMDb at $b=2$ instead had joint $-0.030$ and exact $-0.021$, giving a negative contrast of $-0.008$. These observations do not establish a decoding mechanism.
 
-Weaker pairwise dependence did not prevent the total variance penalty from growing. The descriptive design effect increased from 1.079 at batch size 2 (assignment range 1.076--1.083) to 2.381 at size 32 (2.328--2.473). Relative to the exact-context baseline, the corresponding effective sample size fell from 7,589 to 3,440 out of 8,192 rows. Each pair became less dependent on average, but every label shared its call with more labels.
+\begin{table}[t]
+\caption{Joint accuracy (\%) by batch size in the four selected cells, averaged across three assignments. These are descriptive results from existing outputs.}
+\label{tab:batch}
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\input{tables/batch_table.tex}
+\end{table}
 
-\subsection{Recovered Sensitivity: Ignoring Calls Can Understate Uncertainty}
-We next tested whether the observed covariance made 95\% confidence intervals miss their target more often than expected. \figureref{fig:coverage} reports coverage with exact binomial intervals. For Granite/IMDb, the item-level method covered the target in only 77.8\% of replicates, and the observed variance was 2.71 times the value assumed by that method. The call-aware $t$ interval reached 93.0\% coverage. Qwen/Civil Comments showed the same pattern, improving from 88.0\% to 96.0\%.
+Larger batches improved Qwen/Civil accuracy but reduced Granite/IMDb and Mistral/MultiNLI accuracy; Llama/Civil was nonmonotone (Table~\ref{tab:batch}). Meanwhile, the equal-cell mean \emph{joint} design effect rose from 1.00 at $b=2$ to 2.44 at $b=32$. Thus a falling joint-minus-control correlation does not imply a falling variance penalty. More labels share each call as $b$ increases.
 
-Mistral/MultiNLI had milder undercoverage (90.8\%) and improved to 95.3\% with the call-aware interval. Llama/Civil Comments showed no item-level undercoverage. Whole-call bootstrap coverage was 91.8\%, 95.3\%, 94.8\%, and 94.0\% for Granite, Qwen, Mistral, and Llama, respectively. Wilson-score intervals reproduced the item-level result, so the undercoverage did not result from using the Wald formula near a probability boundary. Undercoverage varied across cells, but the risk created by positive dependence cannot be diagnosed from the number of labeled rows alone.
+An exploratory fixed-output position analysis found a pooled joint-minus-exact error-rate slope of $-0.000242$ per position. Excess covariance averaged 0.01012 for adjacent outputs and 0.00822 for outputs 15 positions apart. These post-hoc descriptions do not isolate position, order, or output history as a cause.
 
-\FloatBarrier
-\section{Discussion}
-The unit that generates an annotation can also create statistical dependence. A joint prompt may establish a temporary decision rule, interpretation, or output pattern that affects several labels at once. Exact-context controls show that longer prompts or neighboring documents alone do not explain the observed covariance. We therefore analyze each joint call as a cluster while leaving the causal mechanism unresolved. An exploratory analysis found no clear linear trend in the difference in error rates by output position, while errors at nearby positions had stronger covariance. This pattern does not identify a mechanism.
+\subsection{Recovered Coverage Sensitivity}
+In Granite/IMDb, item-level intervals covered the target in 77.8\% of replicates (exact 95\% Monte Carlo interval 73.4--81.7\%); call-mean $t$ intervals reached 93.0\% (90.0--95.3\%). Qwen/Civil improved from 88.0\% (84.4--91.0\%) to 96.0\% (93.6--97.7\%), and Mistral/MultiNLI from 90.8\% to 95.3\%. Llama/Civil showed no item-level undercoverage (96.8\% versus 96.5\% call-aware coverage). Figure~\ref{fig:coverage} reports all four cells.
 
-The batch-size result separates dependence between pairs from the total information loss within a call. Dependence remained detectable even in small batches. It decreased in three selected cells and increased in one across the tested range. The design effect still rose with batch size because the number of other labels sharing each call grew faster than pairwise dependence declined. Reducing batch size can reduce this penalty, but the remaining labels may still be dependent.
+The empirical variance-to-item-level variance ratio was 2.71 for Granite/IMDb and 1.70 for Qwen/Civil. These measured ratios differ from the covariance-based design effects in Eq.~\ref{eq:de}. Wilson intervals reproduced the item-level undercoverage pattern. Whole-call bootstrap coverage was 91.8\%, 95.3\%, 94.8\%, and 94.0\% for Granite, Qwen, Mistral, and Llama, respectively. Call-aware methods improved coverage in the affected cells; neither method is universally calibrated.
 
-This distinction matters when estimating means or proportions from batched labels. Positive covariance within a call can make formulas that assume independent rows underestimate variance. Researchers should retain original and parent call IDs, attempt and recovery status, model and protocol versions, decoding settings, batch size, and output position. These records permit call-aware analysis and auditing. Call-level $t$ intervals, cluster-robust standard errors, or whole-call bootstrap resampling can account for call clustering \cite{cameron2015cluster,mackinnon2023cluster,field2007bootstrap}. The choice depends on the number and structure of independent calls, and studies with few calls require small-sample methods. Sources, users, conversations, or documents may add other forms of clustering that the analysis must also address. These methods change estimated uncertainty, not label accuracy. Effects on other downstream estimates remain untested.
+\section{Discussion and Limitations}
+The matched comparison identifies the joint annotation policy, not whether multi-target instructions or shared-response decoding causes the covariance. Greedy decoding removes sampling randomness conditional on a prompt, but grouping and ordering still change the input and output history. We did not vary decoding temperature, prompt template, or mechanism separately. Findings therefore apply to these four 7--8B open-weight models and English classification tasks, not automatically to larger, proprietary, multilingual, or generative models. The four batch-size cells also confound model and task, preventing family-specific scaling claims.
 
-The study has four limitations. First, it evaluates four open-weight models near the 7--8B scale and four English classification tasks; proprietary, larger, multilingual, generative, and subgroup-specific behavior may differ. Second, the batch-size experiment uses four different cells and sizes 2--32, so it cannot separate model-family effects from task effects or establish a universal scaling law. Third, the matched control identifies the combined effect of joint annotation but cannot determine whether multi-target instructions, shared-response decoding, or another component produces the dependence. Fourth, the repeated-sampling study required post-execution recovery of 1,095 calls with a modified output format and response-length limit. The unrepaired subsets gave similar item-level coverage: 78.9\% for Granite/IMDb (105/133 replicates) and 88.4\% for Qwen/Civil Comments, compared with recovered values of 77.8\% and 88.0\%. These unrepaired subsets were too small for the prespecified decision rule, so the coverage result remains secondary sensitivity evidence.
+Coverage additionally depends on technical recovery. Of the recovered calls, 730 were in Granite/IMDb, so recovery was uneven across cells. Complete repair-free subsets gave item-level coverage of 78.9\% for Granite (105/133 evaluation replicates) and 88.4\% for Qwen (313/354), close to recovered values, but subset completeness was not randomized and these subsets failed the prespecified replicate-count gate. They cannot turn the recovered result into clean confirmation.
+
+The practical recommendation is to retain call IDs, model and protocol versions, batch size, position, and recovery history. Call-mean $t$ intervals or cluster-robust methods need no additional LLM calls; whole-call bootstrap adds CPU resampling \cite{cameron2015cluster,mackinnon2023cluster,field2007bootstrap}. Reducing batch size requires more calls for a fixed number of labels. Exact-context controls require $b$ target-only calls per group and are a diagnostic, not a proposed low-cost remedy. We do not measure production throughput, dollar savings, or an optimal batch size. Additional clustering by source, user, or document may still require adjustment. Correcting uncertainty does not correct inaccurate labels or establish effects on downstream estimands.
 
 \section{Conclusion}
-The primary grid showed that errors occurred together more often when labels shared a call across four model families and four tasks at batch size 16. In the descriptive four-cell batch-size analysis, dependence between pairs decreased on average, but the total variance penalty increased. In the recovered sensitivity, treating 512 labels as independent produced confidence intervals that missed their target too often in three cells. Intervals based on the 32 call means were much closer to their intended 95\% coverage. Studies using batched labels should record the call and protocol that produced each label, report dependence separately from accuracy, and account for every source of grouping in the analysis.
+Shared annotation calls produced excess across-item error covariance throughout the tested grid, even when joint accuracy improved. Batch size affected accuracy and dependence differently. A recovered secondary analysis showed that retaining call membership improved interval coverage in three cells. Batched annotation studies should preserve call provenance and distinguish label accuracy, covariance-based variance summaries, and measured coverage.
 
+\section*{Acknowledgment: AI Disclosure}
+OpenAI Codex assisted with manuscript editing and analysis-code development and debugging. The author designed and conducted the study and is responsible for verifying the text, analyses, and conclusions.
 \bibliographystyle{IEEEtran}
 \bibliography{references}
-
 \end{document}

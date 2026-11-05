@@ -24,7 +24,7 @@ from freezeb import extension_b4 as b4
 from step0.hashing import sha256_json, write_json
 
 STUDY = Path(__file__).resolve().parent
-REGISTRY_AUTH_ID = "cmu3hayz6002fmkgiko27jzi0"
+REGISTRY_AUTH_ID = os.environ.get("RUNPOD_REGISTRY_AUTH_ID", "")
 
 
 def credential_env() -> dict[str, str]:

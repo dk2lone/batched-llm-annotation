@@ -27,6 +27,30 @@ graphify-out/
 .claude/
 .flash/
 
+# Local drafting and operations records are not publication files.
+AGENTS.md
+CLAUDE.md
+HANDOFF.md
+main-review-report.md
+manuscript/camera-ready-*/
+manuscript/*REVIEW*.md
+manuscript/CLAIM_AUDIT_REPORT.md
+manuscript/FIGURE_QA.md
+manuscript/*.aux
+manuscript/*.bbl
+manuscript/*.blg
+manuscript/*.log
+manuscript/*.out
+manuscript/*.xdv
+manuscript/*.synctex.gz
+*.log
+.github/workflows/b4-*.yml
+gate-experiments/k/
+study-120h/EXTENSION_B4_OPERATIONS.md
+study-120h/extension-b4/runpod-*/
+study-120h/step1-out/benchmark/MODAL_BILLING_*.json
+analysis/outputs/
+
 # Immutable payloads are attached to milestone GitHub releases.
 study-120h/freeze/
 study-120h/freeze-b-work/
@@ -113,3 +137,6 @@ study-120h/extension-b5*/**/runpod-known-hosts
 study-120h/extension-b5*/**/runpod-lifecycle/
 study-120h/extension-b5*/**/runpod-watchdog.jsonl
 study-120h/extension-b5*/**/.active-run.lock
+
+# Cloud connection state remains local.
+study-120h/extension-b4/preparation/**/STATE.json

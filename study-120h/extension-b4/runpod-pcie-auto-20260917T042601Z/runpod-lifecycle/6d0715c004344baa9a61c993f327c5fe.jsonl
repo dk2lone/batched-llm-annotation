@@ -1,3 +1,0 @@
-{"at_utc":"2026-09-17T04:26:36.647981+00:00","cell_key":"ibm-granite/granite-3.3-8b-instruct::imdb","kind":"create_intent","name":"b4-6658b99f9d57418a-6d0715c00434","shutdown_target_utc":"2026-09-17T07:14:48.385648+00:00","stream":"reference","watchdog_run_id":35181926528}
-{"at_utc":"2026-09-17T04:27:05.388647+00:00","cell_key":"ibm-granite/granite-3.3-8b-instruct::imdb","kind":"created","pod_id":"tfinlwkbg6n6o0","stream":"reference"}
-{"at_utc":"2026-09-17T06:57:11.620981+00:00","cell_key":"ibm-granite/granite-3.3-8b-instruct::imdb","kind":"termination_verified","pod_id":"tfinlwkbg6n6o0","stream":"reference"}

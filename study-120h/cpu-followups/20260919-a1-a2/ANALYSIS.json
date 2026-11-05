@@ -1,0 +1,175 @@
+{
+  "a1": {
+    "analysis": "A1 batch-size dependence translated to statistical information",
+    "effective_n_decreases_monotonically": true,
+    "excess_design_effect_increases_monotonically": true,
+    "interpretation_boundary": "Post-hoc descriptive transformation of the prespecified B5 standardized joint-minus-exact contrast. The 95% intervals monotonically transform the stored B5 parent-group cluster-bootstrap percentile endpoints. The excess design effect is 1 + (b-1) times the standardized contrast; it is not the total joint-arm design effect. Effective N is the corresponding variance-equivalent interpretation for 8,192 rows under exchangeable within-call dependence.",
+    "rows": [
+      {
+        "batch_size": 2,
+        "effective_n_from_8192": 7588.844519999183,
+        "effective_n_interval_95": [
+          7529.080830858901,
+          7647.1348504916405
+        ],
+        "excess_design_effect": 1.0794792248558127,
+        "excess_design_effect_interval_95": [
+          1.0712508880987406,
+          1.0880478220427705
+        ],
+        "mean_total_joint_design_effect": 0.9961916769048424,
+        "mean_total_joint_effective_n_from_8192": 8223.31704823359,
+        "standardized_excess_dependence": 0.0794792248558128,
+        "standardized_excess_interval_95": [
+          0.0712508880987406,
+          0.08804782204277052
+        ]
+      },
+      {
+        "batch_size": 4,
+        "effective_n_from_8192": 6595.951101183716,
+        "effective_n_interval_95": [
+          6507.944007730538,
+          6690.352461692146
+        ],
+        "excess_design_effect": 1.2419740344239143,
+        "excess_design_effect_interval_95": [
+          1.224449690342331,
+          1.2587692810923137
+        ],
+        "mean_total_joint_design_effect": 1.1470598057418444,
+        "mean_total_joint_effective_n_from_8192": 7141.737474361193,
+        "standardized_excess_dependence": 0.08065801147463807,
+        "standardized_excess_interval_95": [
+          0.07481656344744364,
+          0.08625642703077122
+        ]
+      },
+      {
+        "batch_size": 8,
+        "effective_n_from_8192": 5469.471818743942,
+        "effective_n_interval_95": [
+          5342.723118261649,
+          5595.450113067852
+        ],
+        "excess_design_effect": 1.4977680243137779,
+        "excess_design_effect_interval_95": [
+          1.464046651201135,
+          1.5333004946483948
+        ],
+        "mean_total_joint_design_effect": 1.4383898386990208,
+        "mean_total_joint_effective_n_from_8192": 5695.25714072717,
+        "standardized_excess_dependence": 0.07110971775911112,
+        "standardized_excess_interval_95": [
+          0.06629237874301927,
+          0.07618578494977069
+        ]
+      },
+      {
+        "batch_size": 16,
+        "effective_n_from_8192": 4326.643271608994,
+        "effective_n_interval_95": [
+          4168.8788996190715,
+          4495.669761204761
+        ],
+        "excess_design_effect": 1.8933846600562372,
+        "excess_design_effect_interval_95": [
+          1.8221979004535882,
+          1.9650366914588329
+        ],
+        "mean_total_joint_design_effect": 1.8936688673676887,
+        "mean_total_joint_effective_n_from_8192": 4325.993916448213,
+        "standardized_excess_dependence": 0.05955897733708248,
+        "standardized_excess_interval_95": [
+          0.05481319336357254,
+          0.06433577943058887
+        ]
+      },
+      {
+        "batch_size": 32,
+        "effective_n_from_8192": 3440.37735502577,
+        "effective_n_interval_95": [
+          3271.264907410937,
+          3643.9617992546714
+        ],
+        "excess_design_effect": 2.3811341474018737,
+        "excess_design_effect_interval_95": [
+          2.2481026013158467,
+          2.504230085873299
+        ],
+        "mean_total_joint_design_effect": 2.444138334701098,
+        "mean_total_joint_effective_n_from_8192": 3351.6924487016922,
+        "standardized_excess_dependence": 0.04455271443231851,
+        "standardized_excess_interval_95": [
+          0.04026137423599505,
+          0.04852355115720319
+        ]
+      }
+    ]
+  },
+  "a2": {
+    "analysis": "A2 B3 covariance-to-B4 variance-inflation coherence",
+    "interpretation_boundary": "Post-hoc four-cell coherence check only. B3 converts observed joint covariance to a design effect under exchangeable within-call dependence; B4 measures empirical variance inflation in fresh repeated samples. Four cells do not support a formal calibration or generalization claim, and the disclosed B4 technical recovery boundary remains unchanged.",
+    "mean_absolute_difference": 0.2559663249161451,
+    "pearson_correlation_descriptive": 0.9867470968678786,
+    "root_mean_squared_difference": 0.2822622009128797,
+    "rows": [
+      {
+        "b3_implied_design_effect": 2.960335554993838,
+        "b3_joint_covariance": 0.01949082778559791,
+        "b3_joint_error_rate": 0.18241373697916666,
+        "b4_empirical_variance_ratio": 2.7109804286209247,
+        "b4_variance_ratio_interval_95": [
+          2.3284993061985615,
+          3.0784855158772175
+        ],
+        "cell_key": "ibm-granite/granite-3.3-8b-instruct::imdb",
+        "empirical_minus_implied": -0.24935512637291346
+      },
+      {
+        "b3_implied_design_effect": 0.9760490527712578,
+        "b3_joint_covariance": -0.00032648245493570966,
+        "b3_joint_error_rate": 0.28662109375,
+        "b4_empirical_variance_ratio": 0.8990580587537048,
+        "b4_variance_ratio_interval_95": [
+          0.783019371758108,
+          1.009127168433757
+        ],
+        "cell_key": "meta-llama/Llama-3.1-8B-Instruct::civil_comments",
+        "empirical_minus_implied": -0.07699099401755294
+      },
+      {
+        "b3_implied_design_effect": 1.7547949436181582,
+        "b3_joint_covariance": 0.01197660267353058,
+        "b3_joint_error_rate": 0.6094970703125,
+        "b4_empirical_variance_ratio": 1.3455551699500816,
+        "b4_variance_ratio_interval_95": [
+          1.1564036006793375,
+          1.5532660444417978
+        ],
+        "cell_key": "mistralai/Mistral-7B-Instruct-v0.3::multi_nli",
+        "empirical_minus_implied": -0.4092397736680766
+      },
+      {
+        "b3_implied_design_effect": 1.9902573023440167,
+        "b3_joint_covariance": 0.007147955894470214,
+        "b3_joint_error_rate": 0.12353515625,
+        "b4_empirical_variance_ratio": 1.701977896737979,
+        "b4_variance_ratio_interval_95": [
+          1.4555377721420666,
+          1.948721781666846
+        ],
+        "cell_key": "Qwen/Qwen3-8B::civil_comments",
+        "empirical_minus_implied": -0.2882794056060376
+      }
+    ],
+    "spearman_correlation_descriptive": 1.0
+  },
+  "gpu_work_launched": false,
+  "input_sha256": {
+    "/Users/dz/bigdata/study-120h/extension-b3/analysis/analysis.json": "b540b8f41edc93013ca2d6027384b22f48cfe489dc3ec93d3f288ae3a89206da",
+    "/Users/dz/bigdata/study-120h/extension-b4/revised-analysis-20260918T034636Z/REVISED_ANALYSIS.json": "f7b5e9ac5bbeace107765a702fe2a0bdfcec34ee4c9ee51cb0c1913e22326443",
+    "/Users/dz/bigdata/study-120h/extension-b5/run-01/analysis-final-a/ANALYSIS.json": "ea6d286029be4399e8c33da65fe71ad8fd24672991ced5de3c24fe0b0951523b"
+  },
+  "schema_version": "cpu-followups-a1-a2-v1"
+}

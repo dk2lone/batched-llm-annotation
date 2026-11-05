@@ -1,2 +1,0 @@
-{"at_utc":"2026-09-17T02:53:34.913167+00:00","expected_pods":1,"kind":"armed","lease_id":"e06f1411297049da","shutdown_target_utc":"2026-09-17T05:41:47.544697+00:00","workflow_run_id":35176104511}
-{"at_utc":"2026-09-17T03:04:15.702738+00:00","kind":"released_after_local_deletion","lease_id":"e06f1411297049da","workflow_run_id":35176104511}

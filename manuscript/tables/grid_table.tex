@@ -1,0 +1,27 @@
+\begin{tabular}{llrrrcl}
+\toprule
+Model & Dataset & \multicolumn{3}{c}{Error rate (\%)} & \multicolumn{2}{c}{Excess error covariance, $\Delta$} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-7}
+ & & Solo & Joint & Target-only & Estimate & 95\% replay range \\
+\midrule
+Qwen & Civil Comments & 24.4 & 12.4 & 10.5 & 0.00712 & [0.00656, 0.00768] \\
+ & MultiNLI & 26.8 & 26.8 & 36.7 & 0.00714 & [0.00593, 0.00832] \\
+ & IMDb & 5.6 & 10.4 & 9.8 & 0.01131 & [0.01078, 0.01183] \\
+ & AG News & 30.1 & 21.5 & 36.1 & 0.00331 & [0.00221, 0.00442] \\
+\midrule
+Granite & Civil Comments & 17.3 & 9.9 & 12.6 & 0.00162 & [0.00111, 0.00214] \\
+ & MultiNLI & 66.4 & 66.5 & 61.7 & 0.00413 & [0.00326, 0.00497] \\
+ & IMDb & 9.0 & 18.8 & 15.2 & 0.01878 & [0.01799, 0.01956] \\
+ & AG News & 47.7 & 63.4 & 49.8 & 0.02835 & [0.02694, 0.02972] \\
+\midrule
+Llama & Civil Comments & 16.3 & 28.7 & 21.6 & 0.00156 & [0.00067, 0.00245] \\
+ & MultiNLI & 59.0 & 51.5 & 58.7 & 0.00647 & [0.00538, 0.00756] \\
+ & IMDb & 9.1 & 8.7 & 11.0 & 0.00102 & [0.00051, 0.00151] \\
+ & AG News & 39.0 & 33.0 & 42.2 & 0.00630 & [0.00506, 0.00751] \\
+\midrule
+Mistral & Civil Comments & 20.1 & 12.2 & 12.8 & 0.00423 & [0.00363, 0.00482] \\
+ & MultiNLI & 32.0 & 61.4 & 41.6 & 0.01243 & [0.01112, 0.01373] \\
+ & IMDb & 32.9 & 40.5 & 38.4 & 0.01744 & [0.01634, 0.01857] \\
+ & AG News & 43.7 & 65.8 & 55.4 & 0.02256 & [0.02117, 0.02394] \\
+\bottomrule
+\end{tabular}
