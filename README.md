@@ -1,12 +1,34 @@
-# When LLM Labels Fail Together
+<h1 align="center">When LLM Labels Fail Together</h1>
 
-**Dependence and uncertainty in batched LLM text annotation.**
+<p align="center">
+  <strong>Dependence and uncertainty in batched LLM text annotation</strong><br>
+  Accepted to the IEEE BigData 2026 High School Symposium
+</p>
 
-HanRui Zhang · Marc Garneau Collegiate Institute
+<p align="center">
+  <strong>HanRui Zhang</strong><br>
+  Marc Garneau Collegiate Institute · Toronto, Canada
+</p>
 
-Accepted to the IEEE BigData 2026 High School Symposium.
+<p align="center">
+  <a href="manuscript/main.pdf"><strong>Paper</strong></a> ·
+  <a href="analysis/"><strong>Code</strong></a> ·
+  <a href="#results"><strong>Results</strong></a> ·
+  <a href="#getting-started"><strong>Reproduction</strong></a> ·
+  <a href="https://github.com/dk2lone/batched-llm-annotation/releases"><strong>Artifacts</strong></a>
+</p>
 
-[Paper](manuscript/main.pdf) · [Results](#results) · [Reproduction](#getting-started) · [Release artifacts](https://github.com/dk2lone/batched-llm-annotation/releases)
+<p align="center">
+  <a href="manuscript/main.pdf"><img src="assets/badges/paper.svg" alt="Paper: PDF"></a>
+  <a href="analysis/LICENSE"><img src="assets/badges/license.svg" alt="Analysis license: MIT"></a>
+  <a href="analysis/pyproject.toml"><img src="assets/badges/python.svg" alt="Python: 3.11–3.13"></a>
+</p>
+
+<p align="center">
+  <a href="manuscript/figures/study_overview.pdf"><img src="assets/study-overview.png" width="900" alt="Study overview: the same texts and order are labeled together in one call or separately in exact-context target-only calls, then their error covariance is compared."></a>
+</p>
+
+<p align="center"><sub>Matched context, different calls. Covariance diagrams are schematic.</sub></p>
 
 Batch prompting lets an LLM label several texts in one response. We ask whether those labels also share errors, and whether treating every labeled row as independent understates uncertainty.
 
