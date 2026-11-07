@@ -1,0 +1,82 @@
+name: CPU analysis
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "analysis/**"
+      - "manuscript/make_study_overview.py"
+      - "manuscript/figures/assets/**"
+      - ".github/workflows/analysis.yml"
+  pull_request:
+    paths:
+      - "analysis/**"
+      - "manuscript/make_study_overview.py"
+      - "manuscript/figures/assets/**"
+      - ".github/workflows/analysis.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analysis:
+    name: Python ${{ matrix.python }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12", "3.13"]
+    defaults:
+      run:
+        working-directory: analysis
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.12.5"
+          python-version: ${{ matrix.python }}
+      - name: Install locked dependencies
+        run: uv sync --locked --extra dev
+      - name: Lint
+        run: uv run ruff check .
+      - name: Test numerical reproduction and protocol
+        run: uv run pytest
+      - name: Reproduce all analyses and figures
+        if: matrix.python == '3.12'
+        run: uv run reproduce all
+      - name: Regenerate study overview from a clean copy
+        if: matrix.python == '3.12'
+        run: |
+          uv run python - <<'PY'
+          from pathlib import Path
+          import shutil
+          import subprocess
+          import sys
+          import tempfile
+
+          manuscript = Path("../manuscript").resolve()
+          with tempfile.TemporaryDirectory() as temporary:
+              root = Path(temporary)
+              assets = root / "figures" / "assets"
+              assets.mkdir(parents=True)
+              shutil.copy2(manuscript / "make_study_overview.py", root)
+              shutil.copy2(
+                  manuscript / "figures/assets/annotation_robot_flat.png", assets
+              )
+              subprocess.run(
+                  [sys.executable, str(root / "make_study_overview.py")], check=True
+              )
+              for suffix in ("pdf", "png", "svg", "tiff"):
+                  output = root / "figures" / f"study_overview.{suffix}"
+                  assert output.is_file() and output.stat().st_size > 0, output
+          PY
